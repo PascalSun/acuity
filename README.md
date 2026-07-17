@@ -40,6 +40,8 @@ python -m talk2metadata.cli analysis wamex generate-qa --db wamex.sqlite --mode 
 | Open-weight pair (Result 3) | `results/openweight_gap_analysis.json` | `scripts/openweight_gap_analysis.py` |
 | Table 4/5 (real schemas) | `results/regimes_clean_final.json`, `results/tab_difficulty_operational.json`, `results/e2_realdb_*.json` | `scripts/tab_difficulty_operational.py` |
 | Cross-vendor judge check | `results/crossvendor_judge_spider.json` | `scripts/crossvendor_judge.py` |
+| Target-sensitivity (Result 1, π_S interpolation) | `results/pis_sensitivity_spider.json` | `scripts/pis_sensitivity.py` |
+| Rank-stability bootstrap (Section 7 regime inversion) | `results/rank_stability_realdb.json` | `scripts/rank_stability_bootstrap.py` |
 | Cost accounting | `results/cost_reconstruction.json` | `scripts/cost_reconstruction.py` |
 | Memorization probe | `results/contamination_probe_full.json` | see `generator/` probe module |
 

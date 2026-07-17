@@ -9,12 +9,12 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap, Normalize
 matplotlib.rcParams['pdf.fonttype'] = 42
 
-R = 'docs/papers/FlexBench/results/'
+R = '../results/'
 PANELS = [
     ("Spider", R + "surface_pattern_x_npred.json", ["0", "1p", "2p", "3p", "2i", "3i", "4i"]),
     ("BIRD", R + "surface_pattern_x_npred_bird.json", ["0", "1p", "2p", "3p", "2i", "3i", "4i"]),
-    ("WAMEX (private, Star)", R + "surface_pattern_x_npred_wamex.json", ["0", "1p", "2i", "3i", "4i"]),
-    ("ACYWA (private, Snowflake)", R + "surface_pattern_x_npred_acywa.json", ["0", "1p", "2p", "3p", "2i", "3i"]),
+    ("WAMEX (operational, Star)", R + "surface_pattern_x_npred_wamex.json", ["0", "1p", "2i", "3i", "4i"]),
+    ("ACYWA (operational, Snowflake)", R + "surface_pattern_x_npred_acywa.json", ["0", "1p", "2p", "3p", "2i", "3i"]),
 ]
 ALLPAT = ["0", "1p", "2p", "3p", "2i", "3i", "4i"]
 cmap = LinearSegmentedColormap.from_list(

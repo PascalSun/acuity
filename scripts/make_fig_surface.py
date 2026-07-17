@@ -122,7 +122,7 @@ def panel(ax, jsonpath, patterns, title, labels, note=None, n0=30.0, zlab=True, 
     ax.set_box_aspect((1.45, 1.15, 0.72), zoom=1.16)
     ax.set_title(title, fontsize=9.0, color=INK, y=0.97, fontweight="bold")
 
-R = "docs/papers/FlexBench/results/"
+R = "../results/"
 fig = plt.figure(figsize=(7.4, 4.9))
 rects = [(-0.03, 0.49, 0.56, 0.51), (0.47, 0.49, 0.56, 0.51),
          (-0.03, -0.005, 0.56, 0.51), (0.47, -0.005, 0.56, 0.51)]
@@ -135,11 +135,11 @@ panel(axs[1], R + "surface_pattern_x_npred_bird.json", ["0","1p","2p","3p","2i",
       "BIRD — 72 databases, n=2,842",
       [(0,0,0.35,-0.5,0.10,INK,True),(6,2,-0.3,0.8,0.12,RED,True)], n0=40, zlab=False)
 panel(axs[2], R + "surface_pattern_x_npred_wamex.json", ["0","1p","2i","3i","4i"],
-      "WAMEX (private, Star) — n=488;  2p/3p infeasible",
+      "WAMEX (operational, Star) — n=488;  2p/3p infeasible",
       [(0,0,0.35,-0.5,0.10,INK,True),(6,3,0.3,0.75,0.14,RED,True)],
       n0=40, zlab=True, kdeg=3)
 panel(axs[3], R + "surface_pattern_x_npred_acywa.json", ["0","1p","2p","3p","2i","3i"],
-      "ACYWA (private, Snowflake) — n=482;  4i infeasible",
+      "ACYWA (operational, Snowflake) — n=482;  4i infeasible",
       [(0,0,0.35,-0.5,0.10,INK,True),(6,5,0.45,0.35,0.12,RED,True)],
       n0=40, zlab=False, kdeg=3)
 
