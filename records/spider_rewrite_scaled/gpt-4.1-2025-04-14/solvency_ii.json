@@ -1,0 +1,102 @@
+{
+  "db_id": "solvency_ii",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 8,
+  "n_correct": 4,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:28:31.688943+00:00",
+  "records": [
+    {
+      "uid": "2129f238-2ac4-4e9d-85a7-fa03a0dbc15f",
+      "question": "Which events that have related finances, locations, and assets in events are at locations where the other details are exactly 'Fritsch LLC'?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN finances ON events.finance_id = finances.finance_id\nJOIN locations ON events.location_id = locations.location_id\nJOIN assets_in_events ON events.event_id = assets_in_events.event_id AND events.event_id = assets_in_events.event_id\nWHERE locations.other_details = 'Fritsch LLC'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Locations ON Events.Location_ID = Locations.Location_ID\nJOIN Finances ON Events.Finance_ID = Finances.Finance_ID\nJOIN Assets_in_Events ON Events.Event_ID = Assets_in_Events.Event_ID\nWHERE Locations.Other_Details = 'Fritsch LLC'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.91
+    },
+    {
+      "uid": "48d59de5-902c-42a0-891e-bf339997bc47",
+      "question": "Which Trade Show events with an Organizer have finances with other details marked as Good and are held at locations with other details Sanford Inc?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN finances ON events.finance_id = finances.finance_id\nJOIN locations ON events.location_id = locations.location_id\nJOIN products_in_events ON events.event_id = products_in_events.event_id\nJOIN parties_in_events ON events.event_id = parties_in_events.event_id\nWHERE parties_in_events.role_code = 'Organizer' AND finances.other_details = 'Good' AND events.event_type_code = 'Trade Show' AND locations.other_details = 'Sanford Inc'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Finances ON Events.Finance_ID = Finances.Finance_ID\nJOIN Locations ON Events.Location_ID = Locations.Location_ID\nJOIN Parties_in_Events ON Events.Event_ID = Parties_in_Events.Event_ID\nWHERE Events.Event_Type_Code = 'Trade Show'\n  AND Parties_in_Events.Role_Code = 'Organizer'\n  AND Finances.Other_Details = 'Good'\n  AND Locations.Other_Details = 'Sanford Inc'",
+      "strategy": "4iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "4a7cee80-542b-4cb0-9d62-6a0847301eb9",
+      "question": "Which trade show events have an organizer involved where the finance details are exactly Good?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN finances ON events.finance_id = finances.finance_id\nJOIN products_in_events ON events.event_id = products_in_events.event_id\nJOIN parties_in_events ON events.event_id = parties_in_events.event_id\nWHERE finances.other_details = 'Good' AND parties_in_events.role_code = 'Organizer' AND events.event_type_code = 'Trade Show'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Finances ON Events.Finance_ID = Finances.Finance_ID\nJOIN Parties_in_Events ON Events.Event_ID = Parties_in_Events.Event_ID\nWHERE Events.Event_Type_Code = 'trade show'\n  AND Parties_in_Events.Role_Code = 'organizer'\n  AND Finances.Other_Details = 'Good'",
+      "strategy": "3iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.86
+    },
+    {
+      "uid": "66f65627-e00c-4396-857d-9b135da16440",
+      "question": "Which seminars have associated finances and agreements?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN finances ON events.finance_id = finances.finance_id\nJOIN agreements ON events.event_id = agreements.event_id\nWHERE events.event_type_code = 'Seminar'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Agreements ON Events.Event_ID = Agreements.Event_ID\nWHERE Events.Finance_ID IS NOT NULL",
+      "strategy": "2iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.84
+    },
+    {
+      "uid": "6f5c7ff9-9880-41f1-8336-fd6d86a2d80a",
+      "question": "Which 'Trade Show' events have related finances, addresses, parties with role 'Participant', and agreements?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN finances ON events.finance_id = finances.finance_id\nJOIN addresses ON events.address_id = addresses.address_id\nJOIN parties_in_events ON events.event_id = parties_in_events.event_id\nJOIN agreements ON events.event_id = agreements.event_id\nWHERE events.event_type_code = 'Trade Show' AND parties_in_events.role_code = 'Participant'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Finances ON Events.Finance_ID = Finances.Finance_ID\nJOIN Addresses ON Events.Address_ID = Addresses.Address_ID\nJOIN Parties_in_Events ON Events.Event_ID = Parties_in_Events.Event_ID AND Parties_in_Events.Role_Code = 'Participant'\nJOIN Agreements ON Events.Event_ID = Agreements.Event_ID\nWHERE Events.Event_Type_Code = 'Trade Show'",
+      "strategy": "4iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "bbee3f4c-28ea-47ae-95cf-7ff182baadca",
+      "question": "Which Trade Show events are held by Sanford Inc at addresses containing VT 71460?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN addresses ON events.address_id = addresses.address_id\nJOIN locations ON events.location_id = locations.location_id\nWHERE addresses.address_details LIKE '%VT 71460%' AND locations.other_details = 'Sanford Inc' AND events.event_type_code = 'Trade Show'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Parties_in_Events ON Events.Event_ID = Parties_in_Events.Event_ID\nJOIN Parties ON Parties_in_Events.Party_ID = Parties.Party_ID\nJOIN Addresses ON Events.Address_ID = Addresses.Address_ID\nWHERE Events.Event_Type_Code = 'Trade Show'\n  AND Parties.Party_Details = 'Sanford Inc'\n  AND Addresses.address_details LIKE '%VT 71460%'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "c87143fe-8f4e-469c-b3f7-9cdde5d0e6df",
+      "question": "Which events took place at addresses containing 9113 Wisoky Glen Apt. 601 Lake Immanuel?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN addresses ON events.address_id = addresses.address_id\nWHERE addresses.address_details LIKE '%9113 Wisoky Glen Apt. 601\nLake Immanuel%'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nJOIN Addresses ON Events.Address_ID = Addresses.Address_ID\nWHERE Addresses.address_details LIKE '%9113 Wisoky Glen Apt. 601 Lake Immanuel%'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.95
+    },
+    {
+      "uid": "f18d6dae-4877-46a8-90b1-a22c0e49d9b5",
+      "question": "Which events are Trade Shows?",
+      "gold_sql": "SELECT events.event_id FROM events\nJOIN locations ON events.location_id = locations.location_id\nWHERE events.event_type_code = 'Trade Show'",
+      "pred_sql": "SELECT Events.Event_ID\nFROM Events\nWHERE Events.Event_Type_Code = 'Trade Show'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.7
+    }
+  ]
+}

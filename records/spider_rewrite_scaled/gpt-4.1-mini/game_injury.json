@@ -1,0 +1,80 @@
+{
+  "db_id": "game_injury",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 6,
+  "n_correct": 4,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:34:08.043597+00:00",
+  "records": [
+    {
+      "uid": "11ddf9de-f59f-40c5-aa6b-618d08304dd8",
+      "question": "What stadium named Invesco Field at Mile High has at least 8 home games, an average attendance of at least 74908, a capacity percentage exactly 98.4, and a total attendance of at most 599264?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nWHERE stadium.average_attendance >= 74908.0 AND stadium.capacity_percentage = 98.4 AND stadium.name = 'Invesco Field at Mile High' AND stadium.total_attendance <= 599264.0 AND stadium.home_games >= 8",
+      "pred_sql": "SELECT id FROM stadium WHERE name = 'Invesco Field at Mile High' AND Home_Games >= 8 AND Average_Attendance >= 74908 AND Capacity_Percentage = 98.4 AND Total_Attendance <= 599264",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "2786a9eb-0a73-42dc-b4f1-d0db274916bb",
+      "question": "Which stadium named Cowboys Stadium had exactly 696377 total attendance, average attendance of at least 87047, at most 8 home games, and a capacity percentage exactly equal to 108.8?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nWHERE stadium.average_attendance >= 87047.0 AND stadium.home_games <= 8 AND stadium.total_attendance = 696377.0 AND stadium.capacity_percentage = 108.8 AND stadium.name = 'Cowboys Stadium'",
+      "pred_sql": "SELECT id FROM stadium WHERE name = 'Cowboys Stadium' AND Total_Attendance = 696377 AND Average_Attendance >= 87047 AND Home_Games <= 8 AND Capacity_Percentage = 108.8",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.27
+    },
+    {
+      "uid": "4bda122e-3d2c-43a3-94d7-19750c0d285f",
+      "question": "Which stadiums hosted games in seasons 2007 or earlier?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.season <= 2007",
+      "pred_sql": "SELECT DISTINCT stadium.id\nFROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.Season <= 2007",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "4e5457a3-5d07-4b0b-9b85-ed2df531e4d9",
+      "question": "Which stadium named Cowboys Stadium with a total attendance of 696377.0 and an average attendance of at least 87047.0 hosted the League game on 21 August 2011 where Bunyodkor was the home team, Pakhtakor was the away team, and the score was 2\u20131?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'Cowboys Stadium' AND game.away_team = 'Pakhtakor' AND stadium.average_attendance >= 87047.0 AND game.home_team = 'Bunyodkor' AND game.date = '21 August 2011' AND game.score = '2\u20131' AND stadium.total_attendance = 696377.0 AND game.competition = 'League'",
+      "pred_sql": "SELECT stadium.id\nFROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'Cowboys Stadium'\n  AND stadium.Total_Attendance = 696377.0\n  AND stadium.Average_Attendance >= 87047.0\n  AND game.Competition = 'League'\n  AND game.Date = '2011-08-21'\n  AND game.Home_team = 'Bunyodkor'\n  AND game.Away_team = 'Pakhtakor'\n  AND game.Score = '2\u20131'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "a4b19984-5968-451e-a7ff-5edcb1a02748",
+      "question": "Which stadiums have an average attendance of at most 78596 and hosted games on 10 July 2008 that ended with a 1\u20131 score?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.date = '10 July 2008' AND stadium.average_attendance <= 78596.0 AND game.score = '1\u20131'",
+      "pred_sql": "SELECT DISTINCT stadium.id\nFROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.Average_Attendance <= 78596\n  AND game.Date = '2008-07-10'\n  AND game.Score = '1\u20131'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "b3065a66-0dd4-459b-bf1a-14b8f9403b4e",
+      "question": "Which stadium called M&T Bank Stadium has an average attendance of at least 71227 and hosts at least 8 home games, and also had a match on 12 July 2009 where Bunyodkor played at home against Pakhtakor in season 2009 or earlier?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.away_team = 'Pakhtakor' AND stadium.name = 'M&T Bank Stadium' AND stadium.home_games >= 8 AND game.home_team = 'Bunyodkor' AND game.date = '12 July 2009' AND game.season <= 2009 AND stadium.average_attendance >= 71227.0",
+      "pred_sql": "SELECT stadium.id\nFROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'M&T Bank Stadium'\n  AND stadium.Average_Attendance >= 71227\n  AND stadium.Home_Games >= 8\n  AND game.Date = '12 July 2009'\n  AND game.Home_team = 'Bunyodkor'\n  AND game.Away_team = 'Pakhtakor'\n  AND game.Season <= 2009",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.97
+    }
+  ]
+}

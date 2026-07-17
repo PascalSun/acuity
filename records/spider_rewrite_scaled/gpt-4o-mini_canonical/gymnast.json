@@ -1,0 +1,47 @@
+{
+  "db_id": "gymnast",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:27:18.443276+00:00",
+  "records": [
+    {
+      "uid": "3b81cf74-7878-41dc-ad0c-98ae97543cc8",
+      "question": "Which people named Clary Sermina Delgado Cid are at most 1.75 meters tall and have vault points at most 9.537, floor exercise points at most 9.687, and total points at most 57.424?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.vault_points <= 9.537 AND people.name = 'Clary Sermina Delgado Cid' AND gymnast.floor_exercise_points <= 9.687 AND people.height <= 1.75 AND gymnast.total_points <= 57.424",
+      "pred_sql": "SELECT people.People_ID \nFROM people \nJOIN gymnast ON people.People_ID = gymnast.Gymnast_ID \nWHERE people.Name = 'Clary Sermina Delgado Cid' \nAND people.Height <= 1.75 \nAND gymnast.Vault_Points <= 9.537 \nAND gymnast.Floor_Exercise_Points <= 9.687 \nAND gymnast.Total_Points <= 57.424",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.41
+    },
+    {
+      "uid": "4ca8ad0e-a07d-4c08-9e55-68439d424c5d",
+      "question": "Which gymnasts from Santiago de los Caballeros who are at most 21 years old have at least 9.5 points on the horizontal bar, at least 9.725 on parallel bars, no more than 9.687 on floor exercise, and no more than 9.537 on vault?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.hometown = 'Santiago de los Caballeros' AND gymnast.horizontal_bar_points >= 9.5 AND gymnast.floor_exercise_points <= 9.687 AND gymnast.parallel_bars_points >= 9.725 AND gymnast.vault_points <= 9.537 AND people.age <= 21.0",
+      "pred_sql": "SELECT people.People_ID \nFROM people \nJOIN gymnast ON people.People_ID = gymnast.Gymnast_ID \nWHERE people.Hometown = 'Santiago de los Caballeros' \nAND people.Age <= 21.0 \nAND gymnast.Horizontal_Bar_Points >= 9.5 \nAND gymnast.Floor_Exercise_Points <= 9.687 \nAND gymnast.Parallel_Bars_Points >= 9.725 \nAND gymnast.Vault_Points <= 9.537",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.64
+    },
+    {
+      "uid": "eca7c6aa-e0d5-4435-8e4b-84c45f497a29",
+      "question": "Who are the people from Los Alcarrizos who are at most 24 years old and at least 1.72 meters tall, and who are gymnasts with exactly 57.374 total points, 9.525 pommel horse points, 9.625 parallel bars points, and 9.55 horizontal bar points?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.total_points = 57.374 AND people.age <= 24.0 AND gymnast.pommel_horse_points = 9.525 AND people.height >= 1.72 AND gymnast.horizontal_bar_points = 9.55 AND people.hometown = 'Los Alcarrizos' AND gymnast.parallel_bars_points = 9.625",
+      "pred_sql": "SELECT people.People_ID \nFROM people \nJOIN gymnast ON people.People_ID = gymnast.Gymnast_ID \nWHERE people.Age <= 24.0 \nAND people.Height >= 1.72 \nAND people.Hometown = 'Los Alcarrizos' \nAND gymnast.Total_Points = 57.374 \nAND gymnast.Pommel_Horse_Points = 9.525 \nAND gymnast.Horizontal_Bar_Points = 9.55 \nAND gymnast.Parallel_Bars_Points = 9.625",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.51
+    }
+  ]
+}

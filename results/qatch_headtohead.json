@@ -1,0 +1,1056 @@
+{
+  "config": {
+    "seed": 42,
+    "n_databases": 25,
+    "databases": [
+      "aircraft",
+      "baseball_1",
+      "battle_death",
+      "behavior_monitoring",
+      "college_3",
+      "company_1",
+      "concert_singer",
+      "course_teach",
+      "csu_1",
+      "customers_and_invoices",
+      "dorm_1",
+      "election_representative",
+      "employee_hire_evaluation",
+      "entertainment_awards",
+      "epinions_1",
+      "flight_1",
+      "hospital_1",
+      "hr_1",
+      "music_4",
+      "protein_institute",
+      "race_track",
+      "sakila_1",
+      "store_product",
+      "tracking_software_problems",
+      "world_1"
+    ],
+    "models": [
+      "gpt-4.1-2025-04-14",
+      "gpt-4.1-mini",
+      "gpt-4o-mini",
+      "claude-sonnet-4-5-20250929",
+      "claude-haiku-4-5-20251001",
+      "gemini-2.5-flash"
+    ],
+    "qatch_version": "1.0.36",
+    "protocol": "e2_resolution_eval.py unchanged: DDL + question + gold-SELECT output columns, temperature 0, EX = order-insensitive set-of-rows equality; strict sensitivity = multiset equality, order-sensitive for ORDERBY",
+    "cap_per_db": 40,
+    "bootstrap": {
+      "B": 10000,
+      "alpha": 0.05,
+      "correction": "BH",
+      "clusters": "databases"
+    },
+    "n_api_calls": 6000,
+    "n_api_errors_by_model": {
+      "claude-haiku-4-5-20251001": 0,
+      "gpt-4.1-2025-04-14": 0,
+      "gpt-4.1-mini": 0,
+      "gemini-2.5-flash": 0,
+      "claude-sonnet-4-5-20250929": 0,
+      "gpt-4o-mini": 0
+    },
+    "estimated_cost_usd": "~10-12 (6,000 calls, ~1.5k input tokens each; sonnet-4.5 and gpt-4.1 dominate)",
+    "db_sample_provenance": "random.Random(42).sample over the 151 DBs common to all 6 models in records/spider_natural/acuity_final (sorted); paper's full Acuity run used 158 DBs",
+    "scripts": [
+      "scripts/qatch_generate.py",
+      "scripts/qatch_generate_fixups.py",
+      "scripts/qatch_build_set.py",
+      "scripts/qatch_headtohead.py"
+    ]
+  },
+  "qatch_suite": {
+    "qatch_version": "1.0.36",
+    "n_databases": 25,
+    "n_tests_total": 9345,
+    "n_gold_executable": 9345,
+    "n_in_fragment": 3893,
+    "fragment_share": 0.4165864098448368,
+    "category_distribution": {
+      "DISTINCT": 409,
+      "GROUPBY": 1489,
+      "HAVING": 1571,
+      "INNER-JOIN": 679,
+      "ORDERBY": 1272,
+      "PROJECT": 1658,
+      "SELECT": 1147,
+      "SIMPLE-AGG": 917,
+      "many-to-many-generator": 203
+    },
+    "cejsq_class_distribution": {
+      "0E": 3214,
+      "0M": 0,
+      "0H": 0,
+      "1pE": 679,
+      "1pM": 0,
+      "1pH": 0,
+      "2pE": 0,
+      "2pM": 0,
+      "2pH": 0,
+      "3pE": 0,
+      "3pM": 0,
+      "3pH": 0,
+      "2iE": 0,
+      "2iM": 0,
+      "2iH": 0,
+      "3iE": 0,
+      "3iM": 0,
+      "3iH": 0,
+      "4iE": 0,
+      "4iM": 0,
+      "4iH": 0
+    },
+    "populated_cejsq_classes": 2,
+    "coverage_entropy_normalized_infragment": 0.1520169826267822,
+    "coverage_entropy_normalized_alltests": 0.18314622146813123
+  },
+  "qatch_suite_per_db": {
+    "aircraft": {
+      "n_tests": 265,
+      "n_gold_ok": 265,
+      "categories": {
+        "DISTINCT": 13,
+        "GROUPBY": 41,
+        "HAVING": 46,
+        "INNER-JOIN": 15,
+        "ORDERBY": 40,
+        "PROJECT": 49,
+        "SELECT": 36,
+        "SIMPLE-AGG": 25
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 258
+    },
+    "baseball_1": {
+      "n_tests": 2476,
+      "n_gold_ok": 2476,
+      "categories": {
+        "DISTINCT": 102,
+        "GROUPBY": 446,
+        "HAVING": 485,
+        "INNER-JOIN": 124,
+        "many-to-many-generator": 92,
+        "ORDERBY": 208,
+        "PROJECT": 479,
+        "SELECT": 306,
+        "SIMPLE-AGG": 234
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 2440
+    },
+    "battle_death": {
+      "n_tests": 177,
+      "n_gold_ok": 177,
+      "categories": {
+        "DISTINCT": 11,
+        "GROUPBY": 27,
+        "HAVING": 22,
+        "INNER-JOIN": 14,
+        "ORDERBY": 24,
+        "PROJECT": 33,
+        "SELECT": 26,
+        "SIMPLE-AGG": 20
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 171
+    },
+    "behavior_monitoring": {
+      "n_tests": 502,
+      "n_gold_ok": 502,
+      "categories": {
+        "DISTINCT": 31,
+        "GROUPBY": 35,
+        "HAVING": 52,
+        "INNER-JOIN": 72,
+        "many-to-many-generator": 43,
+        "ORDERBY": 88,
+        "PROJECT": 98,
+        "SELECT": 49,
+        "SIMPLE-AGG": 34
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 484
+    },
+    "college_3": {
+      "n_tests": 488,
+      "n_gold_ok": 488,
+      "categories": {
+        "DISTINCT": 21,
+        "GROUPBY": 85,
+        "HAVING": 88,
+        "INNER-JOIN": 41,
+        "many-to-many-generator": 4,
+        "ORDERBY": 64,
+        "PROJECT": 69,
+        "SELECT": 65,
+        "SIMPLE-AGG": 51
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 477
+    },
+    "company_1": {
+      "n_tests": 366,
+      "n_gold_ok": 366,
+      "categories": {
+        "DISTINCT": 14,
+        "GROUPBY": 74,
+        "HAVING": 82,
+        "ORDERBY": 48,
+        "PROJECT": 51,
+        "SELECT": 53,
+        "SIMPLE-AGG": 44
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 356
+    },
+    "concert_singer": {
+      "n_tests": 211,
+      "n_gold_ok": 211,
+      "categories": {
+        "DISTINCT": 11,
+        "GROUPBY": 35,
+        "HAVING": 34,
+        "INNER-JOIN": 10,
+        "many-to-many-generator": 2,
+        "ORDERBY": 32,
+        "PROJECT": 37,
+        "SELECT": 30,
+        "SIMPLE-AGG": 20
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 205
+    },
+    "course_teach": {
+      "n_tests": 91,
+      "n_gold_ok": 91,
+      "categories": {
+        "DISTINCT": 5,
+        "GROUPBY": 5,
+        "HAVING": 10,
+        "INNER-JOIN": 2,
+        "ORDERBY": 24,
+        "PROJECT": 20,
+        "SELECT": 17,
+        "SIMPLE-AGG": 8
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 87
+    },
+    "csu_1": {
+      "n_tests": 198,
+      "n_gold_ok": 198,
+      "categories": {
+        "DISTINCT": 3,
+        "GROUPBY": 11,
+        "HAVING": 14,
+        "INNER-JOIN": 5,
+        "ORDERBY": 48,
+        "PROJECT": 46,
+        "SELECT": 35,
+        "SIMPLE-AGG": 36
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 192
+    },
+    "customers_and_invoices": {
+      "n_tests": 484,
+      "n_gold_ok": 484,
+      "categories": {
+        "DISTINCT": 21,
+        "GROUPBY": 69,
+        "HAVING": 74,
+        "INNER-JOIN": 46,
+        "many-to-many-generator": 19,
+        "ORDERBY": 72,
+        "PROJECT": 89,
+        "SELECT": 52,
+        "SIMPLE-AGG": 42
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 474
+    },
+    "dorm_1": {
+      "n_tests": 199,
+      "n_gold_ok": 199,
+      "categories": {
+        "DISTINCT": 7,
+        "GROUPBY": 31,
+        "HAVING": 36,
+        "INNER-JOIN": 4,
+        "many-to-many-generator": 1,
+        "ORDERBY": 40,
+        "PROJECT": 35,
+        "SELECT": 26,
+        "SIMPLE-AGG": 19
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 194
+    },
+    "election_representative": {
+      "n_tests": 103,
+      "n_gold_ok": 103,
+      "categories": {
+        "DISTINCT": 5,
+        "GROUPBY": 13,
+        "HAVING": 16,
+        "INNER-JOIN": 4,
+        "many-to-many-generator": 1,
+        "ORDERBY": 16,
+        "PROJECT": 22,
+        "SELECT": 15,
+        "SIMPLE-AGG": 11
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 100
+    },
+    "employee_hire_evaluation": {
+      "n_tests": 203,
+      "n_gold_ok": 203,
+      "categories": {
+        "DISTINCT": 9,
+        "GROUPBY": 33,
+        "HAVING": 40,
+        "INNER-JOIN": 10,
+        "ORDERBY": 32,
+        "PROJECT": 31,
+        "SELECT": 30,
+        "SIMPLE-AGG": 18
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 196
+    },
+    "entertainment_awards": {
+      "n_tests": 135,
+      "n_gold_ok": 135,
+      "categories": {
+        "DISTINCT": 6,
+        "GROUPBY": 22,
+        "HAVING": 20,
+        "INNER-JOIN": 7,
+        "many-to-many-generator": 2,
+        "ORDERBY": 24,
+        "PROJECT": 23,
+        "SELECT": 19,
+        "SIMPLE-AGG": 12
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 130
+    },
+    "epinions_1": {
+      "n_tests": 88,
+      "n_gold_ok": 88,
+      "categories": {
+        "DISTINCT": 2,
+        "GROUPBY": 2,
+        "HAVING": 4,
+        "INNER-JOIN": 4,
+        "ORDERBY": 32,
+        "PROJECT": 24,
+        "SELECT": 9,
+        "SIMPLE-AGG": 11
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 84
+    },
+    "flight_1": {
+      "n_tests": 163,
+      "n_gold_ok": 163,
+      "categories": {
+        "DISTINCT": 4,
+        "GROUPBY": 28,
+        "HAVING": 32,
+        "INNER-JOIN": 5,
+        "ORDERBY": 32,
+        "PROJECT": 27,
+        "SELECT": 19,
+        "SIMPLE-AGG": 16
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 159
+    },
+    "hospital_1": {
+      "n_tests": 1010,
+      "n_gold_ok": 1010,
+      "categories": {
+        "PROJECT": 131,
+        "DISTINCT": 28,
+        "SELECT": 118,
+        "SIMPLE-AGG": 106,
+        "ORDERBY": 120,
+        "GROUPBY": 192,
+        "HAVING": 196,
+        "INNER-JOIN": 115,
+        "many-to-many-generator": 4
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 984
+    },
+    "hr_1": {
+      "n_tests": 352,
+      "n_gold_ok": 352,
+      "categories": {
+        "PROJECT": 63,
+        "DISTINCT": 19,
+        "SELECT": 48,
+        "SIMPLE-AGG": 31,
+        "ORDERBY": 56,
+        "GROUPBY": 51,
+        "HAVING": 54,
+        "INNER-JOIN": 30
+      },
+      "skipped_generators": [
+        {
+          "generator": "many-to-many",
+          "error": "KeyError: \"None of [Index(['tbl_name', 'test_category', 'sql_tag', 'query', 'question'], dtype='object')] are in the [columns]\""
+        }
+      ],
+      "n_eval_pool": 343
+    },
+    "music_4": {
+      "n_tests": 217,
+      "n_gold_ok": 217,
+      "categories": {
+        "DISTINCT": 10,
+        "GROUPBY": 34,
+        "HAVING": 42,
+        "INNER-JOIN": 20,
+        "many-to-many-generator": 4,
+        "ORDERBY": 24,
+        "PROJECT": 32,
+        "SELECT": 32,
+        "SIMPLE-AGG": 19
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 210
+    },
+    "protein_institute": {
+      "n_tests": 286,
+      "n_gold_ok": 286,
+      "categories": {
+        "DISTINCT": 14,
+        "GROUPBY": 62,
+        "HAVING": 66,
+        "INNER-JOIN": 14,
+        "many-to-many-generator": 1,
+        "ORDERBY": 24,
+        "PROJECT": 37,
+        "SELECT": 36,
+        "SIMPLE-AGG": 32
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 281
+    },
+    "race_track": {
+      "n_tests": 127,
+      "n_gold_ok": 127,
+      "categories": {
+        "DISTINCT": 6,
+        "GROUPBY": 22,
+        "HAVING": 26,
+        "INNER-JOIN": 7,
+        "ORDERBY": 16,
+        "PROJECT": 20,
+        "SELECT": 18,
+        "SIMPLE-AGG": 12
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 125
+    },
+    "sakila_1": {
+      "n_tests": 445,
+      "n_gold_ok": 445,
+      "categories": {
+        "PROJECT": 117,
+        "DISTINCT": 32,
+        "SIMPLE-AGG": 51,
+        "ORDERBY": 96,
+        "GROUPBY": 56,
+        "INNER-JOIN": 69,
+        "many-to-many-generator": 24
+      },
+      "skipped_generators": [
+        {
+          "generator": "select",
+          "error": "IndexError: list index out of range"
+        },
+        {
+          "generator": "having",
+          "error": "TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'"
+        }
+      ],
+      "n_eval_pool": 435
+    },
+    "store_product": {
+      "n_tests": 262,
+      "n_gold_ok": 262,
+      "categories": {
+        "DISTINCT": 8,
+        "GROUPBY": 56,
+        "HAVING": 54,
+        "INNER-JOIN": 4,
+        "many-to-many-generator": 3,
+        "ORDERBY": 40,
+        "PROJECT": 41,
+        "SELECT": 30,
+        "SIMPLE-AGG": 26
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 256
+    },
+    "tracking_software_problems": {
+      "n_tests": 256,
+      "n_gold_ok": 256,
+      "categories": {
+        "DISTINCT": 16,
+        "GROUPBY": 16,
+        "HAVING": 28,
+        "INNER-JOIN": 43,
+        "many-to-many-generator": 1,
+        "ORDERBY": 48,
+        "PROJECT": 46,
+        "SELECT": 42,
+        "SIMPLE-AGG": 16
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 248
+    },
+    "world_1": {
+      "n_tests": 241,
+      "n_gold_ok": 241,
+      "categories": {
+        "DISTINCT": 11,
+        "GROUPBY": 43,
+        "HAVING": 50,
+        "INNER-JOIN": 14,
+        "many-to-many-generator": 2,
+        "ORDERBY": 24,
+        "PROJECT": 38,
+        "SELECT": 36,
+        "SIMPLE-AGG": 23
+      },
+      "skipped_generators": [],
+      "n_eval_pool": 237
+    }
+  },
+  "headtohead": {
+    "qatch_full": {
+      "n_questions_shared": 961,
+      "accuracy": {
+        "claude-haiku-4-5-20251001": 0.9698231009365245,
+        "claude-sonnet-4-5-20250929": 0.9781477627471384,
+        "gemini-2.5-flash": 0.9854318418314256,
+        "gpt-4.1-2025-04-14": 0.9729448491155047,
+        "gpt-4.1-mini": 0.9802289281997919,
+        "gpt-4o-mini": 0.967741935483871
+      },
+      "accuracy_range": [
+        0.967741935483871,
+        0.9854318418314256
+      ],
+      "spread": 0.0061463909631180565,
+      "ceiling_threshold": 0.9,
+      "ceiling_rate": 1.0,
+      "separable_pairs": "1/15",
+      "separable_pair_fraction": 0.06666666666666667,
+      "mean_abs_cohen_d": 0.05709382859604992,
+      "pairs": [
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+          "acc_diff": -0.015608740894901163,
+          "p_value": 0.0,
+          "cohen_d": -0.11163982552156301,
+          "separable": true
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4o-mini",
+          "acc_diff": 0.01768990634755463,
+          "p_value": 0.0204,
+          "cohen_d": 0.10607460999382265,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+          "acc_diff": -0.010405827263267442,
+          "p_value": 0.0222,
+          "cohen_d": -0.07621403417326594,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.012486992715920908,
+          "p_value": 0.0236,
+          "cohen_d": 0.08276871315014858,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-mini vs gpt-4o-mini",
+          "acc_diff": 0.012486992715920908,
+          "p_value": 0.0504,
+          "cohen_d": 0.07922237575690104,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+          "acc_diff": -0.008324661810613976,
+          "p_value": 0.053,
+          "cohen_d": -0.06461717236595306,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+          "acc_diff": -0.007284079084287187,
+          "p_value": 0.0712,
+          "cohen_d": -0.05481988023123023,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+          "acc_diff": 0.005202913631633721,
+          "p_value": 0.1552,
+          "cohen_d": 0.041659449816197874,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+          "acc_diff": 0.010405827263267442,
+          "p_value": 0.1948,
+          "cohen_d": 0.06104382171422445,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+          "acc_diff": -0.007284079084287187,
+          "p_value": 0.2274,
+          "cohen_d": -0.05481988023123023,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.005202913631633721,
+          "p_value": 0.382,
+          "cohen_d": 0.03912824063002948,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+          "acc_diff": -0.003121748178980255,
+          "p_value": 0.4882,
+          "cohen_d": -0.023465438891230903,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+          "acc_diff": 0.005202913631633721,
+          "p_value": 0.5594,
+          "cohen_d": 0.02994870958581632,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+          "acc_diff": -0.002081165452653466,
+          "p_value": 0.6846,
+          "cohen_d": -0.017236249665600594,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+          "acc_diff": 0.002081165452653466,
+          "p_value": 0.824,
+          "cohen_d": 0.0137490272135344,
+          "separable": false
+        }
+      ]
+    },
+    "qatch_cejsq_fragment": {
+      "n_questions_shared": 463,
+      "accuracy": {
+        "claude-haiku-4-5-20251001": 0.9913606911447084,
+        "claude-sonnet-4-5-20250929": 0.9935205183585313,
+        "gemini-2.5-flash": 0.9978401727861771,
+        "gpt-4.1-2025-04-14": 0.9913606911447084,
+        "gpt-4.1-mini": 0.9956803455723542,
+        "gpt-4o-mini": 0.9956803455723542
+      },
+      "accuracy_range": [
+        0.9913606911447084,
+        0.9978401727861771
+      ],
+      "spread": 0.002387778826749762,
+      "ceiling_threshold": 0.9,
+      "ceiling_rate": 1.0,
+      "separable_pairs": "0/15",
+      "separable_pair_fraction": 0.0,
+      "mean_abs_cohen_d": 0.0434580938337858,
+      "pairs": [
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+          "acc_diff": -0.004319654427645814,
+          "p_value": 0.2462,
+          "cohen_d": -0.06579532362399332,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+          "acc_diff": -0.006479481641468721,
+          "p_value": 0.2528,
+          "cohen_d": -0.0806700272764264,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.006479481641468721,
+          "p_value": 0.2578,
+          "cohen_d": 0.08067002727642651,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+          "acc_diff": -0.004319654427645814,
+          "p_value": 0.5504,
+          "cohen_d": -0.0464739412340176,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+          "acc_diff": -0.004319654427645814,
+          "p_value": 0.5646,
+          "cohen_d": -0.0464739412340176,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4o-mini",
+          "acc_diff": 0.002159827213822907,
+          "p_value": 0.7072,
+          "cohen_d": 0.04647394123401771,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+          "acc_diff": -0.004319654427645814,
+          "p_value": 0.7076,
+          "cohen_d": -0.06579532362399335,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+          "acc_diff": 0.002159827213822907,
+          "p_value": 0.714,
+          "cohen_d": 0.046473941234017616,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.002159827213822907,
+          "p_value": 0.7204,
+          "cohen_d": 0.026812404286470977,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+          "acc_diff": -0.004319654427645814,
+          "p_value": 0.7498,
+          "cohen_d": -0.06579532362399335,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+          "acc_diff": -0.002159827213822907,
+          "p_value": 0.9044,
+          "cohen_d": -0.02681240428647088,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+          "acc_diff": -0.002159827213822907,
+          "p_value": 0.9174,
+          "cohen_d": -0.026812404286470883,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+          "acc_diff": -0.002159827213822907,
+          "p_value": 0.918,
+          "cohen_d": -0.02681240428647086,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.0,
+          "p_value": 1.0,
+          "cohen_d": 0.0,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-mini vs gpt-4o-mini",
+          "acc_diff": 0.0,
+          "p_value": 1.0,
+          "cohen_d": 0.0,
+          "separable": false
+        }
+      ]
+    },
+    "acuity_same_25dbs": {
+      "n_questions_shared": 1091,
+      "accuracy": {
+        "claude-haiku-4-5-20251001": 0.8570119156736938,
+        "claude-sonnet-4-5-20250929": 0.8955087076076994,
+        "gemini-2.5-flash": 0.8597616865261228,
+        "gpt-4.1-2025-04-14": 0.8505957836846929,
+        "gpt-4.1-mini": 0.8249312557286893,
+        "gpt-4o-mini": 0.8148487626031164
+      },
+      "accuracy_range": [
+        0.8148487626031164,
+        0.8955087076076994
+      ],
+      "spread": 0.02607274678141137,
+      "ceiling_threshold": 0.9,
+      "ceiling_rate": 0.0,
+      "separable_pairs": "6/15",
+      "separable_pair_fraction": 0.4,
+      "mean_abs_cohen_d": 0.11492835703187515,
+      "pairs": [
+        {
+          "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+          "acc_diff": -0.03849679193400557,
+          "p_value": 0.0,
+          "cohen_d": -0.14938916336762767,
+          "separable": true
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+          "acc_diff": 0.0705774518790101,
+          "p_value": 0.0,
+          "cohen_d": 0.23835736355679998,
+          "separable": true
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+          "acc_diff": 0.08065994500458296,
+          "p_value": 0.0,
+          "cohen_d": 0.2442174700618833,
+          "separable": true
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+          "acc_diff": 0.03574702108157657,
+          "p_value": 0.0012,
+          "cohen_d": 0.1394693587582388,
+          "separable": true
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.0449129239230065,
+          "p_value": 0.0122,
+          "cohen_d": 0.15735476135147947,
+          "separable": true
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+          "acc_diff": 0.042163153070577386,
+          "p_value": 0.0188,
+          "cohen_d": 0.13645937770284453,
+          "separable": true
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+          "acc_diff": 0.03483043079743353,
+          "p_value": 0.025,
+          "cohen_d": 0.12076048698569958,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4o-mini",
+          "acc_diff": 0.04491292392300639,
+          "p_value": 0.0276,
+          "cohen_d": 0.13604346926014882,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+          "acc_diff": 0.03208065994500453,
+          "p_value": 0.0886,
+          "cohen_d": 0.10493445030501504,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+          "acc_diff": 0.025664527956003602,
+          "p_value": 0.137,
+          "cohen_d": 0.09638491268764246,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+          "acc_diff": 0.03574702108157646,
+          "p_value": 0.1372,
+          "cohen_d": 0.1036670585350188,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.00916590284142993,
+          "p_value": 0.5688,
+          "cohen_d": 0.03473311613987398,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-mini vs gpt-4o-mini",
+          "acc_diff": 0.010082493125572856,
+          "p_value": 0.6286,
+          "cohen_d": 0.03219693185803641,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.006416131989000928,
+          "p_value": 0.8338,
+          "cohen_d": 0.020110039753164312,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+          "acc_diff": -0.002749770852429001,
+          "p_value": 0.8346,
+          "cohen_d": -0.009847395154654357,
+          "separable": false
+        }
+      ]
+    }
+  },
+  "sensitivity_strict_scoring": {
+    "qatch_full_strict": {
+      "n_questions_shared": 961,
+      "accuracy": {
+        "claude-haiku-4-5-20251001": 0.9542143600416233,
+        "claude-sonnet-4-5-20250929": 0.9729448491155047,
+        "gemini-2.5-flash": 0.9750260145681582,
+        "gpt-4.1-2025-04-14": 0.9604578563995838,
+        "gpt-4.1-mini": 0.963579604578564,
+        "gpt-4o-mini": 0.9542143600416233
+      },
+      "accuracy_range": [
+        0.9542143600416233,
+        0.9750260145681582
+      ],
+      "spread": 0.00820272881747172,
+      "ceiling_threshold": 0.9,
+      "ceiling_rate": 1.0,
+      "separable_pairs": "4/15",
+      "separable_pair_fraction": 0.26666666666666666,
+      "mean_abs_cohen_d": 0.06513020468726696,
+      "pairs": [
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+          "acc_diff": -0.020811654526534884,
+          "p_value": 0.0,
+          "cohen_d": -0.12277655332874517,
+          "separable": true
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+          "acc_diff": -0.018730489073881418,
+          "p_value": 0.0002,
+          "cohen_d": -0.11455980905115365,
+          "separable": true
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4o-mini",
+          "acc_diff": 0.020811654526534884,
+          "p_value": 0.002,
+          "cohen_d": 0.11126985472171669,
+          "separable": true
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+          "acc_diff": 0.018730489073881418,
+          "p_value": 0.0044,
+          "cohen_d": 0.11034083436804058,
+          "separable": true
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+          "acc_diff": 0.01144640998959423,
+          "p_value": 0.0196,
+          "cohen_d": 0.07111010465014644,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+          "acc_diff": -0.009365244536940653,
+          "p_value": 0.033,
+          "cohen_d": -0.06671805585251507,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.012486992715920908,
+          "p_value": 0.0462,
+          "cohen_d": 0.08276871315014858,
+          "separable": false
+        },
+        {
+          "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+          "acc_diff": 0.014568158168574374,
+          "p_value": 0.0616,
+          "cohen_d": 0.08269151486564984,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+          "acc_diff": 0.009365244536940764,
+          "p_value": 0.0906,
+          "cohen_d": 0.060616108690544776,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-mini vs gpt-4o-mini",
+          "acc_diff": 0.009365244536940653,
+          "p_value": 0.2446,
+          "cohen_d": 0.047758327461269755,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+          "acc_diff": -0.00624349635796051,
+          "p_value": 0.392,
+          "cohen_d": -0.03796556768353618,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+          "acc_diff": 0.00624349635796051,
+          "p_value": 0.4622,
+          "cohen_d": 0.0365826513174399,
+          "separable": false
+        },
+        {
+          "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+          "acc_diff": -0.003121748178980144,
+          "p_value": 0.7414,
+          "cohen_d": -0.01737473733316598,
+          "separable": false
+        },
+        {
+          "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+          "acc_diff": -0.002081165452653466,
+          "p_value": 0.7816,
+          "cohen_d": -0.014420237834931859,
+          "separable": false
+        },
+        {
+          "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+          "acc_diff": 0.0,
+          "p_value": 1.0,
+          "cohen_d": 0.0,
+          "separable": false
+        }
+      ]
+    }
+  }
+}

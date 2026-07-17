@@ -1,0 +1,58 @@
+{
+  "db_id": "poker_player",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:28:40.343054+00:00",
+  "records": [
+    {
+      "uid": "36f9dfd3-dd82-4e43-9e1d-ec6df8f8314a",
+      "question": "Who are the people no taller than 196.0 cm who have a poker money rank of at most 166, at least 1 best finish, and have made the final table at least 21 times?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank <= 166.0 AND poker_player.best_finish >= 1.0 AND poker_player.final_table_made >= 21.0 AND people.height <= 196.0",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nJOIN poker_player ON people.People_ID = poker_player.People_ID\nWHERE people.Height <= 196.0\nAND poker_player.Money_Rank <= 166.0\nAND poker_player.Best_Finish >= 1.0\nAND poker_player.Final_Table_Made >= 21.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.33
+    },
+    {
+      "uid": "7eb7c1fe-c111-4263-95b1-d38596b36cf2",
+      "question": "Can you tell me about Teodor Salparov from Bulgaria who is exactly 182.0 tall and was born on August 16?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%August 16%' AND people.height = 182.0 AND people.nationality = 'Bulgaria' AND people.name = 'Teodor Salparov'",
+      "pred_sql": "SELECT people.People_ID FROM people WHERE Birth_Date LIKE '%August 16%' AND Height = 182.0 AND Nationality = 'Bulgaria' AND Name = 'Teodor Salparov'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02
+    },
+    {
+      "uid": "a9506fbe-bc65-4286-992c-7c88692b8649",
+      "question": "Who is the Russian poker player Aleksey Ostapenko with a height of at most 207.0, earnings exactly 476090.0, a money rank of at most 68.0, and a best finish of at most 1.0?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank <= 68.0 AND people.height <= 207.0 AND people.nationality = 'Russia' AND poker_player.best_finish <= 1.0 AND people.name = 'Aleksey Ostapenko' AND poker_player.earnings = 476090.0",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nJOIN poker_player ON people.People_ID = poker_player.People_ID\nWHERE people.Height <= 207.0\n  AND people.Nationality = 'Russia'\n  AND people.Name = 'Aleksey Ostapenko'\n  AND poker_player.Money_Rank <= 68.0\n  AND poker_player.Best_Finish <= 1.0\n  AND poker_player.Earnings = 476090.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.68
+    },
+    {
+      "uid": "c7f9585e-cee4-49ca-b8b1-da8e3c37277c",
+      "question": "Who are the people from Bulgaria who are exactly 182.0 cm tall, have poker earnings of 189233.0, made at least 10 final tables, achieved a best finish of at most 2, and have a money rank of at least 141?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.earnings = 189233.0 AND people.nationality = 'Bulgaria' AND people.height = 182.0 AND poker_player.final_table_made >= 10.0 AND poker_player.best_finish <= 2.0 AND poker_player.money_rank >= 141.0",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nJOIN poker_player ON people.People_ID = poker_player.People_ID\nWHERE people.Nationality = 'Bulgaria'\n  AND people.Height = 182.0\n  AND poker_player.Earnings = 189233.0\n  AND poker_player.Final_Table_Made >= 10.0\n  AND poker_player.Best_Finish <= 2.0\n  AND poker_player.Money_Rank >= 141.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    }
+  ]
+}

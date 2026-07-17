@@ -1,0 +1,69 @@
+{
+  "db_id": "journal_committee",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 5,
+  "n_correct": 3,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:34:37.781869+00:00",
+  "records": [
+    {
+      "uid": "75ca27f4-65a7-4e36-a416-ccccf7430c2c",
+      "question": "Which journals have Gra\u017cyna Wolszczak as an editor who is at most 54 years old?",
+      "gold_sql": "SELECT journal.journal_id FROM journal\nJOIN journal_committee ON journal.journal_id = journal_committee.journal_id\nJOIN editor ON journal_committee.editor_id = editor.editor_id\nWHERE editor.age <= 54.0 AND editor.name = 'Gra\u017cyna Wolszczak'",
+      "pred_sql": "SELECT journal.Journal_ID\nFROM journal\nJOIN journal_committee ON journal.Journal_ID = journal_committee.Journal_ID\nJOIN editor ON journal_committee.Editor_ID = editor.Editor_ID\nWHERE editor.Name = 'Gra\u017cyna Wolszczak' AND editor.Age <= 54",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "8fb0b6a8-dff7-47ad-9b31-64c626619966",
+      "question": "Which journal entries from 2001 have the theme Tampa Bay Buccaneers and sales of at most 4798?",
+      "gold_sql": "SELECT journal.journal_id FROM journal\nWHERE journal.date LIKE '%2001%' AND journal.theme = 'Tampa Bay Buccaneers' AND journal.sales <= 4798",
+      "pred_sql": "SELECT Journal_ID FROM journal WHERE Date LIKE '2001%' AND Theme = 'Tampa Bay Buccaneers' AND Sales <= 4798",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "9db330b7-6200-4b78-af31-d8fdfbe26fea",
+      "question": "Which journals have the theme exactly Pittsburgh Steelers and sales of at least 3342?",
+      "gold_sql": "SELECT journal.journal_id FROM journal\nWHERE journal.theme = 'Pittsburgh Steelers' AND journal.sales >= 3342",
+      "pred_sql": "SELECT Journal_ID FROM journal WHERE Theme = 'Pittsburgh Steelers' AND Sales >= 3342",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.87
+    },
+    {
+      "uid": "a169a9aa-225b-4dda-96cf-f7eb4dbc0636",
+      "question": "Which journals from January 6 with the Cincinnati Bengals theme have articles where sales are at most 5342 and the editor Gra\u017cyna Wolszczak is exactly 54 years old?",
+      "gold_sql": "SELECT journal.journal_id FROM journal\nJOIN journal_committee ON journal.journal_id = journal_committee.journal_id\nJOIN editor ON journal_committee.editor_id = editor.editor_id\nWHERE journal.date LIKE '%January 6%' AND journal.theme = 'Cincinnati Bengals' AND journal_committee.work_type = 'Article' AND journal.sales <= 5342 AND editor.age = 54.0 AND editor.name = 'Gra\u017cyna Wolszczak'",
+      "pred_sql": "SELECT journal.Journal_ID\nFROM journal\nJOIN journal_committee ON journal.Journal_ID = journal_committee.Journal_ID\nJOIN editor ON journal_committee.Editor_ID = editor.Editor_ID\nWHERE journal.Date = 'January 6'\n  AND journal.Theme = 'Cincinnati Bengals'\n  AND journal.Sales <= 5342\n  AND editor.Name = 'Gra\u017cyna Wolszczak'\n  AND editor.Age = 54",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "e53d4e64-18b8-4572-b5e2-36a23c193ee9",
+      "question": "Which journals have an article committee where the editor is Piotr Pr\u0119gowski and is exactly 43 years old?",
+      "gold_sql": "SELECT journal.journal_id FROM journal\nJOIN journal_committee ON journal.journal_id = journal_committee.journal_id\nJOIN editor ON journal_committee.editor_id = editor.editor_id\nWHERE editor.age = 43.0 AND journal_committee.work_type = 'Article' AND editor.name = 'Piotr Pr\u0119gowski'",
+      "pred_sql": "SELECT journal.Journal_ID\nFROM journal\nJOIN journal_committee ON journal.Journal_ID = journal_committee.Journal_ID\nJOIN editor ON journal_committee.Editor_ID = editor.Editor_ID\nWHERE editor.Name = 'Piotr Pr\u0119gowski' AND editor.Age = 43",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    }
+  ]
+}

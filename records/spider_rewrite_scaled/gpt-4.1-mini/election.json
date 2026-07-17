@@ -1,0 +1,47 @@
+{
+  "db_id": "election",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:32:46.700874+00:00",
+  "records": [
+    {
+      "uid": "22eb778e-9694-4923-8a1f-7084a0b2be69",
+      "question": "Which counties named Howard have elections where the committee is Health and Government Operations, the counties represented is 13, the comptroller is John Faso, and the US Senate status is (no election)?",
+      "gold_sql": "SELECT county.county_id FROM county\nJOIN election ON county.county_id = election.district\nJOIN party ON election.party = party.party_id\nWHERE party.comptroller = 'John Faso' AND party.us_senate = '(no election)' AND election.counties_represented = '13' AND election.committee = 'Health and Government Operations' AND county.county_name = 'Howard'",
+      "pred_sql": "SELECT county.County_Id\nFROM county\nJOIN election ON county.County_Id = election.District\nJOIN party ON election.Party = party.Party_ID\nWHERE county.County_name = 'Howard'\n  AND election.Committee = 'Health and Government Operations'\n  AND election.Counties_Represented = '13'\n  AND party.Comptroller = 'John Faso'\n  AND party.US_Senate = '(no election)'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "5a04323c-6b84-4dee-bbc1-1f82dadb4679",
+      "question": "Which counties named Colony have elections with counties represented of exactly 12.1 12A, where the party is Liberal, led by governor Betsy McCaughey Ross, lieutenant governor Jonathan Reiter, and US Senate Charles Schumer, and the election committee is Environmental Matters (Vice-Chair)?",
+      "gold_sql": "SELECT county.county_id FROM county\nJOIN election ON county.county_id = election.district\nJOIN party ON election.party = party.party_id\nWHERE party.governor = 'Betsy McCaughey Ross' AND party.us_senate = 'Charles Schumer' AND party.party = 'Liberal' AND election.committee = 'Environmental Matters (Vice-Chair)' AND county.county_name = 'Colony' AND party.lieutenant_governor = 'Jonathan Reiter' AND election.counties_represented = '12.1 12A'",
+      "pred_sql": "SELECT county.County_Id\nFROM county\nJOIN election ON county.County_Id = election.District\nJOIN party ON election.Party = party.Party_ID\nWHERE county.County_name = 'Colony'\n  AND election.Counties_Represented = '12.1 12A'\n  AND party.Party = 'Liberal'\n  AND party.Governor = 'Betsy McCaughey Ross'\n  AND party.Lieutenant_Governor = 'Jonathan Reiter'\n  AND party.US_Senate = 'Charles Schumer'\n  AND election.Committee = 'Environmental Matters (Vice-Chair)'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.26
+    },
+    {
+      "uid": "e8467580-2c7c-44a6-87e5-9337ed74ac7f",
+      "question": "What counties named Howard with a population of at least 21000 and zip code D21 have elections where the committee is Appropriations, the counties represented is 09.1 9A, and the first election year is 2002?",
+      "gold_sql": "SELECT county.county_id FROM county\nJOIN election ON county.county_id = election.district\nWHERE county.population >= 21000.0 AND county.county_name = 'Howard' AND election.committee = 'Appropriations' AND election.counties_represented = '09.1 9A' AND election.first_elected = 2002.0 AND county.zip_code = 'D21'",
+      "pred_sql": "SELECT county.County_Id\nFROM county\nJOIN election ON county.County_Id = election.District\nWHERE county.County_name = 'Howard'\n  AND county.Population >= 21000\n  AND county.Zip_code = 'D21'\n  AND election.Committee = 'Appropriations'\n  AND election.Counties_Represented = '09.1 9A'\n  AND election.First_Elected = 2002",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    }
+  ]
+}

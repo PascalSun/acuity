@@ -1,0 +1,69 @@
+{
+  "db_id": "sports_competition",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:21:57.359588+00:00",
+  "records": [
+    {
+      "uid": "4d7f9d96-4b41-4d69-ad2a-636b37b78aad",
+      "question": "Which clubs named BK Slide in the UK have a rank of at most 1, at least 11 silver medals, at least 9 bronze medals, at most 11 gold medals, and players with exactly 20.0 points?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN club_rank ON club.club_id = club_rank.club_id\nJOIN player ON club.club_id = player.club_id\nWHERE player.points = 20.0 AND club_rank.gold <= 11.0 AND club_rank.bronze >= 9.0 AND club_rank.rank <= 1.0 AND club.region = 'UK' AND club_rank.silver >= 11.0 AND club.name = 'BK Slide'",
+      "pred_sql": "SELECT DISTINCT T1.Club_ID FROM club AS T1 INNER JOIN club_rank AS T2 ON T1.Club_ID = T2.Club_ID INNER JOIN player AS T3 ON T1.Club_ID = T3.Club_ID WHERE T1.name = 'BK Slide' AND T1.Region = 'UK' AND T2.Rank <= 1 AND T2.Silver >= 11 AND T2.Bronze >= 9 AND T2.Gold <= 11 AND T3.Points = 20.0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.99
+    },
+    {
+      "uid": "7a8df762-6c5d-4134-837d-742bb86b654c",
+      "question": "What clubs started in 1998 with a bronze score exactly 9.0, a gold score of at least 11.0, and a rank of at least 1.0?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN club_rank ON club.club_id = club_rank.club_id\nWHERE club_rank.bronze = 9.0 AND club.start_year = '1998' AND club_rank.rank >= 1.0 AND club_rank.gold >= 11.0",
+      "pred_sql": "SELECT T1.Club_ID FROM club AS T1 INNER JOIN club_rank AS T2 ON T1.Club_ID = T2.Club_ID WHERE T1.Start_year = '1998' AND T2.Bronze = 9.0 AND T2.Gold >= 11.0 AND T2.Rank >= 1.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.34
+    },
+    {
+      "uid": "d28dd1ee-32b2-4441-8a89-5588cf50a2dd",
+      "question": "Which clubs have players and have a silver rank value exactly equal to 11.0?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN club_rank ON club.club_id = club_rank.club_id\nJOIN player ON club.club_id = player.club_id\nWHERE club_rank.silver = 11.0",
+      "pred_sql": "SELECT DISTINCT T1.Club_ID FROM club AS T1 JOIN player AS T2 ON T1.Club_ID = T2.Club_ID JOIN club_rank AS T3 ON T1.Club_ID = T3.Club_ID WHERE T3.Silver = 11.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.95
+    },
+    {
+      "uid": "df66f23e-732d-4e84-8fb5-5766a451937d",
+      "question": "Which clubs named BK Slide have players with exactly 29 apps and at least 20 points, where the club has at least 11 silver and at least 31 total in their ranks?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN club_rank ON club.club_id = club_rank.club_id\nJOIN player ON club.club_id = player.club_id\nWHERE player.points >= 20.0 AND club.name = 'BK Slide' AND player.apps = 29.0 AND club_rank.silver >= 11.0 AND club_rank.total >= 31.0",
+      "pred_sql": "SELECT DISTINCT T1.Club_ID FROM club AS T1 INNER JOIN player AS T2 ON T1.Club_ID = T2.Club_ID INNER JOIN club_rank AS T3 ON T1.Club_ID = T3.Club_ID WHERE T1.name = 'BK Slide' AND T2.Apps = 29 AND T2.Points >= 20 AND T3.Silver >= 11 AND T3.Total >= 31",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.13
+    },
+    {
+      "uid": "fe0672fe-9cc5-4b2f-a6f4-92bcc4eb9118",
+      "question": "Which clubs named ASC in Japan that started in 2001 have exactly 2.0 silver, at least 6.0 bronze, at least 4.0 gold, a total of at least 12.0, and a rank at most 4.0?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN club_rank ON club.club_id = club_rank.club_id\nWHERE club_rank.silver = 2.0 AND club.region = 'Japan' AND club_rank.bronze >= 6.0 AND club.start_year = '2001' AND club.name = 'ASC' AND club_rank.gold >= 4.0 AND club_rank.total >= 12.0 AND club_rank.rank <= 4.0",
+      "pred_sql": "SELECT T1.Club_ID FROM club AS T1 INNER JOIN club_rank AS T2 ON T1.Club_ID = T2.Club_ID WHERE T1.name = 'ASC' AND T1.Region = 'Japan' AND T1.Start_year = '2001' AND T2.Silver = 2.0 AND T2.Bronze >= 6.0 AND T2.Gold >= 4.0 AND T2.Total >= 12.0 AND T2.Rank <= 4.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.96
+    }
+  ]
+}

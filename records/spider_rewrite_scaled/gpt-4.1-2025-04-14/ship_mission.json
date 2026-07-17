@@ -1,0 +1,47 @@
+{
+  "db_id": "ship_mission",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:28:13.506580+00:00",
+  "records": [
+    {
+      "uid": "746e1811-c697-40f0-a7a0-504de8e2c22d",
+      "question": "Which ships named Ariadne from the United States with at least 3035 tonnage participated in missions with code VMV-5 that were launched in 1931 at locations containing Uusikaupunki, where the speed is 23 knots and the fate is Decommissioned 1959?",
+      "gold_sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Ariadne' AND mission.location LIKE '%Uusikaupunki%' AND mission.code = 'VMV-5' AND mission.fate = 'Decommissioned 1959' AND ship.nationality = 'United States' AND mission.speed_knots = 23 AND ship.tonnage >= 3035 AND mission.launched_year = 1931",
+      "pred_sql": "SELECT ship.Ship_ID\nFROM ship\nJOIN mission ON ship.Ship_ID = mission.Ship_ID\nWHERE ship.Name = 'Ariadne'\n  AND ship.Nationality = 'United States'\n  AND ship.Tonnage >= 3035\n  AND mission.Code = 'VMV-5'\n  AND mission.Launched_Year = 1931\n  AND mission.Location LIKE '%Uusikaupunki%'\n  AND mission.Speed_knots = 23\n  AND mission.Fate = 'Decommissioned 1959'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.38
+    },
+    {
+      "uid": "b7e41347-455e-4287-9af3-54a69038c0c9",
+      "question": "Which ships named Trader from the United Kingdom, with tonnage at most 3608, had missions to Norway where they traveled at least 16 knots and had a fate of Retired 1939?",
+      "gold_sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.location LIKE '%Norway%' AND ship.nationality = 'United Kingdom' AND mission.fate = 'Retired 1939' AND ship.name = 'Trader' AND mission.speed_knots >= 16 AND ship.tonnage <= 3608",
+      "pred_sql": "SELECT ship.Ship_ID\nFROM ship\nJOIN mission ON ship.Ship_ID = mission.Ship_ID\nWHERE ship.Name = 'Trader'\n  AND ship.Nationality = 'United Kingdom'\n  AND ship.Tonnage <= 3608\n  AND mission.Location = 'Norway'\n  AND mission.Speed_knots >= 16\n  AND mission.Fate = 'Retired 1939'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "uid": "d0044cbd-0951-4768-99b7-e1f8c8f34654",
+      "question": "Which ships from the United States have a tonnage of at most 5816?",
+      "gold_sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United States' AND ship.tonnage <= 5816",
+      "pred_sql": "SELECT ship.Ship_ID\nFROM ship\nWHERE ship.Nationality = 'United States' AND ship.Tonnage <= 5816",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.81
+    }
+  ]
+}

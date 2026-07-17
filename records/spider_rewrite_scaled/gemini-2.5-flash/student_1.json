@@ -1,0 +1,47 @@
+{
+  "db_id": "student_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:22:19.529757+00:00",
+  "records": [
+    {
+      "uid": "0b85ce38-50cf-4cda-aeba-4d43a4275781",
+      "question": "Which entries are from classrooms numbered at least 105 where students have a grade of at most 0?",
+      "gold_sql": "SELECT list.lastname FROM list\nWHERE list.classroom >= 105 AND list.grade <= 0",
+      "pred_sql": "SELECT LastName FROM list WHERE Classroom >= 105 AND Grade <= 0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "69583271-d1a0-4704-96f3-1f6615796653",
+      "question": "Who are the people in classrooms with numbers at most 102?",
+      "gold_sql": "SELECT list.lastname FROM list\nWHERE list.classroom <= 102",
+      "pred_sql": "SELECT LastName FROM list WHERE Classroom <= 102",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "a3429d1a-3752-4164-b3fd-81a0725b0776",
+      "question": "Which entries are in grade 0 and assigned to classroom 105 or fewer?",
+      "gold_sql": "SELECT list.lastname FROM list\nWHERE list.classroom <= 105 AND list.grade = 0",
+      "pred_sql": "SELECT LastName FROM list WHERE Grade = 0 AND Classroom <= 105",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    }
+  ]
+}

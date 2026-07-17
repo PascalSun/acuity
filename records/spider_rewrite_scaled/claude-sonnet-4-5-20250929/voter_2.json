@@ -1,0 +1,69 @@
+{
+  "db_id": "voter_2",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:58:34.131320+00:00",
+  "records": [
+    {
+      "uid": "0ae099a3-5a46-4e47-ba51-3fd9e6fdd5aa",
+      "question": "Which students named Michael Leighton are at least 20 years old, have advisor 1121, major 600, and live in the city with code PIT?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.advisor = 1121 AND student.major = 600 AND student.fname = 'Michael' AND student.age >= 20 AND student.city_code = 'PIT' AND student.lname = 'Leighton'",
+      "pred_sql": "SELECT StuID\nFROM Student\nWHERE Fname = 'Michael' AND LName = 'Leighton' AND Age >= 20 AND Advisor = 1121 AND Major = 600 AND city_code = 'PIT'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.14
+    },
+    {
+      "uid": "3baaa5a7-37d6-494c-92c9-9858055b0bf6",
+      "question": "Which male students named William Simms who are exactly 18 years old and living in city NAR have an advisor number at least 8772 and a major code at most 550?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.age = 18 AND student.advisor >= 8772 AND student.major <= 550 AND student.sex = 'M' AND student.lname = 'Simms' AND student.city_code = 'NAR' AND student.fname = 'William'",
+      "pred_sql": "SELECT StuID\nFROM Student\nWHERE Fname = 'William' \n  AND LName = 'Simms'\n  AND Sex = 'M'\n  AND Age = 18\n  AND city_code = 'NAR'\n  AND Advisor >= 8772\n  AND Major <= 550",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.44
+    },
+    {
+      "uid": "a99f3f48-e140-41c1-8cf5-c846c8bb5206",
+      "question": "Which male students have the first name Paul?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.fname = 'Paul' AND student.sex = 'M'",
+      "pred_sql": "SELECT StuID FROM Student WHERE Fname = 'Paul' AND Sex = 'M'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "c1b833bb-b16e-438c-88bf-31499bf9ef36",
+      "question": "Which male students named Eric Tai, aged 19, living in city code YYZ, have advisor 2192 and a major code of at least 600?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.fname = 'Eric' AND student.sex = 'M' AND student.major >= 600 AND student.advisor = 2192 AND student.city_code = 'YYZ' AND student.age = 19 AND student.lname = 'Tai'",
+      "pred_sql": "SELECT StuID\nFROM Student\nWHERE Fname = 'Eric' \n  AND LName = 'Tai'\n  AND Sex = 'M'\n  AND Age = 19\n  AND city_code = 'YYZ'\n  AND Advisor = 2192\n  AND Major >= 600",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.57
+    },
+    {
+      "uid": "f2aea2f9-87e8-477c-8267-90c387b2ccba",
+      "question": "Which students have 1121 as their advisor?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.advisor = 1121",
+      "pred_sql": "SELECT StuID FROM Student WHERE Advisor = 1121",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.06
+    }
+  ]
+}

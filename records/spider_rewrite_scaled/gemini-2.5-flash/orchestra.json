@@ -1,0 +1,58 @@
+{
+  "db_id": "orchestra",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 4,
+  "n_correct": 3,
+  "accuracy": 0.75,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:19:45.675109+00:00",
+  "records": [
+    {
+      "uid": "3047e8dc-7309-44e9-b44d-a71f51001ef9",
+      "question": "Which conductors named Michael Tilson Thomas, aged at least 42 with at most 12 years of work, have led the San Francisco Symphony Orchestra founded in 2008 or later that records CDs under RCA?",
+      "gold_sql": "SELECT conductor.conductor_id FROM conductor\nJOIN orchestra ON conductor.conductor_id = orchestra.conductor_id\nWHERE orchestra.major_record_format = 'CD' AND orchestra.orchestra = 'San Francisco Symphony Orchestra' AND conductor.age >= 42 AND orchestra.year_of_founded >= 2008.0 AND conductor.name = 'Michael Tilson Thomas' AND conductor.year_of_work <= 12 AND orchestra.record_company = 'RCA'",
+      "pred_sql": "SELECT T1.Conductor_ID FROM conductor AS T1 INNER JOIN orchestra AS T2 ON T1.Conductor_ID = T2.Conductor_ID WHERE T1.Name = 'Michael Tilson Thomas' AND T1.Age >= 42 AND T1.Year_of_Work <= 12 AND T2.Orchestra = 'San Francisco Symphony Orchestra' AND T2.Year_of_Founded >= 2008 AND T2.Record_Company = 'RCA' AND T2.Major_Record_Format = 'CDs'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.52
+    },
+    {
+      "uid": "50635a2a-40cf-457b-abf1-d69af24a47aa",
+      "question": "Which conductors are exactly 63 years old?",
+      "gold_sql": "SELECT conductor.conductor_id FROM conductor\nWHERE conductor.age = 63",
+      "pred_sql": "SELECT Conductor_ID FROM conductor WHERE Age = 63",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "b867e666-2810-4f54-a03c-015b9c04281c",
+      "question": "Which 43-year-old conductors from the USA with at least 20 years of work lead orchestras that were founded in 2002 and have CD as their major record format?",
+      "gold_sql": "SELECT conductor.conductor_id FROM conductor\nJOIN orchestra ON conductor.conductor_id = orchestra.conductor_id\nWHERE conductor.year_of_work >= 20 AND conductor.nationality = 'USA' AND orchestra.year_of_founded = 2002.0 AND orchestra.major_record_format = 'CD' AND conductor.age = 43",
+      "pred_sql": "SELECT T1.Conductor_ID FROM conductor AS T1 INNER JOIN orchestra AS T2 ON T1.Conductor_ID = T2.Conductor_ID WHERE T1.Age = 43 AND T1.Nationality = 'USA' AND T1.Year_of_Work >= 20 AND T2.Year_of_Founded = 2002 AND T2.Major_Record_Format = 'CD'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.31
+    },
+    {
+      "uid": "c500a623-95c8-4f87-93e5-fae721511eb2",
+      "question": "Which conductors named Antal Dor\u00e1ti from the USA are at least 40 years old, have worked for at least 10 years, and lead the London Symphony Orchestra that was founded in 2003 or earlier and records CDs with Mercury Records?",
+      "gold_sql": "SELECT conductor.conductor_id FROM conductor\nJOIN orchestra ON conductor.conductor_id = orchestra.conductor_id\nWHERE orchestra.major_record_format = 'CD' AND conductor.nationality = 'USA' AND conductor.age >= 40 AND orchestra.orchestra = 'London Symphony Orchestra' AND orchestra.record_company = 'Mercury Records' AND conductor.year_of_work >= 10 AND orchestra.year_of_founded <= 2003.0 AND conductor.name = 'Antal Dor\u00e1ti'",
+      "pred_sql": "SELECT T1.Conductor_ID FROM conductor AS T1 INNER JOIN orchestra AS T2 ON T1.Conductor_ID = T2.Conductor_ID WHERE T1.Name = 'Antal Dor\u00e1ti' AND T1.Nationality = 'USA' AND T1.Age >= 40 AND T1.Year_of_Work >= 10 AND T2.Orchestra = 'London Symphony Orchestra' AND T2.Year_of_Founded <= 2003 AND T2.Major_Record_Format = 'CD' AND T2.Record_Company = 'Mercury Records'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.27
+    }
+  ]
+}

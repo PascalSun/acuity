@@ -1,0 +1,91 @@
+{
+  "db_id": "flight_4",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 7,
+  "n_correct": 7,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:05:01.343490+00:00",
+  "records": [
+    {
+      "uid": "02615268-4117-466f-8e0d-48a807e1c4b6",
+      "question": "Which airlines with the IATA code A3 are based in Greece?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nJOIN routes ON airlines.alid = routes.alid\nWHERE airlines.iata = 'A3' AND airlines.country = 'Greece'",
+      "pred_sql": "SELECT airlines.alid\nFROM airlines\nWHERE airlines.iata = 'A3' AND airlines.country = 'Greece'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.89
+    },
+    {
+      "uid": "04316687-c979-4385-b136-dff14346e8f7",
+      "question": "Which active airlines named Air China with callsign AIR CHINA, ICAO code CCA, and IATA code CA have codeshare routes departing from PEK that are operated by airline CA?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nJOIN routes ON airlines.alid = routes.alid\nWHERE airlines.active = 'Y' AND airlines.name = 'Air China' AND routes.airline = 'CA' AND airlines.callsign = 'AIR CHINA' AND routes.codeshare = 'Y' AND routes.src_ap = 'PEK' AND airlines.icao = 'CCA' AND airlines.iata = 'CA'",
+      "pred_sql": "SELECT DISTINCT a.alid\nFROM airlines a\nJOIN routes r ON a.alid = r.alid\nJOIN airports ap ON r.src_apid = ap.apid\nWHERE a.name = 'Air China'\nAND a.callsign = 'AIR CHINA'\nAND a.icao = 'CCA'\nAND a.iata = 'CA'\nAND a.active = 'Y'\nAND ap.iata = 'PEK'\nAND r.codeshare = 'Y'\nAND r.airline = 'CA'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    },
+    {
+      "uid": "181bd523-0c80-4077-99b3-574522b23f3b",
+      "question": "Which airlines named Jettime from Denmark have the ICAO code JTG but are not currently active?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nWHERE airlines.icao = 'JTG' AND airlines.active = 'N' AND airlines.name = 'Jettime' AND airlines.country = 'Denmark'",
+      "pred_sql": "SELECT airlines.alid\nFROM airlines\nWHERE airlines.name = 'Jettime'\n  AND airlines.country = 'Denmark'\n  AND airlines.icao = 'JTG'\n  AND airlines.active != 'Y'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "320b1c9e-4291-47c9-a07b-5d637171b29f",
+      "question": "Which airlines named DAS Air Cargo are based in Uganda, are inactive, have the IATA code WD, ICAO code DSR, and use the callsign DAIRAIR?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nWHERE airlines.callsign = 'DAIRAIR' AND airlines.active = 'N' AND airlines.icao = 'DSR' AND airlines.name = 'DAS Air Cargo' AND airlines.iata = 'WD' AND airlines.country = 'Uganda'",
+      "pred_sql": "SELECT airlines.alid\nFROM airlines\nWHERE airlines.name = 'DAS Air Cargo'\n  AND airlines.country = 'Uganda'\n  AND airlines.active = 'N'\n  AND airlines.iata = 'WD'\n  AND airlines.icao = 'DSR'\n  AND airlines.callsign = 'DAIRAIR'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "7f2a02cf-734a-40ed-94d0-01f5aafbce52",
+      "question": "Which airlines based in Ireland have the ICAO code BCY, the callsign CITY-IRELAND, the IATA code WX, and are currently active?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nJOIN routes ON airlines.alid = routes.alid\nWHERE airlines.country = 'Ireland' AND airlines.icao = 'BCY' AND airlines.callsign = 'CITY-IRELAND' AND airlines.active = 'Y' AND airlines.iata = 'WX'",
+      "pred_sql": "SELECT airlines.alid\nFROM airlines\nWHERE airlines.country = 'Ireland'\nAND airlines.icao = 'BCY'\nAND airlines.callsign = 'CITY-IRELAND'\nAND airlines.iata = 'WX'\nAND airlines.active = 'Y'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "97f12cd5-af9b-4af6-9b7c-51ca2532b114",
+      "question": "What airlines have the ICAO code SDA, the callsign SAINT ANDREWS, and are not currently active?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nWHERE airlines.icao = 'SDA' AND airlines.callsign = 'SAINT ANDREWS' AND airlines.active = 'N'",
+      "pred_sql": "SELECT airlines.alid\nFROM airlines\nWHERE airlines.icao = 'SDA'\nAND airlines.callsign = 'SAINT ANDREWS'\nAND airlines.active != 'Y'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    },
+    {
+      "uid": "f2ec33ef-5d7b-44c1-b2f6-80e4e76fe0e2",
+      "question": "Which active airlines based in Iceland have the name Air Iceland, the IATA code NY, the ICAO code FXI, and the callsign FAXI?",
+      "gold_sql": "SELECT airlines.alid FROM airlines\nWHERE airlines.icao = 'FXI' AND airlines.active = 'Y' AND airlines.name = 'Air Iceland' AND airlines.iata = 'NY' AND airlines.country = 'Iceland' AND airlines.callsign = 'FAXI'",
+      "pred_sql": "SELECT airlines.alid\nFROM airlines\nWHERE airlines.country = 'Iceland'\nAND airlines.active = 'Y'\nAND airlines.name = 'Air Iceland'\nAND airlines.iata = 'NY'\nAND airlines.icao = 'FXI'\nAND airlines.callsign = 'FAXI'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.3
+    }
+  ]
+}

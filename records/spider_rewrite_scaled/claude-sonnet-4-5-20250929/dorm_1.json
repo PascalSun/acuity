@@ -1,0 +1,91 @@
+{
+  "db_id": "dorm_1",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 7,
+  "n_correct": 7,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:50:25.884348+00:00",
+  "records": [
+    {
+      "uid": "1c22c666-5051-4f9e-a082-2acb1f6cf191",
+      "question": "Where is the dorm with a student capacity of exactly 128 that has Eric living in room 105, where Eric's advisor number is at most 8772?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nJOIN lives_in ON dorm.dormid = lives_in.dormid\nJOIN student ON lives_in.stuid = student.stuid\nWHERE dorm.student_capacity = 128 AND student.fname = 'Eric' AND lives_in.room_number = 105 AND student.advisor <= 8772",
+      "pred_sql": "SELECT d.dormid\nFROM Dorm d\nJOIN Lives_in l ON d.dormid = l.dormid\nJOIN Student s ON l.stuid = s.StuID\nWHERE d.student_capacity = 128\n  AND s.Fname = 'Eric'\n  AND l.room_number = 105\n  AND s.Advisor <= 8772",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "28abb55c-a4db-4ad1-b69a-65e488b89366",
+      "question": "Which \"Bud Jones Hall\" dormitories designated for 'M' gender have a student capacity of at least 116 and have amenities and residents living in room numbers at most 48?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nJOIN has_amenity ON dorm.dormid = has_amenity.dormid\nJOIN lives_in ON dorm.dormid = lives_in.dormid\nWHERE dorm.gender = 'M' AND lives_in.room_number <= 48 AND dorm.student_capacity >= 116 AND dorm.dorm_name = 'Bud Jones Hall'",
+      "pred_sql": "SELECT DISTINCT d.dormid\nFROM Dorm d\nJOIN Has_amenity ha ON d.dormid = ha.dormid\nJOIN Lives_in li ON d.dormid = li.dormid\nWHERE d.dorm_name = 'Bud Jones Hall'\nAND d.gender = 'M'\nAND d.student_capacity >= 116\nAND li.room_number <= 48",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.08
+    },
+    {
+      "uid": "436e6e7a-984e-4bb2-84de-d447969e143e",
+      "question": "Which dorms have students whose major is 600 or fewer?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nJOIN lives_in ON dorm.dormid = lives_in.dormid\nJOIN student ON lives_in.stuid = student.stuid\nWHERE student.major <= 600",
+      "pred_sql": "SELECT DISTINCT d.dormid\nFROM Dorm d\nJOIN Lives_in l ON d.dormid = l.dormid\nJOIN Student s ON l.stuid = s.StuID\nWHERE s.Major <= 600",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    },
+    {
+      "uid": "4a66e6b2-7db9-4de0-a0fc-a508c79f2f0a",
+      "question": "Which Dorm-plex 2000 dorms with gender exactly X house male students named David from NYC whose major number is at most 520?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nJOIN lives_in ON dorm.dormid = lives_in.dormid\nJOIN student ON lives_in.stuid = student.stuid\nWHERE student.city_code = 'NYC' AND student.major <= 520 AND dorm.dorm_name = 'Dorm-plex 2000' AND student.fname = 'David' AND dorm.gender = 'X' AND student.sex = 'M'",
+      "pred_sql": "SELECT DISTINCT d.dormid\nFROM Dorm d\nJOIN Lives_in l ON d.dormid = l.dormid\nJOIN Student s ON l.stuid = s.StuID\nWHERE d.dorm_name = 'Dorm-plex 2000'\nAND d.gender = 'X'\nAND s.Sex = 'M'\nAND s.Fname = 'David'\nAND s.city_code = 'NYC'\nAND s.Major <= 520",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.43
+    },
+    {
+      "uid": "9c9f5c8f-cb62-4cfc-a591-590e1aa2d030",
+      "question": "Which Dorm-plex 2000 buildings can house at least 400 students and are designated for gender X?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nWHERE dorm.student_capacity >= 400 AND dorm.dorm_name = 'Dorm-plex 2000' AND dorm.gender = 'X'",
+      "pred_sql": "SELECT dormid\nFROM Dorm\nWHERE dorm_name = 'Dorm-plex 2000' AND student_capacity >= 400 AND gender = 'X'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    },
+    {
+      "uid": "ad7e167b-a551-4655-90ad-81af9e701762",
+      "question": "Which dorms named 'Anonymous Donor Hall' with a student capacity of exactly 128 have amenities and students living in them?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nJOIN has_amenity ON dorm.dormid = has_amenity.dormid\nJOIN lives_in ON dorm.dormid = lives_in.dormid\nWHERE dorm.dorm_name = 'Anonymous Donor Hall' AND dorm.student_capacity = 128",
+      "pred_sql": "SELECT DISTINCT d.dormid\nFROM Dorm d\nWHERE d.dorm_name = 'Anonymous Donor Hall'\n  AND d.student_capacity = 128\n  AND EXISTS (SELECT 1 FROM Has_amenity ha WHERE ha.dormid = d.dormid)\n  AND EXISTS (SELECT 1 FROM Lives_in li WHERE li.dormid = d.dormid)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.89
+    },
+    {
+      "uid": "d3fd4538-c5aa-461a-8b06-5e8350bfa880",
+      "question": "Which Dorm-plex 2000 buildings have a student capacity of at most 400, are designated for gender X, and have residents living in rooms numbered 443 or higher?",
+      "gold_sql": "SELECT dorm.dormid FROM dorm\nJOIN lives_in ON dorm.dormid = lives_in.dormid\nWHERE dorm.student_capacity <= 400 AND dorm.dorm_name = 'Dorm-plex 2000' AND dorm.gender = 'X' AND lives_in.room_number >= 443",
+      "pred_sql": "SELECT DISTINCT d.dormid\nFROM Dorm d\nJOIN Lives_in l ON d.dormid = l.dormid\nWHERE d.dorm_name = 'Dorm-plex 2000'\nAND d.student_capacity <= 400\nAND d.gender = 'X'\nAND l.room_number >= 443",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.52
+    }
+  ]
+}

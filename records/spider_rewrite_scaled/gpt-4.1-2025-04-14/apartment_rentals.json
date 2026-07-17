@@ -1,0 +1,102 @@
+{
+  "db_id": "apartment_rentals",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 8,
+  "n_correct": 2,
+  "accuracy": 0.25,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:23:43.377270+00:00",
+  "records": [
+    {
+      "uid": "10f7ecd1-6770-49a9-aedd-7c05b6e82f40",
+      "question": "Which apartments at The Eugene are Studio type, have apartment number Apt. 187, exactly 9 rooms, and at least 3 bathrooms?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nJOIN apartment_facilities ON apartments.apt_id = apartment_facilities.apt_id\nWHERE apartments.room_count = '9' AND apartment_buildings.building_full_name = 'The Eugene' AND apartments.apt_number = 'Apt. 187' AND apartments.apt_type_code = 'Studio' AND apartments.bathroom_count >= 3",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Buildings ON Apartments.building_id = Apartment_Buildings.building_id\nWHERE Apartment_Buildings.building_full_name = 'The Eugene'\n  AND Apartments.apt_type_code = 'Studio'\n  AND Apartments.apt_number = 'Apt. 187'\n  AND Apartments.room_count = '9'\n  AND Apartments.bathroom_count >= 3",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "142b4676-783b-4dc9-86b0-709535a722e0",
+      "question": "Which apartments have exactly 8 rooms and currently have a booking with the status Provisional?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nJOIN apartment_facilities ON apartments.apt_id = apartment_facilities.apt_id\nJOIN apartment_bookings ON apartments.apt_id = apartment_bookings.apt_id\nWHERE apartments.room_count = '8' AND apartment_bookings.booking_status_code = 'Provisional'",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Bookings ON Apartments.apt_id = Apartment_Bookings.apt_id\nWHERE Apartments.room_count = '8'\n  AND Apartment_Bookings.booking_status_code = 'Provisional'",
+      "strategy": "3iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    },
+    {
+      "uid": "23159bd7-eaf0-4722-b074-61afb45b7f4a",
+      "question": "Which apartments have a gym facility and are in buildings with the phone number 1-724-982-9507x640?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nJOIN apartment_facilities ON apartments.apt_id = apartment_facilities.apt_id\nWHERE apartment_facilities.facility_code = 'Gym' AND apartment_buildings.building_phone = '1-724-982-9507x640'",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Buildings ON Apartments.building_id = Apartment_Buildings.building_id\nJOIN Apartment_Facilities ON Apartments.apt_id = Apartment_Facilities.apt_id\nWHERE Apartment_Facilities.facility_code = 'gym'\n  AND Apartment_Buildings.building_phone = '1-724-982-9507x640'",
+      "strategy": "2iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "5f27a214-9ce7-4cf6-9406-9b7baccd022e",
+      "question": "I'm looking for apartments in Columbus Square with apartment number Apt. 859 that have exactly 3 bedrooms, 6 rooms total, a confirmed booking, and where the building phone number is 1-724-982-9507x640. Can you help me find those?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nJOIN apartment_bookings ON apartments.apt_id = apartment_bookings.apt_id\nJOIN view_unit_status ON apartments.apt_id = view_unit_status.apt_id\nWHERE apartments.apt_number = 'Apt. 859' AND apartments.bedroom_count = 3 AND apartment_buildings.building_phone = '1-724-982-9507x640' AND apartment_bookings.booking_status_code = 'Confirmed' AND apartment_buildings.building_full_name = 'Columbus Square' AND apartments.room_count = '6'",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Buildings ON Apartments.building_id = Apartment_Buildings.building_id\nJOIN Apartment_Bookings ON Apartments.apt_id = Apartment_Bookings.apt_id\nWHERE Apartment_Buildings.building_full_name = 'Columbus Square'\n  AND Apartments.apt_number = 'Apt. 859'\n  AND Apartments.bedroom_count = 3\n  AND Apartments.room_count = '6'\n  AND Apartment_Bookings.booking_status_code = 'confirmed'\n  AND Apartment_Buildings.building_phone = '1-724-982-9507x640'",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "6ed2e3ab-47b6-44a8-8f5d-5676051694a9",
+      "question": "Which flats at Stuyvesant Town managed by Marie are Apt. 585 with exactly 5 rooms, at least 4 bedrooms, at least 2 bathrooms, and include Boardband as a facility?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nJOIN apartment_facilities ON apartments.apt_id = apartment_facilities.apt_id\nWHERE apartments.apt_type_code = 'Flat' AND apartments.bathroom_count >= 2 AND apartments.bedroom_count >= 4 AND apartment_facilities.facility_code = 'Boardband' AND apartment_buildings.building_manager = 'Marie' AND apartment_buildings.building_full_name = 'Stuyvesant Town' AND apartments.apt_number = 'Apt. 585' AND apartments.room_count = '5'",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Buildings ON Apartments.building_id = Apartment_Buildings.building_id\nJOIN Apartment_Facilities ON Apartments.apt_id = Apartment_Facilities.apt_id\nWHERE Apartment_Buildings.building_full_name = 'Stuyvesant Town'\n  AND Apartment_Buildings.building_manager = 'Marie'\n  AND Apartments.apt_number = '585'\n  AND Apartments.room_count = '5'\n  AND Apartments.bedroom_count >= 4\n  AND Apartments.bathroom_count >= 2\n  AND Apartment_Facilities.facility_code = 'Boardband'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "8c75a181-1bae-45f5-bbc3-bda9a7655f1b",
+      "question": "Which apartments at Mercedes House managed by Brenden have apt number Suite 693, building phone 915-617-2408x832, 3 bedrooms, 2 bathrooms, and exactly 9 rooms?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nWHERE apartment_buildings.building_short_name = 'Mercedes House' AND apartment_buildings.building_manager = 'Brenden' AND apartments.apt_number = 'Suite 693' AND apartment_buildings.building_phone = '915-617-2408x832' AND apartments.bedroom_count = 3 AND apartments.bathroom_count = 2 AND apartments.room_count = '9'",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Buildings ON Apartments.building_id = Apartment_Buildings.building_id\nWHERE Apartment_Buildings.building_full_name = 'Mercedes House'\n  AND Apartment_Buildings.building_manager = 'Brenden'\n  AND Apartments.apt_number = 'Suite 693'\n  AND Apartment_Buildings.building_phone = '915-617-2408x832'\n  AND Apartments.bedroom_count = 3\n  AND Apartments.bathroom_count = 2\n  AND Apartments.room_count = '9'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "a22adfc7-3a05-4493-a3c0-89936ee4e41c",
+      "question": "Which flats have at least 3 bedrooms and at most 1 bathroom?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nWHERE apartments.apt_type_code = 'Flat' AND apartments.bedroom_count >= 3 AND apartments.bathroom_count <= 1",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nWHERE Apartments.bedroom_count >= 3 AND Apartments.bathroom_count <= 1",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.24
+    },
+    {
+      "uid": "cbd24c17-5568-47f6-adb8-56913cfb9521",
+      "question": "Which apartments have the number exactly Apt. 585 in buildings located at an address containing 101 Queenie Mountains Suite 619 New Korbinmouth and with a phone number that is (145)411-6406?",
+      "gold_sql": "SELECT apartments.apt_id FROM apartments\nJOIN apartment_buildings ON apartments.building_id = apartment_buildings.building_id\nWHERE apartments.apt_number = 'Apt. 585' AND apartment_buildings.building_address LIKE '%101 Queenie Mountains Suite 619\nNew Korbinmouth%' AND apartment_buildings.building_phone = '(145)411-6406'",
+      "pred_sql": "SELECT Apartments.apt_id\nFROM Apartments\nJOIN Apartment_Buildings ON Apartments.building_id = Apartment_Buildings.building_id\nWHERE Apartments.apt_number = '585'\n  AND Apartment_Buildings.building_address LIKE '%101 Queenie Mountains Suite 619 New Korbinmouth%'\n  AND Apartment_Buildings.building_phone = '(145)411-6406'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    }
+  ]
+}

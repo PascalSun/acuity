@@ -1,0 +1,58 @@
+{
+  "db_id": "cre_Doc_Tracking_DB",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 4,
+  "n_correct": 2,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:31:29.431079+00:00",
+  "records": [
+    {
+      "uid": "70b8999a-ce65-48fd-a03c-757bd0ca451c",
+      "question": "Which calendar dates correspond to reviews of the Marriage and population document where the day number is at most 3?",
+      "gold_sql": "SELECT ref_calendar.calendar_date FROM ref_calendar\nJOIN all_documents ON ref_calendar.calendar_date = all_documents.date_stored\nJOIN ref_document_types ON all_documents.document_type_code = ref_document_types.document_type_code\nWHERE ref_document_types.document_type_name = 'Review' AND all_documents.document_name = 'Marriage and population' AND ref_calendar.day_number <= 3",
+      "pred_sql": "SELECT DISTINCT r.Calendar_Date\nFROM Ref_Calendar r\nJOIN All_Documents d ON d.Date_Stored = r.Calendar_Date\nJOIN Ref_Document_Types t ON d.Document_Type_Code = t.Document_Type_Code\nWHERE t.Document_Type_Name = 'Marriage and population document'\n  AND r.Day_Number <= 3",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "836da7f8-346a-49d9-8105-9e0578561c1a",
+      "question": "Which calendar entries correspond to documents that were planned and actually destroyed on the same day, where the document type is exactly Book?",
+      "gold_sql": "SELECT ref_calendar.calendar_date FROM ref_calendar\nJOIN documents_to_be_destroyed ON ref_calendar.calendar_date = documents_to_be_destroyed.actual_destruction_date AND ref_calendar.calendar_date = documents_to_be_destroyed.planned_destruction_date\nJOIN all_documents ON documents_to_be_destroyed.document_id = all_documents.document_id\nJOIN ref_document_types ON all_documents.document_type_code = ref_document_types.document_type_code\nWHERE ref_document_types.document_type_name = 'Book'",
+      "pred_sql": "SELECT rc.Calendar_Date\nFROM Ref_Calendar rc\nJOIN Documents_to_be_Destroyed dtd ON rc.Calendar_Date = dtd.Planned_Destruction_Date\nJOIN All_Documents ad ON dtd.Document_ID = ad.Document_ID\nWHERE dtd.Planned_Destruction_Date = dtd.Actual_Destruction_Date\n  AND ad.Document_Type_Code IN (\n    SELECT Document_Type_Code\n    FROM Ref_Document_Types\n    WHERE Document_Type_Name = 'Book'\n  )",
+      "strategy": "3pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "a338d28b-5cb6-41c8-9f04-1f86e99bda12",
+      "question": "Which calendar entries match up with documents that have the document type name exactly as 'Review'?",
+      "gold_sql": "SELECT ref_calendar.calendar_date FROM ref_calendar\nJOIN all_documents ON ref_calendar.calendar_date = all_documents.date_stored\nJOIN ref_document_types ON all_documents.document_type_code = ref_document_types.document_type_code\nWHERE ref_document_types.document_type_name = 'Review'",
+      "pred_sql": "SELECT Ref_Calendar.Calendar_Date\nFROM Ref_Calendar\nJOIN All_Documents ON Ref_Calendar.Calendar_Date = All_Documents.Date_Stored\nJOIN Ref_Document_Types ON All_Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code\nWHERE Ref_Document_Types.Document_Type_Name = 'Review'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.51
+    },
+    {
+      "uid": "b2c613f3-5958-4e10-82c3-e9ce47163475",
+      "question": "Which calendar entries on day number 8 or later correspond to books named exactly Cats and me where the planned and actual destruction dates are the same?",
+      "gold_sql": "SELECT ref_calendar.calendar_date FROM ref_calendar\nJOIN documents_to_be_destroyed ON ref_calendar.calendar_date = documents_to_be_destroyed.actual_destruction_date AND ref_calendar.calendar_date = documents_to_be_destroyed.planned_destruction_date\nJOIN all_documents ON documents_to_be_destroyed.document_id = all_documents.document_id\nJOIN ref_document_types ON all_documents.document_type_code = ref_document_types.document_type_code\nWHERE all_documents.document_name = 'Cats and me' AND ref_calendar.day_number >= 8 AND ref_document_types.document_type_name = 'Book'",
+      "pred_sql": "SELECT rc.Calendar_Date\nFROM Ref_Calendar rc\nJOIN All_Documents ad ON rc.Calendar_Date = ad.Date_Stored\nJOIN Documents_to_be_Destroyed dtd ON ad.Document_ID = dtd.Document_ID\nWHERE rc.Day_Number >= 8\n  AND ad.Document_Name = 'Cats and me'\n  AND dtd.Planned_Destruction_Date = dtd.Actual_Destruction_Date",
+      "strategy": "3pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.53
+    }
+  ]
+}

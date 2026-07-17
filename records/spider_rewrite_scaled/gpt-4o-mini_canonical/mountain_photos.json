@@ -1,0 +1,69 @@
+{
+  "db_id": "mountain_photos",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:28:06.531674+00:00",
+  "records": [
+    {
+      "uid": "0f98e181-9e57-45ec-b3e0-6bf760123a9f",
+      "question": "Which mountains named Taska n'Zat are exactly 3912.0 meters high with prominence at most 460.0 and have photos named life in RBG taken using a Sigma 19mm f2.8 EX DN lens with focal length 19.0 and max aperture at least 2.8?",
+      "gold_sql": "SELECT mountain.id FROM mountain\nJOIN photos ON mountain.id = photos.mountain_id\nJOIN camera_lens ON photos.camera_lens_id = camera_lens.id\nWHERE camera_lens.max_aperture >= 2.8 AND camera_lens.name = 'Sigma 19mm f2.8 EX DN' AND camera_lens.focal_length_mm = 19.0 AND mountain.height = 3912.0 AND mountain.name = 'Taska n\u2019Zat' AND mountain.prominence <= 460.0 AND photos.name = 'life' AND photos.color = 'RBG'",
+      "pred_sql": "SELECT mountain.id \nFROM mountain \nJOIN photos ON mountain.id = photos.mountain_id \nJOIN camera_lens ON photos.camera_lens_id = camera_lens.id \nWHERE mountain.Height = 3912.0 \n  AND mountain.name = 'Taska n\u2019Zat' \n  AND mountain.Prominence <= 460.0 \n  AND photos.name = 'life' \n  AND photos.color = 'RBG' \n  AND camera_lens.max_aperture >= 2.8 \n  AND camera_lens.name = 'Sigma 19mm f2.8 EX DN' \n  AND camera_lens.focal_length_mm = 19.0",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.93
+    },
+    {
+      "uid": "3bfa13a0-c699-4aa1-b880-1033c583ff74",
+      "question": "Which mountains in the Guna Massif have a height of exactly 4120.0?",
+      "gold_sql": "SELECT mountain.id FROM mountain\nWHERE mountain.height = 4120.0 AND mountain.range = 'Guna Massif'",
+      "pred_sql": "SELECT mountain.id FROM mountain WHERE Height = 4120.0 AND Range = 'Guna Massif'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.86
+    },
+    {
+      "uid": "403a3422-41d1-4818-9dc3-01d11b6006ee",
+      "question": "Which mountains in the Kollo Massif have a prominence of at most 350.0 and are featured in photos named rabbits?",
+      "gold_sql": "SELECT mountain.id FROM mountain\nJOIN photos ON mountain.id = photos.mountain_id\nJOIN camera_lens ON photos.camera_lens_id = camera_lens.id\nWHERE mountain.range = 'Kollo Massif' AND mountain.prominence <= 350.0 AND photos.name = 'rabbits'",
+      "pred_sql": "SELECT mountain.id \nFROM mountain \nJOIN photos ON mountain.id = photos.mountain_id \nJOIN camera_lens ON photos.camera_lens_id = camera_lens.id \nWHERE mountain.Range = 'Kollo Massif' \nAND mountain.Prominence <= 350.0 \nAND photos.name = 'rabbits'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.3
+    },
+    {
+      "uid": "a04811d4-11a6-4e88-85c4-86e8b467dcc5",
+      "question": "Which mountains named Ouanoukrim in Morocco's Toubkal Atlas have a height of 4088.0, a prominence of at least 420.0, and photos named grass in RBG color?",
+      "gold_sql": "SELECT mountain.id FROM mountain\nJOIN photos ON mountain.id = photos.mountain_id\nWHERE mountain.range = 'Toubkal Atlas' AND photos.name = 'grass' AND mountain.name = 'Ouanoukrim' AND mountain.country = 'Morocco' AND mountain.prominence >= 420.0 AND photos.color = 'RBG' AND mountain.height = 4088.0",
+      "pred_sql": "SELECT mountain.id \nFROM mountain \nJOIN photos ON mountain.id = photos.mountain_id \nWHERE mountain.Range = 'Toubkal Atlas' \nAND mountain.name = 'Ouanoukrim' \nAND mountain.Country = 'Morocco' \nAND mountain.Prominence >= 420.0 \nAND mountain.Height = 4088.0 \nAND photos.name = 'grass' \nAND photos.color = 'RBG'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.51
+    },
+    {
+      "uid": "f7f0932c-4bd7-4391-ad2e-704d90376021",
+      "question": "Which mountains named Mount Cameroon are located in Cameroon and have photos associated with them?",
+      "gold_sql": "SELECT mountain.id FROM mountain\nJOIN photos ON mountain.id = photos.mountain_id\nWHERE mountain.country = 'Cameroon' AND mountain.name = 'Mount Cameroon'",
+      "pred_sql": "SELECT mountain.id FROM mountain JOIN photos ON mountain.id = photos.mountain_id WHERE mountain.Country = 'Cameroon' AND mountain.name = 'Mount Cameroon'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.45
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "db_id": "climbing",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:24:49.908602+00:00",
+  "records": [
+    {
+      "uid": "9526b81d-f250-4e32-9057-14ddb748a610",
+      "question": "Which mountains named Mawenzi (Hans Meyer Pk) in Tanzania are exactly 5148.0 meters high with a prominence of 850.0 and were climbed by Georg Auerbacher who scored exactly 5.0 points?",
+      "gold_sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mawenzi (Hans Meyer Pk)' AND mountain.height = 5148.0 AND mountain.prominence = 850.0 AND climber.name = 'Georg Auerbacher' AND mountain.country = 'Tanzania' AND climber.points = 5.0",
+      "pred_sql": "SELECT mountain.Mountain_ID \nFROM mountain \nJOIN climber ON mountain.Mountain_ID = climber.Mountain_ID \nWHERE mountain.Name = 'Mawenzi (Hans Meyer Pk)' \nAND mountain.Height = 5148.0 \nAND mountain.Prominence = 850.0 \nAND mountain.Country = 'Tanzania' \nAND climber.Name = 'Georg Auerbacher' \nAND climber.Points = 5.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.16
+    },
+    {
+      "uid": "e6564304-a812-4bba-a820-3aa7fe337f14",
+      "question": "Which mountains in Tanzania's Kilimanjaro range have a prominence of 850.0 that were climbed by Georg Auerbacher from West Germany who scored exactly 5.0 points with a time of 1:18.14.6?",
+      "gold_sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.country = 'Tanzania' AND climber.time = '1:18.14.6' AND climber.name = 'Georg Auerbacher' AND climber.country = 'West Germany' AND climber.points = 5.0 AND mountain.prominence = 850.0 AND mountain.range = 'Kilimanjaro'",
+      "pred_sql": "SELECT mountain.Mountain_ID \nFROM mountain \nJOIN climber ON mountain.Mountain_ID = climber.Mountain_ID \nWHERE mountain.Country = 'Tanzania' \nAND mountain.Prominence = 850.0 \nAND mountain.Range = 'Kilimanjaro' \nAND climber.Time = '1:18.14.6' \nAND climber.Name = 'Georg Auerbacher' \nAND climber.Country = 'West Germany' \nAND climber.Points = 5.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    }
+  ]
+}

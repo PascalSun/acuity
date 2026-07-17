@@ -1,0 +1,69 @@
+{
+  "db_id": "club_1",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:24:26.773309+00:00",
+  "records": [
+    {
+      "uid": "0e69c629-89df-4722-9bba-66d3c0f79c34",
+      "question": "Which clubs have members named Smith who are at least 18 years old, live in city BAL, and have a major exactly equal to 600?",
+      "gold_sql": "SELECT club.clubid FROM club\nJOIN member_of_club ON club.clubid = member_of_club.clubid\nJOIN student ON member_of_club.stuid = student.stuid\nWHERE student.age >= 18 AND student.city_code = 'BAL' AND student.major = 600 AND student.lname = 'Smith'",
+      "pred_sql": "SELECT Club.ClubID\nFROM Club\nJOIN Member_of_club ON Club.ClubID = Member_of_club.ClubID\nJOIN Student ON Member_of_club.StuID = Student.StuID\nWHERE Student.LName = 'Smith'\n  AND Student.Age >= 18\n  AND Student.city_code = 'BAL'\n  AND Student.Major = 600",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "2008f81f-5c11-4880-a607-39b75e07a391",
+      "question": "Which clubs have members and are located exactly in AKW?",
+      "gold_sql": "SELECT club.clubid FROM club\nJOIN member_of_club ON club.clubid = member_of_club.clubid\nWHERE club.clublocation = 'AKW'",
+      "pred_sql": "SELECT Club.ClubID\nFROM Club\nJOIN Member_of_club ON Club.ClubID = Member_of_club.ClubID\nWHERE Club.ClubLocation = 'AKW'\nGROUP BY Club.ClubID",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.88
+    },
+    {
+      "uid": "29f40c9a-cc3b-490c-abd6-8693a174ec21",
+      "question": "Which clubs located in AKW are Venture capital funds for student business that have a female member named Jandy Nelson who is at most 20 years old and whose advisor is 9172?",
+      "gold_sql": "SELECT club.clubid FROM club\nJOIN member_of_club ON club.clubid = member_of_club.clubid\nJOIN student ON member_of_club.stuid = student.stuid\nWHERE club.clubdesc = 'Venture capital fund for student business.' AND student.fname = 'Jandy' AND club.clublocation = 'AKW' AND student.advisor = 9172 AND student.sex = 'F' AND student.age <= 20 AND student.lname = 'Nelson'",
+      "pred_sql": "SELECT Club.ClubID\nFROM Club\nJOIN Member_of_club ON Club.ClubID = Member_of_club.ClubID\nJOIN Student ON Member_of_club.StuID = Student.StuID\nWHERE Club.ClubLocation = 'AKW'\n  AND Club.ClubDesc LIKE '%Venture capital fund%'\n  AND Student.Sex = 'F'\n  AND Student.Fname = 'Jandy'\n  AND Student.LName = 'Nelson'\n  AND Student.Age <= 20\n  AND Student.Advisor = 9172",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.27
+    },
+    {
+      "uid": "ed851de3-aaf8-41ca-be5d-5d8a6987a165",
+      "question": "Which clubs located in AKW have members who are students from the city with city_code HOU?",
+      "gold_sql": "SELECT club.clubid FROM club\nJOIN member_of_club ON club.clubid = member_of_club.clubid\nJOIN student ON member_of_club.stuid = student.stuid\nWHERE student.city_code = 'HOU' AND club.clublocation = 'AKW'",
+      "pred_sql": "SELECT Club.ClubID\nFROM Club\nJOIN Member_of_club ON Club.ClubID = Member_of_club.ClubID\nJOIN Student ON Member_of_club.StuID = Student.StuID\nWHERE Club.ClubLocation = 'AKW' AND Student.city_code = 'HOU'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    },
+    {
+      "uid": "f45bd99b-08e2-443c-9bad-1d429b50b3df",
+      "question": "Which clubs named Tennis Club are in AKW, described as A competitive tennis club., and have a Vice-President?",
+      "gold_sql": "SELECT club.clubid FROM club\nJOIN member_of_club ON club.clubid = member_of_club.clubid\nWHERE member_of_club.position = 'Vice-President' AND club.clublocation = 'AKW' AND club.clubdesc = 'A competitive tennis club.' AND club.clubname = 'Tennis Club'",
+      "pred_sql": "SELECT Club.ClubID\nFROM Club\nJOIN Member_of_club ON Club.ClubID = Member_of_club.ClubID\nWHERE Club.ClubName = 'Tennis Club'\n  AND Club.ClubLocation = 'AKW'\n  AND Club.ClubDesc = 'A competitive tennis club.'\n  AND Member_of_club.Position = 'Vice-President'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    }
+  ]
+}

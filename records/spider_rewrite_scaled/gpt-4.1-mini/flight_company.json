@@ -1,0 +1,47 @@
+{
+  "db_id": "flight_company",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 3,
+  "n_correct": 0,
+  "accuracy": 0.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:33:15.416443+00:00",
+  "records": [
+    {
+      "uid": "1e2c49b2-fe59-4726-ac1c-9154ea169ae9",
+      "question": "Which joint venture operating companies with 40.0 group equity shareholding that focus on Catering services have flights at exactly 3650.0 altitude and at least 240.0 velocity connected to airports in Amsterdam, Netherlands?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nJOIN airport ON flight.airport_id = airport.id\nWHERE operate_company.type = 'Joint Venture' AND operate_company.group_equity_shareholding = 40.0 AND airport.city = 'Amsterdam' AND flight.velocity >= 240.0 AND operate_company.principal_activities = 'Catering services' AND airport.country = 'Netherlands' AND flight.altitude = 3650.0",
+      "pred_sql": "SELECT DISTINCT oc.id\nFROM operate_company oc\nJOIN flight f ON oc.id = f.company_id\nJOIN airport a ON f.airport_id = a.id\nWHERE oc.Type = 'Joint venture'\n  AND oc.Group_Equity_Shareholding = 40.0\n  AND oc.Principal_activities LIKE '%Catering%'\n  AND f.Altitude = 3650.0\n  AND f.Velocity >= 240.0\n  AND a.City = 'Amsterdam'\n  AND a.Country = 'Netherlands'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.08
+    },
+    {
+      "uid": "58fcfcaf-1ce5-49ae-be95-4d424433c20c",
+      "question": "Which companies named Dragonair that are incorporated in Hong Kong as subsidiaries have flights with vehicle flight number M2-F1 #13 flying at an altitude of at least 3650.0?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nWHERE flight.vehicle_flight_number = 'M2-F1 #13' AND flight.altitude >= 3650.0 AND operate_company.name = 'Dragonair' AND operate_company.type = 'Subsidiary' AND operate_company.incorporated_in = 'Hong Kong'",
+      "pred_sql": "SELECT operate_company.id\nFROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nWHERE operate_company.name = 'Dragonair'\n  AND operate_company.Incorporated_in = 'Hong Kong'\n  AND operate_company.Type = 'subsidiary'\n  AND flight.Vehicle_Flight_number = 'M2-F1 #13'\n  AND flight.Altitude >= 3650.0",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.62
+    },
+    {
+      "uid": "7f057709-9eda-4d17-9115-5d2caaab8ba3",
+      "question": "Which subsidiaries incorporated in Hong Kong operate as Cargo airlines that had flights in 1963 with vehicle flight number M2-F1 #14 traveling at exactly 240.0 velocity?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nWHERE operate_company.incorporated_in = 'Hong Kong' AND flight.vehicle_flight_number = 'M2-F1 #14' AND flight.velocity = 240.0 AND operate_company.principal_activities = 'Cargo airline' AND operate_company.type = 'Subsidiary' AND flight.date LIKE '%1963%'",
+      "pred_sql": "SELECT oc.id\nFROM operate_company oc\nJOIN flight f ON oc.id = f.company_id\nWHERE oc.Incorporated_in = 'Hong Kong'\n  AND oc.Type = 'Cargo'\n  AND f.Date LIKE '1963%'\n  AND f.Vehicle_Flight_number = 'M2-F1 #14'\n  AND f.Velocity = 240.0",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.53
+    }
+  ]
+}

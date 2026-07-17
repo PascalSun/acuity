@@ -1,0 +1,102 @@
+{
+  "db_id": "allergy_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 8,
+  "n_correct": 3,
+  "accuracy": 0.375,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:11:10.382282+00:00",
+  "records": [
+    {
+      "uid": "008e5f33-5a7d-4ff5-9a73-d94a4b9f90c8",
+      "question": "What food allergies does Sarah Smith have, the 20-year-old female student whose advisor is 8772?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.lname = 'Smith' AND allergy_type.allergytype = 'food' AND student.age = 20 AND student.sex = 'F' AND student.advisor = 8772 AND student.fname = 'Sarah'",
+      "pred_sql": "SELECT T3.Allergy FROM Student AS T1 INNER JOIN Has_Allergy AS T2 ON T1.StuID = T2.StuID INNER JOIN Allergy_Type AS T3 ON T2.Allergy = T3.Allergy WHERE T1.Fname = 'Sarah' AND T1.LName = 'Smith' AND T1.Age = 20 AND T1.Sex = 'F' AND T1.Advisor = 8772",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.46
+    },
+    {
+      "uid": "219509d6-c82f-4ddb-a99f-e10751bea2db",
+      "question": "What animal allergies does Linda Smith have if she's an 18-year-old female student from BAL with a major of at most 600?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.age = 18 AND student.sex = 'F' AND student.city_code = 'BAL' AND student.major <= 600 AND student.fname = 'Linda' AND student.lname = 'Smith' AND allergy_type.allergytype = 'animal'",
+      "pred_sql": "SELECT T1.Allergy FROM Allergy_Type AS T1 INNER JOIN Has_Allergy AS T2 ON T1.Allergy = T2.Allergy INNER JOIN Student AS T3 ON T2.StuID = T3.StuID WHERE T3.Fname = 'Linda' AND T3.LName = 'Smith' AND T3.Age = 18 AND T3.Sex = 'F' AND T3.city_code = 'BAL' AND T3.Major <= 600 AND T1.AllergyType = 'Animal'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.71
+    },
+    {
+      "uid": "27ab945f-287a-4622-8537-4799a8adeb59",
+      "question": "Which allergies are classified as environmental?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nWHERE allergy_type.allergytype = 'environmental'",
+      "pred_sql": "SELECT Allergy FROM Allergy_Type WHERE AllergyType = 'Environmental'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "69414865-ef1f-430d-92a4-818986e554b0",
+      "question": "What environmental allergies does Ian have, the student from NYC who's majoring in 520 and has an advisor number at most 7271?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE allergy_type.allergytype = 'environmental' AND student.city_code = 'NYC' AND student.fname = 'Ian' AND student.advisor <= 7271 AND student.major = 520",
+      "pred_sql": "SELECT T1.Allergy FROM Allergy_Type AS T1 INNER JOIN Has_Allergy AS T2 ON T1.Allergy = T2.Allergy INNER JOIN Student AS T3 ON T2.StuID = T3.StuID WHERE T3.Fname = 'Ian' AND T3.city_code = 'NYC' AND T3.Major = 520 AND T3.Advisor <= 7271 AND T1.AllergyType = 'Environmental'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "917789f2-937c-483f-9f20-e9cc898f2b79",
+      "question": "Which food allergies are reported by students?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE allergy_type.allergytype = 'food'",
+      "pred_sql": "SELECT Allergy FROM Allergy_Type WHERE AllergyType = 'Food'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "a8d36f57-8861-44af-8a04-071a6fc12772",
+      "question": "What allergies does the student with last name Gompers who is 26 years old have?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.age = 26 AND student.lname = 'Gompers'",
+      "pred_sql": "SELECT T2.Allergy FROM Student AS T1 INNER JOIN Has_Allergy AS T3 ON T1.StuID = T3.StuID INNER JOIN Allergy_Type AS T2 ON T3.Allergy = T2.Allergy WHERE T1.LName = 'Gompers' AND T1.Age = 26",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "bbba97b1-8b78-4c88-a098-2006f4a147f1",
+      "question": "Which allergies are categorized exactly as food allergies?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nWHERE allergy_type.allergytype = 'food'",
+      "pred_sql": "SELECT Allergy FROM Allergy_Type WHERE AllergyType = 'Food'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "uid": "e7e44ca8-3f04-405d-8574-dd10aad1459e",
+      "question": "What allergies do students named Stacy have if they're at most 18 years old, with a major number no more than 540 and an advisor number at most 7271?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.fname = 'Stacy' AND student.age <= 18 AND student.major <= 540 AND student.advisor <= 7271",
+      "pred_sql": "SELECT T1.Allergy FROM Allergy_Type AS T1 INNER JOIN Has_Allergy AS T2 ON T1.Allergy = T2.Allergy INNER JOIN Student AS T3 ON T2.StuID = T3.StuID WHERE T3.Fname = 'Stacy' AND T3.Age <= 18 AND T3.Major <= 540 AND T3.Advisor <= 7271",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.97
+    }
+  ]
+}

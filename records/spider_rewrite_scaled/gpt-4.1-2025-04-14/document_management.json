@@ -1,0 +1,91 @@
+{
+  "db_id": "document_management",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 7,
+  "n_correct": 4,
+  "accuracy": 0.5714285714285714,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:25:36.319178+00:00",
+  "records": [
+    {
+      "uid": "02e1ef35-e85d-40f6-ad5c-3dea79935d21",
+      "question": "Which documents have section sequence 4964 and have been accessed at most 5924 times?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nJOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code\nJOIN document_sections ON documents.document_code = document_sections.document_code\nWHERE document_sections.section_sequence = 4964 AND documents.access_count <= 5924",
+      "pred_sql": "SELECT Documents.document_code\nFROM Documents\nJOIN Document_Sections ON Documents.document_code = Document_Sections.document_code\nWHERE Document_Sections.section_sequence = 4964\n  AND (Documents.access_count IS NULL OR Documents.access_count <= 5924)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    },
+    {
+      "uid": "045e0ab8-26e0-451a-b429-7e4ba31c5ca0",
+      "question": "Which documents named Learning Japanese have a section titled after with section sequence exactly 6349, where the access count is at most 2910 and the parent document structure code is exactly 8?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nJOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code\nJOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code\nJOIN document_sections ON documents.document_code = document_sections.document_code\nWHERE document_sections.section_sequence = 6349 AND documents.access_count <= 2910 AND document_structures.parent_document_structure_code = '8' AND documents.document_name = 'Learning Japanese' AND document_sections.section_title = 'after'",
+      "pred_sql": "SELECT Documents.document_code\nFROM Documents\nJOIN Document_Structures ON Documents.document_structure_code = Document_Structures.document_structure_code\nJOIN Document_Sections ON Documents.document_code = Document_Sections.document_code\nWHERE Documents.document_name = 'Learning Japanese'\n  AND Document_Sections.section_title = 'after'\n  AND Document_Sections.section_sequence = 6349\n  AND Documents.access_count <= 2910\n  AND Document_Structures.parent_document_structure_code = '8'",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "11dde29d-b439-47e2-8caf-55eb2e2ce9b6",
+      "question": "Which documents named John CV with type CV have at most 5924 accesses, include a section titled after with sequence 8548 and code 49, and belong to an Author section whose parent document structure code is 8?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nJOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code\nJOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code\nJOIN document_sections ON documents.document_code = document_sections.document_code\nWHERE document_sections.section_title = 'after' AND document_structures.parent_document_structure_code = '8' AND document_sections.section_sequence = 8548 AND document_structures.document_structure_description = 'Author section' AND documents.document_name = 'John CV' AND documents.document_type_code = 'CV' AND documents.access_count <= 5924 AND document_sections.section_code = '49'",
+      "pred_sql": "SELECT documents.document_code\nFROM Documents\nJOIN Document_Sections ON Documents.document_code = Document_Sections.document_code\nJOIN Document_Structures ON Documents.document_structure_code = Document_Structures.document_structure_code\nWHERE Documents.document_name = 'John CV'\n  AND Documents.document_type_code = 'CV'\n  AND (Documents.access_count IS NULL OR Documents.access_count <= 5924)\n  AND Document_Sections.section_title = 'after'\n  AND Document_Sections.section_sequence = 8548\n  AND Document_Sections.section_code = '49'\n  AND Document_Structures.document_structure_description = 'Author'\n  AND Document_Structures.parent_document_structure_code = '8'",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.03
+    },
+    {
+      "uid": "2ae9f8fc-05b7-4308-b1d1-c4dc21913a83",
+      "question": "Which books have an author section and contain content where the section code is exactly 22?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nJOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code\nJOIN document_sections ON documents.document_code = document_sections.document_code\nWHERE document_sections.section_code = '22' AND documents.document_type_code = 'Book' AND document_structures.document_structure_description = 'Author section'",
+      "pred_sql": "SELECT d.document_code\nFROM Documents d\nWHERE d.document_type_code = 'book'\nAND EXISTS (\n    SELECT 1\n    FROM Document_Sections ds1\n    WHERE ds1.document_code = d.document_code\n      AND ds1.section_title = 'author'\n)\nAND EXISTS (\n    SELECT 1\n    FROM Document_Sections ds2\n    WHERE ds2.document_code = d.document_code\n      AND ds2.section_code = '22'\n)",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "uid": "45354dc2-93a5-4abb-91d5-69dfbb2cf999",
+      "question": "Which documents have a section with section code 91?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nJOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code\nJOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code\nJOIN document_sections ON documents.document_code = document_sections.document_code\nWHERE document_sections.section_code = '91'",
+      "pred_sql": "SELECT Documents.document_code\nFROM Documents\nJOIN Document_Sections ON Documents.document_code = Document_Sections.document_code\nWHERE Document_Sections.section_code = '91'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.89
+    },
+    {
+      "uid": "64eae8aa-2f1b-475c-9032-44f68ff33865",
+      "question": "Which documents named John CV have an Author section with parent structure code 8, access count at most 5924, and include section code 93 with sequence number at most 4964?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nJOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code\nJOIN document_sections ON documents.document_code = document_sections.document_code\nWHERE document_structures.parent_document_structure_code = '8' AND documents.document_name = 'John CV' AND documents.access_count <= 5924 AND document_structures.document_structure_description = 'Author section' AND document_sections.section_sequence <= 4964 AND document_sections.section_code = '93'",
+      "pred_sql": "SELECT d.document_code\nFROM Documents d\nJOIN Document_Structures ds ON d.document_structure_code = ds.document_structure_code\nWHERE d.document_name = 'John CV'\n  AND ds.parent_document_structure_code = '8'\n  AND d.access_count <= 5924\n  AND EXISTS (\n    SELECT 1\n    FROM Document_Sections s1\n    WHERE s1.document_code = d.document_code\n      AND s1.section_title = 'Author'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Document_Sections s2\n    WHERE s2.document_code = d.document_code\n      AND s2.section_code = '93'\n      AND s2.section_sequence <= 4964\n  )",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.8
+    },
+    {
+      "uid": "afac3eca-d132-4960-8147-65b4d418f946",
+      "question": "What documents named David CV have a type of CV and have been accessed at most 6345 times?",
+      "gold_sql": "SELECT documents.document_code FROM documents\nWHERE documents.access_count <= 6345 AND documents.document_type_code = 'CV' AND documents.document_name = 'David CV'",
+      "pred_sql": "SELECT document_code\nFROM Documents\nWHERE document_name = 'David CV'\n  AND document_type_code = 'CV'\n  AND access_count <= 6345",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    }
+  ]
+}

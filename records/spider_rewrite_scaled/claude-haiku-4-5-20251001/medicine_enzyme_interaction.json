@@ -1,0 +1,36 @@
+{
+  "db_id": "medicine_enzyme_interaction",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 2,
+  "n_correct": 0,
+  "accuracy": 0.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:06:09.186354+00:00",
+  "records": [
+    {
+      "uid": "0e06f6a0-cee0-4a1c-a09e-144b24fe1f7b",
+      "question": "Which FDA approved medicines with the trade name Saphris interact with the enzyme that produces \u03b4-Aminolevulinic acid?",
+      "gold_sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.product = '\u03b4-Aminolevulinic acid' AND medicine.fda_approved = 'Yes' AND medicine.trade_name = 'Saphris'",
+      "pred_sql": "SELECT m.id\nFROM medicine m\nJOIN medicine_enzyme_interaction mei ON m.id = mei.medicine_id\nJOIN enzyme e ON mei.enzyme_id = e.id\nWHERE m.Trade_Name = 'Saphris'\nAND m.FDA_approved = 'yes'\nAND e.Product = '\u03b4-Aminolevulinic acid'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "6ffc6f07-73f6-4c80-96ef-0b5bab4b9313",
+      "question": "Which medicines named Carpipramine that are not FDA approved act as inhibitors of ALA dehydratase, where that enzyme produces Porphobilinogen and is located on chromosome 9q34?",
+      "gold_sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.product = 'Porphobilinogen' AND enzyme.name = 'ALA dehydratase' AND medicine.fda_approved = 'No' AND enzyme.chromosome = '9q34' AND medicine.name = 'Carpipramine' AND medicine_enzyme_interaction.interaction_type = 'inhibitor'",
+      "pred_sql": "SELECT m.id\nFROM medicine m\nJOIN medicine_enzyme_interaction mei ON m.id = mei.medicine_id\nJOIN enzyme e ON mei.enzyme_id = e.id\nWHERE m.name = 'Carpipramine'\nAND m.FDA_approved = 'no'\nAND mei.interaction_type = 'inhibitor'\nAND e.name = 'ALA dehydratase'\nAND e.Product = 'Porphobilinogen'\nAND e.Chromosome = '9q34'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.42
+    }
+  ]
+}

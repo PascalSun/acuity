@@ -42,6 +42,8 @@ python -m talk2metadata.cli analysis wamex generate-qa --db wamex.sqlite --mode 
 | Cross-vendor judge check | `results/crossvendor_judge_spider.json` | `scripts/crossvendor_judge.py` |
 | Target-sensitivity (Result 1, π_S interpolation) | `results/pis_sensitivity_spider.json` | `scripts/pis_sensitivity.py` |
 | Rank-stability bootstrap (Section 7 regime inversion) | `results/rank_stability_realdb.json` | `scripts/rank_stability_bootstrap.py` |
+| Scaled register control (Result 3, n=709) | `results/register_control_scaled.json`, `records/spider_rewrite_scaled/` | `scripts/rewrite_register_scaled.py`, `scripts/register_control_scaled.py` |
+| QATCH head-to-head (Related Work) | `results/qatch_headtohead.json`, `records/spider_qatch/` | `scripts/qatch_headtohead.py`, `scripts/qatch_generate.py` |
 | Cost accounting | `results/cost_reconstruction.json` | `scripts/cost_reconstruction.py` |
 | Memorization probe | `results/contamination_probe_full.json` | see `generator/` probe module |
 

@@ -1,0 +1,58 @@
+{
+  "db_id": "real_estate_properties",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:07.313698+00:00",
+  "records": [
+    {
+      "uid": "9695501a-4064-4008-8075-423d2516ccf4",
+      "question": "Which feature types include the Pool feature?",
+      "gold_sql": "SELECT ref_feature_types.feature_type_code FROM ref_feature_types\nJOIN other_available_features ON ref_feature_types.feature_type_code = other_available_features.feature_type_code\nWHERE other_available_features.feature_name = 'Pool'",
+      "pred_sql": "SELECT DISTINCT r.feature_type_code \nFROM Ref_Feature_Types r \nJOIN Other_Available_Features o ON r.feature_type_code = o.feature_type_code \nWHERE o.feature_name = 'Pool'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02
+    },
+    {
+      "uid": "9f72f612-d4de-45aa-98e9-f1c417b6e55c",
+      "question": "Which feature types are associated with a feature named BurglarAlarm that has the description exactly Burglar Alarm?",
+      "gold_sql": "SELECT ref_feature_types.feature_type_code FROM ref_feature_types\nJOIN other_available_features ON ref_feature_types.feature_type_code = other_available_features.feature_type_code\nWHERE other_available_features.feature_description = 'Burglar Alarm' AND other_available_features.feature_name = 'BurglarAlarm'",
+      "pred_sql": "SELECT DISTINCT r.feature_type_code \nFROM Ref_Feature_Types r \nJOIN Other_Available_Features o ON r.feature_type_code = o.feature_type_code \nWHERE o.feature_description = 'Burglar Alarm' AND o.feature_name = 'BurglarAlarm'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "a7a03118-af39-4996-87aa-466240a2e3ba",
+      "question": "Which feature types include the feature named AirCon with a description that is Air Conditioning.?",
+      "gold_sql": "SELECT ref_feature_types.feature_type_code FROM ref_feature_types\nJOIN other_available_features ON ref_feature_types.feature_type_code = other_available_features.feature_type_code\nWHERE other_available_features.feature_name = 'AirCon' AND other_available_features.feature_description = 'Air Conditioning.'",
+      "pred_sql": "SELECT DISTINCT Ref_Feature_Types.feature_type_code\nFROM Ref_Feature_Types\nJOIN Other_Available_Features ON Ref_Feature_Types.feature_type_code = Other_Available_Features.feature_type_code\nWHERE Other_Available_Features.feature_name = 'AirCon' \nAND Other_Available_Features.feature_description = 'Air Conditioning.'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "db86083c-ae65-4a68-829b-a98bb38e7de5",
+      "question": "Which feature types have a Pool where the feature description is \"Swimming Pool.\"?",
+      "gold_sql": "SELECT ref_feature_types.feature_type_code FROM ref_feature_types\nJOIN other_available_features ON ref_feature_types.feature_type_code = other_available_features.feature_type_code\nWHERE other_available_features.feature_description = 'Swimming Pool.' AND other_available_features.feature_name = 'Pool'",
+      "pred_sql": "SELECT DISTINCT r.feature_type_code \nFROM Ref_Feature_Types r \nJOIN Other_Available_Features o ON r.feature_type_code = o.feature_type_code \nWHERE o.feature_description = 'Swimming Pool.' AND o.feature_name = 'Pool'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.2
+    }
+  ]
+}

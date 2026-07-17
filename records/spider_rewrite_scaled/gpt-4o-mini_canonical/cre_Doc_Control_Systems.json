@@ -1,0 +1,102 @@
+{
+  "db_id": "cre_Doc_Control_Systems",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 8,
+  "n_correct": 8,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:25:22.658158+00:00",
+  "records": [
+    {
+      "uid": "04bcc6f4-5a8e-413b-a2e9-7c5d9d202e63",
+      "question": "Which documents have a status of currently working on, a receipt date on or after 1996-07-27 03:30:40, receipt number 189, and other details exactly x?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_document_status ON documents.document_status_code = ref_document_status.document_status_code\nWHERE ref_document_status.document_status_description = 'currently working on' AND documents.receipt_date >= '1996-07-27 03:30:40' AND documents.receipt_number = '189' AND documents.other_details = 'x'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents\nJOIN Ref_Document_Status ON documents.document_status_code = Ref_Document_Status.document_status_code\nWHERE documents.receipt_date >= '1996-07-27 03:30:40'\nAND documents.receipt_number = '189'\nAND documents.other_details = 'x'\nAND Ref_Document_Status.document_status_description = 'currently working on'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "0906a2d5-e9cd-47d8-a367-19ffd6e1e40b",
+      "question": "Which documents have receipt number 124 and receipt date 1999-04-17 14:19:32, have other details as b, are currently working on status, were mailed on or before 1971-11-03 12:32:14, and were handled by Fedex with shipping agent description k?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_shipping_agents ON documents.shipping_agent_code = ref_shipping_agents.shipping_agent_code\nJOIN ref_document_status ON documents.document_status_code = ref_document_status.document_status_code\nJOIN documents_mailed ON documents.document_id = documents_mailed.document_id\nWHERE ref_shipping_agents.shipping_agent_name = 'Fedex' AND documents.other_details = 'b' AND ref_document_status.document_status_description = 'currently working on' AND documents_mailed.mailing_date <= '1971-11-03 12:32:14' AND documents.receipt_number = '124' AND documents.receipt_date = '1999-04-17 14:19:32' AND ref_shipping_agents.shipping_agent_description = 'k'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents AS documents\nJOIN Ref_Shipping_Agents AS shipping_agents ON documents.shipping_agent_code = shipping_agents.shipping_agent_code\nJOIN Ref_Document_Status AS document_status ON documents.document_status_code = document_status.document_status_code\nJOIN Documents_Mailed AS documents_mailed ON documents.document_id = documents_mailed.document_id\nWHERE documents.other_details = 'b'\nAND documents.receipt_number = '124'\nAND documents.receipt_date = '1999-04-17 14:19:32'\nAND shipping_agents.shipping_agent_name = 'Fedex'\nAND shipping_agents.shipping_agent_description = 'k'\nAND document_status.document_status_description = 'currently working on'\nAND documents_mailed.mailing_date <= '1971-11-03 12:32:14'",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.53
+    },
+    {
+      "uid": "2b85dde6-4fdf-4696-b1d5-1e97f43d313c",
+      "question": "Which documents have a type description of b, are handled by UPS with a shipping agent description of g, have other details exactly as z, and have draft details exactly as k?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_shipping_agents ON documents.shipping_agent_code = ref_shipping_agents.shipping_agent_code\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN document_drafts ON documents.document_id = document_drafts.document_id\nWHERE ref_document_types.document_type_description = 'b' AND ref_shipping_agents.shipping_agent_description = 'g' AND ref_shipping_agents.shipping_agent_name = 'UPS' AND documents.other_details = 'z' AND document_drafts.draft_details = 'k'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents AS documents\nJOIN Ref_Shipping_Agents AS shipping_agents ON documents.shipping_agent_code = shipping_agents.shipping_agent_code\nJOIN Ref_Document_Types AS document_types ON documents.document_type_code = document_types.document_type_code\nJOIN Document_Drafts AS document_drafts ON documents.document_id = document_drafts.document_id\nWHERE documents.other_details = 'z'\n  AND shipping_agents.shipping_agent_description = 'g'\n  AND shipping_agents.shipping_agent_name = 'UPS'\n  AND document_types.document_type_description = 'b'\n  AND document_drafts.draft_details = 'k'",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "66d641f0-6e93-4828-86da-bd65ab059eae",
+      "question": "Which documents have a receipt number of 37?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nWHERE documents.receipt_number = '37'",
+      "pred_sql": "SELECT documents.document_id FROM Documents WHERE receipt_number = '37'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    },
+    {
+      "uid": "7a331895-fdf4-4c08-8be1-0d93fdfd95c7",
+      "question": "Which documents have a document type of f, shipping agent k, receipt number of 114, other details of j, and a receipt date on or before 2005-09-30 00:10:02?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_shipping_agents ON documents.shipping_agent_code = ref_shipping_agents.shipping_agent_code\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nWHERE ref_document_types.document_type_description = 'f' AND ref_shipping_agents.shipping_agent_description = 'k' AND documents.receipt_date <= '2005-09-30 00:10:02' AND documents.receipt_number = '114' AND documents.other_details = 'j'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents AS documents\nJOIN Ref_Shipping_Agents AS shipping_agents ON documents.shipping_agent_code = shipping_agents.shipping_agent_code\nJOIN Ref_Document_Types AS document_types ON documents.document_type_code = document_types.document_type_code\nWHERE documents.receipt_date <= '2005-09-30 00:10:02'\nAND documents.receipt_number = '114'\nAND documents.other_details = 'j'\nAND shipping_agents.shipping_agent_description = 'k'\nAND document_types.document_type_description = 'f'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.75
+    },
+    {
+      "uid": "bae763be-f889-46e7-93bc-6c3604192cad",
+      "question": "Which documents have a receipt number exactly 55, other details exactly p, and were received on or after 1983-09-26 09:32:56?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nWHERE documents.receipt_date >= '1983-09-26 09:32:56' AND documents.receipt_number = '55' AND documents.other_details = 'p'",
+      "pred_sql": "SELECT documents.document_id FROM Documents WHERE receipt_date >= '1983-09-26 09:32:56' AND receipt_number = '55' AND other_details = 'p'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    },
+    {
+      "uid": "c0ba62ca-f2d0-4e6b-a3b2-5841a0486085",
+      "question": "Which documents were handled by the shipping agent USPS and have associated drafts?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_shipping_agents ON documents.shipping_agent_code = ref_shipping_agents.shipping_agent_code\nJOIN ref_document_status ON documents.document_status_code = ref_document_status.document_status_code\nJOIN document_drafts ON documents.document_id = document_drafts.document_id\nWHERE ref_shipping_agents.shipping_agent_name = 'USPS'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents\nJOIN Ref_Shipping_Agents ON documents.shipping_agent_code = Ref_Shipping_Agents.shipping_agent_code\nJOIN Ref_Document_Status ON documents.document_status_code = Ref_Document_Status.document_status_code\nJOIN Document_Drafts ON documents.document_id = Document_Drafts.document_id\nWHERE Ref_Shipping_Agents.shipping_agent_name = 'USPS'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    },
+    {
+      "uid": "d2255ac8-7dbe-4716-983b-9f2492efab67",
+      "question": "Which documents with receipt number 80 and other details exactly q were mailed using USPS with description q on or after 1973-11-05 21:48:53?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_shipping_agents ON documents.shipping_agent_code = ref_shipping_agents.shipping_agent_code\nJOIN ref_document_status ON documents.document_status_code = ref_document_status.document_status_code\nWHERE ref_document_status.document_status_description = 'mailed' AND ref_shipping_agents.shipping_agent_name = 'USPS' AND ref_shipping_agents.shipping_agent_description = 'q' AND documents.receipt_number = '80' AND documents.receipt_date >= '1973-11-05 21:48:53' AND documents.other_details = 'q'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents AS documents\nJOIN Ref_Shipping_Agents AS shipping_agents ON documents.shipping_agent_code = shipping_agents.shipping_agent_code\nJOIN Ref_Document_Status AS document_status ON documents.document_status_code = document_status.document_status_code\nWHERE documents.receipt_number = '80'\nAND documents.receipt_date >= '1973-11-05 21:48:53'\nAND documents.other_details = 'q'\nAND shipping_agents.shipping_agent_name = 'USPS'\nAND shipping_agents.shipping_agent_description = 'q'\nAND document_status.document_status_description = 'mailed'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    }
+  ]
+}

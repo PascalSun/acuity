@@ -1,0 +1,69 @@
+{
+  "db_id": "customers_and_addresses",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 5,
+  "n_correct": 3,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:31:53.042039+00:00",
+  "records": [
+    {
+      "uid": "0c6248e8-70de-4e73-a2b2-0a84fc6a3875",
+      "question": "Which customers named Tillman Ernser who pay by Cheque became customers on or before 2018-02-28 11:37:44 and have a Residential address that started no later than 2010-12-26 08:52:50 and is exactly on 1979-07-16 18:22:39?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_addresses ON customers.customer_id = customer_addresses.customer_id\nWHERE customer_addresses.date_address_to = '1979-07-16 18:22:39' AND customer_addresses.date_address_from <= '2010-12-26 08:52:50' AND customers.customer_name = 'Tillman Ernser' AND customers.payment_method = 'Cheque' AND customer_addresses.address_type = 'Residential' AND customers.date_became_customer <= '2018-02-28 11:37:44'",
+      "pred_sql": "SELECT c.customer_id\nFROM Customers c\nJOIN Customer_Addresses ca ON c.customer_id = ca.customer_id\nWHERE c.customer_name = 'Tillman Ernser'\n  AND c.payment_method = 'Cheque'\n  AND c.date_became_customer <= '2018-02-28 11:37:44'\n  AND ca.address_type = 'Residential'\n  AND ca.date_address_from <= '2010-12-26 08:52:50'\n  AND ca.date_address_from = '1979-07-16 18:22:39'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.26
+    },
+    {
+      "uid": "70662ccc-36c0-4a9e-9e43-ed41431d6988",
+      "question": "Which customers became customers on or before 2018-03-08 01:17:31, whose residential address ended exactly on 2010-05-08 10:00:17, and whose contact number 542.983.0224 was active at most until 2018-03-15 02:34:01?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_addresses ON customers.customer_id = customer_addresses.customer_id\nJOIN customer_contact_channels ON customers.customer_id = customer_contact_channels.customer_id\nWHERE customer_addresses.date_address_to = '2010-05-08 10:00:17' AND customer_addresses.address_type = 'Residential' AND customer_contact_channels.active_to_date <= '2018-03-15 02:34:01' AND customer_contact_channels.contact_number = '542.983.0224' AND customers.date_became_customer <= '2018-03-08 01:17:31'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Customer_Addresses ca ON c.customer_id = ca.customer_id\nJOIN Customer_Contact_Channels ccc ON c.customer_id = ccc.customer_id\nWHERE c.date_became_customer <= '2018-03-08 01:17:31'\n  AND ca.address_type = 'residential'\n  AND ca.date_address_to = '2010-05-08 10:00:17'\n  AND ccc.contact_number = '542.983.0224'\n  AND ccc.active_to_date <= '2018-03-15 02:34:01'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "uid": "7d3bf73b-3af2-464b-b01c-ffd596ac6f9b",
+      "question": "Which customers pay by Cheque and can be contacted through Handheld?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_contact_channels ON customers.customer_id = customer_contact_channels.customer_id\nWHERE customer_contact_channels.channel_code = 'Handheld' AND customers.payment_method = 'Cheque'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Customer_Contact_Channels cc ON c.customer_id = cc.customer_id\nWHERE c.payment_method = 'Cheque'\n  AND cc.channel_code = 'Handheld'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "90ce6e18-7dfc-4daf-ac5e-195084999a23",
+      "question": "Who are the customers named Prof. Ibrahim Bashirian who pay with Cash, have a Billing address, became customers on or before 2018-03-15 02:54:27, and use a Handheld contact channel with number 1-687-190-8968x63811 that was active on or before 2018-03-04 13:35:57?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_addresses ON customers.customer_id = customer_addresses.customer_id\nJOIN customer_contact_channels ON customers.customer_id = customer_contact_channels.customer_id\nWHERE customers.payment_method = 'Cash' AND customer_contact_channels.channel_code = 'Handheld' AND customer_contact_channels.contact_number = '1-687-190-8968x63811' AND customers.date_became_customer <= '2018-03-15 02:54:27' AND customer_contact_channels.active_to_date <= '2018-03-04 13:35:57' AND customer_addresses.address_type = 'Billing' AND customers.customer_name = 'Prof. Ibrahim Bashirian'",
+      "pred_sql": "SELECT c.customer_id\nFROM Customers c\nJOIN Customer_Addresses ca ON c.customer_id = ca.customer_id\nJOIN Customer_Contact_Channels ccc ON c.customer_id = ccc.customer_id\nWHERE c.customer_name = 'Prof. Ibrahim Bashirian'\n  AND c.payment_method = 'Cash'\n  AND ca.address_type = 'Billing'\n  AND c.date_became_customer <= '2018-03-15 02:54:27'\n  AND ccc.channel_code = 'Handheld'\n  AND ccc.contact_number = '1-687-190-8968x63811'\n  AND ccc.active_from_date <= '2018-03-04 13:35:57'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "uid": "de05a1cc-f2c4-4493-ab5c-277b88f9230a",
+      "question": "Which customers became customers exactly on 2018-03-08 01:17:31 and have addresses at 41632 Kerluke Field, East Pascale, Texas, USA where they lived there starting on or after 2003-07-08 05:33:19 and ending on or before 2010-05-08 10:00:17?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_addresses ON customers.customer_id = customer_addresses.customer_id\nJOIN addresses ON customer_addresses.address_id = addresses.address_id\nWHERE customer_addresses.date_address_from >= '2003-07-08 05:33:19' AND addresses.address_content = '41632 Kerluke Field' AND addresses.city = 'East Pascale' AND customers.date_became_customer = '2018-03-08 01:17:31' AND customer_addresses.date_address_to <= '2010-05-08 10:00:17' AND addresses.state_province_county = 'Texas' AND addresses.country = 'USA'",
+      "pred_sql": "SELECT c.customer_id\nFROM Customers c\nJOIN Customer_Addresses ca ON c.customer_id = ca.customer_id\nJOIN Addresses a ON ca.address_id = a.address_id\nWHERE c.date_became_customer = '2018-03-08 01:17:31'\n  AND a.address_content = '41632 Kerluke Field'\n  AND a.city = 'East Pascale'\n  AND a.state_province_county = 'Texas'\n  AND a.country = 'USA'\n  AND ca.date_address_from >= '2003-07-08 05:33:19'\n  AND ca.date_address_to <= '2010-05-08 10:00:17'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.39
+    }
+  ]
+}

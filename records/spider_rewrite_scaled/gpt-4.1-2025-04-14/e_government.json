@@ -1,0 +1,69 @@
+{
+  "db_id": "e_government",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 5,
+  "n_correct": 4,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:25:44.575120+00:00",
+  "records": [
+    {
+      "uid": "00d368a6-8f45-4c18-8959-3960ed0fe741",
+      "question": "Which parties have addresses in Colorado?",
+      "gold_sql": "SELECT parties.party_id FROM parties\nJOIN party_addresses ON parties.party_id = party_addresses.party_id\nJOIN addresses ON party_addresses.address_id = addresses.address_id\nWHERE addresses.state_province_county = 'Colorado'",
+      "pred_sql": "SELECT Parties.party_id\nFROM Parties\nJOIN Party_Addresses ON Parties.party_id = Party_Addresses.party_id\nJOIN Addresses ON Party_Addresses.address_id = Addresses.address_id\nWHERE Addresses.state_province_county = 'Colorado'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    },
+    {
+      "uid": "097f4bfa-7b55-4be3-a3d7-04d3d2c13d9b",
+      "question": "Who are the parties with email alanna.boehm@example.net and phone 529-074-5348 that pay by Cheque and have a Residence address that was valid since at least 2016-05-24 08:11:04 and ended exactly on 2018-03-04 08:34:45?",
+      "gold_sql": "SELECT parties.party_id FROM parties\nJOIN party_addresses ON parties.party_id = party_addresses.party_id\nWHERE party_addresses.date_address_from >= '2016-05-24 08:11:04' AND parties.party_email = 'alanna.boehm@example.net' AND party_addresses.address_type_code = 'Residence' AND party_addresses.date_address_to = '2018-03-04 08:34:45' AND parties.payment_method_code = 'Cheque' AND parties.party_phone = '529-074-5348'",
+      "pred_sql": "SELECT Parties.party_id\nFROM Parties\nJOIN Party_Addresses ON Parties.party_id = Party_Addresses.party_id\nWHERE Parties.party_email = 'alanna.boehm@example.net'\n  AND Parties.party_phone = '529-074-5348'\n  AND Parties.payment_method_code = 'Cheque'\n  AND Party_Addresses.address_type_code = 'Residence'\n  AND Party_Addresses.date_address_from <= '2016-05-24 08:11:04'\n  AND Party_Addresses.date_address_to = '2018-03-04 08:34:45'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "57a9164b-ad55-4c4d-8be9-9ad1a216b9ba",
+      "question": "Which parties pay with cash, have the phone number (919)169-1514x55820 and email erick.mills@example.com, and had an address in Cletusbury, Georgia, USA starting from at least 2017-02-07 02:51:33 and ending exactly 2018-02-27 09:21:41?",
+      "gold_sql": "SELECT parties.party_id FROM parties\nJOIN party_addresses ON parties.party_id = party_addresses.party_id\nJOIN addresses ON party_addresses.address_id = addresses.address_id\nWHERE parties.party_phone = '(919)169-1514x55820' AND parties.payment_method_code = 'Cash' AND parties.party_email = 'erick.mills@example.com' AND addresses.country = 'USA' AND addresses.state_province_county = 'Georgia' AND party_addresses.date_address_from >= '2017-02-07 02:51:33' AND party_addresses.date_address_to = '2018-02-27 09:21:41' AND addresses.town_city = 'Cletusbury'",
+      "pred_sql": "SELECT Parties.party_id\nFROM Parties\nJOIN Party_Addresses ON Parties.party_id = Party_Addresses.party_id\nJOIN Addresses ON Party_Addresses.address_id = Addresses.address_id\nWHERE Parties.payment_method_code = 'cash'\n  AND Parties.party_phone = '(919)169-1514x55820'\n  AND Parties.party_email = 'erick.mills@example.com'\n  AND Addresses.town_city = 'Cletusbury'\n  AND Addresses.state_province_county = 'Georgia'\n  AND Addresses.country = 'USA'\n  AND Party_Addresses.date_address_from <= '2017-02-07 02:51:33'\n  AND Party_Addresses.date_address_to = '2018-02-27 09:21:41'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    },
+    {
+      "uid": "7ebaac4c-c795-4738-be74-87e17cbda54a",
+      "question": "Which parties pay by Direct Debit, have phone number 186-726-9855, have Work In Progress forms that started no later than 2017-12-04 18:20:10 and were fully completed on or after 2018-01-31 17:09:32, and have services with a service date exactly on 2018-03-08 23:52:44 that were booked by 2018-03-25 12:56:09?",
+      "gold_sql": "SELECT parties.party_id FROM parties\nJOIN party_forms ON parties.party_id = party_forms.party_id\nJOIN party_services ON parties.party_id = party_services.customer_id\nWHERE party_forms.form_status_code = 'Work In Progress' AND parties.payment_method_code = 'Direct Debit' AND parties.party_phone = '186-726-9855' AND party_forms.date_fully_completed >= '2018-01-31 17:09:32' AND party_services.booking_made_date <= '2018-03-25 12:56:09' AND party_forms.date_completion_started <= '2017-12-04 18:20:10' AND party_services.service_datetime = '2018-03-08 23:52:44'",
+      "pred_sql": "SELECT Parties.party_id\nFROM Parties\nJOIN Party_Forms ON Parties.party_id = Party_Forms.party_id\nJOIN Party_Services ON Parties.party_id = Party_Services.customer_id\nWHERE Parties.payment_method_code = 'Direct Debit'\n  AND Parties.party_phone = '186-726-9855'\n  AND Party_Forms.form_status_code = 'Work In Progress'\n  AND Party_Forms.date_completion_started <= '2017-12-04 18:20:10'\n  AND Party_Forms.date_fully_completed >= '2018-01-31 17:09:32'\n  AND Party_Services.service_datetime = '2018-03-08 23:52:44'\n  AND (Party_Services.booking_made_date IS NULL OR Party_Services.booking_made_date <= '2018-03-25 12:56:09')",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.67
+    },
+    {
+      "uid": "9c063859-0b4e-4561-879c-8cf004861a76",
+      "question": "Which parties have the payment method Credit Card, the email daniel.charity@example.net, and started completing their form on or after 2017-12-04 16:57:31?",
+      "gold_sql": "SELECT parties.party_id FROM parties\nJOIN party_addresses ON parties.party_id = party_addresses.party_id\nJOIN party_forms ON parties.party_id = party_forms.party_id\nWHERE party_forms.date_completion_started >= '2017-12-04 16:57:31' AND parties.payment_method_code = 'Credit Card' AND parties.party_email = 'daniel.charity@example.net'",
+      "pred_sql": "SELECT Parties.party_id\nFROM Parties\nJOIN Party_Forms ON Parties.party_id = Party_Forms.party_id\nWHERE Parties.payment_method_code = 'Credit Card'\n  AND Parties.party_email = 'daniel.charity@example.net'\n  AND Party_Forms.date_completion_started >= '2017-12-04 16:57:31'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    }
+  ]
+}

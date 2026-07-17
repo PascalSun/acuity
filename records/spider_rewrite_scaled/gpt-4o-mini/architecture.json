@@ -1,0 +1,36 @@
+{
+  "db_id": "architecture",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 2,
+  "n_correct": 1,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:38:36.458236+00:00",
+  "records": [
+    {
+      "uid": "3bd92c20-2180-478e-8e1e-0c3ddfa9f3bd",
+      "question": "Who is Mies Van Der Rohe among American male architects?",
+      "gold_sql": "SELECT architect.id FROM architect\nWHERE architect.nationality LIKE '%American%' AND architect.name = 'Mies Van Der Rohe' AND architect.gender = 'male'",
+      "pred_sql": "SELECT architect.id FROM architect WHERE name = 'Mies Van Der Rohe' AND nationality = 'American' AND gender = 'male'",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    },
+    {
+      "uid": "cce330c9-a3d9-4af8-880e-f5f0d1c14ed2",
+      "question": "Which male architect named Le Corbusier has a nationality containing French?",
+      "gold_sql": "SELECT architect.id FROM architect\nWHERE architect.nationality LIKE '%French%' AND architect.gender = 'male' AND architect.name = 'Le Corbusier'",
+      "pred_sql": "SELECT architect.id FROM architect WHERE name = 'Le Corbusier' AND gender = 'male' AND nationality LIKE '%French%'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    }
+  ]
+}

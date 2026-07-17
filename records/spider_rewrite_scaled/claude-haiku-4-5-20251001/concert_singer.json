@@ -1,0 +1,47 @@
+{
+  "db_id": "concert_singer",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:01:36.405508+00:00",
+  "records": [
+    {
+      "uid": "159c2163-5c39-4407-865a-9098c069d947",
+      "question": "Which stadium named Stark's Park is located at Raith Rovers and has a capacity of at least 10104, a lowest attendance exactly 1294, an average attendance of at least 2106, and a highest attendance of at most 4812?",
+      "gold_sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.name = 'Stark''s Park' AND stadium.highest <= 4812 AND stadium.average >= 2106 AND stadium.lowest = 1294 AND stadium.capacity >= 10104 AND stadium.location = 'Raith Rovers'",
+      "pred_sql": "SELECT \"Stadium_ID\" FROM \"stadium\" WHERE \"Name\" = 'Stark''s Park' AND \"Location\" = 'Raith Rovers' AND \"Capacity\" >= 10104 AND \"Lowest\" = 1294 AND \"Average\" >= 2106 AND \"Highest\" <= 4812",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "ab3dc1eb-1613-4c44-9f9b-90c42ac51179",
+      "question": "Which stadium called Glebe Park in Brechin City holds exactly 3960 people, has an average attendance of at most 552, a lowest attendance of exactly 315, and a highest attendance of at least 780?",
+      "gold_sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average <= 552 AND stadium.capacity = 3960 AND stadium.location = 'Brechin City' AND stadium.name = 'Glebe Park' AND stadium.lowest = 315 AND stadium.highest >= 780",
+      "pred_sql": "SELECT Stadium_ID FROM stadium WHERE Name = 'Glebe Park' AND Location = 'Brechin City' AND Capacity = 3960 AND Average <= 552 AND Lowest = 315 AND Highest >= 780",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.87
+    },
+    {
+      "uid": "b838e6c0-2466-48cc-bae1-28084fe930ec",
+      "question": "Which stadium named Gayfield Park in Arbroath has an average of exactly 638, a capacity of at least 4125, a highest value at most 921, and a lowest value no more than 411?",
+      "gold_sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average = 638 AND stadium.highest <= 921 AND stadium.location = 'Arbroath' AND stadium.name = 'Gayfield Park' AND stadium.capacity >= 4125 AND stadium.lowest <= 411",
+      "pred_sql": "SELECT Stadium_ID FROM stadium WHERE Name = 'Gayfield Park' AND Location = 'Arbroath' AND Average = 638 AND Capacity >= 4125 AND Highest <= 921 AND Lowest <= 411",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    }
+  ]
+}

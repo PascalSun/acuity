@@ -1,0 +1,47 @@
+{
+  "db_id": "ship_1",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 3,
+  "n_correct": 0,
+  "accuracy": 0.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:36:41.994267+00:00",
+  "records": [
+    {
+      "uid": "6df5392b-5303-4c18-a960-a9e765485249",
+      "question": "Which ships named HMS Gorgon flagged in Panama, built in 1998 or later, of type Panamax, and class Third-rate ship of the line have a Midshipman captain named Captain Beves Conway?",
+      "gold_sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama' AND captain.name = 'Captain Beves Conway' AND captain.rank = 'Midshipman' AND ship.type = 'Panamax' AND ship.name = 'HMS Gorgon' AND captain.class = 'Third-rate ship of the line' AND ship.built_year >= 1998.0",
+      "pred_sql": "SELECT Ship.Ship_ID\nFROM Ship\nJOIN captain ON Ship.Ship_ID = captain.Ship_ID\nWHERE Ship.Name = 'HMS Gorgon'\n  AND Ship.Flag = 'Panama'\n  AND Ship.Built_Year >= 1998\n  AND Ship.Type = 'Panamax'\n  AND Ship.Class = 'Third-rate ship of the line'\n  AND captain.Rank = 'Midshipman'\n  AND captain.Name = 'Captain Beves Conway'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.16
+    },
+    {
+      "uid": "aab10ca6-83c7-4367-b873-5fe1f23c63c6",
+      "question": "Which ships built in 1998 or later have the Panama flag, belong to class KR, and are captained by Lieutenant Montagu Verling?",
+      "gold_sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year >= 1998.0 AND ship.flag = 'Panama' AND captain.name = 'Lieutenant Montagu Verling' AND ship.class = 'KR'",
+      "pred_sql": "SELECT Ship.Ship_ID\nFROM Ship\nJOIN captain ON Ship.Ship_ID = captain.Ship_ID\nWHERE Ship.Built_Year >= 1998\n  AND Ship.Flag = 'Panama'\n  AND Ship.Class = 'KR'\n  AND captain.Rank = 'Lieutenant'\n  AND captain.Name = 'Montagu Verling'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "fe7477f1-9652-443f-b6a2-614dc266781b",
+      "question": "Which ships named HMS Gorgon were built in 1998 or earlier, have class KR, and are captained by Captain Gilbert Pears who is 60 years old and commands a Third-rate ship of the line?",
+      "gold_sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year <= 1998.0 AND ship.name = 'HMS Gorgon' AND captain.class = 'Third-rate ship of the line' AND captain.age = '60' AND ship.class = 'KR' AND captain.name = 'Captain Gilbert Pears'",
+      "pred_sql": "SELECT Ship.Ship_ID\nFROM Ship\nJOIN captain ON Ship.Ship_ID = captain.Ship_ID\nWHERE Ship.Name = 'HMS Gorgon'\n  AND Ship.Built_Year <= 1998\n  AND Ship.Class = 'KR'\n  AND captain.Name = 'Gilbert Pears'\n  AND captain.age = '60'\n  AND captain.Class = 'Third-rate ship of the line'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.65
+    }
+  ]
+}

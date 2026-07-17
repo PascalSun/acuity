@@ -1,0 +1,235 @@
+{
+ "design": "Scaled register control: stratified E/M/H sample of Acuity Spider questions rewritten toward natural register by a disjoint-provider rewriter (claude-sonnet-4-5, literal-gated, 2 attempts), evaluated under the paper's controlled protocol (schema DDL + question + required output columns, temperature 0, SET-semantics execution accuracy), paired per-uid against existing natural and canonical verdicts.",
+ "rewriter": "anthropic:claude-sonnet-4-5-20250929",
+ "seed": 42,
+ "gate": {
+  "n_sampled": 710,
+  "gate_fail_first_attempt": 3,
+  "dropped": 1,
+  "kept": 709,
+  "pass_rate": 0.9986,
+  "kept_per_tier": {
+   "E": 220,
+   "M": 220,
+   "H": 269
+  },
+  "sampled_per_tier": {
+   "E": 220,
+   "M": 220,
+   "H": 270
+  }
+ },
+ "models": [
+  "gpt-4.1-2025-04-14",
+  "gpt-4.1-mini",
+  "gpt-4o-mini",
+  "claude-sonnet-4-5-20250929",
+  "claude-haiku-4-5-20251001",
+  "gemini-2.5-flash"
+ ],
+ "per_model": {
+  "gpt-4.1-2025-04-14": {
+   "n_paired": 709,
+   "acc_rewritten": 0.763,
+   "acc_natural": 0.7616,
+   "acc_canonical": 0.9746,
+   "delta_rewritten_minus_natural": 0.0014,
+   "delta_ci95": [
+    -0.0169,
+    0.0197
+   ],
+   "gap_canonical_minus_rewritten": 0.2116,
+   "gap_canonical_minus_natural": 0.213,
+   "per_tier": {
+    "E": {
+     "n": 220,
+     "acc_rewritten": 0.8909,
+     "acc_natural": 0.8818,
+     "acc_canonical": 0.9818
+    },
+    "H": {
+     "n": 269,
+     "acc_rewritten": 0.6803,
+     "acc_natural": 0.684,
+     "acc_canonical": 0.9591
+    },
+    "M": {
+     "n": 220,
+     "acc_rewritten": 0.7364,
+     "acc_natural": 0.7364,
+     "acc_canonical": 0.9864
+    }
+   }
+  },
+  "gpt-4.1-mini": {
+   "n_paired": 709,
+   "acc_rewritten": 0.7433,
+   "acc_natural": 0.7532,
+   "acc_canonical": 0.9676,
+   "delta_rewritten_minus_natural": -0.0099,
+   "delta_ci95": [
+    -0.0296,
+    0.0099
+   ],
+   "gap_canonical_minus_rewritten": 0.2243,
+   "gap_canonical_minus_natural": 0.2144,
+   "per_tier": {
+    "E": {
+     "n": 220,
+     "acc_rewritten": 0.8818,
+     "acc_natural": 0.8773,
+     "acc_canonical": 0.9818
+    },
+    "H": {
+     "n": 269,
+     "acc_rewritten": 0.6617,
+     "acc_natural": 0.6803,
+     "acc_canonical": 0.9442
+    },
+    "M": {
+     "n": 220,
+     "acc_rewritten": 0.7045,
+     "acc_natural": 0.7182,
+     "acc_canonical": 0.9818
+    }
+   }
+  },
+  "gpt-4o-mini": {
+   "n_paired": 709,
+   "acc_rewritten": 0.7066,
+   "acc_natural": 0.7278,
+   "acc_canonical": 0.969,
+   "delta_rewritten_minus_natural": -0.0212,
+   "delta_ci95": [
+    -0.0451,
+    0.0028
+   ],
+   "gap_canonical_minus_rewritten": 0.2623,
+   "gap_canonical_minus_natural": 0.2412,
+   "per_tier": {
+    "E": {
+     "n": 220,
+     "acc_rewritten": 0.85,
+     "acc_natural": 0.8591,
+     "acc_canonical": 0.9818
+    },
+    "H": {
+     "n": 269,
+     "acc_rewritten": 0.6171,
+     "acc_natural": 0.6468,
+     "acc_canonical": 0.9517
+    },
+    "M": {
+     "n": 220,
+     "acc_rewritten": 0.6727,
+     "acc_natural": 0.6955,
+     "acc_canonical": 0.9773
+    }
+   }
+  },
+  "claude-sonnet-4-5-20250929": {
+   "n_paired": 709,
+   "acc_rewritten": 0.8237,
+   "acc_natural": 0.8406,
+   "acc_canonical": 0.9774,
+   "delta_rewritten_minus_natural": -0.0169,
+   "delta_ci95": [
+    -0.0353,
+    0.0014
+   ],
+   "gap_canonical_minus_rewritten": 0.1537,
+   "gap_canonical_minus_natural": 0.1368,
+   "per_tier": {
+    "E": {
+     "n": 220,
+     "acc_rewritten": 0.9091,
+     "acc_natural": 0.9227,
+     "acc_canonical": 0.9864
+    },
+    "H": {
+     "n": 269,
+     "acc_rewritten": 0.7472,
+     "acc_natural": 0.7807,
+     "acc_canonical": 0.9591
+    },
+    "M": {
+     "n": 220,
+     "acc_rewritten": 0.8318,
+     "acc_natural": 0.8318,
+     "acc_canonical": 0.9909
+    }
+   }
+  },
+  "claude-haiku-4-5-20251001": {
+   "n_paired": 709,
+   "acc_rewritten": 0.7504,
+   "acc_natural": 0.7588,
+   "acc_canonical": 0.969,
+   "delta_rewritten_minus_natural": -0.0085,
+   "delta_ci95": [
+    -0.0268,
+    0.0099
+   ],
+   "gap_canonical_minus_rewritten": 0.2186,
+   "gap_canonical_minus_natural": 0.2102,
+   "per_tier": {
+    "E": {
+     "n": 220,
+     "acc_rewritten": 0.8727,
+     "acc_natural": 0.8727,
+     "acc_canonical": 0.9773
+    },
+    "H": {
+     "n": 269,
+     "acc_rewritten": 0.658,
+     "acc_natural": 0.6729,
+     "acc_canonical": 0.9517
+    },
+    "M": {
+     "n": 220,
+     "acc_rewritten": 0.7409,
+     "acc_natural": 0.75,
+     "acc_canonical": 0.9818
+    }
+   }
+  },
+  "gemini-2.5-flash": {
+   "n_paired": 709,
+   "acc_rewritten": 0.787,
+   "acc_natural": 0.7786,
+   "acc_canonical": 0.9817,
+   "delta_rewritten_minus_natural": 0.0085,
+   "delta_ci95": [
+    -0.0113,
+    0.0296
+   ],
+   "gap_canonical_minus_rewritten": 0.1946,
+   "gap_canonical_minus_natural": 0.2031,
+   "per_tier": {
+    "E": {
+     "n": 220,
+     "acc_rewritten": 0.8955,
+     "acc_natural": 0.8727,
+     "acc_canonical": 0.9864
+    },
+    "H": {
+     "n": 269,
+     "acc_rewritten": 0.6952,
+     "acc_natural": 0.6952,
+     "acc_canonical": 0.9665
+    },
+    "M": {
+     "n": 220,
+     "acc_rewritten": 0.7909,
+     "acc_natural": 0.7864,
+     "acc_canonical": 0.9955
+    }
+   }
+  }
+ },
+ "notes": [
+  "canonical verdicts from existing records for 5 models; gpt-4o-mini canonical had no baseline records and was evaluated fresh under --use-canonical with the identical protocol",
+  "sampling pool restricted to the 1,504 uids carrying canonical-form verdicts, so all three forms are paired without re-evaluating natural/canonical baselines"
+ ],
+ "generated_at": "2026-07-17T09:31:37.811300+00:00"
+}

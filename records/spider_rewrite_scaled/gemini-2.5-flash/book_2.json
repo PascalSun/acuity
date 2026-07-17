@@ -1,0 +1,47 @@
+{
+  "db_id": "book_2",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 3,
+  "n_correct": 1,
+  "accuracy": 0.3333333333333333,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:11:42.014143+00:00",
+  "records": [
+    {
+      "uid": "1cf3aa9d-47ab-4858-b147-3c27917ff3b3",
+      "question": "Which books titled Bloody Mary : Lady Liberty by Garth Ennis with exactly 4 issues were published by Thomson Reuters in March 2008 and priced at most 6000000.0?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price <= 6000000.0 AND book.title = 'Bloody Mary : Lady Liberty' AND publication.publication_date = 'March 2008' AND book.issues = 4.0 AND book.writer = 'Garth Ennis' AND publication.publisher = 'Thomson Reuters'",
+      "pred_sql": "SELECT\n  T1.Book_ID\nFROM book AS T1\nINNER JOIN publication AS T2\n  ON T1.Book_ID = T2.Book_ID\nWHERE\n  T1.Title = 'Bloody Mary : Lady Liberty' AND T1.Writer = 'Garth Ennis' AND T1.Issues = 4 AND T2.Publisher = 'Thomson Reuters' AND T2.Publication_Date BETWEEN '2008-03-01' AND '2008-03-31' AND T2.Price <= 6000000.0",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.46
+    },
+    {
+      "uid": "b975fe48-0ac8-4fcd-8286-e9322bf86038",
+      "question": "Which books titled Dead Corps were written by Christopher Hinz and have at most 4.0 issues?",
+      "gold_sql": "SELECT book.book_id FROM book\nWHERE book.issues <= 4.0 AND book.writer = 'Christopher Hinz' AND book.title = 'Dead Corps'",
+      "pred_sql": "SELECT Book_ID FROM book WHERE Title = 'Dead Corps' AND Writer = 'Christopher Hinz' AND Issues <= 4.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "d625b612-e2ec-49c0-a525-390ff04c9830",
+      "question": "What books titled Cyberella, written by Howard Chaykin with at most 12 issues, were published by Wiley in October 2005 priced exactly 3000000.0?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Howard Chaykin' AND book.issues <= 12.0 AND publication.price = 3000000.0 AND publication.publication_date = 'October 2005' AND publication.publisher = 'Wiley' AND book.title = 'Cyberella'",
+      "pred_sql": "SELECT T1.Book_ID FROM book AS T1 INNER JOIN publication AS T2 ON T1.Book_ID = T2.Book_ID WHERE T1.Title = 'Cyberella' AND T1.Writer = 'Howard Chaykin' AND T1.Issues <= 12 AND T2.Publisher = 'Wiley' AND T2.Publication_Date LIKE '2005-10-%' AND T2.Price = 3000000.0",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.72
+    }
+  ]
+}

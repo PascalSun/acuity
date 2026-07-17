@@ -1,0 +1,80 @@
+{
+  "db_id": "hr_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:27:26.216391+00:00",
+  "records": [
+    {
+      "uid": "15b50995-0feb-4af4-81b0-c71cbfc05399",
+      "question": "Which Sales Representative jobs had an employee named Mattea Marvins with phone number 011.44.1346.329268 who was hired on or after 1987-08-20, earned a salary of at least 7200, had a commission percentage of at least 0.1, and whose job history ended exactly on 1998-12-31?",
+      "gold_sql": "SELECT jobs.job_id FROM jobs\nJOIN employees ON jobs.job_id = employees.job_id\nJOIN job_history ON jobs.job_id = job_history.job_id\nWHERE job_history.end_date = '1998-12-31' AND jobs.job_title = 'Sales Representative' AND employees.hire_date >= '1987-08-20' AND employees.salary >= 7200 AND employees.commission_pct >= 0.1 AND employees.last_name = 'Marvins' AND employees.first_name = 'Mattea' AND employees.phone_number = '011.44.1346.329268'",
+      "pred_sql": "SELECT jobs.job_id \nFROM jobs \nJOIN employees ON jobs.job_id = employees.job_id \nJOIN job_history ON jobs.job_id = job_history.job_id \nWHERE jobs.job_title = 'Sales Representative' \nAND employees.hire_date >= '1987-08-20' \nAND employees.salary >= 7200 \nAND employees.commission_pct >= 0.1 \nAND employees.last_name = 'Marvins' \nAND employees.first_name = 'Mattea' \nAND employees.phone_number = '011.44.1346.329268' \nAND job_history.end_date = '1998-12-31'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    },
+    {
+      "uid": "20bdcf3f-0e47-449d-b708-6a1b37d40d07",
+      "question": "Which Sales Representative jobs have a minimum salary of 6000 and maximum salary of 12000, where the employee has phone number 011.44.1343.629268, email WSMITH, and was hired on or after 1987-08-27?",
+      "gold_sql": "SELECT jobs.job_id FROM jobs\nJOIN employees ON jobs.job_id = employees.job_id\nWHERE jobs.min_salary = 6000 AND jobs.max_salary = 12000 AND employees.phone_number = '011.44.1343.629268' AND jobs.job_title = 'Sales Representative' AND employees.hire_date >= '1987-08-27' AND employees.email = 'WSMITH'",
+      "pred_sql": "SELECT jobs.job_id \nFROM jobs \nJOIN employees ON jobs.job_id = employees.job_id \nWHERE jobs.min_salary = 6000 \n  AND jobs.max_salary = 12000 \n  AND jobs.job_title = 'Sales Representative' \n  AND employees.phone_number = '011.44.1343.629268' \n  AND employees.hire_date >= '1987-08-27' \n  AND employees.email = 'WSMITH'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "26e35fab-4b77-400c-8704-2d5e58fc84f0",
+      "question": "Which Sales Representative jobs in the Sales department have a minimum salary of at least 6000 and a maximum salary of at most 12000, where the job history started on or after 1998-03-24 and ended on or after 1998-12-31?",
+      "gold_sql": "SELECT jobs.job_id FROM jobs\nJOIN job_history ON jobs.job_id = job_history.job_id\nJOIN departments ON job_history.department_id = departments.department_id\nWHERE departments.department_name = 'Sales' AND job_history.end_date >= '1998-12-31' AND jobs.min_salary >= 6000 AND job_history.start_date >= '1998-03-24' AND jobs.job_title = 'Sales Representative' AND jobs.max_salary <= 12000",
+      "pred_sql": "SELECT jobs.job_id \nFROM jobs \nJOIN job_history ON jobs.job_id = job_history.job_id \nJOIN departments ON job_history.department_id = departments.department_id \nWHERE jobs.min_salary >= 6000 \n  AND jobs.job_title = 'Sales Representative' \n  AND jobs.max_salary <= 12000 \n  AND job_history.end_date >= '1998-12-31' \n  AND job_history.start_date >= '1998-03-24' \n  AND departments.department_name = 'Sales'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "uid": "6ccdc594-fa38-49fc-bffb-bc6342684224",
+      "question": "Which jobs offer a maximum salary of at least 5000 and have an employee with email IMIKKILI who earns at least 2700 and has a commission percentage of at most 0.0?",
+      "gold_sql": "SELECT jobs.job_id FROM jobs\nJOIN employees ON jobs.job_id = employees.job_id\nWHERE jobs.max_salary >= 5000 AND employees.salary >= 2700 AND employees.email = 'IMIKKILI' AND employees.commission_pct <= 0.0",
+      "pred_sql": "SELECT DISTINCT jobs.JOB_ID \nFROM jobs \nJOIN employees ON jobs.JOB_ID = employees.JOB_ID \nWHERE jobs.MAX_SALARY >= 5000 \nAND employees.SALARY >= 2700 \nAND employees.EMAIL = 'IMIKKILI' \nAND (employees.COMMISSION_PCT IS NULL OR employees.COMMISSION_PCT <= 0.0)",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "9baf8e16-e095-4a10-a2b2-8cde4e964d1d",
+      "question": "Which jobs have employees who were hired exactly on 1987-07-24 with a commission percentage of exactly 0.0, a minimum salary of at most 2000, and job history that started on or before 1999-01-01 and ended on or after 1999-12-31?",
+      "gold_sql": "SELECT jobs.job_id FROM jobs\nJOIN employees ON jobs.job_id = employees.job_id\nJOIN job_history ON jobs.job_id = job_history.job_id\nWHERE employees.hire_date = '1987-07-24' AND job_history.start_date <= '1999-01-01' AND job_history.end_date >= '1999-12-31' AND employees.commission_pct = 0.0 AND jobs.min_salary <= 2000",
+      "pred_sql": "SELECT DISTINCT jobs.JOB_ID\nFROM jobs\nJOIN employees ON jobs.JOB_ID = employees.JOB_ID\nJOIN job_history ON jobs.JOB_ID = job_history.JOB_ID\nWHERE jobs.MIN_SALARY <= 2000\n  AND employees.HIRE_DATE = '1987-07-24'\n  AND employees.COMMISSION_PCT = 0.0\n  AND job_history.START_DATE <= '1999-01-01'\n  AND job_history.END_DATE >= '1999-12-31'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.94
+    },
+    {
+      "uid": "ac851daf-20d7-47f4-95b6-18d801a40e49",
+      "question": "Which jobs with the exact title Accounting Manager have been held by employees in their job history?",
+      "gold_sql": "SELECT jobs.job_id FROM jobs\nJOIN job_history ON jobs.job_id = job_history.job_id\nJOIN employees ON job_history.employee_id = employees.employee_id\nWHERE jobs.job_title = 'Accounting Manager'",
+      "pred_sql": "SELECT jobs.job_id \nFROM jobs \nJOIN job_history ON jobs.job_id = job_history.job_id \nJOIN employees ON job_history.employee_id = employees.employee_id \nWHERE jobs.job_title = 'Accounting Manager' \nGROUP BY jobs.job_id",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "db_id": "allergy_1",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 8,
+  "n_correct": 7,
+  "accuracy": 0.875,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:46:23.843842+00:00",
+  "records": [
+    {
+      "uid": "008e5f33-5a7d-4ff5-9a73-d94a4b9f90c8",
+      "question": "What food allergies does Sarah Smith have, the 20-year-old female student whose advisor is 8772?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.lname = 'Smith' AND allergy_type.allergytype = 'food' AND student.age = 20 AND student.sex = 'F' AND student.advisor = 8772 AND student.fname = 'Sarah'",
+      "pred_sql": "SELECT DISTINCT Allergy_Type.Allergy\nFROM Student\nJOIN Has_Allergy ON Student.StuID = Has_Allergy.StuID\nJOIN Allergy_Type ON Has_Allergy.Allergy = Allergy_Type.Allergy\nWHERE Student.Fname = 'Sarah' \n  AND Student.LName = 'Smith'\n  AND Student.Age = 20\n  AND Student.Sex = 'F'\n  AND Student.Advisor = 8772\n  AND Allergy_Type.AllergyType = 'food'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.62
+    },
+    {
+      "uid": "219509d6-c82f-4ddb-a99f-e10751bea2db",
+      "question": "What animal allergies does Linda Smith have if she's an 18-year-old female student from BAL with a major of at most 600?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.age = 18 AND student.sex = 'F' AND student.city_code = 'BAL' AND student.major <= 600 AND student.fname = 'Linda' AND student.lname = 'Smith' AND allergy_type.allergytype = 'animal'",
+      "pred_sql": "SELECT DISTINCT Allergy_Type.Allergy\nFROM Student\nJOIN Has_Allergy ON Student.StuID = Has_Allergy.StuID\nJOIN Allergy_Type ON Has_Allergy.Allergy = Allergy_Type.Allergy\nWHERE Student.Fname = 'Linda'\n  AND Student.LName = 'Smith'\n  AND Student.Age = 18\n  AND Student.Sex = 'F'\n  AND Student.city_code = 'BAL'\n  AND Student.Major <= 600\n  AND Allergy_Type.AllergyType = 'animal'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.56
+    },
+    {
+      "uid": "27ab945f-287a-4622-8537-4799a8adeb59",
+      "question": "Which allergies are classified as environmental?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nWHERE allergy_type.allergytype = 'environmental'",
+      "pred_sql": "SELECT Allergy FROM Allergy_Type WHERE AllergyType = 'environmental'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.88
+    },
+    {
+      "uid": "69414865-ef1f-430d-92a4-818986e554b0",
+      "question": "What environmental allergies does Ian have, the student from NYC who's majoring in 520 and has an advisor number at most 7271?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE allergy_type.allergytype = 'environmental' AND student.city_code = 'NYC' AND student.fname = 'Ian' AND student.advisor <= 7271 AND student.major = 520",
+      "pred_sql": "SELECT DISTINCT Allergy_Type.Allergy\nFROM Student\nJOIN Has_Allergy ON Student.StuID = Has_Allergy.StuID\nJOIN Allergy_Type ON Has_Allergy.Allergy = Allergy_Type.Allergy\nWHERE Student.Fname = 'Ian'\n  AND Student.city_code = 'NYC'\n  AND Student.Major = 520\n  AND Student.Advisor <= 7271\n  AND Allergy_Type.AllergyType = 'environmental'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.3
+    },
+    {
+      "uid": "917789f2-937c-483f-9f20-e9cc898f2b79",
+      "question": "Which food allergies are reported by students?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE allergy_type.allergytype = 'food'",
+      "pred_sql": "SELECT DISTINCT Allergy_Type.Allergy\nFROM Allergy_Type\nJOIN Has_Allergy ON Allergy_Type.Allergy = Has_Allergy.Allergy\nWHERE Allergy_Type.AllergyType = 'food'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.49
+    },
+    {
+      "uid": "a8d36f57-8861-44af-8a04-071a6fc12772",
+      "question": "What allergies does the student with last name Gompers who is 26 years old have?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.age = 26 AND student.lname = 'Gompers'",
+      "pred_sql": "SELECT DISTINCT Allergy_Type.Allergy\nFROM Student\nJOIN Has_Allergy ON Student.StuID = Has_Allergy.StuID\nJOIN Allergy_Type ON Has_Allergy.Allergy = Allergy_Type.Allergy\nWHERE Student.LName = 'Gompers' AND Student.Age = 26",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.97
+    },
+    {
+      "uid": "bbba97b1-8b78-4c88-a098-2006f4a147f1",
+      "question": "Which allergies are categorized exactly as food allergies?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nWHERE allergy_type.allergytype = 'food'",
+      "pred_sql": "SELECT Allergy FROM Allergy_Type WHERE AllergyType = 'food'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "e7e44ca8-3f04-405d-8574-dd10aad1459e",
+      "question": "What allergies do students named Stacy have if they're at most 18 years old, with a major number no more than 540 and an advisor number at most 7271?",
+      "gold_sql": "SELECT allergy_type.allergy FROM allergy_type\nJOIN has_allergy ON allergy_type.allergy = has_allergy.allergy\nJOIN student ON has_allergy.stuid = student.stuid\nWHERE student.fname = 'Stacy' AND student.age <= 18 AND student.major <= 540 AND student.advisor <= 7271",
+      "pred_sql": "SELECT DISTINCT Allergy_Type.Allergy\nFROM Student\nJOIN Has_Allergy ON Student.StuID = Has_Allergy.StuID\nJOIN Allergy_Type ON Has_Allergy.Allergy = Allergy_Type.Allergy\nWHERE Student.Fname = 'Stacy' \n  AND Student.Age <= 18 \n  AND Student.Major <= 540 \n  AND Student.Advisor <= 7271",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.44
+    }
+  ]
+}

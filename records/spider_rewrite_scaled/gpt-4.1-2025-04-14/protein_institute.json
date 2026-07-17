@@ -1,0 +1,47 @@
+{
+  "db_id": "protein_institute",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:27:48.591389+00:00",
+  "records": [
+    {
+      "uid": "2a2c6829-c652-4a0c-b9f8-f936417caf40",
+      "question": "Which buildings named One Tampa City Center have at most 39 floors, are at least 537 feet tall, and are associated with institutions that were founded no later than 1927, have at most 616 students, and whose team is exactly Warriors?",
+      "gold_sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.floors <= 39 AND institution.enrollment <= 616 AND building.name = 'One Tampa City Center' AND institution.founded <= 1927.0 AND institution.team = 'Warriors' AND building.height_feet >= 537",
+      "pred_sql": "SELECT building.building_id\nFROM building\nJOIN Institution ON building.building_id = Institution.building_id\nWHERE building.Name = 'One Tampa City Center'\n  AND building.Floors <= 39\n  AND building.Height_feet >= 537\n  AND Institution.Founded <= 1927\n  AND Institution.Enrollment <= 616\n  AND Institution.Team = 'Warriors'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "81effe7f-f633-4c91-8239-f0b68c0a9e9c",
+      "question": "Which buildings have at least 22 floors but are no more than 280 feet tall?",
+      "gold_sql": "SELECT building.building_id FROM building\nWHERE building.height_feet <= 280 AND building.floors >= 22",
+      "pred_sql": "SELECT building_id FROM building WHERE Floors >= 22 AND Height_feet <= 280",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    },
+    {
+      "uid": "b790a0c6-31e4-4d54-a753-9489d0b84016",
+      "question": "Which buildings named Park Tower are located at 400 North Tampa Street and belong to private institutions in the CalPac conference that were founded in 1927 or later with enrollment of at most 650?",
+      "gold_sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.street_address = '400 North Tampa Street' AND institution.type = 'Private' AND institution.enrollment <= 650 AND building.name = 'Park Tower' AND institution.primary_conference = 'CalPac' AND institution.founded >= 1927.0",
+      "pred_sql": "SELECT building.building_id\nFROM building\nJOIN Institution ON building.building_id = Institution.building_id\nWHERE building.Name = 'Park Tower'\n  AND building.Street_address = '400 North Tampa Street'\n  AND Institution.Type = 'Private'\n  AND Institution.Primary_Conference = 'CalPac'\n  AND Institution.Founded >= 1927\n  AND Institution.Enrollment <= 650",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "db_id": "manufactory_1",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:05:58.284138+00:00",
+  "records": [
+    {
+      "uid": "57664ac7-8aef-4734-b0a6-8628d2ac362a",
+      "question": "Which manufacturers named Iomega, founded by Mary, headquartered in Beijing, have revenue of at most 200 and offer a ZIP drive priced at no more than 150?",
+      "gold_sql": "SELECT manufacturers.code FROM manufacturers\nJOIN products ON manufacturers.code = products.manufacturer\nWHERE manufacturers.revenue <= 200.0 AND manufacturers.headquarter = 'Beijing' AND manufacturers.founder = 'Mary' AND products.name = 'ZIP drive' AND products.price <= 150 AND manufacturers.name = 'Iomega'",
+      "pred_sql": "SELECT DISTINCT m.Code\nFROM Manufacturers m\nLEFT JOIN Products p ON m.Code = p.Manufacturer\nWHERE m.Name = 'Iomega'\n  AND m.Founder = 'Mary'\n  AND m.Headquarter = 'Beijing'\n  AND m.Revenue <= 200\n  AND p.Name = 'ZIP drive'\n  AND p.Price <= 150",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "a48cad5b-ad00-4146-876d-5097fb386184",
+      "question": "Which Creative Labs manufacturers founded by Owen and headquartered in Austin have revenue of at least 100.0 and offer CD drive products priced at most 90?",
+      "gold_sql": "SELECT manufacturers.code FROM manufacturers\nJOIN products ON manufacturers.code = products.manufacturer\nWHERE manufacturers.founder = 'Owen' AND products.name = 'CD drive' AND manufacturers.headquarter = 'Austin' AND products.price <= 90 AND manufacturers.revenue >= 100.0 AND manufacturers.name = 'Creative Labs'",
+      "pred_sql": "SELECT DISTINCT m.Code\nFROM Manufacturers m\nJOIN Products p ON m.Code = p.Manufacturer\nWHERE m.Name = 'Creative Labs'\nAND m.Founder = 'Owen'\nAND m.Headquarter = 'Austin'\nAND m.Revenue >= 100.0\nAND p.Name = 'CD drive'\nAND p.Price <= 90",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    }
+  ]
+}

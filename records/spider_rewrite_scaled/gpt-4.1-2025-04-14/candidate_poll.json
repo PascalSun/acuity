@@ -1,0 +1,47 @@
+{
+  "db_id": "candidate_poll",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 3,
+  "n_correct": 2,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:24:12.145927+00:00",
+  "records": [
+    {
+      "uid": "656d3c4c-d472-4fb2-9205-08d4b2290b1b",
+      "question": "Which people born on 06.10.1976 with a weight of exactly 83.0 and height at most 188.0 have WNBC/Marist Poll candidate data showing a consider rate at most 0.3, unsure rate at most 0.2, support rate at least 0.25, and oppose rate at least 0.43?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.weight = 83.0 AND people.date_of_birth = '06.10.1976' AND candidate.consider_rate <= 0.3 AND candidate.poll_source = 'WNBC/Marist Poll' AND people.height <= 188.0 AND candidate.unsure_rate <= 0.2 AND candidate.support_rate >= 0.25 AND candidate.oppose_rate >= 0.43",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nJOIN candidate ON people.People_ID = candidate.People_ID\nWHERE people.Date_of_Birth = '06.10.1976'\n  AND people.Weight = 83.0\n  AND people.Height <= 188.0\n  AND candidate.Poll_Source = 'WNBC/Marist Poll'\n  AND candidate.Consider_rate <= 0.3\n  AND candidate.Unsure_rate <= 0.2\n  AND candidate.Support_rate >= 0.25\n  AND candidate.Oppose_rate >= 0.43",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    },
+    {
+      "uid": "b48b9336-0caa-4862-b25d-deccae5d644e",
+      "question": "Can you tell me about Laurent Capet who weighs 92.0, where the FOX News/Opinion Dynamics Poll shows a support rate of 0.18, oppose rate of at least 0.44, unsure rate of at most 0.3, and consider rate of at most 0.34?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE candidate.unsure_rate <= 0.3 AND candidate.poll_source = 'FOX News/Opinion Dynamics Poll' AND people.weight = 92.0 AND candidate.oppose_rate >= 0.44 AND people.name = 'Laurent Capet' AND candidate.support_rate = 0.18 AND candidate.consider_rate <= 0.34",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nJOIN candidate ON people.People_ID = candidate.People_ID\nWHERE people.Name = 'Laurent Capet'\n  AND people.Weight = 92.0\n  AND candidate.Poll_Source = 'FOX News/Opinion Dynamics Poll'\n  AND candidate.Support_rate = 0.18\n  AND candidate.Oppose_rate >= 0.44\n  AND candidate.Unsure_rate <= 0.3\n  AND candidate.Consider_rate <= 0.34",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "uid": "d3c46b84-edaa-4b7f-b3fd-95d2ce3bb93d",
+      "question": "Which female candidates have an oppose rate of exactly 0.32, an unsure rate of at least 0.9, and a consider rate of at most 0.42?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.sex = 'F' AND candidate.oppose_rate = 0.32 AND candidate.unsure_rate >= 0.9 AND candidate.consider_rate <= 0.42",
+      "pred_sql": "SELECT people.People_ID\nFROM candidate\nJOIN people ON candidate.People_ID = people.People_ID\nWHERE people.Sex = 'Female'\n  AND candidate.Oppose_rate = 0.32\n  AND candidate.Unsure_rate >= 0.9\n  AND candidate.Consider_rate <= 0.42",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    }
+  ]
+}

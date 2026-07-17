@@ -1,0 +1,102 @@
+{
+  "db_id": "cre_Theme_park",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 8,
+  "n_correct": 6,
+  "accuracy": 0.75,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:13:49.161606+00:00",
+  "records": [
+    {
+      "uid": "482f3711-9d43-4038-8b08-04c7a25c6e39",
+      "question": "Which tourist attractions named jungle cruise are located in Shark World and have a photo with filename 863?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nJOIN locations ON tourist_attractions.location_id = locations.location_id\nJOIN photos ON tourist_attractions.tourist_attraction_id = photos.tourist_attraction_id\nWHERE photos.filename = '863' AND tourist_attractions.name = 'jungle cruise' AND locations.location_name = 'Shark World'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID\nFROM Tourist_Attractions AS T1\nINNER JOIN Locations AS T2\n  ON T1.Location_ID = T2.Location_ID\nINNER JOIN Photos AS T3\n  ON T1.Tourist_Attraction_ID = T3.Tourist_Attraction_ID\nWHERE\n  T1.Name = 'jungle cruise' AND T2.Location_Name = 'Shark World' AND T3.Filename = '863'",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.08
+    },
+    {
+      "uid": "4d4c281a-c29d-4f94-a1ae-48a577b4375a",
+      "question": "Which tourist attractions named parking that can be reached by shuttle have had visits on or after 2007-09-03 04:30:01?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nJOIN visits ON tourist_attractions.tourist_attraction_id = visits.tourist_attraction_id\nWHERE visits.visit_date >= '2007-09-03 04:30:01' AND tourist_attractions.how_to_get_there = 'shuttle' AND tourist_attractions.name = 'parking'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID\nFROM Tourist_Attractions AS T1\nINNER JOIN Visits AS T2\n  ON T1.Tourist_Attraction_ID = T2.Tourist_Attraction_ID\nWHERE\n  T1.Name = 'parking' AND T1.How_to_Get_There = 'shuttle' AND T2.Visit_Date >= '2007-09-03 04:30:01'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.36
+    },
+    {
+      "uid": "537f877d-9da2-446d-9548-225e6339b484",
+      "question": "Which tourist attractions are located at 2485 Mueller Squares Suite 537?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nJOIN locations ON tourist_attractions.location_id = locations.location_id\nJOIN staff ON tourist_attractions.tourist_attraction_id = staff.tourist_attraction_id\nWHERE locations.address = '2485 Mueller Squares Suite 537'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 INNER JOIN Locations AS T2 ON T1.Location_ID = T2.Location_ID WHERE T2.Address = '2485 Mueller Squares Suite 537'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    },
+    {
+      "uid": "73f27658-d738-4126-b1af-b2ff922ea779",
+      "question": "Which tourist attractions called presidents hall are museums that you can reach by walk?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nWHERE ref_attraction_types.attraction_type_description = 'museum' AND tourist_attractions.name = 'presidents hall' AND tourist_attractions.how_to_get_there = 'walk'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 INNER JOIN Museums AS T2 ON T1.Tourist_Attraction_ID = T2.Museum_ID WHERE T1.Name = 'presidents hall' AND T1.How_to_Get_There LIKE '%walk%'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "87090ca9-9e95-48bf-8e91-74d6708afb40",
+      "question": "Which tourist attractions have an attraction type, a location, are street markets with market details equal to 'Broadway', and have visits?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nJOIN locations ON tourist_attractions.location_id = locations.location_id\nJOIN street_markets ON tourist_attractions.tourist_attraction_id = street_markets.market_id\nJOIN visits ON tourist_attractions.tourist_attraction_id = visits.tourist_attraction_id\nWHERE street_markets.market_details = 'Broadway'",
+      "pred_sql": "SELECT DISTINCT T1.Tourist_Attraction_ID\nFROM Tourist_Attractions AS T1\nINNER JOIN Street_Markets AS T2\n  ON T1.Tourist_Attraction_ID = T2.Market_ID\nINNER JOIN Visits AS T3\n  ON T1.Tourist_Attraction_ID = T3.Tourist_Attraction_ID\nWHERE\n  T2.Market_Details = 'Broadway'",
+      "strategy": "4iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.88
+    },
+    {
+      "uid": "abc865e4-9c9a-4217-aa13-9b745e847b01",
+      "question": "Which tourist attractions named history gallery that you can walk to at The Boneyard located at 0692 Georgiana Pass have photos where the filename is 864 and the name is din3?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN locations ON tourist_attractions.location_id = locations.location_id\nJOIN photos ON tourist_attractions.tourist_attraction_id = photos.tourist_attraction_id\nWHERE photos.filename = '864' AND photos.name = 'din3' AND locations.location_name = 'The Boneyard' AND tourist_attractions.name = 'history gallery' AND tourist_attractions.how_to_get_there = 'walk' AND locations.address = '0692 Georgiana Pass'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID\nFROM Tourist_Attractions AS T1\nINNER JOIN Locations AS T2\n  ON T1.Location_ID = T2.Location_ID\nINNER JOIN Photos AS T3\n  ON T1.Tourist_Attraction_ID = T3.Tourist_Attraction_ID\nWHERE\n  T1.Name = 'history gallery' AND T1.How_to_Get_There = 'walk' AND T2.Location_Name = 'The Boneyard' AND T2.Address = '0692 Georgiana Pass' AND T3.Filename = '864' AND T3.Name = 'din3'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.8
+    },
+    {
+      "uid": "c95a1e4a-814a-4454-a50e-ea43f5916aa6",
+      "question": "Which tourist attractions have photos with the name din2?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nJOIN photos ON tourist_attractions.tourist_attraction_id = photos.tourist_attraction_id\nWHERE photos.name = 'din2'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 INNER JOIN Photos AS T2 ON T1.Tourist_Attraction_ID = T2.Tourist_Attraction_ID WHERE T2.Name = 'din2'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.71
+    },
+    {
+      "uid": "d4966009-9b0a-4ba2-af54-bf9a7df9e284",
+      "question": "Which galleries accessible by walking are named exploration trial, located at Soak Station with address 4908 Reinger Vista, and associated with the Broadway street market?",
+      "gold_sql": "SELECT tourist_attractions.tourist_attraction_id FROM tourist_attractions\nJOIN ref_attraction_types ON tourist_attractions.attraction_type_code = ref_attraction_types.attraction_type_code\nJOIN locations ON tourist_attractions.location_id = locations.location_id\nJOIN street_markets ON tourist_attractions.tourist_attraction_id = street_markets.market_id\nWHERE locations.address = '4908 Reinger Vista' AND tourist_attractions.name = 'exploration trial' AND ref_attraction_types.attraction_type_description = 'gallery' AND tourist_attractions.how_to_get_there = 'walk' AND locations.location_name = 'Soak Station' AND street_markets.market_details = 'Broadway'",
+      "pred_sql": "SELECT T1.Tourist_Attraction_ID\nFROM Tourist_Attractions AS T1\nJOIN Ref_Attraction_Types AS RAT ON T1.Attraction_Type_Code = RAT.Attraction_Type_Code\nJOIN Locations AS L ON T1.Location_ID = L.Location_ID\nWHERE RAT.Attraction_Type_Description = 'galleries'\n  AND T1.Name = 'exploration trial'\n  AND T1.How_to_Get_There = 'walking'\n  AND L.Location_Name = 'Soak Station'\n  AND L.Address = '4908 Reinger Vista'\n  AND T1.Location_ID IN (\n    SELECT TA_Market.Location_ID\n    FROM Tourist_Attractions AS TA_Market\n    JOIN Street_Markets AS SM ON TA_Market.Tourist_Attraction_ID = SM.Market_ID\n    WHERE TA_Market.Name = 'Broadway street market'\n  )",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.02
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "db_id": "performance_attendance",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 1,
+  "n_correct": 1,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:27:22.773836+00:00",
+  "records": [
+    {
+      "uid": "05fe58b8-5283-4f5d-824e-fe74f5f7f31d",
+      "question": "Which performances at Verizon Center on February 7 hosted by the Pittsburgh Penguins had an attendance of at least 1877?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.attendance >= 1877 AND performance.location = 'Verizon Center' AND performance.host = 'Pittsburgh Penguins' AND performance.date = 'February 7'",
+      "pred_sql": "SELECT performance.Performance_ID\nFROM performance\nWHERE Location = 'Verizon Center'\n  AND Date = 'February 7'\n  AND Host = 'Pittsburgh Penguins'\n  AND Attendance >= 1877",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    }
+  ]
+}

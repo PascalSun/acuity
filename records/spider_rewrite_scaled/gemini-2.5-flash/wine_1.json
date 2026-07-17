@@ -1,0 +1,69 @@
+{
+  "db_id": "wine_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 5,
+  "n_correct": 2,
+  "accuracy": 0.4,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:23:40.123076+00:00",
+  "records": [
+    {
+      "uid": "1fc7f328-e0fc-4fcb-95c6-50bde4825f08",
+      "question": "Which appellations are located in Santa Barbara county?",
+      "gold_sql": "SELECT appellations.no FROM appellations\nWHERE appellations.county = 'Santa Barbara'",
+      "pred_sql": "SELECT No FROM appellations WHERE County = 'Santa Barbara'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    },
+    {
+      "uid": "363a7e10-104e-4e80-9d34-63b567d551b4",
+      "question": "Which appellations in Sonoma County, California are part of the North Coast area and are designated as AVA?",
+      "gold_sql": "SELECT appellations.no FROM appellations\nWHERE appellations.area = 'North Coast' AND appellations.isava = 'Yes' AND appellations.county = 'Sonoma' AND appellations.state = 'California'",
+      "pred_sql": "SELECT No FROM appellations WHERE County = 'Sonoma County' AND State = 'California' AND Area = 'North Coast' AND isAVA = 'Yes'",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "8bebac0e-ddcb-4a2e-a465-1a942c4591e3",
+      "question": "Which appellations in California have no county specified and include wines from Herman Story made in California since 2008 with a score of at least 93?",
+      "gold_sql": "SELECT appellations.no FROM appellations\nJOIN wine ON appellations.appelation = wine.appelation\nWHERE wine.winery = 'Herman Story' AND appellations.county = 'N/A' AND wine.score >= 93 AND wine.state = 'California' AND wine.year >= 2008 AND appellations.area = 'California'",
+      "pred_sql": "SELECT T1.No FROM appellations AS T1 INNER JOIN wine AS T2 ON T1.Appelation = T2.Appelation WHERE T1.State = 'CA' AND T1.County IS NULL AND T2.Winery = 'Herman Story' AND T2.State = 'CA' AND T2.Year >= 2008 AND T2.Score >= 93",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.02
+    },
+    {
+      "uid": "ed74a538-eec7-48ba-bfe4-309ee94ace9d",
+      "question": "Which appellations in the Santa Cruz Mountains that are AVA have wines made from Red grapes?",
+      "gold_sql": "SELECT appellations.no FROM appellations\nJOIN wine ON appellations.appelation = wine.appelation\nJOIN grapes ON wine.grape = grapes.grape\nWHERE grapes.color = 'Red' AND appellations.area = 'Santa Cruz Mountains' AND appellations.isava = 'Yes'",
+      "pred_sql": "SELECT T1.No FROM appellations AS T1 INNER JOIN wine AS T2 ON T1.Appelation = T2.Appelation INNER JOIN grapes AS T3 ON T2.Grape = T3.Grape WHERE T1.Area = 'Santa Cruz Mountains' AND T1.isAVA = 'Yes' AND T3.Color = 'Red'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24
+    },
+    {
+      "uid": "edee5530-49e9-4751-8272-a42f2bd5d9c3",
+      "question": "Where are the appellations in Napa County, North Coast, California, that have wines made from white grapes priced at most 48 with a score no more than 92?",
+      "gold_sql": "SELECT appellations.no FROM appellations\nJOIN wine ON appellations.appelation = wine.appelation\nJOIN grapes ON wine.grape = grapes.grape\nWHERE appellations.state = 'California' AND wine.price <= 48 AND grapes.color = 'White' AND wine.score <= 92 AND appellations.area = 'North Coast' AND appellations.county = 'Napa'",
+      "pred_sql": "SELECT DISTINCT T1.No FROM appellations AS T1 INNER JOIN wine AS T2 ON T1.Appelation = T2.Appelation INNER JOIN grapes AS T3 ON T2.Grape = T3.Grape WHERE T1.County = 'Napa County' AND T1.Area = 'North Coast' AND T1.State = 'California' AND T3.Color = 'White' AND T2.Price <= 48 AND T2.Score <= 92",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24
+    }
+  ]
+}

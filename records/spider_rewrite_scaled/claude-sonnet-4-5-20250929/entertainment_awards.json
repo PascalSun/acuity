@@ -1,0 +1,47 @@
+{
+  "db_id": "entertainment_awards",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:50:55.754988+00:00",
+  "records": [
+    {
+      "uid": "04391284-bcb1-4428-ba3c-2435781ad448",
+      "question": "Which Flower Awards festivals in the United States in 2007 with Charles Coody as chair had at least 155 attendees and won nominations?",
+      "gold_sql": "SELECT festival_detail.festival_id FROM festival_detail\nJOIN nomination ON festival_detail.festival_id = nomination.festival_id\nWHERE festival_detail.num_of_audience >= 155 AND festival_detail.location = 'United States' AND nomination.result = 'Won' AND festival_detail.year = 2007 AND festival_detail.chair_name = 'Charles Coody' AND festival_detail.festival_name = 'Flower Awards'",
+      "pred_sql": "SELECT DISTINCT fd.Festival_ID\nFROM festival_detail fd\nJOIN nomination n ON fd.Festival_ID = n.Festival_ID\nWHERE fd.Festival_Name = 'Flower Awards'\nAND fd.Location = 'United States'\nAND fd.Year = 2007\nAND fd.Chair_Name = 'Charles Coody'\nAND fd.Num_of_Audience >= 155\nAND n.Result = 'Won'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.82
+    },
+    {
+      "uid": "0cbc79e9-9e8f-4183-800c-3284b02b3b3e",
+      "question": "Which Flower Awards festivals in the United States, chaired by Charles Coody, had at most 155 attendees and featured the nominated Program Music/Variety Show Indonesian Idol?",
+      "gold_sql": "SELECT festival_detail.festival_id FROM festival_detail\nJOIN nomination ON festival_detail.festival_id = nomination.festival_id\nJOIN artwork ON nomination.artwork_id = artwork.artwork_id\nWHERE nomination.result = 'Nominated' AND artwork.type = 'Program Music/Variety Show' AND festival_detail.location = 'United States' AND artwork.name = 'Indonesian Idol' AND festival_detail.num_of_audience <= 155 AND festival_detail.chair_name = 'Charles Coody' AND festival_detail.festival_name = 'Flower Awards'",
+      "pred_sql": "SELECT DISTINCT fd.Festival_ID\nFROM festival_detail fd\nJOIN nomination n ON fd.Festival_ID = n.Festival_ID\nJOIN artwork a ON n.Artwork_ID = a.Artwork_ID\nWHERE fd.Festival_Name = 'Flower Awards'\nAND fd.Location = 'United States'\nAND fd.Chair_Name = 'Charles Coody'\nAND fd.Num_of_Audience <= 155\nAND a.Type = 'Program Music/Variety Show'\nAND a.Name = 'Indonesian Idol'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.05
+    },
+    {
+      "uid": "bc62dc04-b88b-439e-a34d-75c64dc6ae46",
+      "question": "Which festivals in the United States in 2010 that were chaired by Lucy Lu had a Nominated Presenter Talent Show artwork?",
+      "gold_sql": "SELECT festival_detail.festival_id FROM festival_detail\nJOIN nomination ON festival_detail.festival_id = nomination.festival_id\nJOIN artwork ON nomination.artwork_id = artwork.artwork_id\nWHERE festival_detail.location = 'United States' AND nomination.result = 'Nominated' AND festival_detail.chair_name = 'Lucy Lu' AND artwork.type = 'Presenter Talent Show' AND festival_detail.year = 2010",
+      "pred_sql": "SELECT DISTINCT fd.Festival_ID\nFROM festival_detail fd\nJOIN nomination n ON fd.Festival_ID = n.Festival_ID\nJOIN artwork a ON n.Artwork_ID = a.Artwork_ID\nWHERE fd.Location = 'United States'\nAND fd.Year = 2010\nAND fd.Chair_Name = 'Lucy Lu'\nAND a.Type = 'Presenter Talent Show'\nAND n.Result = 'Nominated'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.8
+    }
+  ]
+}

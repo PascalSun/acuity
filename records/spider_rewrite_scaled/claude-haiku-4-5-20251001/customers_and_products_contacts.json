@@ -1,0 +1,113 @@
+{
+  "db_id": "customers_and_products_contacts",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 9,
+  "n_correct": 6,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:09:28.224208+00:00",
+  "records": [
+    {
+      "uid": "1a961da1-c200-40d1-8207-caad9b89be83",
+      "question": "Which customers named Cecelia with customer number 429, email caesar.lemke@example.net, phone 672-559-0630x7875, living at 4065 Forest Vista Apt. 103, and using Direct Debit had an address starting on 2009-05-22 04:42:28?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_address_history ON customers.customer_id = customer_address_history.customer_id\nWHERE customers.customer_email = 'caesar.lemke@example.net' AND customers.customer_phone = '672-559-0630x7875' AND customer_address_history.date_from = '2009-05-22 04:42:28' AND customers.customer_name = 'Cecelia' AND customers.payment_method_code = 'Direct Debit' AND customers.customer_address = '4065 Forest Vista Apt. 103' AND customers.customer_number = '429'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Customer_Address_History cah ON c.customer_id = cah.customer_id\nJOIN Addresses a ON cah.address_id = a.address_id\nWHERE c.customer_name = 'Cecelia'\nAND c.customer_number = '429'\nAND c.customer_email = 'caesar.lemke@example.net'\nAND c.customer_phone = '672-559-0630x7875'\nAND c.customer_address = '4065 Forest Vista Apt. 103'\nAND c.payment_method_code = 'Direct Debit'\nAND cah.date_from = '2009-05-22 04:42:28'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "5aa70095-f5d7-4bc5-b3b0-67bef89e1633",
+      "question": "Which customers named Cheyenne use Direct Debit as their payment method?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_name = 'Cheyenne' AND customers.payment_method_code = 'Direct Debit'",
+      "pred_sql": "SELECT c.customer_id\nFROM Customers c\nWHERE c.customer_name = 'Cheyenne'\nAND c.payment_method_code = 'Direct Debit'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.36
+    },
+    {
+      "uid": "611fdbc0-2ca8-4bd2-89a0-c2ff585fc622",
+      "question": "Which customers living at 058 Ben Street Apt. 034 have orders with status Completed?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_address_history ON customers.customer_id = customer_address_history.customer_id\nJOIN customer_orders ON customers.customer_id = customer_orders.customer_id\nWHERE customer_orders.order_status_code = 'Completed' AND customers.customer_address = '058 Ben Street Apt. 034'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Customer_Address_History cah ON c.customer_id = cah.customer_id\nJOIN Addresses a ON cah.address_id = a.address_id\nJOIN Customer_Orders co ON c.customer_id = co.customer_id\nWHERE a.line_1_number_building = '058 Ben Street Apt. 034'\nAND co.order_status_code = 'Completed'\nAND (cah.date_to IS NULL OR cah.date_to >= co.order_date)\nAND cah.date_from <= co.order_date",
+      "strategy": "2iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.67
+    },
+    {
+      "uid": "9cf1ab1e-9a7f-4c95-8e53-d5fc89836ee3",
+      "question": "Who are the customers named Shany with email kling.jesus@example.com, living at 55270 Carter Street Apt. 214, phone number 936.929.9929, customer number 233, and paying by Direct Debit?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_email = 'kling.jesus@example.com' AND customers.customer_name = 'Shany' AND customers.customer_address = '55270 Carter Street Apt. 214' AND customers.customer_phone = '936.929.9929' AND customers.customer_number = '233' AND customers.payment_method_code = 'Direct Debit'",
+      "pred_sql": "SELECT c.customer_id\nFROM Customers c\nWHERE c.customer_name LIKE '%Shany%'\nAND c.customer_email = 'kling.jesus@example.com'\nAND c.customer_address = '55270 Carter Street Apt. 214'\nAND c.customer_phone = '936.929.9929'\nAND c.customer_number = '233'\nAND c.payment_method_code = 'Direct Debit'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "b47d98f9-9589-4de8-8da2-c4131255ec3d",
+      "question": "Which customers have addresses in Gleasonland, Kentucky?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_address_history ON customers.customer_id = customer_address_history.customer_id\nJOIN addresses ON customer_address_history.address_id = addresses.address_id\nWHERE addresses.state_province_county = 'Kentucky' AND addresses.city = 'Gleasonland'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Customer_Address_History cah ON c.customer_id = cah.customer_id\nJOIN Addresses a ON cah.address_id = a.address_id\nWHERE a.city = 'Gleasonland' AND a.state_province_county = 'Kentucky'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "b9dc5296-0bf7-4396-b6c7-b28f01c79057",
+      "question": "Who are the customers with customer number 838, address 058 Ben Street Apt. 034, and phone 009-136-4509x19635, who pay by Direct Debit, placed completed orders on or before 1979-03-29 02:47:13, and have an address history starting from 2013-06-14 23:07:04 and ending at least 2018-03-16 14:49:28?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_address_history ON customers.customer_id = customer_address_history.customer_id\nJOIN customer_orders ON customers.customer_id = customer_orders.customer_id\nWHERE customers.customer_phone = '009-136-4509x19635' AND customer_orders.order_date <= '1979-03-29 02:47:13' AND customer_orders.order_status_code = 'Completed' AND customers.payment_method_code = 'Direct Debit' AND customer_address_history.date_to >= '2018-03-16 14:49:28' AND customers.customer_number = '838' AND customers.customer_address = '058 Ben Street Apt. 034' AND customer_address_history.date_from = '2013-06-14 23:07:04'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Customer_Orders co ON c.customer_id = co.customer_id\nJOIN Customer_Address_History cah ON c.customer_id = cah.customer_id\nWHERE c.customer_number = '838'\n  AND c.customer_address = '058 Ben Street Apt. 034'\n  AND c.customer_phone = '009-136-4509x19635'\n  AND c.payment_method_code = 'Direct Debit'\n  AND co.order_status_code = 'completed'\n  AND co.order_date <= '1979-03-29 02:47:13'\n  AND cah.date_from = '2013-06-14 23:07:04'\n  AND cah.date_to >= '2018-03-16 14:49:28'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "bcc3df39-502a-4b05-9973-00545de6ae8c",
+      "question": "Which customers named Brenna have the email macy.huel@example.org, phone number 1-271-345-4681x1131, and customer number 564?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_email = 'macy.huel@example.org' AND customers.customer_phone = '1-271-345-4681x1131' AND customers.customer_name = 'Brenna' AND customers.customer_number = '564'",
+      "pred_sql": "SELECT Customers.customer_id\nFROM Customers\nWHERE Customers.customer_name LIKE '%Brenna%'\nAND Customers.customer_email = 'macy.huel@example.org'\nAND Customers.customer_phone = '1-271-345-4681x1131'\nAND Customers.customer_number = '564'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.34
+    },
+    {
+      "uid": "c2deb42e-2727-4b4e-bad4-06d362905d0f",
+      "question": "Which customers named Cleo with customer number 795 use Credit Card as their payment method and have placed orders on or after 2002-01-20 01:52:53?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_orders ON customers.customer_id = customer_orders.customer_id\nWHERE customer_orders.order_date >= '2002-01-20 01:52:53' AND customers.payment_method_code = 'Credit Card' AND customers.customer_name = 'Cleo' AND customers.customer_number = '795'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nINNER JOIN Customer_Orders co ON c.customer_id = co.customer_id\nWHERE c.customer_name = 'Cleo'\nAND c.customer_number = '795'\nAND c.payment_method_code = 'Credit Card'\nAND co.order_date >= '2002-01-20 01:52:53'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "f6a6c5e9-207a-4ff5-8755-33af17b1c6a8",
+      "question": "Which customers named Lela with the email vandervort.helena@example.org had a partial order and an address that started exactly on 2010-03-25 08:23:20?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_address_history ON customers.customer_id = customer_address_history.customer_id\nJOIN customer_orders ON customers.customer_id = customer_orders.customer_id\nWHERE customer_address_history.date_from = '2010-03-25 08:23:20' AND customers.customer_email = 'vandervort.helena@example.org' AND customer_orders.order_status_code = 'Part' AND customers.customer_name = 'Lela'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nINNER JOIN Customer_Orders co ON c.customer_id = co.customer_id\nINNER JOIN Customer_Address_History cah ON c.customer_id = cah.customer_id\nWHERE c.customer_name LIKE '%Lela%'\nAND c.customer_email = 'vandervort.helena@example.org'\nAND co.order_status_code = 'partial'\nAND cah.date_from = '2010-03-25 08:23:20'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    }
+  ]
+}

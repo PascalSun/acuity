@@ -1,0 +1,102 @@
+{
+  "db_id": "station_weather",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 8,
+  "n_correct": 6,
+  "accuracy": 0.75,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:56:44.717115+00:00",
+  "records": [
+    {
+      "uid": "0d889b16-bd66-4600-9786-59350d54a0fa",
+      "question": "Which stations have had weeks where the precipitation was at least 30.0, the low temperature was at most 50, and the wind speed was no more than 13 mph?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN weekly_weather ON station.id = weekly_weather.station_id\nWHERE weekly_weather.precipitation >= 30.0 AND weekly_weather.low_temperature <= 50 AND weekly_weather.wind_speed_mph <= 13",
+      "pred_sql": "SELECT DISTINCT s.id\nFROM station s\nJOIN weekly_weather ww ON s.id = ww.station_id\nWHERE ww.precipitation >= 30.0 \n  AND ww.low_temperature <= 50 \n  AND ww.wind_speed_mph <= 13",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.34
+    },
+    {
+      "uid": "213bd132-f848-4950-a3db-534956e2ce9d",
+      "question": "Where are the stations in Watford on the Bushey network that offer London Overground and London Midland services, where Thursday has exactly 70.0 precipitation, wind speed exactly 24 mph, low temperatures at least 56, and high temperatures at least 59?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN weekly_weather ON station.id = weekly_weather.station_id\nWHERE weekly_weather.day_of_week = 'Thursday' AND weekly_weather.precipitation = 70.0 AND weekly_weather.low_temperature >= 56 AND weekly_weather.wind_speed_mph = 24 AND station.network_name = 'Bushey' AND station.local_authority = 'Watford' AND station.services = 'London Overground and London Midland' AND weekly_weather.high_temperature >= 59",
+      "pred_sql": "SELECT s.id\nFROM station s\nJOIN weekly_weather w ON s.id = w.station_id\nWHERE s.network_name = 'Bushey'\nAND s.local_authority = 'Watford'\nAND s.services LIKE '%London Overground%'\nAND s.services LIKE '%London Midland%'\nAND w.day_of_week = 'Thursday'\nAND w.precipitation = 70.0\nAND w.wind_speed_mph = 24\nAND w.low_temperature >= 56\nAND w.high_temperature >= 59",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.66
+    },
+    {
+      "uid": "8a9c36ef-6b69-4cd2-8537-1685a2100dd2",
+      "question": "Which stations are part of the Amersham network and have trains running on a Daily interval?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN route ON station.id = route.station_id\nJOIN train ON route.train_id = train.id\nWHERE station.network_name = 'Amersham' AND train.interval = 'Daily'",
+      "pred_sql": "SELECT DISTINCT s.id\nFROM station s\nJOIN route r ON s.id = r.station_id\nJOIN train t ON r.train_id = t.id\nWHERE s.network_name = 'Amersham' AND t.interval = 'Daily'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.0
+    },
+    {
+      "uid": "c103fdb9-867d-429d-9f7a-51e2bcb80594",
+      "question": "Which stations in Chiltern that serve the Metropolitan line and Chiltern Railways have weekly weather records from Sunday showing a wind speed of exactly 12 mph, a low temperature of at least 52, and precipitation of at most 50.0?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN route ON station.id = route.station_id\nJOIN weekly_weather ON station.id = weekly_weather.station_id\nWHERE weekly_weather.wind_speed_mph = 12 AND station.local_authority = 'Chiltern' AND station.services = 'Metropolitan line and Chiltern Railways' AND weekly_weather.day_of_week = 'Sunday' AND weekly_weather.low_temperature >= 52 AND weekly_weather.precipitation <= 50.0",
+      "pred_sql": "SELECT DISTINCT s.id\nFROM station s\nJOIN weekly_weather ww ON s.id = ww.station_id\nWHERE s.local_authority = 'Chiltern'\nAND s.services LIKE '%Metropolitan line%'\nAND s.services LIKE '%Chiltern Railways%'\nAND ww.day_of_week = 'Sunday'\nAND ww.wind_speed_mph = 12\nAND ww.low_temperature >= 52\nAND ww.precipitation <= 50.0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.9
+    },
+    {
+      "uid": "d4d3c393-ae77-4aac-ab06-b1a24bb89841",
+      "question": "Which stations are located in Chiltern and belong to the Chesham network?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN route ON station.id = route.station_id\nWHERE station.local_authority = 'Chiltern' AND station.network_name = 'Chesham'",
+      "pred_sql": "SELECT id FROM station WHERE local_authority = 'Chiltern' AND network_name = 'Chesham'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.42
+    },
+    {
+      "uid": "d53a135b-1bbc-4413-ad5f-6e37e7d86a71",
+      "question": "Which stations served by Greater Anglia in Brentwood have routes and weekly weather records where the wind speed was at least 9 mph, the low temperature was exactly 49, and the high temperature was at most 50?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN route ON station.id = route.station_id\nJOIN weekly_weather ON station.id = weekly_weather.station_id\nWHERE weekly_weather.wind_speed_mph >= 9 AND station.services = 'Greater Anglia' AND weekly_weather.low_temperature = 49 AND weekly_weather.high_temperature <= 50 AND station.local_authority = 'Brentwood'",
+      "pred_sql": "SELECT DISTINCT s.id\nFROM station s\nJOIN route r ON s.id = r.station_id\nJOIN weekly_weather w ON s.id = w.station_id\nWHERE s.network_name = 'Greater Anglia'\nAND s.local_authority = 'Brentwood'\nAND w.wind_speed_mph >= 9\nAND w.low_temperature = 49\nAND w.high_temperature <= 50",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 13.07
+    },
+    {
+      "uid": "e11dc7ff-8d6e-45a0-88ad-da19e575245e",
+      "question": "Where are the stations in the Chesham network that serve exactly the Metropolitan line, are located in Chiltern, and have daily Island Express trains to Kanniyakumari departing exactly at 16:59?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN route ON station.id = route.station_id\nJOIN train ON route.train_id = train.id\nWHERE train.time = '16:59' AND station.local_authority = 'Chiltern' AND train.name = 'Island Express' AND station.network_name = 'Chesham' AND train.destination = 'Kanniyakumari' AND train.interval = 'Daily' AND station.services = 'Metropolitan line'",
+      "pred_sql": "SELECT DISTINCT s.id\nFROM station s\nJOIN route r ON s.id = r.station_id\nJOIN train t ON r.train_id = t.id\nWHERE s.network_name = 'Chesham'\n  AND s.services = 'Metropolitan'\n  AND s.local_authority = 'Chiltern'\n  AND t.name = 'Island Express'\n  AND t.destination = 'Kanniyakumari'\n  AND t.time = '16:59'\n  AND t.interval = 'Daily'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.79
+    },
+    {
+      "uid": "ece5a2fa-81ed-4b3b-ac13-3e6b9745190c",
+      "question": "Which stations that have associated routes and recorded weekly weather have a high temperature exactly 59 and a low temperature at least 55?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN route ON station.id = route.station_id\nJOIN weekly_weather ON station.id = weekly_weather.station_id\nWHERE weekly_weather.high_temperature = 59 AND weekly_weather.low_temperature >= 55",
+      "pred_sql": "SELECT DISTINCT s.id\nFROM station s\nJOIN route r ON s.id = r.station_id\nJOIN weekly_weather w ON s.id = w.station_id\nWHERE w.high_temperature = 59 AND w.low_temperature >= 55",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.31
+    }
+  ]
+}

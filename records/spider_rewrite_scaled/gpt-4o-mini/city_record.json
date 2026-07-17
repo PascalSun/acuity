@@ -1,0 +1,69 @@
+{
+  "db_id": "city_record",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 2,
+  "accuracy": 0.4,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:39:17.656657+00:00",
+  "records": [
+    {
+      "uid": "126286a2-0ad8-4a50-83e0-61e5189410a5",
+      "question": "Which cities in Shanghai have temperatures exactly 18.3 in March, exactly 19.4 in November, at least 20.6 in July and September, at most 20.6 in August, and at most 18.3 in December?",
+      "gold_sql": "SELECT city.city_id FROM city\nJOIN temperature ON city.city_id = temperature.city_id\nWHERE temperature.sep >= 20.6 AND temperature.jul >= 20.6 AND temperature.mar = 18.3 AND temperature.nov = 19.4 AND city.city = 'Shanghai' AND temperature.dec <= 18.3 AND temperature.aug <= 20.6",
+      "pred_sql": "SELECT city.City_ID \nFROM city \nJOIN temperature ON city.City_ID = temperature.City_ID \nWHERE city.City = 'Shanghai' \nAND temperature.Mar = 18.3 \nAND temperature.Nov = 19.4 \nAND temperature.Jul >= 20.6 \nAND temperature.Sep >= 20.6 \nAND temperature.Aug <= 20.6 \nAND temperature.Dec <= 18.3",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.36
+    },
+    {
+      "uid": "126669c2-6ea2-43dd-930c-b9fdc4590fc4",
+      "question": "Which cities in Wuxi ( Jiangsu ) have a GDP of at most 688.02, a temperature of exactly 21.1 in September, and a temperature of at least 20.6 in June?",
+      "gold_sql": "SELECT city.city_id FROM city\nJOIN temperature ON city.city_id = temperature.city_id\nWHERE temperature.sep = 21.1 AND temperature.jun >= 20.6 AND city.gdp <= 688.02 AND city.city = 'Wuxi ( Jiangsu )'",
+      "pred_sql": "SELECT city.City_ID \nFROM city \nJOIN temperature ON city.City_ID = temperature.City_ID \nWHERE city.City = 'Wuxi' \nAND city.GDP <= 688.02 \nAND temperature.Sep = 21.1 \nAND temperature.Jun >= 20.6",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "uid": "1757e326-5efe-4494-a1cb-70aebe84ecd1",
+      "question": "What cities with hanyu_pinyin J\u012bnhu\u00e1 have January temperatures at most 26.7, March temperatures exactly 27.8, and October temperatures at most 30.6?",
+      "gold_sql": "SELECT city.city_id FROM city\nJOIN temperature ON city.city_id = temperature.city_id\nWHERE temperature.jan <= 26.7 AND temperature.mar = 27.8 AND city.hanyu_pinyin = 'J\u012bnhu\u00e1' AND temperature.oct <= 30.6",
+      "pred_sql": "SELECT city.City_ID \nFROM city \nJOIN temperature ON city.City_ID = temperature.City_ID \nWHERE city.Hanyu_Pinyin = 'J\u012bnhu\u00e1' \nAND temperature.Jan <= 26.7 \nAND temperature.Mar = 27.8 \nAND temperature.Oct <= 30.6",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "550c420d-3a28-4300-a989-832b42f657ce",
+      "question": "Which cities named \u5e38\u5dde with hanyu pinyin Ch\u00e1ngzh\u014du and city name Changzhou ( Jiangsu ) have a regional population of at most 4591972 and a GDP of at most 358.04?",
+      "gold_sql": "SELECT city.city_id FROM city\nWHERE city.hanyu_pinyin = 'Ch\u00e1ngzh\u014du' AND city.city = 'Changzhou ( Jiangsu )' AND city.hanzi = '\u5e38\u5dde' AND city.regional_population <= 4591972 AND city.gdp <= 358.04",
+      "pred_sql": "SELECT city.City_ID FROM city WHERE city.City = 'Changzhou' AND city.Hanyu_Pinyin = 'Ch\u00e1ngzh\u014du' AND city.Regional_Population <= 4591972 AND city.GDP <= 358.04",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "8abef641-dca6-448d-bfce-6e0d16c8cc4a",
+      "question": "Which cities with hanyu_pinyin Ji\u0101x\u012bng and hanzi \u5609\u5174/ \u5609\u8208 have a regional population of 4501700, a GDP of exactly 266.81, a January temperature of at least 25.6, and March, June, and November temperatures of exactly 26.6, 28.3, and 27.2?",
+      "gold_sql": "SELECT city.city_id FROM city\nJOIN temperature ON city.city_id = temperature.city_id\nWHERE temperature.mar = 26.6 AND temperature.jan >= 25.6 AND city.gdp = 266.81 AND temperature.nov = 27.2 AND city.hanyu_pinyin = 'Ji\u0101x\u012bng' AND city.regional_population = 4501700 AND temperature.jun = 28.3 AND city.hanzi = '\u5609\u5174/ \u5609\u8208'",
+      "pred_sql": "SELECT city.City_ID FROM city JOIN temperature ON city.City_ID = temperature.City_ID WHERE city.Hanyu_Pinyin = 'Ji\u0101x\u012bng' AND (city.Hanzi = '\u5609\u5174' OR city.Hanzi = '\u5609\u8208') AND city.Regional_Population = 4501700 AND city.GDP = 266.81 AND temperature.Jan >= 25.6 AND temperature.Mar = 26.6 AND temperature.Jun = 28.3 AND temperature.Nov = 27.2",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "db_id": "activity_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:23:58.788380+00:00",
+  "records": [
+    {
+      "uid": "355d2ce8-738c-4b4d-9afd-0e02fa363f54",
+      "question": "Which Square Dancing activities involve female assistant professors named Leslie Hall who work in room 288 of the Krieger building and have phone numbers at least 7332?",
+      "gold_sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.room = '288' AND faculty.building = 'Krieger' AND activity.activity_name = 'Square Dancing' AND faculty.fname = 'Leslie' AND faculty.rank = 'AsstProf' AND faculty.phone >= 7332 AND faculty.sex = 'F' AND faculty.lname = 'Hall'",
+      "pred_sql": "SELECT a.actid \nFROM Activity a \nJOIN Faculty_Participates_in fpi ON a.actid = fpi.actid \nJOIN Faculty f ON fpi.FacID = f.FacID \nWHERE a.activity_name = 'Square Dancing' \nAND f.Room = '288' \nAND f.Building = 'Krieger' \nAND f.Fname = 'Leslie' \nAND f.Rank = 'AsstProf' \nAND f.Phone >= '7332' \nAND f.Sex = 'F' \nAND f.Lname = 'Hall'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.36
+    },
+    {
+      "uid": "4cf73747-2a2e-48c7-bb4b-1ffb146d7d56",
+      "question": "Which activities are named Crossword Puzzles?",
+      "gold_sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Crossword Puzzles'",
+      "pred_sql": "SELECT actid FROM Activity WHERE activity_name = 'Crossword Puzzles'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.99
+    },
+    {
+      "uid": "6ee67161-866b-48db-9f08-aa32268737eb",
+      "question": "Which activities named exactly 'Football' have both students and faculty participating in them?",
+      "gold_sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Football'",
+      "pred_sql": "SELECT a.actid \nFROM Activity a \nJOIN Participates_in p ON a.actid = p.actid \nJOIN Faculty_Participates_in f ON a.actid = f.actid \nWHERE a.activity_name = 'Football' \nGROUP BY a.actid",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.36
+    },
+    {
+      "uid": "828fbee9-62f5-402b-986c-f91ad38f1cc8",
+      "question": "Which Soccer activities include female student Sarah Schmidt who has a major of at least 50?",
+      "gold_sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.sex = 'F' AND student.fname = 'Sarah' AND activity.activity_name = 'Soccer' AND student.major >= 50 AND student.lname = 'Schmidt'",
+      "pred_sql": "SELECT a.actid \nFROM Activity a \nJOIN Participates_in p ON a.actid = p.actid \nJOIN Student s ON p.stuid = s.StuID \nWHERE a.activity_name = 'Soccer' \n  AND s.Sex = 'F' \n  AND s.Fname = 'Sarah' \n  AND s.Major >= 50 \n  AND s.LName = 'Schmidt'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.62
+    },
+    {
+      "uid": "9bd5929c-9303-4e9f-963f-d88a41f18735",
+      "question": "Which activities have the exact name 'Crossword Puzzles' and have both students and faculty participating in them?",
+      "gold_sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Crossword Puzzles'",
+      "pred_sql": "SELECT Activity.actid\nFROM Activity\nJOIN Participates_in ON Activity.actid = Participates_in.actid\nJOIN Faculty_Participates_in ON Activity.actid = Faculty_Participates_in.actid\nWHERE Activity.activity_name = 'Crossword Puzzles'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.14
+    }
+  ]
+}

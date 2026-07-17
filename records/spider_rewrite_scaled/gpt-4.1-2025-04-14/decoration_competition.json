@@ -1,0 +1,36 @@
+{
+  "db_id": "decoration_competition",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:25:28.093286+00:00",
+  "records": [
+    {
+      "uid": "131e8e46-c3c3-4300-955a-94c43963c04a",
+      "question": "Which colleges named Edmonton School are located in McGill and led by Samir Chahine?",
+      "gold_sql": "SELECT college.college_id FROM college\nWHERE college.college_location = 'McGill' AND college.name = 'Edmonton School' AND college.leader_name = 'Samir Chahine'",
+      "pred_sql": "SELECT college.college_id\nFROM college\nWHERE college.Name = 'Edmonton School'\n  AND college.College_Location = 'McGill'\n  AND college.Leader_Name = 'Samir Chahine'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.01
+    },
+    {
+      "uid": "555c865e-c317-41d6-84d7-1abab0180ce8",
+      "question": "Which Calgary School colleges are located in St. Francis Xavier with Andre Arlain as leader and have Lee Trevino from the United States as a member?",
+      "gold_sql": "SELECT college.college_id FROM college\nJOIN member ON college.college_id = member.college_id\nWHERE college.college_location = 'St. Francis Xavier' AND college.leader_name = 'Andre Arlain' AND member.country = 'United States' AND member.name = 'Lee Trevino' AND college.name = 'Calgary School'",
+      "pred_sql": "SELECT college.college_id\nFROM college\nJOIN member ON college.college_id = member.college_id\nWHERE college.name = 'Calgary School'\n  AND college.college_location = 'St. Francis Xavier'\n  AND college.leader_name = 'Andre Arlain'\n  AND member.name = 'Lee Trevino'\n  AND member.country = 'United States'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    }
+  ]
+}

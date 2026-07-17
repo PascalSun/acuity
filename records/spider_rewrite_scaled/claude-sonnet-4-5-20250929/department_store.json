@@ -1,0 +1,102 @@
+{
+  "db_id": "department_store",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 8,
+  "n_correct": 6,
+  "accuracy": 0.75,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:50:03.406827+00:00",
+  "records": [
+    {
+      "uid": "21cd46a0-572a-4053-8b74-573cfb30edad",
+      "question": "Which Tesco suppliers have the phone number 287-071-1153x254, with addresses that became effective on or after 2008-11-22 12:01:25 and remained valid at least until 2018-03-02 19:50:22, and who supplied products starting at most 2017-07-13 15:02:24 and ending exactly 2018-03-24 23:01:03, where the total amounts purchased were exactly 31862.59 and the total value purchased was at least 76992.42?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN supplier_addresses ON suppliers.supplier_id = supplier_addresses.supplier_id\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nWHERE supplier_addresses.date_from >= '2008-11-22 12:01:25' AND supplier_addresses.date_to >= '2018-03-02 19:50:22' AND suppliers.supplier_phone = '287-071-1153x254' AND product_suppliers.date_supplied_to = '2018-03-24 23:01:03' AND product_suppliers.total_amount_purchased = '31862.59' AND suppliers.supplier_name = 'Tesco' AND product_suppliers.total_value_purchased >= 76992.42 AND product_suppliers.date_supplied_from <= '2017-07-13 15:02:24'",
+      "pred_sql": "SELECT DISTINCT s.supplier_id\nFROM Suppliers s\nJOIN Supplier_Addresses sa ON s.supplier_id = sa.supplier_id\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nWHERE s.supplier_phone = '287-071-1153x254'\nAND sa.date_from >= '2008-11-22 12:01:25'\nAND (sa.date_to IS NULL OR sa.date_to >= '2018-03-02 19:50:22')\nAND ps.date_supplied_from <= '2017-07-13 15:02:24'\nAND ps.date_supplied_to = '2018-03-24 23:01:03'\nAND ps.total_amount_purchased = '31862.59'\nAND ps.total_value_purchased >= 76992.42",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.83
+    },
+    {
+      "uid": "274c073c-6831-4087-b5dc-3e063b72ce4b",
+      "question": "Which Tesco suppliers with phone number 287-071-1153x254 supplied products that were purchased for exactly 31862.59 in total amount, where the total value purchased was at most 76992.42, and they supplied on 2018-03-24 23:01:03 with a start date on or before 2017-07-13 15:02:24?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nWHERE suppliers.supplier_phone = '287-071-1153x254' AND suppliers.supplier_name = 'Tesco' AND product_suppliers.total_amount_purchased = '31862.59' AND product_suppliers.total_value_purchased <= 76992.42 AND product_suppliers.date_supplied_to = '2018-03-24 23:01:03' AND product_suppliers.date_supplied_from <= '2017-07-13 15:02:24'",
+      "pred_sql": "SELECT s.supplier_id\nFROM Suppliers s\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nWHERE s.supplier_phone = '287-071-1153x254'\nAND ps.total_amount_purchased = '31862.59'\nAND ps.total_value_purchased <= 76992.42\nAND ps.date_supplied_from <= '2017-07-13 15:02:24'\nAND ps.date_supplied_to = '2018-03-24 23:01:03'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.28
+    },
+    {
+      "uid": "4d774d06-9b08-408d-ab50-af4c586495b6",
+      "question": "Which suppliers have the name AB Store?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nWHERE suppliers.supplier_name = 'AB Store'",
+      "pred_sql": "SELECT supplier_id FROM Suppliers WHERE supplier_name = 'AB Store'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "6b234434-6c8d-4b20-8445-a4ca0ef2d56c",
+      "question": "Which suppliers provided Hardware mice priced at least 803.74, with a total purchase amount exactly 31862.59, supplied from exactly 2017-07-13 15:02:24 to exactly 2018-03-24 23:01:03?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nJOIN products ON product_suppliers.product_id = products.product_id\nWHERE product_suppliers.date_supplied_from = '2017-07-13 15:02:24' AND product_suppliers.date_supplied_to = '2018-03-24 23:01:03' AND product_suppliers.total_amount_purchased = '31862.59' AND products.product_type_code = 'Hardware' AND products.product_name = 'mouse' AND products.product_price >= 803.74",
+      "pred_sql": "SELECT DISTINCT s.supplier_id\nFROM Suppliers s\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nJOIN Products p ON ps.product_id = p.product_id\nWHERE p.product_type_code = 'Hardware'\n  AND p.product_name = 'mice'\n  AND p.product_price >= 803.74\n  AND ps.total_value_purchased = 31862.59\n  AND ps.date_supplied_from = '2017-07-13 15:02:24'\n  AND ps.date_supplied_to = '2018-03-24 23:01:03'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.97
+    },
+    {
+      "uid": "8a1dafe0-f0be-4406-928e-2ae5c013a59d",
+      "question": "Which suppliers with the phone number (692)009-5928 supplied Hardware products on or before 2017-12-01 19:46:53?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nJOIN products ON product_suppliers.product_id = products.product_id\nWHERE products.product_type_code = 'Hardware' AND suppliers.supplier_phone = '(692)009-5928' AND product_suppliers.date_supplied_from <= '2017-12-01 19:46:53'",
+      "pred_sql": "SELECT DISTINCT s.supplier_id\nFROM Suppliers s\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nJOIN Products p ON ps.product_id = p.product_id\nWHERE s.supplier_phone = '(692)009-5928'\nAND p.product_type_code = 'Hardware'\nAND ps.date_supplied_from <= '2017-12-01 19:46:53'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.91
+    },
+    {
+      "uid": "9e1cdf2f-977d-4e9b-9fab-80c735d7be1b",
+      "question": "Which suppliers have purchased products valued at least 7273.74 and have addresses on file?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN supplier_addresses ON suppliers.supplier_id = supplier_addresses.supplier_id\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nWHERE product_suppliers.total_value_purchased >= 7273.74",
+      "pred_sql": "SELECT DISTINCT s.supplier_id\nFROM Suppliers s\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nJOIN Supplier_Addresses sa ON s.supplier_id = sa.supplier_id\nWHERE ps.total_value_purchased >= 7273.74",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.79
+    },
+    {
+      "uid": "a0fa24ab-124b-4007-832c-a310ec6ea47e",
+      "question": "Which Audi suppliers with phone number 1-432-960-2402x1734 supplied products starting on or after 2017-11-17 08:23:16 through exactly 2018-03-25 12:03:33 and had total purchases of at least 61800.95?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nWHERE product_suppliers.date_supplied_from >= '2017-11-17 08:23:16' AND product_suppliers.date_supplied_to = '2018-03-25 12:03:33' AND suppliers.supplier_name = 'Audi' AND suppliers.supplier_phone = '1-432-960-2402x1734' AND product_suppliers.total_value_purchased >= 61800.95",
+      "pred_sql": "SELECT s.supplier_id\nFROM Suppliers s\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nWHERE s.supplier_name = 'Audi'\nAND s.supplier_phone = '1-432-960-2402x1734'\nAND ps.date_supplied_from >= '2017-11-17 08:23:16'\nAND ps.date_supplied_to = '2018-03-25 12:03:33'\nAND ps.total_value_purchased >= 61800.95",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.92
+    },
+    {
+      "uid": "e9ed0eb0-8f0a-4c78-a16d-955ade9c46e7",
+      "question": "Which suppliers named AB Store have the phone number 1-483-283-4742, purchased exactly 85922.86 in products, and whose address was valid on or before 2015-03-16 19:30:29 until exactly 2018-03-24 00:14:45?",
+      "gold_sql": "SELECT suppliers.supplier_id FROM suppliers\nJOIN supplier_addresses ON suppliers.supplier_id = supplier_addresses.supplier_id\nJOIN product_suppliers ON suppliers.supplier_id = product_suppliers.supplier_id\nWHERE suppliers.supplier_name = 'AB Store' AND supplier_addresses.date_from <= '2015-03-16 19:30:29' AND product_suppliers.total_amount_purchased = '85922.86' AND supplier_addresses.date_to = '2018-03-24 00:14:45' AND suppliers.supplier_phone = '1-483-283-4742'",
+      "pred_sql": "SELECT s.supplier_id\nFROM Suppliers s\nJOIN Product_Suppliers ps ON s.supplier_id = ps.supplier_id\nJOIN Supplier_Addresses sa ON s.supplier_id = sa.supplier_id\nWHERE s.supplier_name = 'AB Store'\nAND s.supplier_phone = '1-483-283-4742'\nAND ps.total_value_purchased = 85922.86\nAND sa.date_from <= '2015-03-16 19:30:29'\nAND sa.date_to = '2018-03-24 00:14:45'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.2
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "db_id": "world_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 7,
+  "n_correct": 6,
+  "accuracy": 0.8571428571428571,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:30:56.796001+00:00",
+  "records": [
+    {
+      "uid": "122bdf86-871b-4303-bdff-ce8833676135",
+      "question": "Which countries have a capital of 3503.0 and a life expectancy of exactly 63.7?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.capital = 3503.0 AND country.lifeexpectancy = 63.7",
+      "pred_sql": "SELECT country.Code FROM country WHERE country.Capital = 3503 AND country.LifeExpectancy = 63.7",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "182cbd58-cc49-4b8f-97f4-140b1e5c142b",
+      "question": "Which country named Sudan in Africa has a government form exactly Islamic Republic, is in the Northern Africa region, gained independence in 1956, has a surface area at most 2505813.0, and has a GNP exactly 10162.0?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.region = 'Northern Africa' AND country.indepyear = 1956.0 AND country.surfacearea <= 2505813.0 AND country.governmentform = 'Islamic Republic' AND country.continent = 'Africa' AND country.gnp = 10162.0 AND country.name = 'Sudan'",
+      "pred_sql": "SELECT country.Code FROM country WHERE Region = 'Northern Africa' AND IndepYear = 1956 AND SurfaceArea <= 2505813.0 AND GovernmentForm = 'Islamic Republic' AND Continent = 'Africa' AND GNP = 10162.0 AND Name = 'Sudan'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    },
+    {
+      "uid": "27394271-d9eb-4fbf-8130-6091cf22bd52",
+      "question": "Which countries named 'France' that have related cities and languages have a language that is not official and a GNP of at least 1424285.0?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE countrylanguage.isofficial = 'F' AND country.gnp >= 1424285.0 AND country.name = 'France'",
+      "pred_sql": "SELECT country.Code \nFROM country \nJOIN city ON country.Code = city.CountryCode \nJOIN countrylanguage ON country.Code = countrylanguage.CountryCode \nWHERE country.GNP >= 1424285.0 \n  AND country.Name = 'France' \n  AND countrylanguage.IsOfficial = 'F' \nGROUP BY country.Code",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.91
+    },
+    {
+      "uid": "89385dc2-c2eb-4619-bf26-7bc5f8a805f6",
+      "question": "Which African country named Egypt has Hosni Mubarak as head of state, a population of at least 68470000, a surface area of at least 1001449.0, gained independence in at least 1922, and contains the city Zagazig with a population of at least 267351?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nWHERE city.name = 'Zagazig' AND country.name = 'Egypt' AND city.population >= 267351 AND country.headofstate = 'Hosni Mubarak' AND country.population >= 68470000 AND country.surfacearea >= 1001449.0 AND country.indepyear >= 1922.0 AND country.continent = 'Africa'",
+      "pred_sql": "SELECT country.Code \nFROM country \nJOIN city ON country.Code = city.CountryCode \nWHERE country.Name = 'Egypt' \n  AND country.HeadOfState = 'Hosni Mubarak' \n  AND country.Population >= 68470000 \n  AND country.SurfaceArea >= 1001449.0 \n  AND country.IndepYear >= 1922 \n  AND country.Continent = 'Africa' \n  AND city.Name = 'Zagazig' \n  AND city.Population >= 267351",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.11
+    },
+    {
+      "uid": "c7b8ac13-5bc3-486a-9a8f-c2d98ecccda5",
+      "question": "Which African republics have a life expectancy of exactly 50.1, an old GNP of at least 5279.0, and a GNP of at most 5493.0?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.gnpold >= 5279.0 AND country.continent = 'Africa' AND country.lifeexpectancy = 50.1 AND country.governmentform = 'Republic' AND country.gnp <= 5493.0",
+      "pred_sql": "SELECT country.Code FROM country WHERE country.GNPOld >= 5279.0 AND country.Continent = 'Africa' AND country.LifeExpectancy = 50.1 AND country.GovernmentForm = 'Republic' AND country.GNP <= 5493.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "d79f10c7-453e-41fe-8281-f911478bdb87",
+      "question": "Which countries have the name 'China', a GNP old value at most 917719.0, a life expectancy at least 71.4, an independence year at most -1523.0, cities named 'Taizhou' with a population of at least 152442, and associated countrylanguage records?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.gnpold <= 917719.0 AND country.name = 'China' AND country.lifeexpectancy >= 71.4 AND country.indepyear <= -1523.0 AND city.name = 'Taizhou' AND city.population >= 152442",
+      "pred_sql": "SELECT country.Code \nFROM country \nJOIN city ON country.Code = city.CountryCode \nJOIN countrylanguage ON country.Code = countrylanguage.CountryCode \nWHERE country.GNPOld <= 917719.0 \n  AND country.Name = 'China' \n  AND country.LifeExpectancy >= 71.4 \n  AND country.IndepYear <= -1523.0 \n  AND city.Name = 'Taizhou' \n  AND city.Population >= 152442",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.18
+    },
+    {
+      "uid": "ee17565d-e5b5-4d51-bb3a-afe77eac9d40",
+      "question": "Which countries are located in the region 'Eastern Asia' and have at least one city as well as at least one countrylanguage associated with them?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.region = 'Eastern Asia'",
+      "pred_sql": "SELECT country.Code FROM country \nJOIN city ON country.Code = city.CountryCode \nJOIN countrylanguage ON country.Code = countrylanguage.CountryCode \nWHERE country.Region = 'Eastern Asia' \nGROUP BY country.Code",
+      "strategy": "2iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    }
+  ]
+}

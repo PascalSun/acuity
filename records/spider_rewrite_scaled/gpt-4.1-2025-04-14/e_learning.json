@@ -1,0 +1,69 @@
+{
+  "db_id": "e_learning",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:25:46.999628+00:00",
+  "records": [
+    {
+      "uid": "4988a889-51eb-49aa-93c6-5d9688d1bf46",
+      "question": "Which subjects are exactly named Computer Science and have courses associated with them?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nWHERE subjects.subject_name = 'Computer Science'",
+      "pred_sql": "SELECT Subjects.subject_id\nFROM Subjects\nJOIN Courses ON Subjects.subject_id = Courses.subject_id\nWHERE Subjects.subject_name = 'Computer Science'\nGROUP BY Subjects.subject_id",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    },
+    {
+      "uid": "67f09f3a-6b7b-4e13-82ab-6602412bb84a",
+      "question": "Which subjects have courses taught by authors or tutors where the author_tutor_atb is 613?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE course_authors_and_tutors.author_tutor_atb = '613'",
+      "pred_sql": "SELECT DISTINCT Subjects.subject_id\nFROM Subjects\nJOIN Courses ON Subjects.subject_id = Courses.subject_id\nJOIN Course_Authors_and_Tutors ON Courses.author_id = Course_Authors_and_Tutors.author_id\nWHERE Course_Authors_and_Tutors.author_tutor_ATB = '613'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "add9c952-8817-4a53-b3b8-cc3f1b8f444d",
+      "question": "Which subjects are linked to courses authored by someone whose family name is Rowe and middle name is Kennith?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE course_authors_and_tutors.family_name = 'Rowe' AND course_authors_and_tutors.middle_name = 'Kennith'",
+      "pred_sql": "SELECT Subjects.subject_id\nFROM Subjects\nJOIN Courses ON Courses.subject_id = Subjects.subject_id\nJOIN Course_Authors_and_Tutors ON Courses.author_id = Course_Authors_and_Tutors.author_id\nWHERE Course_Authors_and_Tutors.family_name = 'Rowe'\n  AND Course_Authors_and_Tutors.middle_name = 'Kennith'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.15
+    },
+    {
+      "uid": "d7b4cd2e-9a9b-4954-8a3d-6fac5c579eeb",
+      "question": "What Language subjects have courses taught by Georgiana who has the password 4d8e909ae9b8888c93a2c5f1eccbd0c4ac6a01c3?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE course_authors_and_tutors.personal_name = 'Georgiana' AND subjects.subject_name = 'Language' AND course_authors_and_tutors.password = '4d8e909ae9b8888c93a2c5f1eccbd0c4ac6a01c3'",
+      "pred_sql": "SELECT Subjects.subject_id\nFROM Subjects\nJOIN Courses ON Courses.subject_id = Subjects.subject_id\nJOIN Course_Authors_and_Tutors ON Courses.author_id = Course_Authors_and_Tutors.author_id\nWHERE Subjects.subject_name LIKE '%Language%'\n  AND Course_Authors_and_Tutors.personal_name = 'Georgiana'\n  AND Course_Authors_and_Tutors.password = '4d8e909ae9b8888c93a2c5f1eccbd0c4ac6a01c3'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "fb6577c4-a71e-4ddf-809b-f6b40a3a0b11",
+      "question": "What subjects are linked to the database course with course name database and course description database, taught by Kelsie Rowe with login name medhurst.alvah, gender 0, and password 02d64f11de97436343a0beba41bfcf69af61be1e?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE courses.course_description = 'database' AND course_authors_and_tutors.family_name = 'Rowe' AND courses.course_name = 'database' AND course_authors_and_tutors.password = '02d64f11de97436343a0beba41bfcf69af61be1e' AND course_authors_and_tutors.gender_mf = '0' AND course_authors_and_tutors.personal_name = 'Kelsie' AND course_authors_and_tutors.login_name = 'medhurst.alvah'",
+      "pred_sql": "SELECT Subjects.subject_id\nFROM Courses\nJOIN Subjects ON Courses.subject_id = Subjects.subject_id\nJOIN Course_Authors_and_Tutors ON Courses.author_id = Course_Authors_and_Tutors.author_id\nWHERE Courses.course_name = 'database'\n  AND Courses.course_description = 'database'\n  AND Course_Authors_and_Tutors.personal_name = 'Kelsie'\n  AND Course_Authors_and_Tutors.family_name = 'Rowe'\n  AND Course_Authors_and_Tutors.login_name = 'medhurst.alvah'\n  AND Course_Authors_and_Tutors.gender_mf = '0'\n  AND Course_Authors_and_Tutors.password = '02d64f11de97436343a0beba41bfcf69af61be1e'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    }
+  ]
+}

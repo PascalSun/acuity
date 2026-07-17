@@ -1,0 +1,47 @@
+{
+  "db_id": "county_public_safety",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:13:10.985749+00:00",
+  "records": [
+    {
+      "uid": "2252b797-04e7-4465-bc57-081196e6fcbd",
+      "question": "Which county public safety units have the police force Central Saanich Police, serve Can\u00f3vanas where the Hispanic population is exactly 99.2, the Asian population is at most 0.2, the White population is at most 61.2, and have no more than 21 police officers?",
+      "gold_sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.asian <= 0.2 AND city.name = 'Can\u00f3vanas' AND county_public_safety.police_force = 'Central Saanich Police' AND city.white <= 61.2 AND city.hispanic = 99.2 AND county_public_safety.police_officers <= 21",
+      "pred_sql": "SELECT T1.County_ID FROM county_public_safety AS T1 INNER JOIN city AS T2 ON T1.County_ID = T2.County_ID WHERE T1.Police_force = 'Central Saanich Police' AND T2.Name = 'Can\u00f3vanas' AND T2.Hispanic = 99.2 AND T2.Asian <= 0.2 AND T2.White <= 61.2 AND T1.Police_officers <= 21",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.32
+    },
+    {
+      "uid": "8d7d5b24-c425-4fb2-a4fc-93d58c4cd927",
+      "question": "Which counties named Abbotsford in the East with a population of 128165 and the Abbotsford Police Department have at least 187 officers, residents per officer at most 685, a crime rate no more than 118.0, and a case burden no more than 81?",
+      "gold_sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.residents_per_officer <= 685 AND county_public_safety.police_officers >= 187 AND county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.location = 'East' AND county_public_safety.crime_rate <= 118.0 AND county_public_safety.population = 128165 AND county_public_safety.case_burden <= 81 AND county_public_safety.name = 'Abbotsford'",
+      "pred_sql": "SELECT County_ID FROM county_public_safety WHERE Name = 'Abbotsford' AND Location = 'East' AND Population = 128165 AND Police_force = 'Abbotsford Police Department' AND Police_officers >= 187 AND Residents_per_officer <= 685 AND Crime_rate <= 118.0 AND Case_burden <= 81",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "9056814d-8b85-4f77-bc33-461e92b7e05d",
+      "question": "Which counties named Abbotsford with the Abbotsford Police Department have a population of at most 128165, a crime rate of at least 118.0, a case burden of at least 81, no more than 187 police officers, and at least 685 residents per officer?",
+      "gold_sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.population <= 128165 AND county_public_safety.crime_rate >= 118.0 AND county_public_safety.case_burden >= 81 AND county_public_safety.police_officers <= 187 AND county_public_safety.name = 'Abbotsford' AND county_public_safety.residents_per_officer >= 685 AND county_public_safety.police_force = 'Abbotsford Police Department'",
+      "pred_sql": "SELECT County_ID FROM county_public_safety WHERE Name = 'Abbotsford' AND Police_force = 'Abbotsford Police Department' AND Population <= 128165 AND Crime_rate >= 118.0 AND Case_burden >= 81 AND Police_officers <= 187 AND Residents_per_officer >= 685",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    }
+  ]
+}

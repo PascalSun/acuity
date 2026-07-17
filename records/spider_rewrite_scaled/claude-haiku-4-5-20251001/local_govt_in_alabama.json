@@ -1,0 +1,47 @@
+{
+  "db_id": "local_govt_in_alabama",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:05:50.165802+00:00",
+  "records": [
+    {
+      "uid": "0a594f2f-fb1b-41bb-8941-39dc5a752a2e",
+      "question": "What services are classified as Birth Proof?",
+      "gold_sql": "SELECT services.service_id FROM services\nWHERE services.service_type_code = 'Birth Proof'",
+      "pred_sql": "SELECT Services.Service_ID\nFROM Services\nWHERE Services.Service_Type_Code = 'Birth Proof'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.42
+    },
+    {
+      "uid": "a3d3b2c7-2db9-444b-b4be-49e7ec815dca",
+      "question": "What Property Change type services have associated events with Success as the event details?",
+      "gold_sql": "SELECT services.service_id FROM services\nJOIN events ON services.service_id = events.service_id\nWHERE services.service_type_code = 'Property Change' AND events.event_details = 'Success'",
+      "pred_sql": "SELECT DISTINCT s.Service_ID\nFROM Services s\nJOIN Events e ON s.Service_ID = e.Service_ID\nWHERE s.Service_Type_Code = 'Property Change' AND e.Event_Details = 'Success'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "a5d624c9-8ecc-42d7-af20-84447881de76",
+      "question": "Which services have events where the event details is Fail?",
+      "gold_sql": "SELECT services.service_id FROM services\nJOIN events ON services.service_id = events.service_id\nWHERE events.event_details = 'Fail'",
+      "pred_sql": "SELECT DISTINCT s.Service_ID\nFROM Services s\nINNER JOIN Events e ON s.Service_ID = e.Service_ID\nWHERE e.Event_Details = 'Fail'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    }
+  ]
+}

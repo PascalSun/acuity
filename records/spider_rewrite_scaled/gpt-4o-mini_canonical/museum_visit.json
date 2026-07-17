@@ -1,0 +1,36 @@
+{
+  "db_id": "museum_visit",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:28:09.350632+00:00",
+  "records": [
+    {
+      "uid": "3e2fb20a-bcf7-49bc-9429-871f2f66128a",
+      "question": "Which visitors named Arjen Robben are at least 27 years old and have a membership level of at most 1?",
+      "gold_sql": "SELECT visitor.id FROM visitor\nWHERE visitor.level_of_membership <= 1 AND visitor.name = 'Arjen Robben' AND visitor.age >= 27",
+      "pred_sql": "SELECT ID FROM visitor WHERE Level_of_membership <= 1 AND Name = 'Arjen Robben' AND Age >= 27",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "7f68b3ac-b9f5-494e-9d0e-a32309167862",
+      "question": "Which visitors are exactly 35 years old and have a membership level of at least 8?",
+      "gold_sql": "SELECT visitor.id FROM visitor\nWHERE visitor.level_of_membership >= 8 AND visitor.age = 35",
+      "pred_sql": "SELECT ID FROM visitor WHERE Level_of_membership >= 8 AND Age = 35",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.88
+    }
+  ]
+}

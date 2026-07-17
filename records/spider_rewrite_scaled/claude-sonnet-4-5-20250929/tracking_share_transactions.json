@@ -1,0 +1,91 @@
+{
+  "db_id": "tracking_share_transactions",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 7,
+  "n_correct": 7,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:57:52.968829+00:00",
+  "records": [
+    {
+      "uid": "38e1755f-08d2-4b27-a481-746cf75cdc63",
+      "question": "Which purchases of exactly 1522 shares with an amount of 822.803 were made on or before 1990-12-02 09:03:38 by investors whose details are l and have sales details of p?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code\nJOIN investors ON transactions.investor_id = investors.investor_id\nJOIN sales ON transactions.transaction_id = sales.sales_transaction_id\nWHERE investors.investor_details = 'l' AND transactions.share_count = '1522' AND transactions.amount_of_transaction = 822.803 AND ref_transaction_types.transaction_type_description = 'Purchase' AND transactions.date_of_transaction <= '1990-12-02 09:03:38' AND sales.sales_details = 'p'",
+      "pred_sql": "SELECT DISTINCT T.transaction_id\nFROM Transactions T\nJOIN Purchases P ON T.transaction_id = P.purchase_transaction_id\nJOIN Investors I ON T.investor_id = I.investor_id\nJOIN Sales S ON S.sales_transaction_id IN (\n    SELECT transaction_id \n    FROM Transactions \n    WHERE investor_id = T.investor_id\n)\nWHERE T.share_count = '1522'\nAND T.amount_of_transaction = 822.803\nAND T.date_of_transaction <= '1990-12-02 09:03:38'\nAND I.Investor_details = 'l'\nAND S.sales_details = 'p'",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.89
+    },
+    {
+      "uid": "400d87fa-ef05-4aea-95e6-7fb199ebc0ff",
+      "question": "Which transactions involve exactly 930 shares and have a transaction amount of at least 0.0?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code\nJOIN sales ON transactions.transaction_id = sales.sales_transaction_id\nWHERE transactions.share_count = '930' AND transactions.amount_of_transaction >= 0.0",
+      "pred_sql": "SELECT transaction_id\nFROM Transactions\nWHERE share_count = '930' AND amount_of_transaction >= 0.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    },
+    {
+      "uid": "5eb2f32d-38d4-4424-9284-d8fed8b15dd3",
+      "question": "What transactions occurred on 1988-09-16 19:02:51 with exactly 8718572 shares?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN investors ON transactions.investor_id = investors.investor_id\nJOIN lots ON investors.investor_id = lots.investor_id\nWHERE transactions.date_of_transaction = '1988-09-16 19:02:51' AND transactions.share_count = '8718572'",
+      "pred_sql": "SELECT transaction_id\nFROM Transactions\nWHERE date_of_transaction = '1988-09-16 19:02:51' AND share_count = '8718572'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.04
+    },
+    {
+      "uid": "98b84fff-9f3f-4cf5-aeac-6c41060e1ea6",
+      "question": "What transactions since 2002-04-07 20:28:37 have sales_details exactly p, investor_details exactly d, and a transaction amount at most 183.2?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN investors ON transactions.investor_id = investors.investor_id\nJOIN sales ON transactions.transaction_id = sales.sales_transaction_id\nWHERE transactions.date_of_transaction >= '2002-04-07 20:28:37' AND sales.sales_details = 'p' AND investors.investor_details = 'd' AND transactions.amount_of_transaction <= 183.2",
+      "pred_sql": "SELECT DISTINCT T.transaction_id\nFROM Transactions T\nJOIN Investors I ON T.investor_id = I.investor_id\nJOIN Sales S ON T.transaction_id = S.sales_transaction_id\nWHERE T.date_of_transaction >= '2002-04-07 20:28:37'\nAND S.sales_details = 'p'\nAND I.Investor_details = 'd'\nAND T.amount_of_transaction <= 183.2",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.47
+    },
+    {
+      "uid": "cb3ee9d1-13b5-40e8-b927-01cbb00bffa1",
+      "question": "Which transactions on 1988-09-16 19:02:51 have a share count of 8718572, an amount of transaction at most 302507.6996, and involve investors with details k?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN investors ON transactions.investor_id = investors.investor_id\nWHERE investors.investor_details = 'k' AND transactions.date_of_transaction = '1988-09-16 19:02:51' AND transactions.share_count = '8718572' AND transactions.amount_of_transaction <= 302507.6996",
+      "pred_sql": "SELECT T.transaction_id\nFROM Transactions T\nJOIN Investors I ON T.investor_id = I.investor_id\nWHERE T.date_of_transaction = '1988-09-16 19:02:51'\nAND T.share_count = '8718572'\nAND T.amount_of_transaction <= 302507.6996\nAND I.Investor_details = 'k'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.94
+    },
+    {
+      "uid": "f206461e-9d4c-4730-b4a3-711bfe2e737d",
+      "question": "What transactions occurred on or before 1988-09-16 19:02:51 with exactly 8718572 shares and an amount of at least 302507.6996, where the investor details are exactly k and the lot details are d?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN investors ON transactions.investor_id = investors.investor_id\nJOIN lots ON investors.investor_id = lots.investor_id\nWHERE lots.lot_details = 'd' AND investors.investor_details = 'k' AND transactions.date_of_transaction <= '1988-09-16 19:02:51' AND transactions.share_count = '8718572' AND transactions.amount_of_transaction >= 302507.6996",
+      "pred_sql": "SELECT DISTINCT T.transaction_id\nFROM Transactions T\nJOIN Investors I ON T.investor_id = I.investor_id\nJOIN Transactions_Lots TL ON T.transaction_id = TL.transaction_id\nJOIN Lots L ON TL.lot_id = L.lot_id\nWHERE T.date_of_transaction <= '1988-09-16 19:02:51'\nAND T.share_count = '8718572'\nAND T.amount_of_transaction >= 302507.6996\nAND I.Investor_details = 'k'\nAND L.lot_details = 'd'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.8
+    },
+    {
+      "uid": "fd17c4ac-bb29-48a1-9bb6-0a3cc13e2da3",
+      "question": "Which transactions have exactly 930 shares and involve both investors and sales details?",
+      "gold_sql": "SELECT transactions.transaction_id FROM transactions\nJOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code\nJOIN investors ON transactions.investor_id = investors.investor_id\nJOIN sales ON transactions.transaction_id = sales.sales_transaction_id\nWHERE transactions.share_count = '930'",
+      "pred_sql": "SELECT DISTINCT t.transaction_id\nFROM Transactions t\nINNER JOIN Sales s ON t.transaction_id = s.sales_transaction_id\nWHERE t.share_count = '930'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.44
+    }
+  ]
+}

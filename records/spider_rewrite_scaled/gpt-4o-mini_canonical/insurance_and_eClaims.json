@@ -1,0 +1,91 @@
+{
+  "db_id": "insurance_and_eClaims",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 7,
+  "n_correct": 7,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:27:35.508191+00:00",
+  "records": [
+    {
+      "uid": "30741ca1-1ee1-4eac-9a9a-a9c961c7fe45",
+      "question": "Which staff member with details exactly Zachery created a Medical document for a claim that was made on 2016-09-29 02:42:22 with an amount claimed exactly 756.27?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_documents ON staff.staff_id = claims_documents.created_by_staff_id\nJOIN claim_headers ON claims_documents.claim_id = claim_headers.claim_header_id\nWHERE staff.staff_details = 'Zachery' AND claim_headers.date_of_claim = '2016-09-29 02:42:22' AND claims_documents.document_type_code = 'Medical' AND claim_headers.amount_claimed = 756.27",
+      "pred_sql": "SELECT DISTINCT Staff.Staff_ID\nFROM Staff\nJOIN Claims_Documents ON Staff.Staff_ID = Claims_Documents.Created_by_Staff_ID\nJOIN Claim_Headers ON Claims_Documents.Claim_ID = Claim_Headers.Claim_Header_ID\nWHERE Staff.Staff_Details = 'Zachery'\nAND Claims_Documents.Document_Type_Code = 'Medical'\nAND Claim_Headers.Date_of_Claim = '2016-09-29 02:42:22'\nAND Claim_Headers.Amount_Claimed = '756.27'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.8
+    },
+    {
+      "uid": "338d1c7b-ec26-4041-adf1-b2c705fed71a",
+      "question": "Which staff members with Roman details created Document-type claims on day 3 that currently have an In progress outcome?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_documents ON staff.staff_id = claims_documents.created_by_staff_id\nJOIN claims_processing ON staff.staff_id = claims_processing.staff_id\nWHERE claims_processing.claim_outcome_code = 'In progress' AND staff.staff_details = 'Roman' AND claims_documents.document_type_code = 'Document' AND claims_documents.created_date = 3",
+      "pred_sql": "SELECT DISTINCT s.Staff_ID\nFROM Staff s\nJOIN Claims_Documents cd ON s.Staff_ID = cd.Created_by_Staff_ID\nJOIN Claims_Processing cp ON s.Staff_ID = cp.Staff_ID\nWHERE s.Staff_Details = 'Roman'\n  AND cd.Document_Type_Code = 'Document'\n  AND cd.Created_Date = '3'\n  AND cp.Claim_Outcome_Code = 'In progress'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.45
+    },
+    {
+      "uid": "33fcea4a-7693-4314-94dd-2cea3f90c90a",
+      "question": "Which staff members named Margaretta have created claims documents and are involved in claims processing?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_documents ON staff.staff_id = claims_documents.created_by_staff_id\nJOIN claims_processing ON staff.staff_id = claims_processing.staff_id\nWHERE staff.staff_details = 'Margaretta'",
+      "pred_sql": "SELECT DISTINCT s.Staff_ID\nFROM Staff s\nJOIN Claims_Documents cd ON s.Staff_ID = cd.Created_by_Staff_ID\nJOIN Claims_Processing cp ON s.Staff_ID = cp.Staff_ID\nWHERE s.Staff_Details = 'Margaretta'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "63f4ae74-623d-4723-9d17-93b1787c5131",
+      "question": "Which staff have disputed Overtime Meal Subsidy claims with amounts claimed at least 362.71, where the claim date is on or after 2017-05-01 13:34:43, settled exactly on 2017-11-16 04:06:05, and the claim outcome is In progress?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_processing ON staff.staff_id = claims_processing.staff_id\nJOIN claim_headers ON claims_processing.claim_id = claim_headers.claim_header_id\nWHERE claim_headers.claim_type_code = 'Overtime Meal Subsidy' AND claim_headers.date_of_settlement = '2017-11-16 04:06:05' AND claim_headers.claim_status_code = 'Disputed' AND claim_headers.amount_claimed >= 362.71 AND claims_processing.claim_outcome_code = 'In progress' AND claim_headers.date_of_claim >= '2017-05-01 13:34:43'",
+      "pred_sql": "SELECT DISTINCT s.Staff_ID\nFROM Staff s\nJOIN Claims_Processing cp ON s.Staff_ID = cp.Staff_ID\nJOIN Claim_Headers ch ON cp.Claim_ID = ch.Claim_Header_ID\nWHERE cp.Claim_Outcome_Code = 'In progress'\n  AND ch.Claim_Type_Code = 'Overtime Meal Subsidy'\n  AND ch.Date_of_Settlement = '2017-11-16 04:06:05'\n  AND ch.Claim_Status_Code = 'Disputed'\n  AND ch.Amount_Claimed >= 362.71\n  AND ch.Date_of_Claim >= '2017-05-01 13:34:43'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.2
+    },
+    {
+      "uid": "94404a5d-8be2-4216-b342-90839614d2fa",
+      "question": "Which staff members have staff details exactly Vernie and are connected to claims where the amount claimed is exactly 318.16?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_processing ON staff.staff_id = claims_processing.staff_id\nJOIN claim_headers ON claims_processing.claim_id = claim_headers.claim_header_id\nWHERE staff.staff_details = 'Vernie' AND claim_headers.amount_claimed = 318.16",
+      "pred_sql": "SELECT DISTINCT Staff.Staff_ID\nFROM Staff\nJOIN Claims_Processing ON Staff.Staff_ID = Claims_Processing.Staff_ID\nJOIN Claim_Headers ON Claims_Processing.Claim_ID = Claim_Headers.Claim_Header_ID\nWHERE Staff.Staff_Details = 'Vernie' AND Claim_Headers.Amount_Claimed = 318.16",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "a66a268a-1ca4-4441-a270-a88ad4cc5a91",
+      "question": "Which staff have Child Birth claims under Uniformed policies where the amount claimed is at most 318.16, the claim outcome is exactly In progress, the date of claim is on or after 2016-12-30 21:43:21, and the settlement date is on or after 2017-10-08 21:43:14?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_processing ON staff.staff_id = claims_processing.staff_id\nJOIN claim_headers ON claims_processing.claim_id = claim_headers.claim_header_id\nJOIN policies ON claim_headers.policy_id = policies.policy_id\nWHERE claim_headers.amount_claimed <= 318.16 AND claim_headers.claim_type_code = 'Child Birth' AND claims_processing.claim_outcome_code = 'In progress' AND claim_headers.date_of_claim >= '2016-12-30 21:43:21' AND policies.policy_type_code = 'Uniformed' AND claim_headers.date_of_settlement >= '2017-10-08 21:43:14'",
+      "pred_sql": "SELECT DISTINCT s.Staff_ID\nFROM Staff s\nJOIN Claims_Processing cp ON s.Staff_ID = cp.Staff_ID\nJOIN Claim_Headers ch ON cp.Claim_ID = ch.Claim_Header_ID\nJOIN Policies p ON ch.Policy_ID = p.Policy_ID\nWHERE cp.Claim_Outcome_Code = 'In progress'\n  AND ch.Amount_Claimed <= 318.16\n  AND ch.Claim_Type_Code = 'Child Birth'\n  AND ch.Date_of_Claim >= '2016-12-30 21:43:21'\n  AND ch.Date_of_Settlement >= '2017-10-08 21:43:14'\n  AND p.Policy_Type_Code = 'Uniformed'",
+      "strategy": "3pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    },
+    {
+      "uid": "ed87b185-6c5f-4f0e-aa2b-a36adb3b80e2",
+      "question": "Which staff members have staff details exactly Vernie and are linked to policies that ended on 2018-03-15 05:02:00?",
+      "gold_sql": "SELECT staff.staff_id FROM staff\nJOIN claims_processing ON staff.staff_id = claims_processing.staff_id\nJOIN claim_headers ON claims_processing.claim_id = claim_headers.claim_header_id\nJOIN policies ON claim_headers.policy_id = policies.policy_id\nWHERE staff.staff_details = 'Vernie' AND policies.end_date = '2018-03-15 05:02:00'",
+      "pred_sql": "SELECT DISTINCT Staff.Staff_ID\nFROM Staff\nJOIN Claims_Processing ON Staff.Staff_ID = Claims_Processing.Staff_ID\nJOIN Claim_Headers ON Claims_Processing.Claim_ID = Claim_Headers.Claim_Header_ID\nJOIN Policies ON Claim_Headers.Policy_ID = Policies.Policy_ID\nWHERE Staff.Staff_Details = 'Vernie' \nAND Policies.End_Date = '2018-03-15 05:02:00'",
+      "strategy": "3pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    }
+  ]
+}

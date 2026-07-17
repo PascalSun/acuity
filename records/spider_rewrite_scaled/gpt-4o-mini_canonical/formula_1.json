@@ -1,0 +1,91 @@
+{
+  "db_id": "formula_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 7,
+  "n_correct": 7,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:27:05.482915+00:00",
+  "records": [
+    {
+      "uid": "10b7f275-3007-437c-82e7-3e0414cb6172",
+      "question": "Which Belgian Grand Prix races held in Belgium at latitude 50.9894 and longitude at least 5.25694 were in 1973 or later and were round 5 or higher?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nWHERE races.year >= 1973 AND races.name = 'Belgian Grand Prix' AND circuits.lng >= 5.25694 AND races.round >= 5 AND circuits.lat = 50.9894 AND circuits.country = 'Belgium'",
+      "pred_sql": "SELECT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nWHERE races.year >= 1973\n  AND races.name = 'Belgian Grand Prix'\n  AND races.round >= 5\n  AND circuits.lng >= 5.25694\n  AND circuits.lat = 50.9894\n  AND circuits.country = 'Belgium'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.52
+    },
+    {
+      "uid": "1442a770-e39e-46b2-be93-9f82c81f478b",
+      "question": "Which races at Suzuka Circuit (with URL http://en.wikipedia.org/wiki/Suzuka_Circuit) took place in 2013 or earlier and had qualifying times of exactly 1:32.875 in Q1 and exactly 1:32.093 in Q2?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN qualifying ON races.raceid = qualifying.raceid\nWHERE circuits.name = 'Suzuka Circuit' AND qualifying.q1 = '1:32.875' AND races.year <= 2013 AND circuits.url = 'http://en.wikipedia.org/wiki/Suzuka_Circuit' AND qualifying.q2 = '1:32.093'",
+      "pred_sql": "SELECT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nJOIN qualifying ON races.raceId = qualifying.raceId\nWHERE races.year <= 2013\n  AND circuits.name = 'Suzuka Circuit'\n  AND circuits.url = 'http://en.wikipedia.org/wiki/Suzuka_Circuit'\n  AND qualifying.q1 = '1:32.875'\n  AND qualifying.q2 = '1:32.093'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.81
+    },
+    {
+      "uid": "b9f7f3e5-49b8-4a78-b1fb-37752dc906a6",
+      "question": "Which races took place on 1986-10-26 at the Adelaide Street Circuit located in Adelaide with a longitude of at most 138.617?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nWHERE circuits.location = 'Adelaide' AND races.date = '1986-10-26' AND circuits.name = 'Adelaide Street Circuit' AND circuits.lng <= 138.617",
+      "pred_sql": "SELECT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nWHERE races.date = '1986-10-26'\n  AND circuits.location = 'Adelaide'\n  AND circuits.name = 'Adelaide Street Circuit'\n  AND circuits.lng <= 138.617",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.36
+    },
+    {
+      "uid": "ba4feaeb-86fa-4860-8667-d36b25c40415",
+      "question": "Which races took place in Argentina where qualifying numbers were at most 10?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN qualifying ON races.raceid = qualifying.raceid\nWHERE circuits.country = 'Argentina' AND qualifying.number <= 10",
+      "pred_sql": "SELECT DISTINCT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nJOIN qualifying ON races.raceId = qualifying.raceId\nWHERE circuits.country = 'Argentina' AND qualifying.number <= '10'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "bb28fcf0-e5f0-4736-8196-a6a2afe2bb5f",
+      "question": "Which races took place at the Hockenheimring in Hockenheim where the driver finished in position 10, had exactly 18.0 points, at most 1 win, and the result status was at least 11?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN results ON races.raceid = results.raceid\nJOIN driverstandings ON races.raceid = driverstandings.raceid\nWHERE results.statusid >= 11 AND circuits.location = 'Hockenheim' AND driverstandings.points = 18.0 AND driverstandings.wins <= 1 AND results.position = '10' AND circuits.name = 'Hockenheimring'",
+      "pred_sql": "SELECT DISTINCT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nJOIN results ON races.raceId = results.raceId\nJOIN driverStandings ON races.raceId = driverStandings.raceId\nWHERE circuits.location = 'Hockenheim'\n  AND circuits.name = 'Hockenheimring'\n  AND results.statusId >= 11\n  AND results.position = '10'\n  AND driverStandings.points = 18.0\n  AND driverStandings.wins <= 1",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "c18815b2-a485-48b4-b1c1-7d3fc61c13bd",
+      "question": "Which races took place at circuits with longitude exactly 4.89913 and have both constructor standings and constructor results records?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN constructorstandings ON races.raceid = constructorstandings.raceid\nJOIN constructorresults ON races.raceid = constructorresults.raceid\nWHERE circuits.lng = 4.89913",
+      "pred_sql": "SELECT DISTINCT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nJOIN constructorStandings ON races.raceId = constructorStandings.raceId\nJOIN constructorResults ON races.raceId = constructorResults.raceId\nWHERE circuits.lng = 4.89913",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "e2191179-bf62-46c8-94b2-e182c5a2a66e",
+      "question": "Which Spanish Grand Prix races in Barcelona through 1973 had a constructor finishing in exactly 4th position with 9.0 points and at most 0 wins?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN constructorstandings ON races.raceid = constructorstandings.raceid\nWHERE constructorstandings.wins <= 0 AND constructorstandings.position = 4 AND races.name = 'Spanish Grand Prix' AND constructorstandings.points = 9.0 AND circuits.location = 'Barcelona' AND races.year <= 1973",
+      "pred_sql": "SELECT races.raceId\nFROM races\nJOIN circuits ON races.circuitId = circuits.circuitId\nJOIN constructorStandings ON races.raceId = constructorStandings.raceId\nWHERE races.name = 'Spanish Grand Prix'\n  AND races.year <= 1973\n  AND circuits.location = 'Barcelona'\n  AND constructorStandings.wins <= 0\n  AND constructorStandings.position = 4\n  AND constructorStandings.points = 9.0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.87
+    }
+  ]
+}

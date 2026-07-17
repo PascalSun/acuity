@@ -1,0 +1,80 @@
+{
+  "db_id": "flight_1",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 6,
+  "n_correct": 4,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:51:22.951287+00:00",
+  "records": [
+    {
+      "uid": "0e69e59a-f0f9-4e6c-a391-0f4139aa24d1",
+      "question": "Which aircraft have flown to Honolulu and also have associated certificates?",
+      "gold_sql": "SELECT aircraft.aid FROM aircraft\nJOIN flight ON aircraft.aid = flight.aid\nJOIN certificate ON aircraft.aid = certificate.aid\nWHERE flight.destination = 'Honolulu'",
+      "pred_sql": "SELECT DISTINCT a.aid\nFROM aircraft a\nJOIN flight f ON a.aid = f.aid\nJOIN certificate c ON a.aid = c.aid\nWHERE f.destination = 'Honolulu'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.51
+    },
+    {
+      "uid": "468b75ce-a420-423b-ae9c-79d8f8ae13f9",
+      "question": "Which Boeing 747-400 aircraft with a distance of 8430 flew from Los Angeles to Washington D.C., arriving at 04/12/2005 09:40, on a flight costing at most 235.98 and covering at most 2308 miles?",
+      "gold_sql": "SELECT aircraft.aid FROM aircraft\nJOIN flight ON aircraft.aid = flight.aid\nWHERE flight.destination = 'Washington D.C.' AND flight.price <= 235.98 AND flight.distance <= 2308 AND flight.origin = 'Los Angeles' AND aircraft.name = 'Boeing 747-400' AND flight.arrival_date = '04/12/2005 09:40' AND aircraft.distance = 8430",
+      "pred_sql": "SELECT a.aid\nFROM aircraft a\nJOIN flight f ON a.aid = f.aid\nWHERE a.name = 'Boeing 747-400'\n  AND a.distance = 8430\n  AND f.origin = 'Los Angeles'\n  AND f.destination = 'Washington D.C.'\n  AND f.arrival_date = '2005-04-12 09:40:00'\n  AND f.price <= 235.98\n  AND f.distance <= 2308",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.78
+    },
+    {
+      "uid": "4e02b068-e885-437b-8192-14e79525c04f",
+      "question": "Which Boeing 737-800 aircraft with a distance of at most 3383 have a related certificate and also have a related flight departing on '04/12/2005 11:50' from Los Angeles to Dallas, where that flight has a distance of at least 1251 and a price of at least 182.0?",
+      "gold_sql": "SELECT aircraft.aid FROM aircraft\nJOIN flight ON aircraft.aid = flight.aid\nJOIN certificate ON aircraft.aid = certificate.aid\nWHERE flight.departure_date = '04/12/2005 11:50' AND flight.origin = 'Los Angeles' AND flight.distance >= 1251 AND flight.destination = 'Dallas' AND flight.price >= 182.0 AND aircraft.distance <= 3383 AND aircraft.name = 'Boeing 737-800'",
+      "pred_sql": "SELECT DISTINCT a.aid\nFROM aircraft a\nJOIN certificate c ON a.aid = c.aid\nJOIN flight f ON a.aid = f.aid\nWHERE a.name = 'Boeing 737-800'\nAND a.distance <= 3383\nAND f.departure_date = '04/12/2005 11:50'\nAND f.origin = 'Los Angeles'\nAND f.destination = 'Dallas'\nAND f.distance >= 1251\nAND f.price >= 182.0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.91
+    },
+    {
+      "uid": "7dc8393b-5a29-4da3-b212-b234a671a3c5",
+      "question": "Which Airbus A340-300 aircraft that have both flight and certificate records have flown from Los Angeles to Sydney with a flight distance of at least 7487?",
+      "gold_sql": "SELECT aircraft.aid FROM aircraft\nJOIN flight ON aircraft.aid = flight.aid\nJOIN certificate ON aircraft.aid = certificate.aid\nWHERE flight.origin = 'Los Angeles' AND aircraft.name = 'Airbus A340-300' AND flight.distance >= 7487 AND flight.destination = 'Sydney'",
+      "pred_sql": "SELECT DISTINCT a.aid\nFROM aircraft a\nJOIN flight f ON a.aid = f.aid\nJOIN certificate c ON a.aid = c.aid\nWHERE a.name = 'Airbus A340-300'\nAND f.origin = 'Los Angeles'\nAND f.destination = 'Sydney'\nAND f.distance >= 7487",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.8
+    },
+    {
+      "uid": "991b050c-70b5-4b5b-8ff2-62ee41bfccaa",
+      "question": "Which aircraft have flights arriving in Boston exactly at 04/12/2005 05:03 with a price at most 261.56?",
+      "gold_sql": "SELECT aircraft.aid FROM aircraft\nJOIN flight ON aircraft.aid = flight.aid\nWHERE flight.arrival_date = '04/12/2005 05:03' AND flight.destination = 'Boston' AND flight.price <= 261.56",
+      "pred_sql": "SELECT DISTINCT aircraft.aid\nFROM aircraft\nJOIN flight ON aircraft.aid = flight.aid\nWHERE flight.destination = 'Boston'\n  AND flight.arrival_date = '2005-04-12 05:03:00'\n  AND flight.price <= 261.56",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.09
+    },
+    {
+      "uid": "dee0126e-7769-4a01-8c3b-1b33448c6b92",
+      "question": "Which Piper Archer III aircraft have flown at least 520 miles and are linked to employee Milo Brooks who has a salary of at least 20?",
+      "gold_sql": "SELECT aircraft.aid FROM aircraft\nJOIN certificate ON aircraft.aid = certificate.aid\nJOIN employee ON certificate.eid = employee.eid\nWHERE aircraft.name = 'Piper Archer III' AND employee.salary >= 20 AND aircraft.distance >= 520 AND employee.name = 'Milo Brooks'",
+      "pred_sql": "SELECT DISTINCT a.aid\nFROM aircraft a\nJOIN flight f ON a.aid = f.aid\nJOIN certificate c ON a.aid = c.aid\nJOIN employee e ON c.eid = e.eid\nWHERE a.name = 'Piper Archer III'\nAND f.distance >= 520\nAND e.name = 'Milo Brooks'\nAND e.salary >= 20",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.65
+    }
+  ]
+}

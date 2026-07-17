@@ -1,0 +1,80 @@
+{
+  "db_id": "store_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:53.924407+00:00",
+  "records": [
+    {
+      "uid": "55d27033-4a23-44a8-aa7b-89db1e25b656",
+      "question": "Which tracks are named exactly 'Daughter', composed by exactly 'Dave Abbruzzese & Jeff Ament & Stone Gossard & Mike McCready & Eddie Vedder', and have associated genres and appear in playlists?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN genres ON tracks.genre_id = genres.id\nJOIN playlist_tracks ON tracks.id = playlist_tracks.track_id\nWHERE tracks.name = 'Daughter' AND tracks.composer = 'Dave Abbruzzese & Jeff Ament & Stone Gossard & Mike McCready & Eddie Vedder'",
+      "pred_sql": "SELECT tracks.id \nFROM tracks \nJOIN genres ON tracks.genre_id = genres.id \nJOIN playlist_tracks ON tracks.id = playlist_tracks.track_id \nWHERE tracks.name = 'Daughter' \nAND tracks.composer = 'Dave Abbruzzese & Jeff Ament & Stone Gossard & Mike McCready & Eddie Vedder'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "6851b7ad-796f-48e0-be7f-372830915547",
+      "question": "Which tracks are on the album titled Black Sabbath Vol. 4 (Remaster)?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN albums ON tracks.album_id = albums.id\nJOIN artists ON albums.artist_id = artists.id\nWHERE albums.title = 'Black Sabbath Vol. 4 (Remaster)'",
+      "pred_sql": "SELECT tracks.id \nFROM tracks \nJOIN albums ON tracks.album_id = albums.id \nJOIN artists ON albums.artist_id = artists.id \nWHERE albums.title = 'Black Sabbath Vol. 4 (Remaster)'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.19
+    },
+    {
+      "uid": "73b48051-6ed2-4f05-9f2a-e264a029f512",
+      "question": "Which tracks named Wave (Vou te Contar) by composer Antonio Carlos Jobim are in the MPEG audio file format, cost exactly 0.99, last at most 271647 milliseconds, and have at least 9057557 bytes?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nWHERE tracks.unit_price = 0.99 AND tracks.name = 'Wave (Vou te Contar)' AND tracks.milliseconds <= 271647 AND tracks.bytes >= 9057557 AND tracks.composer = 'Antonio Carlos Jobim' AND media_types.name = 'MPEG audio file'",
+      "pred_sql": "SELECT tracks.id \nFROM tracks \nJOIN media_types ON tracks.media_type_id = media_types.id \nWHERE tracks.unit_price = '0.99' \nAND tracks.name = 'Wave (Vou te Contar)' \nAND tracks.milliseconds <= '271647' \nAND tracks.bytes >= '9057557' \nAND tracks.composer = 'Antonio Carlos Jobim' \nAND media_types.name = 'MPEG audio file'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.52
+    },
+    {
+      "uid": "9d31a7a8-3300-4096-bc19-96d25d733eaf",
+      "question": "Which tracks called Folhas Secas from O Ter\u00e7o's album Compositores have a unit price of 0.99, last at least 161253 milliseconds, and have a file size of at least 5284522 bytes?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN albums ON tracks.album_id = albums.id\nJOIN artists ON albums.artist_id = artists.id\nWHERE tracks.name = 'Folhas Secas' AND tracks.milliseconds >= 161253 AND tracks.bytes >= 5284522 AND artists.name = 'O Ter\u00e7o' AND tracks.unit_price = 0.99 AND albums.title = 'Compositores'",
+      "pred_sql": "SELECT tracks.id \nFROM tracks \nJOIN albums ON tracks.album_id = albums.id \nJOIN artists ON albums.artist_id = artists.id \nWHERE tracks.name = 'Folhas Secas' \nAND tracks.milliseconds >= 161253 \nAND tracks.bytes >= 5284522 \nAND tracks.unit_price = 0.99 \nAND albums.title = 'Compositores' \nAND artists.name = 'O Ter\u00e7o'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "abde8e27-87bb-4f5e-89e4-6982118e82df",
+      "question": "Which tracks named Koyaanisqatsi composed by Philip Glass are Soundtracks with a Protected AAC audio file format, last exactly 206005 milliseconds, cost 0.99, and have at least 3305164 bytes?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nJOIN genres ON tracks.genre_id = genres.id\nWHERE media_types.name = 'Protected AAC audio file' AND tracks.milliseconds = 206005 AND tracks.composer = 'Philip Glass' AND genres.name = 'Soundtrack' AND tracks.bytes >= 3305164 AND tracks.unit_price = 0.99 AND tracks.name = 'Koyaanisqatsi'",
+      "pred_sql": "SELECT tracks.id \nFROM tracks \nJOIN media_types ON tracks.media_type_id = media_types.id \nJOIN genres ON tracks.genre_id = genres.id \nWHERE tracks.milliseconds = 206005 \n  AND tracks.composer = 'Philip Glass' \n  AND tracks.bytes >= 3305164 \n  AND tracks.unit_price = 0.99 \n  AND tracks.name = 'Koyaanisqatsi' \n  AND media_types.name = 'Protected AAC audio file' \n  AND genres.name = 'Soundtrack'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.8
+    },
+    {
+      "uid": "d172aef8-7239-4310-b914-29bcd99cb097",
+      "question": "Which tracks called True Believers by Billy Duffy/Ian Astbury have a length of exactly 308009 milliseconds, are exactly 9981359 bytes in size, and are priced at at least 0.99?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nJOIN invoice_lines ON tracks.id = invoice_lines.track_id\nWHERE tracks.milliseconds = 308009 AND tracks.composer = 'Billy Duffy/Ian Astbury' AND tracks.name = 'True Believers' AND tracks.bytes = 9981359 AND invoice_lines.unit_price >= 0.99",
+      "pred_sql": "SELECT tracks.id\nFROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nJOIN invoice_lines ON tracks.id = invoice_lines.track_id\nWHERE tracks.milliseconds = 308009\n  AND tracks.composer = 'Billy Duffy/Ian Astbury'\n  AND tracks.name = 'True Believers'\n  AND tracks.bytes = 9981359\n  AND invoice_lines.unit_price >= 0.99",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.69
+    }
+  ]
+}

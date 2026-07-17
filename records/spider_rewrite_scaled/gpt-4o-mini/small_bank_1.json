@@ -1,0 +1,47 @@
+{
+  "db_id": "small_bank_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:44:27.216813+00:00",
+  "records": [
+    {
+      "uid": "4a6e8792-19aa-4e8e-9e5d-db7ce41762a1",
+      "question": "Which accounts belong to customers named Brown who have at least 200000.0 in savings and exactly 10000.0 in checking balances?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE accounts.name = 'Brown' AND savings.balance >= 200000.0 AND checking.balance = 10000.0",
+      "pred_sql": "SELECT ACCOUNTS.custid \nFROM ACCOUNTS \nJOIN SAVINGS ON ACCOUNTS.custid = SAVINGS.custid \nJOIN CHECKING ON ACCOUNTS.custid = CHECKING.custid \nWHERE ACCOUNTS.name = 'Brown' \nAND SAVINGS.balance >= 200000.0 \nAND CHECKING.balance = 10000.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    },
+    {
+      "uid": "5cccc32b-e5cb-4ab3-9d9e-bae08b780575",
+      "question": "Which accounts have a savings balance of at most 240.0 and a checking balance of at least 77.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE savings.balance <= 240.0 AND checking.balance >= 77.0",
+      "pred_sql": "SELECT ACCOUNTS.custid FROM ACCOUNTS \nJOIN SAVINGS ON ACCOUNTS.custid = SAVINGS.custid \nJOIN CHECKING ON ACCOUNTS.custid = CHECKING.custid \nWHERE SAVINGS.balance <= 240.0 AND CHECKING.balance >= 77.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    },
+    {
+      "uid": "90f93c3f-26fb-4698-847b-29d3a5636d4b",
+      "question": "Which Porter accounts have a savings balance exactly 240.0 and a checking balance at most 77.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE savings.balance = 240.0 AND checking.balance <= 77.0 AND accounts.name = 'Porter'",
+      "pred_sql": "SELECT ACCOUNTS.custid \nFROM ACCOUNTS \nJOIN SAVINGS ON ACCOUNTS.custid = SAVINGS.custid \nJOIN CHECKING ON ACCOUNTS.custid = CHECKING.custid \nWHERE SAVINGS.balance = 240.0 AND CHECKING.balance <= 77.0 AND ACCOUNTS.name LIKE 'Porter%'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "db_id": "device",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:26:15.418583+00:00",
+  "records": [
+    {
+      "uid": "0e930165-17b0-48b8-a463-dbbc9efad285",
+      "question": "Which Galaxy devices running Android with Vodafone AU as the carrier, applications version 5.0.0.451, package version 5.0.0.742, and exactly 110 in stock are available?",
+      "gold_sql": "SELECT device.device_id FROM device\nJOIN stock ON device.device_id = stock.device_id\nWHERE device.applications = '5.0.0.451' AND device.device = 'Galaxy' AND device.software_platform = 'Android' AND device.carrier = 'Vodafone AU' AND device.package_version = '5.0.0.742' AND stock.quantity = 110",
+      "pred_sql": "SELECT device.Device_ID \nFROM device \nJOIN stock ON device.Device_ID = stock.Device_ID \nWHERE device.Applications = '5.0.0.451' \nAND device.Device = 'Galaxy' \nAND device.Software_Platform = 'Android' \nAND device.Carrier = 'Vodafone AU' \nAND device.Package_Version = '5.0.0.742' \nAND stock.Quantity = 110",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    },
+    {
+      "uid": "4f9a40a5-8a21-4f31-b353-f5cc15159163",
+      "question": "Which devices are on the carrier Vodafone AU and available in shops that have been open since 2009 or later?",
+      "gold_sql": "SELECT device.device_id FROM device\nJOIN stock ON device.device_id = stock.device_id\nJOIN shop ON stock.shop_id = shop.shop_id\nWHERE device.carrier = 'Vodafone AU' AND shop.open_year >= 2009",
+      "pred_sql": "SELECT device.Device_ID\nFROM device\nJOIN stock ON device.Device_ID = stock.Device_ID\nJOIN shop ON stock.Shop_ID = shop.Shop_ID\nWHERE device.Carrier = 'Vodafone AU' AND shop.Open_Year >= 2009",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.36
+    },
+    {
+      "uid": "9b5c73a2-3e7e-4d10-bce5-2848ffa0fc28",
+      "question": "Which devices have exactly 100 in stock, are running applications version 5.0.0.451, and are in shops that opened on 1 January?",
+      "gold_sql": "SELECT device.device_id FROM device\nJOIN stock ON device.device_id = stock.device_id\nJOIN shop ON stock.shop_id = shop.shop_id\nWHERE stock.quantity = 100 AND device.applications = '5.0.0.451' AND shop.open_date = '1 January'",
+      "pred_sql": "SELECT device.Device_ID \nFROM device \nJOIN stock ON device.Device_ID = stock.Device_ID \nJOIN shop ON stock.Shop_ID = shop.Shop_ID \nWHERE device.Applications = '5.0.0.451' \nAND stock.Quantity = 100 \nAND shop.Open_Date = '1 January'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "b7d9f74f-7d1b-4a13-862b-104fed0546c8",
+      "question": "Which Galaxy Android devices with Vodafone AU carrier, applications version 5.0.0.451, and package version 5.0.0.742 are available at Cymmer shops that opened on 15 July and have exactly 110 units in stock?",
+      "gold_sql": "SELECT device.device_id FROM device\nJOIN stock ON device.device_id = stock.device_id\nJOIN shop ON stock.shop_id = shop.shop_id\nWHERE device.software_platform = 'Android' AND device.carrier = 'Vodafone AU' AND shop.location = 'Cymmer' AND stock.quantity = 110 AND shop.open_date = '15 July' AND device.applications = '5.0.0.451' AND device.package_version = '5.0.0.742' AND device.device = 'Galaxy'",
+      "pred_sql": "SELECT device.Device_ID \nFROM device \nJOIN stock ON device.Device_ID = stock.Device_ID \nJOIN shop ON stock.Shop_ID = shop.Shop_ID \nWHERE device.Software_Platform = 'Android' \nAND device.Carrier = 'Vodafone AU' \nAND device.Applications = '5.0.0.451' \nAND device.Package_Version = '5.0.0.742' \nAND device.Device = 'Galaxy' \nAND stock.Quantity = 110 \nAND shop.Location = 'Cymmer' \nAND shop.Open_Date = '15 July'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.09
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "db_id": "school_finance",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:25.320957+00:00",
+  "records": [
+    {
+      "uid": "35b505ec-f1bd-4190-804c-5ec2647e37d5",
+      "question": "Which schools named Triton in Bourbon have exactly 316 students, the Trojans mascot, and compete in IHSAA class A and IHSAA football class A in 50 Marshall county?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.enrollment = 316 AND school.mascot = 'Trojans' AND school.ihsaa_class = 'A' AND school.school_name = 'Triton' AND school.county = '50 Marshall' AND school.ihsaa_football_class = 'A' AND school.location = 'Bourbon'",
+      "pred_sql": "SELECT School_id FROM School WHERE Enrollment = 316 AND Mascot = 'Trojans' AND IHSAA_Class = 'A' AND School_name = 'Triton' AND County = '50 Marshall' AND IHSAA_Football_Class = 'A' AND Location = 'Bourbon'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.33
+    },
+    {
+      "uid": "4b609cda-44c2-4707-be8e-b430cb432714",
+      "question": "Which LaVille schools have the Lancers as their mascot, are located in Lakeville in 71 St. Joseph county, have enrollment of at most 379, and are classified as AA overall with A in football?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.location = 'Lakeville' AND school.mascot = 'Lancers' AND school.county = '71 St. Joseph' AND school.school_name = 'LaVille' AND school.enrollment <= 379 AND school.ihsaa_class = 'AA' AND school.ihsaa_football_class = 'A'",
+      "pred_sql": "SELECT School_id FROM School WHERE Location = 'Lakeville' AND Mascot = 'Lancers' AND County = '71 St. Joseph' AND School_name = 'LaVille' AND Enrollment <= 379 AND IHSAA_Class = 'AA' AND IHSAA_Football_Class = 'A'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.33
+    },
+    {
+      "uid": "73d0f5da-7dbc-4deb-bf95-2c46627e9697",
+      "question": "Which schools named Glenn have a Falcons mascot, belong to the AAA football class, and have enrollment at most 605?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.ihsaa_football_class = 'AAA' AND school.mascot = 'Falcons' AND school.enrollment <= 605 AND school.school_name = 'Glenn'",
+      "pred_sql": "SELECT School_id FROM School WHERE IHSAA_Football_Class = 'AAA' AND Mascot = 'Falcons' AND Enrollment <= 605 AND School_name = 'Glenn'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "909a9dfa-e7a0-4435-abbb-2c38eb764864",
+      "question": "Which schools named Glenn in Walkerton have the Falcons as their mascot, are in the AAA class for both IHSAA and football, and have enrollment of at most 605?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.enrollment <= 605 AND school.location = 'Walkerton' AND school.ihsaa_football_class = 'AAA' AND school.school_name = 'Glenn' AND school.ihsaa_class = 'AAA' AND school.mascot = 'Falcons'",
+      "pred_sql": "SELECT School_id FROM School WHERE Enrollment <= 605 AND Location = 'Walkerton' AND IHSAA_Football_Class = 'AAA' AND School_name = 'Glenn' AND IHSAA_Class = 'AAA' AND Mascot = 'Falcons'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    },
+    {
+      "uid": "d92ab296-7695-4923-8aff-54b6ab439019",
+      "question": "Which schools in 50 Marshall county have the Cavaliers as their mascot and are classified as A in both ihsaa_class and ihsaa_football_class?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.mascot = 'Cavaliers' AND school.ihsaa_class = 'A' AND school.county = '50 Marshall' AND school.ihsaa_football_class = 'A'",
+      "pred_sql": "SELECT School.School_id FROM School WHERE Mascot = 'Cavaliers' AND IHSAA_Class = 'A' AND County = '50 Marshall' AND IHSAA_Football_Class = 'A'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    }
+  ]
+}

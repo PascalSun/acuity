@@ -1,0 +1,58 @@
+{
+  "db_id": "scientist_1",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:36:39.821589+00:00",
+  "records": [
+    {
+      "uid": "306b89df-3303-42ee-9fcb-fcc70abbb099",
+      "question": "Which projects named Winds: Studying Bernoullis Principle have Michael Rogers assigned to them and require at most 156 hours?",
+      "gold_sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Michael Rogers' AND projects.hours <= 156 AND projects.name = 'Winds: Studying Bernoullis Principle'",
+      "pred_sql": "SELECT Projects.Code\nFROM Projects\nJOIN AssignedTo ON Projects.Code = AssignedTo.Project\nJOIN Scientists ON AssignedTo.Scientist = Scientists.SSN\nWHERE Projects.Name = 'Winds: Studying Bernoullis Principle'\n  AND Scientists.Name = 'Michael Rogers'\n  AND Projects.Hours <= 156",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "3a563e91-68fd-42f4-b920-700259b6aa17",
+      "question": "Which projects require exactly 789 hours and involve the scientist George ODonnell?",
+      "gold_sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours = 789 AND scientists.name = 'George ODonnell'",
+      "pred_sql": "SELECT Projects.Code\nFROM Projects\nJOIN AssignedTo ON Projects.Code = AssignedTo.Project\nJOIN Scientists ON AssignedTo.Scientist = Scientists.SSN\nWHERE Projects.Hours = 789 AND Scientists.Name = 'George ODonnell'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "61f874c1-bd28-4f03-ac06-11ecac3edcf0",
+      "question": "Which projects named Juicy: Extracting Apple Juice with Pectinase that are assigned to Mary-Anne Foster require at most 321 hours?",
+      "gold_sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours <= 321 AND scientists.name = 'Mary-Anne Foster' AND projects.name = 'Juicy: Extracting Apple Juice with Pectinase'",
+      "pred_sql": "SELECT Projects.Code\nFROM Projects\nJOIN AssignedTo ON Projects.Code = AssignedTo.Project\nJOIN Scientists ON AssignedTo.Scientist = Scientists.SSN\nWHERE Projects.Name = 'Juicy: Extracting Apple Juice with Pectinase'\n  AND Scientists.Name = 'Mary-Anne Foster'\n  AND Projects.Hours <= 321",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "uid": "8748c087-199d-4ca5-9362-d6649717e77a",
+      "question": "Which scientists are assigned to the project named A Silver-Cleaning Battery?",
+      "gold_sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'A Silver-Cleaning Battery'",
+      "pred_sql": "SELECT Projects.Code\nFROM Projects\nJOIN AssignedTo ON Projects.Code = AssignedTo.Project\nJOIN Scientists ON AssignedTo.Scientist = Scientists.SSN\nWHERE Projects.Name = 'A Silver-Cleaning Battery'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "db_id": "soccer_1",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:07:45.462350+00:00",
+  "records": [
+    {
+      "uid": "b09f6623-d63f-43ca-a778-586ae3208441",
+      "question": "Who are the players that are no taller than 167.64 cm, have at most 38 aggression, short passing no more than 76, free kick accuracy at most 66, ball control no higher than 81, but at least 62 long passing and at least 43 marking?",
+      "gold_sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.aggression <= 38.0 AND player_attributes.short_passing <= 76.0 AND player_attributes.long_passing >= 62.0 AND player_attributes.free_kick_accuracy <= 66.0 AND player.height <= 167.64 AND player_attributes.marking >= 43.0 AND player_attributes.ball_control <= 81.0",
+      "pred_sql": "SELECT DISTINCT p.id\nFROM Player p\nJOIN Player_Attributes pa ON p.player_api_id = pa.player_api_id\nWHERE p.height <= 167.64\nAND pa.aggression <= 38\nAND pa.short_passing <= 76\nAND pa.free_kick_accuracy <= 66\nAND pa.ball_control <= 81\nAND pa.long_passing >= 62\nAND pa.marking >= 43",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "ebdbd98d-67d2-49e6-94a5-ee30a8e8a3df",
+      "question": "Which players have exactly 70.0 agility, are right-footed, have exactly 5.0 gk_diving, at least 24.0 marking, exactly 64.0 vision, and their attributes dated on or before 2012-08-31?",
+      "gold_sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.agility = 70.0 AND player_attributes.preferred_foot = 'right' AND player_attributes.gk_diving = 5.0 AND player_attributes.marking >= 24.0 AND player_attributes.date <= '2012-08-31 00:00:00' AND player_attributes.vision = 64.0",
+      "pred_sql": "SELECT DISTINCT p.id\nFROM Player p\nINNER JOIN Player_Attributes pa ON p.player_api_id = pa.player_api_id\nWHERE pa.agility = 70\nAND pa.preferred_foot = 'right'\nAND pa.gk_diving = 5\nAND pa.marking >= 24\nAND pa.vision = 64\nAND pa.date <= '2012-08-31'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    }
+  ]
+}

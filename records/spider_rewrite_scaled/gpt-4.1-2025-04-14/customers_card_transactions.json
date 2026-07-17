@@ -1,0 +1,58 @@
+{
+  "db_id": "customers_card_transactions",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 4,
+  "n_correct": 2,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:25:26.039446+00:00",
+  "records": [
+    {
+      "uid": "091ae74a-d0ee-4f3e-a097-33d36aafac53",
+      "question": "Which VIP accounts named 162 have refunds of at least 1931.76 on 2018-03-24 12:08:55 using cards exactly 4539333582760 that were valid from at most 2012-05-22 02:05:41 and valid to at least 2018-02-25 15:43:32?",
+      "gold_sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.other_card_details = '4539333582760' AND accounts.account_name = '162' AND financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_date = '2018-03-24 12:08:55' AND customers_cards.date_valid_to >= '2018-02-25 15:43:32' AND financial_transactions.transaction_amount >= 1931.76 AND accounts.other_account_details = 'VIP' AND customers_cards.date_valid_from <= '2012-05-22 02:05:41'",
+      "pred_sql": "SELECT Accounts.account_id\nFROM Accounts\nJOIN Financial_Transactions ON Accounts.account_id = Financial_Transactions.account_id\nJOIN Customers_Cards ON Financial_Transactions.card_id = Customers_Cards.card_id\nWHERE Accounts.account_name = '162'\n  AND Financial_Transactions.transaction_type = 'refund'\n  AND Financial_Transactions.transaction_amount >= 1931.76\n  AND Financial_Transactions.transaction_date = '2018-03-24 12:08:55'\n  AND Customers_Cards.card_number = '4539333582760'\n  AND Customers_Cards.date_valid_from <= '2012-05-22 02:05:41'\n  AND Customers_Cards.date_valid_to >= '2018-02-25 15:43:32'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.38
+    },
+    {
+      "uid": "30b22396-b7a2-43f9-9da3-640f029f8fa8",
+      "question": "Which accounts have other account details that are exactly VIP?",
+      "gold_sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.other_account_details = 'VIP'",
+      "pred_sql": "SELECT account_id FROM Accounts WHERE other_account_details = 'VIP'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.64
+    },
+    {
+      "uid": "7932caee-ef23-4228-80d4-320ccc7524f8",
+      "question": "Which VIP accounts named 725 have payments made on or after 2018-03-24 06:41:41 using card number 4560596484842?",
+      "gold_sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_type = 'Payment' AND accounts.account_name = '725' AND financial_transactions.transaction_date >= '2018-03-24 06:41:41' AND customers_cards.card_number = '4560596484842' AND accounts.other_account_details = 'VIP'",
+      "pred_sql": "SELECT Accounts.account_id\nFROM Accounts\nJOIN Financial_Transactions ON Accounts.account_id = Financial_Transactions.account_id\nJOIN Customers_Cards ON Financial_Transactions.card_id = Customers_Cards.card_id\nWHERE Accounts.account_name = '725'\n  AND Financial_Transactions.transaction_type = 'payment'\n  AND Financial_Transactions.transaction_date >= '2018-03-24 06:41:41'\n  AND Customers_Cards.card_number = '4560596484842'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    },
+    {
+      "uid": "dce3ea44-cef9-4b7e-b6ec-f4a7bd3342f0",
+      "question": "Which accounts have transactions on or after 2018-03-24 14:47:05 using a card where the other card details is exactly 6011771512810699?",
+      "gold_sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date >= '2018-03-24 14:47:05' AND customers_cards.other_card_details = '6011771512810699'",
+      "pred_sql": "SELECT Accounts.account_id\nFROM Accounts\nJOIN Financial_Transactions ON Accounts.account_id = Financial_Transactions.account_id\nJOIN Customers_Cards ON Financial_Transactions.card_id = Customers_Cards.card_id\nWHERE Financial_Transactions.transaction_date >= '2018-03-24 14:47:05'\n  AND Customers_Cards.other_card_details = '6011771512810699'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "db_id": "railway",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 7,
+  "n_correct": 6,
+  "accuracy": 0.8571428571428571,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:36:12.831505+00:00",
+  "records": [
+    {
+      "uid": "2dc92fbe-65ec-4607-8b8a-84387f46e346",
+      "question": "Which railways started operation exactly in 2012?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nJOIN railway_manage ON railway.railway_id = railway_manage.railway_id\nWHERE railway_manage.from_year = '2012'",
+      "pred_sql": "SELECT Railway_ID FROM railway WHERE Built = '2012'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "6bf99355-a13b-450e-b67e-0542e9712eda",
+      "question": "What railways are there that were built in 1909 by Stephenson, have 4-4-2T wheels, are located in Bressingham, belong to LTSR, have object number 1978-7028, and have been managed from year 2011?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nJOIN railway_manage ON railway.railway_id = railway_manage.railway_id\nWHERE railway.built = '1909' AND railway.railway = 'LTSR' AND railway_manage.from_year = '2011' AND railway.builder = 'Stephenson' AND railway.wheels = '4-4-2T' AND railway.objectnumber = '1978-7028' AND railway.location = 'Bressingham'",
+      "pred_sql": "SELECT r.Railway_ID\nFROM railway r\nJOIN railway_manage rm ON r.Railway_ID = rm.Railway_ID\nWHERE r.Built = '1909'\n  AND r.Builder = 'Stephenson'\n  AND r.Wheels = '4-4-2T'\n  AND r.Location = 'Bressingham'\n  AND r.Railway = 'LTSR'\n  AND r.ObjectNumber = '1978-7028'\n  AND rm.From_Year = '2011'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "84cfde15-7bd4-4a38-8e7b-d2fd9d04c4bd",
+      "question": "Which railways have wheels that are exactly 4-4-0?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nWHERE railway.wheels = '4-4-0'",
+      "pred_sql": "SELECT Railway_ID FROM railway WHERE Wheels = '4-4-0'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.81
+    },
+    {
+      "uid": "b5990ed8-cea1-456e-bcb9-b8d2453fe6e3",
+      "question": "Which railways have exactly 4-4-0 wheels and are connected to both trains and railway management?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nJOIN train ON railway.railway_id = train.railway_id\nJOIN railway_manage ON railway.railway_id = railway_manage.railway_id\nWHERE railway.wheels = '4-4-0'",
+      "pred_sql": "SELECT railway.Railway_ID\nFROM railway\nJOIN train ON railway.Railway_ID = train.Railway_ID\nJOIN railway_manage ON railway.Railway_ID = railway_manage.Railway_ID\nWHERE railway.Wheels = '4-4-0'\nGROUP BY railway.Railway_ID",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "d0e2b89f-66ed-4247-9998-192896cca051",
+      "question": "Which railways in Bressingham that were built in 1909 have management starting exactly in 2011?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nJOIN train ON railway.railway_id = train.railway_id\nJOIN railway_manage ON railway.railway_id = railway_manage.railway_id\nWHERE railway_manage.from_year = '2011' AND railway.location = 'Bressingham' AND railway.built = '1909'",
+      "pred_sql": "SELECT railway.Railway_ID\nFROM railway\nJOIN railway_manage ON railway.Railway_ID = railway_manage.Railway_ID\nWHERE railway.Location = 'Bressingham'\n  AND railway.Built = '1909'\n  AND railway_manage.From_Year = '2011'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "eaf7178e-f9be-48e1-9000-ae8b4799b282",
+      "question": "Which railways in Shildon were built in 1905 with 2-8-0 wheels, have been managed from 2012, and have the train named Andaman Exp arriving at 13:04?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nJOIN train ON railway.railway_id = train.railway_id\nJOIN railway_manage ON railway.railway_id = railway_manage.railway_id\nWHERE railway.built = '1905' AND railway_manage.from_year = '2012' AND railway.wheels = '2-8-0' AND railway.location = 'Shildon' AND train.name = 'Andaman Exp' AND train.arrival = '13:04'",
+      "pred_sql": "SELECT r.Railway_ID\nFROM railway r\nJOIN railway_manage rm ON r.Railway_ID = rm.Railway_ID\nJOIN train t ON r.Railway_ID = t.Railway_ID\nWHERE r.Location = 'Shildon'\n  AND r.Built = '1905'\n  AND r.Wheels = '2-8-0'\n  AND rm.From_Year <= '2012'\n  AND t.Name = 'Andaman Exp'\n  AND t.Arrival = '13:04'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.09
+    },
+    {
+      "uid": "f80badc6-7b18-4235-92bb-dfc9756ea800",
+      "question": "Which railways in Toddington were built in 1903 by GWR Swindon, have 4-4-0 wheels, belong to GWRS, and have object number 1978-7025?",
+      "gold_sql": "SELECT railway.railway_id FROM railway\nWHERE railway.location = 'Toddington' AND railway.built = '1903' AND railway.builder = 'GWR Swindon' AND railway.wheels = '4-4-0' AND railway.railway = 'GWRS' AND railway.objectnumber = '1978-7025'",
+      "pred_sql": "SELECT railway.Railway_ID\nFROM railway\nWHERE railway.Location = 'Toddington'\n  AND railway.Built = '1903'\n  AND railway.Builder = 'GWR Swindon'\n  AND railway.Wheels = '4-4-0'\n  AND railway.Railway = 'GWRS'\n  AND railway.ObjectNumber = '1978-7025'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    }
+  ]
+}

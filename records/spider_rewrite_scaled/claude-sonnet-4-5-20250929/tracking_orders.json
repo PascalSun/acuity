@@ -1,0 +1,102 @@
+{
+  "db_id": "tracking_orders",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 8,
+  "n_correct": 4,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:57:46.586785+00:00",
+  "records": [
+    {
+      "uid": "03d9b267-4f29-4a26-903d-ee9424fd8f71",
+      "question": "What orders were placed by customers whose customer details is commodi?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nJOIN order_items ON orders.order_id = order_items.order_id\nWHERE customers.customer_details = 'commodi'",
+      "pred_sql": "SELECT o.order_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nWHERE c.customer_details = 'commodi'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24
+    },
+    {
+      "uid": "52e936ed-f37b-43a8-960f-6b75fd585c28",
+      "question": "What orders have a status of Shipped and were placed exactly on 2009-02-21 15:26:19?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nWHERE orders.date_order_placed = '2009-02-21 15:26:19' AND orders.order_status = 'Shipped'",
+      "pred_sql": "SELECT order_id FROM Orders WHERE order_status = 'Shipped' AND date_order_placed = '2009-02-21 15:26:19'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.11
+    },
+    {
+      "uid": "70854ea5-3349-4575-abd5-0c3f5944fdbd",
+      "question": "Which orders are currently On Road, were shipped on or after 1983-03-08 16:14:58, and have at least one Payed item?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nJOIN order_items ON orders.order_id = order_items.order_id\nJOIN shipments ON orders.order_id = shipments.order_id\nWHERE orders.order_status = 'On Road' AND shipments.shipment_date >= '1983-03-08 16:14:58' AND order_items.order_item_status = 'Payed'",
+      "pred_sql": "SELECT DISTINCT o.order_id\nFROM Orders o\nJOIN Shipments s ON o.order_id = s.order_id\nJOIN Shipment_Items si ON s.shipment_id = si.shipment_id\nJOIN Order_Items oi ON si.order_item_id = oi.order_item_id\nWHERE o.order_status = 'On Road'\nAND s.shipment_date >= '1983-03-08 16:14:58'\nAND oi.order_item_status = 'Payed'",
+      "strategy": "3iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.66
+    },
+    {
+      "uid": "7c6c7539-397b-4f06-b730-fceb4b919466",
+      "question": "Which orders from customers named Hadley with details corrupti are currently packing, were placed on or before 2010-06-08 02:20:49, have shipment dates on or after 1982-01-24 12:13:16, and include order items with status Payed?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nJOIN order_items ON orders.order_id = order_items.order_id\nJOIN shipments ON orders.order_id = shipments.order_id\nWHERE customers.customer_name = 'Hadley' AND customers.customer_details = 'corrupti' AND order_items.order_item_status = 'Payed' AND orders.date_order_placed <= '2010-06-08 02:20:49' AND shipments.shipment_date >= '1982-01-24 12:13:16' AND orders.order_status = 'Packing'",
+      "pred_sql": "SELECT DISTINCT o.order_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nJOIN Order_Items oi ON o.order_id = oi.order_id\nJOIN Shipment_Items si ON oi.order_item_id = si.order_item_id\nJOIN Shipments s ON si.shipment_id = s.shipment_id\nWHERE c.customer_name = 'Hadley'\nAND c.customer_details = 'corrupti'\nAND o.order_status = 'packing'\nAND o.date_order_placed <= '2010-06-08 02:20:49'\nAND s.shipment_date >= '1982-01-24 12:13:16'\nAND oi.order_item_status = 'Payed'",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.17
+    },
+    {
+      "uid": "926ab327-94ba-454d-8664-3fbc6a704c3d",
+      "question": "Which Shipped orders were placed by customer Hershel with details vel on or after 1974-06-24 22:10:26, and shipped on or after 1985-11-12 12:41:34 with tracking number 2421?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nJOIN shipments ON orders.order_id = shipments.order_id\nWHERE customers.customer_name = 'Hershel' AND shipments.shipment_date >= '1985-11-12 12:41:34' AND orders.date_order_placed >= '1974-06-24 22:10:26' AND shipments.shipment_tracking_number = '2421' AND customers.customer_details = 'vel' AND orders.order_status = 'Shipped'",
+      "pred_sql": "SELECT DISTINCT o.order_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nJOIN Shipments s ON o.order_id = s.order_id\nWHERE c.customer_name = 'Hershel'\nAND o.order_details = 'vel'\nAND o.date_order_placed >= '1974-06-24 22:10:26'\nAND s.shipment_date >= '1985-11-12 12:41:34'\nAND s.shipment_tracking_number = '2421'\nAND o.order_status = 'Shipped'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.25
+    },
+    {
+      "uid": "d1f967eb-2741-41f7-9923-49dcedbb6cdd",
+      "question": "Which orders that have customers, order items, and shipments have a status of exactly 'Packing'?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nJOIN order_items ON orders.order_id = order_items.order_id\nJOIN shipments ON orders.order_id = shipments.order_id\nWHERE orders.order_status = 'Packing'",
+      "pred_sql": "SELECT DISTINCT o.order_id\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nJOIN Order_Items oi ON o.order_id = oi.order_id\nJOIN Shipments s ON o.order_id = s.order_id\nWHERE o.order_status = 'Packing'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.91
+    },
+    {
+      "uid": "d42f5841-dd53-48ff-be63-2d01bba64784",
+      "question": "Which orders have a status of On Road and were placed exactly on 1983-09-08 12:32:49?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nWHERE orders.date_order_placed = '1983-09-08 12:32:49' AND orders.order_status = 'On Road'",
+      "pred_sql": "SELECT order_id\nFROM Orders\nWHERE order_status = 'On Road' AND date_order_placed = '1983-09-08 12:32:49'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.2
+    },
+    {
+      "uid": "f6a24ea3-d499-4cfe-a8e8-e184940af387",
+      "question": "Which orders have a status of On Road, contain items that are Payed, and have shipments with tracking number 0182 that were sent on or after 1973-06-20 14:26:43?",
+      "gold_sql": "SELECT orders.order_id FROM orders\nJOIN order_items ON orders.order_id = order_items.order_id\nJOIN shipments ON orders.order_id = shipments.order_id\nWHERE orders.order_status = 'On Road' AND shipments.shipment_date >= '1973-06-20 14:26:43' AND order_items.order_item_status = 'Payed' AND shipments.shipment_tracking_number = '0182'",
+      "pred_sql": "SELECT DISTINCT o.order_id\nFROM Orders o\nJOIN Order_Items oi ON o.order_id = oi.order_id\nJOIN Shipment_Items si ON oi.order_item_id = si.order_item_id\nJOIN Shipments s ON si.shipment_id = s.shipment_id\nWHERE o.order_status = 'On Road'\nAND oi.order_item_status = 'Payed'\nAND s.shipment_tracking_number = '0182'\nAND s.shipment_date >= '1973-06-20 14:26:43'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.93
+    }
+  ]
+}

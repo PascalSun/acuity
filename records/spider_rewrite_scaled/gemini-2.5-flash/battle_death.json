@@ -1,0 +1,58 @@
+{
+  "db_id": "battle_death",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 4,
+  "n_correct": 1,
+  "accuracy": 0.25,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:11:32.451169+00:00",
+  "records": [
+    {
+      "uid": "1852dc79-6cce-4231-92cd-e1de956bc046",
+      "question": "Which battles led by Boril against Henry I resulted in a Bulgarian victory where a Brig named Mary was captured?",
+      "gold_sql": "SELECT battle.id FROM battle\nJOIN ship ON battle.id = ship.lost_in_battle\nWHERE ship.disposition_of_ship = 'Captured' AND battle.bulgarian_commander = 'Boril' AND ship.name = 'Mary' AND battle.latin_commander = 'Henry I' AND ship.ship_type = 'Brig' AND battle.result = 'Bulgarian victory'",
+      "pred_sql": "SELECT T1.id FROM battle AS T1 INNER JOIN ship AS T2 ON T1.id = T2.lost_in_battle WHERE T1.bulgarian_commander = 'Boril' AND T1.latin_commander = 'Henry I' AND T1.result = 'Bulgarian victory' AND T2.name = 'Mary' AND T2.ship_type = 'Brig' AND T2.disposition_of_ship = 'captured'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.31
+    },
+    {
+      "uid": "2b3c1fe4-8a27-4432-8101-5aa8aa7c5e7a",
+      "question": "Which battles named Battle of Messinopolis had Boniface of Montferrat as the Latin commander and an unknown Bulgarian commander, where the brig Three Brothers with tonnage t was scuttled in the SW Approaches?",
+      "gold_sql": "SELECT battle.id FROM battle\nJOIN ship ON battle.id = ship.lost_in_battle\nWHERE ship.tonnage = 't' AND ship.name = 'Three Brothers' AND ship.location = 'SW Approaches' AND battle.bulgarian_commander = 'Unknown' AND ship.ship_type = 'Brig' AND ship.disposition_of_ship = 'Scuttled' AND battle.name = 'Battle of Messinopolis' AND battle.latin_commander = 'Boniface of Montferrat'",
+      "pred_sql": "SELECT T1.id FROM battle AS T1 INNER JOIN ship AS T2 ON T1.id = T2.lost_in_battle WHERE T1.name = 'Battle of Messinopolis' AND T1.latin_commander = 'Boniface of Montferrat' AND T1.bulgarian_commander = 'unknown' AND T2.name = 'Three Brothers' AND T2.tonnage = 't' AND T2.ship_type = 'brig' AND T2.disposition_of_ship = 'scuttled' AND T2.location = 'SW Approaches'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.32
+    },
+    {
+      "uid": "751512db-312d-419a-bb77-5ca8fadf81eb",
+      "question": "Which battles named Battle of Rodosto ended in a Bulgarian victory where the Brig Bacchus with tonnage t was lost?",
+      "gold_sql": "SELECT battle.id FROM battle\nJOIN ship ON battle.id = ship.lost_in_battle\nWHERE ship.ship_type = 'Brig' AND ship.name = 'Bacchus' AND battle.result = 'Bulgarian victory' AND ship.tonnage = 't' AND battle.name = 'Battle of Rodosto'",
+      "pred_sql": "SELECT T1.id FROM battle AS T1 INNER JOIN ship AS T2 ON T1.id = T2.lost_in_battle WHERE T1.name = 'Battle of Rodosto' AND T1.result = 'Bulgarian victory' AND T2.name = 'Brig Bacchus' AND T2.tonnage = 't'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "e7e3249b-f93b-4214-be5c-5ac2bdcc0d4f",
+      "question": "Which battles took place on 4 September 1207 where Boniface of Montferrat commanded the Latin forces, the Bulgarian commander was Unknown, and the result was a Bulgarian victory?",
+      "gold_sql": "SELECT battle.id FROM battle\nWHERE battle.date = '4 September 1207' AND battle.latin_commander = 'Boniface of Montferrat' AND battle.bulgarian_commander = 'Unknown' AND battle.result = 'Bulgarian victory'",
+      "pred_sql": "SELECT id FROM battle WHERE date = '4 September 1207' AND latin_commander = 'Boniface of Montferrat' AND bulgarian_commander = 'Unknown' AND result = 'Bulgarian victory'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.69
+    }
+  ]
+}

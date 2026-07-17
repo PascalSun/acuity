@@ -1,0 +1,69 @@
+{
+  "db_id": "pets_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:20:04.096094+00:00",
+  "records": [
+    {
+      "uid": "1610d818-6199-4bb8-ab64-ca10a76791d3",
+      "question": "Who are the female students with last name Smith from BAL city, at least 18 years old, with an advisor number at most 1121 and a major code no more than 600, who have pets weighing exactly 12.0 and at least 3 years old?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nJOIN pets ON has_pet.petid = pets.petid\nWHERE student.advisor <= 1121 AND student.age >= 18 AND student.sex = 'F' AND pets.weight = 12.0 AND pets.pet_age >= 3 AND student.major <= 600 AND student.lname = 'Smith' AND student.city_code = 'BAL'",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID INNER JOIN Pets AS T3 ON T2.PetID = T3.PetID WHERE T1.Sex = 'F' AND T1.LName = 'Smith' AND T1.city_code = 'BAL' AND T1.Age >= 18 AND T1.Advisor <= 1121 AND T1.Major <= 600 AND T3.weight = 12.0 AND T3.pet_age >= 3",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.87
+    },
+    {
+      "uid": "30ca3fd5-c5dc-476a-b927-56eede664e7a",
+      "question": "Which male students named Eric who are exactly 19 years old have advisor 7134?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.advisor = 7134 AND student.fname = 'Eric' AND student.age = 19 AND student.sex = 'M'",
+      "pred_sql": "SELECT StuID FROM Student WHERE Fname = 'Eric' AND Sex = 'M' AND Age = 19 AND Advisor = 7134",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.8
+    },
+    {
+      "uid": "a48a44b2-9ade-446b-9874-4ff0a7085a68",
+      "question": "Which students are at least 18 years old, live in BAL, and have pets?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nJOIN pets ON has_pet.petid = pets.petid\nWHERE student.city_code = 'BAL' AND student.age >= 18",
+      "pred_sql": "SELECT DISTINCT T1.StuID\nFROM Student AS T1\nINNER JOIN Has_Pet AS T2\n  ON T1.StuID = T2.StuID\nWHERE\n  T1.Age >= 18 AND T1.city_code = 'BAL'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.23
+    },
+    {
+      "uid": "df980442-5276-4145-9c56-132338252eea",
+      "question": "Does Tracy Kim, a female student who is at least 19 years old, has advisor 7712, and a major number at most 600, have a pet?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nWHERE student.sex = 'F' AND student.major <= 600 AND student.fname = 'Tracy' AND student.lname = 'Kim' AND student.age >= 19 AND student.advisor = 7712",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID WHERE T1.Fname = 'Tracy' AND T1.LName = 'Kim' AND T1.Sex = 'F' AND T1.Age >= 19 AND T1.Advisor = 7712 AND T1.Major <= 600",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.33
+    },
+    {
+      "uid": "f8d3b2c4-9702-4a8f-ba1d-abe5f5e88ea5",
+      "question": "Which male students named Bruce Wilson do we have who are at most 27 years old, living in LON, advised by 1148, and with a major number no more than 600?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.sex = 'M' AND student.fname = 'Bruce' AND student.age <= 27 AND student.city_code = 'LON' AND student.lname = 'Wilson' AND student.advisor = 1148 AND student.major <= 600",
+      "pred_sql": "SELECT StuID FROM Student WHERE Sex = 'M' AND Fname = 'Bruce' AND LName = 'Wilson' AND Age <= 27 AND city_code = 'LON' AND Advisor = 1148 AND Major <= 600",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "db_id": "behavior_monitoring",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:38:55.243555+00:00",
+  "records": [
+    {
+      "uid": "161c5a85-3b4f-4ea4-a4a7-7fb94cfd25b3",
+      "question": "Which students named Emma Frederic Rohan with email derrick.jenkins@example.com and cell number 235.899.9744 first rented on 2017-12-05 15:20:04 and left the university on or after 2018-03-03 03:33:05?",
+      "gold_sql": "SELECT students.student_id FROM students\nWHERE students.date_first_rental = '2017-12-05 15:20:04' AND students.date_left_university >= '2018-03-03 03:33:05' AND students.email_address = 'derrick.jenkins@example.com' AND students.middle_name = 'Frederic' AND students.last_name = 'Rohan' AND students.cell_mobile_number = '235.899.9744' AND students.first_name = 'Emma'",
+      "pred_sql": "SELECT students.student_id \nFROM Students \nWHERE first_name = 'Emma' \nAND middle_name = 'Frederic' \nAND last_name = 'Rohan' \nAND email_address = 'derrick.jenkins@example.com' \nAND cell_mobile_number = '235.899.9744' \nAND date_first_rental = '2017-12-05 15:20:04' \nAND date_left_university >= '2018-03-03 03:33:05'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.75
+    },
+    {
+      "uid": "a8eb9840-d335-466c-840d-4de4c3c02a5d",
+      "question": "Which students with the last name Gottlieb and email address dicki.kathryne@example.org started living in New Annabellefort on or before 2017-03-29 18:22:55 and left the university on or before 2018-03-18 16:07:42?",
+      "gold_sql": "SELECT students.student_id FROM students\nJOIN addresses ON students.address_id = addresses.address_id\nJOIN student_addresses ON students.student_id = student_addresses.student_id\nWHERE students.email_address = 'dicki.kathryne@example.org' AND students.last_name = 'Gottlieb' AND student_addresses.date_address_from <= '2017-03-29 18:22:55' AND addresses.city = 'New Annabellefort' AND students.date_left_university <= '2018-03-18 16:07:42'",
+      "pred_sql": "SELECT students.student_id\nFROM Students students\nJOIN Student_Addresses student_addresses ON students.student_id = student_addresses.student_id\nJOIN Addresses addresses ON student_addresses.address_id = addresses.address_id\nWHERE students.last_name = 'Gottlieb'\nAND students.email_address = 'dicki.kathryne@example.org'\nAND student_addresses.date_address_from <= '2017-03-29 18:22:55'\nAND (student_addresses.date_address_to IS NULL OR student_addresses.date_address_to >= '2017-03-29 18:22:55')\nAND students.date_left_university <= '2018-03-18 16:07:42'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.38
+    },
+    {
+      "uid": "c0ddd4a9-a755-41ed-b3d1-7ebab6a09d98",
+      "question": "Which students with first name Misael and last name Will, email gbeatty@example.com, cell number (062)892-7033, who left the university on or after 2018-03-18 07:01:27, live at 654 Fisher Roads?",
+      "gold_sql": "SELECT students.student_id FROM students\nJOIN addresses ON students.address_id = addresses.address_id\nWHERE students.date_left_university >= '2018-03-18 07:01:27' AND students.email_address = 'gbeatty@example.com' AND students.cell_mobile_number = '(062)892-7033' AND students.last_name = 'Will' AND students.first_name = 'Misael' AND addresses.line_1 = '654 Fisher Roads'",
+      "pred_sql": "SELECT students.student_id \nFROM Students students \nJOIN Addresses addresses ON students.address_id = addresses.address_id \nWHERE students.first_name = 'Misael' \nAND students.last_name = 'Will' \nAND students.email_address = 'gbeatty@example.com' \nAND students.cell_mobile_number = '(062)892-7033' \nAND students.date_left_university >= '2018-03-18 07:01:27' \nAND addresses.line_1 = '654 Fisher Roads'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "c4797622-2cbc-4c1e-9892-10c3a7f9d4dd",
+      "question": "Which students named Misael with middle name Justyn first rented on or after 2017-10-15 06:52:46, left university exactly on 2018-03-18 07:01:27, have behavior incidents ending exactly on 2018-03-18 18:40:05, and assessment notes dated on or before 2014-04-28 02:07:53?",
+      "gold_sql": "SELECT students.student_id FROM students\nJOIN assessment_notes ON students.student_id = assessment_notes.student_id\nJOIN behavior_incident ON students.student_id = behavior_incident.student_id\nWHERE students.date_first_rental >= '2017-10-15 06:52:46' AND students.middle_name = 'Justyn' AND behavior_incident.date_incident_end = '2018-03-18 18:40:05' AND assessment_notes.date_of_notes <= '2014-04-28 02:07:53' AND students.date_left_university = '2018-03-18 07:01:27' AND students.first_name = 'Misael'",
+      "pred_sql": "SELECT students.student_id\nFROM Students students\nJOIN Behavior_Incident behavior ON students.student_id = behavior.student_id\nJOIN Assessment_Notes notes ON students.student_id = notes.student_id\nWHERE students.first_name = 'Misael'\n  AND students.middle_name = 'Justyn'\n  AND students.date_first_rental >= '2017-10-15 06:52:46'\n  AND students.date_left_university = '2018-03-18 07:01:27'\n  AND behavior.date_incident_end = '2018-03-18 18:40:05'\n  AND notes.date_of_notes <= '2014-04-28 02:07:53'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.27
+    }
+  ]
+}

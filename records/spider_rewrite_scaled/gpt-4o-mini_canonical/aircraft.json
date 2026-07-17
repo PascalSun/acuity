@@ -1,0 +1,25 @@
+{
+  "db_id": "aircraft",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 1,
+  "n_correct": 1,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:24:01.997063+00:00",
+  "records": [
+    {
+      "uid": "8407fff5-e0c1-46d6-986e-10994169e686",
+      "question": "Which Robinson R-22 light utility helicopters with a max disk loading of 2.6 lb/ft\u00b2 (14 kg/m\u00b2) operate at airports that have exactly 30431051.0 international passengers, exactly 34205887.0 total passengers, at least 263653.0 aircraft movements, at least 107702.0 freight metric tonnes, and at least 3730963.0 domestic passengers?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nJOIN airport ON airport_aircraft.airport_id = airport.airport_id\nWHERE aircraft.aircraft = 'Robinson R-22' AND airport.international_passengers = 30431051.0 AND airport.aircraft_movements >= 263653.0 AND airport.freight_metric_tonnes >= 107702.0 AND airport.total_passengers = 34205887.0 AND airport.domestic_passengers >= 3730963.0 AND aircraft.description = 'Light utility helicopter' AND aircraft.max_disk_loading = '2.6 lb/ft\u00b2 (14 kg/m\u00b2)'",
+      "pred_sql": "SELECT aircraft.Aircraft_ID \nFROM aircraft \nJOIN airport_aircraft ON aircraft.Aircraft_ID = airport_aircraft.Aircraft_ID \nJOIN airport ON airport_aircraft.Airport_ID = airport.Airport_ID \nWHERE aircraft.Aircraft = 'Robinson R-22' \n  AND aircraft.Description = 'Light utility helicopter' \n  AND aircraft.Max_disk_Loading = '2.6 lb/ft\u00b2 (14 kg/m\u00b2)' \n  AND airport.International_Passengers = '30431051.0' \n  AND airport.Aircraft_Movements >= '263653.0' \n  AND airport.Freight_Metric_Tonnes >= '107702.0' \n  AND airport.Total_Passengers = '34205887.0' \n  AND airport.Domestic_Passengers >= '3730963.0'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.19
+    }
+  ]
+}

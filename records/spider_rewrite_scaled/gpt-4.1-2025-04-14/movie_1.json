@@ -1,0 +1,36 @@
+{
+  "db_id": "movie_1",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:26:54.565962+00:00",
+  "records": [
+    {
+      "uid": "678c3080-29c6-4137-b210-acbb6fbcd3d0",
+      "question": "Which reviewers named Ashley White gave exactly 3 stars on 2011-01-02 to the movie E.T., directed by Steven Spielberg and released in 1982 or earlier?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year <= 1982 AND movie.title = 'E.T.' AND reviewer.name = 'Ashley White' AND rating.stars = 3 AND rating.ratingdate = '2011-01-02' AND movie.director = 'Steven Spielberg'",
+      "pred_sql": "SELECT Reviewer.rID\nFROM Reviewer\nJOIN Rating ON Reviewer.rID = Rating.rID\nJOIN Movie ON Rating.mID = Movie.mID\nWHERE Reviewer.name = 'Ashley White'\n  AND Rating.stars = 3\n  AND Rating.ratingDate = '2011-01-02'\n  AND Movie.title = 'E.T.'\n  AND Movie.director = 'Steven Spielberg'\n  AND Movie.year <= 1982",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.21
+    },
+    {
+      "uid": "f1094be6-0323-44d0-a4f8-70287751f6bd",
+      "question": "Which reviewers have given a rating of exactly 4 stars to any movie?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.stars = 4",
+      "pred_sql": "SELECT Reviewer.rID\nFROM Reviewer\nJOIN Rating ON Reviewer.rID = Rating.rID\nWHERE Rating.stars = 4",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    }
+  ]
+}

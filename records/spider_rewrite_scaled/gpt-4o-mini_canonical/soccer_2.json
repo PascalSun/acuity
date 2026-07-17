@@ -1,0 +1,47 @@
+{
+  "db_id": "soccer_2",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:40.156837+00:00",
+  "records": [
+    {
+      "uid": "0774ddae-d042-48ca-8815-f2d4e436cf1e",
+      "question": "Which colleges with at most 18000 enrolled students have players who participated in tryouts?",
+      "gold_sql": "SELECT college.cname FROM college\nJOIN tryout ON college.cname = tryout.cname\nJOIN player ON tryout.pid = player.pid\nWHERE college.enr <= 18000",
+      "pred_sql": "SELECT College.cName\nFROM College\nJOIN Tryout ON College.cName = Tryout.cName\nJOIN Player ON Tryout.pID = Player.pID\nWHERE College.enr <= 18000",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "81e11d94-796b-4ca2-9a0e-680442d88ba2",
+      "question": "Which colleges with at least 19000 enrolled have players named Blake who are strikers with no yellow cards, accepted tryouts, and high school scores of at most 1600?",
+      "gold_sql": "SELECT college.cname FROM college\nJOIN tryout ON college.cname = tryout.cname\nJOIN player ON tryout.pid = player.pid\nWHERE player.ycard = 'no' AND player.pname = 'Blake' AND tryout.ppos = 'striker' AND college.enr >= 19000 AND tryout.decision = 'yes' AND player.hs <= 1600",
+      "pred_sql": "SELECT DISTINCT College.cName\nFROM College\nJOIN Tryout ON College.cName = Tryout.cName\nJOIN Player ON Tryout.pID = Player.pID\nWHERE College.enr >= 19000\n  AND Tryout.pPos = 'striker'\n  AND Tryout.decision = 'yes'\n  AND Player.yCard = 'no'\n  AND Player.pName = 'Blake'\n  AND Player.HS <= 1600",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "98dd9c5b-5e1a-4097-919c-6fbe21901d0b",
+      "question": "Which colleges with an enrollment of at least 22000 have tryouts featuring players named Charles who have a ycard status of no?",
+      "gold_sql": "SELECT college.cname FROM college\nJOIN tryout ON college.cname = tryout.cname\nJOIN player ON tryout.pid = player.pid\nWHERE player.pname = 'Charles' AND player.ycard = 'no' AND college.enr >= 22000",
+      "pred_sql": "SELECT College.cName\nFROM College\nJOIN Tryout ON College.cName = Tryout.cName\nJOIN Player ON Tryout.pID = Player.pID\nWHERE College.enr >= 22000\n  AND Player.pName = 'Charles'\n  AND Player.yCard = 'no'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    }
+  ]
+}

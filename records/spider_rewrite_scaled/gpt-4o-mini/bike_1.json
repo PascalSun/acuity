@@ -1,0 +1,47 @@
+{
+  "db_id": "bike_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 2,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:38:57.318176+00:00",
+  "records": [
+    {
+      "uid": "233f8f23-d453-47ef-aa0b-247ca1744e4b",
+      "question": "Which San Jose City Hall stations in San Jose have exactly 15 docks, are located at latitude 37.337391 and longitude at most -121.886995, and were installed on 8/6/2013?",
+      "gold_sql": "SELECT station.id FROM station\nWHERE station.long <= -121.886995 AND station.city = 'San Jose' AND station.lat = 37.337391 AND station.dock_count = 15 AND station.installation_date = '8/6/2013' AND station.name = 'San Jose City Hall'",
+      "pred_sql": "SELECT station.id \nFROM station \nWHERE city = 'San Jose' \n  AND name LIKE '%City Hall%' \n  AND dock_count = 15 \n  AND lat = 37.337391 \n  AND long <= -121.886995 \n  AND installation_date = '8/6/2013'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "24f9aebb-e173-4242-bdf4-b69f0aa40356",
+      "question": "What stations in San Francisco named Mechanics Plaza (Market at Battery) that were installed on 8/25/2013 have at least 19 docks and are positioned at a longitude no less than -122.399051 and a latitude no more than 37.7913?",
+      "gold_sql": "SELECT station.id FROM station\nWHERE station.city = 'San Francisco' AND station.long >= -122.399051 AND station.lat <= 37.7913 AND station.name = 'Mechanics Plaza (Market at Battery)' AND station.installation_date = '8/25/2013' AND station.dock_count >= 19",
+      "pred_sql": "SELECT station.id \nFROM station \nWHERE name = 'Mechanics Plaza (Market at Battery)' \n  AND city = 'San Francisco' \n  AND installation_date = '8/25/2013' \n  AND dock_count >= 19 \n  AND long >= -122.399051 \n  AND lat <= 37.7913",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "448b2ef9-f1cd-4072-bb45-e5528042daa2",
+      "question": "What stations in Redwood City that were installed on 8/12/2013 have a latitude at most 37.481758, a longitude at least -122.226904, a dock count at most 15, and on or before 2015-06-02 13:00:01 had exactly 3 bikes available and no more than 12 docks available?",
+      "gold_sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.lat <= 37.481758 AND status.bikes_available = 3 AND station.city = 'Redwood City' AND station.dock_count <= 15 AND status.docks_available <= 12 AND status.time <= '2015-06-02 13:00:01' AND station.installation_date = '8/12/2013' AND station.long >= -122.226904",
+      "pred_sql": "SELECT station.id \nFROM station \nJOIN status ON station.id = status.station_id \nWHERE station.city = 'Redwood City' \n  AND station.installation_date = '2013-08-12' \n  AND station.lat <= 37.481758 \n  AND station.long >= -122.226904 \n  AND station.dock_count <= 15 \n  AND status.time <= '2015-06-02 13:00:01' \n  AND status.bikes_available = 3 \n  AND status.docks_available <= 12",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.06
+    }
+  ]
+}

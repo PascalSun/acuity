@@ -1,0 +1,80 @@
+{
+  "db_id": "cinema",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:24:18.420672+00:00",
+  "records": [
+    {
+      "uid": "0f1cccc0-60c1-41e1-9b58-38825b6843a8",
+      "question": "Where is the cinema in County Wicklow with a capacity of 1100 that shows films directed by Bill Schreiner featuring at least 2 in the season, with tickets priced at most 12.99?",
+      "gold_sql": "SELECT cinema.cinema_id FROM cinema\nJOIN schedule ON cinema.cinema_id = schedule.cinema_id\nJOIN film ON schedule.film_id = film.film_id\nWHERE film.number_in_season >= 2 AND schedule.price <= 12.99 AND cinema.location = 'County Wicklow' AND film.directed_by = 'Bill Schreiner' AND cinema.capacity = 1100",
+      "pred_sql": "SELECT cinema.Cinema_ID\nFROM cinema\nJOIN schedule ON cinema.Cinema_ID = schedule.Cinema_ID\nJOIN film ON schedule.Film_ID = film.Film_ID\nWHERE cinema.Location = 'County Wicklow'\n  AND cinema.Capacity = 1100\n  AND film.Directed_by = 'Bill Schreiner'\n  AND film.Number_in_season >= 2\n  AND schedule.Price <= 12.99",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "653535c8-7130-4edf-b740-afc26c84a757",
+      "question": "Which cinemas with a capacity of exactly 1100 have showings on 21 May?",
+      "gold_sql": "SELECT cinema.cinema_id FROM cinema\nJOIN schedule ON cinema.cinema_id = schedule.cinema_id\nWHERE schedule.date = '21 May' AND cinema.capacity = 1100",
+      "pred_sql": "SELECT cinema.Cinema_ID\nFROM cinema\nJOIN schedule ON cinema.Cinema_ID = schedule.Cinema_ID\nWHERE cinema.Capacity = 1100\n  AND schedule.Date = '21 May'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.88
+    },
+    {
+      "uid": "bc0dd694-4675-45bc-89d0-67353c734a6e",
+      "question": "Which Oriel cinemas that opened exactly in 2013 have a capacity of at most 330 and offer no more than 5 show times on 19 May with ticket prices at least 15.99?",
+      "gold_sql": "SELECT cinema.cinema_id FROM cinema\nJOIN schedule ON cinema.cinema_id = schedule.cinema_id\nWHERE cinema.capacity <= 330 AND schedule.price >= 15.99 AND schedule.date = '19 May' AND cinema.openning_year = 2013 AND schedule.show_times_per_day <= 5 AND cinema.name = 'Oriel'",
+      "pred_sql": "SELECT cinema.Cinema_ID\nFROM cinema\nJOIN schedule ON cinema.Cinema_ID = schedule.Cinema_ID\nWHERE cinema.Name LIKE '%Oriel%'\n  AND cinema.Openning_year = 2013\n  AND cinema.Capacity <= 330\n  AND schedule.Show_times_per_day <= 5\n  AND schedule.Price >= 15.99\n  AND schedule.Date = '19 May'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "uid": "df9136b1-2d2d-4d17-9f6c-4b5147b3d193",
+      "question": "Which cinemas named Codling in County Wicklow that opened in 2010 with a capacity of 1100 are showing films with number in season at most 1 and rank in series at most 26, where there are exactly 5 show times per day?",
+      "gold_sql": "SELECT cinema.cinema_id FROM cinema\nJOIN schedule ON cinema.cinema_id = schedule.cinema_id\nJOIN film ON schedule.film_id = film.film_id\nWHERE cinema.location = 'County Wicklow' AND cinema.name = 'Codling' AND cinema.openning_year = 2010 AND cinema.capacity = 1100 AND film.number_in_season <= 1 AND film.rank_in_series <= 26 AND schedule.show_times_per_day = 5",
+      "pred_sql": "SELECT cinema.Cinema_ID\nFROM cinema\nJOIN schedule ON cinema.Cinema_ID = schedule.Cinema_ID\nJOIN film ON schedule.Film_ID = film.Film_ID\nWHERE cinema.Name = 'Codling'\n  AND cinema.Location = 'County Wicklow'\n  AND cinema.Openning_year = 2010\n  AND cinema.Capacity = 1100\n  AND film.Number_in_season <= 1\n  AND film.Rank_in_series <= 26\n  AND schedule.Show_times_per_day = 5",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "e4ad0e6a-a567-48dd-a4a8-469165c85382",
+      "question": "Which Codling cinemas in County Wicklow have a capacity of at most 1100?",
+      "gold_sql": "SELECT cinema.cinema_id FROM cinema\nWHERE cinema.location = 'County Wicklow' AND cinema.capacity <= 1100 AND cinema.name = 'Codling'",
+      "pred_sql": "SELECT cinema.Cinema_ID\nFROM cinema\nWHERE Name LIKE '%Codling%'\n  AND Location = 'County Wicklow'\n  AND Capacity <= 1100",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "f0c27383-a3d7-430f-a692-7c4d6ea8147f",
+      "question": "What cinemas named Mount Callan opened exactly in 2011?",
+      "gold_sql": "SELECT cinema.cinema_id FROM cinema\nWHERE cinema.openning_year = 2011 AND cinema.name = 'Mount Callan'",
+      "pred_sql": "SELECT cinema.cinema_id\nFROM cinema\nWHERE cinema.Name = 'Mount Callan' AND cinema.Openning_year = 2011",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    }
+  ]
+}

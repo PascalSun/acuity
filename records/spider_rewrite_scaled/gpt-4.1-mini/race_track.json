@@ -1,0 +1,36 @@
+{
+  "db_id": "race_track",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:36:09.477496+00:00",
+  "records": [
+    {
+      "uid": "4d5ef578-b65e-42e5-b6a2-51a2205b736b",
+      "question": "Which tracks named Daytona International Speedway opened in 1959 or later?",
+      "gold_sql": "SELECT track.track_id FROM track\nWHERE track.name = 'Daytona International Speedway' AND track.year_opened >= 1959.0",
+      "pred_sql": "SELECT Track_ID FROM track WHERE Name = 'Daytona International Speedway' AND Year_Opened >= 1959",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.9
+    },
+    {
+      "uid": "81033db1-40ca-4237-817c-dd26a824ae5f",
+      "question": "Which track named Daytona International Speedway has a seating capacity of exactly 168000.0?",
+      "gold_sql": "SELECT track.track_id FROM track\nWHERE track.name = 'Daytona International Speedway' AND track.seating = 168000.0",
+      "pred_sql": "SELECT track.Track_ID FROM track WHERE track.Name = 'Daytona International Speedway' AND track.Seating = 168000.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    }
+  ]
+}

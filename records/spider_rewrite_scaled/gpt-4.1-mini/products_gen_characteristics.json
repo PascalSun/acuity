@@ -1,0 +1,25 @@
+{
+  "db_id": "products_gen_characteristics",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 1,
+  "n_correct": 1,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:35:59.309620+00:00",
+  "records": [
+    {
+      "uid": "67ab10e7-ad9c-4874-bdcb-e69c1e51c8b2",
+      "question": "Which characteristic types are described as Grade and have a characteristic called fast with data type velit?",
+      "gold_sql": "SELECT ref_characteristic_types.characteristic_type_code FROM ref_characteristic_types\nJOIN characteristics ON ref_characteristic_types.characteristic_type_code = characteristics.characteristic_type_code\nWHERE ref_characteristic_types.characteristic_type_description = 'Grade' AND characteristics.characteristic_data_type = 'velit' AND characteristics.characteristic_name = 'fast'",
+      "pred_sql": "SELECT rct.characteristic_type_code\nFROM Ref_Characteristic_Types rct\nJOIN Characteristics c ON rct.characteristic_type_code = c.characteristic_type_code\nWHERE rct.characteristic_type_description = 'Grade'\n  AND c.characteristic_name = 'fast'\n  AND c.characteristic_data_type = 'velit'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.9
+    }
+  ]
+}

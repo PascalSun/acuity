@@ -1,0 +1,80 @@
+{
+  "db_id": "college_1",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 6,
+  "n_correct": 1,
+  "accuracy": 0.16666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:47:54.092359+00:00",
+  "records": [
+    {
+      "uid": "21ee6806-23d2-43cb-8d67-fd83fc5cf1a7",
+      "question": "Which employees named Todd H. Wilson, born on 1966-10-19, hired on 1990-11-6, have the job code CUST?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nWHERE employee.emp_hiredate = '1990-11-6' AND employee.emp_initial = 'H' AND employee.emp_lname = 'Wilson' AND employee.emp_dob = '1966-10-19' AND employee.emp_fname = 'Todd' AND employee.emp_jobcode = 'CUST'",
+      "pred_sql": "SELECT EMP_NUM\nFROM EMPLOYEE\nWHERE EMP_FNAME = 'Todd' \n  AND EMP_INITIAL = 'H' \n  AND EMP_LNAME = 'Wilson'\n  AND EMP_DOB = '1966-10-19'\n  AND EMP_HIREDATE = '1990-11-06'\n  AND EMP_JOBCODE = 'CUST'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.75
+    },
+    {
+      "uid": "417e5073-3556-4ddc-9131-eedbd5cb3bd7",
+      "question": "Which employees with the initial B, hired on 1978-8-1, have the job code PROF and work in the Accounting department within the BUS school?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_initial = 'B' AND department.dept_name = 'Accounting' AND department.school_code = 'BUS' AND employee.emp_jobcode = 'PROF' AND employee.emp_hiredate = '1978-8-1'",
+      "pred_sql": "SELECT e.EMP_NUM\nFROM EMPLOYEE e\nJOIN PROFESSOR p ON e.EMP_NUM = p.EMP_NUM\nJOIN DEPARTMENT d ON p.DEPT_CODE = d.DEPT_CODE\nWHERE e.EMP_INITIAL = 'B'\nAND e.EMP_HIREDATE = '1978-08-01'\nAND e.EMP_JOBCODE = 'PROF'\nAND d.DEPT_NAME = 'Accounting'\nAND d.SCHOOL_CODE = 'BUS'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.56
+    },
+    {
+      "uid": "4b547cf0-79e6-4194-82f1-601b0ea61701",
+      "question": "I'm looking for Gerald Graztevski, born on 1939-3-18, with middle initial B, who teaches in classroom KLR211 and works in the BUS school with department extension 3119. Who is this employee?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_initial = 'B' AND department.school_code = 'BUS' AND class.class_room = 'KLR211' AND employee.emp_fname = 'Gerald' AND employee.emp_lname = 'Graztevski' AND employee.emp_dob = '1939-3-18' AND department.dept_extension = '3119'",
+      "pred_sql": "SELECT DISTINCT e.EMP_NUM\nFROM EMPLOYEE e\nJOIN PROFESSOR p ON e.EMP_NUM = p.EMP_NUM\nJOIN DEPARTMENT d ON p.DEPT_CODE = d.DEPT_CODE\nJOIN CLASS c ON e.EMP_NUM = c.PROF_NUM\nWHERE e.EMP_FNAME = 'Gerald'\nAND e.EMP_LNAME = 'Graztevski'\nAND e.EMP_INITIAL = 'B'\nAND e.EMP_DOB = '1939-03-18'\nAND c.CLASS_ROOM = 'KLR211'\nAND d.SCHOOL_CODE = 'BUS'\nAND d.DEPT_EXTENSION = '3119'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.98
+    },
+    {
+      "uid": "b370fd2f-f852-4f8f-9cb2-ed5e69f52d39",
+      "question": "Which employees named Ralph F Matler, born on 1973-12-2 with job code PROF, have a professor record where the highest degree is MBA and the extension is 2851?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN professor ON employee.emp_num = professor.emp_num\nWHERE professor.prof_high_degree = 'MBA' AND employee.emp_dob = '1973-12-2' AND employee.emp_fname = 'Ralph' AND employee.emp_initial = 'F' AND professor.prof_extension = '2851' AND employee.emp_lname = 'Matler' AND employee.emp_jobcode = 'PROF'",
+      "pred_sql": "SELECT e.EMP_NUM\nFROM EMPLOYEE e\nJOIN PROFESSOR p ON e.EMP_NUM = p.EMP_NUM\nWHERE e.EMP_FNAME = 'Ralph'\n  AND e.EMP_INITIAL = 'F'\n  AND e.EMP_LNAME = 'Matler'\n  AND e.EMP_DOB = '1973-12-02'\n  AND e.EMP_JOBCODE = 'PROF'\n  AND p.PROF_HIGH_DEGREE = 'MBA'\n  AND p.PROF_EXTENSION = '2851'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.89
+    },
+    {
+      "uid": "f32c0e7c-7ea5-4006-a3bc-3e8b8285d3d6",
+      "question": "Which employees with the initial B are involved in both classes and departments?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_initial = 'B'",
+      "pred_sql": "SELECT DISTINCT e.EMP_NUM\nFROM EMPLOYEE e\nWHERE e.EMP_INITIAL = 'B'\nAND e.EMP_NUM IN (SELECT PROF_NUM FROM CLASS WHERE PROF_NUM IS NOT NULL)\nAND e.EMP_NUM IN (SELECT EMP_NUM FROM DEPARTMENT WHERE EMP_NUM IS NOT NULL)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.79
+    },
+    {
+      "uid": "f780d4ba-a6a6-46d6-b401-c1c53c2d7157",
+      "question": "Does Gerald Graztevski, hired on 1978-8-1, teach any classes and work in the Accounting department under the BUS school code?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_fname = 'Gerald' AND department.dept_name = 'Accounting' AND employee.emp_hiredate = '1978-8-1' AND department.school_code = 'BUS' AND employee.emp_lname = 'Graztevski'",
+      "pred_sql": "SELECT e.EMP_NUM\nFROM EMPLOYEE e\nJOIN PROFESSOR p ON e.EMP_NUM = p.EMP_NUM\nJOIN DEPARTMENT d ON p.DEPT_CODE = d.DEPT_CODE\nJOIN CLASS c ON e.EMP_NUM = c.PROF_NUM\nWHERE e.EMP_FNAME = 'Gerald'\n  AND e.EMP_LNAME = 'Graztevski'\n  AND DATE(e.EMP_HIREDATE) = '1978-08-01'\n  AND d.DEPT_NAME = 'Accounting'\n  AND d.SCHOOL_CODE = 'BUS'\nLIMIT 1",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.46
+    }
+  ]
+}

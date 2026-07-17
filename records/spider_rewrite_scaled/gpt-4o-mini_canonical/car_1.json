@@ -1,0 +1,47 @@
+{
+  "db_id": "car_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:24:37.990369+00:00",
+  "records": [
+    {
+      "uid": "3d3cb19c-1a94-4ae8-b51c-6991cbd23fe3",
+      "question": "Which continents include the country nigeria?",
+      "gold_sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'nigeria'",
+      "pred_sql": "SELECT continents.ContId FROM continents JOIN countries ON continents.ContId = countries.Continent WHERE countries.CountryName = 'nigeria'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.49
+    },
+    {
+      "uid": "70e27c6d-f885-4e68-ba3f-56132a1b7390",
+      "question": "Which continents are named Australia and include the country New Zealand?",
+      "gold_sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'new zealand' AND continents.continent = 'australia'",
+      "pred_sql": "SELECT continents.ContId FROM continents \nWHERE continents.Continent = 'australia' \nAND EXISTS (SELECT 1 FROM countries WHERE countries.Continent = continents.ContId AND countries.CountryName = 'new zealand')",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    },
+    {
+      "uid": "9bf0917c-68d9-41be-ac50-007bc1416c76",
+      "question": "Which continents include the country where the country name is japan and the continent is asia?",
+      "gold_sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'asia' AND countries.countryname = 'japan'",
+      "pred_sql": "SELECT continents.ContId FROM continents \nWHERE continents.Continent = 'asia' \nAND EXISTS (SELECT 1 FROM countries WHERE countries.Continent = continents.ContId AND countries.CountryName = 'japan')",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    }
+  ]
+}

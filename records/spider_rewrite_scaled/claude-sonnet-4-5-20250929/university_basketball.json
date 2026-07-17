@@ -1,0 +1,58 @@
+{
+  "db_id": "university_basketball",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 4,
+  "n_correct": 2,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:58:25.458397+00:00",
+  "records": [
+    {
+      "uid": "0ab6ad5d-bb70-4c9c-84aa-25f21fca5061",
+      "question": "Which public university nicknamed the Fightin' Blue Hens has an enrollment of exactly 19067 and basketball records with an acc_home of 6\u20132, acc_percent of .875, and all_road of 13\u20130?",
+      "gold_sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_home = '6\u20132' AND university.enrollment = 19067.0 AND basketball_match.acc_percent = '.875' AND basketball_match.all_road = '13\u20130' AND university.affiliation = 'Public' AND university.nickname = 'Fightin'' Blue Hens'",
+      "pred_sql": "SELECT u.School_ID\nFROM university u\nJOIN basketball_match b ON u.School_ID = b.School_ID\nWHERE u.Affiliation = 'Public'\nAND u.Nickname = 'Fightin'' Blue Hens'\nAND u.Enrollment = 19067\nAND b.ACC_Home = '6\u20132'\nAND b.ACC_Percent = '.875'\nAND b.All_Road = '13\u20130'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.15
+    },
+    {
+      "uid": "4e8fd52d-6a9e-4036-8c91-5d85e6d3cef6",
+      "question": "Which universities are Stony Brook University, called Seawolves, affiliated as Public, founded in 1957 or later, with enrollment at most 23997, and competing in the America East Conference ( D-I )?",
+      "gold_sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'America East Conference ( D-I )' AND university.nickname = 'Seawolves' AND university.school = 'Stony Brook University' AND university.founded >= 1957.0 AND university.enrollment <= 23997.0 AND university.affiliation = 'Public'",
+      "pred_sql": "SELECT School_ID\nFROM university\nWHERE School = 'Stony Brook University'\n  AND Nickname = 'Seawolves'\n  AND Affiliation = 'Public'\n  AND Founded >= 1957\n  AND Enrollment <= 23997\n  AND Primary_conference = 'America East Conference'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.09
+    },
+    {
+      "uid": "c403a6f4-2455-414b-92d6-5146a88decd9",
+      "question": "Which universities have basketball matches where the team name is North Carolina?",
+      "gold_sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.team_name = 'North Carolina'",
+      "pred_sql": "SELECT DISTINCT u.School_ID\nFROM university u\nJOIN basketball_match b ON u.School_ID = b.School_ID\nWHERE b.Team_Name = 'North Carolina'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.64
+    },
+    {
+      "uid": "f8822ac6-5284-4690-bf8d-a59a444d4129",
+      "question": "Which public universities in Stony Brook have the nickname Seawolves, were founded in 1957 or later, have an enrollment of at least 23997, and compete in the America East Conference ( D-I ) as their primary conference?",
+      "gold_sql": "SELECT university.school_id FROM university\nWHERE university.location LIKE '%Stony Brook%' AND university.founded >= 1957.0 AND university.primary_conference = 'America East Conference ( D-I )' AND university.affiliation = 'Public' AND university.nickname = 'Seawolves' AND university.enrollment >= 23997.0",
+      "pred_sql": "SELECT School_ID\nFROM university\nWHERE Location = 'Stony Brook'\n  AND Affiliation = 'Public'\n  AND Nickname = 'Seawolves'\n  AND Founded >= 1957\n  AND Enrollment >= 23997\n  AND Primary_conference = 'America East Conference ( D-I )'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.82
+    }
+  ]
+}

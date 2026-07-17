@@ -1,0 +1,47 @@
+{
+  "db_id": "small_bank_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:21:29.616034+00:00",
+  "records": [
+    {
+      "uid": "4a6e8792-19aa-4e8e-9e5d-db7ce41762a1",
+      "question": "Which accounts belong to customers named Brown who have at least 200000.0 in savings and exactly 10000.0 in checking balances?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE accounts.name = 'Brown' AND savings.balance >= 200000.0 AND checking.balance = 10000.0",
+      "pred_sql": "SELECT T1.custid FROM ACCOUNTS AS T1 INNER JOIN SAVINGS AS T2 ON T1.custid = T2.custid INNER JOIN CHECKING AS T3 ON T1.custid = T3.custid WHERE T1.name = 'Brown' AND T2.balance >= 200000.0 AND T3.balance = 10000.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.71
+    },
+    {
+      "uid": "5cccc32b-e5cb-4ab3-9d9e-bae08b780575",
+      "question": "Which accounts have a savings balance of at most 240.0 and a checking balance of at least 77.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE savings.balance <= 240.0 AND checking.balance >= 77.0",
+      "pred_sql": "SELECT T1.custid FROM ACCOUNTS AS T1 INNER JOIN SAVINGS AS T2 ON T1.custid = T2.custid INNER JOIN CHECKING AS T3 ON T1.custid = T3.custid WHERE T2.balance <= 240.0 AND T3.balance >= 77.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.71
+    },
+    {
+      "uid": "90f93c3f-26fb-4698-847b-29d3a5636d4b",
+      "question": "Which Porter accounts have a savings balance exactly 240.0 and a checking balance at most 77.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE savings.balance = 240.0 AND checking.balance <= 77.0 AND accounts.name = 'Porter'",
+      "pred_sql": "SELECT T1.custid FROM ACCOUNTS AS T1 INNER JOIN SAVINGS AS T2 ON T1.custid = T2.custid INNER JOIN CHECKING AS T3 ON T1.custid = T3.custid WHERE T1.name = 'Porter' AND T2.balance = 240.0 AND T3.balance <= 77.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.87
+    }
+  ]
+}

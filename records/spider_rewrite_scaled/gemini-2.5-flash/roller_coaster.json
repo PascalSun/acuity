@@ -1,0 +1,69 @@
+{
+  "db_id": "roller_coaster",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 5,
+  "n_correct": 3,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:21:03.684690+00:00",
+  "records": [
+    {
+      "uid": "1793c7f2-8ced-41f4-9bfd-301fead43f51",
+      "question": "Which countries have an area of at most 449964 and a population of at least 9047752 where the language is exactly Swedish?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.area <= 449964 AND country.population >= 9047752 AND country.languages = 'Swedish'",
+      "pred_sql": "SELECT Country_ID FROM country WHERE Area <= 449964 AND Population >= 9047752 AND Languages = 'Swedish'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.9
+    },
+    {
+      "uid": "9eb21273-995a-47df-a0ef-bc3bc97d4a94",
+      "question": "Which countries have an area of at least 449964?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.area >= 449964",
+      "pred_sql": "SELECT Country_ID FROM country WHERE Area >= 449964",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.53
+    },
+    {
+      "uid": "a3e7c31f-e631-4699-b088-395a4cab69f1",
+      "question": "Which countries have a population of at least 8206524 and have operating roller coasters with a speed of exactly 55 that opened in 2012?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.speed = '55' AND roller_coaster.status = 'Operating' AND country.population >= 8206524 AND roller_coaster.opened LIKE '%2012%'",
+      "pred_sql": "SELECT DISTINCT T1.Country_ID FROM country AS T1 INNER JOIN roller_coaster AS T2 ON T1.Country_ID = T2.Country_ID WHERE T1.Population >= 8206524 AND T2.Status = 'Operating' AND T2.Speed = '55' AND T2.Opened LIKE '%2012%'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.79
+    },
+    {
+      "uid": "a8f204f2-1004-412d-9901-340116d80b4b",
+      "question": "Which country named Finland has a population of 5261008, an area of at most 338145, languages exactly Finnish Swedish, and features an operating roller coaster that is exactly 120.0 meters tall?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.status = 'Operating' AND roller_coaster.height = 120.0 AND country.name = 'Finland' AND country.population = 5261008 AND country.area <= 338145 AND country.languages = 'Finnish Swedish'",
+      "pred_sql": "SELECT T1.Country_ID FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID = T2.Country_ID WHERE T1.Name = 'Finland' AND T1.Population = 5261008 AND T1.Area <= 338145 AND T1.Languages = 'Finnish Swedish' AND T2.Status = 'operating' AND T2.Height = 120.0",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.96
+    },
+    {
+      "uid": "c507f9f7-007e-4552-b50c-59d2bb2a2a28",
+      "question": "Which country named Austria speaks German, has a population of exactly 8206524, an area of at least 83871, and has the operating roller coaster Hades 360 that is exactly 136.0 tall?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.status = 'Operating' AND roller_coaster.height = 136.0 AND roller_coaster.name = 'Hades 360' AND country.name = 'Austria' AND country.population = 8206524 AND country.languages = 'German' AND country.area >= 83871",
+      "pred_sql": "SELECT T1.Country_ID FROM country AS T1 INNER JOIN roller_coaster AS T2 ON T1.Country_ID = T2.Country_ID WHERE T1.Name = 'Austria' AND T1.Languages LIKE '%German%' AND T1.Population = 8206524 AND T1.Area >= 83871 AND T2.Name = 'Hades 360' AND T2.Status = 'operating' AND T2.Height = 136.0",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.45
+    }
+  ]
+}

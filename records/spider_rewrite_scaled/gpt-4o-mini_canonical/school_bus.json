@@ -1,0 +1,69 @@
+{
+  "db_id": "school_bus",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:23.101924+00:00",
+  "records": [
+    {
+      "uid": "595ae429-0837-4466-8da6-15d9d3e147cc",
+      "question": "I'm looking for Douglas McCrory who is at least 36 years old, lives in Hartford, is a Dem party member, and drives a full-time school bus with exactly 8 years of experience. Can you find him?",
+      "gold_sql": "SELECT driver.driver_id FROM driver\nJOIN school_bus ON driver.driver_id = school_bus.driver_id\nWHERE school_bus.years_working = 8 AND driver.age >= 36 AND driver.name = 'Douglas McCrory' AND school_bus.if_full_time = 'T' AND driver.home_city = 'Hartford' AND driver.party = 'Dem'",
+      "pred_sql": "SELECT driver.Driver_ID\nFROM driver\nJOIN school_bus ON driver.Driver_ID = school_bus.Driver_ID\nWHERE driver.Age >= 36 \n  AND driver.Name = 'Douglas McCrory' \n  AND driver.Home_city = 'Hartford' \n  AND driver.Party = 'Dem' \n  AND school_bus.Years_Working = 8 \n  AND school_bus.If_full_time = 'T'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "73bcb38d-c96a-4562-8302-696d7ba54cff",
+      "question": "Which drivers who are at least 36 years old, live in Hartford, are affiliated with the Dem party, and drive full-time school buses with no more than 8 years experience work for Occidental College, where the school type is Private and the location includes California?",
+      "gold_sql": "SELECT driver.driver_id FROM driver\nJOIN school_bus ON driver.driver_id = school_bus.driver_id\nJOIN school ON school_bus.school_id = school.school_id\nWHERE school.location LIKE '%California%' AND driver.age >= 36 AND school.type = 'Private' AND school.school = 'Occidental College' AND school_bus.if_full_time = 'T' AND driver.home_city = 'Hartford' AND driver.party = 'Dem' AND school_bus.years_working <= 8",
+      "pred_sql": "SELECT driver.Driver_ID\nFROM driver\nJOIN school_bus ON driver.Driver_ID = school_bus.Driver_ID\nJOIN school ON school_bus.School_ID = school.School_ID\nWHERE driver.Age >= 36\n  AND driver.Home_city = 'Hartford'\n  AND driver.Party = 'Dem'\n  AND school_bus.If_full_time = 'T'\n  AND school_bus.Years_Working <= 8\n  AND school.Location LIKE '%California%'\n  AND school.Type = 'Private'\n  AND school.School = 'Occidental College'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.25
+    },
+    {
+      "uid": "8f2ff74e-f7d7-419d-9ed3-f4feac6e3fb8",
+      "question": "Which drivers who are Democrats have exactly 10 years working with school buses that serve Kindergarten schools?",
+      "gold_sql": "SELECT driver.driver_id FROM driver\nJOIN school_bus ON driver.driver_id = school_bus.driver_id\nJOIN school ON school_bus.school_id = school.school_id\nWHERE school_bus.years_working = 10 AND school.grade = 'Kindergarten' AND driver.party = 'Dem'",
+      "pred_sql": "SELECT driver.Driver_ID\nFROM driver\nJOIN school_bus ON driver.Driver_ID = school_bus.Driver_ID\nJOIN school ON school_bus.School_ID = school.School_ID\nWHERE driver.Party = 'Dem' \nAND school_bus.Years_Working = 10 \nAND school.Grade = 'Kindergarten'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.76
+    },
+    {
+      "uid": "97cc19ba-4822-4fa0-a849-41f1aeff9ea6",
+      "question": "Which drivers named Matthew Ritter are from Hartford and are members of the Dem party?",
+      "gold_sql": "SELECT driver.driver_id FROM driver\nWHERE driver.home_city = 'Hartford' AND driver.name = 'Matthew Ritter' AND driver.party = 'Dem'",
+      "pred_sql": "SELECT driver.Driver_ID FROM driver WHERE Home_city = 'Hartford' AND Name = 'Matthew Ritter' AND Party = 'Dem'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "d4b8bbfb-5a42-425a-a278-46ac1a1be005",
+      "question": "Which drivers operate school buses that are full-time?",
+      "gold_sql": "SELECT driver.driver_id FROM driver\nJOIN school_bus ON driver.driver_id = school_bus.driver_id\nJOIN school ON school_bus.school_id = school.school_id\nWHERE school_bus.if_full_time = 'T'",
+      "pred_sql": "SELECT DISTINCT d.Driver_ID\nFROM driver d\nJOIN school_bus sb ON d.Driver_ID = sb.Driver_ID\nJOIN school s ON sb.School_ID = s.School_ID\nWHERE sb.If_full_time = 'T'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    }
+  ]
+}

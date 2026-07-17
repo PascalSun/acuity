@@ -1,0 +1,80 @@
+{
+  "db_id": "local_govt_mdm",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 6,
+  "n_correct": 5,
+  "accuracy": 0.8333333333333334,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:42:32.043093+00:00",
+  "records": [
+    {
+      "uid": "26b891f4-a092-483f-8a16-27a32be0c39f",
+      "question": "What cross references have a source system code of Electoral?",
+      "gold_sql": "SELECT cmi_cross_references.cmi_cross_ref_id FROM cmi_cross_references\nWHERE cmi_cross_references.source_system_code = 'Electoral'",
+      "pred_sql": "SELECT cmi_cross_ref_id FROM CMI_Cross_References WHERE source_system_code = 'Electoral'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "2917d153-e1f1-41fc-a2bc-ade6a1909281",
+      "question": "Which cross references come from the source system code 'Business'?",
+      "gold_sql": "SELECT cmi_cross_references.cmi_cross_ref_id FROM cmi_cross_references\nWHERE cmi_cross_references.source_system_code = 'Business'",
+      "pred_sql": "SELECT cmi_cross_ref_id FROM CMI_Cross_References WHERE source_system_code = 'Business'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    },
+    {
+      "uid": "6102f1af-20d7-4f21-8b42-a4651dadfb16",
+      "question": "Which cross references for Schmidt, Kertzmann and Lubowitz have related rent arrears and electoral register information?",
+      "gold_sql": "SELECT cmi_cross_references.cmi_cross_ref_id FROM cmi_cross_references\nJOIN customer_master_index ON cmi_cross_references.master_customer_id = customer_master_index.master_customer_id\nJOIN rent_arrears ON cmi_cross_references.cmi_cross_ref_id = rent_arrears.cmi_cross_ref_id\nJOIN electoral_register ON cmi_cross_references.cmi_cross_ref_id = electoral_register.cmi_cross_ref_id\nWHERE customer_master_index.cmi_details = 'Schmidt, Kertzmann and Lubowitz'",
+      "pred_sql": "SELECT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id\nJOIN Rent_Arrears ON CMI_Cross_References.cmi_cross_ref_id = Rent_Arrears.cmi_cross_ref_id\nJOIN Electoral_Register ON CMI_Cross_References.cmi_cross_ref_id = Electoral_Register.cmi_cross_ref_id\nWHERE Customer_Master_Index.cmi_details IN ('Schmidt', 'Kertzmann', 'Lubowitz')",
+      "strategy": "3iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.04
+    },
+    {
+      "uid": "8c1b484a-f853-447c-a0ee-4b435059cfbc",
+      "question": "Which cross references come from the Business source system and are linked to customer details exactly as 'Volkman, Mills and Ferry'?",
+      "gold_sql": "SELECT cmi_cross_references.cmi_cross_ref_id FROM cmi_cross_references\nJOIN customer_master_index ON cmi_cross_references.master_customer_id = customer_master_index.master_customer_id\nJOIN business_rates ON cmi_cross_references.cmi_cross_ref_id = business_rates.cmi_cross_ref_id\nJOIN electoral_register ON cmi_cross_references.cmi_cross_ref_id = electoral_register.cmi_cross_ref_id\nWHERE customer_master_index.cmi_details = 'Volkman, Mills and Ferry' AND cmi_cross_references.source_system_code = 'Business'",
+      "pred_sql": "SELECT CMI_Cross_References.cmi_cross_ref_id \nFROM CMI_Cross_References \nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id \nWHERE CMI_Cross_References.source_system_code = 'Business' \nAND Customer_Master_Index.cmi_details = 'Volkman, Mills and Ferry'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "b33f3419-be94-4fcc-8003-dc9afbe52d4f",
+      "question": "Which cross references are linked to Gusikowski PLC and have associated benefits overpayments?",
+      "gold_sql": "SELECT cmi_cross_references.cmi_cross_ref_id FROM cmi_cross_references\nJOIN customer_master_index ON cmi_cross_references.master_customer_id = customer_master_index.master_customer_id\nJOIN benefits_overpayments ON cmi_cross_references.cmi_cross_ref_id = benefits_overpayments.cmi_cross_ref_id\nWHERE customer_master_index.cmi_details = 'Gusikowski PLC'",
+      "pred_sql": "SELECT CMI_Cross_References.cmi_cross_ref_id \nFROM CMI_Cross_References \nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id \nJOIN Benefits_Overpayments ON CMI_Cross_References.cmi_cross_ref_id = Benefits_Overpayments.cmi_cross_ref_id \nWHERE Customer_Master_Index.cmi_details = 'Gusikowski PLC'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    },
+    {
+      "uid": "c9515396-60fb-42d6-a563-0e37ff82e6ab",
+      "question": "Which cross-references come from the Tax source system and are linked to both customer information and council tax data?",
+      "gold_sql": "SELECT cmi_cross_references.cmi_cross_ref_id FROM cmi_cross_references\nJOIN customer_master_index ON cmi_cross_references.master_customer_id = customer_master_index.master_customer_id\nJOIN council_tax ON cmi_cross_references.cmi_cross_ref_id = council_tax.cmi_cross_ref_id\nWHERE cmi_cross_references.source_system_code = 'Tax'",
+      "pred_sql": "SELECT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id\nJOIN Council_Tax ON CMI_Cross_References.cmi_cross_ref_id = Council_Tax.cmi_cross_ref_id\nWHERE CMI_Cross_References.source_system_code = 'Tax'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    }
+  ]
+}

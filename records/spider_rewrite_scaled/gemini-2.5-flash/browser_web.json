@@ -1,0 +1,69 @@
+{
+  "db_id": "browser_web",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:11:46.355469+00:00",
+  "records": [
+    {
+      "uid": "3f9004d6-907a-4745-a991-9b348ff897eb",
+      "question": "Which Firefox browsers are compatible with an accelerator?",
+      "gold_sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.name = 'Firefox'",
+      "pred_sql": "SELECT T1.id FROM browser AS T1 INNER JOIN accelerator_compatible_browser AS T2 ON T1.id = T2.browser_id WHERE T1.name = 'Firefox'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    },
+    {
+      "uid": "6e987146-3294-4aaf-8743-d80f5a8417e8",
+      "question": "Which Opera browsers with a market share of 1.2 are compatible since 2009 or later with the fasTun accelerator that has All as the client, Any connection, and an operating system containing Any?",
+      "gold_sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.operating_system LIKE '%Any%' AND web_client_accelerator.connection = 'Any' AND browser.name = 'Opera' AND browser.market_share = 1.2 AND web_client_accelerator.name = 'fasTun' AND accelerator_compatible_browser.compatible_since_year >= 2009 AND web_client_accelerator.client = 'All'",
+      "pred_sql": "SELECT T1.id FROM browser AS T1 INNER JOIN accelerator_compatible_browser AS T2 ON T1.id = T2.browser_id INNER JOIN Web_client_accelerator AS T3 ON T2.accelerator_id = T3.id WHERE T1.name = 'Opera' AND T1.market_share = 1.2 AND T2.compatible_since_year >= 2009 AND T3.name = 'fasTun' AND T3.Client = 'All' AND T3.Connection = 'Any' AND T3.Operating_system LIKE '%Any%'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.86
+    },
+    {
+      "uid": "93bf8e17-963a-4849-96c1-09fa5480fb9e",
+      "question": "Which browsers have a market share of at least 28.96 and have been compatible since 2010 with accelerators where the client is End User, ISP?",
+      "gold_sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.market_share >= 28.96 AND web_client_accelerator.client = 'End User, ISP' AND accelerator_compatible_browser.compatible_since_year = 2010",
+      "pred_sql": "SELECT DISTINCT T1.id FROM browser AS T1 INNER JOIN accelerator_compatible_browser AS T2 ON T1.id = T2.browser_id INNER JOIN Web_client_accelerator AS T3 ON T2.accelerator_id = T3.id WHERE T1.market_share >= 28.96 AND T2.compatible_since_year >= 2010 AND T3.Client = 'End User, ISP'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.56
+    },
+    {
+      "uid": "adf1a014-52ea-404a-89bd-2d20869d50c2",
+      "question": "Which browsers with a market share of at least 1.2 are compatible with accelerators where the client is user?",
+      "gold_sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.client = 'user' AND browser.market_share >= 1.2",
+      "pred_sql": "SELECT T1.id FROM browser AS T1 INNER JOIN accelerator_compatible_browser AS T2 ON T1.id = T2.browser_id INNER JOIN Web_client_accelerator AS T3 ON T2.accelerator_id = T3.id WHERE T1.market_share >= 1.2 AND T3.Client = 'user'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    },
+    {
+      "uid": "eb11809a-3709-492b-a0a2-2c43a1cb8b9a",
+      "question": "Which Firefox browsers are compatible with any web client accelerator?",
+      "gold_sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Firefox'",
+      "pred_sql": "SELECT T1.id FROM browser AS T1 JOIN accelerator_compatible_browser AS T2 ON T1.id = T2.browser_id WHERE T1.name = 'Firefox'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    }
+  ]
+}

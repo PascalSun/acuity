@@ -1,0 +1,69 @@
+{
+  "db_id": "chinook_1",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 5,
+  "n_correct": 4,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:30:33.701327+00:00",
+  "records": [
+    {
+      "uid": "41cc0cf3-8e25-4936-8a6a-4961ebd53c1c",
+      "question": "Which tracks named Revolta Olodum are MPEG audio files that are at least 230191 milliseconds long, have at least 7557065 bytes, cost at least 0.99, and appear on invoice lines with unit prices of at least 0.99 and quantities of at most 1?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN invoiceline ON track.trackid = invoiceline.trackid\nJOIN mediatype ON track.mediatypeid = mediatype.mediatypeid\nWHERE track.milliseconds >= 230191 AND track.name = 'Revolta Olodum' AND invoiceline.unitprice >= 0.99 AND track.bytes >= 7557065 AND mediatype.name = 'MPEG audio file' AND track.unitprice >= 0.99 AND invoiceline.quantity <= 1",
+      "pred_sql": "SELECT Track.TrackId\nFROM Track\nJOIN MediaType ON Track.MediaTypeId = MediaType.MediaTypeId\nJOIN InvoiceLine ON Track.TrackId = InvoiceLine.TrackId\nWHERE Track.Name = 'Revolta Olodum'\n  AND MediaType.Name = 'MPEG audio file'\n  AND Track.Milliseconds >= 230191\n  AND Track.Bytes >= 7557065\n  AND Track.UnitPrice >= 0.99\n  AND InvoiceLine.UnitPrice >= 0.99\n  AND InvoiceLine.Quantity <= 1",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.63
+    },
+    {
+      "uid": "4451f92d-0d21-47a7-b2ed-0f628c03e18e",
+      "question": "Which tracks named Alive by Stone Gossard cost at most 0.99, are no more than 11176623 bytes in file size, last at least 341080 milliseconds, and are in the MPEG audio file format?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN mediatype ON track.mediatypeid = mediatype.mediatypeid\nWHERE track.unitprice <= 0.99 AND track.bytes <= 11176623 AND track.name = 'Alive' AND track.milliseconds >= 341080 AND mediatype.name = 'MPEG audio file' AND track.composer = 'Stone Gossard'",
+      "pred_sql": "SELECT Track.TrackId\nFROM Track\nJOIN Album ON Track.AlbumId = Album.AlbumId\nJOIN Artist ON Album.ArtistId = Artist.ArtistId\nJOIN MediaType ON Track.MediaTypeId = MediaType.MediaTypeId\nWHERE Track.Name = 'Alive'\n  AND Artist.Name = 'Stone Gossard'\n  AND Track.UnitPrice <= 0.99\n  AND Track.Bytes <= 11176623\n  AND Track.Milliseconds >= 341080\n  AND MediaType.Name = 'MPEG audio file'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.48
+    },
+    {
+      "uid": "497dcc5c-a456-42d2-81a2-86ac112ff42f",
+      "question": "Which tracks named Gates Of Tomorrow on the album Dance Of Death cost at most $0.99 and have a file size of at most 12482688 bytes?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN invoiceline ON track.trackid = invoiceline.trackid\nJOIN album ON track.albumid = album.albumid\nWHERE track.unitprice <= 0.99 AND track.name = 'Gates Of Tomorrow' AND album.title = 'Dance Of Death' AND track.bytes <= 12482688",
+      "pred_sql": "SELECT Track.TrackId\nFROM Track\nJOIN Album ON Track.AlbumId = Album.AlbumId\nWHERE Track.Name = 'Gates Of Tomorrow'\n  AND Album.Title = 'Dance Of Death'\n  AND Track.UnitPrice <= 0.99\n  AND Track.Bytes <= 12482688",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.31
+    },
+    {
+      "uid": "ae02353c-657d-4be0-9f2a-345d3e0f1284",
+      "question": "Can you find the track Everything's Ruined from the album Angel Dust by Faith No More that has a length of exactly 273658 milliseconds, a size of exactly 9010917 bytes, and a unit price of exactly 0.99?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN album ON track.albumid = album.albumid\nJOIN artist ON album.artistid = artist.artistid\nWHERE track.milliseconds = 273658 AND track.bytes = 9010917 AND artist.name = 'Faith No More' AND track.unitprice = 0.99 AND track.name = 'Everything''s Ruined' AND album.title = 'Angel Dust'",
+      "pred_sql": "SELECT Track.TrackId\nFROM Track\nJOIN Album ON Track.AlbumId = Album.AlbumId\nJOIN Artist ON Album.ArtistId = Artist.ArtistId\nWHERE Track.Name = \"Everything's Ruined\"\n  AND Album.Title = \"Angel Dust\"\n  AND Artist.Name = \"Faith No More\"\n  AND Track.Milliseconds = 273658\n  AND Track.Bytes = 9010917\n  AND Track.UnitPrice = 0.99",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.59
+    },
+    {
+      "uid": "d3cf45a0-1733-4ce4-b13a-38dd31fdd8c0",
+      "question": "What tracks are exactly 358948 milliseconds long and are Rock genre?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN invoiceline ON track.trackid = invoiceline.trackid\nJOIN genre ON track.genreid = genre.genreid\nWHERE track.milliseconds = 358948 AND genre.name = 'Rock'",
+      "pred_sql": "SELECT Track.TrackId\nFROM Track\nJOIN Genre ON Track.GenreId = Genre.GenreId\nWHERE Track.Milliseconds = 358948\n  AND Genre.Name = 'Rock'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.62
+    }
+  ]
+}

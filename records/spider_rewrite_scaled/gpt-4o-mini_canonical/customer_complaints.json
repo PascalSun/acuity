@@ -1,0 +1,58 @@
+{
+  "db_id": "customer_complaints",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:25:44.736856+00:00",
+  "records": [
+    {
+      "uid": "3e52e127-6d4b-4895-853c-4ee7d1345089",
+      "question": "Which customers from Tennessee have made complaints about products?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN complaints ON customers.customer_id = complaints.customer_id\nJOIN products ON complaints.product_id = products.product_id\nWHERE customers.state = 'Tennessee'",
+      "pred_sql": "SELECT DISTINCT Customers.customer_id\nFROM Customers\nJOIN Complaints ON Customers.customer_id = Complaints.customer_id\nJOIN Products ON Complaints.product_id = Products.product_id\nWHERE Customers.state = 'Tennessee'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "7c70dc02-1c56-40fe-84b7-14f59a67d1ae",
+      "question": "Which customers live at 039 Jedidiah Estate Suite 537 in Sauerberg and have open complaints being handled by a male staff member named Ward with phone number (379)551-0838x146?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN complaints ON customers.customer_id = complaints.customer_id\nJOIN staff ON complaints.staff_id = staff.staff_id\nWHERE customers.town_city = 'Sauerberg' AND staff.gender = '0' AND customers.address_line_1 = '039 Jedidiah Estate Suite 537' AND staff.first_name = 'Ward' AND complaints.complaint_status_code = 'Open' AND staff.phone_number = '(379)551-0838x146'",
+      "pred_sql": "SELECT Customers.customer_id\nFROM Customers\nJOIN Complaints ON Customers.customer_id = Complaints.customer_id\nJOIN Staff ON Complaints.staff_id = Staff.staff_id\nWHERE Customers.town_city = 'Sauerberg'\nAND Customers.address_line_1 = '039 Jedidiah Estate Suite 537'\nAND Complaints.complaint_status_code = 'Open'\nAND Staff.gender = '0'\nAND Staff.first_name = 'Ward'\nAND Staff.phone_number = '(379)551-0838x146'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.65
+    },
+    {
+      "uid": "9cc26cc8-77eb-458c-b7e9-144135ea5609",
+      "question": "Who are the customers with phone number 578.019.7943x328 living in Suite 035 in West Annamariestad, Iowa who have complaints marked OK raised on or after 2002-07-18 10:59:35?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN complaints ON customers.customer_id = complaints.customer_id\nWHERE customers.state = 'Iowa' AND complaints.complaint_outcome_code = 'OK' AND complaints.date_complaint_raised >= '2002-07-18 10:59:35' AND customers.phone_number = '578.019.7943x328' AND customers.town_city = 'West Annamariestad' AND customers.address_line_2 = 'Suite 035'",
+      "pred_sql": "SELECT Customers.customer_id \nFROM Customers \nJOIN Complaints ON Customers.customer_id = Complaints.customer_id \nWHERE Customers.state = 'Iowa' \nAND Customers.phone_number = '578.019.7943x328' \nAND Customers.town_city = 'West Annamariestad' \nAND Customers.address_line_2 = 'Suite 035' \nAND Complaints.complaint_outcome_code = 'OK' \nAND Complaints.date_complaint_raised >= '2002-07-18 10:59:35' \nGROUP BY Customers.customer_id",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.82
+    },
+    {
+      "uid": "a97ef58c-b931-401b-aa12-1679c3bf6e9a",
+      "question": "Who are the customers with phone number 470-803-0244, email address cayla.satterfield@example.net, and living at 039 Jedidiah Estate Suite 537, Apt. 245 in Sauerberg, Hawaii?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.phone_number = '470-803-0244' AND customers.address_line_2 = 'Apt. 245' AND customers.town_city = 'Sauerberg' AND customers.address_line_1 = '039 Jedidiah Estate Suite 537' AND customers.state = 'Hawaii' AND customers.email_address = 'cayla.satterfield@example.net'",
+      "pred_sql": "SELECT Customers.customer_id FROM Customers WHERE phone_number = '470-803-0244' AND address_line_2 = 'Apt. 245' AND town_city = 'Sauerberg' AND address_line_1 = '039 Jedidiah Estate Suite 537' AND state = 'Hawaii' AND email_address = 'cayla.satterfield@example.net'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    }
+  ]
+}

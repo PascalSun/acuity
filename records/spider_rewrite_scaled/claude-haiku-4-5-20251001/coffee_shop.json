@@ -1,0 +1,69 @@
+{
+  "db_id": "coffee_shop",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:00:51.662077+00:00",
+  "records": [
+    {
+      "uid": "44a67179-60dc-4f91-bcf9-88b28a684408",
+      "question": "Which shops at 1200 Main Street that opened in 2010 have exactly 13 staff, a score of at least 42.0, and had at least 12 staff in charge during happy hour in April?",
+      "gold_sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge >= 12 AND shop.score >= 42.0 AND happy_hour.month = 'April' AND shop.open_year = '2010' AND shop.num_of_staff = '13' AND shop.address = '1200 Main Street'",
+      "pred_sql": "SELECT DISTINCT s.Shop_ID\nFROM shop s\nLEFT JOIN happy_hour hh ON s.Shop_ID = hh.Shop_ID\nWHERE s.Address = '1200 Main Street'\nAND s.Open_Year = '2010'\nAND s.Num_of_staff = '13'\nAND s.Score >= 42.0\nAND hh.Month = 'April'\nAND hh.Num_of_shaff_in_charge >= 12",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.14
+    },
+    {
+      "uid": "bd7ac2d4-1f66-4e0b-97bd-8bb4611584d6",
+      "question": "Which shops at 909 Walnut Street opened in 2010 and have exactly 27 staff members?",
+      "gold_sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '27' AND shop.open_year = '2010' AND shop.address = '909 Walnut Street'",
+      "pred_sql": "SELECT shop.Shop_ID\nFROM shop\nWHERE shop.Address = '909 Walnut Street'\nAND shop.Open_Year = '2010'\nAND shop.Num_of_staff = '27'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.74
+    },
+    {
+      "uid": "e286dcd3-db5a-4e40-977f-58fc166ef919",
+      "question": "Which shops at 1330 Baltimore Street that opened in 2010 with exactly 42 staff have a score of at least 36.0 and offer a happy hour in July where the number of staff in charge is at most 15?",
+      "gold_sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score >= 36.0 AND happy_hour.num_of_shaff_in_charge <= 15 AND shop.num_of_staff = '42' AND shop.address = '1330 Baltimore Street' AND shop.open_year = '2010' AND happy_hour.month = 'July'",
+      "pred_sql": "SELECT DISTINCT s.Shop_ID\nFROM shop s\nINNER JOIN happy_hour hh ON s.Shop_ID = hh.Shop_ID\nWHERE s.Address = '1330 Baltimore Street'\nAND s.Open_Year = '2010'\nAND s.Num_of_staff = '42'\nAND s.Score >= 36.0\nAND hh.Month = 'July'\nAND hh.Num_of_shaff_in_charge <= 15",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.66
+    },
+    {
+      "uid": "f3e40bf2-dc72-42bb-9439-0223cf821db9",
+      "question": "Which shops at 1200 Main Street have exactly 13 staff members, a score of at least 42.0, and offer happy hour specials in May?",
+      "gold_sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.num_of_staff = '13' AND happy_hour.month = 'May' AND shop.score >= 42.0 AND shop.address = '1200 Main Street'",
+      "pred_sql": "SELECT DISTINCT s.Shop_ID\nFROM shop s\nINNER JOIN happy_hour hh ON s.Shop_ID = hh.Shop_ID\nWHERE s.Address = '1200 Main Street'\nAND s.Num_of_staff = '13'\nAND s.Score >= 42.0\nAND hh.Month = 'May'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "f793d232-97ce-4005-b5fd-15733633725e",
+      "question": "Which shops at 324 E. 11th Street opened in 2008 have exactly 16 staff members and a score of at most 28.0?",
+      "gold_sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '16' AND shop.score <= 28.0 AND shop.address = '324 E. 11th Street' AND shop.open_year = '2008'",
+      "pred_sql": "SELECT shop.Shop_ID\nFROM shop\nWHERE shop.Address = '324 E. 11th Street'\nAND shop.Open_Year = '2008'\nAND shop.Num_of_staff = '16'\nAND shop.Score <= 28.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.45
+    }
+  ]
+}

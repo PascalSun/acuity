@@ -1,0 +1,25 @@
+{
+  "db_id": "insurance_policies",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 1,
+  "n_correct": 1,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:52:42.946379+00:00",
+  "records": [
+    {
+      "uid": "fc9e3a80-9fba-4710-a622-cdd4c7edb11f",
+      "question": "Which customers named Selena Gerhold have Life policies that started on or after 2016-07-17 and ended exactly on 2018-01-05?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customer_policies.policy_type_code = 'Life' AND customers.customer_details = 'Selena Gerhold' AND customer_policies.start_date >= '2016-07-17' AND customer_policies.end_date = '2018-01-05'",
+      "pred_sql": "SELECT c.Customer_ID\nFROM Customers c\nJOIN Customer_Policies cp ON c.Customer_ID = cp.Customer_ID\nWHERE c.Customer_Details = 'Selena Gerhold'\nAND cp.Policy_Type_Code = 'Life'\nAND cp.Start_Date >= '2016-07-17'\nAND cp.End_Date = '2018-01-05'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.59
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "db_id": "election_representative",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 3,
+  "n_correct": 2,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:04:11.365666+00:00",
+  "records": [
+    {
+      "uid": "25364ce6-3b0c-4a63-9016-4e5182fe4b19",
+      "question": "Which representatives named Jimmy Quillen, Republican, with a lifespan of 1916\u20132003, ran in the 1949 election where they received exactly 14077.0 votes, placed at least 2nd, had a vote percent at most 19.5, and competed for no more than 9 seats?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.vote_percent <= 19.5 AND election.date = '1949' AND election.place >= 2.0 AND representative.name = 'Jimmy Quillen' AND representative.party = 'Republican' AND election.votes = 14077.0 AND representative.lifespan = '1916\u20132003' AND election.seats <= 9.0",
+      "pred_sql": "SELECT r.Representative_ID\nFROM representative r\nJOIN election e ON r.Representative_ID = e.Representative_ID\nWHERE r.Name = 'Jimmy Quillen'\nAND r.Party = 'Republican'\nAND r.Lifespan = '1916\u20132003'\nAND e.Date LIKE '1949%'\nAND e.Votes = 14077.0\nAND e.Place >= 2\nAND e.Vote_Percent <= 19.5\nAND e.Seats <= 9",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "6cee8b7c-dd00-4d8d-b25a-7ec2474709b2",
+      "question": "Which representatives are from New York with a lifespan of 1868\u20131930?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'New York' AND representative.lifespan = '1868\u20131930'",
+      "pred_sql": "SELECT representative.Representative_ID\nFROM representative\nWHERE representative.State = 'New York' AND representative.Lifespan = '1868\u20131930'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    },
+    {
+      "uid": "b6638aa2-8cab-4db3-b705-229b367bf725",
+      "question": "In 1953, was there a Democratic representative from Pennsylvania named James L. Quinn who got at most 16.0 vote percent in an election with at least 7 seats?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.date = '1953' AND representative.party = 'Democratic' AND representative.state = 'Pennsylvania' AND representative.name = 'James L. Quinn' AND election.vote_percent <= 16.0 AND election.seats >= 7.0",
+      "pred_sql": "SELECT representative.Representative_ID\nFROM representative\nJOIN election ON representative.Representative_ID = election.Representative_ID\nWHERE representative.Name = 'James L. Quinn'\nAND representative.State = 'Pennsylvania'\nAND representative.Party = 'Democratic'\nAND strftime('%Y', election.Date) = '1953'\nAND election.Vote_Percent <= 16.0\nAND election.Seats >= 7",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.58
+    }
+  ]
+}

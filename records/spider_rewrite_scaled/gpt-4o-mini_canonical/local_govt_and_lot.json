@@ -1,0 +1,91 @@
+{
+  "db_id": "local_govt_and_lot",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 7,
+  "n_correct": 5,
+  "accuracy": 0.7142857142857143,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:27:44.133471+00:00",
+  "records": [
+    {
+      "uid": "114146cb-1a8b-4cc6-869f-af27a5a9d2f1",
+      "question": "Which electronics associated with Denesik and Sons Party have a service type of Check and service details exactly Satisfied on 2016-08-04 00:25:55 at location 94425 Nellie Kn?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN organizations ON things.organization_id = organizations.organization_id\nJOIN timed_locations_of_things ON things.thing_id = timed_locations_of_things.thing_id\nWHERE timed_locations_of_things.location_code = '94425 Nellie Kn' AND organizations.organization_details = 'Denesik and Sons Party' AND things.service_type_code = 'Check' AND things.service_details = 'Satisfied' AND timed_locations_of_things.date_and_time = '2016-08-04 00:25:55' AND things.type_of_thing_code = 'Electronics'",
+      "pred_sql": "SELECT things.thing_id\nFROM Things\nJOIN Organizations ON things.organization_id = organizations.organization_id\nJOIN Timed_Locations_of_Things ON things.thing_id = timed_locations_of_things.thing_id\nWHERE services.service_type_code = 'Check'\nAND services.service_details = 'Satisfied'\nAND things.Type_of_Thing_Code = 'Electronics'\nAND organizations.organization_details = 'Denesik and Sons Party'\nAND timed_locations_of_things.Location_Code = '94425 Nellie Kn'\nAND timed_locations_of_things.Date_and_Time = '2016-08-04 00:25:55'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 2.08
+    },
+    {
+      "uid": "2bf1ba9c-ec6e-4072-9914-9056110e7ff6",
+      "question": "Which furniture items have a service type exactly Cleanning and belong to organizations that offer Cleanning services?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN organizations ON things.organization_id = organizations.organization_id\nJOIN services ON organizations.organization_id = services.organization_id\nWHERE things.type_of_thing_code = 'Furniture' AND things.service_type_code = 'Cleanning' AND services.service_type_code = 'Cleanning'",
+      "pred_sql": "SELECT things.thing_id\nFROM Things\nJOIN Organizations ON things.organization_id = organizations.organization_id\nJOIN Services ON organizations.organization_id = services.organization_id\nWHERE things.Type_of_Thing_Code = 'Furniture'\nAND services.service_type_code = 'Cleanning'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "397640d8-0988-495e-b131-fb6753c2d489",
+      "question": "Which things are associated with organizations that provide services where the service type code is Moving Out?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN organizations ON things.organization_id = organizations.organization_id\nJOIN services ON organizations.organization_id = services.organization_id\nWHERE services.service_type_code = 'Moving Out'",
+      "pred_sql": "SELECT DISTINCT things.thing_id\nFROM Things\nJOIN Organizations ON things.organization_id = organizations.organization_id\nJOIN Services ON organizations.organization_id = services.organization_id\nWHERE services.service_type_code = 'Moving Out'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "ad0df630-f248-4775-a0fb-268e09a21931",
+      "question": "Which Furniture items have service details exactly Satisfied and have had status updates on or after 2017-07-03 02:22:12?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN timed_status_of_things ON things.thing_id = timed_status_of_things.thing_id\nJOIN timed_locations_of_things ON things.thing_id = timed_locations_of_things.thing_id\nWHERE things.type_of_thing_code = 'Furniture' AND things.service_details = 'Satisfied' AND timed_status_of_things.date_and_date >= '2017-07-03 02:22:12'",
+      "pred_sql": "SELECT things.thing_id\nFROM Things\nJOIN Timed_Status_of_Things ON Things.thing_id = Timed_Status_of_Things.thing_id\nJOIN Timed_Locations_of_Things ON Things.thing_id = Timed_Locations_of_Things.thing_id\nWHERE Things.Type_of_Thing_Code = 'Furniture'\nAND Things.service_details = 'Satisfied'\nAND Timed_Status_of_Things.Date_and_Date >= '2017-07-03 02:22:12'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.89
+    },
+    {
+      "uid": "b63d1429-86fe-49d8-a131-6f7ed47e3387",
+      "question": "Which things are located exactly at 064 Charles Mou?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN organizations ON things.organization_id = organizations.organization_id\nJOIN timed_locations_of_things ON things.thing_id = timed_locations_of_things.thing_id\nWHERE timed_locations_of_things.location_code = '064 Charles Mou'",
+      "pred_sql": "SELECT things.thing_id\nFROM Things\nJOIN Organizations ON things.organization_id = organizations.organization_id\nJOIN Timed_Locations_of_Things ON things.thing_id = timed_locations_of_things.thing_id\nWHERE timed_locations_of_things.Location_Code = '064 Charles Mou'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.57
+    },
+    {
+      "uid": "e47b5a4c-f575-4aa8-88d4-d488b4b4a014",
+      "question": "Which furniture items have service type Check with service details Unsatisfied, and belong to the organization Denesik and Sons Party?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN organizations ON things.organization_id = organizations.organization_id\nWHERE things.service_type_code = 'Check' AND things.service_details = 'Unsatisfied' AND organizations.organization_details = 'Denesik and Sons Party' AND things.type_of_thing_code = 'Furniture'",
+      "pred_sql": "SELECT things.thing_id \nFROM Things \nJOIN Organizations ON things.organization_id = organizations.organization_id \nWHERE things.service_type_code = 'Check' \nAND things.service_details = 'Unsatisfied' \nAND things.Type_of_Thing_Code = 'Furniture' \nAND organizations.organization_details = 'Denesik and Sons Party'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    },
+    {
+      "uid": "f7b1b41f-a720-4138-ae1d-a773067033d9",
+      "question": "Which electronics from Denesik and Sons Party have a Check service marked as Satisfied while their Pay bills service is Unsatisfied?",
+      "gold_sql": "SELECT things.thing_id FROM things\nJOIN organizations ON things.organization_id = organizations.organization_id\nJOIN services ON organizations.organization_id = services.organization_id\nWHERE things.service_details = 'Satisfied' AND things.service_type_code = 'Check' AND services.service_details = 'Unsatisfied' AND services.service_type_code = 'Pay bills' AND things.type_of_thing_code = 'Electronics' AND organizations.organization_details = 'Denesik and Sons Party'",
+      "pred_sql": "SELECT things.thing_id\nFROM Things\nJOIN Organizations ON things.organization_id = organizations.organization_id\nJOIN Services ON organizations.organization_id = services.organization_id\nWHERE things.service_details = 'Satisfied'\n  AND things.service_type_code = 'Check'\n  AND things.Type_of_Thing_Code = 'Electronics'\n  AND organizations.organization_details = 'Denesik and Sons Party'\n  AND services.service_details = 'Unsatisfied'\n  AND services.service_type_code = 'Pay bills'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    }
+  ]
+}

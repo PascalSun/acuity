@@ -1,0 +1,80 @@
+{
+  "db_id": "dog_kennels",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 6,
+  "n_correct": 5,
+  "accuracy": 0.8333333333333334,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:50:20.273916+00:00",
+  "records": [
+    {
+      "uid": "03d82eec-9e73-4212-b61b-fa7de7d3f61a",
+      "question": "Which owners have a male dog named Bessie that arrived exactly on 2018-01-17 11:44:16 and was adopted on or before 2018-02-25 23:45:30?",
+      "gold_sql": "SELECT owners.owner_id FROM owners\nJOIN dogs ON owners.owner_id = dogs.owner_id AND owners.owner_id = dogs.owner_id\nJOIN breeds ON dogs.breed_code = breeds.breed_code\nWHERE dogs.date_arrived = '2018-01-17 11:44:16' AND dogs.gender = '1' AND dogs.name = 'Bessie' AND dogs.date_adopted <= '2018-02-25 23:45:30'",
+      "pred_sql": "SELECT DISTINCT o.owner_id\nFROM Owners o\nJOIN Dogs d ON o.owner_id = d.owner_id\nWHERE d.name = 'Bessie'\n  AND d.gender = 'M'\n  AND d.date_arrived = '2018-01-17 11:44:16'\n  AND d.date_adopted <= '2018-02-25 23:45:30'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.52
+    },
+    {
+      "uid": "58c370cf-ab41-4d28-8d46-42b37ceebf82",
+      "question": "Which owners in Beerton with cell number 633.455.3045x85484 and home phone (094)747-5094x8134 have a dog named Betty that was not abandoned and left on or before 2018-03-25 15:05:16?",
+      "gold_sql": "SELECT owners.owner_id FROM owners\nJOIN dogs ON owners.owner_id = dogs.owner_id AND owners.owner_id = dogs.owner_id\nWHERE dogs.date_departed <= '2018-03-25 15:05:16' AND owners.cell_number = '633.455.3045x85484' AND owners.home_phone = '(094)747-5094x8134' AND dogs.name = 'Betty' AND owners.city = 'Beerton' AND dogs.abandoned_yn = '0'",
+      "pred_sql": "SELECT DISTINCT o.owner_id\nFROM Owners o\nJOIN Dogs d ON o.owner_id = d.owner_id\nWHERE o.city = 'Beerton'\n  AND o.cell_number = '633.455.3045x85484'\n  AND o.home_phone = '(094)747-5094x8134'\n  AND d.name = 'Betty'\n  AND d.abandoned_yn != 'Y'\n  AND d.date_departed <= '2018-03-25 15:05:16'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.26
+    },
+    {
+      "uid": "69afc33a-1176-44bc-aefa-ad618d174758",
+      "question": "Who owns a dog named Troy and lives in Arizona?",
+      "gold_sql": "SELECT owners.owner_id FROM owners\nJOIN dogs ON owners.owner_id = dogs.owner_id AND owners.owner_id = dogs.owner_id\nJOIN breeds ON dogs.breed_code = breeds.breed_code\nWHERE owners.state = 'Arizona' AND dogs.name = 'Troy'",
+      "pred_sql": "SELECT o.owner_id\nFROM Owners o\nJOIN Dogs d ON o.owner_id = d.owner_id\nWHERE d.name = 'Troy' AND o.state = 'Arizona'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.49
+    },
+    {
+      "uid": "9114ae29-04e2-480f-aa23-e6fe33f815fb",
+      "question": "Which owners are located in Port Zackery?",
+      "gold_sql": "SELECT owners.owner_id FROM owners\nWHERE owners.city = 'Port Zackery'",
+      "pred_sql": "SELECT owner_id FROM Owners WHERE city = 'Port Zackery'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.12
+    },
+    {
+      "uid": "e1521828-e19a-43a6-a3c1-31506efba520",
+      "question": "Which owners with the last name Rippin in Arizona have the cell number +70(4)9217952551, home phone 318-052-6573, and email margaretta.runte@example.net, and own dogs that weigh exactly 8.96, were adopted on or after 2018-03-18 07:47:40, and departed on 2018-03-25 04:42:14?",
+      "gold_sql": "SELECT owners.owner_id FROM owners\nJOIN dogs ON owners.owner_id = dogs.owner_id AND owners.owner_id = dogs.owner_id\nJOIN sizes ON dogs.size_code = sizes.size_code\nWHERE owners.last_name = 'Rippin' AND owners.cell_number = '+70(4)9217952551' AND owners.email_address = 'margaretta.runte@example.net' AND dogs.weight = '8.96' AND owners.state = 'Arizona' AND owners.home_phone = '318-052-6573' AND dogs.date_departed = '2018-03-25 04:42:14' AND dogs.date_adopted >= '2018-03-18 07:47:40'",
+      "pred_sql": "SELECT DISTINCT o.owner_id\nFROM Owners o\nJOIN Dogs d ON o.owner_id = d.owner_id\nWHERE o.last_name = 'Rippin'\n  AND o.state = 'Arizona'\n  AND o.cell_number = '+70(4)9217952551'\n  AND o.home_phone = '318-052-6573'\n  AND o.email_address = 'margaretta.runte@example.net'\n  AND d.weight = '8.96'\n  AND d.date_adopted >= '2018-03-18 07:47:40'\n  AND d.date_departed = '2018-03-25 04:42:14'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.16
+    },
+    {
+      "uid": "f2e818a8-af6e-4416-8136-14f52ff0531e",
+      "question": "Who is the owner named Jaclyn Stoltenberg with email address hudson.favian@example.com living at 2635 Caitlyn Plains in Barrettburgh with zip code 02647?",
+      "gold_sql": "SELECT owners.owner_id FROM owners\nWHERE owners.zip_code = '02647' AND owners.first_name = 'Jaclyn' AND owners.email_address = 'hudson.favian@example.com' AND owners.street = '2635 Caitlyn Plains' AND owners.city = 'Barrettburgh' AND owners.last_name = 'Stoltenberg'",
+      "pred_sql": "SELECT owner_id\nFROM Owners\nWHERE first_name = 'Jaclyn' \n  AND last_name = 'Stoltenberg'\n  AND email_address = 'hudson.favian@example.com'\n  AND street = '2635 Caitlyn Plains'\n  AND city = 'Barrettburgh'\n  AND zip_code = '02647'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.8
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "db_id": "driving_school",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:26:28.205855+00:00",
+  "records": [
+    {
+      "uid": "479ef872-9b15-468a-aedc-3115f4a67d60",
+      "question": "What addresses are there in Ericamouth, Louisiana with zip code 75074 for customers with the last name Bernhard who became customers on 2016-05-11 17:03:48, have email everette.goyette@example.org, phone number 07278206718, and status Bad Customer?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE addresses.city = 'Ericamouth' AND addresses.state_province_county = 'Louisiana' AND addresses.zip_postcode = '75074' AND customers.date_became_customer = '2016-05-11 17:03:48' AND customers.email_address = 'everette.goyette@example.org' AND customers.customer_status_code = 'Bad Customer' AND customers.phone_number = '07278206718' AND customers.last_name = 'Bernhard'",
+      "pred_sql": "SELECT Addresses.address_id \nFROM Addresses \nJOIN Customers ON Addresses.address_id = Customers.customer_address_id \nWHERE Addresses.city = 'Ericamouth' \nAND Addresses.state_province_county = 'Louisiana' \nAND Addresses.zip_postcode = '75074' \nAND Customers.date_became_customer = '2016-05-11 17:03:48' \nAND Customers.email_address = 'everette.goyette@example.org' \nAND Customers.customer_status_code = 'Bad Customer' \nAND Customers.phone_number = '07278206718' \nAND Customers.last_name = 'Bernhard'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.08
+    },
+    {
+      "uid": "96505b97-2441-4fa0-bbf9-81c20b634111",
+      "question": "Which addresses belong to customers named Dameon who are Bad Customers, were born on or after 1996-08-30 06:17:50, have an outstanding amount of 9332.0, and became customers on or before 2015-09-25 13:59:21, where the staff at that address left exactly on 2018-02-26 17:56:31?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE customers.customer_status_code = 'Bad Customer' AND customers.date_of_birth >= '1996-08-30 06:17:50' AND customers.first_name = 'Dameon' AND staff.date_left_staff = '2018-02-26 17:56:31' AND customers.date_became_customer <= '2015-09-25 13:59:21' AND customers.amount_outstanding = 9332.0",
+      "pred_sql": "SELECT DISTINCT Addresses.address_id\nFROM Addresses\nJOIN Staff ON Addresses.address_id = Staff.staff_address_id\nJOIN Customers ON Addresses.address_id = Customers.customer_address_id\nWHERE Staff.date_left_staff = '2018-02-26 17:56:31'\nAND Customers.customer_status_code = 'Bad Customer'\nAND Customers.date_of_birth >= '1996-08-30 06:17:50'\nAND Customers.first_name = 'Dameon'\nAND Customers.date_became_customer <= '2015-09-25 13:59:21'\nAND Customers.amount_outstanding = 9332.0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.12
+    },
+    {
+      "uid": "a1f7da42-cd2e-4223-bd02-d8f9f18408eb",
+      "question": "What addresses are linked to staff whose middle name is Duane and who left on 2018-03-05 18:30:12, and are also associated with customers?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE staff.date_left_staff = '2018-03-05 18:30:12' AND staff.middle_name = 'Duane'",
+      "pred_sql": "SELECT DISTINCT Addresses.address_id \nFROM Addresses \nJOIN Staff ON Addresses.address_id = Staff.staff_address_id \nJOIN Customers ON Addresses.address_id = Customers.customer_address_id \nWHERE Staff.date_left_staff = '2018-03-05 18:30:12' \nAND Staff.middle_name = 'Duane'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "fa2b94b9-f991-45a9-9cdd-cae49ddddc53",
+      "question": "Which addresses in Port Melyssa are linked to staff with last name Mraz and to customers who became customers exactly on 2015-09-25 13:59:21?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE customers.date_became_customer = '2015-09-25 13:59:21' AND staff.last_name = 'Mraz' AND addresses.city = 'Port Melyssa'",
+      "pred_sql": "SELECT DISTINCT a.address_id\nFROM Addresses a\nJOIN Staff s ON a.address_id = s.staff_address_id\nJOIN Customers c ON a.address_id = c.customer_address_id\nWHERE a.city = 'Port Melyssa'\n  AND s.last_name = 'Mraz'\n  AND c.date_became_customer = '2015-09-25 13:59:21'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    }
+  ]
+}

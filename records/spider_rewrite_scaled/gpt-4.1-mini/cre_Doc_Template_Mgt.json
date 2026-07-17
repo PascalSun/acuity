@@ -1,0 +1,25 @@
+{
+  "db_id": "cre_Doc_Template_Mgt",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 1,
+  "n_correct": 1,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:31:27.705868+00:00",
+  "records": [
+    {
+      "uid": "d763136c-73cb-4613-ba5a-57b50ab48c1d",
+      "question": "Which template types described as Book have version 2 templates that started on or before 1979-12-24 10:28:16 and ended exactly on 2000-10-22 11:57:12?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE ref_template_types.template_type_description = 'Book' AND templates.date_effective_from <= '1979-12-24 10:28:16' AND templates.date_effective_to = '2000-10-22 11:57:12' AND templates.version_number = 2",
+      "pred_sql": "SELECT r.Template_Type_Code\nFROM Ref_Template_Types r\nJOIN Templates t ON r.Template_Type_Code = t.Template_Type_Code\nWHERE r.Template_Type_Description = 'Book'\n  AND t.Version_Number = 2\n  AND t.Date_Effective_From <= '1979-12-24 10:28:16'\n  AND t.Date_Effective_To = '2000-10-22 11:57:12'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.66
+    }
+  ]
+}

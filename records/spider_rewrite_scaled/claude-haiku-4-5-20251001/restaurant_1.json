@@ -1,0 +1,80 @@
+{
+  "db_id": "restaurant_1",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 6,
+  "n_correct": 4,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:07:14.923968+00:00",
+  "records": [
+    {
+      "uid": "0a7b2974-be0c-4a36-9711-721c53bfbac0",
+      "question": "Which restaurants have a rating of 3?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nWHERE restaurant.rating = 3",
+      "pred_sql": "SELECT Restaurant.ResID FROM Restaurant WHERE Restaurant.Rating = 3",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "1031474f-6b3b-4223-a7f0-b2853c000fcc",
+      "question": "Which restaurants have a rating of at least 4 where exactly 13.2 was spent during a visit on or after 2017-10-08 13:00:30?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN type_of_restaurant ON restaurant.resid = type_of_restaurant.resid\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nWHERE visits_restaurant.spent = 13.2 AND visits_restaurant.time >= '2017-10-08 13:00:30' AND restaurant.rating >= 4",
+      "pred_sql": "SELECT DISTINCT r.ResID\nFROM Restaurant r\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nWHERE r.Rating >= 4\nAND vr.Spent = 13.2\nAND vr.Time >= '2017-10-08 13:00:30'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "42b2c8ec-5e9d-4035-8590-a860c5fc6a7b",
+      "question": "Which Subway restaurants have female students who spent exactly 6.53?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nJOIN student ON visits_restaurant.stuid = student.stuid\nWHERE student.sex = 'F' AND restaurant.resname = 'Subway' AND visits_restaurant.spent = 6.53",
+      "pred_sql": "SELECT DISTINCT r.ResID\nFROM Restaurant r\nJOIN Type_Of_Restaurant tor ON r.ResID = tor.ResID\nJOIN Restaurant_Type rt ON tor.ResTypeID = rt.ResTypeID\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nJOIN Student s ON vr.StuID = s.StuID\nWHERE rt.ResTypeName = 'Subway'\nAND s.Sex = 'F'\nAND vr.Spent = 6.53",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.06
+    },
+    {
+      "uid": "99ea8115-195f-4e97-829f-7a6c94b4e9ed",
+      "question": "Which restaurants named Honeygrow were visited on 2017-10-08 at 13:00:30 by Eric from city_code ATL, aged at most 20, advised by 8772, who spent at least 13.2?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nJOIN student ON visits_restaurant.stuid = student.stuid\nWHERE visits_restaurant.spent >= 13.2 AND visits_restaurant.time = '2017-10-08 13:00:30' AND student.city_code = 'ATL' AND student.age <= 20 AND student.advisor = 8772 AND restaurant.resname = 'Honeygrow' AND student.fname = 'Eric'",
+      "pred_sql": "SELECT DISTINCT r.ResID\nFROM Restaurant r\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nJOIN Student s ON vr.StuID = s.StuID\nWHERE r.ResName = 'Honeygrow'\nAND vr.Time = '2017-10-08 13:00:30'\nAND s.Fname = 'Eric'\nAND s.city_code = 'ATL'\nAND s.Age <= 20\nAND s.Advisor = 8772\nAND vr.Spent >= 13.2",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "9cb6f831-414b-4ce2-930a-0836d0ccf5cb",
+      "question": "Which Subway restaurants have a rating of at most 3?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN type_of_restaurant ON restaurant.resid = type_of_restaurant.resid\nWHERE restaurant.rating <= 3 AND restaurant.resname = 'Subway'",
+      "pred_sql": "SELECT Restaurant.ResID\nFROM Restaurant\nJOIN Type_Of_Restaurant ON Restaurant.ResID = Type_Of_Restaurant.ResID\nJOIN Restaurant_Type ON Type_Of_Restaurant.ResTypeID = Restaurant_Type.ResTypeID\nWHERE Restaurant_Type.ResTypeName = 'Subway'\nAND Restaurant.Rating <= 3",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "c8edfee4-19a0-4816-aa55-bb98efe76a02",
+      "question": "Which restaurants have been visited by students whose advisor number is at least 1121 and whose major number is at least 600?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nJOIN student ON visits_restaurant.stuid = student.stuid\nWHERE student.advisor >= 1121 AND student.major >= 600",
+      "pred_sql": "SELECT DISTINCT r.ResID\nFROM Restaurant r\nINNER JOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nINNER JOIN Student s ON vr.StuID = s.StuID\nWHERE s.Advisor >= 1121 AND s.Major >= 600",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.32
+    }
+  ]
+}

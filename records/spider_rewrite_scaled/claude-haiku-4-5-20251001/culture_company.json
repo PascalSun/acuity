@@ -1,0 +1,47 @@
+{
+  "db_id": "culture_company",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:02:25.504094+00:00",
+  "records": [
+    {
+      "uid": "234231fd-c7de-4fe7-8733-805be84d8a1c",
+      "question": "What movies have the exact title \"The Art of War\"?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.title = 'The Art of War'",
+      "pred_sql": "SELECT movie.movie_id FROM movie WHERE movie.Title = 'The Art of War'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "72471edf-0976-4ee0-9d4d-643b89a7534a",
+      "question": "Which movies were released in 1999 or earlier?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.year <= 1999",
+      "pred_sql": "SELECT movie_id FROM movie WHERE Year <= 1999",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.27
+    },
+    {
+      "uid": "e1466533-54fd-46fb-ae8b-a8fbc67eafd7",
+      "question": "Which movies titled The Whole Nine Yards directed by Jonathan Lynn had a budget of at most 41.3 million and were released in the year 2000 or earlier?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.year <= 2000 AND movie.budget_million <= 41.3 AND movie.director = 'Jonathan Lynn' AND movie.title = 'The Whole Nine Yards'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.Title = 'The Whole Nine Yards'\nAND movie.Director = 'Jonathan Lynn'\nAND movie.Budget_million <= 41.3\nAND movie.Year <= 2000",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    }
+  ]
+}

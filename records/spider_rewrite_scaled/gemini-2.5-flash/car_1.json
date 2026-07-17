@@ -1,0 +1,47 @@
+{
+  "db_id": "car_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 3,
+  "n_correct": 2,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:11:51.185840+00:00",
+  "records": [
+    {
+      "uid": "3d3cb19c-1a94-4ae8-b51c-6991cbd23fe3",
+      "question": "Which continents include the country nigeria?",
+      "gold_sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'nigeria'",
+      "pred_sql": "SELECT T1.ContId FROM continents AS T1 INNER JOIN countries AS T2 ON T1.ContId = T2.Continent WHERE T2.CountryName = 'nigeria'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "70e27c6d-f885-4e68-ba3f-56132a1b7390",
+      "question": "Which continents are named Australia and include the country New Zealand?",
+      "gold_sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'new zealand' AND continents.continent = 'australia'",
+      "pred_sql": "SELECT T1.ContId FROM continents AS T1 INNER JOIN countries AS T2 ON T1.ContId = T2.Continent WHERE T1.Continent = 'Australia' AND T2.CountryName = 'New Zealand'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.1
+    },
+    {
+      "uid": "9bf0917c-68d9-41be-ac50-007bc1416c76",
+      "question": "Which continents include the country where the country name is japan and the continent is asia?",
+      "gold_sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'asia' AND countries.countryname = 'japan'",
+      "pred_sql": "SELECT T1.ContId FROM continents AS T1 INNER JOIN countries AS T2 ON T1.ContId = T2.Continent WHERE T2.CountryName = 'japan' AND T1.Continent = 'asia'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.97
+    }
+  ]
+}

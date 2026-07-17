@@ -1,0 +1,69 @@
+{
+  "db_id": "phone_1",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 5,
+  "n_correct": 1,
+  "accuracy": 0.2,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:06:41.703318+00:00",
+  "records": [
+    {
+      "uid": "7a01d030-5f27-4f96-bb0e-0535665990cb",
+      "question": "Which chip models have Bluetooth enabled, have at least 64.0 MiB of RAM, and support 802.11b WiFi?",
+      "gold_sql": "SELECT chip_model.model_name FROM chip_model\nJOIN phone ON chip_model.model_name = phone.chip_model\nWHERE chip_model.bluetooth = 'Yes' AND chip_model.ram_mib >= 64.0 AND chip_model.wifi = '802.11b'",
+      "pred_sql": "SELECT \"Model_name\"\nFROM \"chip_model\"\nWHERE \"Bluetooth\" IS NOT NULL\nAND \"Bluetooth\" != ''\nAND \"RAM_MiB\" >= 64.0\nAND \"WiFi\" LIKE '%802.11b%'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.85
+    },
+    {
+      "uid": "959bdf0b-7eda-41f5-b816-054690f38321",
+      "question": "Which chip models launched in 2004 or later have exactly 64 MiB RAM, at most 128 MiB ROM, 802.11b wifi, bluetooth enabled, and slots containing 1SD?",
+      "gold_sql": "SELECT chip_model.model_name FROM chip_model\nWHERE chip_model.slots LIKE '%1SD%' AND chip_model.launch_year >= 2004.0 AND chip_model.ram_mib = 64.0 AND chip_model.rom_mib <= 128.0 AND chip_model.wifi = '802.11b' AND chip_model.bluetooth = 'Yes'",
+      "pred_sql": "SELECT \"Model_name\"\nFROM \"chip_model\"\nWHERE \"Launch_year\" >= 2004\n  AND \"RAM_MiB\" = 64\n  AND \"ROM_MiB\" <= 128\n  AND \"WiFi\" = '802.11b'\n  AND \"Bluetooth\" = 'enabled'\n  AND \"Slots\" LIKE '%1SD%'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "c0c9f69b-04eb-4f34-85ef-23d95c632ffc",
+      "question": "Which chip models have exactly 64 MiB of RAM, use wifi 802.11b, and have at most 128 MiB of ROM?",
+      "gold_sql": "SELECT chip_model.model_name FROM chip_model\nWHERE chip_model.rom_mib <= 128.0 AND chip_model.ram_mib = 64.0 AND chip_model.wifi = '802.11b'",
+      "pred_sql": "SELECT \"Model_name\"\nFROM \"chip_model\"\nWHERE \"RAM_MiB\" = 64\nAND \"WiFi\" = '802.11b'\nAND \"ROM_MiB\" <= 128",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.11
+    },
+    {
+      "uid": "c7197b1a-8888-4565-ab5b-26fada54b593",
+      "question": "Which chip models from 2004 or earlier have a 1CFII slot, 802.11b wifi, 1.2 bluetooth, 64.0 MiB RAM, and at most 128.0 MiB ROM?",
+      "gold_sql": "SELECT chip_model.model_name FROM chip_model\nWHERE chip_model.slots LIKE '%1CFII%' AND chip_model.wifi = '802.11b' AND chip_model.rom_mib <= 128.0 AND chip_model.ram_mib = 64.0 AND chip_model.bluetooth = '1.2' AND chip_model.launch_year <= 2004.0",
+      "pred_sql": "SELECT \"Model_name\"\nFROM \"chip_model\"\nWHERE \"Launch_year\" <= 2004\nAND \"Slots\" = '1CFII'\nAND \"WiFi\" = '802.11b'\nAND \"Bluetooth\" = '1.2'\nAND \"RAM_MiB\" = 64.0\nAND \"ROM_MiB\" <= 128.0",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.27
+    },
+    {
+      "uid": "f875c488-d3df-49fa-a590-d550ba86bbe6",
+      "question": "Which chip models launched in 2004 or earlier have at least 64 MiB of RAM, at least 64 MiB of ROM, no WiFi, Bluetooth enabled, and are used in U8815 Asura phones where the date is Approved (valid until 03.05.13) and the accreditation type is Provisional?",
+      "gold_sql": "SELECT chip_model.model_name FROM chip_model\nJOIN phone ON chip_model.model_name = phone.chip_model\nWHERE chip_model.launch_year <= 2004.0 AND phone.date = 'Approved (valid until 03.05.13)' AND phone.hardware_model_name = 'U8815 Asura' AND chip_model.rom_mib >= 64.0 AND chip_model.wifi = 'No' AND chip_model.bluetooth = 'Yes' AND phone.accreditation_type = 'Provisional' AND chip_model.ram_mib >= 64.0",
+      "pred_sql": "SELECT DISTINCT cm.Model_name\nFROM chip_model cm\nJOIN phone p ON cm.Model_name = p.chip_model\nWHERE cm.Launch_year <= 2004\n  AND cm.RAM_MiB >= 64\n  AND cm.ROM_MiB >= 64\n  AND cm.WiFi = 'no'\n  AND cm.Bluetooth = 'yes'\n  AND p.Hardware_Model_name = 'U8815 Asura'\n  AND p.Date = 'Approved (valid until 03.05.13)'\n  AND p.Accreditation_type = 'Provisional'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.51
+    }
+  ]
+}

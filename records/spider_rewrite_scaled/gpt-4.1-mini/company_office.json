@@ -1,0 +1,91 @@
+{
+  "db_id": "company_office",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 7,
+  "n_correct": 7,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:31:15.977657+00:00",
+  "records": [
+    {
+      "uid": "1be23f39-ec1a-4064-9680-b031a59b72b3",
+      "question": "Which companies based in the USA have at least 184.8 billion in assets, no more than 189.6 billion in sales, and no more than 19.0 billion in profits?",
+      "gold_sql": "SELECT companies.id FROM companies\nWHERE companies.assets_billion >= 184.8 AND companies.sales_billion <= 189.6 AND companies.profits_billion <= 19.0 AND companies.headquarters = 'USA'",
+      "pred_sql": "SELECT id FROM Companies WHERE Headquarters = 'USA' AND Assets_billion >= 184.8 AND Sales_billion <= 189.6 AND Profits_billion <= 19.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "1d9441be-a058-4c3f-8f02-b5ae6018978e",
+      "question": "Which Banking companies named BNP Paribas are headquartered in France and have a market value of 88 billion, assets of 2680.7 billion, sales of 130.4 billion, and profits of 10.5 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nWHERE companies.headquarters = 'France' AND companies.name = 'BNP Paribas' AND companies.market_value_billion = '88' AND companies.assets_billion = 2680.7 AND companies.sales_billion = 130.4 AND companies.profits_billion = 10.5 AND companies.industry = 'Banking'",
+      "pred_sql": "SELECT id FROM Companies WHERE name = 'BNP Paribas' AND Industry = 'Banking' AND Headquarters = 'France' AND Market_Value_billion = '88' AND Assets_billion = 2680.7 AND Sales_billion = 130.4 AND Profits_billion = 10.5",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "3ea6d0ea-859e-4cb3-b779-768e07c551ea",
+      "question": "What companies in the Banking industry headquartered in China have market value exactly 224.8 billion, profits at least 15.6 billion, sales no more than 58.2 billion, and assets at most 1408.0 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nWHERE companies.assets_billion <= 1408.0 AND companies.market_value_billion = '224.8' AND companies.profits_billion >= 15.6 AND companies.sales_billion <= 58.2 AND companies.industry = 'Banking' AND companies.headquarters = 'China'",
+      "pred_sql": "SELECT id FROM Companies WHERE Industry = 'Banking' AND Headquarters = 'China' AND Market_Value_billion = '224.8' AND Profits_billion >= 15.6 AND Sales_billion <= 58.2 AND Assets_billion <= 1408.0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "uid": "6f16e0c4-7782-4e1b-9b69-838efdb1fa7a",
+      "question": "Which companies have office locations in buildings where the status is under construction?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nJOIN buildings ON office_locations.building_id = buildings.id\nWHERE buildings.status = 'under construction'",
+      "pred_sql": "SELECT DISTINCT Companies.id\nFROM Companies\nJOIN Office_locations ON Companies.id = Office_locations.company_id\nJOIN buildings ON Office_locations.building_id = buildings.id\nWHERE buildings.Status = 'under construction'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "b195b958-66d9-4edc-b6cb-7b887a959c0f",
+      "question": "Which Petrobras companies headquartered in Brazil with profits exactly 21.2 billion and sales of at least 121.3 billion have offices in Mexico City that moved in during 2031 or later into 44-story buildings that are 200 meters tall?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nJOIN buildings ON office_locations.building_id = buildings.id\nWHERE buildings.city = 'Mexico City' AND companies.profits_billion = 21.2 AND office_locations.move_in_year >= 2031 AND companies.headquarters = 'Brazil' AND companies.name = 'Petrobras' AND buildings.stories = 44 AND buildings.height = 200 AND companies.sales_billion >= 121.3",
+      "pred_sql": "SELECT Companies.id\nFROM Companies\nJOIN Office_locations ON Companies.id = Office_locations.company_id\nJOIN buildings ON Office_locations.building_id = buildings.id\nWHERE Companies.name LIKE 'Petrobras%'\n  AND Companies.Headquarters = 'Brazil'\n  AND Companies.Profits_billion = 21.2\n  AND Companies.Sales_billion >= 121.3\n  AND buildings.City = 'Mexico City'\n  AND Office_locations.move_in_year >= 2031\n  AND buildings.Stories = 44\n  AND buildings.Height = 200",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.78
+    },
+    {
+      "uid": "d2284717-e51e-4a60-9663-077b6e8a514a",
+      "question": "Which companies have exactly 1723.5 billion in assets and have office locations?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nWHERE companies.assets_billion = 1723.5",
+      "pred_sql": "SELECT Companies.id\nFROM Companies\nJOIN Office_locations ON Companies.id = Office_locations.company_id\nWHERE Companies.Assets_billion = 1723.5\nGROUP BY Companies.id",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.51
+    },
+    {
+      "uid": "dbdb0408-620f-42db-88a2-24f23efd7a5d",
+      "question": "Which BNP Paribas companies have a market value of 88 billion, assets of at least 2680.7 billion, profits of at most 10.5 billion, and are located in buildings with proposed status?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nJOIN buildings ON office_locations.building_id = buildings.id\nWHERE buildings.status = 'proposed' AND companies.assets_billion >= 2680.7 AND companies.profits_billion <= 10.5 AND companies.market_value_billion = '88' AND companies.name = 'BNP Paribas'",
+      "pred_sql": "SELECT Companies.id\nFROM Companies\nJOIN Office_locations ON Companies.id = Office_locations.company_id\nJOIN buildings ON Office_locations.building_id = buildings.id\nWHERE Companies.name LIKE '%BNP Paribas%'\n  AND Companies.Market_Value_billion = '88'\n  AND Companies.Assets_billion >= 2680.7\n  AND Companies.Profits_billion <= 10.5\n  AND buildings.Status = 'proposed'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    }
+  ]
+}

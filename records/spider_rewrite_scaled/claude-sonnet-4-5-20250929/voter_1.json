@@ -1,0 +1,58 @@
+{
+  "db_id": "voter_1",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:58:30.290783+00:00",
+  "records": [
+    {
+      "uid": "1a739a17-4222-40ec-8510-9832d4ab0f44",
+      "question": "Which contestants received votes on or before 2018-03-09 19:03:36 from states that appear in the area code state data?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created <= '2018-03-09 19:03:36'",
+      "pred_sql": "SELECT DISTINCT c.contestant_number\nFROM CONTESTANTS c\nJOIN VOTES v ON c.contestant_number = v.contestant_number\nJOIN AREA_CODE_STATE acs ON v.state = acs.state\nWHERE v.created <= '2018-03-09 19:03:36'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "b94b6257-7b57-458a-a13a-c0df0293831e",
+      "question": "Which contestants named Kelly Clauss received votes from phone numbers at least 7148407040 on or after March 9, 2018, 19:03:36?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created >= '2018-03-09 19:03:36' AND contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number >= 7148407040",
+      "pred_sql": "SELECT DISTINCT c.contestant_number\nFROM CONTESTANTS c\nJOIN VOTES v ON c.contestant_number = v.contestant_number\nWHERE c.contestant_name = 'Kelly Clauss'\n  AND v.phone_number >= 7148407040\n  AND v.created >= '2018-03-09 19:03:36'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.37
+    },
+    {
+      "uid": "f4faa2f3-9c8a-4ac9-a9e3-ef6824351ed5",
+      "question": "Which contestants named Kelly Clauss received votes from the phone number 6209222712 on or after 2018-03-09 19:03:39?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number = 6209222712 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created >= '2018-03-09 19:03:39'",
+      "pred_sql": "SELECT DISTINCT c.contestant_number\nFROM CONTESTANTS c\nJOIN VOTES v ON c.contestant_number = v.contestant_number\nWHERE c.contestant_name = 'Kelly Clauss'\n  AND v.phone_number = 6209222712\n  AND v.created >= '2018-03-09 19:03:39'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.82
+    },
+    {
+      "uid": "f632e5ea-75eb-42ba-99ce-f39e9987df3f",
+      "question": "What's the contestant number for Edwina Burnam?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Edwina Burnam'",
+      "pred_sql": "SELECT contestant_number FROM CONTESTANTS WHERE contestant_name = 'Edwina Burnam'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    }
+  ]
+}

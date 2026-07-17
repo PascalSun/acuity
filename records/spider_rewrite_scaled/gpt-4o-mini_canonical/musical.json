@@ -1,0 +1,36 @@
+{
+  "db_id": "musical",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:28:16.472380+00:00",
+  "records": [
+    {
+      "uid": "66e436e9-a00e-4119-bd9d-96ddcfd7a457",
+      "question": "Which actors playing Susan Kennedy have their musical linked to another actor?",
+      "gold_sql": "SELECT actor.actor_id FROM actor\nJOIN actor AS actor__1 ON actor.musical_id = actor__1.actor_id\nWHERE actor.character = 'Susan Kennedy'",
+      "pred_sql": "SELECT actor.Actor_ID FROM actor WHERE actor.Character = 'Susan Kennedy'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.84
+    },
+    {
+      "uid": "bd971f83-2504-4e05-943c-a536ee2a2173",
+      "question": "Which actors named Ian Smith who played Harold Bishop and are exactly 17 years old have a duration containing 1996\u20132009?",
+      "gold_sql": "SELECT actor.actor_id FROM actor\nWHERE actor.duration LIKE '%1996\u20132009%' AND actor.age = 17 AND actor.name = 'Ian Smith' AND actor.character = 'Harold Bishop'",
+      "pred_sql": "SELECT actor.Actor_ID FROM actor WHERE actor.Duration LIKE '%1996\u20132009%' AND actor.age = 17 AND actor.Name = 'Ian Smith' AND actor.Character = 'Harold Bishop'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    }
+  ]
+}

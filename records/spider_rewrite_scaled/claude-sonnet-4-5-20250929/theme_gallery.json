@@ -1,0 +1,36 @@
+{
+  "db_id": "theme_gallery",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:57:30.395351+00:00",
+  "records": [
+    {
+      "uid": "b43e1bcc-c644-4fe5-be71-410a86feed3b",
+      "question": "Which artists named Paul Azinger, aged 47, who joined in 1993 or earlier, had Summer themed exhibitions in 2009 with ticket prices at most 9.95?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Summer' AND exhibition.ticket_price <= 9.95 AND exhibition.year = 2009 AND artist.name = 'Paul Azinger' AND artist.year_join <= 1993 AND artist.age = 47",
+      "pred_sql": "SELECT DISTINCT a.Artist_ID\nFROM artist a\nJOIN exhibition e ON a.Artist_ID = e.Artist_ID\nWHERE a.Name = 'Paul Azinger'\nAND a.Age = 47\nAND a.Year_Join <= 1993\nAND e.Theme = 'Summer'\nAND e.Year = 2009\nAND e.Ticket_Price <= 9.95",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.24
+    },
+    {
+      "uid": "b7a1acf6-5232-4c50-9a70-ac216561852d",
+      "question": "Which artists named Vijay Singh from Fiji, aged at least 45 and who joined in 1998 or later, have exhibitions where the theme is Christmas Tree and the ticket price is at least 16.95?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.age >= 45 AND exhibition.theme = 'Christmas Tree' AND artist.year_join >= 1998 AND artist.name = 'Vijay Singh' AND exhibition.ticket_price >= 16.95 AND artist.country = 'Fiji'",
+      "pred_sql": "SELECT DISTINCT a.Artist_ID\nFROM artist a\nJOIN exhibition e ON a.Artist_ID = e.Artist_ID\nWHERE a.Name = 'Vijay Singh'\nAND a.Country = 'Fiji'\nAND a.Age >= 45\nAND a.Year_Join >= 1998\nAND e.Theme = 'Christmas Tree'\nAND e.Ticket_Price >= 16.95",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.93
+    }
+  ]
+}

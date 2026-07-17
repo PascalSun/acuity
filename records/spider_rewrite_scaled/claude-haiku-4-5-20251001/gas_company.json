@@ -1,0 +1,69 @@
+{
+  "db_id": "gas_company",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:05:16.789525+00:00",
+  "records": [
+    {
+      "uid": "146e44c4-03fc-4732-8823-1c57a96ae522",
+      "question": "Which PetroChina companies headquartered in China in the Oil and gas industry have a market value of exactly 294.7, a rank at most 7, assets no more than 304.7 billion, sales of at least 310.1 billion, and profits at most 20.6 billion?",
+      "gold_sql": "SELECT company.company_id FROM company\nWHERE company.headquarters = 'China' AND company.market_value = 294.7 AND company.rank <= 7 AND company.assets_billion <= 304.7 AND company.company = 'PetroChina' AND company.sales_billion >= 310.1 AND company.main_industry = 'Oil and gas' AND company.profits_billion <= 20.6",
+      "pred_sql": "SELECT \"Company_ID\"\nFROM \"company\"\nWHERE \"Company\" = 'PetroChina'\nAND \"Headquarters\" = 'China'\nAND \"Main_Industry\" = 'Oil and gas'\nAND \"Market_Value\" = 294.7\nAND \"Rank\" <= 7\nAND \"Assets_billion\" <= 304.7\nAND \"Sales_billion\" >= 310.1\nAND \"Profits_billion\" <= 20.6",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    },
+    {
+      "uid": "36c222e7-420d-48a1-b8dd-12da93e10feb",
+      "question": "Which PetroChina companies in the Oil and gas industry have exactly 304.7 billion in assets and profits of at least 20.6 billion, where their gas stations opened in 2004 or earlier?",
+      "gold_sql": "SELECT company.company_id FROM company\nJOIN station_company ON company.company_id = station_company.company_id\nJOIN gas_station ON station_company.station_id = gas_station.station_id\nWHERE company.profits_billion >= 20.6 AND company.main_industry = 'Oil and gas' AND company.company = 'PetroChina' AND company.assets_billion = 304.7 AND gas_station.open_year <= 2004",
+      "pred_sql": "SELECT DISTINCT c.Company_ID\nFROM company c\nJOIN station_company sc ON c.Company_ID = sc.Company_ID\nJOIN gas_station gs ON sc.Station_ID = gs.Station_ID\nWHERE c.Company LIKE '%PetroChina%'\nAND c.Main_Industry = 'Oil and gas'\nAND c.Assets_billion = 304.7\nAND c.Profits_billion >= 20.6\nAND gs.Open_Year <= 2004",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "7c62eff0-68eb-4c24-9d0b-7c6d1f6a8afb",
+      "question": "Which UK-headquartered companies have assets of at most 292.5 billion, sales no more than 375.5 billion, profits exactly 25.7 billion, and market value exactly 147.4 billion, and operate gas stations on Maindy Ave managed by Luke Rowe that opened in 2008 or earlier?",
+      "gold_sql": "SELECT company.company_id FROM company\nJOIN station_company ON company.company_id = station_company.company_id\nJOIN gas_station ON station_company.station_id = gas_station.station_id\nWHERE company.assets_billion <= 292.5 AND gas_station.manager_name = 'Luke Rowe' AND gas_station.location = 'Maindy Ave' AND company.sales_billion <= 375.5 AND company.headquarters = 'UK' AND gas_station.open_year <= 2008 AND company.profits_billion = 25.7 AND company.market_value = 147.4",
+      "pred_sql": "SELECT DISTINCT c.Company_ID\nFROM company c\nJOIN station_company sc ON c.Company_ID = sc.Company_ID\nJOIN gas_station gs ON sc.Station_ID = gs.Station_ID\nWHERE c.Headquarters = 'UK'\nAND c.Assets_billion <= 292.5\nAND c.Sales_billion <= 375.5\nAND c.Profits_billion = 25.7\nAND c.Market_Value = 147.4\nAND gs.Location = 'Maindy Ave'\nAND gs.Manager_Name = 'Luke Rowe'\nAND gs.Open_Year <= 2008",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "ea38b7da-cc04-4ec2-8b9b-7db73c1ed35f",
+      "question": "Which companies have a market value of at least 180.0 and a rank of the year of at least 4?",
+      "gold_sql": "SELECT company.company_id FROM company\nJOIN station_company ON company.company_id = station_company.company_id\nWHERE company.market_value >= 180.0 AND station_company.rank_of_the_year >= 4",
+      "pred_sql": "SELECT c.Company_ID\nFROM company c\nINNER JOIN station_company sc ON c.Company_ID = sc.Company_ID\nWHERE c.Market_Value >= 180.0 AND sc.Rank_of_the_Year >= 4",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "ed1be60e-4084-428e-90fe-782aa5b071d1",
+      "question": "Which companies named Petrobras are headquartered in Brazil, operate in Oil and gas, have a rank of 10, sales of 145.9 billion, profits of at least 20.1 billion, a market value at most 180.0 billion, and a station rank of the year exactly 4?",
+      "gold_sql": "SELECT company.company_id FROM company\nJOIN station_company ON company.company_id = station_company.company_id\nWHERE company.main_industry = 'Oil and gas' AND company.company = 'Petrobras' AND station_company.rank_of_the_year = 4 AND company.profits_billion >= 20.1 AND company.market_value <= 180.0 AND company.sales_billion = 145.9 AND company.rank = 10 AND company.headquarters = 'Brazil'",
+      "pred_sql": "SELECT c.Company_ID\nFROM company c\nJOIN station_company sc ON c.Company_ID = sc.Company_ID\nWHERE c.Company = 'Petrobras'\nAND c.Headquarters = 'Brazil'\nAND c.Main_Industry = 'Oil and gas'\nAND c.Rank = 10\nAND c.Sales_billion = 145.9\nAND c.Profits_billion >= 20.1\nAND c.Market_Value <= 180.0\nAND sc.Rank_of_the_Year = 4",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    }
+  ]
+}

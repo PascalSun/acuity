@@ -1,0 +1,80 @@
+{
+  "db_id": "hospital_1",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:27:22.465642+00:00",
+  "records": [
+    {
+      "uid": "0cf70af1-5f5a-4d48-96c3-acedd591ac57",
+      "question": "Which physicians lead the Surgery department and have certifications that started on or after 2008-01-01 and expire exactly on 2008-12-31?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE trained_in.certificationexpires = '2008-12-31' AND department.name = 'Surgery' AND trained_in.certificationdate >= '2008-01-01'",
+      "pred_sql": "SELECT DISTINCT p.EmployeeID\nFROM Physician p\nJOIN Department d ON p.EmployeeID = d.Head\nJOIN Trained_In t ON p.EmployeeID = t.Physician\nWHERE d.Name = 'Surgery'\n  AND t.CertificationExpires = '2008-12-31'\n  AND t.CertificationDate >= '2008-01-01'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "2bbe968e-837c-42ec-b372-1f8cc06d2534",
+      "question": "Which physicians lead the Surgery department and were certified on or before 2008-01-01?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE trained_in.certificationdate <= '2008-01-01' AND department.name = 'Surgery'",
+      "pred_sql": "SELECT DISTINCT p.EmployeeID\nFROM Physician p\nJOIN Department d ON p.EmployeeID = d.Head\nJOIN Trained_In t ON p.EmployeeID = t.Physician\nWHERE d.Name = 'Surgery' AND t.CertificationDate <= '2008-01-01'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.31
+    },
+    {
+      "uid": "4737d6a4-0f5d-4614-8e8f-d077841cc879",
+      "question": "Which attending physicians named Elliot Reid with a social security number of at least 222222222 had appointments with registered nurse Carla Espinosa in examination room B on or before 2008-04-24 11:00?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN appointment ON physician.employeeid = appointment.physician\nJOIN nurse ON appointment.prepnurse = nurse.employeeid\nWHERE appointment.end <= '2008-04-24 11:00' AND physician.position = 'Attending Physician' AND nurse.name = 'Carla Espinosa' AND appointment.examinationroom = 'B' AND nurse.registered = 1 AND physician.ssn >= 222222222 AND physician.name = 'Elliot Reid'",
+      "pred_sql": "SELECT physician.EmployeeID\nFROM Physician\nJOIN Appointment ON physician.EmployeeID = appointment.Physician\nJOIN Nurse ON appointment.PrepNurse = nurse.EmployeeID\nWHERE physician.Position = 'Attending Physician'\n  AND physician.SSN >= 222222222\n  AND physician.Name = 'Elliot Reid'\n  AND appointment.End <= '2008-04-24 11:00'\n  AND appointment.ExaminationRoom = 'B'\n  AND nurse.Name = 'Carla Espinosa'\n  AND nurse.Registered = 1",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.66
+    },
+    {
+      "uid": "841b6094-0e0f-4953-b3ea-a8efb083c2d8",
+      "question": "Which physicians named John Dorian with SSN 111111111 and position Staff Internist have patients named John Smith who live at 42 Foobar Lane, have phone 555-0256, and have an insurance ID at least 68476213?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN patient ON physician.employeeid = patient.pcp\nWHERE patient.insuranceid >= 68476213 AND physician.ssn = 111111111 AND patient.name = 'John Smith' AND physician.name = 'John Dorian' AND patient.address = '42 Foobar Lane' AND physician.position = 'Staff Internist' AND patient.phone = '555-0256'",
+      "pred_sql": "SELECT p.EmployeeID \nFROM Physician p \nJOIN Patient pt ON p.EmployeeID = pt.PCP \nWHERE p.SSN = 111111111 \n  AND p.Name = 'John Dorian' \n  AND p.Position = 'Staff Internist' \n  AND pt.InsuranceID >= 68476213 \n  AND pt.Name = 'John Smith' \n  AND pt.Address = '42 Foobar Lane' \n  AND pt.Phone = '555-0256'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.7
+    },
+    {
+      "uid": "84c072ef-4a0f-4e56-982a-2eb7d67822e9",
+      "question": "Which Surgical Attending Physician named John Wen with SSN 777777777 heads the Surgery department and has training certifications dated at least 2008-01-01 that expire no earlier than 2008-12-31?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE physician.position = 'Surgical Attending Physician' AND physician.ssn = 777777777 AND physician.name = 'John Wen' AND department.name = 'Surgery' AND trained_in.certificationdate >= '2008-01-01' AND trained_in.certificationexpires >= '2008-12-31'",
+      "pred_sql": "SELECT p.EmployeeID\nFROM Physician p\nJOIN Department d ON p.EmployeeID = d.Head\nJOIN Trained_In t ON p.EmployeeID = t.Physician\nWHERE p.Position = 'Surgical Attending Physician'\n  AND p.SSN = 777777777\n  AND p.Name = 'John Wen'\n  AND d.Name = 'Surgery'\n  AND t.CertificationDate >= '2008-01-01'\n  AND t.CertificationExpires >= '2008-12-31'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "d15a48bb-92a0-4e02-aec1-289da1b275a9",
+      "question": "Can you tell me about Keith Dudemeister who works as an MD Resident and has an SSN of at least 888888888?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nWHERE physician.position = 'MD Resident' AND physician.ssn >= 888888888 AND physician.name = 'Keith Dudemeister'",
+      "pred_sql": "SELECT EmployeeID FROM Physician WHERE Position = 'MD Resident' AND SSN >= 888888888 AND Name = 'Keith Dudemeister'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    }
+  ]
+}

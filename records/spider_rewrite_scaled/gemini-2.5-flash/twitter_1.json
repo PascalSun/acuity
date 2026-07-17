@@ -1,0 +1,58 @@
+{
+  "db_id": "twitter_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 4,
+  "n_correct": 3,
+  "accuracy": 0.75,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:23:26.110360+00:00",
+  "records": [
+    {
+      "uid": "638782aa-33a7-4be7-8f24-10b9b4a32038",
+      "question": "Which user profiles have the name Natalie Portman, email np@superstar.com, at least 94375428 followers, and a partition ID of at most 5?",
+      "gold_sql": "SELECT user_profiles.uid FROM user_profiles\nWHERE user_profiles.partitionid <= 5 AND user_profiles.email = 'np@superstar.com' AND user_profiles.followers >= 94375428 AND user_profiles.name = 'Natalie Portman'",
+      "pred_sql": "SELECT uid FROM user_profiles WHERE name = 'Natalie Portman' AND email = 'np@superstar.com' AND followers >= 94375428 AND partitionid <= 5",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    },
+    {
+      "uid": "71d3b50b-7fa3-40a7-92c1-468b48212ecb",
+      "question": "Which user profiles are for Celine Dion with exactly 23,927,492 followers and email cd@superstar.com, have a partition ID at least 5, and posted the tweet \"Let's celebrate women, fight for equality and support each other,  not just today, but everyday!\" on or before 2018-03-12 02:30:30?",
+      "gold_sql": "SELECT user_profiles.uid FROM user_profiles\nJOIN tweets ON user_profiles.uid = tweets.uid\nWHERE user_profiles.email = 'cd@superstar.com' AND user_profiles.followers = 23927492 AND user_profiles.name = 'Celine Dion' AND user_profiles.partitionid >= 5 AND tweets.createdate <= '2018-03-12 02:30:30' AND tweets.text = 'Let\u2019s celebrate women, fight for equality and support each other,  not just today, but everyday!'",
+      "pred_sql": "SELECT T1.uid FROM user_profiles AS T1 INNER JOIN tweets AS T2 ON T1.uid = T2.uid WHERE T1.name = 'Celine Dion' AND T1.followers = 23927492 AND T1.email = 'cd@superstar.com' AND T1.partitionid >= 5 AND T2.text = 'Let''s celebrate women, fight for equality and support each other,  not just today, but everyday!' AND T2.createdate <= '2018-03-12 02:30:30'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.59
+    },
+    {
+      "uid": "a89ffa3d-025b-4fcf-a8a7-494428a47f76",
+      "question": "Who named Celine Dion with exactly 23927492 followers, email cd@superstar.com, in partition 5, tweeted \"I had a pretty rough time during the last couple of weeks\" on or before 2018-03-12 02:30:30?",
+      "gold_sql": "SELECT user_profiles.uid FROM user_profiles\nJOIN tweets ON user_profiles.uid = tweets.uid\nWHERE tweets.createdate <= '2018-03-12 02:30:30' AND user_profiles.partitionid = 5 AND user_profiles.followers = 23927492 AND user_profiles.email = 'cd@superstar.com' AND tweets.text = 'I had a pretty rough time during the last couple of weeks' AND user_profiles.name = 'Celine Dion'",
+      "pred_sql": "SELECT T1.uid FROM user_profiles AS T1 INNER JOIN tweets AS T2 ON T1.uid = T2.uid WHERE T1.name = 'Celine Dion' AND T1.followers = 23927492 AND T1.email = 'cd@superstar.com' AND T1.partitionid = 5 AND T2.text = 'I had a pretty rough time during the last couple of weeks' AND T2.createdate <= '2018-03-12 02:30:30'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.34
+    },
+    {
+      "uid": "c238eb96-be82-491d-9440-96a484c7e8ee",
+      "question": "Which user profiles have a partition ID of at least 23?",
+      "gold_sql": "SELECT user_profiles.uid FROM user_profiles\nWHERE user_profiles.partitionid >= 23",
+      "pred_sql": "SELECT uid FROM user_profiles WHERE partitionid >= 23",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    }
+  ]
+}

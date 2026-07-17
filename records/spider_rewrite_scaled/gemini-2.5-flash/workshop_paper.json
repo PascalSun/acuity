@@ -1,0 +1,80 @@
+{
+  "db_id": "workshop_paper",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 6,
+  "n_correct": 4,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:23:44.517352+00:00",
+  "records": [
+    {
+      "uid": "14d21f95-eb9c-4bed-8a7d-ffc2007ae548",
+      "question": "Which workshops named Anual Workshop 2011 had submissions from Jeff Lloyd from West Texas State that were rejected?",
+      "gold_sql": "SELECT workshop.workshop_id FROM workshop\nJOIN acceptance ON workshop.workshop_id = acceptance.workshop_id\nJOIN submission ON acceptance.submission_id = submission.submission_id\nWHERE workshop.name = 'Anual Workshop 2011' AND acceptance.result = 'Rejected' AND submission.college = 'West Texas State' AND submission.author = 'Jeff Lloyd'",
+      "pred_sql": "SELECT T1.Workshop_ID FROM workshop AS T1 INNER JOIN Acceptance AS T2 ON T1.Workshop_ID = T2.Workshop_ID INNER JOIN submission AS T3 ON T2.Submission_ID = T3.Submission_ID WHERE T1.Name = 'Anual Workshop 2011' AND T3.Author = 'Jeff Lloyd' AND T3.College = 'West Texas State' AND T2.Result = 'Rejected'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.33
+    },
+    {
+      "uid": "288a90e4-2fdc-486f-adc0-a42e1ab2a834",
+      "question": "What workshops have a date that includes August 18?",
+      "gold_sql": "SELECT workshop.workshop_id FROM workshop\nJOIN acceptance ON workshop.workshop_id = acceptance.workshop_id\nJOIN submission ON acceptance.submission_id = submission.submission_id\nWHERE workshop.date LIKE '%August 18%'",
+      "pred_sql": "SELECT Workshop_ID FROM workshop WHERE Date LIKE '%August 18%'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "2c6e4930-9729-4c0d-9867-e0d5e840345d",
+      "question": "Which workshops at the New Jersey USA venue include August 25 in the date?",
+      "gold_sql": "SELECT workshop.workshop_id FROM workshop\nWHERE workshop.date LIKE '%August 25%' AND workshop.venue = 'New Jersey USA'",
+      "pred_sql": "SELECT Workshop_ID FROM workshop WHERE Venue = 'New Jersey USA' AND Date LIKE '%August 25%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "34a1af4f-8176-4681-befb-ef70c240d058",
+      "question": "Which workshops named Conference 2007 that took place in London UK during 2007 had a Rejected acceptance result?",
+      "gold_sql": "SELECT workshop.workshop_id FROM workshop\nJOIN acceptance ON workshop.workshop_id = acceptance.workshop_id\nWHERE acceptance.result = 'Rejected' AND workshop.venue = 'London UK' AND workshop.date LIKE '%2007%' AND workshop.name = 'Conference 2007'",
+      "pred_sql": "SELECT DISTINCT T1.Workshop_ID FROM workshop AS T1 INNER JOIN Acceptance AS T2 ON T1.Workshop_ID = T2.Workshop_ID WHERE T1.Name = 'Conference 2007' AND T1.Venue = 'London UK' AND SUBSTR(T1.Date, 1, 4) = '2007' AND T2.Result = 'Rejected'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.37
+    },
+    {
+      "uid": "4cb4e735-df99-430f-a53d-7f146fb4f902",
+      "question": "Which workshops named ABC 2007 held in London UK during 2007 included accepted submissions by Steve Niehaus from Notre Dame with scores of at least 72.0?",
+      "gold_sql": "SELECT workshop.workshop_id FROM workshop\nJOIN acceptance ON workshop.workshop_id = acceptance.workshop_id\nJOIN submission ON acceptance.submission_id = submission.submission_id\nWHERE submission.college = 'Notre Dame' AND submission.scores >= 72.0 AND workshop.name = 'ABC 2007' AND acceptance.result = 'Accepted' AND submission.author = 'Steve Niehaus' AND workshop.date LIKE '%2007%' AND workshop.venue = 'London UK'",
+      "pred_sql": "SELECT T1.Workshop_ID\nFROM workshop AS T1\nINNER JOIN Acceptance AS T2\n  ON T1.Workshop_ID = T2.Workshop_ID\nINNER JOIN submission AS T3\n  ON T2.Submission_ID = T3.Submission_ID\nWHERE\n  T1.Name = 'ABC 2007' AND T1.Venue = 'London UK' AND STRFTIME('%Y', T1.Date) = '2007' AND T2.Result = 'Accepted' AND T3.Author = 'Steve Niehaus' AND T3.College = 'Notre Dame' AND T3.Scores >= 72.0",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.89
+    },
+    {
+      "uid": "f403188a-c1af-4fdc-bf47-ca26ec2c3702",
+      "question": "Which workshops named Workshop 2007 have acceptance results that are rejected?",
+      "gold_sql": "SELECT workshop.workshop_id FROM workshop\nJOIN acceptance ON workshop.workshop_id = acceptance.workshop_id\nWHERE acceptance.result = 'Rejected' AND workshop.name = 'Workshop 2007'",
+      "pred_sql": "SELECT T1.Workshop_ID FROM workshop AS T1 INNER JOIN Acceptance AS T2 ON T1.Workshop_ID = T2.Workshop_ID WHERE T1.Name = 'Workshop 2007' AND T2.Result = 'Rejected'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    }
+  ]
+}

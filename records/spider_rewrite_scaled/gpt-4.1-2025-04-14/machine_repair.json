@@ -1,0 +1,80 @@
+{
+  "db_id": "machine_repair",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:26:40.961794+00:00",
+  "records": [
+    {
+      "uid": "01e96d3c-4592-42fc-b37e-4d2ae87e85c1",
+      "question": "Which machines belong to the team Givi Racing- Honda?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nWHERE machine.team = 'Givi Racing- Honda'",
+      "pred_sql": "SELECT Machine_ID FROM machine WHERE Team = 'Givi Racing- Honda'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    },
+    {
+      "uid": "33b5f8a5-830e-4049-a21a-478e0538a519",
+      "question": "Which machines from the Marlboro Pileri - Honda team belong to the RS125 series, were made in 1993, have a quality rank of 4, are class 125cc, and have exactly 129.0 value points?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nWHERE machine.team = 'Marlboro Pileri - Honda' AND machine.machine_series = 'RS125' AND machine.quality_rank = 4 AND machine.making_year = 1993 AND machine.class = '125cc' AND machine.value_points = 129.0",
+      "pred_sql": "SELECT machine.Machine_ID\nFROM machine\nWHERE Team = 'Marlboro Pileri - Honda'\n  AND Machine_series = 'RS125'\n  AND Making_Year = 1993\n  AND quality_rank = 4\n  AND Class = '125cc'\n  AND value_points = 129.0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "41478d29-52ab-4262-9c05-24a7d4bf28fc",
+      "question": "Which machines from the Marlboro Pileri - Honda team in the 125cc class and RS125 series were made in 1993 or earlier, have quality rank at most 4, value points no more than 129.0, and had a Discoverer 3 repair with notes saying 'repair failed. Failed to achieve orbit'?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nJOIN repair ON repair_assignment.repair_id = repair.repair_id\nWHERE machine.quality_rank <= 4 AND machine.making_year <= 1993 AND machine.value_points <= 129.0 AND machine.machine_series = 'RS125' AND repair.notes = 'repair failed. Failed to achieve orbit' AND machine.team = 'Marlboro Pileri - Honda' AND machine.class = '125cc' AND repair.name = 'Discoverer 3'",
+      "pred_sql": "SELECT machine.Machine_ID\nFROM machine\nJOIN repair_assignment ON machine.Machine_ID = repair_assignment.Machine_ID\nJOIN repair ON repair_assignment.repair_ID = repair.repair_ID\nWHERE machine.Team = 'Marlboro Pileri - Honda'\n  AND machine.Class = '125cc'\n  AND machine.Machine_series = 'RS125'\n  AND machine.Making_Year <= 1993\n  AND machine.quality_rank <= 4\n  AND machine.value_points <= 129.0\n  AND repair.name = 'Discoverer 3'\n  AND repair.Notes = 'repair failed. Failed to achieve orbit'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "52017f3d-9e81-4a4b-95c6-f94e2cf928a8",
+      "question": "Which Honda team machines with the RS125 series, made in 1997 or earlier, and a quality rank of exactly 8, have been assigned repairs?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nWHERE machine.machine_series = 'RS125' AND machine.team = 'Honda' AND machine.making_year <= 1997 AND machine.quality_rank = 8",
+      "pred_sql": "SELECT machine.Machine_ID\nFROM machine\nJOIN repair_assignment ON machine.Machine_ID = repair_assignment.Machine_ID\nWHERE machine.Team = 'Honda'\n  AND machine.Machine_series = 'RS125'\n  AND machine.Making_Year <= 1997\n  AND machine.quality_rank = 8",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "61505c8a-0bf6-4d9b-82a1-b7f58ebd071d",
+      "question": "Which machines from the Marlboro Pileri - Honda team belong to the RS125 series, have a quality rank of at least 1, and are linked to the OPS 3467 repair launched on 24 Mar 2014?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nJOIN repair ON repair_assignment.repair_id = repair.repair_id\nWHERE machine.team = 'Marlboro Pileri - Honda' AND repair.launch_date = '24 Mar 2014' AND repair.name = 'OPS 3467' AND machine.machine_series = 'RS125' AND machine.quality_rank >= 1",
+      "pred_sql": "SELECT machine.Machine_ID\nFROM machine\nJOIN repair_assignment ON machine.Machine_ID = repair_assignment.Machine_ID\nJOIN repair ON repair_assignment.repair_ID = repair.repair_ID\nWHERE machine.Team = 'Marlboro Pileri - Honda'\n  AND machine.Machine_series = 'RS125'\n  AND machine.quality_rank >= 1\n  AND repair.name = 'OPS 3467'\n  AND repair.Launch_Date = '24 Mar 2014'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "ac08e7f7-0914-4694-ab64-4b125c303f1f",
+      "question": "What machines from the 1994 RS125 series are in the 125cc class, belong to the Givi Racing- Honda team, have a quality rank of 5, and have value points of at least 194.0?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nWHERE machine.machine_series = 'RS125' AND machine.making_year = 1994 AND machine.quality_rank = 5 AND machine.team = 'Givi Racing- Honda' AND machine.class = '125cc' AND machine.value_points >= 194.0",
+      "pred_sql": "SELECT machine.Machine_ID\nFROM machine\nWHERE Making_Year = 1994\n  AND Machine_series = 'RS125'\n  AND Class = '125cc'\n  AND Team = 'Givi Racing- Honda'\n  AND quality_rank = 5\n  AND value_points >= 194.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    }
+  ]
+}

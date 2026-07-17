@@ -1,0 +1,58 @@
+{
+  "db_id": "company_employee",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:13:01.091360+00:00",
+  "records": [
+    {
+      "uid": "15f992fe-7158-4611-b105-63e9b3156752",
+      "question": "Which people at least 31 years old who graduated from Oklahoma work for PetroChina, an Oil and gas company headquartered in China with sales exactly 310.1 billion and a market value of at least 294.7 billion?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN employment ON people.people_id = employment.people_id\nJOIN company ON employment.company_id = company.company_id\nWHERE company.sales_in_billion = 310.1 AND people.graduation_college = 'Oklahoma' AND company.market_value_in_billion >= 294.7 AND company.industry = 'Oil and gas' AND people.age >= 31 AND company.headquarters = 'China' AND company.name = 'PetroChina'",
+      "pred_sql": "SELECT T1.People_ID FROM people AS T1 INNER JOIN employment AS T2 ON T1.People_ID = T2.People_ID INNER JOIN company AS T3 ON T2.Company_ID = T3.Company_ID WHERE T1.Age >= 31 AND T1.Graduation_College = 'Oklahoma' AND T3.Name = 'PetroChina' AND T3.Industry = 'Oil and gas' AND T3.Headquarters = 'China' AND T3.Sales_in_Billion = 310.1 AND T3.Market_Value_in_Billion >= 294.7",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.31
+    },
+    {
+      "uid": "612990ab-8ded-4b53-9e1d-28b778dcb75e",
+      "question": "Who named Reggie Lewis graduated from Northeastern and is at least 27 years old?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.graduation_college = 'Northeastern' AND people.name = 'Reggie Lewis' AND people.age >= 27",
+      "pred_sql": "SELECT People_ID FROM people WHERE Name = 'Reggie Lewis' AND Graduation_College = 'Northeastern' AND Age >= 27",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "98b7be82-def8-4f17-8d42-01ff082c54e2",
+      "question": "Who graduated from Oklahoma and works for an Oil and gas company that has profits of at least 20.6 billion?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN employment ON people.people_id = employment.people_id\nJOIN company ON employment.company_id = company.company_id\nWHERE people.graduation_college = 'Oklahoma' AND company.profits_in_billion >= 20.6 AND company.industry = 'Oil and gas'",
+      "pred_sql": "SELECT T1.People_ID FROM people AS T1 INNER JOIN employment AS T2 ON T1.People_ID = T2.People_ID INNER JOIN company AS T3 ON T2.Company_ID = T3.Company_ID WHERE T1.Graduation_College = 'Oklahoma' AND T3.Industry = 'Oil and gas' AND T3.Profits_in_Billion >= 20.6",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.45
+    },
+    {
+      "uid": "ea6ac7f6-43ec-40da-b312-8a9aec4f360a",
+      "question": "Who are the people with at least 1 year of work experience?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN employment ON people.people_id = employment.people_id\nWHERE employment.year_working >= 1",
+      "pred_sql": "SELECT T1.People_ID FROM people AS T1 INNER JOIN employment AS T2 ON T1.People_ID = T2.People_ID WHERE T2.Year_working >= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.82
+    }
+  ]
+}

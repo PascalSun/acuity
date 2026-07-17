@@ -1,0 +1,36 @@
+{
+  "db_id": "climbing",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:47:35.160330+00:00",
+  "records": [
+    {
+      "uid": "9526b81d-f250-4e32-9057-14ddb748a610",
+      "question": "Which mountains named Mawenzi (Hans Meyer Pk) in Tanzania are exactly 5148.0 meters high with a prominence of 850.0 and were climbed by Georg Auerbacher who scored exactly 5.0 points?",
+      "gold_sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mawenzi (Hans Meyer Pk)' AND mountain.height = 5148.0 AND mountain.prominence = 850.0 AND climber.name = 'Georg Auerbacher' AND mountain.country = 'Tanzania' AND climber.points = 5.0",
+      "pred_sql": "SELECT m.Mountain_ID\nFROM mountain m\nJOIN climber c ON m.Mountain_ID = c.Mountain_ID\nWHERE m.Name = 'Mawenzi (Hans Meyer Pk)'\n  AND m.Country = 'Tanzania'\n  AND m.Height = 5148.0\n  AND m.Prominence = 850.0\n  AND c.Name = 'Georg Auerbacher'\n  AND c.Points = 5.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.75
+    },
+    {
+      "uid": "e6564304-a812-4bba-a820-3aa7fe337f14",
+      "question": "Which mountains in Tanzania's Kilimanjaro range have a prominence of 850.0 that were climbed by Georg Auerbacher from West Germany who scored exactly 5.0 points with a time of 1:18.14.6?",
+      "gold_sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.country = 'Tanzania' AND climber.time = '1:18.14.6' AND climber.name = 'Georg Auerbacher' AND climber.country = 'West Germany' AND climber.points = 5.0 AND mountain.prominence = 850.0 AND mountain.range = 'Kilimanjaro'",
+      "pred_sql": "SELECT m.Mountain_ID\nFROM mountain m\nJOIN climber c ON m.Mountain_ID = c.Mountain_ID\nWHERE m.Country = 'Tanzania'\n  AND m.Range = 'Kilimanjaro'\n  AND m.Prominence = 850.0\n  AND c.Name = 'Georg Auerbacher'\n  AND c.Country = 'West Germany'\n  AND c.Points = 5.0\n  AND c.Time = '1:18.14.6'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.98
+    }
+  ]
+}

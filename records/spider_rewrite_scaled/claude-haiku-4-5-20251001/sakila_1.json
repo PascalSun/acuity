@@ -1,0 +1,69 @@
+{
+  "db_id": "sakila_1",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 5,
+  "n_correct": 3,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:07:26.170570+00:00",
+  "records": [
+    {
+      "uid": "5b248be7-b128-4b0a-b123-f1bf396922bd",
+      "question": "Which addresses at 771 Yaound Manor have the postal code 86768?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN country ON city.country_id = country.country_id\nWHERE address.postal_code = '86768' AND address.address = '771 Yaound Manor'",
+      "pred_sql": "SELECT address.address_id\nFROM address\nWHERE address = '771 Yaound Manor' AND postal_code = '86768'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.15
+    },
+    {
+      "uid": "6d41d202-d2d1-43e7-ab70-51a595d18af9",
+      "question": "Which addresses at 1404 Taguig Drive in Okayama with postal code 87212 have been updated since 2006-02-15 04:45:30, belong to active customers with last name ISBELL and email FREDERICK.ISBELL@sakilacustomer.org, and are in cities that were last updated on 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN customer ON address.address_id = customer.address_id\nWHERE customer.active = 1 AND customer.email = 'FREDERICK.ISBELL@sakilacustomer.org' AND city.last_update = '2006-02-15 04:45:25' AND customer.last_name = 'ISBELL' AND address.postal_code = '87212' AND address.address = '1404 Taguig Drive' AND address.last_update >= '2006-02-15 04:45:30' AND address.district = 'Okayama'",
+      "pred_sql": "SELECT DISTINCT a.address_id\nFROM address a\nJOIN customer c ON a.address_id = c.address_id\nJOIN city ci ON a.city_id = ci.city_id\nWHERE a.address = '1404 Taguig Drive'\n  AND ci.city = 'Okayama'\n  AND a.postal_code = '87212'\n  AND a.last_update > '2006-02-15 04:45:30'\n  AND c.active = TRUE\n  AND c.last_name = 'ISBELL'\n  AND c.email = 'FREDERICK.ISBELL@sakilacustomer.org'\n  AND ci.last_update = '2006-02-15 04:45:25'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.85
+    },
+    {
+      "uid": "7a3f08ba-2866-4258-bb51-c7be0e66308f",
+      "question": "Which addresses exactly at 1789 Saint-Denis Parkway with phone 936806643983 and postal code 8268 are in the Coahuila de Zaragoza district, updated on or after 2006-02-15 04:45:30, and located in the city of Acua that was updated at most 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nWHERE address.last_update >= '2006-02-15 04:45:30' AND address.address = '1789 Saint-Denis Parkway' AND address.phone = '936806643983' AND address.postal_code = '8268' AND city.city = 'Acua' AND city.last_update <= '2006-02-15 04:45:25' AND address.district = 'Coahuila de Zaragoza'",
+      "pred_sql": "SELECT a.address_id\nFROM address a\nJOIN city c ON a.city_id = c.city_id\nWHERE a.address = '1789 Saint-Denis Parkway'\n  AND a.phone = '936806643983'\n  AND a.postal_code = '8268'\n  AND a.district = 'Coahuila de Zaragoza'\n  AND a.last_update >= '2006-02-15 04:45:30'\n  AND c.city = 'Acua'\n  AND c.last_update <= '2006-02-15 04:45:25'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.44
+    },
+    {
+      "uid": "890bb130-a9fe-47ee-9cee-aff5a80a118f",
+      "question": "Can you find the addresses in Gauteng with postal code 9668 and phone number 248446668735 for customers with last name SAUER, where the city was last updated on or after 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN customer ON address.address_id = customer.address_id\nWHERE customer.last_name = 'SAUER' AND address.postal_code = '9668' AND city.last_update >= '2006-02-15 04:45:25' AND address.district = 'Gauteng' AND address.phone = '248446668735'",
+      "pred_sql": "SELECT DISTINCT a.address_id\nFROM address a\nJOIN city c ON a.city_id = c.city_id\nJOIN customer cu ON a.address_id = cu.address_id\nWHERE c.district = 'Gauteng'\nAND a.postal_code = '9668'\nAND a.phone = '248446668735'\nAND cu.last_name = 'SAUER'\nAND c.last_update >= '2006-02-15 04:45:25'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 6.32
+    },
+    {
+      "uid": "f86b09d1-ec0d-45ef-b06b-ab7a6d3795ef",
+      "question": "Where is the address at 1923 Stara Zagora Lane in the Nantou district with postal code 95179, located in Taiwan, where the country was last updated on 2006-02-15 04:44:00 and the city was last updated on or after 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN country ON city.country_id = country.country_id\nWHERE address.postal_code = '95179' AND country.last_update = '2006-02-15 04:44:00' AND country.country = 'Taiwan' AND city.last_update >= '2006-02-15 04:45:25' AND address.address = '1923 Stara Zagora Lane' AND address.district = 'Nantou'",
+      "pred_sql": "SELECT address.address_id\nFROM address\nJOIN city ON address.city_id = city.city_id\nJOIN country ON city.country_id = country.country_id\nWHERE address.address = '1923 Stara Zagora Lane'\n  AND address.district = 'Nantou'\n  AND address.postal_code = '95179'\n  AND country.country = 'Taiwan'\n  AND country.last_update = '2006-02-15 04:44:00'\n  AND city.last_update >= '2006-02-15 04:45:25'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    }
+  ]
+}

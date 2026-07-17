@@ -1,0 +1,69 @@
+{
+  "db_id": "e_learning",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:15:59.464217+00:00",
+  "records": [
+    {
+      "uid": "4988a889-51eb-49aa-93c6-5d9688d1bf46",
+      "question": "Which subjects are exactly named Computer Science and have courses associated with them?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nWHERE subjects.subject_name = 'Computer Science'",
+      "pred_sql": "SELECT T1.subject_id FROM Subjects AS T1 INNER JOIN Courses AS T2 ON T1.subject_id = T2.subject_id WHERE T1.subject_name = 'Computer Science'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "67f09f3a-6b7b-4e13-82ab-6602412bb84a",
+      "question": "Which subjects have courses taught by authors or tutors where the author_tutor_atb is 613?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE course_authors_and_tutors.author_tutor_atb = '613'",
+      "pred_sql": "SELECT T1.subject_id FROM Subjects AS T1 INNER JOIN Courses AS T2 ON T1.subject_id = T2.subject_id INNER JOIN Course_Authors_and_Tutors AS T3 ON T2.author_id = T3.author_id WHERE T3.author_tutor_ATB = '613'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.11
+    },
+    {
+      "uid": "add9c952-8817-4a53-b3b8-cc3f1b8f444d",
+      "question": "Which subjects are linked to courses authored by someone whose family name is Rowe and middle name is Kennith?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE course_authors_and_tutors.family_name = 'Rowe' AND course_authors_and_tutors.middle_name = 'Kennith'",
+      "pred_sql": "SELECT T1.subject_id FROM Subjects AS T1 INNER JOIN Courses AS T2 ON T1.subject_id = T2.subject_id INNER JOIN Course_Authors_and_Tutors AS T3 ON T2.author_id = T3.author_id WHERE T3.family_name = 'Rowe' AND T3.middle_name = 'Kennith'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.32
+    },
+    {
+      "uid": "d7b4cd2e-9a9b-4954-8a3d-6fac5c579eeb",
+      "question": "What Language subjects have courses taught by Georgiana who has the password 4d8e909ae9b8888c93a2c5f1eccbd0c4ac6a01c3?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE course_authors_and_tutors.personal_name = 'Georgiana' AND subjects.subject_name = 'Language' AND course_authors_and_tutors.password = '4d8e909ae9b8888c93a2c5f1eccbd0c4ac6a01c3'",
+      "pred_sql": "SELECT T3.subject_id FROM Course_Authors_and_Tutors AS T1 INNER JOIN Courses AS T2 ON T1.author_id = T2.author_id INNER JOIN Subjects AS T3 ON T2.subject_id = T3.subject_id WHERE T1.personal_name = 'Georgiana' AND T1.password = '4d8e909ae9b8888c93a2c5f1eccbd0c4ac6a01c3' AND T3.subject_name = 'Language'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.68
+    },
+    {
+      "uid": "fb6577c4-a71e-4ddf-809b-f6b40a3a0b11",
+      "question": "What subjects are linked to the database course with course name database and course description database, taught by Kelsie Rowe with login name medhurst.alvah, gender 0, and password 02d64f11de97436343a0beba41bfcf69af61be1e?",
+      "gold_sql": "SELECT subjects.subject_id FROM subjects\nJOIN courses ON subjects.subject_id = courses.subject_id\nJOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id\nWHERE courses.course_description = 'database' AND course_authors_and_tutors.family_name = 'Rowe' AND courses.course_name = 'database' AND course_authors_and_tutors.password = '02d64f11de97436343a0beba41bfcf69af61be1e' AND course_authors_and_tutors.gender_mf = '0' AND course_authors_and_tutors.personal_name = 'Kelsie' AND course_authors_and_tutors.login_name = 'medhurst.alvah'",
+      "pred_sql": "SELECT T1.subject_id FROM Subjects AS T1 INNER JOIN Courses AS T2 ON T1.subject_id = T2.subject_id INNER JOIN Course_Authors_and_Tutors AS T3 ON T2.author_id = T3.author_id WHERE T2.course_name = 'database' AND T2.course_description = 'database' AND T3.personal_name = 'Kelsie' AND T3.family_name = 'Rowe' AND T3.login_name = 'medhurst.alvah' AND T3.gender_mf = '0' AND T3.password = '02d64f11de97436343a0beba41bfcf69af61be1e'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.88
+    }
+  ]
+}

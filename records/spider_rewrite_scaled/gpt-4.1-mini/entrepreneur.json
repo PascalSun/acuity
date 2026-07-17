@@ -1,0 +1,36 @@
+{
+  "db_id": "entrepreneur",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:32:59.778795+00:00",
+  "records": [
+    {
+      "uid": "5a684129-c616-4077-871c-fe17103b8905",
+      "question": "Did Roberto Calcaterra, born on 1972-02-06, who is at least 1.75 meters tall and weighs at least 67.0, request exactly 50000.0 from the entrepreneur company IV Cam where Peter Jones was the investor?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE entrepreneur.company = 'IV Cam' AND people.weight >= 67.0 AND people.name = 'Roberto Calcaterra' AND entrepreneur.investor = 'Peter Jones' AND people.date_of_birth = '1972-02-06' AND people.height >= 1.75 AND entrepreneur.money_requested = 50000.0",
+      "pred_sql": "SELECT p.People_ID\nFROM people p\nJOIN entrepreneur e ON p.People_ID = e.People_ID\nWHERE p.Name = 'Roberto Calcaterra'\n  AND p.Date_of_Birth = '1972-02-06'\n  AND p.Height >= 1.75\n  AND p.Weight >= 67.0\n  AND e.Money_Requested = 50000.0\n  AND e.Company = 'IV Cam'\n  AND e.Investor = 'Peter Jones'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.16
+    },
+    {
+      "uid": "99156bc9-2be7-4f3e-aed2-597e071844ef",
+      "question": "Which people named Francesco Postiglione, born exactly on 1972-04-29, weighing 80.0 and at most 1.9 meters tall, have requested at least 150000.0 from the company Umbrolly where the investor is Duncan Bannatyne?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE entrepreneur.money_requested >= 150000.0 AND people.date_of_birth = '1972-04-29' AND people.height <= 1.9 AND entrepreneur.investor = 'Duncan Bannatyne' AND people.name = 'Francesco Postiglione' AND people.weight = 80.0 AND entrepreneur.company = 'Umbrolly'",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nJOIN entrepreneur ON people.People_ID = entrepreneur.People_ID\nWHERE people.Name = 'Francesco Postiglione'\n  AND people.Date_of_Birth = '1972-04-29'\n  AND people.Weight = 80.0\n  AND people.Height <= 1.9\n  AND entrepreneur.Company = 'Umbrolly'\n  AND entrepreneur.Money_Requested >= 150000.0\n  AND entrepreneur.Investor = 'Duncan Bannatyne'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.94
+    }
+  ]
+}

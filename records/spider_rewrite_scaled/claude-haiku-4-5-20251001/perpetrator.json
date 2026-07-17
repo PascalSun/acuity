@@ -1,0 +1,69 @@
+{
+  "db_id": "perpetrator",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 5,
+  "n_correct": 4,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:06:36.781065+00:00",
+  "records": [
+    {
+      "uid": "48aec3a8-b16b-48b6-a0b6-03b207de769d",
+      "question": "Which people weigh exactly 200.0 and were perpetrators in incidents in Beijing, China where exactly 80 were injured, at least 23 were killed, and the year is at most 1994?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured = 80 AND perpetrator.location = 'Beijing' AND perpetrator.killed >= 23 AND perpetrator.country = 'China' AND perpetrator.year <= 1994.0 AND people.weight = 200.0",
+      "pred_sql": "SELECT DISTINCT p.\"People_ID\"\nFROM \"people\" p\nINNER JOIN \"perpetrator\" per ON p.\"People_ID\" = per.\"People_ID\"\nWHERE p.\"Weight\" = 200.0\nAND per.\"Location\" = 'Beijing'\nAND per.\"Country\" = 'China'\nAND per.\"Injured\" = 80\nAND per.\"Killed\" >= 23\nAND per.\"Year\" <= 1994",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.42
+    },
+    {
+      "uid": "689947f2-b2ec-4ae1-8084-50843a79ae31",
+      "question": "Is there a John Danks who weighs at least 190.0 and is at most 6.6 tall?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.name = 'John Danks' AND people.weight >= 190.0 AND people.height <= 6.6",
+      "pred_sql": "SELECT \"people\".\"People_ID\" FROM \"people\" WHERE \"people\".\"Name\" = 'John Danks' AND \"people\".\"Weight\" >= 190.0 AND \"people\".\"Height\" <= 6.6",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    },
+    {
+      "uid": "9443702c-7786-4f95-82c8-f1fbd30042a6",
+      "question": "Can you tell me about Rob Cunningham who weighs exactly 215.0 and is at most 6.8 tall?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.height <= 6.8 AND people.weight = 215.0 AND people.name = 'Rob Cunningham'",
+      "pred_sql": "SELECT \"People_ID\" FROM \"people\" WHERE \"Name\" = 'Rob Cunningham' AND \"Weight\" = 215.0 AND \"Height\" <= 6.8",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24
+    },
+    {
+      "uid": "96eba21f-dcc4-4d8b-b3b6-64cc9d4bc679",
+      "question": "Which Ron Baxter who weighs at most 205.0 and is at most 6.4 tall was a perpetrator in Uiryeong, South Korea in 1982 on 04.26 April 26/27 and killed exactly 56?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.killed = 56 AND perpetrator.country = 'South Korea' AND people.weight <= 205.0 AND people.name = 'Ron Baxter' AND perpetrator.location = 'Uiryeong' AND perpetrator.date = '04.26 April 26/27' AND perpetrator.year = 1982.0 AND people.height <= 6.4",
+      "pred_sql": "SELECT p.\"People_ID\"\nFROM \"people\" p\nJOIN \"perpetrator\" pr ON p.\"People_ID\" = pr.\"People_ID\"\nWHERE p.\"Name\" = 'Ron Baxter'\nAND p.\"Weight\" <= 205.0\nAND p.\"Height\" <= 6.4\nAND pr.\"Location\" = 'Uiryeong, South Korea'\nAND pr.\"Year\" = 1982\nAND pr.\"Date\" LIKE '%04.26%'\nAND pr.\"Killed\" = 56",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "c307cead-946c-4ba0-b0cc-5eac7ebb3c9a",
+      "question": "Who from South Korea was a perpetrator on 04.26 April 26/27 with at least 37 injured?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured >= 37 AND perpetrator.date = '04.26 April 26/27' AND perpetrator.country = 'South Korea'",
+      "pred_sql": "SELECT people.\"People_ID\"\nFROM people\nJOIN perpetrator ON people.\"People_ID\" = perpetrator.\"People_ID\"\nWHERE perpetrator.\"Country\" = 'South Korea'\nAND perpetrator.\"Date\" LIKE '%04.26%'\nAND perpetrator.\"Injured\" >= 37",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    }
+  ]
+}

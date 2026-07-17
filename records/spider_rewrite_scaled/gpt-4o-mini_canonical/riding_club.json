@@ -1,0 +1,69 @@
+{
+  "db_id": "riding_club",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:14.033961+00:00",
+  "records": [
+    {
+      "uid": "1282472a-5f00-4f79-b90c-0932f62334f6",
+      "question": "Which AIK clubs in the USA region have a male coach named Jameson Tomas and have at most rank 1, exactly 20 gold medals, at least 9 small silver medals, and at least 168 points?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN coach ON club.club_id = coach.club_id\nJOIN match_result ON club.club_id = match_result.club_id\nWHERE club.region = 'USA' AND coach.coach_name = 'Jameson Tomas' AND match_result.rank <= 1 AND club.club_name = 'AIK' AND match_result.small_silver >= 9 AND coach.gender = 'M' AND match_result.gold = 20 AND match_result.points >= 168",
+      "pred_sql": "SELECT club.Club_ID\nFROM club\nJOIN coach ON club.Club_ID = coach.Club_ID\nJOIN match_result ON club.Club_ID = match_result.Club_ID\nWHERE club.Region = 'USA'\n  AND club.Club_name = 'AIK'\n  AND coach.Coach_name = 'Jameson Tomas'\n  AND coach.Gender = 'M'\n  AND match_result.Rank <= 1\n  AND match_result.Small_Silver >= 9\n  AND match_result.Gold = 20\n  AND match_result.Points >= 168",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.93
+    },
+    {
+      "uid": "39f8c312-9ad4-42fd-a8ae-c5baa4bc5b90",
+      "question": "Which clubs coached by Jameson Tomas have at least 14 big silver medals and at most 8 bronze medals?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN coach ON club.club_id = coach.club_id\nJOIN match_result ON club.club_id = match_result.club_id\nWHERE match_result.big_silver >= 14 AND match_result.bronze <= 8 AND coach.coach_name = 'Jameson Tomas'",
+      "pred_sql": "SELECT DISTINCT club.Club_ID\nFROM club\nJOIN coach ON club.Club_ID = coach.Club_ID\nJOIN match_result ON club.Club_ID = match_result.Club_ID\nWHERE coach.Coach_name = 'Jameson Tomas'\nAND match_result.Big_Silver >= 14\nAND match_result.Bronze <= 8",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "4add6575-a653-4717-a0ee-d663dce0a3f4",
+      "question": "Which clubs have at least one related coach and have match results where they won at most 9 big silver medals and exactly 12 gold medals?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN coach ON club.club_id = coach.club_id\nJOIN match_result ON club.club_id = match_result.club_id\nWHERE match_result.big_silver <= 9 AND match_result.gold = 12",
+      "pred_sql": "SELECT DISTINCT club.Club_ID\nFROM club\nJOIN coach ON club.Club_ID = coach.Club_ID\nJOIN match_result ON club.Club_ID = match_result.Club_ID\nWHERE match_result.Big_Silver <= 9 AND match_result.Gold = 12",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.3
+    },
+    {
+      "uid": "5424cc7d-016f-4767-ab45-6797d8a65ae2",
+      "question": "Which clubs named AIK have a coach associated with them?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN coach ON club.club_id = coach.club_id\nWHERE club.club_name = 'AIK'",
+      "pred_sql": "SELECT club.Club_ID FROM club WHERE club.Club_name = 'AIK' AND EXISTS (SELECT 1 FROM coach WHERE coach.Club_ID = club.Club_ID)",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.15
+    },
+    {
+      "uid": "763017e3-d22c-4e1a-b246-fc0517c31e9b",
+      "question": "Which clubs named Djurg\u00e5rdens IF that started in 2005 or later are located in the USA and have a male coach named Robert Chen with rank at most 3?",
+      "gold_sql": "SELECT club.club_id FROM club\nJOIN coach ON club.club_id = coach.club_id\nWHERE club.region = 'USA' AND coach.rank <= 3 AND club.club_name = 'Djurg\u00e5rdens IF' AND coach.coach_name = 'Robert Chen' AND club.start_year >= 2005 AND coach.gender = 'M'",
+      "pred_sql": "SELECT club.Club_ID\nFROM club\nJOIN coach ON club.Club_ID = coach.Club_ID\nWHERE club.Region = 'USA'\n  AND club.Club_name = 'Djurg\u00e5rdens IF'\n  AND club.Start_year >= 2005\n  AND coach.Rank <= 3\n  AND coach.Coach_name = 'Robert Chen'\n  AND coach.Gender = 'M'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.87
+    }
+  ]
+}

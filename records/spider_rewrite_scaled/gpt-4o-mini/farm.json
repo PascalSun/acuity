@@ -1,0 +1,47 @@
+{
+  "db_id": "farm",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 3,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:41:29.071047+00:00",
+  "records": [
+    {
+      "uid": "3bfa3350-6b31-4ef4-986b-070ad8f13b81",
+      "question": "Which villages have a census ranking of 2418 of 5008, a population of at most 775, and an area of no more than 8.91 km\u00b2?",
+      "gold_sql": "SELECT city.city_id FROM city\nWHERE city.census_ranking = '2418 of 5008' AND city.status = 'Village' AND city.population <= 775.0 AND city.area_km_2 <= 8.91",
+      "pred_sql": "SELECT city.City_ID FROM city WHERE Census_Ranking = '2418 of 5008' AND Population <= 775 AND Area_km_2 <= 8.91",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    },
+    {
+      "uid": "438c69c6-9aab-4760-ae1d-af4d6ea9a270",
+      "question": "Which towns hosted the farm competition with the theme Carnival M is back! and hosts Miley Cyrus Jared Leto and Karen Mok in a year at most 2013, where the town has a population of at most 5706, an area of at most 18.06 km\u00b2, and a census ranking of 636 of 5008?",
+      "gold_sql": "SELECT city.city_id FROM city\nJOIN farm_competition ON city.city_id = farm_competition.host_city_id\nWHERE city.population <= 5706.0 AND city.area_km_2 <= 18.06 AND farm_competition.year <= 2013 AND farm_competition.hosts = 'Miley Cyrus Jared Leto and Karen Mok' AND city.census_ranking = '636 of 5008' AND farm_competition.theme = 'Carnival M is back!' AND city.status = 'Town'",
+      "pred_sql": "SELECT city.City_ID \nFROM farm_competition \nJOIN city ON farm_competition.Host_city_ID = city.City_ID \nWHERE farm_competition.Theme = 'Carnival M is back!' \nAND farm_competition.Hosts LIKE '%Miley Cyrus%' \nAND farm_competition.Hosts LIKE '%Jared Leto%' \nAND farm_competition.Hosts LIKE '%Karen Mok%' \nAND farm_competition.Year <= 2013 \nAND city.Population <= 5706 \nAND city.Area_km_2 <= 18.06 \nAND city.Census_Ranking = '636 of 5008'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.14
+    },
+    {
+      "uid": "ce8b0fcb-4b77-4464-8b18-35e28021d703",
+      "question": "Which villages with a census ranking of 2418 of 5008 and an area of 8.91 km\u00b2 have a population of at least 775 and host a Valentine's Day competition led by Vanness Wu and Michelle Branch?",
+      "gold_sql": "SELECT city.city_id FROM city\nJOIN farm_competition ON city.city_id = farm_competition.host_city_id\nWHERE city.census_ranking = '2418 of 5008' AND city.status = 'Village' AND farm_competition.hosts = 'Vanness Wu and Michelle Branch' AND city.population >= 775.0 AND farm_competition.theme = 'Valentine''s Day' AND city.area_km_2 = 8.91",
+      "pred_sql": "SELECT city.City_ID \nFROM city \nJOIN farm_competition ON city.City_ID = farm_competition.Host_city_ID \nWHERE city.Census_Ranking = '2418 of 5008' \nAND city.Area_km_2 = 8.91 \nAND city.Population >= 775 \nAND farm_competition.Theme = 'Valentine''s Day' \nAND farm_competition.Hosts = 'Vanness Wu and Michelle Branch'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.67
+    }
+  ]
+}

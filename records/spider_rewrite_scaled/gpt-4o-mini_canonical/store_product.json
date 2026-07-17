@@ -1,0 +1,80 @@
+{
+  "db_id": "store_product",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:29:56.932154+00:00",
+  "records": [
+    {
+      "uid": "4c9749db-1fe5-4c34-ad37-f9356d2dcfdf",
+      "question": "Which Village Stores have an area size of at least 26.69 and a ranking of at most 3?",
+      "gold_sql": "SELECT store.store_id FROM store\nWHERE store.ranking <= 3 AND store.area_size >= 26.69 AND store.type = 'Village Store'",
+      "pred_sql": "SELECT store.Store_ID FROM store WHERE Ranking <= 3 AND Area_size >= 26.69 AND Type = 'Village Store'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.94
+    },
+    {
+      "uid": "6aac5bba-e030-4b65-8eef-618d4eff45c8",
+      "question": "Which Miramichi stores are City Malls with a ranking exactly equal to 2?",
+      "gold_sql": "SELECT store.store_id FROM store\nJOIN store_product ON store.store_id = store_product.store_id\nJOIN store_district ON store.store_id = store_district.store_id\nWHERE store.ranking = 2 AND store.store_name = 'Miramichi' AND store.type = 'City Mall'",
+      "pred_sql": "SELECT store.Store_ID\nFROM store\nJOIN store_product ON store.Store_ID = store_product.Store_ID\nJOIN store_district ON store.Store_ID = store_district.Store_ID\nWHERE store.Ranking = 2 \n  AND store.Store_Name = 'Miramichi' \n  AND store.Type = 'City Mall'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    },
+    {
+      "uid": "89d7615f-5d69-4df5-8c5e-d665a5bc9401",
+      "question": "Which Village Store named Blackville has a ranking of at least 10, an area size of at most 21.73, exactly 990 product categories, and is located in a district with a city population of exactly 89380.0 and a city area of at least 15.0?",
+      "gold_sql": "SELECT store.store_id FROM store\nJOIN store_district ON store.store_id = store_district.store_id\nJOIN district ON store_district.district_id = district.district_id\nWHERE district.city_population = 89380.0 AND store.ranking >= 10 AND store.store_name = 'Blackville' AND store.area_size <= 21.73 AND store.number_of_product_category = 990.0 AND store.type = 'Village Store' AND district.city_area >= 15.0",
+      "pred_sql": "SELECT store.Store_ID\nFROM store\nJOIN store_district ON store.Store_ID = store_district.Store_ID\nJOIN district ON store_district.District_ID = district.District_ID\nWHERE store.Ranking >= 10\n  AND store.Store_Name = 'Blackville'\n  AND store.Area_size <= 21.73\n  AND store.Number_of_product_category = 990.0\n  AND store.Type = 'Village Store'\n  AND district.City_Population = 89380.0\n  AND district.City_Area >= 15.0",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.92
+    },
+    {
+      "uid": "a3a0d32d-64e8-491c-a030-7ba0f14076d0",
+      "question": "Which Rogersville stores have at most 1170 product categories?",
+      "gold_sql": "SELECT store.store_id FROM store\nJOIN store_product ON store.store_id = store_product.store_id\nJOIN store_district ON store.store_id = store_district.store_id\nWHERE store.store_name = 'Rogersville' AND store.number_of_product_category <= 1170.0",
+      "pred_sql": "SELECT store.Store_ID \nFROM store \nJOIN store_product ON store.Store_ID = store_product.Store_ID \nJOIN store_district ON store.Store_ID = store_district.Store_ID \nWHERE store.Store_Name = 'Rogersville' \nAND store.Number_of_product_category <= 1170.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    },
+    {
+      "uid": "aee0010a-5c4b-45e7-a175-b76f8d7d74db",
+      "question": "Which stores headquartered in Khanewal City have a ranking of at least 3 and offer at most 1678 product categories?",
+      "gold_sql": "SELECT store.store_id FROM store\nJOIN store_district ON store.store_id = store_district.store_id\nJOIN district ON store_district.district_id = district.district_id\nWHERE store.number_of_product_category <= 1678.0 AND store.ranking >= 3 AND district.headquartered_city = 'Khanewal City'",
+      "pred_sql": "SELECT store.Store_ID\nFROM store\nJOIN store_district ON store.Store_ID = store_district.Store_ID\nJOIN district ON store_district.District_ID = district.District_ID\nWHERE store.Number_of_product_category <= 1678.0\nAND store.Ranking >= 3\nAND district.Headquartered_City = 'Khanewal City'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "c51b1a3e-081c-48b3-8d8e-76518dbc784e",
+      "question": "Which stores have the name Neguac?",
+      "gold_sql": "SELECT store.store_id FROM store\nJOIN store_district ON store.store_id = store_district.store_id\nWHERE store.store_name = 'Neguac'",
+      "pred_sql": "SELECT store.Store_ID FROM store JOIN store_district ON store.Store_ID = store_district.Store_ID WHERE store.Store_Name = 'Neguac'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    }
+  ]
+}

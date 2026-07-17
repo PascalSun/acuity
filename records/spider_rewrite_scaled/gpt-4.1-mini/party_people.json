@@ -1,0 +1,58 @@
+{
+  "db_id": "party_people",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 4,
+  "n_correct": 2,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:35:33.107571+00:00",
+  "records": [
+    {
+      "uid": "3c8824ec-7559-4749-b16a-84fa8a55fa06",
+      "question": "Which Progress Party took office in 1958 and left in 1959 under minister Kojo Botsio (MP), held Budget Meeting events, and are associated with the United Kingdom region labeled Parlophone with format 2\u00d7 LP?",
+      "gold_sql": "SELECT party.party_id FROM party\nJOIN region ON party.region_id = region.region_id\nJOIN party_events ON party.party_id = party_events.party_id\nWHERE party.minister = 'Kojo Botsio (MP)' AND party.left_office = '1959' AND region.region_name = 'United Kingdom' AND party_events.event_name = 'Budget Meeting' AND region.format = '2\u00d7 LP' AND region.label = 'Parlophone' AND party.took_office = '1958' AND party.party_name = 'Progress Party'",
+      "pred_sql": "SELECT party.Party_ID\nFROM party\nJOIN region ON party.Region_ID = region.Region_ID\nJOIN party_events ON party.Party_ID = party_events.Party_ID\nJOIN member ON party_events.Member_in_charge_ID = member.Member_ID\nWHERE party.Party_name = 'Progress Party'\n  AND party.Took_office = '1958'\n  AND party.Left_office = '1959'\n  AND party.Minister = 'Kojo Botsio (MP)'\n  AND party_events.Event_Name = 'Budget Meeting'\n  AND region.Region_name = 'United Kingdom'\n  AND region.Label = 'Parlophone'\n  AND region.Format = '2\u00d7 LP'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.63
+    },
+    {
+      "uid": "3d9cf44f-d249-484b-bd0d-ee9b66fe5208",
+      "question": "Which parties with a format of '2\u00d7 LP' in their region and that have party events took office in 1958?",
+      "gold_sql": "SELECT party.party_id FROM party\nJOIN region ON party.region_id = region.region_id\nJOIN party_events ON party.party_id = party_events.party_id\nWHERE party.took_office = '1958' AND region.format = '2\u00d7 LP'",
+      "pred_sql": "SELECT DISTINCT party.Party_ID\nFROM party\nJOIN region ON party.Region_ID = region.Region_ID\nJOIN party_events ON party.Party_ID = party_events.Party_ID\nWHERE region.Format = '2\u00d7 LP'\n  AND party.Took_office LIKE '1958%'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.45
+    },
+    {
+      "uid": "7c5a4349-e58e-4b51-8f39-285b582a69d6",
+      "question": "What parties named Convention Union Party, led by minister Imoru Egala (MP), left office in 1961 and are linked to the Astralwerks region where the catalogue is ASW 40362 and the format is CD?",
+      "gold_sql": "SELECT party.party_id FROM party\nJOIN region ON party.region_id = region.region_id\nWHERE region.label = 'Astralwerks' AND region.catalogue = 'ASW 40362' AND region.format = 'CD' AND party.left_office = '1961' AND party.minister = 'Imoru Egala (MP)' AND party.party_name = 'Convention Union Party'",
+      "pred_sql": "SELECT party.Party_ID\nFROM party\nJOIN region ON party.Region_ID = region.Region_ID\nWHERE party.Party_name = 'Convention Union Party'\n  AND party.Minister = 'Imoru Egala (MP)'\n  AND party.Left_office = '1961'\n  AND region.Region_name = 'Astralwerks'\n  AND region.Catalogue = 'ASW 40362'\n  AND region.Format = 'CD'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.79
+    },
+    {
+      "uid": "b94e19c6-f621-43aa-9f92-ce716e68765a",
+      "question": "Which parties had Ebenezer Ako-Adjei (MP) as minister, took office in 1959, left in 1960, were associated with the Toshiba-EMI region, and participated in the Budget Meeting event?",
+      "gold_sql": "SELECT party.party_id FROM party\nJOIN region ON party.region_id = region.region_id\nJOIN party_events ON party.party_id = party_events.party_id\nWHERE party.took_office = '1959' AND region.label = 'Toshiba-EMI' AND party_events.event_name = 'Budget Meeting' AND party.minister = 'Ebenezer Ako-Adjei (MP)' AND party.left_office = '1960'",
+      "pred_sql": "SELECT party.Party_ID\nFROM party\nJOIN region ON party.Region_ID = region.Region_ID\nJOIN party_events ON party.Party_ID = party_events.Party_ID\nWHERE party.Minister = 'Ebenezer Ako-Adjei (MP)'\n  AND party.Took_office = '1959'\n  AND party.Left_office = '1960'\n  AND region.Region_name = 'Toshiba-EMI'\n  AND party_events.Event_Name = 'Budget Meeting'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "db_id": "baseball_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 6,
+  "n_correct": 4,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:11:29.122030+00:00",
+  "records": [
+    {
+      "uid": "09ede64b-95c5-4de4-8fa6-7cf5ac9e160e",
+      "question": "Which players died in Kalamazoo, MI?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN player_college ON player.player_id = player_college.player_id\nJOIN college ON player_college.college_id = college.college_id\nWHERE player.death_city = 'Kalamazoo' AND player.death_state = 'MI'",
+      "pred_sql": "SELECT player_id FROM player WHERE death_city = 'Kalamazoo' AND death_state = 'MI'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    },
+    {
+      "uid": "1a0189e8-e3c5-4084-8b94-d6d163ef6771",
+      "question": "Which players were born in 1960, died in Poway, USA, throw left-handed, weigh exactly 185, have been all-stars, and won a player award with a note of 'OF' in the year 1990?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nJOIN player_award ON player.player_id = player_award.player_id\nWHERE player.death_city = 'Poway' AND player_award.notes = 'OF' AND player.throws = 'L' AND player.death_country = 'USA' AND player.weight = 185 AND player.birth_year = 1960 AND player_award.year = 1990",
+      "pred_sql": "SELECT DISTINCT\n  T1.player_id\nFROM player AS T1\nINNER JOIN all_star AS T2\n  ON T1.player_id = T2.player_id\nINNER JOIN player_award AS T3\n  ON T1.player_id = T3.player_id\nWHERE\n  T1.birth_year = 1960 AND T1.death_city = 'Poway' AND T1.death_country = 'USA' AND T1.throws = 'L' AND T1.weight = 185 AND T3.notes = 'OF' AND T3.year = 1990",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.72
+    },
+    {
+      "uid": "3f4b4b18-3343-41ac-a560-578494f350ce",
+      "question": "What players were born in Pensacola, are 72 inches tall, bat right-handed, throw right-handed, debuted on 2010-04-30, were born in a month at most 12, and played exactly one all-star game with game number 0?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nWHERE player.birth_city = 'Pensacola' AND all_star.game_num = 0 AND player.debut = '2010-04-30' AND player.birth_month <= 12 AND all_star.gp = 1 AND player.bats = 'R' AND player.throws = 'R' AND player.height = 72",
+      "pred_sql": "SELECT T1.player_id FROM player AS T1 INNER JOIN all_star AS T2 ON T1.player_id = T2.player_id WHERE T1.birth_city = 'Pensacola' AND T1.height = 72 AND T1.bats = 'R' AND T1.throws = 'R' AND T1.debut = '2010-04-30' AND T1.birth_month <= 12 AND T2.game_num = 0 GROUP BY T1.player_id HAVING COUNT(T2.game_id) = 1",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.58
+    },
+    {
+      "uid": "49058254-ec17-4d3e-a6a9-9f93ab261607",
+      "question": "Which players born in Beaumont in month 8 have been selected as all-stars and have also won a manager award?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nJOIN manager_award ON player.player_id = manager_award.player_id\nWHERE player.birth_city = 'Beaumont' AND player.birth_month = 8",
+      "pred_sql": "SELECT T1.player_id FROM player AS T1 INNER JOIN all_star AS T2 ON T1.player_id = T2.player_id INNER JOIN manager_award AS T3 ON T1.player_id = T3.player_id WHERE T1.birth_city = 'Beaumont' AND T1.birth_month = 8",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.35
+    },
+    {
+      "uid": "4d02836b-f3d2-4e02-b693-8decac42d509",
+      "question": "Which players with the last name Collins were born in month 5 or earlier and have received awards?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN player_award ON player.player_id = player_award.player_id\nWHERE player.birth_month <= 5 AND player.name_last = 'Collins'",
+      "pred_sql": "SELECT DISTINCT\n  T1.player_id\nFROM player AS T1\nINNER JOIN player_award AS T2\n  ON T1.player_id = T2.player_id\nWHERE\n  T1.name_last = 'Collins' AND T1.birth_month <= 5",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "9381eb39-b5fa-4c7f-83c9-668794529515",
+      "question": "Who are the players named Curt from Anchorage who debuted on 1988-09-07, are at most 77 inches tall, were born in 1966 or later, and have both all-star appearances and player awards?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nJOIN player_award ON player.player_id = player_award.player_id\nWHERE player.name_first = 'Curt' AND player.height <= 77 AND player.birth_city = 'Anchorage' AND player.birth_year >= 1966 AND player.debut = '1988-09-07'",
+      "pred_sql": "SELECT T1.player_id FROM player AS T1 WHERE T1.name_first = 'Curt' AND T1.birth_city = 'Anchorage' AND T1.debut = '1988-09-07' AND T1.height <= 77 AND T1.birth_year >= 1966 AND EXISTS ( SELECT 1 FROM all_star AS T2 WHERE T2.player_id = T1.player_id ) AND EXISTS ( SELECT 1 FROM player_award AS T3 WHERE T3.player_id = T1.player_id )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.34
+    }
+  ]
+}

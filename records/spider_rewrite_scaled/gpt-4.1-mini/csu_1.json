@@ -1,0 +1,80 @@
+{
+  "db_id": "csu_1",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 6,
+  "n_correct": 4,
+  "accuracy": 0.6666666666666666,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:31:43.072010+00:00",
+  "records": [
+    {
+      "uid": "07db6ad9-0e23-4948-b743-a474102dc52d",
+      "question": "Which campuses in Turlock, Stanislaus county, were established in 1957 and had exactly 395 undergraduate enrollments and at most 56 graduate enrollments in 2004, where campus fees were at least 1915 in or before 1996?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE discipline_enrollments.graduate <= 56 AND campuses.location = 'Turlock' AND discipline_enrollments.undergraduate = 395 AND discipline_enrollments.year = 2004 AND campuses.year = 1957 AND csu_fees.year <= 1996 AND campuses.county = 'Stanislaus' AND csu_fees.campusfee >= 1915",
+      "pred_sql": "SELECT c.Id AS campuses_id\nFROM Campuses c\nJOIN discipline_enrollments de ON c.Id = de.Campus\nJOIN csu_fees f ON c.Id = f.Campus\nWHERE c.Location = 'Turlock'\n  AND c.County = 'Stanislaus'\n  AND c.Year = 1957\n  AND de.Year = 2004\n  AND de.Undergraduate = 395\n  AND de.Graduate <= 56\n  AND f.Year <= 1996\n  AND f.CampusFee >= 1915",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.52
+    },
+    {
+      "uid": "32c3836d-dfd7-4a93-964b-7b9ccd0539f8",
+      "question": "Which campuses have CSU fees, degrees, and enrollments records, and have a total enrollment in the academic year exactly equal to 704?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE enrollments.totalenrollment_ay = 704",
+      "pred_sql": "SELECT c.Id\nFROM Campuses c\nJOIN csu_fees f ON c.Id = f.Campus\nJOIN degrees d ON c.Id = d.Campus\nJOIN enrollments e ON c.Id = e.Campus\nWHERE e.TotalEnrollment_AY = 704",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    },
+    {
+      "uid": "6dfef635-41e5-48a2-92bd-b33598cc7aef",
+      "question": "Which campuses awarded exactly 4228 degrees and had enrollments with an FTE of 6234 in 1959 or earlier?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE enrollments.year <= 1959 AND enrollments.fte_ay = 6234 AND degrees.degrees = 4228",
+      "pred_sql": "SELECT d.Campus AS id\nFROM degrees d\nJOIN enrollments e ON d.Campus = e.Campus AND d.Year = e.Year\nWHERE d.Degrees = 4228\n  AND e.FTE_AY = 6234\n  AND d.Year <= 1959\n  AND e.Year <= 1959",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    },
+    {
+      "uid": "6fa4a9c0-9da1-40f9-83d3-e356ceecc5fa",
+      "question": "Which campuses named California State University-Dominguez Hills in Carson, Los Angeles county, established in 1960, had enrollment in discipline 11 in 2004?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE campuses.campus = 'California State University-Dominguez Hills' AND campuses.year = 1960 AND campuses.county = 'Los Angeles' AND campuses.location = 'Carson' AND discipline_enrollments.year = 2004 AND discipline_enrollments.discipline = 11",
+      "pred_sql": "SELECT Campuses.Id\nFROM Campuses\nJOIN discipline_enrollments ON Campuses.Id = discipline_enrollments.Campus\nWHERE Campuses.Campus = 'California State University-Dominguez Hills'\n  AND Campuses.Location = 'Carson'\n  AND Campuses.County = 'Los Angeles'\n  AND Campuses.Year = 1960\n  AND discipline_enrollments.Discipline = 11\n  AND discipline_enrollments.Year = 2004",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "dccd4861-7950-4d0a-bfc3-77c8921b2ede",
+      "question": "Which campuses had enrollments exactly in 1946 and CSU fees from 1996 or later?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE csu_fees.year >= 1996 AND enrollments.year = 1946",
+      "pred_sql": "SELECT DISTINCT Campuses.Id\nFROM Campuses\nJOIN enrollments ON Campuses.Id = enrollments.Campus AND enrollments.Year = 1946\nJOIN csu_fees ON Campuses.Id = csu_fees.Campus AND csu_fees.Year >= 1996",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "e45c035d-9cd9-46d0-a245-1c2692ec532a",
+      "question": "Which campuses in San Luis Obispo have a year of 1901, total enrollment of at least 16394, full-time equivalent enrollment of at most 15148, at least 3411 degrees awarded, and fees from the year 1996?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE campuses.year = 1901 AND enrollments.totalenrollment_ay >= 16394 AND degrees.degrees >= 3411 AND enrollments.fte_ay <= 15148 AND campuses.location = 'San Luis Obispo' AND csu_fees.year = 1996",
+      "pred_sql": "SELECT c.Id\nFROM Campuses c\nJOIN enrollments e ON c.Id = e.Campus AND e.Year = 1901\nJOIN degrees d ON c.Id = d.Campus AND d.Year = 1901\nJOIN csu_fees f ON c.Id = f.Campus AND f.Year = 1996\nWHERE c.Location = 'San Luis Obispo'\n  AND e.TotalEnrollment_AY >= 16394\n  AND e.FTE_AY <= 15148\n  AND d.Degrees >= 3411",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.99
+    }
+  ]
+}

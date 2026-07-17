@@ -1,0 +1,69 @@
+{
+  "db_id": "customers_and_invoices",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 5,
+  "n_correct": 4,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:09:23.810473+00:00",
+  "records": [
+    {
+      "uid": "1b17a299-049e-4aca-8f20-7ef9734ca44f",
+      "question": "I'm looking for customers from Carleefort, USA named Jensen M who use the login name pbecker, have phone number (650)406-8761, and login password 5fe7c12dc3176ddf67c4.",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.login_password = '5fe7c12dc3176ddf67c4' AND customers.phone_number = '(650)406-8761' AND customers.country = 'USA' AND customers.customer_first_name = 'Jensen' AND customers.customer_middle_initial = 'M' AND customers.town_city = 'Carleefort' AND customers.login_name = 'pbecker'",
+      "pred_sql": "SELECT customer_id FROM Customers WHERE town_city = 'Carleefort' AND country = 'USA' AND customer_last_name = 'Jensen' AND customer_middle_initial = 'M' AND login_name = 'pbecker' AND phone_number = '(650)406-8761' AND login_password = '5fe7c12dc3176ddf67c4'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.27
+    },
+    {
+      "uid": "31383cf0-f974-47f0-a10f-6cfe2f42ab7a",
+      "question": "Which customers have the login name 'feeney.lauriane', are from Arkansas with middle initial 'K', live in New Nikolas, have phone number '(488)524-5345' and email address 'homenick.ambrose@example.net', have placed orders, and have accounts with other account details 'VIP'?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN orders ON customers.customer_id = orders.customer_id\nJOIN accounts ON customers.customer_id = accounts.customer_id\nWHERE customers.login_name = 'feeney.lauriane' AND accounts.other_account_details = 'VIP' AND customers.state_county_province = 'Arkansas' AND customers.customer_middle_initial = 'K' AND customers.town_city = 'New Nikolas' AND customers.phone_number = '(488)524-5345' AND customers.email_address = 'homenick.ambrose@example.net'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nINNER JOIN Orders o ON c.customer_id = o.customer_id\nINNER JOIN Accounts a ON c.customer_id = a.customer_id\nWHERE c.login_name = 'feeney.lauriane'\nAND c.state_county_province = 'Arkansas'\nAND c.customer_middle_initial = 'K'\nAND c.town_city = 'New Nikolas'\nAND c.phone_number = '(488)524-5345'\nAND c.email_address = 'homenick.ambrose@example.net'\nAND a.other_account_details = 'VIP'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "d53d5fb5-f746-4a69-ab11-9162228bddab",
+      "question": "Which customers named Abbey with middle initial B, located in California, with phone number 1-344-593-4896x425 and login password d7629de5171fe29106c8, have a Regular account named 710 that was opened on or before 2009-06-13 11:41:52?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN accounts ON customers.customer_id = accounts.customer_id\nWHERE customers.customer_middle_initial = 'B' AND customers.phone_number = '1-344-593-4896x425' AND accounts.account_name = '710' AND customers.customer_first_name = 'Abbey' AND accounts.date_account_opened <= '2009-06-13 11:41:52' AND accounts.other_account_details = 'Regular' AND customers.state_county_province = 'California' AND customers.login_password = 'd7629de5171fe29106c8'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nINNER JOIN Accounts a ON c.customer_id = a.customer_id\nWHERE c.customer_first_name = 'Abbey'\nAND c.customer_middle_initial = 'B'\nAND c.state_county_province = 'California'\nAND c.phone_number = '1-344-593-4896x425'\nAND c.login_password = 'd7629de5171fe29106c8'\nAND a.account_name = '710'\nAND a.date_account_opened <= '2009-06-13 11:41:52'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "efdef550-5409-48f6-be31-55318275e4ae",
+      "question": "Which customers have the last name Boyle, login name dthiel, and VIP in their account details?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN orders ON customers.customer_id = orders.customer_id\nJOIN accounts ON customers.customer_id = accounts.customer_id\nWHERE customers.customer_last_name = 'Boyle' AND accounts.other_account_details = 'VIP' AND customers.login_name = 'dthiel'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nJOIN Accounts a ON c.customer_id = a.customer_id\nWHERE c.customer_last_name = 'Boyle'\nAND c.login_name = 'dthiel'\nAND a.other_account_details LIKE '%VIP%'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.87
+    },
+    {
+      "uid": "ff165d34-90e7-45fd-acf7-757728cd2171",
+      "question": "Which female customers have both placed orders and hold accounts, where gender is '0'?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN orders ON customers.customer_id = orders.customer_id\nJOIN accounts ON customers.customer_id = accounts.customer_id\nWHERE customers.gender = '0'",
+      "pred_sql": "SELECT DISTINCT c.customer_id\nFROM Customers c\nWHERE c.gender = '0'\nAND EXISTS (SELECT 1 FROM Orders o WHERE o.customer_id = c.customer_id)\nAND EXISTS (SELECT 1 FROM Accounts a WHERE a.customer_id = c.customer_id)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    }
+  ]
+}

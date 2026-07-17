@@ -1,0 +1,58 @@
+{
+  "db_id": "course_teach",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:01:43.070790+00:00",
+  "records": [
+    {
+      "uid": "4c34fad9-60b0-4c64-bd35-e11e4610f659",
+      "question": "Who is the 41 year old Anne Walker from Little Lever Urban District?",
+      "gold_sql": "SELECT teacher.teacher_id FROM teacher\nWHERE teacher.hometown = 'Little Lever Urban District' AND teacher.age = '41' AND teacher.name = 'Anne Walker'",
+      "pred_sql": "SELECT \"Teacher_ID\" FROM \"teacher\" WHERE \"Age\" = '41' AND \"Name\" = 'Anne Walker' AND \"Hometown\" = 'Little Lever Urban District'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "uid": "a050a322-a207-4367-b29a-2f0cf2386140",
+      "question": "Who is the 41 year old teacher named Anne Walker from Little Lever Urban District who teaches grade 7 or higher?",
+      "gold_sql": "SELECT teacher.teacher_id FROM teacher\nJOIN course_arrange ON teacher.teacher_id = course_arrange.teacher_id\nWHERE teacher.age = '41' AND course_arrange.grade >= 7 AND teacher.hometown = 'Little Lever Urban District' AND teacher.name = 'Anne Walker'",
+      "pred_sql": "SELECT t.Teacher_ID\nFROM teacher t\nJOIN course_arrange ca ON t.Teacher_ID = ca.Teacher_ID\nWHERE t.Age = '41'\nAND t.Name = 'Anne Walker'\nAND t.Hometown = 'Little Lever Urban District'\nAND ca.Grade >= 7",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.17
+    },
+    {
+      "uid": "b4af2568-b91f-46aa-8227-a3338501a332",
+      "question": "Which teachers named Anne Walker, aged 41 and from Little Lever Urban District, teach grades at least 7?",
+      "gold_sql": "SELECT teacher.teacher_id FROM teacher\nJOIN course_arrange ON teacher.teacher_id = course_arrange.teacher_id\nWHERE teacher.name = 'Anne Walker' AND teacher.hometown = 'Little Lever Urban District' AND course_arrange.grade >= 7 AND teacher.age = '41'",
+      "pred_sql": "SELECT DISTINCT t.Teacher_ID\nFROM teacher t\nINNER JOIN course_arrange ca ON t.Teacher_ID = ca.Teacher_ID\nWHERE t.Name = 'Anne Walker'\nAND t.Age = '41'\nAND t.Hometown = 'Little Lever Urban District'\nAND ca.Grade >= 7",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "uid": "dc517ba5-79f4-45f4-8762-93e99c50d057",
+      "question": "Which teachers named Lucy Wong, aged 39 and from Turton Urban District, teach Music courses at grade 4 or below?",
+      "gold_sql": "SELECT teacher.teacher_id FROM teacher\nJOIN course_arrange ON teacher.teacher_id = course_arrange.teacher_id\nJOIN course ON course_arrange.course_id = course.course_id\nWHERE course.course = 'Music' AND course_arrange.grade <= 4 AND teacher.name = 'Lucy Wong' AND teacher.hometown = 'Turton Urban District' AND teacher.age = '39'",
+      "pred_sql": "SELECT DISTINCT t.Teacher_ID\nFROM teacher t\nJOIN course_arrange ca ON t.Teacher_ID = ca.Teacher_ID\nJOIN course c ON ca.Course_ID = c.Course_ID\nWHERE t.Name = 'Lucy Wong'\nAND t.Age = '39'\nAND t.Hometown = 'Turton Urban District'\nAND c.Course = 'Music'\nAND ca.Grade <= 4",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.78
+    }
+  ]
+}

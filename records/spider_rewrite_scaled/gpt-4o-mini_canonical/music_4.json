@@ -1,0 +1,58 @@
+{
+  "db_id": "music_4",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 4,
+  "n_correct": 4,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:28:15.361887+00:00",
+  "records": [
+    {
+      "uid": "0916dabb-4cb0-4e6f-8579-dc138d52a878",
+      "question": "Which artist named Ophiolatry has the famous title Transmutation released exactly on January 21, 2008?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_release_date = 'January 21, 2008' AND artist.artist = 'Ophiolatry' AND artist.famous_title = 'Transmutation'",
+      "pred_sql": "SELECT artist.Artist_ID FROM artist WHERE Famous_Release_date = 'January 21, 2008' AND Artist = 'Ophiolatry' AND Famous_Title = 'Transmutation'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.87
+    },
+    {
+      "uid": "1e4b5ab5-478f-4f84-8f0d-17cdef1915cf",
+      "question": "Which artists named Gorgoroth, aged at least 34, with the famous title Bergen 1996 and famous release date November 2007, had a volume issue 46:5 released on 9 May that stayed at least 1 week on top?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:5' AND volume.issue_date = '9 May' AND artist.artist = 'Gorgoroth' AND artist.age >= 34 AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top >= 1.0 AND artist.famous_release_date = 'November 2007'",
+      "pred_sql": "SELECT artist.Artist_ID \nFROM artist \nJOIN volume ON artist.Artist_ID = volume.Artist_ID \nWHERE artist.Artist = 'Gorgoroth' \n  AND artist.Age >= 34 \n  AND artist.Famous_Title = 'Bergen 1996' \n  AND artist.Famous_Release_date = 'November 2007' \n  AND volume.Volume_Issue = '46:5' \n  AND volume.Issue_Date = '9 May' \n  AND volume.Weeks_on_Top >= 1.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.02
+    },
+    {
+      "uid": "3c9a2aad-6be3-4559-a3f8-56c04983b789",
+      "question": "Which artists with the famous title Bergen 1996 have volumes from issue 45:16 that spent at most 1.0 week on top?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '45:16' AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top <= 1.0",
+      "pred_sql": "SELECT artist.Artist_ID\nFROM artist\nJOIN volume ON artist.Artist_ID = volume.Artist_ID\nWHERE artist.Famous_Title = 'Bergen 1996'\nAND volume.Volume_Issue = '45:16'\nAND volume.Weeks_on_Top <= 1.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "ebee4165-4e22-4ca3-8bdc-7b4b5172d8d8",
+      "question": "Which artists named Black Flame, at most 18 years old, with the famous title Imperivm released exactly on June 23, 2008, appeared in volume 46:9 issued on 6 June with at most 1.0 weeks on top?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age <= 18 AND volume.weeks_on_top <= 1.0 AND artist.artist = 'Black Flame' AND artist.famous_title = 'Imperivm' AND volume.volume_issue = '46:9' AND volume.issue_date = '6 June' AND artist.famous_release_date = 'June 23, 2008'",
+      "pred_sql": "SELECT artist.Artist_ID \nFROM artist \nJOIN volume ON artist.Artist_ID = volume.Artist_ID \nWHERE artist.Age <= 18 \n  AND artist.Artist = 'Black Flame' \n  AND artist.Famous_Title = 'Imperivm' \n  AND artist.Famous_Release_date = 'June 23, 2008' \n  AND volume.Weeks_on_Top <= 1.0 \n  AND volume.Volume_Issue = '46:9' \n  AND volume.Issue_Date = '6 June'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.31
+    }
+  ]
+}

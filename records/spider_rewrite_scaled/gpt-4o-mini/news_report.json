@@ -1,0 +1,47 @@
+{
+  "db_id": "news_report",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 3,
+  "n_correct": 0,
+  "accuracy": 0.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:43:05.516696+00:00",
+  "records": [
+    {
+      "uid": "03fbd00d-4e11-4cb7-a781-9ef01255af18",
+      "question": "Which events at Marathon on 13 October 2008 with an attendance of at least 6650 were covered by journalists who have exactly 3 years of experience and wrote Screening reports?",
+      "gold_sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.years_working = 3 AND event.date = '13 October 2008' AND event.venue = 'Marathon' AND event.event_attendance >= 6650 AND news_report.work_type = 'Screening'",
+      "pred_sql": "SELECT event.Event_ID \nFROM event \nJOIN news_report ON event.Event_ID = news_report.Event_ID \nJOIN journalist ON news_report.journalist_ID = journalist.journalist_ID \nWHERE event.Venue = 'Marathon' \nAND event.Date = '2008-10-13' \nAND event.Event_Attendance >= 6650 \nAND journalist.Years_working = 3 \nAND news_report.Work_Type = 'Screening'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.21
+    },
+    {
+      "uid": "90121f4d-708d-4cff-9009-5c80fc2ee6c9",
+      "question": "Which events on 11 October 2007 had at most 369 attendees and were associated with news reports where the work_type is Music?",
+      "gold_sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE news_report.work_type = 'Music' AND event.event_attendance <= 369 AND event.date = '11 October 2007'",
+      "pred_sql": "SELECT event.Event_ID \nFROM event \nJOIN news_report ON event.Event_ID = news_report.Event_ID \nWHERE event.Date = '2007-10-11' \nAND event.Event_Attendance <= 369 \nAND news_report.Work_Type = 'Music'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    },
+    {
+      "uid": "fc0063df-9b00-4aa6-88c5-0a22fc4db0e4",
+      "question": "Which Government Hearing events on 11 October 2007 had at most 369 attendees and were covered by Jackie Waring, a journalist with at most 21 years working, writing music reports?",
+      "gold_sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.event_attendance <= 369 AND event.name = 'Government Hearing' AND event.date = '11 October 2007' AND journalist.years_working <= 21 AND news_report.work_type = 'Music' AND journalist.name = 'Jackie Waring'",
+      "pred_sql": "SELECT event.Event_ID \nFROM event \nJOIN news_report ON event.Event_ID = news_report.Event_ID \nJOIN journalist ON news_report.journalist_ID = journalist.journalist_ID \nWHERE event.Date = '2007-10-11' \nAND event.Venue = 'Government Hearing' \nAND event.Event_Attendance <= 369 \nAND journalist.Name = 'Jackie Waring' \nAND journalist.Years_working <= 21 \nAND news_report.Work_Type = 'music'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.26
+    }
+  ]
+}

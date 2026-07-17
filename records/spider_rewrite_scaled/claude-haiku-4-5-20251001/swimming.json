@@ -1,0 +1,36 @@
+{
+  "db_id": "swimming",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:10:05.676688+00:00",
+  "records": [
+    {
+      "uid": "4c094e0f-f426-45fa-ae00-8bbc1e15bd55",
+      "question": "Which stadium named Baku Olympic Stadium in Baku, Azerbaijan, that opened in 2005 or later and has a capacity of at most 68000, hosted the World Junior event in 2013?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN event ON stadium.id = event.stadium_id\nWHERE event.name = 'World Junior' AND stadium.capacity <= 68000 AND stadium.city = 'Baku' AND stadium.country = 'Azerbaijan' AND stadium.opening_year >= 2005 AND stadium.name = 'Baku Olympic Stadium' AND event.year = '2013'",
+      "pred_sql": "SELECT s.ID\nFROM stadium s\nJOIN event e ON s.ID = e.Stadium_ID\nWHERE s.name = 'Baku Olympic Stadium'\nAND s.City = 'Baku'\nAND s.Country = 'Azerbaijan'\nAND s.Opening_year >= 2005\nAND s.Capacity <= 68000\nAND e.Name = 'World Junior'\nAND e.Year = '2013'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    },
+    {
+      "uid": "ebabfa07-b21c-45ce-8441-29b5d0ec4fc0",
+      "question": "Did the Nou Mestalla stadium in Valencia, Spain, with a capacity of at least 75000 that opened in 2004 or later, host the FINA event in 2016?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN event ON stadium.id = event.stadium_id\nWHERE event.year = '2016' AND stadium.city = 'Valencia' AND event.name = 'FINA' AND stadium.country = 'Spain' AND stadium.opening_year >= 2004 AND stadium.name = 'Nou Mestalla' AND stadium.capacity >= 75000",
+      "pred_sql": "SELECT stadium.ID\nFROM stadium\nWHERE stadium.name = 'Nou Mestalla'\nAND stadium.City = 'Valencia'\nAND stadium.Country = 'Spain'\nAND stadium.Capacity >= 75000\nAND stadium.Opening_year >= 2004\nAND stadium.ID IN (\n  SELECT event.Stadium_ID\n  FROM event\n  WHERE event.Name LIKE '%FINA%'\n  AND event.Year = '2016'\n)",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.97
+    }
+  ]
+}

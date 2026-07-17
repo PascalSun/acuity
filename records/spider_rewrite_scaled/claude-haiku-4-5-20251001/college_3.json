@@ -1,0 +1,80 @@
+{
+  "db_id": "college_3",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:01:14.318021+00:00",
+  "records": [
+    {
+      "uid": "067ed03d-c036-47ca-bcaf-c3d26df25d9a",
+      "question": "Which ECE departments are in room 105 of the Barton building, belong to the EN division, have a phone number at most 7033, and include members with a Primary appointment type?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nWHERE department.dname = 'ECE' AND department.dphone <= 7033 AND department.room = '105' AND member_of.appt_type = 'Primary' AND department.division = 'EN' AND department.building = 'Barton'",
+      "pred_sql": "SELECT DISTINCT d.DNO\nFROM Department d\nJOIN Member_of m ON d.DNO = m.DNO\nWHERE d.DName LIKE '%ECE%'\n  AND d.Room = '105'\n  AND d.Building = 'Barton'\n  AND d.Division = 'EN'\n  AND d.DPhone <= 7033\n  AND m.Appt_Type = 'Primary'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.92
+    },
+    {
+      "uid": "1fe81b99-de97-43f9-a182-f83d2a139777",
+      "question": "Which departments have the name 'ECE' and division 'EN' that also offer courses held on 'W' days and have students with minors in them?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN course ON department.dno = course.dno\nJOIN minor_in ON department.dno = minor_in.dno\nWHERE department.dname = 'ECE' AND department.division = 'EN' AND course.days = 'W'",
+      "pred_sql": "SELECT DISTINCT d.DNO\nFROM Department d\nWHERE d.DName = 'ECE'\n  AND d.Division = 'EN'\n  AND EXISTS (\n    SELECT 1\n    FROM Course c\n    WHERE c.DNO = d.DNO\n      AND c.Days = 'W'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Minor_in m\n    WHERE m.DNO = d.DNO\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.45
+    },
+    {
+      "uid": "80233393-5973-42da-9575-8cd362d7a8ef",
+      "question": "Which departments located in room 245 have students minoring in them?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN minor_in ON department.dno = minor_in.dno\nJOIN student ON minor_in.stuid = student.stuid\nWHERE department.room = '245'",
+      "pred_sql": "SELECT DISTINCT d.DNO\nFROM Department d\nINNER JOIN Minor_in m ON d.DNO = m.DNO\nWHERE d.Room = '245'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "uid": "885aa2f4-1816-449e-9963-d9c87fa37952",
+      "question": "Which ECE departments in the EN division have room 105, a phone number of at least 7033, offer courses exactly 2 hours long on MTW, and include members with a Primary appointment type?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nJOIN course ON department.dno = course.dno\nWHERE department.dphone >= 7033 AND course.hours = '2' AND department.division = 'EN' AND department.room = '105' AND department.dname = 'ECE' AND member_of.appt_type = 'Primary' AND course.days = 'MTW'",
+      "pred_sql": "SELECT DISTINCT d.DNO\nFROM Department d\nWHERE d.Division = 'EN'\n  AND d.DName LIKE '%ECE%'\n  AND d.Room = '105'\n  AND d.DPhone >= 7033\n  AND EXISTS (\n    SELECT 1\n    FROM Course c\n    WHERE c.DNO = d.DNO\n      AND c.Days = 'MTW'\n      AND c.Hours = '2'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Member_of m\n    WHERE m.DNO = d.DNO\n      AND m.Appt_Type = 'Primary'\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.62
+    },
+    {
+      "uid": "c2376dfc-b091-4824-b9f9-53b31f87656e",
+      "question": "What departments in division AS have a phone number of at least 7119 and offer both courses and minors?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN course ON department.dno = course.dno\nJOIN minor_in ON department.dno = minor_in.dno\nWHERE department.division = 'AS' AND department.dphone >= 7119",
+      "pred_sql": "SELECT DISTINCT d.DNO\nFROM Department d\nWHERE d.Division = 'AS'\n  AND d.DPhone >= 7119\n  AND EXISTS (SELECT 1 FROM Course c WHERE c.DNO = d.DNO)\n  AND EXISTS (SELECT 1 FROM Minor_in m WHERE m.DNO = d.DNO)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "e2311f3e-5f70-4c74-b1e4-a53c5d69bd79",
+      "question": "Which departments are located in building Krieger, division AS, room 381, have a department phone number at most 7119, and include faculty member Salzberg who has a phone number at most 2641 and holds a Secondary appointment?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nJOIN faculty ON member_of.facid = faculty.facid\nWHERE department.building = 'Krieger' AND department.division = 'AS' AND department.room = '381' AND member_of.appt_type = 'Secondary' AND faculty.phone <= 2641 AND faculty.lname = 'Salzberg' AND department.dphone <= 7119",
+      "pred_sql": "SELECT DISTINCT d.DNO\nFROM Department d\nJOIN Member_of m ON d.DNO = m.DNO\nJOIN Faculty f ON m.FacID = f.FacID\nWHERE d.Building = 'Krieger'\n  AND d.Division = 'AS'\n  AND d.Room = '381'\n  AND d.DPhone <= 7119\n  AND f.Lname = 'Salzberg'\n  AND f.Phone <= 2641\n  AND m.Appt_Type = 'Secondary'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.56
+    }
+  ]
+}

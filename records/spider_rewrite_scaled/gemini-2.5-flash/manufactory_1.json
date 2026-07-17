@@ -1,0 +1,36 @@
+{
+  "db_id": "manufactory_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 2,
+  "n_correct": 2,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:18:49.137904+00:00",
+  "records": [
+    {
+      "uid": "57664ac7-8aef-4734-b0a6-8628d2ac362a",
+      "question": "Which manufacturers named Iomega, founded by Mary, headquartered in Beijing, have revenue of at most 200 and offer a ZIP drive priced at no more than 150?",
+      "gold_sql": "SELECT manufacturers.code FROM manufacturers\nJOIN products ON manufacturers.code = products.manufacturer\nWHERE manufacturers.revenue <= 200.0 AND manufacturers.headquarter = 'Beijing' AND manufacturers.founder = 'Mary' AND products.name = 'ZIP drive' AND products.price <= 150 AND manufacturers.name = 'Iomega'",
+      "pred_sql": "SELECT T1.Code FROM Manufacturers AS T1 INNER JOIN Products AS T2 ON T1.Code = T2.Manufacturer WHERE T1.Name = 'Iomega' AND T1.Founder = 'Mary' AND T1.Headquarter = 'Beijing' AND T1.Revenue <= 200 AND T2.Name = 'ZIP drive' AND T2.Price <= 150",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    },
+    {
+      "uid": "a48cad5b-ad00-4146-876d-5097fb386184",
+      "question": "Which Creative Labs manufacturers founded by Owen and headquartered in Austin have revenue of at least 100.0 and offer CD drive products priced at most 90?",
+      "gold_sql": "SELECT manufacturers.code FROM manufacturers\nJOIN products ON manufacturers.code = products.manufacturer\nWHERE manufacturers.founder = 'Owen' AND products.name = 'CD drive' AND manufacturers.headquarter = 'Austin' AND products.price <= 90 AND manufacturers.revenue >= 100.0 AND manufacturers.name = 'Creative Labs'",
+      "pred_sql": "SELECT T1.Code FROM Manufacturers AS T1 INNER JOIN Products AS T2 ON T1.Code = T2.Manufacturer WHERE T1.Name = 'Creative Labs' AND T1.Founder = 'Owen' AND T1.Headquarter = 'Austin' AND T1.Revenue >= 100.0 AND T2.Name = 'CD drive' AND T2.Price <= 90",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.39
+    }
+  ]
+}

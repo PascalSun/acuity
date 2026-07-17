@@ -1,0 +1,69 @@
+{
+  "db_id": "customer_deliveries",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "tag": "gpt-4o-mini",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T09:25:48.252370+00:00",
+  "records": [
+    {
+      "uid": "022c805f-1c04-4d22-a8fd-e2c525cc3322",
+      "question": "Which addresses are exactly 045 Marquardt Village Suite 484 and are associated with both customers and delivery route locations?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN delivery_route_locations ON addresses.address_id = delivery_route_locations.location_address_id\nWHERE addresses.address_details = '045 Marquardt Village Suite 484'",
+      "pred_sql": "SELECT a.address_id \nFROM Addresses a \nJOIN Customer_Addresses ca ON a.address_id = ca.address_id \nJOIN Delivery_Route_Locations drl ON a.address_id = drl.location_address_id \nWHERE a.address_details = '045 Marquardt Village Suite 484' \nGROUP BY a.address_id",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "4c8f4b6f-8215-4b9c-ad63-8fb13b3620c2",
+      "question": "Which addresses in Maine have the details exactly 6187 Feil Extension Apt. 749, were classified as House from 2010-12-29 11:01:39 to 2018-03-22 02:54:10, and belong to customers with email tkassulke@example.com who became customers on or after 2012-01-11 21:17:01?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN customers ON customer_addresses.customer_id = customers.customer_id\nWHERE addresses.state_province_county = 'Maine' AND customer_addresses.address_type = 'House' AND customer_addresses.date_to = '2018-03-22 02:54:10' AND customer_addresses.date_from = '2010-12-29 11:01:39' AND customers.date_became_customer >= '2012-01-11 21:17:01' AND addresses.address_details = '6187 Feil Extension Apt. 749' AND customers.customer_email = 'tkassulke@example.com'",
+      "pred_sql": "SELECT addresses.address_id\nFROM Addresses addresses\nJOIN Customer_Addresses customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN Customers customers ON customer_addresses.customer_id = customers.customer_id\nWHERE addresses.state_province_county = 'Maine'\n  AND addresses.address_details = '6187 Feil Extension Apt. 749'\n  AND customer_addresses.address_type = 'House'\n  AND customer_addresses.date_to = '2018-03-22 02:54:10'\n  AND customer_addresses.date_from = '2010-12-29 11:01:39'\n  AND customers.date_became_customer >= '2012-01-11 21:17:01'\n  AND customers.customer_email = 'tkassulke@example.com'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.21
+    },
+    {
+      "uid": "85fbfe99-5541-4d3a-9d15-4a766dd22b5a",
+      "question": "Which addresses at 615 Adams Rue Apt. 095 in Sawaynville, Kentucky, zip code 575, USA, are linked to an employee named Sasha with phone number 1-547-775-6049?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN employees ON addresses.address_id = employees.employee_address_id\nWHERE addresses.country = 'USA' AND addresses.address_details = '615 Adams Rue Apt. 095' AND addresses.zip_postcode = '575' AND addresses.city = 'Sawaynville' AND addresses.state_province_county = 'Kentucky' AND employees.employee_phone = '1-547-775-6049' AND employees.employee_name = 'Sasha'",
+      "pred_sql": "SELECT Addresses.address_id\nFROM Addresses\nJOIN Employees ON Addresses.address_id = Employees.employee_address_id\nWHERE Addresses.country = 'USA'\n  AND Addresses.address_details = '615 Adams Rue Apt. 095'\n  AND Addresses.zip_postcode = '575'\n  AND Addresses.city = 'Sawaynville'\n  AND Addresses.state_province_county = 'Kentucky'\n  AND Employees.employee_phone = '1-547-775-6049'\n  AND Employees.employee_name = 'Sasha'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "a6f835e4-b43a-446f-9592-ab697c24251b",
+      "question": "Which addresses in Wyoming, USA have zip code 234 and are linked to an employee with phone number 620.905.4152x7146?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN employees ON addresses.address_id = employees.employee_address_id\nWHERE addresses.zip_postcode = '234' AND employees.employee_phone = '620.905.4152x7146' AND addresses.state_province_county = 'Wyoming' AND addresses.country = 'USA'",
+      "pred_sql": "SELECT addresses.address_id\nFROM Addresses addresses\nJOIN Customer_Addresses customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN Employees employees ON addresses.address_id = employees.employee_address_id\nWHERE addresses.zip_postcode = '234'\n  AND addresses.state_province_county = 'Wyoming'\n  AND addresses.country = 'USA'\n  AND employees.employee_phone = '620.905.4152x7146'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "e4de4254-345d-4698-9df3-fa28a874031d",
+      "question": "Where are the addresses at 203 Joseph Hills in Giovannaton, Tennessee that are House type listed from 2011-05-24 21:49:34 and linked to employee Cristian whose phone is 1-833-492-9430?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN employees ON addresses.address_id = employees.employee_address_id\nWHERE addresses.city = 'Giovannaton' AND addresses.address_details = '203 Joseph Hills' AND employees.employee_phone = '1-833-492-9430' AND addresses.state_province_county = 'Tennessee' AND customer_addresses.date_from = '2011-05-24 21:49:34' AND customer_addresses.address_type = 'House' AND employees.employee_name = 'Cristian'",
+      "pred_sql": "SELECT addresses.address_id\nFROM Addresses addresses\nJOIN Customer_Addresses customer_addresses ON addresses.address_id = customer_addresses.address_id\nJOIN Employees employees ON addresses.address_id = employees.employee_address_id\nWHERE addresses.city = 'Giovannaton'\n  AND addresses.address_details = '203 Joseph Hills'\n  AND addresses.state_province_county = 'Tennessee'\n  AND customer_addresses.date_from = '2011-05-24 21:49:34'\n  AND customer_addresses.address_type = 'House'\n  AND employees.employee_phone = '1-833-492-9430'\n  AND employees.employee_name = 'Cristian'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    }
+  ]
+}

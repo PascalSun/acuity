@@ -1,0 +1,69 @@
+{
+  "db_id": "company_1",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 5,
+  "n_correct": 5,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-17T08:24:39.653754+00:00",
+  "records": [
+    {
+      "uid": "0d2da3ca-51d8-45a8-a5a0-d2fd2506b43f",
+      "question": "Which employees have a middle initial of J?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'J'",
+      "pred_sql": "SELECT fname FROM employee WHERE Minit = 'J'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.65
+    },
+    {
+      "uid": "37da230d-1173-4dd2-a795-ab1a00f41d89",
+      "question": "Which female employees with last name English and middle initial A, born on or after 1972-07-31, have an SSN at most 453453453, a supervisor SSN no more than 333445555.0, and a salary at most 25000?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.lname = 'English' AND employee.minit = 'A' AND employee.ssn <= 453453453 AND employee.sex = 'F' AND employee.super_ssn <= 333445555.0 AND employee.salary <= 25000 AND employee.bdate >= '1972-07-31'",
+      "pred_sql": "SELECT fname\nFROM employee\nWHERE Sex = 'F'\n  AND Lname = 'English'\n  AND Minit = 'A'\n  AND Bdate >= '1972-07-31'\n  AND Ssn <= 453453453\n  AND Super_ssn <= 333445555\n  AND Salary <= 25000",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "4f75acb9-9801-4edb-bf64-4f53d6bd1e89",
+      "question": "Who are the male employees with last name Narayan in department 5 whose salary is at most 38000, whose supervisor's social security number is at least 333445555, and whose social security number is at most 666884444?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.salary <= 38000 AND employee.sex = 'M' AND employee.super_ssn >= 333445555.0 AND employee.ssn <= 666884444 AND employee.dno = 5 AND employee.lname = 'Narayan'",
+      "pred_sql": "SELECT fname\nFROM employee\nWHERE Sex = 'M'\n  AND Lname = 'Narayan'\n  AND Dno = 5\n  AND Salary <= 38000\n  AND Super_ssn >= 333445555\n  AND Ssn <= 666884444",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.82
+    },
+    {
+      "uid": "84f46e79-2ea6-4f89-bc23-b823e5e4768c",
+      "question": "Which female employees with middle initial S have a social security number at most 987654321?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn <= 987654321 AND employee.minit = 'S' AND employee.sex = 'F'",
+      "pred_sql": "SELECT fname FROM employee WHERE Sex = 'F' AND Minit = 'S' AND Ssn <= 987654321",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.65
+    },
+    {
+      "uid": "cb4630be-4fe7-461a-b067-7ede7f5879c8",
+      "question": "Which female employees with last name Zelaya and middle initial J, born on or after 1968-01-19, have an SSN at most 999887777 and whose supervisor's SSN is no more than 987654321?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn <= 999887777 AND employee.minit = 'J' AND employee.sex = 'F' AND employee.bdate >= '1968-01-19' AND employee.lname = 'Zelaya' AND employee.super_ssn <= 987654321.0",
+      "pred_sql": "SELECT fname\nFROM employee\nWHERE Sex = 'F'\n  AND Lname = 'Zelaya'\n  AND Minit = 'J'\n  AND Bdate >= '1968-01-19'\n  AND Ssn <= 999887777\n  AND Super_ssn <= 987654321",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.87
+    }
+  ]
+}
