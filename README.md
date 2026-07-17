@@ -1,6 +1,6 @@
 # Acuity — Artifact
 
-Artifact for **"A Benchmark for Every Database: Annotation-Free, Coverage-Calibrated Evaluation of Conjunctive Text-to-SQL with Acuity"** (submitted to PVLDB Vol. 19, Experiment, Analysis & Benchmark track).
+Artifact for **"A Benchmark for Every Database: Annotation-Free, Coverage-Calibrated Evaluation of Conjunctive Text-to-SQL with Acuity"** (submitted to PVLDB Vol. 20, Experiment, Analysis & Benchmark track).
 
 Acuity turns any relational schema into an annotation-free, coverage-calibrated Text-to-SQL benchmark for the conjunctive filter–join (record-localization) workload: it derives schema-feasible structure classes from FK topology, apportions per-class quotas, synthesizes execution-verified SQL by anchor-row sampling, and releases every pair in dual form (a provably faithful canonical question + a gate-certified natural paraphrase).
 
@@ -15,7 +15,14 @@ Acuity turns any relational schema into an annotation-free, coverage-calibrated 
 | `scripts/` | Analysis + figure scripts (offline; run against `records/` and `results/`) |
 | `prompts/` | The three prompts, verbatim: evaluation, paraphraser, faithfulness judge |
 
-**Privacy note.** WAMEX and ACYWA are private operational databases; the released pairs and records contain question text, SQL, and answer *row IDs* only. Raw row contents were stripped from the operational records; the underlying databases are not released.
+**Data availability.** **WAMEX ships in full**: the complete SQLite snapshot (115,174-row `wamex_reports` hub + 8 satellite tables, 407 MB / 69 MB compressed) is attached to the [`wamex-db-v1` release](https://github.com/PascalSun/acuity/releases/tag/wamex-db-v1) — decompress with `zstd -d`, SHA-256 in the release notes. With it, WAMEX benchmark generation, Gate 1 re-execution, and both evaluation regimes (Section 7) are reproducible end-to-end:
+
+```bash
+gh release download wamex-db-v1 --repo PascalSun/acuity && zstd -d wamex.sqlite.zst
+python -m talk2metadata.cli analysis wamex generate-qa --db wamex.sqlite --mode flexbench --pairs 500
+```
+
+**ACYWA** is held under a government data-sharing agreement covering child-and-youth wellbeing statistics and cannot be redistributed: its released pairs and records contain question text, SQL, answer *row IDs*, provenance, and per-question verdicts, with raw row contents redacted.
 
 ## Table/Figure → script manifest
 
