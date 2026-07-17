@@ -44,6 +44,7 @@ python -m talk2metadata.cli analysis wamex generate-qa --db wamex.sqlite --mode 
 | Rank-stability bootstrap (Section 7 regime inversion) | `results/rank_stability_realdb.json` | `scripts/rank_stability_bootstrap.py` |
 | Scaled register control (Result 3, n=709) | `results/register_control_scaled.json`, `records/spider_rewrite_scaled/` | `scripts/rewrite_register_scaled.py`, `scripts/register_control_scaled.py` |
 | QATCH head-to-head (Related Work) | `results/qatch_headtohead.json`, `records/spider_qatch/` | `scripts/qatch_headtohead.py`, `scripts/qatch_generate.py` |
+| Operational-protocol Spider check (D9, Result 1) | `results/operational_spider.json`, `records/spider_operational/` | `scripts/operational_spider.py` |
 | Cost accounting | `results/cost_reconstruction.json` | `scripts/cost_reconstruction.py` |
 | Memorization probe | `results/contamination_probe_full.json` | see `generator/` probe module |
 

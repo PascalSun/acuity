@@ -1,0 +1,425 @@
+{
+  "experiment": "operational_spider (reviewer D9)",
+  "protocol": {
+    "regime": "Section-7 operational, adapted to Spider",
+    "prompt": "JSON {thought,sql}; select <target_table>.<key> limit 5; compact schema (tables+columns+FK edges, target starred); no gold-projection hint; temperature 0",
+    "scoring": "row-F1 between predicted and gold key sets (set semantics); unparseable/erroring SQL = 0",
+    "sample": "1504 questions, 151 DBs, 10/DB stratified by strategy, seed 42, uids paired with records/spider_natural/acuity_final"
+  },
+  "operational": {
+    "n_questions": 1504,
+    "means": {
+      "claude-haiku-4-5-20251001": 0.816596999748791,
+      "claude-sonnet-4-5-20250929": 0.8919064679106529,
+      "gemini-2.5-flash": 0.8264797366926983,
+      "gpt-4.1-2025-04-14": 0.8589616607969628,
+      "gpt-4.1-mini": 0.8170208334505502,
+      "gpt-4o-mini": 0.6875034933907352
+    },
+    "spread": 0.063546643786483,
+    "ceiling_rate": 0.0,
+    "separable_pairs": "12/15",
+    "separable_pair_fraction": 0.8,
+    "pairs": [
+      {
+        "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+        "diff": -0.0753094681618619,
+        "p_value": 0.0,
+        "cohen_d": -0.22730666773166114,
+        "separable": true
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+        "diff": -0.042364661048171826,
+        "p_value": 0.0,
+        "cohen_d": -0.12978071862558338,
+        "separable": true
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+        "diff": 0.12909350635805572,
+        "p_value": 0.0,
+        "cohen_d": 0.300354255534733,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+        "diff": 0.06542673121795461,
+        "p_value": 0.0,
+        "cohen_d": 0.19881670692611517,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+        "diff": 0.07488563446010266,
+        "p_value": 0.0,
+        "cohen_d": 0.21107556662664062,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+        "diff": 0.20440297451991762,
+        "p_value": 0.0,
+        "cohen_d": 0.4460866030257844,
+        "separable": true
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4o-mini",
+        "diff": 0.138976243301963,
+        "p_value": 0.0,
+        "cohen_d": 0.3154013554859989,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+        "diff": 0.04194082734641258,
+        "p_value": 0.0,
+        "cohen_d": 0.1345052510302041,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+        "diff": 0.17145816740622755,
+        "p_value": 0.0,
+        "cohen_d": 0.3940300552384092,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-mini vs gpt-4o-mini",
+        "diff": 0.12951734005981497,
+        "p_value": 0.0,
+        "cohen_d": 0.3032119338981422,
+        "separable": true
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+        "diff": -0.03248192410426454,
+        "p_value": 0.001,
+        "cohen_d": -0.10458488529154553,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+        "diff": 0.03294480711369008,
+        "p_value": 0.0028,
+        "cohen_d": 0.10326365312472781,
+        "separable": true
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+        "diff": -0.009882736943907289,
+        "p_value": 0.303,
+        "cohen_d": -0.033083188696457815,
+        "separable": false
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+        "diff": 0.009458903242148042,
+        "p_value": 0.3254,
+        "cohen_d": 0.028812283306316768,
+        "separable": false
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+        "diff": -0.0004238337017592464,
+        "p_value": 0.9694,
+        "cohen_d": -0.0012797476531423969,
+        "separable": false
+      }
+    ]
+  },
+  "controlled_same_uids_exact_accuracy": {
+    "n_questions": 1504,
+    "means": {
+      "claude-haiku-4-5-20251001": 0.8264627659574468,
+      "claude-sonnet-4-5-20250929": 0.894281914893617,
+      "gemini-2.5-flash": 0.8477393617021277,
+      "gpt-4.1-2025-04-14": 0.8424202127659575,
+      "gpt-4.1-mini": 0.8238031914893617,
+      "gpt-4o-mini": 0.7978723404255319
+    },
+    "spread": 0.02950547365508874,
+    "ceiling_rate": 0.0,
+    "separable_pairs": "9/15",
+    "separable_pair_fraction": 0.6,
+    "pairs": [
+      {
+        "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+        "diff": -0.06781914893617014,
+        "p_value": 0.0,
+        "cohen_d": -0.2213580570963678,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+        "diff": 0.046542553191489255,
+        "p_value": 0.0,
+        "cohen_d": 0.1615560795132455,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+        "diff": 0.051861702127659504,
+        "p_value": 0.0,
+        "cohen_d": 0.17118191041656977,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+        "diff": 0.07047872340425532,
+        "p_value": 0.0,
+        "cohen_d": 0.22270351040260214,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+        "diff": 0.09640957446808507,
+        "p_value": 0.0,
+        "cohen_d": 0.2841520114857696,
+        "separable": true
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4o-mini",
+        "diff": 0.04986702127659581,
+        "p_value": 0.0,
+        "cohen_d": 0.1477287357911452,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+        "diff": 0.044547872340425565,
+        "p_value": 0.0,
+        "cohen_d": 0.1356839418420356,
+        "separable": true
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+        "diff": 0.02859042553191493,
+        "p_value": 0.0024,
+        "cohen_d": 0.09057050887071273,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-mini vs gpt-4o-mini",
+        "diff": 0.025930851063829752,
+        "p_value": 0.0198,
+        "cohen_d": 0.08101246358799723,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+        "diff": 0.018617021276595813,
+        "p_value": 0.0656,
+        "cohen_d": 0.06659016271372604,
+        "separable": false
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+        "diff": 0.02393617021276606,
+        "p_value": 0.0678,
+        "cohen_d": 0.07402750844861633,
+        "separable": false
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+        "diff": -0.021276595744680882,
+        "p_value": 0.0704,
+        "cohen_d": -0.07253543392556866,
+        "separable": false
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+        "diff": -0.015957446808510634,
+        "p_value": 0.135,
+        "cohen_d": -0.05312339170845769,
+        "separable": false
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+        "diff": 0.005319148936170248,
+        "p_value": 0.6248,
+        "cohen_d": 0.018987114055015304,
+        "separable": false
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+        "diff": 0.0026595744680851796,
+        "p_value": 0.814,
+        "cohen_d": 0.008907513438866931,
+        "separable": false
+      }
+    ]
+  },
+  "controlled_same_uids_rowf1": {
+    "n_questions": 1467,
+    "means": {
+      "claude-haiku-4-5-20251001": 0.7736577395264438,
+      "claude-sonnet-4-5-20250929": 0.8378678017941131,
+      "gemini-2.5-flash": 0.8116488464880472,
+      "gpt-4.1-2025-04-14": 0.8067132460303171,
+      "gpt-4.1-mini": 0.7800772262015192,
+      "gpt-4o-mini": 0.7715773184933913
+    },
+    "spread": 0.024002195295358943,
+    "ceiling_rate": 0.0,
+    "separable_pairs": "11/15",
+    "separable_pair_fraction": 0.7333333333333333,
+    "pairs": [
+      {
+        "pair": "claude-haiku-4-5-20251001 vs claude-sonnet-4-5-20250929",
+        "diff": -0.06421006226766934,
+        "p_value": 0.0,
+        "cohen_d": -0.21180647873622963,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-mini",
+        "diff": 0.05779057559259393,
+        "p_value": 0.0,
+        "cohen_d": 0.1839362250390749,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4o-mini",
+        "diff": 0.06629048330072185,
+        "p_value": 0.0,
+        "cohen_d": 0.18878839676357936,
+        "separable": true
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4o-mini",
+        "diff": 0.040071527994655964,
+        "p_value": 0.0004,
+        "cohen_d": 0.11813706252110523,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-2025-04-14 vs gpt-4o-mini",
+        "diff": 0.03513592753692585,
+        "p_value": 0.0012,
+        "cohen_d": 0.10611254081928848,
+        "separable": true
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gemini-2.5-flash",
+        "diff": -0.03799110696160346,
+        "p_value": 0.0016,
+        "cohen_d": -0.12794928594941984,
+        "separable": true
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-2025-04-14",
+        "diff": -0.033055506503873344,
+        "p_value": 0.0018,
+        "cohen_d": -0.11013214462252344,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gpt-4.1-2025-04-14",
+        "diff": 0.031154555763796,
+        "p_value": 0.003,
+        "cohen_d": 0.0995770257282228,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-2025-04-14 vs gpt-4.1-mini",
+        "diff": 0.02663601982879793,
+        "p_value": 0.0108,
+        "cohen_d": 0.09386348642047586,
+        "separable": true
+      },
+      {
+        "pair": "claude-sonnet-4-5-20250929 vs gemini-2.5-flash",
+        "diff": 0.026218955306065883,
+        "p_value": 0.0164,
+        "cohen_d": 0.08789668828517852,
+        "separable": true
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4.1-mini",
+        "diff": 0.031571620286528046,
+        "p_value": 0.0174,
+        "cohen_d": 0.09798736023527208,
+        "separable": true
+      },
+      {
+        "pair": "gpt-4.1-mini vs gpt-4o-mini",
+        "diff": 0.008499907708127918,
+        "p_value": 0.434,
+        "cohen_d": 0.026829789354000422,
+        "separable": false
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4.1-mini",
+        "diff": -0.006419486675075414,
+        "p_value": 0.5374,
+        "cohen_d": -0.022027842482020773,
+        "separable": false
+      },
+      {
+        "pair": "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+        "diff": 0.004935600457730116,
+        "p_value": 0.6442,
+        "cohen_d": 0.01726227510237935,
+        "separable": false
+      },
+      {
+        "pair": "claude-haiku-4-5-20251001 vs gpt-4o-mini",
+        "diff": 0.002080421033052504,
+        "p_value": 0.8346,
+        "cohen_d": 0.006466735530943279,
+        "separable": false
+      }
+    ]
+  },
+  "ranking": {
+    "controlled": [
+      "claude-sonnet-4-5-20250929",
+      "gemini-2.5-flash",
+      "gpt-4.1-2025-04-14",
+      "claude-haiku-4-5-20251001",
+      "gpt-4.1-mini",
+      "gpt-4o-mini"
+    ],
+    "operational": [
+      "claude-sonnet-4-5-20250929",
+      "gpt-4.1-2025-04-14",
+      "gemini-2.5-flash",
+      "gpt-4.1-mini",
+      "claude-haiku-4-5-20251001",
+      "gpt-4o-mini"
+    ],
+    "kendall_tau": 0.7333333333333333,
+    "inversions": [
+      "gemini-2.5-flash vs gpt-4.1-2025-04-14",
+      "claude-haiku-4-5-20251001 vs gpt-4.1-mini"
+    ]
+  },
+  "record_status_counts": {
+    "gpt-4.1-2025-04-14": {
+      "ok": 1504,
+      "scored_zero_sql_error": 7
+    },
+    "gpt-4.1-mini": {
+      "ok": 1504,
+      "scored_zero_sql_error": 1
+    },
+    "gpt-4o-mini": {
+      "ok": 1504,
+      "scored_zero_sql_error": 26
+    },
+    "claude-sonnet-4-5-20250929": {
+      "ok": 1504,
+      "scored_zero_sql_error": 3
+    },
+    "claude-haiku-4-5-20251001": {
+      "ok": 1504,
+      "scored_zero_sql_error": 3
+    },
+    "gemini-2.5-flash": {
+      "ok": 1504,
+      "scored_zero_sql_error": 1
+    }
+  },
+  "generated_at": "2026-07-17T11:31:32.900000+00:00"
+}
