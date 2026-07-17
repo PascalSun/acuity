@@ -1,0 +1,3416 @@
+{
+ "db_id": "gymnast",
+ "target_table": "people",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1414581884,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/gymnast/gymnast.sqlite",
+  "generated_at": "2026-07-02T14:19:14.475016+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "people",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "879c9024-0258-4aee-b6fd-3e3364c4fc2c",
+   "question": "Who are the people from Santo Domingo who are at least 22 years old?",
+   "answer_row_ids": [
+    1,
+    6
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Santo Domingo' AND people.age >= 22.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 22.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santo Domingo",
+    "people.age": 22.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo' and age at least '22.0'?"
+  },
+  {
+   "uid": "648d6ec9-aa4e-48e7-98e9-0082e38b5d38",
+   "question": "Who is Rosa Clarissa Ort\u00edz Melo with an age of at least 23?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.age >= 23.0 AND people.name = 'Rosa Clarissa Ort\u00edz Melo'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.age",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 23.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Rosa Clarissa Ort\u00edz Melo",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.age": 23.0,
+    "people.name": "Rosa Clarissa Ort\u00edz Melo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at least '23.0' and name equal to 'Rosa Clarissa Ort\u00edz Melo'?"
+  },
+  {
+   "uid": "7a3af951-c445-4944-80c1-dc6910cd382d",
+   "question": "Who are the people aged at most 24?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 10,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.age <= 24.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 24.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.age": 24.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at most '24.0'?"
+  },
+  {
+   "uid": "8ccc1a1f-2728-405b-a0a4-df6c145db33a",
+   "question": "Which people are at least 22 years old?",
+   "answer_row_ids": [
+    1,
+    6,
+    9,
+    10
+   ],
+   "answer_count": 4,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.age >= 22.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 22.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.age": 22.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at least '22.0'?"
+  },
+  {
+   "uid": "549c26e7-772d-4d51-a666-c8c59936758a",
+   "question": "Which people are exactly 1.72 meters tall and have their hometown as Los Alcarrizos?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Los Alcarrizos' AND people.height = 1.72",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Los Alcarrizos",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 1.72,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Los Alcarrizos",
+    "people.height": 1.72
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Los Alcarrizos' and height equal to '1.72'?"
+  },
+  {
+   "uid": "07a277ee-e360-4f45-9029-9bdeb91def5a",
+   "question": "Who are the people with a height of at most 1.81 meters?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 10,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height <= 1.81",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.81,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 1.81
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '1.81'?"
+  },
+  {
+   "uid": "2144028d-fdd5-4d12-8017-ab2d0b58271e",
+   "question": "Which people have the name Nadia Caba Rodr\u00edguez?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Nadia Caba Rodr\u00edguez'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Nadia Caba Rodr\u00edguez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Nadia Caba Rodr\u00edguez'?"
+  },
+  {
+   "uid": "020366ee-422b-49fb-b968-485c742146cf",
+   "question": "Which people are from Santo Domingo and are at least 20 years old?",
+   "answer_row_ids": [
+    1,
+    4,
+    6,
+    8
+   ],
+   "answer_count": 4,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Santo Domingo' AND people.age >= 20.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 20.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santo Domingo",
+    "people.age": 20.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo' and age at least '20.0'?"
+  },
+  {
+   "uid": "04954457-ba8b-4b21-91bc-48655a0903c9",
+   "question": "Who are the people who are at most 21 years old?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "answer_count": 6,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.age <= 21.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.age": 21.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at most '21.0'?"
+  },
+  {
+   "uid": "db1c5f3e-3487-47d4-a95c-18234025acf4",
+   "question": "Which people are exactly 20 years old and have Santo Domingo as their hometown?",
+   "answer_row_ids": [
+    4,
+    8
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Santo Domingo' AND people.age = 20.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "=",
+     "value": 20.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santo Domingo",
+    "people.age": 20.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo' and age equal to '20.0'?"
+  },
+  {
+   "uid": "6919afeb-9479-4e13-9b4f-8bd2f47a7d72",
+   "question": "Who is Clary Sermina Delgado Cid from Santiago de los Caballeros who is at least 1.75 meters tall and at least 21 years old?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Santiago de los Caballeros' AND people.height >= 1.75 AND people.age >= 21.0 AND people.name = 'Clary Sermina Delgado Cid'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.height",
+    "people.age",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santiago de los Caballeros",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Clary Sermina Delgado Cid",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santiago de los Caballeros",
+    "people.height": 1.75,
+    "people.age": 21.0,
+    "people.name": "Clary Sermina Delgado Cid"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santiago de los Caballeros' and height at least '1.75' and age at least '21.0' and name equal to 'Clary Sermina Delgado Cid'?"
+  },
+  {
+   "uid": "17e16831-1caf-4921-947e-fa85f55d0637",
+   "question": "Which people named Nadia Caba Rodr\u00edguez are from Santo Domingo, at least 1.79 meters tall, and at least 22 years old?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Santo Domingo' AND people.height >= 1.79 AND people.name = 'Nadia Caba Rodr\u00edguez' AND people.age >= 22.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.height",
+    "people.name",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.79,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 22.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santo Domingo",
+    "people.height": 1.79,
+    "people.name": "Nadia Caba Rodr\u00edguez",
+    "people.age": 22.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo' and height at least '1.79' and name equal to 'Nadia Caba Rodr\u00edguez' and age at least '22.0'?"
+  },
+  {
+   "uid": "7748e2b2-861c-48b5-948a-bc6484f068b9",
+   "question": "Which people named Rosa Clarissa Ort\u00edz Melo from La Romana are at least 23 years old and at most 1.81 meters tall?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.age >= 23.0 AND people.hometown = 'La Romana' AND people.height <= 1.81 AND people.name = 'Rosa Clarissa Ort\u00edz Melo'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.age",
+    "people.hometown",
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 23.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "La Romana",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Rosa Clarissa Ort\u00edz Melo",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.age": 23.0,
+    "people.hometown": "La Romana",
+    "people.height": 1.81,
+    "people.name": "Rosa Clarissa Ort\u00edz Melo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at least '23.0' and hometown equal to 'La Romana' and height at most '1.81' and name equal to 'Rosa Clarissa Ort\u00edz Melo'?"
+  },
+  {
+   "uid": "dee863b5-d632-4750-b186-c49eb40bf362",
+   "question": "Who is Elizabeth Qui\u00f1\u00f3nez Aroyo from Santo Domingo who is at least 20 years old?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.age >= 20.0 AND people.hometown = 'Santo Domingo' AND people.name = 'Elizabeth Qui\u00f1\u00f3nez Aroyo'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.age",
+    "people.hometown",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 20.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Qui\u00f1\u00f3nez Aroyo",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.age": 20.0,
+    "people.hometown": "Santo Domingo",
+    "people.name": "Elizabeth Qui\u00f1\u00f3nez Aroyo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at least '20.0' and hometown equal to 'Santo Domingo' and name equal to 'Elizabeth Qui\u00f1\u00f3nez Aroyo'?"
+  },
+  {
+   "uid": "0de36cc8-a229-4685-86d4-70204e6d2925",
+   "question": "Who is Eve Tatiana Cruz Oviedo from Santo Domingo with a height of at least 1.72 and age at most 19?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Santo Domingo' AND people.height >= 1.72 AND people.name = 'Eve Tatiana Cruz Oviedo' AND people.age <= 19.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.height",
+    "people.name",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Eve Tatiana Cruz Oviedo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 19.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santo Domingo",
+    "people.height": 1.72,
+    "people.name": "Eve Tatiana Cruz Oviedo",
+    "people.age": 19.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo' and height at least '1.72' and name equal to 'Eve Tatiana Cruz Oviedo' and age at most '19.0'?"
+  },
+  {
+   "uid": "fc04f197-246a-4357-ba34-2fe325569ff1",
+   "question": "Who is Clary Sermina Delgado Cid from Santiago de los Caballeros who is at most 21 years old and no more than 1.75 meters tall?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Clary Sermina Delgado Cid' AND people.age <= 21.0 AND people.height <= 1.75 AND people.hometown = 'Santiago de los Caballeros'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.age",
+    "people.height",
+    "people.hometown"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Clary Sermina Delgado Cid",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santiago de los Caballeros",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Clary Sermina Delgado Cid",
+    "people.age": 21.0,
+    "people.height": 1.75,
+    "people.hometown": "Santiago de los Caballeros"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Clary Sermina Delgado Cid' and age at most '21.0' and height at most '1.75' and hometown equal to 'Santiago de los Caballeros'?"
+  },
+  {
+   "uid": "bea83019-f030-49fc-b712-df0186ac9d00",
+   "question": "Who is named Nadia Caba Rodr\u00edguez with a height exactly 1.79 and age at least 22?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height = 1.79 AND people.name = 'Nadia Caba Rodr\u00edguez' AND people.age >= 22.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.name",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 1.79,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 22.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 1.79,
+    "people.name": "Nadia Caba Rodr\u00edguez",
+    "people.age": 22.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '1.79' and name equal to 'Nadia Caba Rodr\u00edguez' and age at least '22.0'?"
+  },
+  {
+   "uid": "f1186a96-7acb-4af7-935c-381bb5554403",
+   "question": "Which people named Endis de los Santos \u00c1lvarez are exactly 24 years old, have a height of 1.72, and come from Los Alcarrizos?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.hometown = 'Los Alcarrizos' AND people.height = 1.72 AND people.name = 'Endis de los Santos \u00c1lvarez' AND people.age = 24.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.height",
+    "people.name",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Los Alcarrizos",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 1.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Endis de los Santos \u00c1lvarez",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "=",
+     "value": 24.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Los Alcarrizos",
+    "people.height": 1.72,
+    "people.name": "Endis de los Santos \u00c1lvarez",
+    "people.age": 24.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Los Alcarrizos' and height equal to '1.72' and name equal to 'Endis de los Santos \u00c1lvarez' and age equal to '24.0'?"
+  },
+  {
+   "uid": "b393eeff-06af-4487-8179-1da4383128c9",
+   "question": "Which people named Nadia Caba Rodr\u00edguez from Santo Domingo are exactly 1.79 meters tall and at least 22 years old?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height = 1.79 AND people.hometown = 'Santo Domingo' AND people.age >= 22.0 AND people.name = 'Nadia Caba Rodr\u00edguez'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.hometown",
+    "people.age",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 1.79,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 22.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 1.79,
+    "people.hometown": "Santo Domingo",
+    "people.age": 22.0,
+    "people.name": "Nadia Caba Rodr\u00edguez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '1.79' and hometown equal to 'Santo Domingo' and age at least '22.0' and name equal to 'Nadia Caba Rodr\u00edguez'?"
+  },
+  {
+   "uid": "1db18f76-0365-472b-8992-15d6c52b3fa9",
+   "question": "Who is named Rosa Clarissa Ort\u00edz Melo, is from La Romana, has a height of exactly 1.81, and is at most 23 years old?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Rosa Clarissa Ort\u00edz Melo' AND people.age <= 23.0 AND people.hometown = 'La Romana' AND people.height = 1.81",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.age",
+    "people.hometown",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Rosa Clarissa Ort\u00edz Melo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 23.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "La Romana",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 1.81,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Rosa Clarissa Ort\u00edz Melo",
+    "people.age": 23.0,
+    "people.hometown": "La Romana",
+    "people.height": 1.81
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Rosa Clarissa Ort\u00edz Melo' and age at most '23.0' and hometown equal to 'La Romana' and height equal to '1.81'?"
+  },
+  {
+   "uid": "90c43975-f3b3-46cd-945c-b67a53846a71",
+   "question": "Which people who are gymnasts are at least 1.75 meters tall?",
+   "answer_row_ids": [
+    2,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 4,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.height >= 1.75",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.75,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 1.75
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '1.75', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id)?"
+  },
+  {
+   "uid": "0e1752e0-75cb-4758-b30a-7a6045d5dd16",
+   "question": "Which people scored at least 9.737 points on the horizontal bar in gymnastics?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.horizontal_bar_points >= 9.737",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.horizontal_bar_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.737,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.horizontal_bar_points": 9.737
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with horizontal bar points at least '9.737'?"
+  },
+  {
+   "uid": "dd8b0d6e-6153-4653-a6e8-5d51eaf32cf7",
+   "question": "Which people have a total gymnast score of exactly 57.424 with vault points exactly 9.537?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.total_points = 57.424 AND gymnast.vault_points = 9.537",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.total_points",
+    "gymnast.vault_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "=",
+     "value": 57.424,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "=",
+     "value": 9.537,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.total_points": 57.424,
+    "gymnast.vault_points": 9.537
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points equal to '57.424' and vault points equal to '9.537'?"
+  },
+  {
+   "uid": "4c1bd908-38f7-47a4-8e90-09abad7cf99b",
+   "question": "Which people have a pommel horse score of exactly 9.525 in gymnastics?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.pommel_horse_points = 9.525",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.pommel_horse_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "=",
+     "value": 9.525,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.pommel_horse_points": 9.525
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with pommel horse points equal to '9.525'?"
+  },
+  {
+   "uid": "c0201aa7-a702-41e0-a6fb-f202fc275f60",
+   "question": "What people aged at most 21 are gymnasts?",
+   "answer_row_ids": [
+    2,
+    4,
+    7,
+    8
+   ],
+   "answer_count": 4,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.age <= 21.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.age": 21.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at most '21.0', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id)?"
+  },
+  {
+   "uid": "98776eda-24fc-40df-8588-6e7318390221",
+   "question": "Which people are gymnasts with rings points exactly 9.712?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.rings_points = 9.712",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.rings_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "=",
+     "value": 9.712,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.rings_points": 9.712
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with rings points equal to '9.712'?"
+  },
+  {
+   "uid": "72f8e638-3f03-4c6d-93c2-4664b9df3027",
+   "question": "Which people named Nadia Caba Rodr\u00edguez are also gymnasts?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.name = 'Nadia Caba Rodr\u00edguez'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Nadia Caba Rodr\u00edguez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Nadia Caba Rodr\u00edguez', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id)?"
+  },
+  {
+   "uid": "1ed6a85f-dd67-4d42-a9c4-122dd8811097",
+   "question": "Which people who are at least 1.72 meters tall scored exactly 9.625 points on the parallel bars?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.parallel_bars_points = 9.625 AND people.height >= 1.72",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.parallel_bars_points",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "=",
+     "value": 9.625,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.72,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.parallel_bars_points": 9.625,
+    "people.height": 1.72
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '1.72', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with parallel bars points equal to '9.625'?"
+  },
+  {
+   "uid": "a60269e7-f870-4dd7-be13-c0e8ac59c8d7",
+   "question": "Which people have a pommel horse score of at least 9.525 as gymnasts?",
+   "answer_row_ids": [
+    1,
+    2,
+    4,
+    7,
+    8,
+    10
+   ],
+   "answer_count": 6,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.pommel_horse_points >= 9.525",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.pommel_horse_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": ">=",
+     "value": 9.525,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.pommel_horse_points": 9.525
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with pommel horse points at least '9.525'?"
+  },
+  {
+   "uid": "380a8a7d-c34b-42a5-a93f-f6e519c235ca",
+   "question": "Which people have horizontal bar points of at least 9.412 as gymnasts?",
+   "answer_row_ids": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    8,
+    10
+   ],
+   "answer_count": 7,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.horizontal_bar_points >= 9.412",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.horizontal_bar_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.412,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.horizontal_bar_points": 9.412
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with horizontal bar points at least '9.412'?"
+  },
+  {
+   "uid": "e1e40628-52b7-4454-854a-ece0d82580ca",
+   "question": "Which people who are exactly 1.79 meters tall and 22 years old, with hometown exactly Santo Domingo, have gymnastic scores including total points at least 57.436, horizontal bar points exactly 9.55, rings points at least 9.475, pommel horse points at most 9.325, and vault points at least 9.762?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.height = 1.79 AND people.age = 22.0 AND gymnast.total_points >= 57.436 AND gymnast.horizontal_bar_points = 9.55 AND people.hometown = 'Santo Domingo' AND gymnast.rings_points >= 9.475 AND gymnast.pommel_horse_points <= 9.325 AND gymnast.vault_points >= 9.762",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.age",
+    "gymnast.total_points",
+    "gymnast.horizontal_bar_points",
+    "people.hometown",
+    "gymnast.rings_points",
+    "gymnast.pommel_horse_points",
+    "gymnast.vault_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 1.79,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "=",
+     "value": 22.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": ">=",
+     "value": 57.436,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "=",
+     "value": 9.55,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": ">=",
+     "value": 9.475,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "<=",
+     "value": 9.325,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": ">=",
+     "value": 9.762,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 1.79,
+    "people.age": 22.0,
+    "gymnast.total_points": 57.436,
+    "gymnast.horizontal_bar_points": 9.55,
+    "people.hometown": "Santo Domingo",
+    "gymnast.rings_points": 9.475,
+    "gymnast.pommel_horse_points": 9.325,
+    "gymnast.vault_points": 9.762
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '1.79' and age equal to '22.0' and hometown equal to 'Santo Domingo', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points at least '57.436' and horizontal bar points equal to '9.55' and rings points at least '9.475' and pommel horse points at most '9.325' and vault points at least '9.762'?"
+  },
+  {
+   "uid": "1ef004e7-b80b-4456-b276-baf41e625d66",
+   "question": "Which people named Paul Hamm are at least 24 years old, no more than 1.71 meters tall, and have gymnastic scores with exactly 9.75 on the horizontal bar, floor exercise at most 9.725, and total points at most 58.061?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.total_points <= 58.061 AND people.name = 'Paul Hamm' AND gymnast.horizontal_bar_points = 9.75 AND people.age >= 24.0 AND gymnast.floor_exercise_points <= 9.725 AND people.height <= 1.71",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.total_points",
+    "people.name",
+    "gymnast.horizontal_bar_points",
+    "people.age",
+    "gymnast.floor_exercise_points",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 58.061,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Hamm",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "=",
+     "value": 9.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "<=",
+     "value": 9.725,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.71,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.total_points": 58.061,
+    "people.name": "Paul Hamm",
+    "gymnast.horizontal_bar_points": 9.75,
+    "people.age": 24.0,
+    "gymnast.floor_exercise_points": 9.725,
+    "people.height": 1.71
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Paul Hamm' and age at least '24.0' and height at most '1.71', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points at most '58.061' and horizontal bar points equal to '9.75' and floor exercise points at most '9.725'?"
+  },
+  {
+   "uid": "22f82171-dd56-452a-82c2-7fcee815f11c",
+   "question": "Which people named Paul Hamm, from Santo Domingo, who are at least 24 years old and 1.71 meters tall, have horizontal bar scores of at least 9.75 but floor exercise, vault, and rings scores of at most 9.725, 9.575, and 9.512 respectively?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.horizontal_bar_points >= 9.75 AND people.name = 'Paul Hamm' AND people.height >= 1.71 AND gymnast.floor_exercise_points <= 9.725 AND people.age >= 24.0 AND gymnast.vault_points <= 9.575 AND gymnast.rings_points <= 9.512 AND people.hometown = 'Santo Domingo'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.horizontal_bar_points",
+    "people.name",
+    "people.height",
+    "gymnast.floor_exercise_points",
+    "people.age",
+    "gymnast.vault_points",
+    "gymnast.rings_points",
+    "people.hometown"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Hamm",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.71,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "<=",
+     "value": 9.725,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "<=",
+     "value": 9.575,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "<=",
+     "value": 9.512,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "gymnast.horizontal_bar_points": 9.75,
+    "people.name": "Paul Hamm",
+    "people.height": 1.71,
+    "gymnast.floor_exercise_points": 9.725,
+    "people.age": 24.0,
+    "gymnast.vault_points": 9.575,
+    "gymnast.rings_points": 9.512,
+    "people.hometown": "Santo Domingo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Paul Hamm' and height at least '1.71' and age at least '24.0' and hometown equal to 'Santo Domingo', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with horizontal bar points at least '9.75' and floor exercise points at most '9.725' and vault points at most '9.575' and rings points at most '9.512'?"
+  },
+  {
+   "uid": "5069c6ee-052b-4de5-8152-518cf953a358",
+   "question": "Who is Elizabeth Qui\u00f1\u00f3nez Aroyo from Santo Domingo, at least 20 years old, with total points at most 57.649, parallel bars points at most 9.787, pommel horse points at least 9.75, rings points at most 9.75, and horizontal bar points at least 9.725?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.name = 'Elizabeth Qui\u00f1\u00f3nez Aroyo' AND gymnast.total_points <= 57.649 AND gymnast.parallel_bars_points <= 9.787 AND gymnast.pommel_horse_points >= 9.75 AND gymnast.rings_points <= 9.75 AND people.age >= 20.0 AND people.hometown = 'Santo Domingo' AND gymnast.horizontal_bar_points >= 9.725",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.name",
+    "gymnast.total_points",
+    "gymnast.parallel_bars_points",
+    "gymnast.pommel_horse_points",
+    "gymnast.rings_points",
+    "people.age",
+    "people.hometown",
+    "gymnast.horizontal_bar_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Qui\u00f1\u00f3nez Aroyo",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 57.649,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "<=",
+     "value": 9.787,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": ">=",
+     "value": 9.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "<=",
+     "value": 9.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 20.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.725,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Elizabeth Qui\u00f1\u00f3nez Aroyo",
+    "gymnast.total_points": 57.649,
+    "gymnast.parallel_bars_points": 9.787,
+    "gymnast.pommel_horse_points": 9.75,
+    "gymnast.rings_points": 9.75,
+    "people.age": 20.0,
+    "people.hometown": "Santo Domingo",
+    "gymnast.horizontal_bar_points": 9.725
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Elizabeth Qui\u00f1\u00f3nez Aroyo' and age at least '20.0' and hometown equal to 'Santo Domingo', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points at most '57.649' and parallel bars points at most '9.787' and pommel horse points at least '9.75' and rings points at most '9.75' and horizontal bar points at least '9.725'?"
+  },
+  {
+   "uid": "01021246-78ef-4864-ae7f-eefe7788ee84",
+   "question": "What people from Los Alcarrizos who are at least 1.72 meters tall have gymnastic scores where the horizontal bar points are exactly 9.55, parallel bars points are exactly 9.625, rings points are at most 9.712, pommel horse points are at least 9.525, and total points are at most 57.374?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.rings_points <= 9.712 AND gymnast.pommel_horse_points >= 9.525 AND gymnast.total_points <= 57.374 AND people.hometown = 'Los Alcarrizos' AND people.height >= 1.72 AND gymnast.horizontal_bar_points = 9.55 AND gymnast.parallel_bars_points = 9.625",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.rings_points",
+    "gymnast.pommel_horse_points",
+    "gymnast.total_points",
+    "people.hometown",
+    "people.height",
+    "gymnast.horizontal_bar_points",
+    "gymnast.parallel_bars_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "<=",
+     "value": 9.712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": ">=",
+     "value": 9.525,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 57.374,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Los Alcarrizos",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "=",
+     "value": 9.55,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "=",
+     "value": 9.625,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.rings_points": 9.712,
+    "gymnast.pommel_horse_points": 9.525,
+    "gymnast.total_points": 57.374,
+    "people.hometown": "Los Alcarrizos",
+    "people.height": 1.72,
+    "gymnast.horizontal_bar_points": 9.55,
+    "gymnast.parallel_bars_points": 9.625
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Los Alcarrizos' and height at least '1.72', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with rings points at most '9.712' and pommel horse points at least '9.525' and total points at most '57.374' and horizontal bar points equal to '9.55' and parallel bars points equal to '9.625'?"
+  },
+  {
+   "uid": "ca40c451-7560-42ac-98ef-ae992aeccdf1",
+   "question": "Who is named Nadia Caba Rodr\u00edguez, is at least 22 years old, has total gymnast points of at least 57.436, rings points of at least 9.475, and pommel horse, vault, floor exercise, and parallel bars points of at most 9.325, 9.762, 9.762, and 9.562 respectively?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.pommel_horse_points <= 9.325 AND gymnast.rings_points >= 9.475 AND gymnast.vault_points <= 9.762 AND people.name = 'Nadia Caba Rodr\u00edguez' AND gymnast.floor_exercise_points <= 9.762 AND gymnast.total_points >= 57.436 AND gymnast.parallel_bars_points <= 9.562 AND people.age >= 22.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.pommel_horse_points",
+    "gymnast.rings_points",
+    "gymnast.vault_points",
+    "people.name",
+    "gymnast.floor_exercise_points",
+    "gymnast.total_points",
+    "gymnast.parallel_bars_points",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "<=",
+     "value": 9.325,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": ">=",
+     "value": 9.475,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "<=",
+     "value": 9.762,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "<=",
+     "value": 9.762,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": ">=",
+     "value": 57.436,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "<=",
+     "value": 9.562,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 22.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.pommel_horse_points": 9.325,
+    "gymnast.rings_points": 9.475,
+    "gymnast.vault_points": 9.762,
+    "people.name": "Nadia Caba Rodr\u00edguez",
+    "gymnast.floor_exercise_points": 9.762,
+    "gymnast.total_points": 57.436,
+    "gymnast.parallel_bars_points": 9.562,
+    "people.age": 22.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Nadia Caba Rodr\u00edguez' and age at least '22.0', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with pommel horse points at most '9.325' and rings points at least '9.475' and vault points at most '9.762' and floor exercise points at most '9.762' and total points at least '57.436' and parallel bars points at most '9.562'?"
+  },
+  {
+   "uid": "6abcd4e4-8fa1-4eb4-ab42-e4c1179e4abd",
+   "question": "Which people named Nadia Caba Rodr\u00edguez, from Santo Domingo, who are at most 1.79 meters tall, have at least 9.762 points on vault and floor exercise, but at most 9.55 on horizontal bar and no more than 9.325 on pommel horse?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.name = 'Nadia Caba Rodr\u00edguez' AND gymnast.horizontal_bar_points <= 9.55 AND gymnast.vault_points >= 9.762 AND people.hometown = 'Santo Domingo' AND gymnast.floor_exercise_points >= 9.762 AND gymnast.pommel_horse_points <= 9.325 AND people.height <= 1.79",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.name",
+    "gymnast.horizontal_bar_points",
+    "gymnast.vault_points",
+    "people.hometown",
+    "gymnast.floor_exercise_points",
+    "gymnast.pommel_horse_points",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Nadia Caba Rodr\u00edguez",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "<=",
+     "value": 9.55,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": ">=",
+     "value": 9.762,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": ">=",
+     "value": 9.762,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "<=",
+     "value": 9.325,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.79,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Nadia Caba Rodr\u00edguez",
+    "gymnast.horizontal_bar_points": 9.55,
+    "gymnast.vault_points": 9.762,
+    "people.hometown": "Santo Domingo",
+    "gymnast.floor_exercise_points": 9.762,
+    "gymnast.pommel_horse_points": 9.325,
+    "people.height": 1.79
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Nadia Caba Rodr\u00edguez' and hometown equal to 'Santo Domingo' and height at most '1.79', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with horizontal bar points at most '9.55' and vault points at least '9.762' and floor exercise points at least '9.762' and pommel horse points at most '9.325'?"
+  },
+  {
+   "uid": "eca7c6aa-e0d5-4435-8e4b-84c45f497a29",
+   "question": "Who are the people from Los Alcarrizos who are at most 24 years old, at least 1.72 meters tall, and have gymnasts with exactly 57.374 total points, 9.525 pommel horse points, 9.625 parallel bars points, and 9.55 horizontal bar points?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.total_points = 57.374 AND people.age <= 24.0 AND gymnast.pommel_horse_points = 9.525 AND people.height >= 1.72 AND gymnast.horizontal_bar_points = 9.55 AND people.hometown = 'Los Alcarrizos' AND gymnast.parallel_bars_points = 9.625",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.total_points",
+    "people.age",
+    "gymnast.pommel_horse_points",
+    "people.height",
+    "gymnast.horizontal_bar_points",
+    "people.hometown",
+    "gymnast.parallel_bars_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "=",
+     "value": 57.374,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "=",
+     "value": 9.525,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "=",
+     "value": 9.55,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Los Alcarrizos",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "=",
+     "value": 9.625,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.total_points": 57.374,
+    "people.age": 24.0,
+    "gymnast.pommel_horse_points": 9.525,
+    "people.height": 1.72,
+    "gymnast.horizontal_bar_points": 9.55,
+    "people.hometown": "Los Alcarrizos",
+    "gymnast.parallel_bars_points": 9.625
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at most '24.0' and height at least '1.72' and hometown equal to 'Los Alcarrizos', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points equal to '57.374' and pommel horse points equal to '9.525' and horizontal bar points equal to '9.55' and parallel bars points equal to '9.625'?"
+  },
+  {
+   "uid": "4ca8ad0e-a07d-4c08-9e55-68439d424c5d",
+   "question": "What people aged at most 21 from Santiago de los Caballeros have at least 9.5 points on the horizontal bar, at least 9.725 on parallel bars, no more than 9.687 on floor exercise, and no more than 9.537 on vault?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.hometown = 'Santiago de los Caballeros' AND gymnast.horizontal_bar_points >= 9.5 AND gymnast.floor_exercise_points <= 9.687 AND gymnast.parallel_bars_points >= 9.725 AND gymnast.vault_points <= 9.537 AND people.age <= 21.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "gymnast.horizontal_bar_points",
+    "gymnast.floor_exercise_points",
+    "gymnast.parallel_bars_points",
+    "gymnast.vault_points",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santiago de los Caballeros",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "<=",
+     "value": 9.687,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": ">=",
+     "value": 9.725,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "<=",
+     "value": 9.537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santiago de los Caballeros",
+    "gymnast.horizontal_bar_points": 9.5,
+    "gymnast.floor_exercise_points": 9.687,
+    "gymnast.parallel_bars_points": 9.725,
+    "gymnast.vault_points": 9.537,
+    "people.age": 21.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santiago de los Caballeros' and age at most '21.0', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with horizontal bar points at least '9.5' and floor exercise points at most '9.687' and parallel bars points at least '9.725' and vault points at most '9.537'?"
+  },
+  {
+   "uid": "a11a282c-affe-4b14-aa25-f3563bc837e6",
+   "question": "Which people from Santo Domingo have exactly 57.398 total points as gymnasts, with vault points at least 9.637, horizontal bar points at least 9.412, pommel horse points at least 9.712, rings points at least 9.487, and parallel bars and floor exercise points at most 9.5 and 9.65 respectively?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.vault_points >= 9.637 AND gymnast.total_points = 57.398 AND gymnast.horizontal_bar_points >= 9.412 AND gymnast.pommel_horse_points >= 9.712 AND gymnast.rings_points >= 9.487 AND gymnast.parallel_bars_points <= 9.5 AND gymnast.floor_exercise_points <= 9.65 AND people.hometown = 'Santo Domingo'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.vault_points",
+    "gymnast.total_points",
+    "gymnast.horizontal_bar_points",
+    "gymnast.pommel_horse_points",
+    "gymnast.rings_points",
+    "gymnast.parallel_bars_points",
+    "gymnast.floor_exercise_points",
+    "people.hometown"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": ">=",
+     "value": 9.637,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "=",
+     "value": 57.398,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.412,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": ">=",
+     "value": 9.712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": ">=",
+     "value": 9.487,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "<=",
+     "value": 9.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "<=",
+     "value": 9.65,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "gymnast.vault_points": 9.637,
+    "gymnast.total_points": 57.398,
+    "gymnast.horizontal_bar_points": 9.412,
+    "gymnast.pommel_horse_points": 9.712,
+    "gymnast.rings_points": 9.487,
+    "gymnast.parallel_bars_points": 9.5,
+    "gymnast.floor_exercise_points": 9.65,
+    "people.hometown": "Santo Domingo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with vault points at least '9.637' and total points equal to '57.398' and horizontal bar points at least '9.412' and pommel horse points at least '9.712' and rings points at least '9.487' and parallel bars points at most '9.5' and floor exercise points at most '9.65'?"
+  },
+  {
+   "uid": "8e80edfd-e7a8-4aae-915e-c563e0a85bee",
+   "question": "What people named Elizabeth Qui\u00f1\u00f3nez Aroyo have a total gymnastics score of at least 57.649, vault points exactly 9.65, floor exercise points exactly 8.987, and horizontal bar points at most 9.725?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.name = 'Elizabeth Qui\u00f1\u00f3nez Aroyo' AND gymnast.total_points >= 57.649 AND gymnast.vault_points = 9.65 AND gymnast.floor_exercise_points = 8.987 AND gymnast.horizontal_bar_points <= 9.725",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.name",
+    "gymnast.total_points",
+    "gymnast.vault_points",
+    "gymnast.floor_exercise_points",
+    "gymnast.horizontal_bar_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Qui\u00f1\u00f3nez Aroyo",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": ">=",
+     "value": 57.649,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "=",
+     "value": 9.65,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "=",
+     "value": 8.987,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "<=",
+     "value": 9.725,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Elizabeth Qui\u00f1\u00f3nez Aroyo",
+    "gymnast.total_points": 57.649,
+    "gymnast.vault_points": 9.65,
+    "gymnast.floor_exercise_points": 8.987,
+    "gymnast.horizontal_bar_points": 9.725
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Elizabeth Qui\u00f1\u00f3nez Aroyo', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points at least '57.649' and vault points equal to '9.65' and floor exercise points equal to '8.987' and horizontal bar points at most '9.725'?"
+  },
+  {
+   "uid": "96fa8ed1-0113-4a18-8096-de5674b2b8c0",
+   "question": "What people named Clary Sermina Delgado Cid have exactly 9.3 rings points, exactly 9.537 vault points, and at least 9.687 floor exercise points?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.name = 'Clary Sermina Delgado Cid' AND gymnast.rings_points = 9.3 AND gymnast.vault_points = 9.537 AND gymnast.floor_exercise_points >= 9.687",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.name",
+    "gymnast.rings_points",
+    "gymnast.vault_points",
+    "gymnast.floor_exercise_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Clary Sermina Delgado Cid",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "=",
+     "value": 9.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "=",
+     "value": 9.537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": ">=",
+     "value": 9.687,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Clary Sermina Delgado Cid",
+    "gymnast.rings_points": 9.3,
+    "gymnast.vault_points": 9.537,
+    "gymnast.floor_exercise_points": 9.687
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Clary Sermina Delgado Cid', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with rings points equal to '9.3' and vault points equal to '9.537' and floor exercise points at least '9.687'?"
+  },
+  {
+   "uid": "3b81cf74-7878-41dc-ad0c-98ae97543cc8",
+   "question": "Which people named Clary Sermina Delgado Cid are at most 1.75 meters tall and have gymnast scores with vault points at most 9.537, floor exercise points at most 9.687, and total points at most 57.424?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.vault_points <= 9.537 AND people.name = 'Clary Sermina Delgado Cid' AND gymnast.floor_exercise_points <= 9.687 AND people.height <= 1.75 AND gymnast.total_points <= 57.424",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.vault_points",
+    "people.name",
+    "gymnast.floor_exercise_points",
+    "people.height",
+    "gymnast.total_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "<=",
+     "value": 9.537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Clary Sermina Delgado Cid",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "<=",
+     "value": 9.687,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.75,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 57.424,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.vault_points": 9.537,
+    "people.name": "Clary Sermina Delgado Cid",
+    "gymnast.floor_exercise_points": 9.687,
+    "people.height": 1.75,
+    "gymnast.total_points": 57.424
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Clary Sermina Delgado Cid' and height at most '1.75', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with vault points at most '9.537' and floor exercise points at most '9.687' and total points at most '57.424'?"
+  },
+  {
+   "uid": "599a2398-cdb0-4868-92f0-706bc4386546",
+   "question": "Who are the people from Santo Domingo whose rings score is exactly 9.487, vault score is exactly 9.637, pommel horse score is at most 9.712, and horizontal bar score is at least 9.412?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.rings_points = 9.487 AND gymnast.pommel_horse_points <= 9.712 AND people.hometown = 'Santo Domingo' AND gymnast.vault_points = 9.637 AND gymnast.horizontal_bar_points >= 9.412",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.rings_points",
+    "gymnast.pommel_horse_points",
+    "people.hometown",
+    "gymnast.vault_points",
+    "gymnast.horizontal_bar_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "=",
+     "value": 9.487,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "<=",
+     "value": 9.712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "=",
+     "value": 9.637,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": ">=",
+     "value": 9.412,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.rings_points": 9.487,
+    "gymnast.pommel_horse_points": 9.712,
+    "people.hometown": "Santo Domingo",
+    "gymnast.vault_points": 9.637,
+    "gymnast.horizontal_bar_points": 9.412
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with rings points equal to '9.487' and pommel horse points at most '9.712' and vault points equal to '9.637' and horizontal bar points at least '9.412'?"
+  },
+  {
+   "uid": "0474f5be-0326-4f6d-aff1-ba02c12367e3",
+   "question": "Which people named Paul Hamm are from Santo Domingo, have a height of at most 1.71, and scored no more than 58.061 total points as gymnasts?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE people.hometown = 'Santo Domingo' AND people.name = 'Paul Hamm' AND gymnast.total_points <= 58.061 AND people.height <= 1.71",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "people.hometown",
+    "people.name",
+    "gymnast.total_points",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "hometown",
+     "operator": "=",
+     "value": "Santo Domingo",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Hamm",
+     "column_type": "enum"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 58.061,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.71,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.hometown": "Santo Domingo",
+    "people.name": "Paul Hamm",
+    "gymnast.total_points": 58.061,
+    "people.height": 1.71
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with hometown equal to 'Santo Domingo' and name equal to 'Paul Hamm' and height at most '1.71', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with total points at most '58.061'?"
+  },
+  {
+   "uid": "c8d38855-e760-4442-9b3d-566dab86ec1a",
+   "question": "Which people aged exactly 24 and at least 1.72 meters tall have gymnasts with pommel horse points of exactly 9.525, horizontal bar points exactly 9.55, and parallel bars points at most 9.625?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.parallel_bars_points <= 9.625 AND gymnast.horizontal_bar_points = 9.55 AND people.age = 24.0 AND people.height >= 1.72 AND gymnast.pommel_horse_points = 9.525",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.parallel_bars_points",
+    "gymnast.horizontal_bar_points",
+    "people.age",
+    "people.height",
+    "gymnast.pommel_horse_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "<=",
+     "value": 9.625,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "horizontal_bar_points",
+     "operator": "=",
+     "value": 9.55,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 1.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "=",
+     "value": 9.525,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.parallel_bars_points": 9.625,
+    "gymnast.horizontal_bar_points": 9.55,
+    "people.age": 24.0,
+    "people.height": 1.72,
+    "gymnast.pommel_horse_points": 9.525
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age equal to '24.0' and height at least '1.72', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with parallel bars points at most '9.625' and horizontal bar points equal to '9.55' and pommel horse points equal to '9.525'?"
+  },
+  {
+   "uid": "b6c20979-c0f1-48d4-93ae-ece5fb10dd46",
+   "question": "What people aged at least 24 have gymnastic scores with pommel horse points at least 9.737, rings points at most 9.512, floor exercise points at least 9.725, and total points no more than 58.061?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.pommel_horse_points >= 9.737 AND gymnast.rings_points <= 9.512 AND people.age >= 24.0 AND gymnast.total_points <= 58.061 AND gymnast.floor_exercise_points >= 9.725",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.pommel_horse_points",
+    "gymnast.rings_points",
+    "people.age",
+    "gymnast.total_points",
+    "gymnast.floor_exercise_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": ">=",
+     "value": 9.737,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "<=",
+     "value": 9.512,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": ">=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 58.061,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": ">=",
+     "value": 9.725,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.pommel_horse_points": 9.737,
+    "gymnast.rings_points": 9.512,
+    "people.age": 24.0,
+    "gymnast.total_points": 58.061,
+    "gymnast.floor_exercise_points": 9.725
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at least '24.0', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with pommel horse points at least '9.737' and rings points at most '9.512' and total points at most '58.061' and floor exercise points at least '9.725'?"
+  },
+  {
+   "uid": "7d63b3a2-e809-43ac-9f96-165d9fcb2a12",
+   "question": "Which people who are at most 1.76 meters tall have gymnastic scores with vault points of at least 9.637, rings points exactly 9.487, and pommel horse points of at least 9.712?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.vault_points >= 9.637 AND people.height <= 1.76 AND gymnast.rings_points = 9.487 AND gymnast.pommel_horse_points >= 9.712",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.vault_points",
+    "people.height",
+    "gymnast.rings_points",
+    "gymnast.pommel_horse_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": ">=",
+     "value": 9.637,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 1.76,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "=",
+     "value": 9.487,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": ">=",
+     "value": 9.712,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.vault_points": 9.637,
+    "people.height": 1.76,
+    "gymnast.rings_points": 9.487,
+    "gymnast.pommel_horse_points": 9.712
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '1.76', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with vault points at least '9.637' and rings points equal to '9.487' and pommel horse points at least '9.712'?"
+  },
+  {
+   "uid": "3ab72aae-815a-4fa2-b283-a9704f9fcefb",
+   "question": "Which people have gymnastic scores where the floor exercise points are exactly 9.412, the vault points are exactly 9.55, and the total points are at most 57.374?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.floor_exercise_points = 9.412 AND gymnast.total_points <= 57.374 AND gymnast.vault_points = 9.55",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.floor_exercise_points",
+    "gymnast.total_points",
+    "gymnast.vault_points"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "floor_exercise_points",
+     "operator": "=",
+     "value": 9.412,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "total_points",
+     "operator": "<=",
+     "value": 57.374,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "=",
+     "value": 9.55,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.floor_exercise_points": 9.412,
+    "gymnast.total_points": 57.374,
+    "gymnast.vault_points": 9.55
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with floor exercise points equal to '9.412' and total points at most '57.374' and vault points equal to '9.55'?"
+  },
+  {
+   "uid": "e6224afd-cd0d-43b3-a5ba-2309e6cc1dee",
+   "question": "Which people aged at most 24 have gymnastic scores exactly 9.575 on vault, 9.762 on parallel bars, and 9.737 on pommel horse, with rings points at most 9.512?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN gymnast ON people.people_id = gymnast.gymnast_id\nWHERE gymnast.vault_points = 9.575 AND gymnast.parallel_bars_points = 9.762 AND gymnast.pommel_horse_points = 9.737 AND gymnast.rings_points <= 9.512 AND people.age <= 24.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "gymnast"
+   ],
+   "involved_columns": [
+    "gymnast.vault_points",
+    "gymnast.parallel_bars_points",
+    "gymnast.pommel_horse_points",
+    "gymnast.rings_points",
+    "people.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "gymnast",
+     "column": "vault_points",
+     "operator": "=",
+     "value": 9.575,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "parallel_bars_points",
+     "operator": "=",
+     "value": 9.762,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "pommel_horse_points",
+     "operator": "=",
+     "value": 9.737,
+     "column_type": "numeric"
+    },
+    {
+     "table": "gymnast",
+     "column": "rings_points",
+     "operator": "<=",
+     "value": 9.512,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "age",
+     "operator": "<=",
+     "value": 24.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "gymnast.vault_points": 9.575,
+    "gymnast.parallel_bars_points": 9.762,
+    "gymnast.pommel_horse_points": 9.737,
+    "gymnast.rings_points": 9.512,
+    "people.age": 24.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with age at most '24.0', having at least one related gymnast record (linked on people.people_id = gymnast.gymnast_id) with vault points equal to '9.575' and parallel bars points equal to '9.762' and pommel horse points equal to '9.737' and rings points at most '9.512'?"
+  }
+ ]
+}

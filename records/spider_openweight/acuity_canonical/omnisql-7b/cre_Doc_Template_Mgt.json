@@ -1,0 +1,124 @@
+{
+  "db_id": "cre_Doc_Template_Mgt",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:20:41.693734+00:00",
+  "records": [
+    {
+      "uid": "0e535e9a-bd05-4649-9d5d-b1524ef39408",
+      "question": "Which template types where the description is CV have templates with version number exactly 9, effective from 1986-12-09 14:51:36 and effective to at least 1993-03-24 14:30:23?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE templates.version_number = 9 AND ref_template_types.template_type_description = 'CV' AND templates.date_effective_to >= '1993-03-24 14:30:23' AND templates.date_effective_from = '1986-12-09 14:51:36'",
+      "pred_sql": "SELECT DISTINCT rtt.Template_Type_Code\nFROM Ref_Template_Types rtt\nJOIN Templates t ON rtt.Template_Type_Code = t.Template_Type_Code\nWHERE rtt.Template_Type_Description = 'CV'\n  AND t.Version_Number = 9\n  AND t.Date_Effective_To >= '1993-03-24 14:30:23'\n  AND t.Date_Effective_From <= '1986-12-09 14:51:36'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.46
+    },
+    {
+      "uid": "2595fa2b-87b1-4cc6-9bcd-8eb8df8de30c",
+      "question": "Which template types described as Paper have templates with version number exactly 5?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE ref_template_types.template_type_description = 'Paper' AND templates.version_number = 5",
+      "pred_sql": "SELECT DISTINCT Ref_Template_Types.Template_Type_Code\nFROM Ref_Template_Types\nJOIN Templates ON Ref_Template_Types.Template_Type_Code = Templates.Template_Type_Code\nWHERE Ref_Template_Types.Template_Type_Description = 'Paper'\nAND Templates.Version_Number = 5",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 30.16
+    },
+    {
+      "uid": "3dc95295-9cec-4dc8-a18b-e5e36ce180be",
+      "question": "What template types have templates effective on or before 2005-02-20 00:31:34?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE templates.date_effective_from <= '2005-02-20 00:31:34'",
+      "pred_sql": "SELECT DISTINCT T1.Template_Type_Code\nFROM Ref_Template_Types AS T1\nINNER JOIN Templates AS T2 ON T1.Template_Type_Code = T2.Template_Type_Code\nWHERE T2.Date_Effective_From <= '2005-02-20 00:31:34'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 32.95
+    },
+    {
+      "uid": "3efe79fe-ae30-423b-8336-0667ada88bd3",
+      "question": "What template types have a description that is exactly CV?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nWHERE ref_template_types.template_type_description = 'CV'",
+      "pred_sql": "SELECT template_type_code\nFROM Ref_Template_Types\nWHERE template_type_description = 'CV'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 19.49
+    },
+    {
+      "uid": "5b772e5f-0854-46b9-87b1-e8baed21fad6",
+      "question": "Which template types have associated templates that end exactly on 2006-02-06 23:52:04?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE templates.date_effective_to = '2006-02-06 23:52:04'",
+      "pred_sql": "SELECT DISTINCT rtt.Template_Type_Code\nFROM Ref_Template_Types rtt\nJOIN Templates t ON rtt.Template_Type_Code = t.Template_Type_Code\nWHERE t.Date_Effective_To = '2006-02-06 23:52:04'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 31.8
+    },
+    {
+      "uid": "5f388732-f905-4096-927e-932bc1b7b191",
+      "question": "Which template types have a description that is exactly Book?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nWHERE ref_template_types.template_type_description = 'Book'",
+      "pred_sql": "SELECT template_type_code\nFROM Ref_Template_Types\nWHERE template_type_description = 'Book'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.6
+    },
+    {
+      "uid": "990293f6-2022-4176-83b8-e375ddbdce64",
+      "question": "Which template types have a description that is exactly Presentation?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nWHERE ref_template_types.template_type_description = 'Presentation'",
+      "pred_sql": "SELECT template_type_code\nFROM Ref_Template_Types\nWHERE template_type_description = 'Presentation'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.6
+    },
+    {
+      "uid": "d763136c-73cb-4613-ba5a-57b50ab48c1d",
+      "question": "What template types are described as Book and have templates with version 2 that started on or before 1979-12-24 10:28:16 and ended exactly on 2000-10-22 11:57:12?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE ref_template_types.template_type_description = 'Book' AND templates.date_effective_from <= '1979-12-24 10:28:16' AND templates.date_effective_to = '2000-10-22 11:57:12' AND templates.version_number = 2",
+      "pred_sql": "SELECT DISTINCT Ref_Template_Types.Template_Type_Code\nFROM Ref_Template_Types\nINNER JOIN Templates ON Ref_Template_Types.Template_Type_Code = Templates.Template_Type_Code\nWHERE Ref_Template_Types.Template_Type_Description = 'Book'\nAND Templates.Date_Effective_From <= '1979-12-24 10:28:16'\nAND Templates.Date_Effective_To = '2000-10-22 11:57:12'\nAND Templates.Version_Number = 2",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 33.5
+    },
+    {
+      "uid": "d9c76205-2a05-4194-a47f-b0f83dc133e6",
+      "question": "Which template types where the description is Paper have templates with version number exactly 5, date effective from on or before 2005-11-12 07:09:48, and date effective to exactly 2008-01-05 14:19:28?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nJOIN templates ON ref_template_types.template_type_code = templates.template_type_code\nWHERE templates.date_effective_from <= '2005-11-12 07:09:48' AND templates.version_number = 5 AND ref_template_types.template_type_description = 'Paper' AND templates.date_effective_to = '2008-01-05 14:19:28'",
+      "pred_sql": "SELECT DISTINCT rtt.Template_Type_Code\nFROM Ref_Template_Types rtt\nINNER JOIN Templates t ON rtt.Template_Type_Code = t.Template_Type_Code\nWHERE rtt.Template_Type_Description = 'Paper'\n  AND t.Date_Effective_From <= '2005-11-12 07:09:48'\n  AND t.Version_Number = 5\n  AND t.Date_Effective_To = '2008-01-05 14:19:28'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.12
+    },
+    {
+      "uid": "eefd82cc-4212-4e36-b6a4-8845685486aa",
+      "question": "What template types have a description that is exactly Paper?",
+      "gold_sql": "SELECT ref_template_types.template_type_code FROM ref_template_types\nWHERE ref_template_types.template_type_description = 'Paper'",
+      "pred_sql": "SELECT template_type_code\nFROM Ref_Template_Types\nWHERE template_type_description = 'Paper'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.6
+    }
+  ]
+}

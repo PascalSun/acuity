@@ -1,0 +1,124 @@
+{
+  "db_id": "tvshow",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:58:05.105977+00:00",
+  "records": [
+    {
+      "uid": "3de99ffc-1217-4977-a1a6-56ea40f790c6",
+      "question": "What tv channels in Italy are part of the Classica series, broadcast in Italian, included in the Option package, and are not pay-per-view?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nWHERE tv_channel.series_name = 'Classica' AND tv_channel.pay_per_view_ppv = 'no' AND tv_channel.country = 'Italy' AND tv_channel.language = 'Italian' AND tv_channel.package_option = 'Option'",
+      "pred_sql": "SELECT id \nFROM TV_Channel \nWHERE series_name = 'Classica' \n  AND Pay_per_view_PPV = 'no' \n  AND Country = 'Italy' \n  AND Language = 'Italian' \n  AND Package_Option = 'Option'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 26.6
+    },
+    {
+      "uid": "6d7b2eb4-59b6-4ed5-be05-36ec8e365fd9",
+      "question": "Which TV channels in the United Kingdom aired the cartoon titled Journey to the Center of the Bat! directed by Michael Chang?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nJOIN cartoon ON tv_channel.id = cartoon.channel\nWHERE cartoon.title = 'Journey to the Center of the Bat!' AND cartoon.directed_by = 'Michael Chang' AND tv_channel.country = 'United Kingdom'",
+      "pred_sql": "SELECT DISTINCT TV_Channel.id\nFROM TV_Channel\nINNER JOIN Cartoon ON TV_Channel.id = Cartoon.Channel\nWHERE TV_Channel.Country = 'United Kingdom'\n  AND Cartoon.Title = 'Journey to the Center of the Bat!'\n  AND Cartoon.Directed_by = 'Michael Chang'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.33
+    },
+    {
+      "uid": "7038cfe6-c785-4f14-beee-566d7c8d03db",
+      "question": "Which TV channels under the Music Box Italia series broadcast in Italy in Italian, are not high definition or pay-per-view, and are included in the Sky Famiglia package?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nWHERE tv_channel.series_name = 'Music Box Italia' AND tv_channel.country = 'Italy' AND tv_channel.hight_definition_tv = 'no' AND tv_channel.language = 'Italian' AND tv_channel.pay_per_view_ppv = 'no' AND tv_channel.package_option = 'Sky Famiglia'",
+      "pred_sql": "SELECT id \nFROM TV_Channel \nWHERE series_name = 'Music Box Italia' \n  AND Country = 'Italy' \n  AND Hight_definition_TV = 'no' \n  AND Language = 'Italian' \n  AND Pay_per_view_PPV = 'no' \n  AND Package_Option = 'Sky Famiglia'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 39.05
+    },
+    {
+      "uid": "711cab90-df62-4dd4-bc17-276a9bd43d45",
+      "question": "Which TV channels that have a pixel aspect ratio of 4:3 and belong to the Sky Famiglia package, with music content, also air cartoons titled The Rise of the Blue Beetle! written by Michael Jelenic and TV series with a weekly rank of 71.0, share of 6.0, and rating of 3.7?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nJOIN tv_series ON tv_channel.id = tv_series.channel\nJOIN cartoon ON tv_channel.id = cartoon.channel\nWHERE tv_series.weekly_rank = 71.0 AND tv_series.share = 6.0 AND cartoon.written_by = 'Michael Jelenic' AND tv_series.rating = '3.7' AND tv_channel.pixel_aspect_ratio_par = '4:3' AND tv_channel.package_option = 'Sky Famiglia' AND tv_channel.content = 'music' AND cartoon.title = 'The Rise of the Blue Beetle!'",
+      "pred_sql": "SELECT DISTINCT TC.id\nFROM TV_Channel AS TC\nINNER JOIN TV_series AS TS\n    ON TC.id = TS.Channel\nINNER JOIN Cartoon AS C\n    ON TC.id = C.Channel\nWHERE TC.Pixel_aspect_ratio_PAR = '4:3'\n  AND TC.Package_Option = 'Sky Famiglia'\n  AND TC.Content = 'music'\n  AND TS.Weekly_Rank = '71.0'\n  AND TS.Share = '6.0'\n  AND TS.Rating = '3.7'\n  AND C.Written_by = 'Michael Jelenic'\n  AND C.Title = 'The Rise of the Blue Beetle!'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 56.59
+    },
+    {
+      "uid": "75090425-266d-40c8-b207-dcfc3407fbd1",
+      "question": "Which TV channels have cartoons and also air series where the rating is exactly 3.7?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nJOIN tv_series ON tv_channel.id = tv_series.channel\nJOIN cartoon ON tv_channel.id = cartoon.channel\nWHERE tv_series.rating = '3.7'",
+      "pred_sql": "SELECT DISTINCT TC.id\nFROM TV_Channel AS TC\nINNER JOIN TV_series AS TS\n    ON TC.id = TS.Channel\n    AND TS.Rating = '3.7'\nINNER JOIN Cartoon AS C\n    ON TC.id = C.Channel",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.51
+    },
+    {
+      "uid": "760c4a22-6a68-4184-9400-81bc8c842e27",
+      "question": "Which Italian tv channels that are not high definition have cartoons?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nJOIN cartoon ON tv_channel.id = cartoon.channel\nWHERE tv_channel.language = 'Italian' AND tv_channel.hight_definition_tv = 'no'",
+      "pred_sql": "SELECT DISTINCT T1.id\nFROM TV_Channel AS T1\nINNER JOIN Cartoon AS T2 ON T1.id = T2.Channel\nWHERE T1.Language = 'Italian' AND T1.Hight_definition_TV = 'no'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 51.24
+    },
+    {
+      "uid": "91671bb8-9ab6-45f9-aa04-62a04fff6284",
+      "question": "Which TV channels are included in the Sky Famiglia package and are not available in high definition?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nWHERE tv_channel.package_option = 'Sky Famiglia' AND tv_channel.hight_definition_tv = 'no'",
+      "pred_sql": "SELECT id \nFROM TV_Channel \nWHERE Package_Option = 'Sky Famiglia' \n  AND Hight_definition_TV = 'no'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 24.79
+    },
+    {
+      "uid": "a437326d-835c-46c6-8582-47786637a96f",
+      "question": "Which English-language TV channels have series with a share of at most 7.0 and also air cartoons written by Steven Melching?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nJOIN tv_series ON tv_channel.id = tv_series.channel\nJOIN cartoon ON tv_channel.id = cartoon.channel\nWHERE tv_channel.language = 'English' AND tv_series.share <= 7.0 AND cartoon.written_by = 'Steven Melching'",
+      "pred_sql": "SELECT DISTINCT TC.id\nFROM TV_Channel AS TC\nINNER JOIN TV_series AS TS\n    ON TC.id = TS.Channel\n    AND TS.Share <= 7.0\nINNER JOIN Cartoon AS C\n    ON TC.id = C.Channel\n    AND C.Written_by = 'Steven Melching'\nWHERE TC.Language = 'English'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 52.99
+    },
+    {
+      "uid": "b1f3a735-f777-446d-b9fb-9e14890ebd92",
+      "question": "Which TV channels where content is music, series name is MTV Rocks, package option is Sky Famiglia, and that are not high definition air the cartoon Enter the Outsiders! with a production code of at least 106.0?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nJOIN cartoon ON tv_channel.id = cartoon.channel\nWHERE tv_channel.content = 'music' AND tv_channel.hight_definition_tv = 'no' AND cartoon.title = 'Enter the Outsiders!' AND tv_channel.series_name = 'MTV Rocks' AND cartoon.production_code >= 106.0 AND tv_channel.package_option = 'Sky Famiglia'",
+      "pred_sql": "SELECT DISTINCT TC.id\nFROM TV_Channel AS TC\nINNER JOIN Cartoon AS C\nON TC.id = C.Channel\nWHERE TC.Content = 'music'\n  AND TC.Hight_definition_TV = 'no'\n  AND TC.Series_name = 'MTV Rocks'\n  AND TC.Package_Option = 'Sky Famiglia'\n  AND C.Title = 'Enter the Outsiders!'\n  AND C.Production_code >= 106.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 58.12
+    },
+    {
+      "uid": "d0406432-346a-4d35-a196-e4dcef12332e",
+      "question": "Which TV channels have content that is music and belong to the series name MTV Live HD?",
+      "gold_sql": "SELECT tv_channel.id FROM tv_channel\nWHERE tv_channel.content = 'music' AND tv_channel.series_name = 'MTV Live HD'",
+      "pred_sql": "SELECT id \nFROM TV_Channel \nWHERE Content = 'music' AND series_name = 'MTV Live HD'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 15.92
+    }
+  ]
+}

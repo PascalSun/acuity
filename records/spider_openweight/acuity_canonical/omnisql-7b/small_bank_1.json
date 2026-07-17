@@ -1,0 +1,124 @@
+{
+  "db_id": "small_bank_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:41:49.411217+00:00",
+  "records": [
+    {
+      "uid": "4a6e8792-19aa-4e8e-9e5d-db7ce41762a1",
+      "question": "Which accounts belong to customers named Brown who have at least 200000.0 in savings and exactly 10000.0 in checking balances?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE accounts.name = 'Brown' AND savings.balance >= 200000.0 AND checking.balance = 10000.0",
+      "pred_sql": "SELECT a.custid\nFROM accounts a\nINNER JOIN savings s ON a.custid = s.custid\nINNER JOIN checking c ON a.custid = c.custid\nWHERE a.name = 'Brown'\n  AND s.balance >= 200000.0\n  AND c.balance = 10000.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.76
+    },
+    {
+      "uid": "5cccc32b-e5cb-4ab3-9d9e-bae08b780575",
+      "question": "Which accounts have savings balances of at most 240.0 and checking balances of at least 77.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE savings.balance <= 240.0 AND checking.balance >= 77.0",
+      "pred_sql": "SELECT DISTINCT a.custid\nFROM accounts a\nINNER JOIN savings s ON a.custid = s.custid AND s.balance <= 240.0\nINNER JOIN checking c ON a.custid = c.custid AND c.balance >= 77.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 32.45
+    },
+    {
+      "uid": "5fc17454-3193-44ec-b33d-d63163b0e8f7",
+      "question": "Which accounts belong to customers named Brown who have at least 10000.0 in their checking balance?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN checking ON accounts.custid = checking.custid\nWHERE checking.balance >= 10000.0 AND accounts.name = 'Brown'",
+      "pred_sql": "SELECT accounts.custid\nFROM accounts\nINNER JOIN checking ON accounts.custid = checking.custid\nWHERE accounts.name = 'Brown' AND checking.balance >= 10000.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.66
+    },
+    {
+      "uid": "90f93c3f-26fb-4698-847b-29d3a5636d4b",
+      "question": "Which accounts have the name Porter with a savings balance exactly 240.0 and a checking balance at most 77.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE savings.balance = 240.0 AND checking.balance <= 77.0 AND accounts.name = 'Porter'",
+      "pred_sql": "SELECT a.custid\nFROM accounts a\nINNER JOIN savings s ON a.custid = s.custid\nINNER JOIN checking c ON a.custid = c.custid\nWHERE a.name = 'Porter'\n  AND s.balance = 240.0\n  AND c.balance <= 77.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.75
+    },
+    {
+      "uid": "9e9c1059-2bcd-4a35-898b-0687114a8b39",
+      "question": "Which accounts have the name Wesley?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nWHERE accounts.name = 'Wesley'",
+      "pred_sql": "SELECT custid\nFROM ACCOUNTS\nWHERE name = 'Wesley'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 19.53
+    },
+    {
+      "uid": "a86a1352-d8dd-419b-aaf9-a31a00b7c1f0",
+      "question": "Who has the name Granger and has a savings account?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nWHERE accounts.name = 'Granger'",
+      "pred_sql": "SELECT a.custid\nFROM ACCOUNTS a\nINNER JOIN SAVINGS s ON a.custid = s.custid\nWHERE a.name = 'Granger'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.06
+    },
+    {
+      "uid": "a99d705a-8c86-4a64-a8cb-8c1574c8bbd0",
+      "question": "Which accounts have checking balances at most 10000 and also have savings accounts?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN savings ON accounts.custid = savings.custid\nJOIN checking ON accounts.custid = checking.custid\nWHERE checking.balance <= 10000.0",
+      "pred_sql": "SELECT a.custid\nFROM accounts a\nJOIN savings s ON a.custid = s.custid\nJOIN checking c ON a.custid = c.custid\nWHERE c.balance <= 10000.0\nGROUP BY a.custid\nHAVING COUNT(DISTINCT s.custid) > 0 AND COUNT(DISTINCT c.custid) > 0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.51
+    },
+    {
+      "uid": "b43ee209-a7e5-45f6-a197-2adc2abe8f61",
+      "question": "Which accounts have the name Granger?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nWHERE accounts.name = 'Granger'",
+      "pred_sql": "SELECT custid\nFROM ACCOUNTS\nWHERE name = 'Granger'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.66
+    },
+    {
+      "uid": "c8bf874c-5f5b-4574-aaa2-0520a991b2ab",
+      "question": "Which accounts belong to customers named Wang who have checking balances at most 2000.0?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nJOIN checking ON accounts.custid = checking.custid\nWHERE checking.balance <= 2000.0 AND accounts.name = 'Wang'",
+      "pred_sql": "SELECT a.custid\nFROM ACCOUNTS a\nINNER JOIN CHECKING c ON a.custid = c.custid\nWHERE a.name = 'Wang' AND c.balance <= 2000.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 35.57
+    },
+    {
+      "uid": "d453d284-d287-4860-9a48-6d8713de814a",
+      "question": "Which accounts have the name exactly Brown?",
+      "gold_sql": "SELECT accounts.custid FROM accounts\nWHERE accounts.name = 'Brown'",
+      "pred_sql": "SELECT custid\nFROM ACCOUNTS\nWHERE name = 'Brown'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.04
+    }
+  ]
+}

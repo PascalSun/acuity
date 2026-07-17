@@ -1,0 +1,3311 @@
+{
+ "db_id": "music_4",
+ "target_table": "artist",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 160218691,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/music_4/music_4.sqlite",
+  "generated_at": "2026-07-02T10:37:32.410415+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "artist",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 19,
+    "inner_attempts": 19,
+    "failed_rounds": 9,
+    "invalid_pairs_filtered": 9,
+    "failure_events": {
+     "qa_validation_failed": 9
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 13,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "78ad63c0-d60f-4dea-b0c5-a9d74a262a1f",
+   "question": "Which artists have a famous release date exactly on January 21, 2008?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_release_date = 'January 21, 2008'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "January 21, 2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_release_date": "January 21, 2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous release date equal to 'January 21, 2008'?"
+  },
+  {
+   "uid": "9f25c7c1-a638-4810-ae2d-be14cefee63d",
+   "question": "Which artist has the famous title Imperivm and is named Black Flame?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_title = 'Imperivm' AND artist.artist = 'Black Flame'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "artist.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Imperivm",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Black Flame",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Imperivm",
+    "artist.artist": "Black Flame"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Imperivm' and artist equal to 'Black Flame'?"
+  },
+  {
+   "uid": "94238bd5-6284-4bae-a15f-ade511e716a4",
+   "question": "Who are the artists named Black Flame who are at most 18 years old?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.artist = 'Black Flame' AND artist.age <= 18",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Black Flame",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 18,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Black Flame",
+    "artist.age": 18
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Black Flame' and age at most '18'?"
+  },
+  {
+   "uid": "4d09de52-ddc0-4146-8620-49034acf93be",
+   "question": "Which artists have the famous title Bergen 1996 and a famous release date of November 2007?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_title = 'Bergen 1996' AND artist.famous_release_date = 'November 2007'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Bergen 1996",
+    "artist.famous_release_date": "November 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Bergen 1996' and famous release date equal to 'November 2007'?"
+  },
+  {
+   "uid": "8cdc7142-ee5c-47f4-9974-601e5392832f",
+   "question": "Who are the artists aged at least 18 whose famous title is exactly Imperivm?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 18 AND artist.famous_title = 'Imperivm'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 18,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Imperivm",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 18,
+    "artist.famous_title": "Imperivm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '18' and famous title equal to 'Imperivm'?"
+  },
+  {
+   "uid": "56bf3ced-b7e0-455b-9640-16d56beba802",
+   "question": "Which artists are at least 35 years old?",
+   "answer_row_ids": [
+    2,
+    5,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 35",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '35'?"
+  },
+  {
+   "uid": "9e890188-f73e-4838-b18a-9dcf2953bd1b",
+   "question": "What artist has the name Ophiolatry with a famous release date of January 21, 2008?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.artist = 'Ophiolatry' AND artist.famous_release_date = 'January 21, 2008'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "January 21, 2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Ophiolatry",
+    "artist.famous_release_date": "January 21, 2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Ophiolatry' and famous release date equal to 'January 21, 2008'?"
+  },
+  {
+   "uid": "71aeea7a-1970-4ce6-8a38-2048a7a076d3",
+   "question": "Which artists have the famous title exactly as Imperivm?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_title = 'Imperivm'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Imperivm",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Imperivm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Imperivm'?"
+  },
+  {
+   "uid": "3316f2b9-cd3c-4ccd-969f-3faba45a6588",
+   "question": "Which artists have a famous release date that is exactly 2009?",
+   "answer_row_ids": [
+    3,
+    5,
+    6
+   ],
+   "answer_count": 3,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_release_date = '2009'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_release_date": "2009"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous release date equal to '2009'?"
+  },
+  {
+   "uid": "420f9990-81e7-47dd-b690-6eeb01f1b6ea",
+   "question": "What artists are exactly 49 years old and have the famous title Antithesis of All Flesh?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age = 49 AND artist.famous_title = 'Antithesis of All Flesh'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 49,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Antithesis of All Flesh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 49,
+    "artist.famous_title": "Antithesis of All Flesh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age equal to '49' and famous title equal to 'Antithesis of All Flesh'?"
+  },
+  {
+   "uid": "d0d567c3-f49f-4980-acad-b2309013852f",
+   "question": "What artists who are Gorgoroth and at least 34 years old have the famous title Bergen 1996 with a release date exactly in November 2007?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 34 AND artist.artist = 'Gorgoroth' AND artist.famous_title = 'Bergen 1996' AND artist.famous_release_date = 'November 2007'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.artist",
+    "artist.famous_title",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 34,
+    "artist.artist": "Gorgoroth",
+    "artist.famous_title": "Bergen 1996",
+    "artist.famous_release_date": "November 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '34' and artist equal to 'Gorgoroth' and famous title equal to 'Bergen 1996' and famous release date equal to 'November 2007'?"
+  },
+  {
+   "uid": "c4b16d22-c9b5-429f-9f0b-7aca79f94445",
+   "question": "What artist is Gorgoroth with a famous title of Bergen 1996, who is at most 34 years old and whose famous release date is exactly November 2007?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 34 AND artist.famous_release_date = 'November 2007' AND artist.artist = 'Gorgoroth' AND artist.famous_title = 'Bergen 1996'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.famous_release_date",
+    "artist.artist",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 34,
+    "artist.famous_release_date": "November 2007",
+    "artist.artist": "Gorgoroth",
+    "artist.famous_title": "Bergen 1996"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '34' and famous release date equal to 'November 2007' and artist equal to 'Gorgoroth' and famous title equal to 'Bergen 1996'?"
+  },
+  {
+   "uid": "0354027b-b4d2-4555-8037-23b087a3a668",
+   "question": "Which artist exactly named Triumfall, aged 49, released the famous title Antithesis of All Flesh on June 15, 2009?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_title = 'Antithesis of All Flesh' AND artist.famous_release_date = 'June 15, 2009' AND artist.artist = 'Triumfall' AND artist.age = 49",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "artist.famous_release_date",
+    "artist.artist",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Antithesis of All Flesh",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "June 15, 2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Triumfall",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 49,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Antithesis of All Flesh",
+    "artist.famous_release_date": "June 15, 2009",
+    "artist.artist": "Triumfall",
+    "artist.age": 49
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Antithesis of All Flesh' and famous release date equal to 'June 15, 2009' and artist equal to 'Triumfall' and age equal to '49'?"
+  },
+  {
+   "uid": "c4bf5794-d208-4265-a997-c4d9c8ad3de5",
+   "question": "What artist has the famous title Transmutation released exactly on January 21, 2008 and is named Ophiolatry?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.artist = 'Ophiolatry' AND artist.famous_release_date = 'January 21, 2008' AND artist.famous_title = 'Transmutation'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.famous_release_date",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "January 21, 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Transmutation",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Ophiolatry",
+    "artist.famous_release_date": "January 21, 2008",
+    "artist.famous_title": "Transmutation"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Ophiolatry' and famous release date equal to 'January 21, 2008' and famous title equal to 'Transmutation'?"
+  },
+  {
+   "uid": "0916dabb-4cb0-4e6f-8579-dc138d52a878",
+   "question": "Which artist has the famous title Transmutation released exactly on January 21, 2008, and is named Ophiolatry?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_release_date = 'January 21, 2008' AND artist.artist = 'Ophiolatry' AND artist.famous_title = 'Transmutation'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_release_date",
+    "artist.artist",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "January 21, 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Transmutation",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_release_date": "January 21, 2008",
+    "artist.artist": "Ophiolatry",
+    "artist.famous_title": "Transmutation"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous release date equal to 'January 21, 2008' and artist equal to 'Ophiolatry' and famous title equal to 'Transmutation'?"
+  },
+  {
+   "uid": "2d80d30f-ff55-43a6-a88a-ddc0b033cb0a",
+   "question": "Who are the artists named Ophiolatry with the famous title Transmutation who are at least 35 years old?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 35 AND artist.famous_title = 'Transmutation' AND artist.artist = 'Ophiolatry'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.famous_title",
+    "artist.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Transmutation",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 35,
+    "artist.famous_title": "Transmutation",
+    "artist.artist": "Ophiolatry"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '35' and famous title equal to 'Transmutation' and artist equal to 'Ophiolatry'?"
+  },
+  {
+   "uid": "d3f5f308-5185-44e9-a0ee-dd639c5f0601",
+   "question": "Who are the artists aged at most 18 with a famous title of Imperivm released exactly on June 23, 2008?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_release_date = 'June 23, 2008' AND artist.famous_title = 'Imperivm' AND artist.age <= 18",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.famous_release_date",
+    "artist.famous_title",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "June 23, 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Imperivm",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 18,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_release_date": "June 23, 2008",
+    "artist.famous_title": "Imperivm",
+    "artist.age": 18
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous release date equal to 'June 23, 2008' and famous title equal to 'Imperivm' and age at most '18'?"
+  },
+  {
+   "uid": "d5eb6b67-0d24-42f7-a644-dcf355dde258",
+   "question": "Who are the artists named Ophiolatry with the famous title Antievangelistical Process (re-release) from 2009 and age at most 22?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.artist = 'Ophiolatry' AND artist.famous_title = 'Antievangelistical Process (re-release)' AND artist.famous_release_date = '2009' AND artist.age <= 22",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.famous_title",
+    "artist.famous_release_date",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Antievangelistical Process (re-release)",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Ophiolatry",
+    "artist.famous_title": "Antievangelistical Process (re-release)",
+    "artist.famous_release_date": "2009",
+    "artist.age": 22
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Ophiolatry' and famous title equal to 'Antievangelistical Process (re-release)' and famous release date equal to '2009' and age at most '22'?"
+  },
+  {
+   "uid": "713c568f-c0a2-45fe-8b2a-e199b748fdda",
+   "question": "Who is the artist named Black Flame with the famous title Imperivm, exactly 18 years old, whose famous release date is June 23, 2008?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.artist = 'Black Flame' AND artist.famous_title = 'Imperivm' AND artist.age = 18 AND artist.famous_release_date = 'June 23, 2008'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.famous_title",
+    "artist.age",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Black Flame",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Imperivm",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 18,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "June 23, 2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Black Flame",
+    "artist.famous_title": "Imperivm",
+    "artist.age": 18,
+    "artist.famous_release_date": "June 23, 2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Black Flame' and famous title equal to 'Imperivm' and age equal to '18' and famous release date equal to 'June 23, 2008'?"
+  },
+  {
+   "uid": "3afe8f2e-38e5-4724-80f8-cb72d47ce5f1",
+   "question": "Which artists named Triumfall are at least 49 years old and have the famous title Antithesis of All Flesh?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 49 AND artist.famous_title = 'Antithesis of All Flesh' AND artist.artist = 'Triumfall'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.famous_title",
+    "artist.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 49,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Antithesis of All Flesh",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Triumfall",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 49,
+    "artist.famous_title": "Antithesis of All Flesh",
+    "artist.artist": "Triumfall"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '49' and famous title equal to 'Antithesis of All Flesh' and artist equal to 'Triumfall'?"
+  },
+  {
+   "uid": "4c37d114-1ed3-47b1-94d8-4f5435229445",
+   "question": "Which artists with the famous title Bergen 1996 have works issued on 24 January?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_title = 'Bergen 1996' AND volume.issue_date = '24 January'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "volume.issue_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "24 January",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Bergen 1996",
+    "volume.issue_date": "24 January"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Bergen 1996', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '24 January'?"
+  },
+  {
+   "uid": "704e9a9d-9255-48b8-9326-12b74addf681",
+   "question": "Which artists have volumes that stayed at the top for at most 1.0 week?",
+   "answer_row_ids": [
+    1,
+    2,
+    4,
+    5
+   ],
+   "answer_count": 4,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.weeks_on_top <= 1.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.weeks_on_top"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "volume.weeks_on_top": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities having at least one related volume record (linked on artist.artist_id = volume.artist_id) with weeks on top at most '1.0'?"
+  },
+  {
+   "uid": "bd7b6573-43b0-491c-a6c7-b76931ac4845",
+   "question": "Which artists are at most 35 years old and have a volume where the issue_date is 25 July?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age <= 35 AND volume.issue_date = '25 July'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "volume.issue_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "25 July",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 35,
+    "volume.issue_date": "25 July"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '35', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '25 July'?"
+  },
+  {
+   "uid": "c8b667ba-14f3-471e-9bc7-1e7d1ed9394d",
+   "question": "Which artists aged at least 27 have the famous title exactly Those Who Unleashed (re-release)?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age >= 27 AND artist.famous_title = 'Those Who Unleashed (re-release)'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 27,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Those Who Unleashed (re-release)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 27,
+    "artist.famous_title": "Those Who Unleashed (re-release)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '27' and famous title equal to 'Those Who Unleashed (re-release)', having at least one related volume record (linked on artist.artist_id = volume.artist_id)?"
+  },
+  {
+   "uid": "9b69eb50-e38a-4c2a-be1c-06b67e68676d",
+   "question": "Which artists who have produced volumes are at most 34 years old?",
+   "answer_row_ids": [
+    1,
+    4,
+    6
+   ],
+   "answer_count": 3,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age <= 34",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 34
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '34', having at least one related volume record (linked on artist.artist_id = volume.artist_id)?"
+  },
+  {
+   "uid": "e2d050da-22ed-4059-aa2f-10a820dc323c",
+   "question": "Which artists have volumes with an issue date exactly 13 June?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.issue_date = '13 June'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.issue_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "13 June",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.issue_date": "13 June"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '13 June'?"
+  },
+  {
+   "uid": "62932861-ffd6-424a-9ef1-e84ae6ce3b4c",
+   "question": "Which artists have a famous_release_date of 2009 and are associated with the volume issue 46:16?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_release_date = '2009' AND volume.volume_issue = '46:16'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.famous_release_date",
+    "volume.volume_issue"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:16",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_release_date": "2009",
+    "volume.volume_issue": "46:16"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous release date equal to '2009', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:16'?"
+  },
+  {
+   "uid": "fc8f762e-e8fa-48e4-979c-d934266ed943",
+   "question": "Which artists have a volume issue exactly equal to 45:15?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '45:15'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "45:15",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "45:15"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '45:15'?"
+  },
+  {
+   "uid": "b8de33cd-0d36-4bbf-a91f-deccf27762eb",
+   "question": "Who are the artists with at least 1.0 weeks on top in volume issue 46:10?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:10' AND volume.weeks_on_top >= 1.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "volume.weeks_on_top"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:10",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "46:10",
+    "volume.weeks_on_top": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:10' and weeks on top at least '1.0'?"
+  },
+  {
+   "uid": "8019f3ce-e671-4c40-8101-4cc6e8fea6e4",
+   "question": "Who are the artists with a famous release date exactly in 2009?",
+   "answer_row_ids": [
+    5,
+    6
+   ],
+   "answer_count": 2,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_release_date = '2009'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_release_date": "2009"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous release date equal to '2009', having at least one related volume record (linked on artist.artist_id = volume.artist_id)?"
+  },
+  {
+   "uid": "181f6436-2f52-46a5-a8f4-a0c57e184e49",
+   "question": "Who is the artist Tangorodrim with age at least 35 whose famous release titled Unholy Metal Way (re-release) came out in 2009 and had a volume issue 46:16 on 25 July that stayed at least 1 week on top?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.weeks_on_top >= 1.0 AND volume.issue_date = '25 July' AND artist.age >= 35 AND artist.famous_release_date = '2009' AND volume.volume_issue = '46:16' AND artist.artist = 'Tangorodrim' AND artist.famous_title = 'Unholy Metal Way (re-release)'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.weeks_on_top",
+    "volume.issue_date",
+    "artist.age",
+    "artist.famous_release_date",
+    "volume.volume_issue",
+    "artist.artist",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "25 July",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:16",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Tangorodrim",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Unholy Metal Way (re-release)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.weeks_on_top": 1.0,
+    "volume.issue_date": "25 July",
+    "artist.age": 35,
+    "artist.famous_release_date": "2009",
+    "volume.volume_issue": "46:16",
+    "artist.artist": "Tangorodrim",
+    "artist.famous_title": "Unholy Metal Way (re-release)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '35' and famous release date equal to '2009' and artist equal to 'Tangorodrim' and famous title equal to 'Unholy Metal Way (re-release)', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with weeks on top at least '1.0' and issue date equal to '25 July' and volume issue equal to '46:16'?"
+  },
+  {
+   "uid": "0d810885-b19d-40d3-8d08-cd063af97cfb",
+   "question": "Which artists named Tangorodrim, aged at least 35, have the famous title Unholy Metal Way (re-release) from 2009 and whose volume issue 46:16 was released on 25 July with at least 1.0 weeks on top?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_title = 'Unholy Metal Way (re-release)' AND artist.artist = 'Tangorodrim' AND artist.age >= 35 AND volume.weeks_on_top >= 1.0 AND volume.issue_date = '25 July' AND artist.famous_release_date = '2009' AND volume.volume_issue = '46:16'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "artist.artist",
+    "artist.age",
+    "volume.weeks_on_top",
+    "volume.issue_date",
+    "artist.famous_release_date",
+    "volume.volume_issue"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Unholy Metal Way (re-release)",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Tangorodrim",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "25 July",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:16",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Unholy Metal Way (re-release)",
+    "artist.artist": "Tangorodrim",
+    "artist.age": 35,
+    "volume.weeks_on_top": 1.0,
+    "volume.issue_date": "25 July",
+    "artist.famous_release_date": "2009",
+    "volume.volume_issue": "46:16"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Unholy Metal Way (re-release)' and artist equal to 'Tangorodrim' and age at least '35' and famous release date equal to '2009', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with weeks on top at least '1.0' and issue date equal to '25 July' and volume issue equal to '46:16'?"
+  },
+  {
+   "uid": "1e4b5ab5-478f-4f84-8f0d-17cdef1915cf",
+   "question": "What artists named Gorgoroth, aged at least 34, with the famous title Bergen 1996 and famous release date November 2007, had a volume issue 46:5 released on 9 May that stayed at least 1 week on top?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:5' AND volume.issue_date = '9 May' AND artist.artist = 'Gorgoroth' AND artist.age >= 34 AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top >= 1.0 AND artist.famous_release_date = 'November 2007'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "volume.issue_date",
+    "artist.artist",
+    "artist.age",
+    "artist.famous_title",
+    "volume.weeks_on_top",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:5",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "9 May",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "46:5",
+    "volume.issue_date": "9 May",
+    "artist.artist": "Gorgoroth",
+    "artist.age": 34,
+    "artist.famous_title": "Bergen 1996",
+    "volume.weeks_on_top": 1.0,
+    "artist.famous_release_date": "November 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Gorgoroth' and age at least '34' and famous title equal to 'Bergen 1996' and famous release date equal to 'November 2007', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:5' and issue date equal to '9 May' and weeks on top at least '1.0'?"
+  },
+  {
+   "uid": "bdfbf5af-5b15-48f3-b185-7f1de4ff7c92",
+   "question": "What artists named Tangorodrim, aged at least 27 with a famous release date of 2009 and famous title Those Who Unleashed (re-release), had volumes with issue date 11 July - 18 July, volume issue 46:14-15, and at least 2 weeks on top?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.issue_date = '11 July - 18 July' AND artist.famous_title = 'Those Who Unleashed (re-release)' AND volume.volume_issue = '46:14-15' AND artist.artist = 'Tangorodrim' AND volume.weeks_on_top >= 2.0 AND artist.age >= 27 AND artist.famous_release_date = '2009'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.issue_date",
+    "artist.famous_title",
+    "volume.volume_issue",
+    "artist.artist",
+    "volume.weeks_on_top",
+    "artist.age",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "11 July - 18 July",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Those Who Unleashed (re-release)",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:14-15",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Tangorodrim",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 27,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.issue_date": "11 July - 18 July",
+    "artist.famous_title": "Those Who Unleashed (re-release)",
+    "volume.volume_issue": "46:14-15",
+    "artist.artist": "Tangorodrim",
+    "volume.weeks_on_top": 2.0,
+    "artist.age": 27,
+    "artist.famous_release_date": "2009"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Those Who Unleashed (re-release)' and artist equal to 'Tangorodrim' and age at least '27' and famous release date equal to '2009', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '11 July - 18 July' and volume issue equal to '46:14-15' and weeks on top at least '2.0'?"
+  },
+  {
+   "uid": "9b9c9996-05bc-4937-957e-7bcc9102afb5",
+   "question": "Which artists aged 34 have a famous title Bergen 1996 released in November 2007, with a volume issue 46:5 dated 9 May that stayed at the top for at most 1 week?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age = 34 AND volume.volume_issue = '46:5' AND artist.famous_release_date = 'November 2007' AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top <= 1.0 AND volume.issue_date = '9 May'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "volume.volume_issue",
+    "artist.famous_release_date",
+    "artist.famous_title",
+    "volume.weeks_on_top",
+    "volume.issue_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:5",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "9 May",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 34,
+    "volume.volume_issue": "46:5",
+    "artist.famous_release_date": "November 2007",
+    "artist.famous_title": "Bergen 1996",
+    "volume.weeks_on_top": 1.0,
+    "volume.issue_date": "9 May"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age equal to '34' and famous release date equal to 'November 2007' and famous title equal to 'Bergen 1996', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:5' and weeks on top at most '1.0' and issue date equal to '9 May'?"
+  },
+  {
+   "uid": "2bd95f38-19ca-41c5-a30d-d85d6757eb9f",
+   "question": "Which artists named Ophiolatry, aged at most 35, have the famous title Transmutation released on January 21, 2008, with a volume issue 45:15 that was on top for at least 1 week and issued on 17 January?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.artist = 'Ophiolatry' AND artist.famous_release_date = 'January 21, 2008' AND volume.issue_date = '17 January' AND volume.weeks_on_top >= 1.0 AND volume.volume_issue = '45:15' AND artist.famous_title = 'Transmutation' AND artist.age <= 35",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.famous_release_date",
+    "volume.issue_date",
+    "volume.weeks_on_top",
+    "volume.volume_issue",
+    "artist.famous_title",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "January 21, 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "17 January",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "45:15",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Transmutation",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Ophiolatry",
+    "artist.famous_release_date": "January 21, 2008",
+    "volume.issue_date": "17 January",
+    "volume.weeks_on_top": 1.0,
+    "volume.volume_issue": "45:15",
+    "artist.famous_title": "Transmutation",
+    "artist.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Ophiolatry' and famous release date equal to 'January 21, 2008' and famous title equal to 'Transmutation' and age at most '35', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '17 January' and weeks on top at least '1.0' and volume issue equal to '45:15'?"
+  },
+  {
+   "uid": "04e681c3-1e45-4f50-91cd-3db3bddf3957",
+   "question": "Which artists named Gorgoroth, aged 34, with the famous title Bergen 1996, had a volume issue 45:16 released on 24 January that stayed at most one week on top?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_title = 'Bergen 1996' AND volume.volume_issue = '45:16' AND artist.artist = 'Gorgoroth' AND volume.weeks_on_top <= 1.0 AND volume.issue_date = '24 January' AND artist.age = 34",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "volume.volume_issue",
+    "artist.artist",
+    "volume.weeks_on_top",
+    "volume.issue_date",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "45:16",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "24 January",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 34,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Bergen 1996",
+    "volume.volume_issue": "45:16",
+    "artist.artist": "Gorgoroth",
+    "volume.weeks_on_top": 1.0,
+    "volume.issue_date": "24 January",
+    "artist.age": 34
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Bergen 1996' and artist equal to 'Gorgoroth' and age equal to '34', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '45:16' and weeks on top at most '1.0' and issue date equal to '24 January'?"
+  },
+  {
+   "uid": "4148c335-2692-458b-ad6d-cc840f8497eb",
+   "question": "Which artists named Gorgoroth, aged at most 34, with the famous title Bergen 1996 released in November 2007 had a volume issue 46:5 that was number one for exactly 1 week on 9 May?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:5' AND artist.age <= 34 AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top = 1.0 AND volume.issue_date = '9 May' AND artist.artist = 'Gorgoroth' AND artist.famous_release_date = 'November 2007'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "artist.age",
+    "artist.famous_title",
+    "volume.weeks_on_top",
+    "volume.issue_date",
+    "artist.artist",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:5",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "9 May",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "46:5",
+    "artist.age": 34,
+    "artist.famous_title": "Bergen 1996",
+    "volume.weeks_on_top": 1.0,
+    "volume.issue_date": "9 May",
+    "artist.artist": "Gorgoroth",
+    "artist.famous_release_date": "November 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '34' and famous title equal to 'Bergen 1996' and artist equal to 'Gorgoroth' and famous release date equal to 'November 2007', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:5' and weeks on top equal to '1.0' and issue date equal to '9 May'?"
+  },
+  {
+   "uid": "ebee4165-4e22-4ca3-8bdc-7b4b5172d8d8",
+   "question": "Which artists named Black Flame, who are at most 18 years old and have the famous title Imperivm released exactly on June 23, 2008, appeared in volume 46:9 issued on 6 June with no more than 1.0 weeks on top?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age <= 18 AND volume.weeks_on_top <= 1.0 AND artist.artist = 'Black Flame' AND artist.famous_title = 'Imperivm' AND volume.volume_issue = '46:9' AND volume.issue_date = '6 June' AND artist.famous_release_date = 'June 23, 2008'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "volume.weeks_on_top",
+    "artist.artist",
+    "artist.famous_title",
+    "volume.volume_issue",
+    "volume.issue_date",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 18,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Black Flame",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Imperivm",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:9",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "6 June",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "June 23, 2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 18,
+    "volume.weeks_on_top": 1.0,
+    "artist.artist": "Black Flame",
+    "artist.famous_title": "Imperivm",
+    "volume.volume_issue": "46:9",
+    "volume.issue_date": "6 June",
+    "artist.famous_release_date": "June 23, 2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '18' and artist equal to 'Black Flame' and famous title equal to 'Imperivm' and famous release date equal to 'June 23, 2008', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with weeks on top at most '1.0' and volume issue equal to '46:9' and issue date equal to '6 June'?"
+  },
+  {
+   "uid": "b8980e62-66dd-4749-813a-5c0d0c8002a6",
+   "question": "Which artist is Gorgoroth, aged 34, with the famous title Bergen 1996 and release date November 2007, associated with volume issue 46:5 dated 9 May that stayed 1.0 weeks on top?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.artist = 'Gorgoroth' AND volume.volume_issue = '46:5' AND artist.famous_title = 'Bergen 1996' AND volume.issue_date = '9 May' AND artist.age = 34 AND volume.weeks_on_top = 1.0 AND artist.famous_release_date = 'November 2007'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "volume.volume_issue",
+    "artist.famous_title",
+    "volume.issue_date",
+    "artist.age",
+    "volume.weeks_on_top",
+    "artist.famous_release_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:5",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "9 May",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Gorgoroth",
+    "volume.volume_issue": "46:5",
+    "artist.famous_title": "Bergen 1996",
+    "volume.issue_date": "9 May",
+    "artist.age": 34,
+    "volume.weeks_on_top": 1.0,
+    "artist.famous_release_date": "November 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Gorgoroth' and famous title equal to 'Bergen 1996' and age equal to '34' and famous release date equal to 'November 2007', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:5' and issue date equal to '9 May' and weeks on top equal to '1.0'?"
+  },
+  {
+   "uid": "e0524634-d8a8-4425-8351-faf4e99b9691",
+   "question": "Which artists aged at least 27 with the famous title Those Who Unleashed (re-release) appear in volume 46:14-15 dated exactly 11 July - 18 July where weeks on top is at most 2?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:14-15' AND artist.age >= 27 AND volume.weeks_on_top <= 2.0 AND volume.issue_date = '11 July - 18 July' AND artist.famous_title = 'Those Who Unleashed (re-release)'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "artist.age",
+    "volume.weeks_on_top",
+    "volume.issue_date",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:14-15",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 27,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "11 July - 18 July",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Those Who Unleashed (re-release)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "46:14-15",
+    "artist.age": 27,
+    "volume.weeks_on_top": 2.0,
+    "volume.issue_date": "11 July - 18 July",
+    "artist.famous_title": "Those Who Unleashed (re-release)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '27' and famous title equal to 'Those Who Unleashed (re-release)', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:14-15' and weeks on top at most '2.0' and issue date equal to '11 July - 18 July'?"
+  },
+  {
+   "uid": "3c9a2aad-6be3-4559-a3f8-56c04983b789",
+   "question": "Which artists with the famous title Bergen 1996 have volumes from issue 45:16 that spent at most 1.0 week on top?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '45:16' AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top <= 1.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "artist.famous_title",
+    "volume.weeks_on_top"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "45:16",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "45:16",
+    "artist.famous_title": "Bergen 1996",
+    "volume.weeks_on_top": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Bergen 1996', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '45:16' and weeks on top at most '1.0'?"
+  },
+  {
+   "uid": "ffcd0a45-ea86-4ce5-b838-d2717fbb4f10",
+   "question": "Who are the artists named Gorgoroth with a famous release date of November 2007 and whose volumes stayed at the top for at most 1.0 weeks?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.artist = 'Gorgoroth' AND artist.famous_release_date = 'November 2007' AND volume.weeks_on_top <= 1.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.artist",
+    "artist.famous_release_date",
+    "volume.weeks_on_top"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "November 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.artist": "Gorgoroth",
+    "artist.famous_release_date": "November 2007",
+    "volume.weeks_on_top": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Gorgoroth' and famous release date equal to 'November 2007', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with weeks on top at most '1.0'?"
+  },
+  {
+   "uid": "fc303887-cd7f-43fc-9545-93d8fd20c184",
+   "question": "Which artists named Gorgoroth have the famous title Bergen 1996 and spent at least 3 weeks on top in volume issue 46:6-8?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:6-8' AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top >= 3.0 AND artist.artist = 'Gorgoroth'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "artist.famous_title",
+    "volume.weeks_on_top",
+    "artist.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:6-8",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "46:6-8",
+    "artist.famous_title": "Bergen 1996",
+    "volume.weeks_on_top": 3.0,
+    "artist.artist": "Gorgoroth"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Bergen 1996' and artist equal to 'Gorgoroth', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:6-8' and weeks on top at least '3.0'?"
+  },
+  {
+   "uid": "6bfd6c4f-71ab-46a3-b2a5-660fadd39874",
+   "question": "Which artists named Gorgoroth aged at most 34 have volumes with issue 46:6-8 dated 16 May - 30 May that spent at most 3.0 weeks on top?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age <= 34 AND artist.artist = 'Gorgoroth' AND volume.volume_issue = '46:6-8' AND volume.issue_date = '16 May - 30 May' AND volume.weeks_on_top <= 3.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.artist",
+    "volume.volume_issue",
+    "volume.issue_date",
+    "volume.weeks_on_top"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:6-8",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "16 May - 30 May",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 3.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 34,
+    "artist.artist": "Gorgoroth",
+    "volume.volume_issue": "46:6-8",
+    "volume.issue_date": "16 May - 30 May",
+    "volume.weeks_on_top": 3.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '34' and artist equal to 'Gorgoroth', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:6-8' and issue date equal to '16 May - 30 May' and weeks on top at most '3.0'?"
+  },
+  {
+   "uid": "1c37ef9d-8df5-4e35-874b-5ae584369756",
+   "question": "Who are the artists aged at least 35 with a famous release date in 2009, whose volumes issued on 25 July with volume issue 46:16 spent at least 1.0 weeks on top?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age >= 35 AND volume.issue_date = '25 July' AND artist.famous_release_date = '2009' AND volume.weeks_on_top >= 1.0 AND volume.volume_issue = '46:16'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "volume.issue_date",
+    "artist.famous_release_date",
+    "volume.weeks_on_top",
+    "volume.volume_issue"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "25 July",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_release_date",
+     "operator": "=",
+     "value": "2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:16",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 35,
+    "volume.issue_date": "25 July",
+    "artist.famous_release_date": "2009",
+    "volume.weeks_on_top": 1.0,
+    "volume.volume_issue": "46:16"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '35' and famous release date equal to '2009', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '25 July' and weeks on top at least '1.0' and volume issue equal to '46:16'?"
+  },
+  {
+   "uid": "5da4875c-8191-44da-9c73-29eee14ad91e",
+   "question": "Which artists named Tangorodrim are at least 35 years old and have the song Looking for a New Love?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.song = 'Looking for a New Love' AND artist.age >= 35 AND artist.artist = 'Tangorodrim'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.song",
+    "artist.age",
+    "artist.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "song",
+     "operator": "=",
+     "value": "Looking for a New Love",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Tangorodrim",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.song": "Looking for a New Love",
+    "artist.age": 35,
+    "artist.artist": "Tangorodrim"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '35' and artist equal to 'Tangorodrim', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with song equal to 'Looking for a New Love'?"
+  },
+  {
+   "uid": "60e28216-fe5f-4944-9fc7-4ffb5b9c9a6d",
+   "question": "Which artists with the famous title Unholy Metal Way (re-release) have a song called Looking for a New Love that was on volume issue 46:10 and stayed at the top for at most 1.0 weeks?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:10' AND volume.weeks_on_top <= 1.0 AND artist.famous_title = 'Unholy Metal Way (re-release)' AND volume.song = 'Looking for a New Love'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.volume_issue",
+    "volume.weeks_on_top",
+    "artist.famous_title",
+    "volume.song"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "46:10",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Unholy Metal Way (re-release)",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "song",
+     "operator": "=",
+     "value": "Looking for a New Love",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.volume_issue": "46:10",
+    "volume.weeks_on_top": 1.0,
+    "artist.famous_title": "Unholy Metal Way (re-release)",
+    "volume.song": "Looking for a New Love"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Unholy Metal Way (re-release)', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with volume issue equal to '46:10' and weeks on top at most '1.0' and song equal to 'Looking for a New Love'?"
+  },
+  {
+   "uid": "4e54aaad-5ccd-42a8-bc4a-582f375aa473",
+   "question": "Who is the artist named Ophiolatry with the famous title Transmutation that had a volume issue 45:15 released on 17 January and stayed at least 1 week on top?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.issue_date = '17 January' AND volume.volume_issue = '45:15' AND volume.weeks_on_top >= 1.0 AND artist.artist = 'Ophiolatry' AND artist.famous_title = 'Transmutation'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "volume.issue_date",
+    "volume.volume_issue",
+    "volume.weeks_on_top",
+    "artist.artist",
+    "artist.famous_title"
+   ],
+   "involved_filters": [
+    {
+     "table": "volume",
+     "column": "issue_date",
+     "operator": "=",
+     "value": "17 January",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "volume_issue",
+     "operator": "=",
+     "value": "45:15",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Ophiolatry",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Transmutation",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "volume.issue_date": "17 January",
+    "volume.volume_issue": "45:15",
+    "volume.weeks_on_top": 1.0,
+    "artist.artist": "Ophiolatry",
+    "artist.famous_title": "Transmutation"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with artist equal to 'Ophiolatry' and famous title equal to 'Transmutation', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with issue date equal to '17 January' and volume issue equal to '45:15' and weeks on top at least '1.0'?"
+  },
+  {
+   "uid": "fe8c5450-0a40-4f60-9794-d03a541b5a21",
+   "question": "What artists named Gorgoroth who are at most 34 years old have the famous title Bergen 1996 and have albums that stayed on top for at least 3 weeks?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_title = 'Bergen 1996' AND artist.age <= 34 AND artist.artist = 'Gorgoroth' AND volume.weeks_on_top >= 3.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "artist",
+    "volume"
+   ],
+   "involved_columns": [
+    "artist.famous_title",
+    "artist.age",
+    "artist.artist",
+    "volume.weeks_on_top"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "famous_title",
+     "operator": "=",
+     "value": "Bergen 1996",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "artist",
+     "operator": "=",
+     "value": "Gorgoroth",
+     "column_type": "enum"
+    },
+    {
+     "table": "volume",
+     "column": "weeks_on_top",
+     "operator": ">=",
+     "value": 3.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.famous_title": "Bergen 1996",
+    "artist.age": 34,
+    "artist.artist": "Gorgoroth",
+    "volume.weeks_on_top": 3.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with famous title equal to 'Bergen 1996' and age at most '34' and artist equal to 'Gorgoroth', having at least one related volume record (linked on artist.artist_id = volume.artist_id) with weeks on top at least '3.0'?"
+  }
+ ]
+}

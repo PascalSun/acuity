@@ -1,0 +1,1593 @@
+{
+ "db_id": "network_2",
+ "target_table": "Person",
+ "mode": "flexbench",
+ "total_qa_pairs": 26,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 178629313,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/network_2/network_2.sqlite",
+  "generated_at": "2026-07-02T10:43:30.582372+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "person",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 26,
+  "shortfall_total": 24,
+  "overall_fulfillment_rate": 0.52,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 13,
+   "0M": 13,
+   "1pE": 12,
+   "1pM": 12
+  },
+  "realized_counts": {
+   "0E": 13,
+   "0M": 13
+  },
+  "shortfalls": {
+   "1pE": 12,
+   "1pM": 12
+  },
+  "shortfall_reason_counts": {
+   "sparse_combinations": 24
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 15,
+    "inner_attempts": 15,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1,
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "0M": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "near-identical question already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 12,
+    "accepted_count": 0,
+    "shortfall": 12,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 144,
+    "inner_attempts": 1440,
+    "failed_rounds": 144,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 144
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 12
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pM": {
+    "target_quota": 12,
+    "accepted_count": 0,
+    "shortfall": 12,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 144,
+    "inner_attempts": 1440,
+    "failed_rounds": 144,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 144
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 12
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "30daf8a4-d356-4c48-8e63-b02fe582a881",
+   "question": "Who are the female students?",
+   "answer_row_ids": [
+    "Alice",
+    "Dan"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'student' AND person.gender = 'female'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "female",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.job": "student",
+    "person.gender": "female"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'student' and gender equal to 'female'?"
+  },
+  {
+   "uid": "5493b24b-e38f-45e1-ad86-7d50bba55ecd",
+   "question": "Who are the males aged at most 35?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'male' AND person.age <= 35",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "male",
+    "person.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'male' and age at most '35'?"
+  },
+  {
+   "uid": "87aa46ab-0f01-4ccc-8371-f13febb3a61f",
+   "question": "Who lives in new york city?",
+   "answer_row_ids": [
+    "Alice"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'new york city'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "new york city",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "new york city"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'new york city'?"
+  },
+  {
+   "uid": "379664fa-53c5-4ad8-83bd-814e61e4d00d",
+   "question": "Which males live in Salt Lake City?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'male' AND person.city = 'salt lake city'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender",
+    "person.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "salt lake city",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "male",
+    "person.city": "salt lake city"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'male' and city equal to 'salt lake city'?"
+  },
+  {
+   "uid": "485470a2-4b9e-4596-bc74-2262454e4d60",
+   "question": "Who are the engineers aged 35 or younger?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'engineer' AND person.age <= 35",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.job": "engineer",
+    "person.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'engineer' and age at most '35'?"
+  },
+  {
+   "uid": "13e0f692-4c2f-40f5-ab3f-8ab8a0d9749c",
+   "question": "Who in Chicago is a student?",
+   "answer_row_ids": [
+    "Dan"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'chicago' AND person.job = 'student'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.job"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "chicago",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "chicago",
+    "person.job": "student"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'chicago' and job equal to 'student'?"
+  },
+  {
+   "uid": "3c8443da-8ca2-43aa-bf1e-5d87c924c5c6",
+   "question": "Who are the females living in Chicago?",
+   "answer_row_ids": [
+    "Dan"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'female' AND person.city = 'chicago'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender",
+    "person.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "female",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "chicago",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "female",
+    "person.city": "chicago"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'female' and city equal to 'chicago'?"
+  },
+  {
+   "uid": "c84ed470-dd3d-4305-9c55-6a2077304311",
+   "question": "Who are the males who are exactly 35 years old?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'male' AND person.age = 35",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "male",
+    "person.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'male' and age equal to '35'?"
+  },
+  {
+   "uid": "83ba1269-b566-400d-a6eb-ad1c061f5b94",
+   "question": "Who are the males in the person list?",
+   "answer_row_ids": [
+    "Bob",
+    "Zach"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'male'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "male"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'male'?"
+  },
+  {
+   "uid": "c6611f71-3cfe-4b36-9f41-e5da7f3264d7",
+   "question": "Which people have the job title exactly engineer?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'engineer'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.job": "engineer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'engineer'?"
+  },
+  {
+   "uid": "eb60afb1-9260-483b-82a7-2a50745949b6",
+   "question": "Who are the students aged at most 26?",
+   "answer_row_ids": [
+    "Alice",
+    "Dan"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'student' AND person.age <= 26",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 26,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.job": "student",
+    "person.age": 26
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'student' and age at most '26'?"
+  },
+  {
+   "uid": "21c892c0-0897-42d0-8f89-44d6d9ddd3a2",
+   "question": "Who are the doctors living in Austin?",
+   "answer_row_ids": [
+    "Zach"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'austin' AND person.job = 'doctor'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.job"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "austin",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "doctor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "austin",
+    "person.job": "doctor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'austin' and job equal to 'doctor'?"
+  },
+  {
+   "uid": "2119cf3c-9b58-4bb6-86c9-d37f5a8ac947",
+   "question": "Who exactly has the job title student?",
+   "answer_row_ids": [
+    "Alice",
+    "Dan"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'student'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.job": "student"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'student'?"
+  },
+  {
+   "uid": "8a908786-3036-4f47-af1d-9240c0ecfb4c",
+   "question": "Which female students exactly 25 years old live in new york city?",
+   "answer_row_ids": [
+    "Alice"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'new york city' AND person.job = 'student' AND person.gender = 'female' AND person.age = 25",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.job",
+    "person.gender",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "new york city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "female",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 25,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.city": "new york city",
+    "person.job": "student",
+    "person.gender": "female",
+    "person.age": 25
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'new york city' and job equal to 'student' and gender equal to 'female' and age equal to '25'?"
+  },
+  {
+   "uid": "bf461156-d116-4a27-8ea0-3819056e515d",
+   "question": "Who are the female students living in New York City?",
+   "answer_row_ids": [
+    "Alice"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'female' AND person.job = 'student' AND person.city = 'new york city'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender",
+    "person.job",
+    "person.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "female",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "new york city",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "female",
+    "person.job": "student",
+    "person.city": "new york city"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'female' and job equal to 'student' and city equal to 'new york city'?"
+  },
+  {
+   "uid": "0f0c0721-3a78-4cdd-b8be-6710da4d3ecf",
+   "question": "Who are the male doctors aged at least 45 living in Austin?",
+   "answer_row_ids": [
+    "Zach"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'austin' AND person.age >= 45 AND person.job = 'doctor' AND person.gender = 'male'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.age",
+    "person.job",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "austin",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": ">=",
+     "value": 45,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "doctor",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "austin",
+    "person.age": 45,
+    "person.job": "doctor",
+    "person.gender": "male"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'austin' and age at least '45' and job equal to 'doctor' and gender equal to 'male'?"
+  },
+  {
+   "uid": "bc1d304c-6dde-444a-b1d5-deecb5fd2451",
+   "question": "Which female students living in new york city are at most 25 years old?",
+   "answer_row_ids": [
+    "Alice"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'new york city' AND person.age <= 25 AND person.job = 'student' AND person.gender = 'female'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.age",
+    "person.job",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "new york city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 25,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "female",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "new york city",
+    "person.age": 25,
+    "person.job": "student",
+    "person.gender": "female"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'new york city' and age at most '25' and job equal to 'student' and gender equal to 'female'?"
+  },
+  {
+   "uid": "ad4b348d-6f23-4f76-90d0-42269f23ab05",
+   "question": "What are the names of male engineers who are exactly 35 years old and live in Salt Lake City?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.gender = 'male' AND person.city = 'salt lake city' AND person.job = 'engineer' AND person.age = 35",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.gender",
+    "person.city",
+    "person.job",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "salt lake city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.gender": "male",
+    "person.city": "salt lake city",
+    "person.job": "engineer",
+    "person.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with gender equal to 'male' and city equal to 'salt lake city' and job equal to 'engineer' and age equal to '35'?"
+  },
+  {
+   "uid": "9a727fd0-dd72-45c3-bc0d-ebab10f34a2e",
+   "question": "Which male engineers who are 35 years old live in salt lake city?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'salt lake city' AND person.job = 'engineer' AND person.gender = 'male' AND person.age = 35",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.job",
+    "person.gender",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "salt lake city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.city": "salt lake city",
+    "person.job": "engineer",
+    "person.gender": "male",
+    "person.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'salt lake city' and job equal to 'engineer' and gender equal to 'male' and age equal to '35'?"
+  },
+  {
+   "uid": "f0aab44e-e2e7-4e8e-8ed9-a245444aad82",
+   "question": "Who are the 26-year-old female students living in Chicago?",
+   "answer_row_ids": [
+    "Dan"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'chicago' AND person.job = 'student' AND person.age = 26 AND person.gender = 'female'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.job",
+    "person.age",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "chicago",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 26,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "female",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "chicago",
+    "person.job": "student",
+    "person.age": 26,
+    "person.gender": "female"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'chicago' and job equal to 'student' and age equal to '26' and gender equal to 'female'?"
+  },
+  {
+   "uid": "de9fd8d2-8029-4e11-8df0-79eea4e2d73b",
+   "question": "Which male doctors are aged at most 45 and live in Austin?",
+   "answer_row_ids": [
+    "Zach"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'doctor' AND person.city = 'austin' AND person.age <= 45 AND person.gender = 'male'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job",
+    "person.city",
+    "person.age",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "doctor",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "austin",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 45,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.job": "doctor",
+    "person.city": "austin",
+    "person.age": 45,
+    "person.gender": "male"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'doctor' and city equal to 'austin' and age at most '45' and gender equal to 'male'?"
+  },
+  {
+   "uid": "e9e5870b-dcbc-4c20-a79c-5c5f9cfb75e1",
+   "question": "Who are the male doctors aged exactly 45 living in Austin?",
+   "answer_row_ids": [
+    "Zach"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'austin' AND person.age = 45 AND person.job = 'doctor' AND person.gender = 'male'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.age",
+    "person.job",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "austin",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 45,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "doctor",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "austin",
+    "person.age": 45,
+    "person.job": "doctor",
+    "person.gender": "male"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'austin' and age equal to '45' and job equal to 'doctor' and gender equal to 'male'?"
+  },
+  {
+   "uid": "35caa1ad-c0ad-47e1-a83f-b2ed42834fcc",
+   "question": "Who are the male engineers living in salt lake city who are at most 35 years old?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'engineer' AND person.city = 'salt lake city' AND person.gender = 'male' AND person.age <= 35",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job",
+    "person.city",
+    "person.gender",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "salt lake city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 35,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.job": "engineer",
+    "person.city": "salt lake city",
+    "person.gender": "male",
+    "person.age": 35
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'engineer' and city equal to 'salt lake city' and gender equal to 'male' and age at most '35'?"
+  },
+  {
+   "uid": "0f618cec-4164-4be2-a013-b80988c67f2f",
+   "question": "What are the names of male engineers who are at most 35 years old and live in salt lake city?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.city = 'salt lake city' AND person.age <= 35 AND person.job = 'engineer' AND person.gender = 'male'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.city",
+    "person.age",
+    "person.job",
+    "person.gender"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "salt lake city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "<=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.city": "salt lake city",
+    "person.age": 35,
+    "person.job": "engineer",
+    "person.gender": "male"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with city equal to 'salt lake city' and age at most '35' and job equal to 'engineer' and gender equal to 'male'?"
+  },
+  {
+   "uid": "f048ab15-448a-467b-8d61-bc33c0072a21",
+   "question": "What are the names of male engineers aged at least 35 who live in salt lake city?",
+   "answer_row_ids": [
+    "Bob"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.age >= 35 AND person.gender = 'male' AND person.city = 'salt lake city' AND person.job = 'engineer'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.age",
+    "person.gender",
+    "person.city",
+    "person.job"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "age",
+     "operator": ">=",
+     "value": 35,
+     "column_type": "numeric"
+    },
+    {
+     "table": "person",
+     "column": "gender",
+     "operator": "=",
+     "value": "male",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "salt lake city",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "engineer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "person.age": 35,
+    "person.gender": "male",
+    "person.city": "salt lake city",
+    "person.job": "engineer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with age at least '35' and gender equal to 'male' and city equal to 'salt lake city' and job equal to 'engineer'?"
+  },
+  {
+   "uid": "6b7bdc84-8a3d-45e9-a183-ee20abcdd842",
+   "question": "Who are the 26-year-old students living in Chicago?",
+   "answer_row_ids": [
+    "Dan"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT person.name FROM person\nWHERE person.job = 'student' AND person.city = 'chicago' AND person.age = 26",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "person"
+   ],
+   "involved_columns": [
+    "person.job",
+    "person.city",
+    "person.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "person",
+     "column": "job",
+     "operator": "=",
+     "value": "student",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "city",
+     "operator": "=",
+     "value": "chicago",
+     "column_type": "enum"
+    },
+    {
+     "table": "person",
+     "column": "age",
+     "operator": "=",
+     "value": 26,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "person.job": "student",
+    "person.city": "chicago",
+    "person.age": 26
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "person"
+   },
+   "answer_table": "person",
+   "answer_id_column": "name",
+   "canonical_question": "Which person entities with job equal to 'student' and city equal to 'chicago' and age equal to '26'?"
+  }
+ ]
+}

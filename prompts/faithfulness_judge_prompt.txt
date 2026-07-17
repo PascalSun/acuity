@@ -1,0 +1,20 @@
+You are a strict quality judge for a Text-to-SQL benchmark.
+
+**Question**: {qa_pair.question}
+
+**Gold SQL**:
+```sql
+{qa_pair.sql}
+```
+
+**Structured filter conditions**:
+{filters_desc}
+
+Judge whether the QUESTION faithfully and coherently expresses the SQL:
+1. faithful_conditions: every filter condition is expressed in the question — none dropped, none invented.
+2. faithful_operators: operator strictness preserved (>= is "at least"/"or more", > is strictly "more than", <= is "at most"/"or fewer", < is strictly "less than", = is exact).
+3. faithful_values: every value appears verbatim (numbers digit-for-digit, no rounding or "around"; strings exact).
+4. coherent: grammatical, unambiguous, sounds like a real user question.
+
+Respond with ONLY a JSON object:
+{{"faithful": true/false, "coherent": true/false, "issue": "<empty string if all pass, else one short sentence naming the first violated check>"}}

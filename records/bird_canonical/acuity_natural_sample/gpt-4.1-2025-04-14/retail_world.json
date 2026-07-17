@@ -1,0 +1,124 @@
+{
+  "db_id": "retail_world",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:19:13.000726+00:00",
+  "records": [
+    {
+      "uid": "0a5691b3-cb95-402a-9f33-b14ad32552f4",
+      "question": "Which categories include products supplied exactly by Aux joyeux eccl\u00e9siastiques?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nJOIN suppliers ON products.supplierid = suppliers.supplierid\nWHERE suppliers.suppliername = 'Aux joyeux eccl\u00e9siastiques'",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nJOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID\nGROUP BY Categories.CategoryID\nHAVING COUNT(DISTINCT Suppliers.SupplierName) = 1\n   AND MIN(Suppliers.SupplierName) = 'Aux joyeux eccl\u00e9siastiques'\n   AND MAX(Suppliers.SupplierName) = 'Aux joyeux eccl\u00e9siastiques'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.15
+    },
+    {
+      "uid": "2ce9cc4f-b840-4184-b397-ec633825dede",
+      "question": "What categories have the categoryname exactly as Produce?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nWHERE categories.categoryname = 'Produce'",
+      "pred_sql": "SELECT CategoryID FROM Categories WHERE CategoryName = 'Produce'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "45691550-8cdc-4ba7-96bb-6e53fa48ff00",
+      "question": "Which categories include products that have a unit exactly equal to 24 - 250 g pkgs?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nWHERE products.unit = '24 - 250 g pkgs.'",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nWHERE Products.Unit = '24 - 250 g pkgs'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "80cdef46-ad29-4512-a8ce-3d3717ed48ad",
+      "question": "Which categories include products that have a unit size of exactly 24 pieces?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nWHERE products.unit = '24 pieces'",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nWHERE Products.Unit = '24 pieces'\nGROUP BY Categories.CategoryID",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.95
+    },
+    {
+      "uid": "86dcb83c-317f-4683-8a81-7634d21c04d3",
+      "question": "Which categories include the product Tofu with a unit size of 40 - 100 g pkgs. supplied by vendors located in Osaka?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nJOIN suppliers ON products.supplierid = suppliers.supplierid\nWHERE products.productname = 'Tofu' AND products.unit = '40 - 100 g pkgs.' AND suppliers.city = 'Osaka'",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nJOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID\nWHERE Products.ProductName = 'Tofu'\n  AND Products.Unit = '40 - 100 g pkgs.'\n  AND Suppliers.City = 'Osaka'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    },
+    {
+      "uid": "88d28b0b-110e-43ee-a7ef-8c66d4e42c9c",
+      "question": "Which categories include the product Scottish Longbreads priced exactly at 12.5 and packaged as 10 boxes x 8 pieces?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nWHERE products.unit = '10 boxes x 8 pieces' AND products.price = 12.5 AND products.productname = 'Scottish Longbreads'",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nWHERE Products.ProductName = 'Scottish Longbreads'\n  AND Products.Price = 12.5\n  AND Products.Unit = '10 boxes x 8 pieces'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "b08b629b-40c3-467b-9003-874c1d4e6ba5",
+      "question": "Which categories have the name Produce and include a description containing Dried fruit and bean curd?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nWHERE categories.categoryname = 'Produce' AND categories.description LIKE '%Dried fruit and bean curd%'",
+      "pred_sql": "SELECT CategoryID FROM Categories WHERE CategoryName = 'Produce' AND Description LIKE '%Dried fruit and bean curd%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "cdcba90e-fdfb-4d45-9141-079dc1aec49c",
+      "question": "Which categories have products supplied by suppliers located exactly in Bend?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nJOIN suppliers ON products.supplierid = suppliers.supplierid\nWHERE suppliers.city = 'Bend'",
+      "pred_sql": "SELECT DISTINCT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nJOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID\nWHERE Suppliers.City = 'Bend'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "d89dbab0-cd81-425d-a7a1-f2b2021e45d6",
+      "question": "Which categories have the name Beverages and include the product C\u00f4te de Blaye priced exactly at 263.5 sold in 12 - 75 cl bottles?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nWHERE categories.categoryname = 'Beverages' AND products.unit = '12 - 75 cl bottles' AND products.productname = 'C\u00f4te de Blaye' AND products.price = 263.5",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nWHERE Categories.CategoryName = 'Beverages'\n  AND Products.ProductName = 'C\u00f4te de Blaye'\n  AND Products.Price = 263.5\n  AND Products.Unit = '12 - 75 cl bottles'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    },
+    {
+      "uid": "e4ca111e-cc7c-42d0-bda5-7d08f7630c14",
+      "question": "Which categories named Confections include the product Tarte au sucre priced exactly at 49.3 with a unit of 48 pies supplied by Chantal Goulet whose phone is (514) 555-2955?",
+      "gold_sql": "SELECT categories.categoryid FROM categories\nJOIN products ON categories.categoryid = products.categoryid\nJOIN suppliers ON products.supplierid = suppliers.supplierid\nWHERE products.price = 49.3 AND categories.categoryname = 'Confections' AND suppliers.phone = '(514) 555-2955' AND products.productname = 'Tarte au sucre' AND suppliers.contactname = 'Chantal Goulet' AND products.unit = '48 pies'",
+      "pred_sql": "SELECT Categories.CategoryID\nFROM Categories\nJOIN Products ON Categories.CategoryID = Products.CategoryID\nJOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID\nWHERE Categories.CategoryName = 'Confections'\n  AND Products.ProductName = 'Tarte au sucre'\n  AND Products.Price = 49.3\n  AND Products.Unit = '48 pies'\n  AND Suppliers.SupplierName = 'Chantal Goulet'\n  AND Suppliers.Phone = '(514) 555-2955'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    }
+  ]
+}

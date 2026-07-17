@@ -1,0 +1,124 @@
+{
+  "db_id": "film_rank",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 8,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:46:44.023710+00:00",
+  "records": [
+    {
+      "uid": "4615fa8f-35b0-4892-b42d-df65a10572a5",
+      "question": "What markets in China cover at least 540 cities and had a 1944 high estimate of at most 8000.0?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.country = 'China' AND market.number_cities >= 540 AND film_market_estimation.year = 1944 AND film_market_estimation.high_estimate <= 8000.0",
+      "pred_sql": "SELECT DISTINCT market.Market_ID\nFROM market\nINNER JOIN film_market_estimation\nON market.Market_ID = film_market_estimation.Market_ID\nWHERE market.Country = 'China'\n  AND market.Number_cities >= 540\n  AND film_market_estimation.Year = 1944\n  AND film_market_estimation.High_Estimate <= 8000.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 63.53
+    },
+    {
+      "uid": "6b2d9ffe-2298-4366-8f20-3128463f0305",
+      "question": "Which markets have exactly 209 cities and are associated with films where the type is Mass suicide murder?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.number_cities = 209 AND film_market_estimation.type = 'Mass suicide murder'",
+      "pred_sql": "SELECT DISTINCT market.Market_ID\nFROM market\nINNER JOIN film_market_estimation\n    ON market.Market_ID = film_market_estimation.Market_ID\nINNER JOIN film\n    ON film_market_estimation.Film_ID = film.Film_ID\nWHERE market.Number_cities = 209\n  AND film_market_estimation.Type = 'Mass suicide murder'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 48.7
+    },
+    {
+      "uid": "6dc4cd8a-5106-4bc1-a930-3ae044632723",
+      "question": "Which markets in Russia have at most 231 cities?",
+      "gold_sql": "SELECT market.market_id FROM market\nWHERE market.number_cities <= 231 AND market.country = 'Russia'",
+      "pred_sql": "SELECT Market_ID \nFROM market \nWHERE Number_cities <= 231 AND Country = 'Russia'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 25.57
+    },
+    {
+      "uid": "71d07d54-0ee1-4ee8-b42e-10ca1785598e",
+      "question": "Which markets with at most 540 cities have a Mass suicide estimation type for the film where the title is Rocky III?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film.title = 'Rocky III' AND market.number_cities <= 540 AND film_market_estimation.type = 'Mass suicide'",
+      "pred_sql": "SELECT * FROM market WHERE Number_cities <= 540",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 73.93
+    },
+    {
+      "uid": "71e12944-4045-4671-b46c-0d0329f3eb20",
+      "question": "Which markets in Japan with at most 209 cities have films directed by Steven Spielberg released in 1945 or later, where the low estimate is at least 80000.0 and the gross in dollars is at most 435110554?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.country = 'Japan' AND film.director = 'Steven Spielberg' AND market.number_cities <= 209 AND film_market_estimation.year >= 1945 AND film_market_estimation.low_estimate >= 80000.0 AND film.gross_in_dollar <= 435110554",
+      "pred_sql": "SELECT DISTINCT market.Market_ID\nFROM market\nINNER JOIN film_market_estimation\n    ON market.Market_ID = film_market_estimation.Market_ID\nINNER JOIN film\n    ON film_market_estimation.Film_ID = film.Film_ID\nWHERE market.Country = 'Japan'\n  AND market.Number_cities <= 209\n  AND film_market_estimation.Year >= 1945\n  AND film_market_estimation.Low_Estimate >= 80000.0\n  AND film.Director = 'Steven Spielberg'\n  AND film.Gross_in_dollar <= 435110554",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 74.28
+    },
+    {
+      "uid": "795fc09d-2538-44aa-b15e-1358cf029810",
+      "question": "Which markets are located in Poland and have at most 453 cities?",
+      "gold_sql": "SELECT market.market_id FROM market\nWHERE market.country = 'Poland' AND market.number_cities <= 453",
+      "pred_sql": "SELECT Market_ID \nFROM market \nWHERE Country = 'Poland' AND Number_cities <= 453",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 21.18
+    },
+    {
+      "uid": "c5fe4d54-4369-4790-a9fd-7c6cf2ab8e46",
+      "question": "Which markets are associated with film estimations where the country is USA?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.country = 'USA'",
+      "pred_sql": "market.Market_ID = film_market_estimation.Market_ID",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 32.89
+    },
+    {
+      "uid": "cc04df50-af73-4d45-b3bc-53d3fac0a98e",
+      "question": "Which markets in the USA have at least 700 cities and film market estimations of type Mass suicide from 1995 or earlier with both low and high estimates of at least 16.0?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.low_estimate >= 16.0 AND market.country = 'USA' AND market.number_cities >= 700 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.year <= 1995 AND film_market_estimation.high_estimate >= 16.0",
+      "pred_sql": "SELECT DISTINCT market.Market_ID\nFROM market\nINNER JOIN film_market_estimation\nON market.Market_ID = film_market_estimation.Market_ID\nWHERE market.Country = 'USA'\n  AND market.Number_cities >= 700\n  AND film_market_estimation.Low_Estimate >= 16.0\n  AND film_market_estimation.Type = 'Mass suicide'\n  AND film_market_estimation.Year <= 1995\n  AND film_market_estimation.High_Estimate >= 16.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 54.04
+    },
+    {
+      "uid": "d2678f23-2563-4343-92b9-c5bccfe746c7",
+      "question": "Which markets have film market estimations where type is exactly Mass suicide?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.type = 'Mass suicide'",
+      "pred_sql": "SELECT DISTINCT market.Market_ID\nFROM market\nINNER JOIN film_market_estimation\nON market.Market_ID = film_market_estimation.Market_ID\nWHERE film_market_estimation.Type = 'Mass suicide'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.78
+    },
+    {
+      "uid": "f0521679-d053-4742-a773-0ba51468a812",
+      "question": "What markets in China have at least 540 cities and film market estimations from 1944 or later where the type is Mass suicide, the low estimate is at least 8000.0, and the high estimate is exactly 8000.0?",
+      "gold_sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.type = 'Mass suicide' AND market.number_cities >= 540 AND film_market_estimation.low_estimate >= 8000.0 AND film_market_estimation.year >= 1944 AND market.country = 'China' AND film_market_estimation.high_estimate = 8000.0",
+      "pred_sql": "SELECT DISTINCT market.Market_ID\nFROM market\nINNER JOIN film_market_estimation\nON market.Market_ID = film_market_estimation.Market_ID\nWHERE market.Number_cities >= 540\n  AND market.Country = 'China'\n  AND film_market_estimation.Type = 'Mass suicide'\n  AND film_market_estimation.Low_Estimate >= 8000.0\n  AND film_market_estimation.Year >= 1944\n  AND film_market_estimation.High_Estimate = 8000.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.73
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "student_transcripts_tracking",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:31:13.415194+00:00",
+  "records": [
+    {
+      "uid": "373dfc35-e249-408a-8ab4-9d48b8e65388",
+      "question": "Which courses have a course description of p and a course name of ds?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nWHERE courses.course_description = 'p' AND courses.course_name = 'ds'",
+      "pred_sql": "SELECT course_id FROM Courses WHERE course_description = 'p' AND course_name = 'ds'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "37d550cd-4655-4736-91bd-709e16724a8d",
+      "question": "What courses named ds with a description of p have sections named d where the section description is voluptas?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN sections ON courses.course_id = sections.course_id\nWHERE courses.course_description = 'p' AND sections.section_description = 'voluptas' AND courses.course_name = 'ds' AND sections.section_name = 'd'",
+      "pred_sql": "SELECT T1.course_id FROM Courses AS T1 INNER JOIN Sections AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = 'ds' AND T1.course_description = 'p' AND T2.section_name = 'd' AND T2.section_description = 'voluptas'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.62
+    },
+    {
+      "uid": "3d4220ee-b078-4fc3-805d-5d5d31fb83a7",
+      "question": "Which courses have the name ml and include sections described as qui?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN sections ON courses.course_id = sections.course_id\nJOIN student_enrolment_courses ON courses.course_id = student_enrolment_courses.course_id\nWHERE courses.course_name = 'ml' AND sections.section_description = 'qui'",
+      "pred_sql": "SELECT T1.course_id FROM Courses AS T1 INNER JOIN Sections AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = 'ml' AND T2.section_description = 'qui'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "5207b56f-e9e9-4a42-8c87-f218ffb49999",
+      "question": "Which courses with the name la and description n were offered in the summer 2010 semester where the semester description is exactly g?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN student_enrolment_courses ON courses.course_id = student_enrolment_courses.course_id\nJOIN student_enrolment ON student_enrolment_courses.student_enrolment_id = student_enrolment.student_enrolment_id\nJOIN semesters ON student_enrolment.semester_id = semesters.semester_id\nWHERE semesters.semester_description = 'g' AND courses.course_name = 'la' AND semesters.semester_name = 'summer 2010' AND courses.course_description = 'n'",
+      "pred_sql": "SELECT T1.course_id FROM Courses AS T1 INNER JOIN Student_Enrolment_Courses AS T2 ON T1.course_id = T2.course_id INNER JOIN Student_Enrolment AS T3 ON T2.student_enrolment_id = T3.student_enrolment_id INNER JOIN Semesters AS T4 ON T3.semester_id = T4.semester_id WHERE T1.course_name LIKE '%la%' AND T1.course_description LIKE '%n%' AND T4.semester_name = 'summer 2010' AND T4.semester_description = 'g'",
+      "strategy": "3pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.93
+    },
+    {
+      "uid": "71a0cd49-10ec-4971-a144-9f5ade9c8238",
+      "question": "What courses is the student with the email address gracie29@example.com enrolled in?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN student_enrolment_courses ON courses.course_id = student_enrolment_courses.course_id\nJOIN student_enrolment ON student_enrolment_courses.student_enrolment_id = student_enrolment.student_enrolment_id\nJOIN students ON student_enrolment.student_id = students.student_id\nWHERE students.email_address = 'gracie29@example.com'",
+      "pred_sql": "SELECT T3.course_id FROM Students AS T1 INNER JOIN Student_Enrolment AS T2 ON T1.student_id = T2.student_id INNER JOIN Student_Enrolment_Courses AS T3 ON T2.student_enrolment_id = T3.student_enrolment_id WHERE T1.email_address = 'gracie29@example.com'",
+      "strategy": "3pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.94
+    },
+    {
+      "uid": "7a58c6df-2e24-4528-97a2-3812ddfe8384",
+      "question": "What courses have the course name exactly rs with a course description exactly v?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nWHERE courses.course_name = 'rs' AND courses.course_description = 'v'",
+      "pred_sql": "SELECT course_id FROM Courses WHERE course_name = 'rs' AND course_description = 'v'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "80375b84-5189-49ce-b075-6745831ffa1d",
+      "question": "Which courses have a section where the section_name is g?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN sections ON courses.course_id = sections.course_id\nWHERE sections.section_name = 'g'",
+      "pred_sql": "SELECT T1.course_id FROM Courses AS T1 INNER JOIN Sections AS T2 ON T1.course_id = T2.course_id WHERE T2.section_name = 'g'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "aac8dc59-fc90-4366-884a-21de2c146f25",
+      "question": "What courses have a description that is exactly 'v'?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN student_enrolment_courses ON courses.course_id = student_enrolment_courses.course_id\nJOIN student_enrolment ON student_enrolment_courses.student_enrolment_id = student_enrolment.student_enrolment_id\nWHERE courses.course_description = 'v'",
+      "pred_sql": "SELECT course_id FROM Courses WHERE course_description = 'v'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "e292e8ac-e28a-43d1-acf5-3b8e1a7ac300",
+      "question": "Which math courses with a description exactly q were taken by students whose SSN is 39, other details are nesciunt, email is qo'kon@example.com, and who left on or after 1990-09-01 05:03:27?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN student_enrolment_courses ON courses.course_id = student_enrolment_courses.course_id\nJOIN student_enrolment ON student_enrolment_courses.student_enrolment_id = student_enrolment.student_enrolment_id\nJOIN students ON student_enrolment.student_id = students.student_id\nWHERE courses.course_description = 'q' AND students.ssn = '39' AND courses.course_name = 'math' AND students.other_student_details = 'nesciunt' AND students.date_left >= '1990-09-01 05:03:27' AND students.email_address = 'qo''kon@example.com'",
+      "pred_sql": "SELECT DISTINCT\n  T1.course_id\nFROM Courses AS T1\nINNER JOIN Student_Enrolment_Courses AS T2\n  ON T1.course_id = T2.course_id\nINNER JOIN Student_Enrolment AS T3\n  ON T2.student_enrolment_id = T3.student_enrolment_id\nINNER JOIN Students AS T4\n  ON T3.student_id = T4.student_id\nWHERE\n  T1.course_name LIKE '%math%' AND T1.course_description = 'q' AND T4.ssn = '39' AND T4.other_student_details = 'nesciunt' AND T4.email_address = 'qo''kon@example.com' AND T4.date_left >= '1990-09-01 05:03:27'",
+      "strategy": "3pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.34
+    },
+    {
+      "uid": "f440492e-6e99-49cb-b590-403f0f008b99",
+      "question": "Which courses have the name math with a description of q and include a section named b where the section description is voluptatem?",
+      "gold_sql": "SELECT courses.course_id FROM courses\nJOIN sections ON courses.course_id = sections.course_id\nJOIN student_enrolment_courses ON courses.course_id = student_enrolment_courses.course_id\nWHERE courses.course_description = 'q' AND courses.course_name = 'math' AND sections.section_name = 'b' AND sections.section_description = 'voluptatem'",
+      "pred_sql": "SELECT T1.course_id FROM Courses AS T1 INNER JOIN Sections AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = 'math' AND T1.course_description = 'q' AND T2.section_name = 'b' AND T2.section_description = 'voluptatem'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    }
+  ]
+}

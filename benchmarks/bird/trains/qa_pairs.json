@@ -1,0 +1,2974 @@
+{
+ "db_id": "trains",
+ "target_table": "trains",
+ "mode": "flexbench",
+ "total_qa_pairs": 39,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 996200818,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/trains/trains.sqlite",
+  "generated_at": "2026-07-02T11:03:23.830600+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "trains",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 39,
+  "shortfall_total": 11,
+  "overall_fulfillment_rate": 0.78,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 13,
+   "1pE": 13,
+   "1pM": 12,
+   "1pH": 12
+  },
+  "realized_counts": {
+   "0E": 2,
+   "1pE": 13,
+   "1pH": 12,
+   "1pM": 12
+  },
+  "shortfalls": {
+   "0E": 11
+  },
+  "shortfall_reason_counts": {
+   "duplicate_pair": 11
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 13,
+    "accepted_count": 2,
+    "shortfall": 11,
+    "fulfillment_rate": 0.15384615384615385,
+    "is_feasible": true,
+    "outer_attempts": 1040,
+    "inner_attempts": 1040,
+    "failed_rounds": 1038,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1038
+    },
+    "shortfall_reason_counts": {
+     "duplicate_pair": 11
+    },
+    "primary_shortfall_reason": "duplicate_pair",
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 17,
+    "inner_attempts": 31,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pH": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1,
+     "generation_exception": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "Question failed literal-fidelity check after retry: ['numeric literal 1 (position = 1) does not appear verbatim in the question']"
+   },
+   "1pM": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "15f3634c-fcac-4735-b2ab-6338b276f03c",
+   "question": "Which trains are heading exactly east?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 10,
+   "sql": "SELECT trains.id FROM trains\nWHERE trains.direction = 'east'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "trains"
+   ],
+   "involved_columns": [
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "trains.direction": "east"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east'?"
+  },
+  {
+   "uid": "2a3c78f4-5ef0-4ec4-9311-c84dfeba986b",
+   "question": "Which trains are traveling west?",
+   "answer_row_ids": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "answer_count": 10,
+   "sql": "SELECT trains.id FROM trains\nWHERE trains.direction = 'west'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "trains"
+   ],
+   "involved_columns": [
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "trains.direction": "west"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west'?"
+  },
+  {
+   "uid": "942d5ed4-55ea-4641-971a-473e0b8e9517",
+   "question": "Which trains have cars that have exactly 2 wheels and where the car shape is exactly ellipse?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels = 2 AND cars.shape = 'ellipse'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "ellipse",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 2,
+    "cars.shape": "ellipse"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with wheels equal to '2' and shape equal to 'ellipse'?"
+  },
+  {
+   "uid": "f9277e65-7ea1-4948-b6b0-8ab686e0d92b",
+   "question": "Which trains have cars with a load shape that is exactly triangle?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    16,
+    18,
+    19,
+    20
+   ],
+   "answer_count": 15,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'triangle'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_shape": "triangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'triangle'?"
+  },
+  {
+   "uid": "c91968f7-700f-460b-be4f-261be61f8a07",
+   "question": "Which trains have cars where the load shape is circle?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    17
+   ],
+   "answer_count": 13,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'circle'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "circle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_shape": "circle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'circle'?"
+  },
+  {
+   "uid": "3ed6c231-dd51-4b9e-aa76-c21106fa06a5",
+   "question": "Which trains have a car in position 4 where the roof is none?",
+   "answer_row_ids": [
+    1,
+    4,
+    8,
+    9,
+    10,
+    14,
+    17,
+    19
+   ],
+   "answer_count": 8,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND cars.position = 4",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.position"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "cars.position": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and position equal to '4'?"
+  },
+  {
+   "uid": "7e11b467-5968-4672-bb04-58b96af687fe",
+   "question": "Which trains have cars with a load shape that is circle and sides that are not_double?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    17
+   ],
+   "answer_count": 13,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'circle' AND cars.sides = 'not_double'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_shape",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "circle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_shape": "circle",
+    "cars.sides": "not_double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'circle' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "8dccf485-7322-4588-a8a4-b727b6ef42e0",
+   "question": "Which trains are headed exactly east and have cars attached to them?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 10,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'east'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "trains.direction": "east"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id)?"
+  },
+  {
+   "uid": "e0f53bf5-08d8-4256-88a2-8745d810072b",
+   "question": "Which trains have a car with a roof that is peaked positioned at most at 1?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'peaked' AND cars.position <= 1",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.position"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "peaked",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "peaked",
+    "cars.position": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'peaked' and position at most '1'?"
+  },
+  {
+   "uid": "c85c4949-1d51-4059-8ec0-7cddab3da87e",
+   "question": "Which trains have cars shaped exactly like a bucket carrying load numbers at most 1?",
+   "answer_row_ids": [
+    2,
+    4,
+    8,
+    10,
+    14,
+    16
+   ],
+   "answer_count": 6,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_num <= 1 AND cars.shape = 'bucket'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_num",
+    "cars.shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "bucket",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_num": 1,
+    "cars.shape": "bucket"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load num at most '1' and shape equal to 'bucket'?"
+  },
+  {
+   "uid": "16a7a75a-3e39-4400-a753-c504843cc193",
+   "question": "Which trains have cars with a roof that is none and a shape that is bucket?",
+   "answer_row_ids": [
+    2,
+    4,
+    8,
+    10,
+    14,
+    16
+   ],
+   "answer_count": 6,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND cars.shape = 'bucket'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "bucket",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "cars.shape": "bucket"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and shape equal to 'bucket'?"
+  },
+  {
+   "uid": "a327a92f-c6c8-4450-a7f8-2fc0f3208de9",
+   "question": "Which trains have cars positioned at least 3 with a load number exactly equal to 1?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    14,
+    17,
+    19
+   ],
+   "answer_count": 14,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.position >= 3 AND cars.load_num = 1",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.position",
+    "cars.load_num"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.position": 3,
+    "cars.load_num": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with position at least '3' and load num equal to '1'?"
+  },
+  {
+   "uid": "02e694c5-02a2-4195-a548-7de31a9ba25b",
+   "question": "What trains have cars with a load shape that is exactly rectangle?",
+   "answer_row_ids": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "answer_count": 15,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'rectangle'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_shape": "rectangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'rectangle'?"
+  },
+  {
+   "uid": "b1ccfa98-8279-46cd-88e9-579f149c54a0",
+   "question": "Which trains have cars that carry exactly 3 loads and have exactly 2 wheels?",
+   "answer_row_ids": [
+    1,
+    9,
+    11,
+    16,
+    17,
+    19
+   ],
+   "answer_count": 6,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_num = 3 AND cars.wheels = 2",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_num",
+    "cars.wheels"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.load_num": 3,
+    "cars.wheels": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load num equal to '3' and wheels equal to '2'?"
+  },
+  {
+   "uid": "b0ee4ee3-3763-4391-a915-5a10cdb20e65",
+   "question": "Which trains have cars where the sides are exactly not_double and the load shape is triangle?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    16,
+    18,
+    19,
+    20
+   ],
+   "answer_count": 14,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.sides = 'not_double' AND cars.load_shape = 'triangle'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.sides",
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.sides": "not_double",
+    "cars.load_shape": "triangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with sides equal to 'not_double' and load shape equal to 'triangle'?"
+  },
+  {
+   "uid": "f78bb107-4c04-4549-896b-84afd4655c45",
+   "question": "What trains heading west have a first car with no roof, exactly 2 wheels, a u_shaped shape, a triangle load shape, not_double sides, and at least 1 load?",
+   "answer_row_ids": [
+    18
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND cars.wheels = 2 AND cars.position = 1 AND cars.load_shape = 'triangle' AND cars.shape = 'u_shaped' AND cars.load_num >= 1 AND cars.sides = 'not_double' AND trains.direction = 'west'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.wheels",
+    "cars.position",
+    "cars.load_shape",
+    "cars.shape",
+    "cars.load_num",
+    "cars.sides",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "u_shaped",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "cars.wheels": 2,
+    "cars.position": 1,
+    "cars.load_shape": "triangle",
+    "cars.shape": "u_shaped",
+    "cars.load_num": 1,
+    "cars.sides": "not_double",
+    "trains.direction": "west"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and wheels equal to '2' and position equal to '1' and load shape equal to 'triangle' and shape equal to 'u_shaped' and load num at least '1' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "f8f66313-14a9-4fd9-9dbe-86cdb11db1a6",
+   "question": "Which trains heading east have cars in the first two positions that are u_shaped with no roof, not double sides, a circular load shape, and at most 2 wheels?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.shape = 'u_shaped' AND cars.wheels <= 2 AND cars.position <= 2 AND cars.roof = 'none' AND cars.sides = 'not_double' AND cars.load_shape = 'circle' AND trains.direction = 'east'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.shape",
+    "cars.wheels",
+    "cars.position",
+    "cars.roof",
+    "cars.sides",
+    "cars.load_shape",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "u_shaped",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "circle",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.shape": "u_shaped",
+    "cars.wheels": 2,
+    "cars.position": 2,
+    "cars.roof": "none",
+    "cars.sides": "not_double",
+    "cars.load_shape": "circle",
+    "trains.direction": "east"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with shape equal to 'u_shaped' and wheels at most '2' and position at most '2' and roof equal to 'none' and sides equal to 'not_double' and load shape equal to 'circle'?"
+  },
+  {
+   "uid": "2563b97d-4994-4620-93ee-238c7adc9427",
+   "question": "What trains heading west have cars positioned at least 1 where the cars have at most 3 wheels, shape is rectangle, load shape is rectangle, and sides is not_double?",
+   "answer_row_ids": [
+    13,
+    14,
+    15,
+    17,
+    18,
+    19
+   ],
+   "answer_count": 6,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels <= 3 AND cars.shape = 'rectangle' AND cars.load_shape = 'rectangle' AND cars.sides = 'not_double' AND cars.position >= 1 AND trains.direction = 'west'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.shape",
+    "cars.load_shape",
+    "cars.sides",
+    "cars.position",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 3,
+    "cars.shape": "rectangle",
+    "cars.load_shape": "rectangle",
+    "cars.sides": "not_double",
+    "cars.position": 1,
+    "trains.direction": "west"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with wheels at most '3' and shape equal to 'rectangle' and load shape equal to 'rectangle' and sides equal to 'not_double' and position at least '1'?"
+  },
+  {
+   "uid": "90af3e35-cbb7-4f8f-a43b-03c950102920",
+   "question": "Which trains headed west have cars with no roof, a circular load shape, exactly 1 load, at least 2 wheels, and sides that are not double?",
+   "answer_row_ids": [
+    13,
+    14,
+    17
+   ],
+   "answer_count": 3,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND cars.load_shape = 'circle' AND trains.direction = 'west' AND cars.load_num = 1 AND cars.wheels >= 2 AND cars.sides = 'not_double'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.load_shape",
+    "trains.direction",
+    "cars.load_num",
+    "cars.wheels",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "circle",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "cars.load_shape": "circle",
+    "trains.direction": "west",
+    "cars.load_num": 1,
+    "cars.wheels": 2,
+    "cars.sides": "not_double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and load shape equal to 'circle' and load num equal to '1' and wheels at least '2' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "86f998a3-65b5-46af-80ef-dd2c0d3e7477",
+   "question": "Which trains heading east have cars positioned at 3 or higher with a peaked roof, load shape exactly triangle, sides not double, and carrying at least 1 load?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'peaked' AND cars.load_shape = 'triangle' AND cars.sides = 'not_double' AND cars.load_num >= 1 AND cars.position >= 3 AND trains.direction = 'east'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.load_shape",
+    "cars.sides",
+    "cars.load_num",
+    "cars.position",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "peaked",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "peaked",
+    "cars.load_shape": "triangle",
+    "cars.sides": "not_double",
+    "cars.load_num": 1,
+    "cars.position": 3,
+    "trains.direction": "east"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'peaked' and load shape equal to 'triangle' and sides equal to 'not_double' and load num at least '1' and position at least '3'?"
+  },
+  {
+   "uid": "459a1305-1624-4274-bb84-7f5ad6b81b16",
+   "question": "Which trains heading west have cars positioned at 2 or higher that have exactly not_double sides, a rectangle shape with a flat roof, at least 2 wheels, and carry at least 3 circular loads?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.sides = 'not_double' AND cars.shape = 'rectangle' AND cars.load_shape = 'circle' AND trains.direction = 'west' AND cars.position >= 2 AND cars.load_num >= 3 AND cars.roof = 'flat' AND cars.wheels >= 2",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.sides",
+    "cars.shape",
+    "cars.load_shape",
+    "trains.direction",
+    "cars.position",
+    "cars.load_num",
+    "cars.roof",
+    "cars.wheels"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "circle",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "flat",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.sides": "not_double",
+    "cars.shape": "rectangle",
+    "cars.load_shape": "circle",
+    "trains.direction": "west",
+    "cars.position": 2,
+    "cars.load_num": 3,
+    "cars.roof": "flat",
+    "cars.wheels": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with sides equal to 'not_double' and shape equal to 'rectangle' and load shape equal to 'circle' and position at least '2' and load num at least '3' and roof equal to 'flat' and wheels at least '2'?"
+  },
+  {
+   "uid": "312f814f-1038-4673-b126-75d79866642d",
+   "question": "Which trains have cars with at least 3 wheels and at least 1 load, where the car shape is exactly rectangle, sides are exactly not_double, roof is exactly flat, and position is at most 2?",
+   "answer_row_ids": [
+    3,
+    5,
+    13,
+    19,
+    20
+   ],
+   "answer_count": 5,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels >= 3 AND cars.load_num >= 1 AND cars.shape = 'rectangle' AND cars.sides = 'not_double' AND cars.roof = 'flat' AND cars.position <= 2",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.load_num",
+    "cars.shape",
+    "cars.sides",
+    "cars.roof",
+    "cars.position"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "flat",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 3,
+    "cars.load_num": 1,
+    "cars.shape": "rectangle",
+    "cars.sides": "not_double",
+    "cars.roof": "flat",
+    "cars.position": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with wheels at least '3' and load num at least '1' and shape equal to 'rectangle' and sides equal to 'not_double' and roof equal to 'flat' and position at most '2'?"
+  },
+  {
+   "uid": "16c04d97-c5df-416a-b9c7-3f401bfe4f08",
+   "question": "Which trains are headed west and have cars positioned at least 1 with a rectangular load shape, no roof, exactly 2 wheels, not double sides, and at least 1 load number?",
+   "answer_row_ids": [
+    14,
+    15,
+    16,
+    17
+   ],
+   "answer_count": 4,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'west' AND cars.load_shape = 'rectangle' AND cars.roof = 'none' AND cars.wheels = 2 AND cars.position >= 1 AND cars.sides = 'not_double' AND cars.load_num >= 1",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "trains.direction",
+    "cars.load_shape",
+    "cars.roof",
+    "cars.wheels",
+    "cars.position",
+    "cars.sides",
+    "cars.load_num"
+   ],
+   "involved_filters": [
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "trains.direction": "west",
+    "cars.load_shape": "rectangle",
+    "cars.roof": "none",
+    "cars.wheels": 2,
+    "cars.position": 1,
+    "cars.sides": "not_double",
+    "cars.load_num": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'rectangle' and roof equal to 'none' and wheels equal to '2' and position at least '1' and sides equal to 'not_double' and load num at least '1'?"
+  },
+  {
+   "uid": "e1384a2f-5ccc-4184-9ce8-93e384b9c838",
+   "question": "Which trains have cars with a rectangle shape, at least 1 load, exactly 2 wheels, a triangle load shape, no roof, and sides that are not double?",
+   "answer_row_ids": [
+    6,
+    10,
+    11
+   ],
+   "answer_count": 3,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.shape = 'rectangle' AND cars.load_num >= 1 AND cars.wheels = 2 AND cars.load_shape = 'triangle' AND cars.roof = 'none' AND cars.sides = 'not_double'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.shape",
+    "cars.load_num",
+    "cars.wheels",
+    "cars.load_shape",
+    "cars.roof",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.shape": "rectangle",
+    "cars.load_num": 1,
+    "cars.wheels": 2,
+    "cars.load_shape": "triangle",
+    "cars.roof": "none",
+    "cars.sides": "not_double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with shape equal to 'rectangle' and load num at least '1' and wheels equal to '2' and load shape equal to 'triangle' and roof equal to 'none' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "bffee837-0250-4002-8b84-c250bb9f2606",
+   "question": "Which trains have a car in position 3 that has exactly load number 1, roof none, shape rectangle, sides not_double, and load_shape triangle?",
+   "answer_row_ids": [
+    6,
+    10
+   ],
+   "answer_count": 2,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_num = 1 AND cars.roof = 'none' AND cars.shape = 'rectangle' AND cars.position = 3 AND cars.sides = 'not_double' AND cars.load_shape = 'triangle'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_num",
+    "cars.roof",
+    "cars.shape",
+    "cars.position",
+    "cars.sides",
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_num": 1,
+    "cars.roof": "none",
+    "cars.shape": "rectangle",
+    "cars.position": 3,
+    "cars.sides": "not_double",
+    "cars.load_shape": "triangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load num equal to '1' and roof equal to 'none' and shape equal to 'rectangle' and position equal to '3' and sides equal to 'not_double' and load shape equal to 'triangle'?"
+  },
+  {
+   "uid": "25495a5e-3773-4cf7-981e-f25e10d34948",
+   "question": "Which trains heading east have a car in position 4 that has at most 2 wheels, exactly 1 load, no roof, a triangle-shaped load, not_double sides, and a rectangle shape?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels <= 2 AND cars.load_num = 1 AND cars.roof = 'none' AND trains.direction = 'east' AND cars.load_shape = 'triangle' AND cars.sides = 'not_double' AND cars.position = 4 AND cars.shape = 'rectangle'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.load_num",
+    "cars.roof",
+    "trains.direction",
+    "cars.load_shape",
+    "cars.sides",
+    "cars.position",
+    "cars.shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 2,
+    "cars.load_num": 1,
+    "cars.roof": "none",
+    "trains.direction": "east",
+    "cars.load_shape": "triangle",
+    "cars.sides": "not_double",
+    "cars.position": 4,
+    "cars.shape": "rectangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with wheels at most '2' and load num equal to '1' and roof equal to 'none' and load shape equal to 'triangle' and sides equal to 'not_double' and position equal to '4' and shape equal to 'rectangle'?"
+  },
+  {
+   "uid": "0e1cd541-3e7c-4406-8ccd-525e5af9325d",
+   "question": "Which trains heading west have cars positioned at 2 or higher that feature a flat roof, exactly 3 loads with rectangular shapes, rectangle-shaped bodies with not_double sides, and no more than 2 wheels?",
+   "answer_row_ids": [
+    19
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.shape = 'rectangle' AND cars.sides = 'not_double' AND cars.wheels <= 2 AND cars.load_shape = 'rectangle' AND cars.roof = 'flat' AND cars.load_num = 3 AND cars.position >= 2 AND trains.direction = 'west'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.shape",
+    "cars.sides",
+    "cars.wheels",
+    "cars.load_shape",
+    "cars.roof",
+    "cars.load_num",
+    "cars.position",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "flat",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.shape": "rectangle",
+    "cars.sides": "not_double",
+    "cars.wheels": 2,
+    "cars.load_shape": "rectangle",
+    "cars.roof": "flat",
+    "cars.load_num": 3,
+    "cars.position": 2,
+    "trains.direction": "west"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with shape equal to 'rectangle' and sides equal to 'not_double' and wheels at most '2' and load shape equal to 'rectangle' and roof equal to 'flat' and load num equal to '3' and position at least '2'?"
+  },
+  {
+   "uid": "acdb2676-dc1e-4d6c-979f-d62be5fe8087",
+   "question": "What trains heading east have cars with no roof, exactly 2 wheels, and sides that are not double?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 9,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND trains.direction = 'east' AND cars.wheels = 2 AND cars.sides = 'not_double'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "trains.direction",
+    "cars.wheels",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "trains.direction": "east",
+    "cars.wheels": 2,
+    "cars.sides": "not_double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and wheels equal to '2' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "8d4f771d-417c-46e4-8efd-7342a1ea194f",
+   "question": "Which trains heading east have a rectangle-shaped car with load number 2 in position 1 or lower?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_num = 2 AND cars.shape = 'rectangle' AND cars.position <= 1 AND trains.direction = 'east'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_num",
+    "cars.shape",
+    "cars.position",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.load_num": 2,
+    "cars.shape": "rectangle",
+    "cars.position": 1,
+    "trains.direction": "east"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with load num equal to '2' and shape equal to 'rectangle' and position at most '1'?"
+  },
+  {
+   "uid": "e5819d5e-a0e8-4972-9fbf-785bdcde1b91",
+   "question": "Which trains have cars with no roof, at most 2 wheels, and a load shape that is exactly triangle?",
+   "answer_row_ids": [
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    12,
+    18,
+    19,
+    20
+   ],
+   "answer_count": 11,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND cars.wheels <= 2 AND cars.load_shape = 'triangle'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.wheels",
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "cars.wheels": 2,
+    "cars.load_shape": "triangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and wheels at most '2' and load shape equal to 'triangle'?"
+  },
+  {
+   "uid": "b01e396a-1a27-4704-9c29-86b840dd4064",
+   "question": "Which trains heading east have cars with no roof, exactly 2 wheels, and sides that are not double?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 9,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'east' AND cars.roof = 'none' AND cars.wheels = 2 AND cars.sides = 'not_double'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "trains.direction",
+    "cars.roof",
+    "cars.wheels",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "trains.direction": "east",
+    "cars.roof": "none",
+    "cars.wheels": 2,
+    "cars.sides": "not_double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and wheels equal to '2' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "59c233e5-aaae-4619-ae14-95f8787eb368",
+   "question": "Which trains heading east have cars positioned no more than 3 with double sides, at most 2 wheels, and carrying no more than 1 load each?",
+   "answer_row_ids": [
+    4,
+    5
+   ],
+   "answer_count": 2,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels <= 2 AND cars.sides = 'double' AND trains.direction = 'east' AND cars.position <= 3 AND cars.load_num <= 1",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.sides",
+    "trains.direction",
+    "cars.position",
+    "cars.load_num"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "double",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "east",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 2,
+    "cars.sides": "double",
+    "trains.direction": "east",
+    "cars.position": 3,
+    "cars.load_num": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'east', having at least one related cars record (linked on trains.id = cars.train_id) with wheels at most '2' and sides equal to 'double' and position at most '3' and load num at most '1'?"
+  },
+  {
+   "uid": "66c77dd7-d356-432b-a213-e76d8ec6d3b3",
+   "question": "Which trains have cars with a flat roof and hexagon shape, no less than 2 wheels, a load shape that is triangle, and sides that are not_double?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'flat' AND cars.shape = 'hexagon' AND cars.wheels >= 2 AND cars.load_shape = 'triangle' AND cars.sides = 'not_double'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.shape",
+    "cars.wheels",
+    "cars.load_shape",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "flat",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "hexagon",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "flat",
+    "cars.shape": "hexagon",
+    "cars.wheels": 2,
+    "cars.load_shape": "triangle",
+    "cars.sides": "not_double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'flat' and shape equal to 'hexagon' and wheels at least '2' and load shape equal to 'triangle' and sides equal to 'not_double'?"
+  },
+  {
+   "uid": "e41d71a3-1e8e-4455-a54b-a74196a8475e",
+   "question": "What trains heading west have a car with exactly a rectangle shape, at least 2 wheels, and positioned at most 3?",
+   "answer_row_ids": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "answer_count": 10,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels >= 2 AND cars.position <= 3 AND cars.shape = 'rectangle' AND trains.direction = 'west'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.position",
+    "cars.shape",
+    "trains.direction"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 2,
+    "cars.position": 3,
+    "cars.shape": "rectangle",
+    "trains.direction": "west"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with wheels at least '2' and position at most '3' and shape equal to 'rectangle'?"
+  },
+  {
+   "uid": "14d13a68-9cdf-4f95-80f1-80fd5a63a40f",
+   "question": "Which trains have cars with a load shape that is exactly triangle, sides that are not_double, and at least 2 wheels?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    16,
+    18,
+    19,
+    20
+   ],
+   "answer_count": 14,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'triangle' AND cars.sides = 'not_double' AND cars.wheels >= 2",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_shape",
+    "cars.sides",
+    "cars.wheels"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "triangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.load_shape": "triangle",
+    "cars.sides": "not_double",
+    "cars.wheels": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'triangle' and sides equal to 'not_double' and wheels at least '2'?"
+  },
+  {
+   "uid": "5487196e-27eb-447f-9e7f-f1d6e16d97fe",
+   "question": "Which trains heading west have cars positioned at 1 or higher that each have a circle load shape and at least 2 wheels?",
+   "answer_row_ids": [
+    11,
+    12,
+    13,
+    14,
+    17
+   ],
+   "answer_count": 5,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'circle' AND cars.wheels >= 2 AND trains.direction = 'west' AND cars.position >= 1",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.load_shape",
+    "cars.wheels",
+    "trains.direction",
+    "cars.position"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "circle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "cars.load_shape": "circle",
+    "cars.wheels": 2,
+    "trains.direction": "west",
+    "cars.position": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with load shape equal to 'circle' and wheels at least '2' and position at least '1'?"
+  },
+  {
+   "uid": "1f3e3741-7335-46f6-931b-12d016445e5e",
+   "question": "What trains have cars with at most 2 wheels, where the roof is none, the load number is exactly 1, and both the shape and load shape are rectangle?",
+   "answer_row_ids": [
+    4,
+    7,
+    8,
+    14
+   ],
+   "answer_count": 4,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels <= 2 AND cars.roof = 'none' AND cars.load_num = 1 AND cars.shape = 'rectangle' AND cars.load_shape = 'rectangle'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.wheels",
+    "cars.roof",
+    "cars.load_num",
+    "cars.shape",
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "wheels",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_num",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.wheels": 2,
+    "cars.roof": "none",
+    "cars.load_num": 1,
+    "cars.shape": "rectangle",
+    "cars.load_shape": "rectangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with wheels at most '2' and roof equal to 'none' and load num equal to '1' and shape equal to 'rectangle' and load shape equal to 'rectangle'?"
+  },
+  {
+   "uid": "0a4ade1f-e960-4ec4-a7f4-9accef428ce4",
+   "question": "Which trains headed west have cars with no roof and double sides?",
+   "answer_row_ids": [
+    12,
+    17
+   ],
+   "answer_count": 2,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND trains.direction = 'west' AND cars.sides = 'double'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "trains.direction",
+    "cars.sides"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "trains",
+     "column": "direction",
+     "operator": "=",
+     "value": "west",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "double",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "none",
+    "trains.direction": "west",
+    "cars.sides": "double"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities with direction equal to 'west', having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'none' and sides equal to 'double'?"
+  },
+  {
+   "uid": "a0d8fe92-f842-47c5-9950-bcf363bca472",
+   "question": "Which trains have cars at position 1 or fewer with a jagged roof, not_double sides, and both the car shape and load shape exactly rectangle?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'jagged' AND cars.sides = 'not_double' AND cars.shape = 'rectangle' AND cars.position <= 1 AND cars.load_shape = 'rectangle'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "cars",
+    "trains"
+   ],
+   "involved_columns": [
+    "cars.roof",
+    "cars.sides",
+    "cars.shape",
+    "cars.position",
+    "cars.load_shape"
+   ],
+   "involved_filters": [
+    {
+     "table": "cars",
+     "column": "roof",
+     "operator": "=",
+     "value": "jagged",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "sides",
+     "operator": "=",
+     "value": "not_double",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    },
+    {
+     "table": "cars",
+     "column": "position",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "cars",
+     "column": "load_shape",
+     "operator": "=",
+     "value": "rectangle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "cars.roof": "jagged",
+    "cars.sides": "not_double",
+    "cars.shape": "rectangle",
+    "cars.position": 1,
+    "cars.load_shape": "rectangle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "trains"
+   },
+   "answer_table": "trains",
+   "answer_id_column": "id",
+   "canonical_question": "Which trains entities having at least one related cars record (linked on trains.id = cars.train_id) with roof equal to 'jagged' and sides equal to 'not_double' and shape equal to 'rectangle' and position at most '1' and load shape equal to 'rectangle'?"
+  }
+ ]
+}

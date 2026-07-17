@@ -1,0 +1,124 @@
+{
+  "db_id": "toxicology",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:16:26.216181+00:00",
+  "records": [
+    {
+      "uid": "0c7f4ab9-857c-43d0-a979-eb542e18f95c",
+      "question": "What molecules with a label of + contain bromine atoms?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'br' AND molecule.label = '+'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nINNER JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE m.label = '+' AND a.element = 'br'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "3884abd6-dc68-4ca3-916f-3f0bbc5709b3",
+      "question": "Which molecules have a label of - and contain atoms with the element sn?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'sn' AND molecule.label = '-'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nINNER JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE m.label = '-' AND a.element = 'sn'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    },
+    {
+      "uid": "3f302748-4506-465c-907c-233f9db4b8c0",
+      "question": "Which molecules have at least one atom with the element exactly equal to 'f' and also have at least one bond?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'f'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nWHERE EXISTS (\n  SELECT 1 FROM atom a WHERE a.molecule_id = m.molecule_id AND a.element = 'f'\n)\nAND EXISTS (\n  SELECT 1 FROM bond b WHERE b.molecule_id = m.molecule_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    },
+    {
+      "uid": "4deffac1-15f7-4300-aba7-22adf4368c9f",
+      "question": "Which molecules labeled + contain atoms with element na and have bonds where bond_type is -?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'na' AND bond.bond_type = '-' AND molecule.label = '+'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nWHERE m.label = '+'\nAND EXISTS (\n  SELECT 1\n  FROM atom a\n  WHERE a.molecule_id = m.molecule_id\n  AND a.element = 'na'\n)\nAND EXISTS (\n  SELECT 1\n  FROM bond b\n  WHERE b.molecule_id = m.molecule_id\n  AND b.bond_type = '-'\n)",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.67
+    },
+    {
+      "uid": "6846b8ca-655a-4ed5-8a8e-c55eae3039a8",
+      "question": "What molecules have a label exactly '-' and contain bonds where the bond type is exactly '-' with atoms whose element is exactly 'f'?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '-' AND bond.bond_type = '-' AND atom.element = 'f'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nWHERE m.label = '-'\nAND EXISTS (\n  SELECT 1\n  FROM atom a\n  WHERE a.molecule_id = m.molecule_id\n  AND a.element = 'f'\n)\nAND EXISTS (\n  SELECT 1\n  FROM bond b\n  WHERE b.molecule_id = m.molecule_id\n  AND b.bond_type = '-'\n)",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    },
+    {
+      "uid": "71f5401f-716a-4df2-83da-5d2ecb550e9c",
+      "question": "Which molecules have the label '+' and have at least one atom with the element 'br' and also have at least one bond?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'br'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nWHERE m.label = '+'\nAND EXISTS (\n  SELECT 1 FROM atom a\n  WHERE a.molecule_id = m.molecule_id\n  AND a.element = 'br'\n)\nAND EXISTS (\n  SELECT 1 FROM bond b\n  WHERE b.molecule_id = m.molecule_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "a549a345-a030-4d95-a54f-c4fcbcbcdd9f",
+      "question": "Which molecules have a label of '-' and contain an atom whose element is exactly pb?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE molecule.label = '-' AND atom.element = 'pb'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nINNER JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE m.label = '-' AND a.element = 'pb'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    },
+    {
+      "uid": "ae11e873-6177-4968-9f4f-b736f7fe0d91",
+      "question": "Which molecules have a label of + and contain bromine atoms?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'br'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nINNER JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE m.label = '+' AND a.element = 'br'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "e386a2b1-dec5-44ec-a65d-f8ee80d35977",
+      "question": "Which molecules labeled + contain carbon atoms and have bonds where the bond type is exactly #?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'c' AND molecule.label = '+' AND bond.bond_type = '#'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nWHERE m.label = '+'\nAND EXISTS (\n  SELECT 1\n  FROM atom a\n  WHERE a.molecule_id = m.molecule_id\n  AND a.element = 'c'\n)\nAND EXISTS (\n  SELECT 1\n  FROM bond b\n  WHERE b.molecule_id = m.molecule_id\n  AND b.bond_type = '#'\n)",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.42
+    },
+    {
+      "uid": "fc4b8d48-7a18-4b74-ab75-e6ab5b2e14fe",
+      "question": "Which molecules have the label '-' and have at least one atom with element 'f' and also have at least one bond?",
+      "gold_sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '-' AND atom.element = 'f'",
+      "pred_sql": "SELECT DISTINCT m.molecule_id\nFROM molecule m\nWHERE m.label = '-'\nAND EXISTS (\n  SELECT 1 FROM atom a\n  WHERE a.molecule_id = m.molecule_id\n  AND a.element = 'f'\n)\nAND EXISTS (\n  SELECT 1 FROM bond b\n  WHERE b.molecule_id = m.molecule_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    }
+  ]
+}

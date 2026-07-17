@@ -1,0 +1,124 @@
+{
+  "db_id": "thrombosis_prediction",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:16:23.482399+00:00",
+  "records": [
+    {
+      "uid": "59700f38-3788-4f41-b14a-0a57f2f021e4",
+      "question": "Who are the patients diagnosed with SJS born on or after 1942-03-15, admitted with admission +, and whose examinations show lac is -, ana is 16.0, and thrombosis is 0?",
+      "gold_sql": "SELECT patient.id FROM patient\nJOIN examination ON patient.id = examination.id\nWHERE patient.diagnosis = 'SJS' AND patient.birthday >= '1942-03-15' AND examination.lac = '-' AND examination.ana = 16.0 AND examination.thrombosis = 0 AND patient.admission = '+'",
+      "pred_sql": "SELECT DISTINCT p.ID\nFROM Patient p\nINNER JOIN Examination e ON p.ID = e.ID\nWHERE p.Diagnosis = 'SJS'\n  AND p.Birthday >= '1942-03-15'\n  AND p.Admission = '+'\n  AND e.LAC = '-'\n  AND e.ANA = 16.0\n  AND e.Thrombosis = 0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "6ebae2ad-92fa-419d-9aa0-b123bfeaee09",
+      "question": "Which patients have laboratory results where the rbc is exactly 4.0, the ua is exactly 4.5, and the un is at least 14.0?",
+      "gold_sql": "SELECT patient.id FROM patient\nJOIN laboratory ON patient.id = laboratory.id\nWHERE laboratory.rbc = 4.0 AND laboratory.ua = 4.5 AND laboratory.un >= 14.0",
+      "pred_sql": "SELECT DISTINCT p.ID\nFROM Patient p\nINNER JOIN Laboratory l ON p.ID = l.ID\nWHERE l.RBC = 4.0\n  AND l.UA = 4.5\n  AND l.UN >= 14.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "7635bb7f-da61-4ac2-a4b8-663202a86295",
+      "question": "Which female patients born on or after 1951-11-24 and described since 1994-02-19 have laboratory results where wbc is 9.0, ua is 2.1, ra is -, and examinations with rvvt is - and thrombosis at most 0?",
+      "gold_sql": "SELECT patient.id FROM patient\nJOIN examination ON patient.id = examination.id\nJOIN laboratory ON patient.id = laboratory.id\nWHERE laboratory.wbc = 9.0 AND examination.thrombosis <= 0 AND laboratory.ua = 2.1 AND patient.description >= '1994-02-19' AND patient.birthday >= '1951-11-24' AND examination.rvvt = '-' AND patient.sex = 'F' AND laboratory.ra = '-'",
+      "pred_sql": "SELECT DISTINCT p.ID\nFROM Patient p\nWHERE p.Description >= '1994-02-19'\n  AND p.Birthday >= '1951-11-24'\n  AND p.SEX = 'F'\n  AND EXISTS (\n    SELECT 1\n    FROM Examination e\n    WHERE e.ID = p.ID\n      AND e.Thrombosis <= 0\n      AND e.RVVT = '-'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Laboratory l\n    WHERE l.ID = p.ID\n      AND l.WBC = 9.0\n      AND l.UA = 2.1\n      AND l.RA = '-'\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "82206754-f9d8-4897-9135-803e68e8d235",
+      "question": "Which patients were born exactly on 1969-02-15?",
+      "gold_sql": "SELECT patient.id FROM patient\nWHERE patient.birthday = '1969-02-15'",
+      "pred_sql": "SELECT Patient.ID FROM Patient WHERE Patient.Birthday = '1969-02-15'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    },
+    {
+      "uid": "85146091-102e-42a4-971a-d906a75a6df8",
+      "question": "Who are the female patients born on or before 1948-10-07 with examination diagnosis SLE, lac exactly '-', and laboratory hct exactly 36.3?",
+      "gold_sql": "SELECT patient.id FROM patient\nJOIN examination ON patient.id = examination.id\nJOIN laboratory ON patient.id = laboratory.id\nWHERE patient.sex = 'F' AND patient.birthday <= '1948-10-07' AND examination.lac = '-' AND laboratory.hct = 36.3 AND examination.diagnosis = 'SLE'",
+      "pred_sql": "SELECT DISTINCT p.ID\nFROM Patient p\nWHERE p.SEX = 'F'\n  AND p.Birthday <= '1948-10-07'\n  AND EXISTS (\n    SELECT 1\n    FROM Examination e\n    WHERE e.ID = p.ID\n      AND e.LAC = '-'\n      AND e.Diagnosis = 'SLE'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Laboratory l\n    WHERE l.ID = p.ID\n      AND l.HCT = 36.3\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.3
+    },
+    {
+      "uid": "a0a072f4-ab51-49ed-89c0-51519ba00748",
+      "question": "Which patients have recorded examinations and laboratory results with hemoglobin exactly 16.0 and GPT at most 33.0?",
+      "gold_sql": "SELECT patient.id FROM patient\nJOIN examination ON patient.id = examination.id\nJOIN laboratory ON patient.id = laboratory.id\nWHERE laboratory.hgb = 16.0 AND laboratory.gpt <= 33.0",
+      "pred_sql": "SELECT DISTINCT p.ID\nFROM Patient p\nINNER JOIN Examination e ON p.ID = e.ID\nINNER JOIN Laboratory l ON p.ID = l.ID\nWHERE l.HGB = 16.0\nAND l.GPT <= 33.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    },
+    {
+      "uid": "ab58a379-cd93-4024-980e-2fb08373b1cd",
+      "question": "Which female patients diagnosed with SLE have a description dated 1997-02-03 and were born on or after 1989-08-28?",
+      "gold_sql": "SELECT patient.id FROM patient\nWHERE patient.sex = 'F' AND patient.diagnosis = 'SLE' AND patient.description = '1997-02-03' AND patient.birthday >= '1989-08-28'",
+      "pred_sql": "SELECT Patient.ID\nFROM Patient\nWHERE Patient.SEX = 'F'\n  AND Patient.Diagnosis = 'SLE'\n  AND Patient.Description = '1997-02-03'\n  AND Patient.Birthday >= '1989-08-28'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    },
+    {
+      "uid": "b1d09bea-29ca-4f51-a2ea-2c6ebc53f932",
+      "question": "Who are the patients born exactly on 1968-12-25 with a diagnosis of PSS?",
+      "gold_sql": "SELECT patient.id FROM patient\nWHERE patient.birthday = '1968-12-25' AND patient.diagnosis = 'PSS'",
+      "pred_sql": "SELECT Patient.ID\nFROM Patient\nWHERE Patient.Birthday = '1968-12-25' AND Patient.Diagnosis = 'PSS'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "b81714d8-18f8-417d-a69a-3141cbce143a",
+      "question": "Which female patients born on or after 1946-02-19 have admission status '-' and description date exactly on 1997-03-27?",
+      "gold_sql": "SELECT patient.id FROM patient\nWHERE patient.admission = '-' AND patient.description = '1997-03-27' AND patient.birthday >= '1946-02-19' AND patient.sex = 'F'",
+      "pred_sql": "SELECT Patient.ID\nFROM Patient\nWHERE Patient.Admission = '-'\nAND Patient.Description = '1997-03-27'\nAND Patient.Birthday >= '1946-02-19'\nAND Patient.SEX = 'F'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    },
+    {
+      "uid": "f02565e1-7715-42a6-a96e-d5578e533ccc",
+      "question": "Which patients have a diagnosis that is exactly RA?",
+      "gold_sql": "SELECT patient.id FROM patient\nJOIN examination ON patient.id = examination.id\nWHERE patient.diagnosis = 'RA'",
+      "pred_sql": "SELECT DISTINCT p.ID\nFROM Patient p\nINNER JOIN Examination e ON p.ID = e.ID\nWHERE p.Diagnosis = 'RA'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    }
+  ]
+}

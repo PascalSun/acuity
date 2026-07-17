@@ -1,0 +1,124 @@
+{
+  "db_id": "performance_attendance",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:52:55.836246+00:00",
+  "records": [
+    {
+      "uid": "001ba298-3031-434e-9f99-1f4aac5a4c50",
+      "question": "Which performances had an attendance of at most 1982?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.attendance <= 1982",
+      "pred_sql": "SELECT performance.performance_id FROM performance WHERE performance.attendance <= 1982",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.92
+    },
+    {
+      "uid": "05fe58b8-5283-4f5d-824e-fe74f5f7f31d",
+      "question": "Which performances held at Verizon Center on February 7, hosted by the Pittsburgh Penguins, had an attendance of at least 1877?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.attendance >= 1877 AND performance.location = 'Verizon Center' AND performance.host = 'Pittsburgh Penguins' AND performance.date = 'February 7'",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nJOIN member_attendance ON performance.Performance_ID = member_attendance.Performance_ID\nWHERE performance.Attendance >= 1877 AND performance.Location = 'Verizon Center' AND performance.Host = 'Pittsburgh Penguins' AND performance.Date = 'February 7'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.36
+    },
+    {
+      "uid": "2b1172e0-f4bd-4aac-927a-e3c2b88d3b03",
+      "question": "What performances on February 2 have an attendance of exactly 165?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nJOIN member_attendance ON performance.performance_id = member_attendance.performance_id\nWHERE performance.attendance = 165 AND performance.date = 'February 2'",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nJOIN member_attendance ON performance.performance_id = member_attendance.performance_id\nWHERE performance.attendance = 165 AND performance.Date = 'February 2'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.42
+    },
+    {
+      "uid": "2ec0bfaf-4f5e-45ab-ba93-d80edd983e06",
+      "question": "What performances took place at Bell Centre on February 10 where the host was Montreal Canadiens and attendance was exactly 2173?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.date = 'February 10' AND performance.attendance = 2173 AND performance.location = 'Bell Centre' AND performance.host = 'Montreal Canadiens'",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nWHERE performance.Date = 'February 10' AND performance.Attendance = 2173 AND performance.Location = 'Bell Centre' AND performance.Host = 'Montreal Canadiens'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.66
+    },
+    {
+      "uid": "30678014-d7af-4854-85ac-862c08ce6623",
+      "question": "Which performances took place at Scotiabank Place on February 11?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.date = 'February 11' AND performance.location = 'Scotiabank Place'",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nWHERE performance.Date = 'February 11' AND performance.Location = 'Scotiabank Place'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.67
+    },
+    {
+      "uid": "a5ebd8f1-f616-415a-a5f5-5f2759666aaa",
+      "question": "Which performances took place on February 10 where the host is Montreal Canadiens?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.date = 'February 10' AND performance.host = 'Montreal Canadiens'",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nWHERE performance.Date = 'February 10' AND performance.Host = 'Montreal Canadiens'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.28
+    },
+    {
+      "uid": "bfabe7a9-0615-4505-b317-1ea0c39d0d2f",
+      "question": "Which performances took place at TD Garden on February 2 that had member attendance?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nJOIN member_attendance ON performance.performance_id = member_attendance.performance_id\nWHERE performance.location = 'TD Garden' AND performance.date = 'February 2'",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nJOIN member_attendance ON performance.performance_id = member_attendance.performance_id\nWHERE performance.location = 'TD Garden' AND performance.Date = 'February 2'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.29
+    },
+    {
+      "uid": "cdfddbb0-606d-422d-b15e-58e89f51c3dc",
+      "question": "Which performances on February 5 had exactly 1878 attendees and included members playing at least 2 pieces each?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nJOIN member_attendance ON performance.performance_id = member_attendance.performance_id\nWHERE performance.attendance = 1878 AND performance.date = 'February 5' AND member_attendance.num_of_pieces >= 2",
+      "pred_sql": "SELECT p.Performance_ID\nFROM performance p\nJOIN member_attendance ma ON p.Performance_ID = ma.Performance_ID\nWHERE p.Attendance = 1878 AND p.Date = 'February 5' AND ma.Num_of_Pieces >= 2",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.26
+    },
+    {
+      "uid": "e5cae6eb-ac67-4f5f-9ef0-2eee007f9f30",
+      "question": "Which performances hosted by Boston Bruins at TD Garden on February 2 had at least 165 attendees and member attendance with at least one piece played?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nJOIN member_attendance ON performance.performance_id = member_attendance.performance_id\nWHERE performance.location = 'TD Garden' AND performance.host = 'Boston Bruins' AND member_attendance.num_of_pieces >= 1 AND performance.date = 'February 2' AND performance.attendance >= 165",
+      "pred_sql": "SELECT p.Performance_ID\nFROM performance p\nJOIN member_attendance ma ON p.Performance_ID = ma.Performance_ID\nWHERE p.Location = 'TD Garden'\n  AND p.Host = 'Boston Bruins'\n  AND p.Date = 'February 2'\n  AND p.Attendance >= 165\n  AND ma.Num_of_Pieces >= 1",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.45
+    },
+    {
+      "uid": "fc928cf6-a3cf-488c-8ba0-b5f45f5a34b0",
+      "question": "Which performances held at TD Garden on February 2 were hosted by the Boston Bruins with an attendance exactly 165?",
+      "gold_sql": "SELECT performance.performance_id FROM performance\nWHERE performance.date = 'February 2' AND performance.location = 'TD Garden' AND performance.host = 'Boston Bruins' AND performance.attendance = 165",
+      "pred_sql": "SELECT performance.performance_id\nFROM performance\nWHERE performance.Date = 'February 2' AND performance.Location = 'TD Garden' AND performance.Host = 'Boston Bruins' AND performance.Attendance = 165",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.54
+    }
+  ]
+}

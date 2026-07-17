@@ -1,0 +1,124 @@
+{
+  "db_id": "movie_3",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:18:53.349469+00:00",
+  "records": [
+    {
+      "uid": "0806ce9b-4f39-45a0-9809-c11d87b7f191",
+      "question": "Which payments were made exactly on 2005-08-02 21:47:26.0 with an amount of 0.99 and last updated on or after 2006-02-15 22:18:11.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.payment_date = '2005-08-02 21:47:26.0' AND payment.amount = 0.99 AND payment.last_update >= '2006-02-15 22:18:11.0'",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.payment_date = '2005-08-02 21:47:26.0'\n  AND payment.amount = 0.99\n  AND payment.last_update >= '2006-02-15 22:18:11.0'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.17
+    },
+    {
+      "uid": "1d4ed17d-05e1-4b48-9987-b0b48530f9d7",
+      "question": "Which payments of exactly $5.99 were made on 2005-08-01 at 05:32:13?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.amount = 5.99 AND payment.payment_date = '2005-08-01 05:32:13.0'",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE amount = 5.99\n  AND payment_date = '2005-08-01 05:32:13'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "27ccf590-0d76-40a5-9340-cf6f60396d05",
+      "question": "What payments have an amount of 2.99 and were last updated on 2006-02-15 22:14:35.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.last_update = '2006-02-15 22:14:35.0' AND payment.amount = 2.99",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.amount = 2.99\n  AND payment.last_update = '2006-02-15 22:14:35.0'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.01
+    },
+    {
+      "uid": "35348fda-55f1-4f6d-850e-b516f8c00716",
+      "question": "What payments were made exactly on 2005-06-18 20:06:05 where the amount is 4.99?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.payment_date = '2005-06-18 20:06:05.0' AND payment.amount = 4.99",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.payment_date = '2005-06-18 20:06:05'\n  AND payment.amount = 4.99",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    },
+    {
+      "uid": "45be301e-4001-4382-9ba1-e5670dfb0803",
+      "question": "Which payments were made exactly on 2005-07-28 07:56:00.0 and last updated on or before 2006-02-15 22:14:48.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.payment_date = '2005-07-28 07:56:00.0' AND payment.last_update <= '2006-02-15 22:14:48.0'",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.payment_date = '2005-07-28 07:56:00.0'\n  AND payment.last_update <= '2006-02-15 22:14:48.0'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "4fc402e2-fc6c-4faa-a7a7-f1d858229020",
+      "question": "Which payments made on 2005-06-15 17:56:14.0 have an amount of 6.99 and were last updated exactly on 2006-02-15 22:14:53.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.last_update = '2006-02-15 22:14:53.0' AND payment.amount = 6.99 AND payment.payment_date = '2005-06-15 17:56:14.0'",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.payment_date = '2005-06-15 17:56:14.0'\n  AND payment.amount = 6.99\n  AND payment.last_update = '2006-02-15 22:14:53.0'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "a175b2d5-2244-4c8d-8eaf-3312af3e914d",
+      "question": "Which payments have an amount of 2.99, were last updated exactly on 2006-02-15 22:12:54.0, and have a payment date on or before 2005-08-20 15:11:48.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.payment_date <= '2005-08-20 15:11:48.0' AND payment.last_update = '2006-02-15 22:12:54.0' AND payment.amount = 2.99",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.amount = 2.99\n  AND payment.last_update = '2006-02-15 22:12:54.0'\n  AND payment.payment_date <= '2005-08-20 15:11:48.0'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "c444deeb-c9fe-4328-9257-165b99cf322a",
+      "question": "Which payments made exactly on 2005-08-19 11:24:37.0 have an amount of 0.99 and were last updated on or before 2006-02-15 22:18:59.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.payment_date = '2005-08-19 11:24:37.0' AND payment.last_update <= '2006-02-15 22:18:59.0' AND payment.amount = 0.99",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.payment_date = '2005-08-19 11:24:37.0'\n  AND payment.amount = 0.99\n  AND payment.last_update <= '2006-02-15 22:18:59.0'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "d9c8d513-848d-49f4-a2f6-e16c375a86c3",
+      "question": "Which payments made on 2005-08-22 at 02:09:12 have an amount of 7.99 and were last updated on 2006-02-15 at 22:20:44?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.payment_date = '2005-08-22 02:09:12.0' AND payment.last_update = '2006-02-15 22:20:44.0' AND payment.amount = 7.99",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.payment_date = '2005-08-22 02:09:12'\n  AND payment.amount = 7.99\n  AND payment.last_update = '2006-02-15 22:20:44'",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "de57cc24-7ea3-4b9c-bfe6-553aafbe3502",
+      "question": "Which payments were last updated exactly on 2006-02-15 22:15:39.0 and have a payment date of at least 2005-07-31 22:30:10.0?",
+      "gold_sql": "SELECT payment.payment_id FROM payment\nWHERE payment.last_update = '2006-02-15 22:15:39.0' AND payment.payment_date >= '2005-07-31 22:30:10.0'",
+      "pred_sql": "SELECT payment.payment_id\nFROM payment\nWHERE payment.last_update = '2006-02-15 22:15:39.0'\n  AND payment.payment_date >= '2005-07-31 22:30:10.0'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    }
+  ]
+}

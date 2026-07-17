@@ -1,0 +1,124 @@
+{
+  "db_id": "game_injury",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:52:27.696841+00:00",
+  "records": [
+    {
+      "uid": "11ddf9de-f59f-40c5-aa6b-618d08304dd8",
+      "question": "What stadium named Invesco Field at Mile High has at least 8 home games, an average attendance of at least 74908, a capacity percentage exactly 98.4, and a total attendance of at most 599264?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nWHERE stadium.average_attendance >= 74908.0 AND stadium.capacity_percentage = 98.4 AND stadium.name = 'Invesco Field at Mile High' AND stadium.total_attendance <= 599264.0 AND stadium.home_games >= 8",
+      "pred_sql": "SELECT id \nFROM stadium \nWHERE Average_Attendance >= 74908.0 \n  AND Capacity_Percentage = 98.4 \n  AND name = 'Invesco Field at Mile High' \n  AND Total_Attendance <= 599264.0 \n  AND Home_Games >= 8",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 28.62
+    },
+    {
+      "uid": "2786a9eb-0a73-42dc-b4f1-d0db274916bb",
+      "question": "Which stadium named Cowboys Stadium has a total attendance of exactly 696377, an average attendance of at least 87047, no more than 8 home games, and a capacity percentage exactly equal to 108.8?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nWHERE stadium.average_attendance >= 87047.0 AND stadium.home_games <= 8 AND stadium.total_attendance = 696377.0 AND stadium.capacity_percentage = 108.8 AND stadium.name = 'Cowboys Stadium'",
+      "pred_sql": "SELECT id\nFROM stadium\nWHERE Average_Attendance >= 87047.0\n  AND Home_Games <= 8\n  AND Total_Attendance = 696377.0\n  AND Capacity_Percentage = 108.8\n  AND name = 'Cowboys Stadium'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.31
+    },
+    {
+      "uid": "35e2c695-df43-4736-ab47-e8b6d01dc199",
+      "question": "Which stadiums have a total attendance of exactly 553152.0 and hosted games in seasons at most 2012?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.season <= 2012 AND stadium.total_attendance = 553152.0",
+      "pred_sql": "SELECT DISTINCT stadium.id\nFROM stadium\nINNER JOIN game ON stadium.id = game.stadium_id\nWHERE stadium.Total_Attendance = 553152.0\n  AND game.Season <= 2012",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.49
+    },
+    {
+      "uid": "3e13392e-330b-4960-8fa8-85a95d514080",
+      "question": "What stadiums have a total attendance of at most 569817 and an average attendance of no more than 71227, where a game with an away team of Pakhtakor ended with a score of 1\u20132?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.total_attendance <= 569817.0 AND game.score = '1\u20132' AND game.away_team = 'Pakhtakor' AND stadium.average_attendance <= 71227.0",
+      "pred_sql": "SELECT stadium.id\nFROM stadium\nWHERE stadium.Total_Attendance <= 569817.0\n  AND stadium.Average_Attendance <= 71227.0\n  AND EXISTS (\n    SELECT 1\n    FROM game\n    WHERE game.stadium_id = stadium.id\n      AND game.Score = '1\u20132'\n      AND game.Away_team = 'Pakhtakor'\n  )",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 55.96
+    },
+    {
+      "uid": "465503a1-552f-4b7b-9050-51d8f522d433",
+      "question": "Which stadium has the name New Meadowlands Stadium?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nWHERE stadium.name = 'New Meadowlands Stadium'",
+      "pred_sql": "SELECT id \nFROM stadium \nWHERE name = 'New Meadowlands Stadium'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 19.54
+    },
+    {
+      "uid": "4bda122e-3d2c-43a3-94d7-19750c0d285f",
+      "question": "Which stadiums hosted games in seasons at most 2007?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.season <= 2007",
+      "pred_sql": "SELECT DISTINCT stadium.id\nFROM stadium\nINNER JOIN game ON stadium.id = game.stadium_id\nWHERE game.Season <= 2007",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.31
+    },
+    {
+      "uid": "4e5457a3-5d07-4b0b-9b85-ed2df531e4d9",
+      "question": "Which stadium named Cowboys Stadium has a total attendance of 696377.0, an average attendance of at least 87047.0, and hosted a League game on 21 August 2011 where Bunyodkor was home, Pakhtakor was away, and the score was 2\u20131?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'Cowboys Stadium' AND game.away_team = 'Pakhtakor' AND stadium.average_attendance >= 87047.0 AND game.home_team = 'Bunyodkor' AND game.date = '21 August 2011' AND game.score = '2\u20131' AND stadium.total_attendance = 696377.0 AND game.competition = 'League'",
+      "pred_sql": "SELECT DISTINCT stadium.id\nFROM stadium\nINNER JOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'Cowboys Stadium'\n  AND stadium.Average_Attendance >= 87047.0\n  AND stadium.Total_Attendance = 696377.0\n  AND game.Away_team = 'Pakhtakor'\n  AND game.Home_team = 'Bunyodkor'\n  AND game.Date = '21 August 2011'\n  AND game.Score = '2\u20131'\n  AND game.Competition = 'League'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 63.96
+    },
+    {
+      "uid": "a07dfacb-4eb2-4b41-8baa-9b6b2263b7dd",
+      "question": "Which stadiums have total attendance exactly 560304.0 and a capacity percentage of at most 96.0?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage <= 96.0 AND stadium.total_attendance = 560304.0",
+      "pred_sql": "SELECT id \nFROM stadium \nWHERE Capacity_Percentage <= 96.0 \n  AND Total_Attendance = 560304.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 25.37
+    },
+    {
+      "uid": "a4b19984-5968-451e-a7ff-5edcb1a02748",
+      "question": "Which stadiums hosted games on 10 July 2008 that ended with a 1\u20131 score and have an average attendance of at most 78596?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.date = '10 July 2008' AND stadium.average_attendance <= 78596.0 AND game.score = '1\u20131'",
+      "pred_sql": "SELECT DISTINCT stadium.id\nFROM stadium\nINNER JOIN game ON stadium.id = game.stadium_id\nWHERE stadium.Average_Attendance <= 78596.0\n  AND game.Date = '10 July 2008'\n  AND game.Score = '1\u20131'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 47.64
+    },
+    {
+      "uid": "b3065a66-0dd4-459b-bf1a-14b8f9403b4e",
+      "question": "What stadium named M&T Bank Stadium has an average attendance of at least 71227, hosts at least 8 home games, and held a game on 12 July 2009 where Bunyodkor was the home team and Pakhtakor the away team in season 2009 or earlier?",
+      "gold_sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.away_team = 'Pakhtakor' AND stadium.name = 'M&T Bank Stadium' AND stadium.home_games >= 8 AND game.home_team = 'Bunyodkor' AND game.date = '12 July 2009' AND game.season <= 2009 AND stadium.average_attendance >= 71227.0",
+      "pred_sql": "SELECT \n    stadium.id\nFROM \n    stadium\nINNER JOIN \n    game\nON \n    stadium.id = game.stadium_id\nWHERE \n    stadium.name = 'M&T Bank Stadium'\n    AND stadium.Home_Games >= 8\n    AND stadium.Average_Attendance >= 71227.0\n    AND game.Away_team = 'Pakhtakor'\n    AND game.Home_team = 'Bunyodkor'\n    AND game.Date = '12 July 2009'\n    AND game.Season <= 2009",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 60.1
+    }
+  ]
+}

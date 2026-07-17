@@ -1,0 +1,124 @@
+{
+  "db_id": "genes",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 5,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:11:46.809539+00:00",
+  "records": [
+    {
+      "uid": "123f62e1-fef5-44d7-a0de-2862d8e615d7",
+      "question": "Which classifications have localization exactly extracellular?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nWHERE classification.localization = 'extracellular'",
+      "pred_sql": "SELECT GeneID FROM Classification WHERE Localization = 'extracellular'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.75
+    },
+    {
+      "uid": "23b10a86-3d37-4661-b1b0-71fc7525c338",
+      "question": "Which classifications are associated with genes that have the motif PS00018 and whose function is CELL GROWTH, CELL DIVISION AND DNA SYNTHESIS?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN genes ON classification.geneid = genes.geneid\nWHERE genes.motif = 'PS00018' AND genes.function = 'CELL GROWTH, CELL DIVISION AND DNA SYNTHESIS'",
+      "pred_sql": "SELECT Classification.GeneID\nFROM Classification\nJOIN Genes ON Classification.GeneID = Genes.GeneID\nWHERE Genes.Motif = 'PS00018' AND Genes.Function = 'CELL GROWTH, CELL DIVISION AND DNA SYNTHESIS'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.81
+    },
+    {
+      "uid": "58df0687-f49d-4dad-a640-9a6b0960d258",
+      "question": "Which classifications localized in the cytoplasm have interactions where the same gene interacts with itself?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN interactions ON classification.geneid = interactions.geneid1 AND classification.geneid = interactions.geneid2\nWHERE classification.localization = 'cytoplasm'",
+      "pred_sql": "SELECT Classification.GeneID\nFROM Classification\nJOIN Interactions ON Classification.GeneID = Interactions.GeneID1 AND Interactions.GeneID1 = Interactions.GeneID2\nWHERE Classification.Localization = 'cytoplasm'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "65a4cf7f-3791-49a7-8f52-26ae1127d695",
+      "question": "Which classifications have a localization of cytoskeleton and are linked to non-essential genes on chromosome 16 or fewer, where the gene function is PROTEIN DESTINATION, the complex is Cytoskeleton, and the phenotype is Cell cycle defects?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN genes ON classification.geneid = genes.geneid\nWHERE genes.essential = 'Non-Essential' AND genes.chromosome <= 16 AND genes.function = 'PROTEIN DESTINATION' AND classification.localization = 'cytoskeleton' AND genes.complex = 'Cytoskeleton' AND genes.phenotype = 'Cell cycle defects'",
+      "pred_sql": "SELECT Classification.GeneID\nFROM Classification\nJOIN Genes ON Classification.GeneID = Genes.GeneID\nWHERE Classification.Localization = 'cytoskeleton'\n  AND Genes.Essential = 'non-essential'\n  AND Genes.Chromosome <= 16\n  AND Genes.Function = 'PROTEIN DESTINATION'\n  AND Genes.Complex = 'Cytoskeleton'\n  AND Genes.Phenotype = 'Cell cycle defects'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "773b7b5b-1f00-4bd4-b82e-18278b93a104",
+      "question": "Which classification entities have related genes with complex exactly equal to 'Transcription complexes/Transcriptosome' and also have related interactions where the classification entity is involved as both interacting entities?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN genes ON classification.geneid = genes.geneid\nJOIN interactions ON classification.geneid = interactions.geneid1 AND classification.geneid = interactions.geneid2\nWHERE genes.complex = 'Transcription complexes/Transcriptosome'",
+      "pred_sql": "SELECT c.GeneID\nFROM Classification c\nJOIN Genes g ON c.GeneID = g.GeneID\nWHERE g.Complex = 'Transcription complexes/Transcriptosome'\n  AND EXISTS (\n    SELECT 1\n    FROM Interactions i\n    WHERE i.GeneID1 = c.GeneID AND i.GeneID2 = c.GeneID\n  )",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "8dbaf65c-0921-453b-b1c7-089ac6837dc0",
+      "question": "Which classifications have localization exactly in the cell wall?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nWHERE classification.localization = 'cell wall'",
+      "pred_sql": "SELECT GeneID FROM Classification WHERE Localization = 'cell wall'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.81
+    },
+    {
+      "uid": "9c07bf01-a1ed-42a2-aecd-5f4b4cd9ba76",
+      "question": "Which classifications in the cytoplasm are linked to non-essential protein kinases with motif PS00107 that function in TRANSCRIPTION, have a phenotype of '?', belong to the cAMP-dependent protein kinase complex, and are localized in the cytoplasm?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN genes ON classification.geneid = genes.geneid\nWHERE genes.complex = 'cAMP-dependent protein kinase' AND genes.phenotype = '?' AND genes.localization = 'cytoplasm' AND genes.class = 'Protein Kinases' AND genes.essential = 'Non-Essential' AND genes.function = 'TRANSCRIPTION' AND classification.localization = 'cytoplasm' AND genes.motif = 'PS00107'",
+      "pred_sql": "SELECT Classification.GeneID\nFROM Classification\nJOIN Genes ON Classification.GeneID = Genes.GeneID\nWHERE Classification.Localization = 'cytoplasm'\n  AND Genes.Essential = 'no'\n  AND Genes.Function = 'TRANSCRIPTION'\n  AND Genes.Phenotype = '?'\n  AND Genes.Complex = 'cAMP-dependent protein kinase complex'\n  AND Genes.Localization = 'cytoplasm'\n  AND Genes.Motif = 'PS00107'\n  AND Genes.Class = 'protein kinase'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    },
+    {
+      "uid": "b78ea34e-6390-4685-8363-cbf721f330dc",
+      "question": "What classifications are associated with non-essential Protein Kinases in the cAMP-dependent protein kinase complex that have phenotype ?, function is CELLULAR ORGANIZATION (proteins are localized to the corresponding organelle), and both genes and classifications localize to the cytoplasm with interactions showing expression_corr exactly 1.0?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN genes ON classification.geneid = genes.geneid\nJOIN interactions ON classification.geneid = interactions.geneid1 AND classification.geneid = interactions.geneid2\nWHERE genes.complex = 'cAMP-dependent protein kinase' AND genes.essential = 'Non-Essential' AND interactions.expression_corr = 1.0 AND classification.localization = 'cytoplasm' AND genes.localization = 'cytoplasm' AND genes.function = 'CELLULAR ORGANIZATION (proteins are localized to the corresponding organelle)' AND genes.class = 'Protein Kinases' AND genes.phenotype = '?'",
+      "pred_sql": "SELECT DISTINCT c.GeneID\nFROM Classification c\nJOIN Genes g ON c.GeneID = g.GeneID\nJOIN Interactions i ON c.GeneID = i.GeneID1\nJOIN Classification c2 ON i.GeneID2 = c2.GeneID\nJOIN Genes g2 ON i.GeneID2 = g2.GeneID\nWHERE g.Essential = 'No'\n  AND g.Class = 'Protein Kinase'\n  AND g.Complex = 'cAMP-dependent protein kinase complex'\n  AND g.Phenotype = '?'\n  AND g.Function = 'CELLULAR ORGANIZATION'\n  AND g.Localization = 'cytoplasm'\n  AND c.Localization = 'cytoplasm'\n  AND c2.Localization = 'cytoplasm'\n  AND g2.Localization = 'cytoplasm'\n  AND i.Expression_Corr = 1.0",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.34
+    },
+    {
+      "uid": "d02301dd-0af0-464d-b9b4-00402895512a",
+      "question": "Which classifications have localization in the cytoplasm and show physical interactions with expression_corr exactly 1.0?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN interactions ON classification.geneid = interactions.geneid1 AND classification.geneid = interactions.geneid2\nWHERE interactions.expression_corr = 1.0 AND classification.localization = 'cytoplasm' AND interactions.type = 'Physical'",
+      "pred_sql": "SELECT DISTINCT Classification.GeneID\nFROM Classification\nJOIN Interactions ON Classification.GeneID = Interactions.GeneID1\nWHERE Classification.Localization = 'cytoplasm'\n  AND Interactions.Type = 'physical'\n  AND Interactions.Expression_Corr = 1.0",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "d704629f-fdf8-42c0-9020-f599552a0c0d",
+      "question": "Which classifications involve essential genes that function in TRANSCRIPTION within the nucleus and participate in Genetic interactions?",
+      "gold_sql": "SELECT classification.geneid FROM classification\nJOIN genes ON classification.geneid = genes.geneid\nJOIN interactions ON classification.geneid = interactions.geneid1 AND classification.geneid = interactions.geneid2\nWHERE genes.localization = 'nucleus' AND genes.function = 'TRANSCRIPTION' AND interactions.type = 'Genetic' AND genes.essential = 'Essential'",
+      "pred_sql": "SELECT DISTINCT Classification.GeneID\nFROM Classification\nJOIN Genes ON Classification.GeneID = Genes.GeneID\nJOIN Interactions ON Classification.GeneID = Interactions.GeneID1 OR Classification.GeneID = Interactions.GeneID2\nWHERE Genes.Essential = 'Yes'\n  AND Genes.Function = 'TRANSCRIPTION'\n  AND Genes.Localization = 'nucleus'\n  AND Interactions.Type = 'Genetic'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    }
+  ]
+}

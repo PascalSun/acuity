@@ -1,0 +1,3598 @@
+{
+ "db_id": "county_public_safety",
+ "target_table": "county_public_safety",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 2067413608,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/county_public_safety/county_public_safety.sqlite",
+  "generated_at": "2026-07-02T14:44:16.797746+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "county_public_safety",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "0M": 9,
+   "0H": 8,
+   "1pE": 8,
+   "1pM": 8,
+   "1pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "0H": 8,
+   "0M": 9,
+   "1pE": 8,
+   "1pH": 8,
+   "1pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0H": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "dd1fcece-6ab1-4722-a88e-eb0522c859f8",
+   "question": "Which county public safety entries from Castlegar have a crime rate of at most 150.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate <= 150.0 AND county_public_safety.name = 'Castlegar'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 150.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Castlegar",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 150.0,
+    "county_public_safety.name": "Castlegar"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at most '150.0' and name equal to 'Castlegar'?"
+  },
+  {
+   "uid": "492e562a-e705-4402-8ae1-5dc56c3c9954",
+   "question": "Which county public safety departments in Castlegar have at least 11 police officers?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_officers >= 11 AND county_public_safety.name = 'Castlegar'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_officers",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Castlegar",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_officers": 11,
+    "county_public_safety.name": "Castlegar"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police officers at least '11' and name equal to 'Castlegar'?"
+  },
+  {
+   "uid": "303caa73-045e-4914-863a-bc0318166169",
+   "question": "Which counties have a crime rate that is exactly 49.0?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate = 49.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 49.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 49.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate equal to '49.0'?"
+  },
+  {
+   "uid": "c90e3c92-6920-45c6-969c-328b23d686f6",
+   "question": "Where are the counties with at least 40 police officers?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    6
+   ],
+   "answer_count": 4,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_officers >= 40",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_officers"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 40,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_officers": 40
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police officers at least '40'?"
+  },
+  {
+   "uid": "5391818c-cc7a-4b44-adb1-e627437905af",
+   "question": "What counties have a crime rate of at least 118.0?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    6
+   ],
+   "answer_count": 5,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate >= 118.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 118.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 118.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at least '118.0'?"
+  },
+  {
+   "uid": "452f7f0b-8288-4b54-b136-7f61be7af3ba",
+   "question": "Where is the county_public_safety entity located in the North region with the name exactly Castlegar?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.name = 'Castlegar' AND county_public_safety.location = 'North'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.name",
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Castlegar",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "North",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.name": "Castlegar",
+    "county_public_safety.location": "North"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with name equal to 'Castlegar' and location equal to 'North'?"
+  },
+  {
+   "uid": "0309cbe5-53e7-496d-a3b8-4fb5dd57af7e",
+   "question": "Which county public safety entities in Abbotsford have at most 187 police officers?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_officers <= 187 AND county_public_safety.name = 'Abbotsford'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_officers",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "<=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_officers": 187,
+    "county_public_safety.name": "Abbotsford"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police officers at most '187' and name equal to 'Abbotsford'?"
+  },
+  {
+   "uid": "9e796500-eb3d-4ded-8426-cdeab5506247",
+   "question": "What public safety entries are located exactly in East?",
+   "answer_row_ids": [
+    1,
+    2,
+    5
+   ],
+   "answer_count": 3,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.location = 'East'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.location": "East"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'East'?"
+  },
+  {
+   "uid": "98a875a2-8b21-48e8-b451-2f513ce145b1",
+   "question": "Which counties have a police force that is exactly RCMP?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    6
+   ],
+   "answer_count": 4,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_force = 'RCMP'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "RCMP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'RCMP'?"
+  },
+  {
+   "uid": "468c5929-7e5d-4639-9dca-6f585c032360",
+   "question": "What counties named Campbell River in the West have a population of exactly 30810, at least 40 police officers with residents per officer of at least 770, a crime rate of at least 178.0, and a case burden of at most 137?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate >= 178.0 AND county_public_safety.case_burden <= 137 AND county_public_safety.population = 30810 AND county_public_safety.police_officers >= 40 AND county_public_safety.residents_per_officer >= 770 AND county_public_safety.name = 'Campbell River' AND county_public_safety.location = 'West'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate",
+    "county_public_safety.case_burden",
+    "county_public_safety.population",
+    "county_public_safety.police_officers",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.name",
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 178.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "<=",
+     "value": 137,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 30810,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 40,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 770,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Campbell River",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "West",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 178.0,
+    "county_public_safety.case_burden": 137,
+    "county_public_safety.population": 30810,
+    "county_public_safety.police_officers": 40,
+    "county_public_safety.residents_per_officer": 770,
+    "county_public_safety.name": "Campbell River",
+    "county_public_safety.location": "West"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at least '178.0' and case burden at most '137' and population equal to '30810' and police officers at least '40' and residents per officer at least '770' and name equal to 'Campbell River' and location equal to 'West'?"
+  },
+  {
+   "uid": "9056814d-8b85-4f77-bc33-461e92b7e05d",
+   "question": "Which counties named Abbotsford with the Abbotsford Police Department have a population of at most 128165, crime rates of at least 118.0, case burdens of at least 81, no more than 187 police officers, and at least 685 residents per officer?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.population <= 128165 AND county_public_safety.crime_rate >= 118.0 AND county_public_safety.case_burden >= 81 AND county_public_safety.police_officers <= 187 AND county_public_safety.name = 'Abbotsford' AND county_public_safety.residents_per_officer >= 685 AND county_public_safety.police_force = 'Abbotsford Police Department'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.population",
+    "county_public_safety.crime_rate",
+    "county_public_safety.case_burden",
+    "county_public_safety.police_officers",
+    "county_public_safety.name",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "<=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 118.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": ">=",
+     "value": 81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "<=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 685,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.population": 128165,
+    "county_public_safety.crime_rate": 118.0,
+    "county_public_safety.case_burden": 81,
+    "county_public_safety.police_officers": 187,
+    "county_public_safety.name": "Abbotsford",
+    "county_public_safety.residents_per_officer": 685,
+    "county_public_safety.police_force": "Abbotsford Police Department"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with population at most '128165' and crime rate at least '118.0' and case burden at least '81' and police officers at most '187' and name equal to 'Abbotsford' and residents per officer at least '685' and police force equal to 'Abbotsford Police Department'?"
+  },
+  {
+   "uid": "8d7d5b24-c425-4fb2-a4fc-93d58c4cd927",
+   "question": "Which counties named Abbotsford in the East with a population of 128165 have the Abbotsford Police Department, at least 187 officers, residents per officer at most 685, a crime rate no more than 118.0, and a case burden no more than 81?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.residents_per_officer <= 685 AND county_public_safety.police_officers >= 187 AND county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.location = 'East' AND county_public_safety.crime_rate <= 118.0 AND county_public_safety.population = 128165 AND county_public_safety.case_burden <= 81 AND county_public_safety.name = 'Abbotsford'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_officers",
+    "county_public_safety.police_force",
+    "county_public_safety.location",
+    "county_public_safety.crime_rate",
+    "county_public_safety.population",
+    "county_public_safety.case_burden",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "<=",
+     "value": 685,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 118.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "<=",
+     "value": 81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 685,
+    "county_public_safety.police_officers": 187,
+    "county_public_safety.police_force": "Abbotsford Police Department",
+    "county_public_safety.location": "East",
+    "county_public_safety.crime_rate": 118.0,
+    "county_public_safety.population": 128165,
+    "county_public_safety.case_burden": 81,
+    "county_public_safety.name": "Abbotsford"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer at most '685' and police officers at least '187' and police force equal to 'Abbotsford Police Department' and location equal to 'East' and crime rate at most '118.0' and population equal to '128165' and case burden at most '81' and name equal to 'Abbotsford'?"
+  },
+  {
+   "uid": "32c85e5a-89bc-4bbd-bd80-8afadbb5d4ca",
+   "question": "Which public safety data for Chilliwack, where the police force is RCMP, show a crime rate of 174.0 with at least 803 residents per officer, a population of no more than 73066, and a case burden of at least 140?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.residents_per_officer >= 803 AND county_public_safety.population <= 73066 AND county_public_safety.name = 'Chilliwack' AND county_public_safety.case_burden >= 140 AND county_public_safety.police_force = 'RCMP' AND county_public_safety.crime_rate = 174.0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.population",
+    "county_public_safety.name",
+    "county_public_safety.case_burden",
+    "county_public_safety.police_force",
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 803,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "<=",
+     "value": 73066,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Chilliwack",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": ">=",
+     "value": 140,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 174.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 803,
+    "county_public_safety.population": 73066,
+    "county_public_safety.name": "Chilliwack",
+    "county_public_safety.case_burden": 140,
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.crime_rate": 174.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer at least '803' and population at most '73066' and name equal to 'Chilliwack' and case burden at least '140' and police force equal to 'RCMP' and crime rate equal to '174.0'?"
+  },
+  {
+   "uid": "f3e7a04e-0a55-4203-a8df-5bd56d702a83",
+   "question": "Where is the county named Campbell River with a population of 30810, an RCMP police force, a case burden of exactly 137, no more than 40 police officers, at least 770 residents per officer, and a crime rate of exactly 178.0?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.case_burden = 137 AND county_public_safety.police_officers <= 40 AND county_public_safety.name = 'Campbell River' AND county_public_safety.population = 30810 AND county_public_safety.residents_per_officer >= 770 AND county_public_safety.police_force = 'RCMP' AND county_public_safety.crime_rate = 178.0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.case_burden",
+    "county_public_safety.police_officers",
+    "county_public_safety.name",
+    "county_public_safety.population",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "=",
+     "value": 137,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "<=",
+     "value": 40,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Campbell River",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 30810,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 770,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 178.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.case_burden": 137,
+    "county_public_safety.police_officers": 40,
+    "county_public_safety.name": "Campbell River",
+    "county_public_safety.population": 30810,
+    "county_public_safety.residents_per_officer": 770,
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.crime_rate": 178.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with case burden equal to '137' and police officers at most '40' and name equal to 'Campbell River' and population equal to '30810' and residents per officer at least '770' and police force equal to 'RCMP' and crime rate equal to '178.0'?"
+  },
+  {
+   "uid": "aa283934-ac15-43fe-aa11-a10c7659afd4",
+   "question": "What county public safety data shows a population of exactly 128165 in the East where the police force is Abbotsford Police Department with exactly 187 officers, and that has at least 81 case burden, at least 685 residents per officer, and a crime rate of at least 118.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.population = 128165 AND county_public_safety.case_burden >= 81 AND county_public_safety.residents_per_officer >= 685 AND county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.police_officers = 187 AND county_public_safety.crime_rate >= 118.0 AND county_public_safety.location = 'East'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.population",
+    "county_public_safety.case_burden",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "county_public_safety.police_officers",
+    "county_public_safety.crime_rate",
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": ">=",
+     "value": 81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 685,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 118.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.population": 128165,
+    "county_public_safety.case_burden": 81,
+    "county_public_safety.residents_per_officer": 685,
+    "county_public_safety.police_force": "Abbotsford Police Department",
+    "county_public_safety.police_officers": 187,
+    "county_public_safety.crime_rate": 118.0,
+    "county_public_safety.location": "East"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with population equal to '128165' and case burden at least '81' and residents per officer at least '685' and police force equal to 'Abbotsford Police Department' and police officers equal to '187' and crime rate at least '118.0' and location equal to 'East'?"
+  },
+  {
+   "uid": "81b5b83a-e0aa-462b-b76f-cbebcabf4528",
+   "question": "Which county public safety entities are located in the East, named Abbotsford with the Abbotsford Police Department, have a population of 128165, residents per officer of 685, and a case burden of at most 81?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.location = 'East' AND county_public_safety.name = 'Abbotsford' AND county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.population = 128165 AND county_public_safety.residents_per_officer = 685 AND county_public_safety.case_burden <= 81",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.location",
+    "county_public_safety.name",
+    "county_public_safety.police_force",
+    "county_public_safety.population",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.case_burden"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "=",
+     "value": 685,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "<=",
+     "value": 81,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.location": "East",
+    "county_public_safety.name": "Abbotsford",
+    "county_public_safety.police_force": "Abbotsford Police Department",
+    "county_public_safety.population": 128165,
+    "county_public_safety.residents_per_officer": 685,
+    "county_public_safety.case_burden": 81
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'East' and name equal to 'Abbotsford' and police force equal to 'Abbotsford Police Department' and population equal to '128165' and residents per officer equal to '685' and case burden at most '81'?"
+  },
+  {
+   "uid": "ceac36ae-13a8-4f71-bbd9-8aa48b1e7c7e",
+   "question": "What counties named Central Saanich in the East have Central Saanich Police with at least 21 officers, exactly 801 residents per officer, a population of at most 16821, a crime rate of 49.0, and a case burden of 39?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.residents_per_officer = 801 AND county_public_safety.police_force = 'Central Saanich Police' AND county_public_safety.population <= 16821 AND county_public_safety.crime_rate = 49.0 AND county_public_safety.location = 'East' AND county_public_safety.case_burden = 39 AND county_public_safety.name = 'Central Saanich' AND county_public_safety.police_officers >= 21",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "county_public_safety.population",
+    "county_public_safety.crime_rate",
+    "county_public_safety.location",
+    "county_public_safety.case_burden",
+    "county_public_safety.name",
+    "county_public_safety.police_officers"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "=",
+     "value": 801,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Central Saanich Police",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "<=",
+     "value": 16821,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 49.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "=",
+     "value": 39,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Central Saanich",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 21,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 801,
+    "county_public_safety.police_force": "Central Saanich Police",
+    "county_public_safety.population": 16821,
+    "county_public_safety.crime_rate": 49.0,
+    "county_public_safety.location": "East",
+    "county_public_safety.case_burden": 39,
+    "county_public_safety.name": "Central Saanich",
+    "county_public_safety.police_officers": 21
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer equal to '801' and police force equal to 'Central Saanich Police' and population at most '16821' and crime rate equal to '49.0' and location equal to 'East' and case burden equal to '39' and name equal to 'Central Saanich' and police officers at least '21'?"
+  },
+  {
+   "uid": "25fe934b-34fe-4cd2-a28c-28e25dee793e",
+   "question": "Which county public safety entries are located in the East and have the name Central Saanich with the police force exactly Central Saanich Police?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_force = 'Central Saanich Police' AND county_public_safety.name = 'Central Saanich' AND county_public_safety.location = 'East'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force",
+    "county_public_safety.name",
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Central Saanich Police",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Central Saanich",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "Central Saanich Police",
+    "county_public_safety.name": "Central Saanich",
+    "county_public_safety.location": "East"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Central Saanich Police' and name equal to 'Central Saanich' and location equal to 'East'?"
+  },
+  {
+   "uid": "545512e9-8d4f-4a03-b1ad-b95e7d98cf06",
+   "question": "Which counties have a crime rate exactly 49.0, 21 police officers, at most 801 residents per officer, a case burden of at least 39, and a population of at least 16821?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate = 49.0 AND county_public_safety.police_officers = 21 AND county_public_safety.residents_per_officer <= 801 AND county_public_safety.case_burden >= 39 AND county_public_safety.population >= 16821",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate",
+    "county_public_safety.police_officers",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.case_burden",
+    "county_public_safety.population"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 49.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "=",
+     "value": 21,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "<=",
+     "value": 801,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": ">=",
+     "value": 39,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": ">=",
+     "value": 16821,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 49.0,
+    "county_public_safety.police_officers": 21,
+    "county_public_safety.residents_per_officer": 801,
+    "county_public_safety.case_burden": 39,
+    "county_public_safety.population": 16821
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate equal to '49.0' and police officers equal to '21' and residents per officer at most '801' and case burden at least '39' and population at least '16821'?"
+  },
+  {
+   "uid": "3e4aeacb-69dc-450f-b00a-c139984ff3bb",
+   "question": "Which county public safety records have a police force exactly named Abbotsford Police Department, a crime rate of 118.0, a population of 128165, and at least 187 police officers?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.crime_rate = 118.0 AND county_public_safety.police_officers >= 187 AND county_public_safety.population = 128165",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force",
+    "county_public_safety.crime_rate",
+    "county_public_safety.police_officers",
+    "county_public_safety.population"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 118.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 128165,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "Abbotsford Police Department",
+    "county_public_safety.crime_rate": 118.0,
+    "county_public_safety.police_officers": 187,
+    "county_public_safety.population": 128165
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Abbotsford Police Department' and crime rate equal to '118.0' and police officers at least '187' and population equal to '128165'?"
+  },
+  {
+   "uid": "aeffca80-9d7e-4c7c-a7e1-f9f0a493b461",
+   "question": "Which public safety data for Castlegar in the North region have a crime rate of at most 150 and no more than 11 police officers, with the police force exactly RCMP?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate <= 150.0 AND county_public_safety.police_officers <= 11 AND county_public_safety.location = 'North' AND county_public_safety.police_force = 'RCMP' AND county_public_safety.name = 'Castlegar'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate",
+    "county_public_safety.police_officers",
+    "county_public_safety.location",
+    "county_public_safety.police_force",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 150.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "<=",
+     "value": 11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "North",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Castlegar",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 150.0,
+    "county_public_safety.police_officers": 11,
+    "county_public_safety.location": "North",
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.name": "Castlegar"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at most '150.0' and police officers at most '11' and location equal to 'North' and police force equal to 'RCMP' and name equal to 'Castlegar'?"
+  },
+  {
+   "uid": "7c615ed6-4dfd-491b-8b25-9783dd538699",
+   "question": "Which county public safety entries have the police force exactly as Abbotsford Police Department, with at most 187 police officers and a crime rate exactly equal to 118.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.police_officers <= 187 AND county_public_safety.crime_rate = 118.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force",
+    "county_public_safety.police_officers",
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "<=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "=",
+     "value": 118.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "Abbotsford Police Department",
+    "county_public_safety.police_officers": 187,
+    "county_public_safety.crime_rate": 118.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Abbotsford Police Department' and police officers at most '187' and crime rate equal to '118.0'?"
+  },
+  {
+   "uid": "ff8c886e-8c39-4e9b-988c-72ca135f54e3",
+   "question": "What counties in the East have a population of at least 204320, residents per officer of at least 808, and a crime rate of at most 123.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.residents_per_officer >= 808 AND county_public_safety.population >= 204320 AND county_public_safety.location = 'East' AND county_public_safety.crime_rate <= 123.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.population",
+    "county_public_safety.location",
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 808,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": ">=",
+     "value": 204320,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 123.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 808,
+    "county_public_safety.population": 204320,
+    "county_public_safety.location": "East",
+    "county_public_safety.crime_rate": 123.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer at least '808' and population at least '204320' and location equal to 'East' and crime rate at most '123.0'?"
+  },
+  {
+   "uid": "5fa37856-413d-4b39-8e8d-56dd7c8b899f",
+   "question": "Which county public safety entities in Central Saanich have the police force exactly as Central Saanich Police, a crime rate of at least 49.0, exactly 21 police officers, and exactly 801 residents per officer?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.police_force = 'Central Saanich Police' AND county_public_safety.crime_rate >= 49.0 AND county_public_safety.name = 'Central Saanich' AND county_public_safety.residents_per_officer = 801 AND county_public_safety.police_officers = 21",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force",
+    "county_public_safety.crime_rate",
+    "county_public_safety.name",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_officers"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Central Saanich Police",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 49.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Central Saanich",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "=",
+     "value": 801,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "=",
+     "value": 21,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "Central Saanich Police",
+    "county_public_safety.crime_rate": 49.0,
+    "county_public_safety.name": "Central Saanich",
+    "county_public_safety.residents_per_officer": 801,
+    "county_public_safety.police_officers": 21
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Central Saanich Police' and crime rate at least '49.0' and name equal to 'Central Saanich' and residents per officer equal to '801' and police officers equal to '21'?"
+  },
+  {
+   "uid": "144441ce-c6d4-4ae3-8cee-e21ebb7c377d",
+   "question": "What counties with a population of 204320 have a police force that is RCMP, at least 253 police officers, and a crime rate of at least 123.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.crime_rate >= 123.0 AND county_public_safety.police_force = 'RCMP' AND county_public_safety.police_officers >= 253 AND county_public_safety.population = 204320",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate",
+    "county_public_safety.police_force",
+    "county_public_safety.police_officers",
+    "county_public_safety.population"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 123.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": ">=",
+     "value": 253,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 204320,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 123.0,
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.police_officers": 253,
+    "county_public_safety.population": 204320
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at least '123.0' and police force equal to 'RCMP' and police officers at least '253' and population equal to '204320'?"
+  },
+  {
+   "uid": "de9b49f1-981e-44f6-a647-39bb657f35c1",
+   "question": "Which county public safety areas in the East have the Central Saanich Police with at most 801 residents per officer and a case burden of at most 39?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nWHERE county_public_safety.residents_per_officer <= 801 AND county_public_safety.police_force = 'Central Saanich Police' AND county_public_safety.case_burden <= 39 AND county_public_safety.location = 'East'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "county_public_safety"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "county_public_safety.case_burden",
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "<=",
+     "value": 801,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Central Saanich Police",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "<=",
+     "value": 39,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 801,
+    "county_public_safety.police_force": "Central Saanich Police",
+    "county_public_safety.case_burden": 39,
+    "county_public_safety.location": "East"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer at most '801' and police force equal to 'Central Saanich Police' and case burden at most '39' and location equal to 'East'?"
+  },
+  {
+   "uid": "5d79f4c3-3e37-4753-9853-dd44760fcdc6",
+   "question": "Where are the county public safety records from cities with at most 0.2 Asian population and at least 13.0 multiracial population?",
+   "answer_row_ids": [
+    2,
+    3,
+    5
+   ],
+   "answer_count": 3,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.asian <= 0.2 AND city.multiracial >= 13.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.asian",
+    "city.multiracial"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "<=",
+     "value": 0.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": ">=",
+     "value": 13.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "city.asian": 0.2,
+    "city.multiracial": 13.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities having at least one related city record (linked on county_public_safety.county_id = city.county_id) with asian at most '0.2' and multiracial at least '13.0'?"
+  },
+  {
+   "uid": "5d0f8b96-6a03-423c-b497-99c22ffdc176",
+   "question": "Which county public safety entries are located exactly in the North region?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.location = 'North'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "North",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.location": "North"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'North', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "0be4d7c8-7845-4164-86c8-3863705989ba",
+   "question": "Which county public safety entries have the name Abbotsford?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.name = 'Abbotsford'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.name": "Abbotsford"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with name equal to 'Abbotsford', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "1f89da26-c575-4f83-a5eb-4ce4cf9e47c3",
+   "question": "Where do counties have exactly 808 residents per officer in their public safety departments?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.residents_per_officer = 808",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "=",
+     "value": 808,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 808
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer equal to '808', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "7e1540bd-08ff-45f7-9664-8b62cf36e7ec",
+   "question": "Which county public safety departments are located in the West and have at least 770 residents per officer?",
+   "answer_row_ids": [
+    3,
+    6
+   ],
+   "answer_count": 2,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.location = 'West' AND county_public_safety.residents_per_officer >= 770",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.location",
+    "county_public_safety.residents_per_officer"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "West",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 770,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.location": "West",
+    "county_public_safety.residents_per_officer": 770
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'West' and residents per officer at least '770', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "e0b5daea-5f74-4799-b6a8-30e9e5c47d66",
+   "question": "Where does the police force exactly match RCMP in the county public safety data?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    6
+   ],
+   "answer_count": 4,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.police_force = 'RCMP'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "RCMP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'RCMP', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "ead90e85-2f9d-48c4-a845-d6723dd099ed",
+   "question": "Which counties have at least 711 residents per officer in their public safety data?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "answer_count": 5,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.residents_per_officer >= 711",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.residents_per_officer"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 711,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.residents_per_officer": 711
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer at least '711', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "714e9b8e-7ebe-46ec-acd7-5d9ef104481e",
+   "question": "Which county public safety entries have the name Chilliwack and are linked to cities where the Amerindian population is exactly 0.9?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.name = 'Chilliwack' AND city.amerindian = 0.9",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.name",
+    "city.amerindian"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Chilliwack",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "amerindian",
+     "operator": "=",
+     "value": 0.9,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.name": "Chilliwack",
+    "city.amerindian": 0.9
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with name equal to 'Chilliwack', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with amerindian equal to '0.9'?"
+  },
+  {
+   "uid": "72aa2250-4a66-41e8-85f9-f809532974d7",
+   "question": "Where is the Castlegar county in the North with an RCMP police force, exactly 711 residents per officer, a crime rate of at least 150.0, city Asian population of at least 0.1%, and Black population at most 5.4%?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.black <= 5.4 AND county_public_safety.residents_per_officer = 711 AND county_public_safety.police_force = 'RCMP' AND city.asian >= 0.1 AND county_public_safety.crime_rate >= 150.0 AND county_public_safety.location = 'North' AND county_public_safety.name = 'Castlegar'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.black",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "city.asian",
+    "county_public_safety.crime_rate",
+    "county_public_safety.location",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "black",
+     "operator": "<=",
+     "value": 5.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "=",
+     "value": 711,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": ">=",
+     "value": 0.1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 150.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "North",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Castlegar",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "city.black": 5.4,
+    "county_public_safety.residents_per_officer": 711,
+    "county_public_safety.police_force": "RCMP",
+    "city.asian": 0.1,
+    "county_public_safety.crime_rate": 150.0,
+    "county_public_safety.location": "North",
+    "county_public_safety.name": "Castlegar"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer equal to '711' and police force equal to 'RCMP' and crime rate at least '150.0' and location equal to 'North' and name equal to 'Castlegar', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with black at most '5.4' and asian at least '0.1'?"
+  },
+  {
+   "uid": "d9d4d443-a63c-43ec-821e-cc44ec58daa5",
+   "question": "What county public safety data from Chilliwack has a police force that is RCMP with exactly 91 police officers, a crime rate of at most 174.0, and is linked to Carolina city where the Asian population is exactly 0.4 and the Amerindian population is at most 0.9?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.amerindian <= 0.9 AND county_public_safety.police_officers = 91 AND city.asian = 0.4 AND county_public_safety.police_force = 'RCMP' AND county_public_safety.crime_rate <= 174.0 AND city.name = 'Carolina' AND county_public_safety.name = 'Chilliwack'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.amerindian",
+    "county_public_safety.police_officers",
+    "city.asian",
+    "county_public_safety.police_force",
+    "county_public_safety.crime_rate",
+    "city.name",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "amerindian",
+     "operator": "<=",
+     "value": 0.9,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "=",
+     "value": 91,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "=",
+     "value": 0.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 174.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "name",
+     "operator": "=",
+     "value": "Carolina",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Chilliwack",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "city.amerindian": 0.9,
+    "county_public_safety.police_officers": 91,
+    "city.asian": 0.4,
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.crime_rate": 174.0,
+    "city.name": "Carolina",
+    "county_public_safety.name": "Chilliwack"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police officers equal to '91' and police force equal to 'RCMP' and crime rate at most '174.0' and name equal to 'Chilliwack', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with amerindian at most '0.9' and asian equal to '0.4' and name equal to 'Carolina'?"
+  },
+  {
+   "uid": "d6ab2998-d8cb-4914-a7a9-3f43e36a6f2d",
+   "question": "Which county public safety entities named Abbotsford are located in the East with a population of at least 128165, have the Abbotsford Police Department, and are in cities where Asian is exactly 0.2, multiracial is exactly 8.2, and Amerindian is at least 0.3?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.name = 'Abbotsford' AND city.asian = 0.2 AND county_public_safety.population >= 128165 AND city.multiracial = 8.2 AND city.amerindian >= 0.3 AND county_public_safety.location = 'East' AND county_public_safety.police_force = 'Abbotsford Police Department'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.name",
+    "city.asian",
+    "county_public_safety.population",
+    "city.multiracial",
+    "city.amerindian",
+    "county_public_safety.location",
+    "county_public_safety.police_force"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "=",
+     "value": 0.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": ">=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": "=",
+     "value": 8.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "amerindian",
+     "operator": ">=",
+     "value": 0.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.name": "Abbotsford",
+    "city.asian": 0.2,
+    "county_public_safety.population": 128165,
+    "city.multiracial": 8.2,
+    "city.amerindian": 0.3,
+    "county_public_safety.location": "East",
+    "county_public_safety.police_force": "Abbotsford Police Department"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with name equal to 'Abbotsford' and population at least '128165' and location equal to 'East' and police force equal to 'Abbotsford Police Department', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with asian equal to '0.2' and multiracial equal to '8.2' and amerindian at least '0.3'?"
+  },
+  {
+   "uid": "61e43215-8346-4f15-aabc-477d5a24a031",
+   "question": "Which public safety counties named Chilliwack in the West have a police force of RCMP, a crime rate of at least 174.0, residents per officer at most 803, and include the city Cata\u00f1o where Hispanic is 99.0 and Amerindian is 1.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.location = 'West' AND city.hispanic = 99.0 AND city.name = 'Cata\u00f1o' AND city.amerindian = 1.0 AND county_public_safety.name = 'Chilliwack' AND county_public_safety.residents_per_officer <= 803 AND county_public_safety.police_force = 'RCMP' AND county_public_safety.crime_rate >= 174.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.location",
+    "city.hispanic",
+    "city.name",
+    "city.amerindian",
+    "county_public_safety.name",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "West",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "hispanic",
+     "operator": "=",
+     "value": 99.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "name",
+     "operator": "=",
+     "value": "Cata\u00f1o",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "amerindian",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Chilliwack",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": "<=",
+     "value": 803,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 174.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.location": "West",
+    "city.hispanic": 99.0,
+    "city.name": "Cata\u00f1o",
+    "city.amerindian": 1.0,
+    "county_public_safety.name": "Chilliwack",
+    "county_public_safety.residents_per_officer": 803,
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.crime_rate": 174.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'West' and name equal to 'Chilliwack' and residents per officer at most '803' and police force equal to 'RCMP' and crime rate at least '174.0', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with hispanic equal to '99.0' and name equal to 'Cata\u00f1o' and amerindian equal to '1.0'?"
+  },
+  {
+   "uid": "001c9bc2-51c1-4c63-9180-a11cacb65b05",
+   "question": "Where are the county public safety areas located in the East with populations of at least 128165, case burdens of at least 81, and residents per officer of at least 685, in Aguadilla where white is at most 83.0, Asian is at least 0.2, and multiracial is at least 8.2?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.white <= 83.0 AND city.name = 'Aguadilla' AND county_public_safety.location = 'East' AND city.asian >= 0.2 AND county_public_safety.case_burden >= 81 AND county_public_safety.population >= 128165 AND county_public_safety.residents_per_officer >= 685 AND city.multiracial >= 8.2",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.white",
+    "city.name",
+    "county_public_safety.location",
+    "city.asian",
+    "county_public_safety.case_burden",
+    "county_public_safety.population",
+    "county_public_safety.residents_per_officer",
+    "city.multiracial"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "white",
+     "operator": "<=",
+     "value": 83.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "name",
+     "operator": "=",
+     "value": "Aguadilla",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": ">=",
+     "value": 0.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": ">=",
+     "value": 81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": ">=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 685,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": ">=",
+     "value": 8.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "city.white": 83.0,
+    "city.name": "Aguadilla",
+    "county_public_safety.location": "East",
+    "city.asian": 0.2,
+    "county_public_safety.case_burden": 81,
+    "county_public_safety.population": 128165,
+    "county_public_safety.residents_per_officer": 685,
+    "city.multiracial": 8.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'East' and case burden at least '81' and population at least '128165' and residents per officer at least '685', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with white at most '83.0' and name equal to 'Aguadilla' and asian at least '0.2' and multiracial at least '8.2'?"
+  },
+  {
+   "uid": "2252b797-04e7-4465-bc57-081196e6fcbd",
+   "question": "Which county public safety units have the police force Central Saanich Police, serve Can\u00f3vanas where the Hispanic population is exactly 99.2 and the Asian population is at most 0.2, the White population is at most 61.2, and have no more than 21 police officers?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.asian <= 0.2 AND city.name = 'Can\u00f3vanas' AND county_public_safety.police_force = 'Central Saanich Police' AND city.white <= 61.2 AND city.hispanic = 99.2 AND county_public_safety.police_officers <= 21",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.asian",
+    "city.name",
+    "county_public_safety.police_force",
+    "city.white",
+    "city.hispanic",
+    "county_public_safety.police_officers"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "<=",
+     "value": 0.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "name",
+     "operator": "=",
+     "value": "Can\u00f3vanas",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Central Saanich Police",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "white",
+     "operator": "<=",
+     "value": 61.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "hispanic",
+     "operator": "=",
+     "value": 99.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "<=",
+     "value": 21,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "city.asian": 0.2,
+    "city.name": "Can\u00f3vanas",
+    "county_public_safety.police_force": "Central Saanich Police",
+    "city.white": 61.2,
+    "city.hispanic": 99.2,
+    "county_public_safety.police_officers": 21
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Central Saanich Police' and police officers at most '21', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with asian at most '0.2' and name equal to 'Can\u00f3vanas' and white at most '61.2' and hispanic equal to '99.2'?"
+  },
+  {
+   "uid": "b186dc22-81e3-4ea2-8ff1-eb3f7ecf0296",
+   "question": "Which county public safety data has the name Abbotsford with a population of 128165, a crime rate of at most 118.0, case burden exactly 81, police officers exactly 187, police force exactly Abbotsford Police Department, while the city has exactly 99.6 Hispanic and at most 3.4 multiracial residents?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.crime_rate <= 118.0 AND county_public_safety.name = 'Abbotsford' AND county_public_safety.population = 128165 AND city.hispanic = 99.6 AND county_public_safety.case_burden = 81 AND county_public_safety.police_officers = 187 AND city.multiracial <= 3.4 AND county_public_safety.police_force = 'Abbotsford Police Department'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.crime_rate",
+    "county_public_safety.name",
+    "county_public_safety.population",
+    "city.hispanic",
+    "county_public_safety.case_burden",
+    "county_public_safety.police_officers",
+    "city.multiracial",
+    "county_public_safety.police_force"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 118.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Abbotsford",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 128165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "hispanic",
+     "operator": "=",
+     "value": 99.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "=",
+     "value": 81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_officers",
+     "operator": "=",
+     "value": 187,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": "<=",
+     "value": 3.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.crime_rate": 118.0,
+    "county_public_safety.name": "Abbotsford",
+    "county_public_safety.population": 128165,
+    "city.hispanic": 99.6,
+    "county_public_safety.case_burden": 81,
+    "county_public_safety.police_officers": 187,
+    "city.multiracial": 3.4,
+    "county_public_safety.police_force": "Abbotsford Police Department"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at most '118.0' and name equal to 'Abbotsford' and population equal to '128165' and case burden equal to '81' and police officers equal to '187' and police force equal to 'Abbotsford Police Department', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with hispanic equal to '99.6' and multiracial at most '3.4'?"
+  },
+  {
+   "uid": "700846cd-8284-4f54-a8b4-f73b084306b6",
+   "question": "Which county public safety departments named Campbell River are located in the West, have an RCMP police force, at least 770 residents per officer, with cities where multiracial is exactly 13.0, Asian is at most 0.2, and White is at least 53.5?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.multiracial = 13.0 AND county_public_safety.location = 'West' AND county_public_safety.name = 'Campbell River' AND county_public_safety.residents_per_officer >= 770 AND county_public_safety.police_force = 'RCMP' AND city.asian <= 0.2 AND city.white >= 53.5",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.multiracial",
+    "county_public_safety.location",
+    "county_public_safety.name",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.police_force",
+    "city.asian",
+    "city.white"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": "=",
+     "value": 13.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "West",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Campbell River",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 770,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "<=",
+     "value": 0.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "white",
+     "operator": ">=",
+     "value": 53.5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "city.multiracial": 13.0,
+    "county_public_safety.location": "West",
+    "county_public_safety.name": "Campbell River",
+    "county_public_safety.residents_per_officer": 770,
+    "county_public_safety.police_force": "RCMP",
+    "city.asian": 0.2,
+    "city.white": 53.5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'West' and name equal to 'Campbell River' and residents per officer at least '770' and police force equal to 'RCMP', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with multiracial equal to '13.0' and asian at most '0.2' and white at least '53.5'?"
+  },
+  {
+   "uid": "59bf0e0e-178a-4551-99a0-a673ec235c6e",
+   "question": "Which county public safety data correspond to Aguadilla where the multiracial percentage is exactly 8.2 and the crime rate is at most 118.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.multiracial = 8.2 AND county_public_safety.crime_rate <= 118.0 AND city.name = 'Aguadilla'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.multiracial",
+    "county_public_safety.crime_rate",
+    "city.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": "=",
+     "value": 8.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 118.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "name",
+     "operator": "=",
+     "value": "Aguadilla",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "city.multiracial": 8.2,
+    "county_public_safety.crime_rate": 118.0,
+    "city.name": "Aguadilla"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at most '118.0', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with multiracial equal to '8.2' and name equal to 'Aguadilla'?"
+  },
+  {
+   "uid": "85f41cc3-d9a3-4d7a-a340-d4d902230907",
+   "question": "What county public safety data involves the Abbotsford Police Department where residents per officer are at least 685, case burden is at most 81, and the city\u2019s white population is no more than 86.6?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.police_force = 'Abbotsford Police Department' AND county_public_safety.residents_per_officer >= 685 AND county_public_safety.case_burden <= 81 AND city.white <= 86.6",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force",
+    "county_public_safety.residents_per_officer",
+    "county_public_safety.case_burden",
+    "city.white"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Abbotsford Police Department",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 685,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "<=",
+     "value": 81,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "white",
+     "operator": "<=",
+     "value": 86.6,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "Abbotsford Police Department",
+    "county_public_safety.residents_per_officer": 685,
+    "county_public_safety.case_burden": 81,
+    "city.white": 86.6
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Abbotsford Police Department' and residents per officer at least '685' and case burden at most '81', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with white at most '86.6'?"
+  },
+  {
+   "uid": "f9676349-f2ec-4729-9cbc-6a11bbc6b718",
+   "question": "Where does the police force exactly equal RCMP with a population exactly 30810, case burden at most 137, and crime rate no more than 178.0?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.police_force = 'RCMP' AND county_public_safety.case_burden <= 137 AND county_public_safety.crime_rate <= 178.0 AND county_public_safety.population = 30810",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.police_force",
+    "county_public_safety.case_burden",
+    "county_public_safety.crime_rate",
+    "county_public_safety.population"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "RCMP",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "case_burden",
+     "operator": "<=",
+     "value": 137,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 178.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "population",
+     "operator": "=",
+     "value": 30810,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.police_force": "RCMP",
+    "county_public_safety.case_burden": 137,
+    "county_public_safety.crime_rate": 178.0,
+    "county_public_safety.population": 30810
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'RCMP' and case burden at most '137' and crime rate at most '178.0' and population equal to '30810', having at least one related city record (linked on county_public_safety.county_id = city.county_id)?"
+  },
+  {
+   "uid": "88b6ce46-7b96-47aa-b85b-e0597080d530",
+   "question": "Which county public safety areas have a crime rate of at least 178.0 and belong to cities where the multiracial population is at most 7.9 and the Hispanic population is at least 99.2?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.multiracial <= 7.9 AND city.hispanic >= 99.2 AND county_public_safety.crime_rate >= 178.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.multiracial",
+    "city.hispanic",
+    "county_public_safety.crime_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "multiracial",
+     "operator": "<=",
+     "value": 7.9,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "hispanic",
+     "operator": ">=",
+     "value": 99.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": ">=",
+     "value": 178.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "city.multiracial": 7.9,
+    "city.hispanic": 99.2,
+    "county_public_safety.crime_rate": 178.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at least '178.0', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with multiracial at most '7.9' and hispanic at least '99.2'?"
+  },
+  {
+   "uid": "b3c1bcac-914c-4d10-8fd6-1f20c85c6d1e",
+   "question": "Where in the East is the Central Saanich public safety department located, given the city has no more than 0.9 Amerindian population, exactly 0.2 Asian population, and at most 21.6 Black population?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE county_public_safety.location = 'East' AND city.amerindian <= 0.9 AND county_public_safety.name = 'Central Saanich' AND city.black <= 21.6 AND city.asian = 0.2",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "county_public_safety.location",
+    "city.amerindian",
+    "county_public_safety.name",
+    "city.black",
+    "city.asian"
+   ],
+   "involved_filters": [
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "East",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "amerindian",
+     "operator": "<=",
+     "value": 0.9,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Central Saanich",
+     "column_type": "enum"
+    },
+    {
+     "table": "city",
+     "column": "black",
+     "operator": "<=",
+     "value": 21.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "=",
+     "value": 0.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "county_public_safety.location": "East",
+    "city.amerindian": 0.9,
+    "county_public_safety.name": "Central Saanich",
+    "city.black": 21.6,
+    "city.asian": 0.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with location equal to 'East' and name equal to 'Central Saanich', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with amerindian at most '0.9' and black at most '21.6' and asian equal to '0.2'?"
+  },
+  {
+   "uid": "867d937d-3174-4dc0-b69f-95c95a5d6639",
+   "question": "Which county public safety entities named Central Saanich have the police force as Central Saanich Police and are in cities where the Asian population is at most 0.2 and the Amerindian population is at most 0.9?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.asian <= 0.2 AND city.amerindian <= 0.9 AND county_public_safety.police_force = 'Central Saanich Police' AND county_public_safety.name = 'Central Saanich'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.asian",
+    "city.amerindian",
+    "county_public_safety.police_force",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "<=",
+     "value": 0.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "amerindian",
+     "operator": "<=",
+     "value": 0.9,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "police_force",
+     "operator": "=",
+     "value": "Central Saanich Police",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Central Saanich",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "city.asian": 0.2,
+    "city.amerindian": 0.9,
+    "county_public_safety.police_force": "Central Saanich Police",
+    "county_public_safety.name": "Central Saanich"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with police force equal to 'Central Saanich Police' and name equal to 'Central Saanich', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with asian at most '0.2' and amerindian at most '0.9'?"
+  },
+  {
+   "uid": "69d6d496-0858-4252-99a2-fc1588b053fd",
+   "question": "Which county public safety entries named Campbell River have a crime rate at most 178.0 and are in cities where the Asian population is exactly 0.1?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.asian = 0.1 AND county_public_safety.crime_rate <= 178.0 AND county_public_safety.name = 'Campbell River'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.asian",
+    "county_public_safety.crime_rate",
+    "county_public_safety.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "asian",
+     "operator": "=",
+     "value": 0.1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "crime_rate",
+     "operator": "<=",
+     "value": 178.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "name",
+     "operator": "=",
+     "value": "Campbell River",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "city.asian": 0.1,
+    "county_public_safety.crime_rate": 178.0,
+    "county_public_safety.name": "Campbell River"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with crime rate at most '178.0' and name equal to 'Campbell River', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with asian equal to '0.1'?"
+  },
+  {
+   "uid": "f8250a22-04bc-4abf-b5cb-dc852efb1a8d",
+   "question": "Where is the public safety data for counties located in the West with at least 770 residents per officer, in cities named Arecibo that have at least 84.5% white population?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT county_public_safety.county_id FROM county_public_safety\nJOIN city ON county_public_safety.county_id = city.county_id\nWHERE city.name = 'Arecibo' AND county_public_safety.residents_per_officer >= 770 AND city.white >= 84.5 AND county_public_safety.location = 'West'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "county_public_safety",
+    "city"
+   ],
+   "involved_columns": [
+    "city.name",
+    "county_public_safety.residents_per_officer",
+    "city.white",
+    "county_public_safety.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "city",
+     "column": "name",
+     "operator": "=",
+     "value": "Arecibo",
+     "column_type": "enum"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "residents_per_officer",
+     "operator": ">=",
+     "value": 770,
+     "column_type": "numeric"
+    },
+    {
+     "table": "city",
+     "column": "white",
+     "operator": ">=",
+     "value": 84.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "county_public_safety",
+     "column": "location",
+     "operator": "=",
+     "value": "West",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "city.name": "Arecibo",
+    "county_public_safety.residents_per_officer": 770,
+    "city.white": 84.5,
+    "county_public_safety.location": "West"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "county_public_safety"
+   },
+   "answer_table": "county_public_safety",
+   "answer_id_column": "county_id",
+   "canonical_question": "Which county public safety entities with residents per officer at least '770' and location equal to 'West', having at least one related city record (linked on county_public_safety.county_id = city.county_id) with name equal to 'Arecibo' and white at least '84.5'?"
+  }
+ ]
+}

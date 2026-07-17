@@ -1,0 +1,124 @@
+{
+  "db_id": "product_catalog",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:24:38.624081+00:00",
+  "records": [
+    {
+      "uid": "12eb4b46-5d85-40e3-a517-794ba85ad617",
+      "question": "What catalog structures include Diet Pepsi entries with a length of exactly 8 and height of exactly 3, belong to the Chocolate catalog revised on 2017-09-26 12:10:36, and have additional attributes where the value is 0?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id\nJOIN catalog_contents ON catalog_structure.catalog_level_number = catalog_contents.catalog_level_number\nJOIN catalog_contents_additional_attributes ON catalog_structure.catalog_level_number = catalog_contents_additional_attributes.catalog_level_number\nWHERE catalog_contents.length = '8' AND catalogs.catalog_name = 'Chocolate' AND catalog_contents.catalog_entry_name = 'Diet Pepsi' AND catalog_contents.height = '3' AND catalogs.date_of_latest_revision = '2017-09-26 12:10:36' AND catalog_contents_additional_attributes.attribute_value = '0'",
+      "pred_sql": "SELECT cs.catalog_id\nFROM Catalog_Structure cs\nINNER JOIN Catalogs c ON cs.catalog_id = c.catalog_id\nINNER JOIN Catalog_Contents cc ON cs.catalog_level_number = cc.catalog_level_number\nINNER JOIN Catalog_Contents_Additional_Attributes cca ON cs.catalog_level_number = cca.catalog_level_number\nWHERE c.catalog_name = 'Chocolate'\n  AND c.date_of_latest_revision = '2017-09-26 12:10:36'\n  AND cc.length = '8'\n  AND cc.catalog_entry_name = 'Diet Pepsi'\n  AND cc.height = '3'\n  AND cca.attribute_value = '0'",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.06
+    },
+    {
+      "uid": "12f19a84-76b3-455a-a519-097602a4e69b",
+      "question": "Which catalog structure entries at the Category level include a product named Tizer priced exactly at 331.43 pounds?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id\nJOIN catalog_contents ON catalog_structure.catalog_level_number = catalog_contents.catalog_level_number\nJOIN catalog_contents_additional_attributes ON catalog_structure.catalog_level_number = catalog_contents_additional_attributes.catalog_level_number\nWHERE catalog_contents.catalog_entry_name = 'Tizer' AND catalog_contents.price_in_pounds = 331.43 AND catalog_structure.catalog_level_name = 'Category'",
+      "pred_sql": "SELECT \n    catalog_structure.catalog_id\nFROM \n    Catalog_Structure\nINNER JOIN \n    Catalogs ON Catalog_Structure.catalog_id = Catalogs.catalog_id\nINNER JOIN \n    Catalog_Contents ON Catalog_Structure.catalog_level_number = Catalog_Contents.catalog_level_number\nINNER JOIN \n    Catalog_Contents_Additional_Attributes ON Catalog_Contents.catalog_level_number = Catalog_Contents_Additional_Attributes.catalog_level_number\nWHERE \n    Catalog_Structure.catalog_level_name = 'Category'\n    AND Catalog_Contents.catalog_entry_name = 'Tizer'\n    AND Catalog_Contents.price_in_pounds = 331.43",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 40.72
+    },
+    {
+      "uid": "28c30a12-912f-4f9c-82b4-22df344697d9",
+      "question": "Which catalog structures have a catalog_level_name exactly Sub-Category and belong to catalogs revised on or after 2017-10-26 01:16:51?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id\nWHERE catalogs.date_of_latest_revision >= '2017-10-26 01:16:51' AND catalog_structure.catalog_level_name = 'Sub-Category'",
+      "pred_sql": "SELECT Catalog_Structure.catalog_id\nFROM Catalog_Structure\nJOIN Catalogs ON Catalog_Structure.catalog_id = Catalogs.catalog_id\nWHERE Catalog_Structure.catalog_level_name = 'Sub-Category'\nAND Catalogs.date_of_latest_revision >= '2017-10-26 01:16:51'\nGROUP BY Catalog_Structure.catalog_id\nHAVING COUNT(Catalogs.catalog_id) >= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 40.37
+    },
+    {
+      "uid": "3542b269-624d-4c4c-8ecf-4c86d8290b6c",
+      "question": "Which catalog entries are exactly at the Category level?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nWHERE catalog_structure.catalog_level_name = 'Category'",
+      "pred_sql": "SELECT catalog_id\nFROM Catalog_Structure\nWHERE catalog_level_name = 'Category'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.12
+    },
+    {
+      "uid": "47705102-764a-429a-9126-f4a3d819be9a",
+      "question": "What catalog structures include product stock number 61 py and have an additional attribute with value 1?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalog_contents ON catalog_structure.catalog_level_number = catalog_contents.catalog_level_number\nJOIN catalog_contents_additional_attributes ON catalog_structure.catalog_level_number = catalog_contents_additional_attributes.catalog_level_number\nWHERE catalog_contents.product_stock_number = '61 py' AND catalog_contents_additional_attributes.attribute_value = '1'",
+      "pred_sql": "SELECT DISTINCT cs.catalog_id\nFROM Catalog_Structure cs\nINNER JOIN Catalog_Contents cc ON cs.catalog_level_number = cc.catalog_level_number\nINNER JOIN Catalog_Contents_Additional_Attributes cca ON cs.catalog_level_number = cca.catalog_level_number\nWHERE cc.product_stock_number = '61 py'\nAND cca.attribute_value = '1'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.94
+    },
+    {
+      "uid": "6582e446-405e-4d9a-b05e-c423002c320d",
+      "question": "What products are included in the catalog structure?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nWHERE catalog_structure.catalog_level_name = 'Product'",
+      "pred_sql": "SELECT catalog_id\nFROM Catalog_Structure\nWHERE catalog_level_name = 'Product'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.05
+    },
+    {
+      "uid": "a272d58c-b300-42e4-b0a1-0f24c7b9eabb",
+      "question": "Which catalog structure entries are for products in the Jam catalog published by Grady & Kautzer, with publication dates on or after 2011-07-22 04:57:19 and latest revisions on or before 2017-03-30 09:15:37?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id\nWHERE catalogs.catalog_publisher = 'Grady & Kautzer' AND catalog_structure.catalog_level_name = 'Product' AND catalogs.date_of_publication >= '2011-07-22 04:57:19' AND catalogs.date_of_latest_revision <= '2017-03-30 09:15:37' AND catalogs.catalog_name = 'Jam'",
+      "pred_sql": "SELECT cs.catalog_id\nFROM Catalog_Structure cs\nINNER JOIN Catalogs c ON cs.catalog_id = c.catalog_id\nWHERE cs.catalog_level_name = 'Product'\n  AND c.catalog_publisher = 'Grady & Kautzer'\n  AND c.date_of_publication >= '2011-07-22 04:57:19'\n  AND c.date_of_latest_revision <= '2017-03-30 09:15:37'\n  AND c.catalog_name = 'Jam'\nGROUP BY cs.catalog_id\nHAVING COUNT(c.catalog_id) > 0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.86
+    },
+    {
+      "uid": "b8f27e01-3926-4398-ab23-aaaf8e3e85f0",
+      "question": "What catalog structure entries at the Category level are linked to Mountain Dew items with length exactly 8, width exactly 5, and a price in euros at most 457.4?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalog_contents ON catalog_structure.catalog_level_number = catalog_contents.catalog_level_number\nJOIN catalog_contents_additional_attributes ON catalog_structure.catalog_level_number = catalog_contents_additional_attributes.catalog_level_number\nWHERE catalog_contents.length = '8' AND catalog_contents.catalog_entry_name = 'Mountain Dew' AND catalog_structure.catalog_level_name = 'Category' AND catalog_contents.width = '5' AND catalog_contents.price_in_euros <= 457.4",
+      "pred_sql": "SELECT cs.catalog_id\nFROM Catalog_Structure cs\nINNER JOIN Catalog_Contents cc ON cs.catalog_level_number = cc.catalog_level_number\nINNER JOIN Catalog_Contents_Additional_Attributes cca ON cs.catalog_level_number = cca.catalog_level_number\nWHERE cs.catalog_level_name = 'Category'\n  AND cc.length = '8'\n  AND cc.catalog_entry_name = 'Mountain Dew'\n  AND cc.width = '5'\n  AND cc.price_in_euros <= 457.4\nGROUP BY cs.catalog_id\nHAVING COUNT(cca.attribute_id) > 0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.62
+    },
+    {
+      "uid": "e0cf781a-8725-42a0-84d2-06ea1049a62c",
+      "question": "Which catalog entries have a height of 7, width of 8, and length of 9, come from product stock number 52 ee, have an attribute value of 0, and cost at least 360.5 dollars?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalog_contents ON catalog_structure.catalog_level_number = catalog_contents.catalog_level_number\nJOIN catalog_contents_additional_attributes ON catalog_structure.catalog_level_number = catalog_contents_additional_attributes.catalog_level_number\nWHERE catalog_contents.height = '7' AND catalog_contents_additional_attributes.attribute_value = '0' AND catalog_contents.width = '8' AND catalog_contents.length = '9' AND catalog_contents.price_in_dollars >= 360.5 AND catalog_contents.product_stock_number = '52 ee'",
+      "pred_sql": "SELECT DISTINCT cs.catalog_id\nFROM Catalog_Structure cs\nINNER JOIN Catalog_Contents cc ON cs.catalog_level_number = cc.catalog_level_number\nINNER JOIN Catalog_Contents_Additional_Attributes cca ON cc.catalog_level_number = cca.catalog_level_number\nWHERE cc.height = '7'\n  AND cc.width = '8'\n  AND cc.length = '9'\n  AND cc.price_in_dollars >= 360.5\n  AND cc.product_stock_number = '52 ee'\n  AND cca.attribute_value = '0'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 39.65
+    },
+    {
+      "uid": "f440b8f9-6bf8-46fc-a5e2-5c6bd5b251af",
+      "question": "Which sub-categories include Root beer in their catalog contents?",
+      "gold_sql": "SELECT catalog_structure.catalog_id FROM catalog_structure\nJOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id\nJOIN catalog_contents ON catalog_structure.catalog_level_number = catalog_contents.catalog_level_number\nJOIN catalog_contents_additional_attributes ON catalog_structure.catalog_level_number = catalog_contents_additional_attributes.catalog_level_number\nWHERE catalog_structure.catalog_level_name = 'Sub-Category' AND catalog_contents.catalog_entry_name = 'Root beer'",
+      "pred_sql": "SELECT cs.catalog_id\nFROM Catalog_Structure cs\nINNER JOIN Catalogs c ON cs.catalog_id = c.catalog_id\nINNER JOIN Catalog_Contents cc ON cs.catalog_level_number = cc.catalog_level_number\nINNER JOIN Catalog_Contents_Additional_Attributes cca ON cs.catalog_level_number = cca.catalog_level_number\nWHERE cs.catalog_level_name = 'Sub-Category'\nAND cc.catalog_entry_name = 'Root beer'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 34.54
+    }
+  ]
+}

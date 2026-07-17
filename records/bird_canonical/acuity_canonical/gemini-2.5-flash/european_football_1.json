@@ -1,0 +1,124 @@
+{
+  "db_id": "european_football_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:00:23.740847+00:00",
+  "records": [
+    {
+      "uid": "0e771020-9a93-46df-b9b0-3a2bafdd42f3",
+      "question": "What competitions include matches where West Ham was the home team and the final result is a home win?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftr = 'H' AND matchs.hometeam = 'West Ham'",
+      "pred_sql": "SELECT DISTINCT T1.division FROM divisions AS T1 INNER JOIN matchs AS T2 ON T1.division = T2.Div WHERE T2.FTR = 'H' AND T2.HomeTeam = 'West Ham'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.61
+    },
+    {
+      "uid": "126b34e2-5bb7-4d95-85c0-2e2be484d2fe",
+      "question": "Which competitions in England\u2019s EFL League One have matches where Crawley Town was the home team and the away team scored at least 2 goals?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftag >= 2 AND divisions.country = 'England' AND divisions.name = 'EFL League One' AND matchs.hometeam = 'Crawley Town'",
+      "pred_sql": "SELECT T1.division FROM divisions AS T1 WHERE T1.country = 'England' AND T1.name = 'EFL League One' AND EXISTS ( SELECT 1 FROM matchs AS T2 WHERE T1.division = T2.Div AND T2.ftag >= 2 AND T2.HomeTeam = 'Crawley Town' )",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.8
+    },
+    {
+      "uid": "14c23e3f-5c16-4810-9a18-ed179a47105e",
+      "question": "Which entries have the name Seria B?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Seria B'",
+      "pred_sql": "SELECT division FROM divisions WHERE name = 'Seria B'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "1f7d365b-db36-402d-aa44-577ef32311cc",
+      "question": "Which entries have the name exactly Scottish League One?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Scottish League One'",
+      "pred_sql": "SELECT division FROM divisions WHERE name = 'Scottish League One'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.63
+    },
+    {
+      "uid": "2c4975e3-c8ae-4b6d-a730-592e3cfa2a13",
+      "question": "Which competitions in France named Ligue 1 feature Lyon as the home team winning matches by conceding at most 1 goal since the 2010 season?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'France' AND divisions.name = 'Ligue 1' AND matchs.season >= 2010 AND matchs.ftr = 'H' AND matchs.ftag <= 1 AND matchs.hometeam = 'Lyon'",
+      "pred_sql": "SELECT DISTINCT T1.division FROM divisions AS T1 INNER JOIN matchs AS T2 ON T1.division = T2.Div WHERE T1.country = 'France' AND T1.name = 'Ligue 1' AND T2.season >= 2010 AND T2.FTR = 'H' AND T2.FTAG <= 1 AND T2.HomeTeam = 'Lyon'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.93
+    },
+    {
+      "uid": "341838dc-3064-4f9d-977c-d173a1fc9089",
+      "question": "Which competitions are held in Spain with matches played on or after 2011-01-15?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Spain' AND matchs.date >= '2011-01-15'",
+      "pred_sql": "SELECT T1.division FROM divisions AS T1 WHERE T1.country = 'Spain' AND EXISTS ( SELECT 1 FROM matchs AS T2 WHERE T2.Div = T1.division AND T2.Date >= '2011-01-15' )",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.12
+    },
+    {
+      "uid": "5994c520-4aa7-46d7-a072-8c2ba9a043a7",
+      "question": "Which competitions have matches played in Deutschland?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Deutschland'",
+      "pred_sql": "SELECT DISTINCT T1.division FROM divisions AS T1 INNER JOIN matchs AS T2 ON T1.division = T2.Div WHERE T1.country = 'Deutschland'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.48
+    },
+    {
+      "uid": "7ef1e1d6-8f1c-4bdc-83f0-30be035347e3",
+      "question": "Which entries have the name exactly equal to S\u00fcper Lig?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'S\u00fcper Lig'",
+      "pred_sql": "SELECT division FROM divisions WHERE name = 'S\u00fcper Lig'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "963b1295-da3e-48b3-87fe-9a8c94407c0f",
+      "question": "Which competitions in Belgium featured a 2013 season match where Lierse hosted Waasland-Beveren, the full-time result was a draw, the home team scored at least 0 goals, and the match date was on or before 2013-01-19?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.date <= '2013-01-19' AND matchs.fthg >= 0 AND divisions.country = 'Belgium' AND matchs.season = 2013 AND matchs.hometeam = 'Lierse' AND matchs.ftr = 'D' AND matchs.awayteam = 'Waasland-Beveren'",
+      "pred_sql": "SELECT T1.division FROM divisions AS T1 WHERE T1.country = 'Belgium' AND EXISTS ( SELECT 1 FROM matchs AS T2 WHERE T1.division = T2.Div AND T2.Date <= '2013-01-19' AND T2.FTHG >= 0 AND T2.season = 2013 AND T2.HomeTeam = 'Lierse' AND T2.FTR = 'D' AND T2.AwayTeam = 'Waasland-Beveren' )",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.5
+    },
+    {
+      "uid": "aaf642ed-fa80-44d1-b2d5-4db12e828e4e",
+      "question": "Which competitions in Spain have featured Real Madrid hosting Getafe in seasons from 2015 or later?",
+      "gold_sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.awayteam = 'Getafe' AND divisions.country = 'Spain' AND matchs.hometeam = 'Real Madrid' AND matchs.season >= 2015",
+      "pred_sql": "SELECT DISTINCT T1.division FROM divisions AS T1 INNER JOIN matchs AS T2 ON T1.division = T2.Div WHERE T1.country = 'Spain' AND T2.AwayTeam = 'Getafe' AND T2.HomeTeam = 'Real Madrid' AND T2.season >= 2015",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.13
+    }
+  ]
+}

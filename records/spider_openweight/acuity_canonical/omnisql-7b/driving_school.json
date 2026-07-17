@@ -1,0 +1,124 @@
+{
+  "db_id": "driving_school",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:36:37.107194+00:00",
+  "records": [
+    {
+      "uid": "0923a638-d3a2-4e9d-a2c8-c9f32d6a814f",
+      "question": "What addresses in the USA have the building number and street exactly as 9260 Streich Mountain?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.country = 'USA' AND addresses.line_1_number_building = '9260 Streich Mountain'",
+      "pred_sql": "SELECT address_id\nFROM Addresses\nWHERE country = 'USA' AND line_1_number_building = '9260 Streich Mountain'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.29
+    },
+    {
+      "uid": "0fca532d-84a2-4710-a9eb-29c86ecb1166",
+      "question": "Where are the addresses located in Ericamouth that belong to staff born on or before 2007-06-11 20:03:28?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nWHERE addresses.city = 'Ericamouth' AND staff.date_of_birth <= '2007-06-11 20:03:28'",
+      "pred_sql": "SELECT addresses.address_id\nFROM Addresses\nJOIN Staff ON Addresses.address_id = Staff.staff_address_id\nWHERE Addresses.city = 'Ericamouth' AND Staff.date_of_birth <= '2007-06-11 20:03:28'\nGROUP BY addresses.address_id\nHAVING COUNT(Staff.staff_id) > 0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.5
+    },
+    {
+      "uid": "1d09ef76-4622-4efe-a465-83a1038238c9",
+      "question": "What addresses are located in Damianfort, Connecticut with the zip code 61121?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.city = 'Damianfort' AND addresses.state_province_county = 'Connecticut' AND addresses.zip_postcode = '61121'",
+      "pred_sql": "SELECT address_id\nFROM Addresses\nWHERE city = 'Damianfort' AND state_province_county = 'Connecticut' AND zip_postcode = '61121'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 29.96
+    },
+    {
+      "uid": "43fdf458-9c82-4a3a-a996-544883805b63",
+      "question": "What address has the line 1 number and building exactly 56461 Baumbach Well Suite 634 in Lockmanfurt, Washington, USA with the zip postcode 34975?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.zip_postcode = '34975' AND addresses.city = 'Lockmanfurt' AND addresses.state_province_county = 'Washington' AND addresses.country = 'USA' AND addresses.line_1_number_building = '56461 Baumbach Well Suite 634'",
+      "pred_sql": "SELECT address_id\nFROM Addresses\nWHERE zip_postcode = '34975'\nAND city = 'Lockmanfurt'\nAND state_province_county = 'Washington'\nAND country = 'USA'\nAND line_1_number_building = '56461 Baumbach Well Suite 634'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 27.54
+    },
+    {
+      "uid": "44f501d9-c466-4ad6-a8d6-7c5b81bcba6a",
+      "question": "Which addresses are located in Georgia with the zip code 14445?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.state_province_county = 'Georgia' AND addresses.zip_postcode = '14445'",
+      "pred_sql": "SELECT address_id\nFROM Addresses\nWHERE state_province_county = 'Georgia' AND zip_postcode = '14445'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 27.61
+    },
+    {
+      "uid": "479ef872-9b15-468a-aedc-3115f4a67d60",
+      "question": "What addresses in Ericamouth, Louisiana with zip code 75074 belong to customers named Bernhard who became customers on 2016-05-11 17:03:48, have the email everette.goyette@example.org, phone number 07278206718, and a status of Bad Customer?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE addresses.city = 'Ericamouth' AND addresses.state_province_county = 'Louisiana' AND addresses.zip_postcode = '75074' AND customers.date_became_customer = '2016-05-11 17:03:48' AND customers.email_address = 'everette.goyette@example.org' AND customers.customer_status_code = 'Bad Customer' AND customers.phone_number = '07278206718' AND customers.last_name = 'Bernhard'",
+      "pred_sql": "SELECT addresses.address_id\nFROM Addresses\nINNER JOIN Customers ON Addresses.address_id = Customers.customer_address_id\nWHERE Addresses.city = 'Ericamouth'\nAND Addresses.state_province_county = 'Louisiana'\nAND Addresses.zip_postcode = '75074'\nAND Customers.date_became_customer = '2016-05-11 17:03:48'\nAND Customers.email_address = 'everette.goyette@example.org'\nAND Customers.customer_status_code = 'Bad Customer'\nAND Customers.phone_number = '07278206718'\nAND Customers.last_name = 'Bernhard'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.18
+    },
+    {
+      "uid": "88fec310-6ef1-461e-aa58-2ca0af6b0beb",
+      "question": "Which addresses in Port Jackelinemouth with zip postcode 85954 belong to customers whose amount outstanding is exactly 3900.0?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE customers.amount_outstanding = 3900.0 AND addresses.zip_postcode = '85954' AND addresses.city = 'Port Jackelinemouth'",
+      "pred_sql": "SELECT a.address_id\nFROM Addresses a\nINNER JOIN Customers c ON a.address_id = c.customer_address_id\nWHERE a.zip_postcode = '85954' AND a.city = 'Port Jackelinemouth'\nGROUP BY a.address_id\nHAVING COUNT(c.customer_id) > 0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.24
+    },
+    {
+      "uid": "96505b97-2441-4fa0-bbf9-81c20b634111",
+      "question": "Which addresses belong to customers named Dameon who are Bad Customers born on or after 1996-08-30 06:17:50, with an outstanding amount of 9332.0 and became customers on or before 2015-09-25 13:59:21, while the associated staff left exactly on 2018-02-26 17:56:31?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE customers.customer_status_code = 'Bad Customer' AND customers.date_of_birth >= '1996-08-30 06:17:50' AND customers.first_name = 'Dameon' AND staff.date_left_staff = '2018-02-26 17:56:31' AND customers.date_became_customer <= '2015-09-25 13:59:21' AND customers.amount_outstanding = 9332.0",
+      "pred_sql": "SELECT a.address_id\nFROM Addresses a\nINNER JOIN Staff s ON a.address_id = s.staff_address_id\nINNER JOIN Customers c ON a.address_id = c.customer_address_id\nWHERE s.date_left_staff = '2018-02-26 17:56:31'\n  AND c.customer_status_code = 'Bad Customer'\n  AND c.date_of_birth >= '1996-08-30 06:17:50'\n  AND c.first_name = 'Dameon'\n  AND c.date_became_customer <= '2015-09-25 13:59:21'\n  AND c.amount_outstanding = 9332.0\nGROUP BY a.address_id\nHAVING COUNT(DISTINCT s.staff_id) > 0\n   AND COUNT(DISTINCT c.customer_id) > 0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.87
+    },
+    {
+      "uid": "a1f7da42-cd2e-4223-bd02-d8f9f18408eb",
+      "question": "What addresses are linked to staff whose middle name is Duane and who left on 2018-03-05 18:30:12, also associated with customers?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE staff.date_left_staff = '2018-03-05 18:30:12' AND staff.middle_name = 'Duane'",
+      "pred_sql": "SELECT a.address_id\nFROM Addresses a\nJOIN Staff s ON a.address_id = s.staff_address_id\nJOIN Customers c ON a.address_id = c.customer_address_id\nWHERE s.date_left_staff = '2018-03-05 18:30:12'\n  AND s.middle_name = 'Duane'\nGROUP BY a.address_id\nHAVING COUNT(c.customer_id) > 0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 35.3
+    },
+    {
+      "uid": "fa2b94b9-f991-45a9-9cdd-cae49ddddc53",
+      "question": "Which addresses in Port Melyssa are linked to staff where the last name is Mraz and to customers who became customers exactly on 2015-09-25 13:59:21?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nJOIN staff ON addresses.address_id = staff.staff_address_id\nJOIN customers ON addresses.address_id = customers.customer_address_id\nWHERE customers.date_became_customer = '2015-09-25 13:59:21' AND staff.last_name = 'Mraz' AND addresses.city = 'Port Melyssa'",
+      "pred_sql": "SELECT addresses.address_id\nFROM Addresses\nINNER JOIN Staff ON Addresses.address_id = Staff.staff_address_id\nINNER JOIN Customers ON Addresses.address_id = Customers.customer_address_id\nWHERE Addresses.city = 'Port Melyssa'\nAND Staff.last_name = 'Mraz'\nAND Customers.date_became_customer = '2015-09-25 13:59:21'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 34.99
+    }
+  ]
+}

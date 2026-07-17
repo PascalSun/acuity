@@ -1,0 +1,124 @@
+{
+  "db_id": "book_publishing_company",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:33:45.953044+00:00",
+  "records": [
+    {
+      "uid": "06d3d2e8-ead8-46c3-a044-b088720056bf",
+      "question": "Which publishers based in MA and USA have an employee with last name Thomas and middle initial H, and published titles priced at 7.0 released on 1991-10-05 with exactly 111.0 in year-to-date sales?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN employee ON publishers.pub_id = employee.pub_id\nJOIN titles ON publishers.pub_id = titles.pub_id\nWHERE publishers.state = 'MA' AND publishers.country = 'USA' AND employee.lname = 'Thomas' AND employee.minit = 'H' AND titles.price = 7.0 AND titles.pubdate = '1991-10-05 00:00:00.0' AND titles.ytd_sales = 111.0",
+      "pred_sql": "SELECT DISTINCT p.pub_id\nFROM publishers p\nJOIN employee e ON p.pub_id = e.pub_id\nJOIN titles t ON p.pub_id = t.pub_id\nWHERE p.state = 'MA'\nAND p.country = 'USA'\nAND e.lname = 'Thomas'\nAND e.minit = 'H'\nAND t.price = 7.0\nAND t.pubdate = '1991-10-05'\nAND t.ytd_sales = 111.0",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.93
+    },
+    {
+      "uid": "2185d552-37c5-450e-90bc-d5fec9ca7eea",
+      "question": "Which publishers named Binnet & Hardley are located in Washington and have an employee named Peter H hired on or after 1992-05-17 with job level at most 75?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN employee ON publishers.pub_id = employee.pub_id\nWHERE employee.minit = 'H' AND employee.fname = 'Peter' AND publishers.pub_name = 'Binnet & Hardley' AND employee.hire_date >= '1992-05-17 00:00:00.0' AND employee.job_lvl <= 75 AND publishers.city = 'Washington'",
+      "pred_sql": "SELECT DISTINCT p.pub_id\nFROM publishers p\nJOIN employee e ON p.pub_id = e.pub_id\nWHERE p.pub_name = 'Binnet & Hardley'\n  AND p.state = 'DC'\n  AND e.fname = 'Peter'\n  AND e.minit = 'H'\n  AND e.hire_date >= '1992-05-17'\n  AND e.job_lvl <= 75",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.69
+    },
+    {
+      "uid": "25d0d6b7-160c-4497-91fb-434163b8cf15",
+      "question": "Which publishers have employees with a job level exactly 175?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN employee ON publishers.pub_id = employee.pub_id\nJOIN jobs ON employee.job_id = jobs.job_id\nWHERE employee.job_lvl = 175",
+      "pred_sql": "SELECT DISTINCT publishers.pub_id\nFROM publishers\nJOIN employee ON publishers.pub_id = employee.pub_id\nWHERE employee.job_lvl = 175",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "2a48c157-b50e-463a-8192-c82bdbe00a08",
+      "question": "Which publishers have psychology titles with an advance of 4000.0?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN titles ON publishers.pub_id = titles.pub_id\nWHERE titles.type = 'psychology' AND titles.advance = 4000.0",
+      "pred_sql": "SELECT DISTINCT publishers.pub_id\nFROM publishers\nJOIN titles ON publishers.pub_id = titles.pub_id\nWHERE titles.type = 'psychology' AND titles.advance = 4000.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.28
+    },
+    {
+      "uid": "515d6801-163a-4fce-b069-9ddb2c831944",
+      "question": "Which publishers are located in the state of CA?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nWHERE publishers.state = 'CA'",
+      "pred_sql": "SELECT pub_id FROM publishers WHERE state = 'CA'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.63
+    },
+    {
+      "uid": "68f42122-86fc-40ee-b40e-5b62485beb59",
+      "question": "What publishers in France named Lucerne Publishing have employees with the last name Jablonski, a middle initial J, hired on or after 1994-03-11, whose job level is exactly 75?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN employee ON publishers.pub_id = employee.pub_id\nJOIN jobs ON employee.job_id = jobs.job_id\nWHERE employee.lname = 'Jablonski' AND publishers.pub_name = 'Lucerne Publishing' AND jobs.min_lvl = 75 AND publishers.country = 'France' AND employee.minit = 'J' AND employee.hire_date >= '1994-03-11 00:00:00.0'",
+      "pred_sql": "SELECT DISTINCT p.pub_id\nFROM publishers p\nJOIN employee e ON p.pub_id = e.pub_id\nWHERE p.country = 'France'\n  AND p.pub_name = 'Lucerne Publishing'\n  AND e.lname = 'Jablonski'\n  AND e.minit = 'J'\n  AND e.hire_date >= '1994-03-11'\n  AND e.job_lvl = 75",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.36
+    },
+    {
+      "uid": "813899d2-d609-4a07-b4be-c4ce8b335638",
+      "question": "What publishers based in CA are named Algodata Infosystems and have titles with a 5000.0 advance, published on 1991-06-12, that sold at least 4095.0 units year-to-date?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN titles ON publishers.pub_id = titles.pub_id\nWHERE publishers.pub_name = 'Algodata Infosystems' AND titles.pubdate = '1991-06-12 00:00:00.0' AND titles.advance = 5000.0 AND publishers.state = 'CA' AND titles.ytd_sales >= 4095.0",
+      "pred_sql": "SELECT DISTINCT p.pub_id\nFROM publishers p\nJOIN titles t ON p.pub_id = t.pub_id\nWHERE p.state = 'CA'\n  AND p.pub_name = 'Algodata Infosystems'\n  AND t.advance = 5000.0\n  AND t.pubdate = '1991-06-12'\n  AND t.ytd_sales >= 4095.0",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.82
+    },
+    {
+      "uid": "b5aa5903-31b1-4e06-8d26-3918768ea8d3",
+      "question": "Which publishers have the name exactly \"Binnet & Hardley\", are located exactly in the city \"Washington\", and also have related employee and pub_info records?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN employee ON publishers.pub_id = employee.pub_id\nJOIN pub_info ON publishers.pub_id = pub_info.pub_id\nWHERE publishers.pub_name = 'Binnet & Hardley' AND publishers.city = 'Washington'",
+      "pred_sql": "SELECT DISTINCT p.pub_id\nFROM publishers p\nINNER JOIN employee e ON p.pub_id = e.pub_id\nINNER JOIN pub_info pi ON p.pub_id = pi.pub_id\nWHERE p.pub_name = 'Binnet & Hardley'\n  AND p.city = 'Washington'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.48
+    },
+    {
+      "uid": "cb7d9a2b-f601-46c5-9ee7-f79767e4fcc7",
+      "question": "What publishers named Lucerne Publishing are located in Paris, France?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nWHERE publishers.pub_name = 'Lucerne Publishing' AND publishers.country = 'France' AND publishers.city = 'Paris'",
+      "pred_sql": "SELECT pub_id\nFROM publishers\nWHERE pub_name = 'Lucerne Publishing' AND city = 'Paris' AND country = 'France'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.15
+    },
+    {
+      "uid": "ce70558b-e12c-47e7-935d-00724a1710bf",
+      "question": "Which publishers have titles with an advance exactly 8000.0 and price exactly 20.0, published on or after 1994-06-12, with royalties at most 10.0 and year-to-date sales at least 4095?",
+      "gold_sql": "SELECT publishers.pub_id FROM publishers\nJOIN pub_info ON publishers.pub_id = pub_info.pub_id\nJOIN titles ON publishers.pub_id = titles.pub_id\nWHERE titles.advance = 8000.0 AND titles.price = 20.0 AND titles.pubdate >= '1994-06-12 00:00:00.0' AND titles.royalty <= 10.0 AND titles.ytd_sales >= 4095.0",
+      "pred_sql": "SELECT DISTINCT p.pub_id\nFROM publishers p\nJOIN titles t ON p.pub_id = t.pub_id\nWHERE t.advance = 8000.0\n  AND t.price = 20.0\n  AND t.pubdate >= '1994-06-12'\n  AND t.royalty <= 10.0\n  AND t.ytd_sales >= 4095",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.43
+    }
+  ]
+}

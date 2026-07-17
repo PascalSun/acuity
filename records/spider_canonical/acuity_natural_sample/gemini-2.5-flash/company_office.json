@@ -1,0 +1,124 @@
+{
+  "db_id": "company_office",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 8,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:21:35.430863+00:00",
+  "records": [
+    {
+      "uid": "00a9c426-6212-40f2-bf96-72c32182a14d",
+      "question": "Which companies named Petrobras have exactly 313.2 billion in assets and profits of at most 21.2 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nWHERE companies.name = 'Petrobras' AND companies.assets_billion = 313.2 AND companies.profits_billion <= 21.2",
+      "pred_sql": "SELECT id FROM Companies WHERE name = 'Petrobras' AND Assets_billion = 313.2 AND Profits_billion <= 21.2",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.65
+    },
+    {
+      "uid": "1be23f39-ec1a-4064-9680-b031a59b72b3",
+      "question": "Which companies headquartered in the USA have at least 184.8 billion in assets but no more than 189.6 billion in sales and no more than 19.0 billion in profits?",
+      "gold_sql": "SELECT companies.id FROM companies\nWHERE companies.assets_billion >= 184.8 AND companies.sales_billion <= 189.6 AND companies.profits_billion <= 19.0 AND companies.headquarters = 'USA'",
+      "pred_sql": "SELECT id FROM Companies WHERE Headquarters = 'USA' AND Assets_billion >= 184.8 AND Sales_billion <= 189.6 AND Profits_billion <= 19.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "uid": "1d9441be-a058-4c3f-8f02-b5ae6018978e",
+      "question": "Which companies in the Banking industry have their headquarters in France, are named BNP Paribas, and have a market value of 88 billion, assets of 2680.7 billion, sales of 130.4 billion, and profits of 10.5 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nWHERE companies.headquarters = 'France' AND companies.name = 'BNP Paribas' AND companies.market_value_billion = '88' AND companies.assets_billion = 2680.7 AND companies.sales_billion = 130.4 AND companies.profits_billion = 10.5 AND companies.industry = 'Banking'",
+      "pred_sql": "SELECT id FROM Companies WHERE Industry = 'Banking' AND Headquarters = 'France' AND name = 'BNP Paribas' AND Market_Value_billion = '88' AND Assets_billion = 2680.7 AND Sales_billion = 130.4 AND Profits_billion = 10.5",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "2fe98149-ae4a-4624-a0f6-8880d4ce2787",
+      "question": "What companies in the Oil and gas industry have a market value of exactly 407.2 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nWHERE companies.market_value_billion = '407.2' AND companies.industry = 'Oil and gas'",
+      "pred_sql": "SELECT id FROM Companies WHERE Industry = 'Oil and gas' AND Market_Value_billion = '407.2'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "3ea6d0ea-859e-4cb3-b779-768e07c551ea",
+      "question": "What companies in the Banking industry headquartered in China have market value exactly 224.8 billion, assets at most 1408.0 billion, profits at least 15.6 billion, and sales no more than 58.2 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nWHERE companies.assets_billion <= 1408.0 AND companies.market_value_billion = '224.8' AND companies.profits_billion >= 15.6 AND companies.sales_billion <= 58.2 AND companies.industry = 'Banking' AND companies.headquarters = 'China'",
+      "pred_sql": "SELECT id FROM Companies WHERE Industry = 'Banking' AND Headquarters = 'China' AND Market_Value_billion = '224.8' AND Assets_billion <= 1408.0 AND Profits_billion >= 15.6 AND Sales_billion <= 58.2",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.92
+    },
+    {
+      "uid": "6f16e0c4-7782-4e1b-9b69-838efdb1fa7a",
+      "question": "Which companies have office locations in buildings where the status is under construction?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nJOIN buildings ON office_locations.building_id = buildings.id\nWHERE buildings.status = 'under construction'",
+      "pred_sql": "SELECT T1.id FROM Companies AS T1 INNER JOIN Office_locations AS T2 ON T1.id = T2.company_id INNER JOIN buildings AS T3 ON T2.building_id = T3.id WHERE T3.Status = 'Under Construction'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    },
+    {
+      "uid": "7873f8c2-d565-443f-accc-60bc0df398b1",
+      "question": "Which companies have a market value of exactly 320.8 billion?",
+      "gold_sql": "SELECT companies.id FROM companies\nWHERE companies.market_value_billion = '320.8'",
+      "pred_sql": "SELECT id FROM Companies WHERE Market_Value_billion = '320.8'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.15
+    },
+    {
+      "uid": "b195b958-66d9-4edc-b6cb-7b887a959c0f",
+      "question": "Which companies named Petrobras, headquartered in Brazil with profits exactly 21.2 billion and sales of at least 121.3 billion, have offices that moved in 2031 or later in 44-story, 200-meter buildings located in Mexico City?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nJOIN buildings ON office_locations.building_id = buildings.id\nWHERE buildings.city = 'Mexico City' AND companies.profits_billion = 21.2 AND office_locations.move_in_year >= 2031 AND companies.headquarters = 'Brazil' AND companies.name = 'Petrobras' AND buildings.stories = 44 AND buildings.height = 200 AND companies.sales_billion >= 121.3",
+      "pred_sql": "SELECT T1.id FROM Companies AS T1 INNER JOIN Office_locations AS T2 ON T1.id = T2.company_id INNER JOIN buildings AS T3 ON T2.building_id = T3.id WHERE T1.name = 'Petrobras' AND T1.Headquarters = 'Brazil' AND T1.Profits_billion = 21.2 AND T1.Sales_billion >= 121.3 AND T2.move_in_year >= 2031 AND T3.Stories = 44 AND T3.Height = 200 AND T3.City = 'Mexico City'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.47
+    },
+    {
+      "uid": "d2284717-e51e-4a60-9663-077b6e8a514a",
+      "question": "Which companies have exactly 1723.5 billion in assets and have office locations?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nWHERE companies.assets_billion = 1723.5",
+      "pred_sql": "SELECT DISTINCT T1.id FROM Companies AS T1 INNER JOIN Office_locations AS T2 ON T1.id = T2.company_id WHERE T1.Assets_billion = 1723.5",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "dbdb0408-620f-42db-88a2-24f23efd7a5d",
+      "question": "Which companies named BNP Paribas have a market value of 88 billion, assets of at least 2680.7 billion, profits of at most 10.5 billion, and are located in buildings where the status is proposed?",
+      "gold_sql": "SELECT companies.id FROM companies\nJOIN office_locations ON companies.id = office_locations.company_id\nJOIN buildings ON office_locations.building_id = buildings.id\nWHERE buildings.status = 'proposed' AND companies.assets_billion >= 2680.7 AND companies.profits_billion <= 10.5 AND companies.market_value_billion = '88' AND companies.name = 'BNP Paribas'",
+      "pred_sql": "SELECT T1.id FROM Companies AS T1 INNER JOIN Office_locations AS T2 ON T1.id = T2.company_id INNER JOIN buildings AS T3 ON T2.building_id = T3.id WHERE T1.name = 'BNP Paribas' AND T1.Market_Value_billion = '88 billion' AND T1.Assets_billion >= 2680.7 AND T1.Profits_billion <= 10.5 AND T3.Status = 'Proposed'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.22
+    }
+  ]
+}

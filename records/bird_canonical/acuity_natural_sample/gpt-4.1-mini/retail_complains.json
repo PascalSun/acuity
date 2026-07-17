@@ -1,0 +1,124 @@
+{
+  "db_id": "retail_complains",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:13:29.181042+00:00",
+  "records": [
+    {
+      "uid": "04dbb192-9137-44a4-a0d5-a802ca6570ad",
+      "question": "Which districts are located in Nashville within Tennessee\u2019s South region and have a division of East South Central?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN state ON district.state_abbrev = state.statecode\nWHERE district.city = 'Nashville' AND state.state = 'Tennessee' AND state.region = 'South' AND district.division = 'East South Central'",
+      "pred_sql": "SELECT district.district_id\nFROM district\nJOIN state ON district.state_abbrev = state.StateCode\nWHERE district.city = 'Nashville'\n  AND state.State = 'Tennessee'\n  AND state.Region = 'South'\n  AND district.division = 'East South Central'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "19c32ee7-a682-409b-a641-9d4a9be7d0e0",
+      "question": "Which districts are located in Billings, Montana within the Mountain division and West region, associated with a client whose social is 479-45-2841 and whose state is MT?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN client ON district.district_id = client.district_id\nJOIN state ON district.state_abbrev = state.statecode\nWHERE client.social = '479-45-2841' AND state.region = 'West' AND district.division = 'Mountain' AND district.city = 'Billings' AND state.state = 'Montana' AND client.state = 'MT'",
+      "pred_sql": "SELECT DISTINCT district.district_id\nFROM district\nJOIN state ON district.state_abbrev = state.StateCode\nJOIN client ON district.district_id = client.district_id\nWHERE district.city = 'Billings'\n  AND district.division = 'Mountain'\n  AND state.Region = 'West'\n  AND client.social = '479-45-2841'\n  AND client.state = 'MT'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    },
+    {
+      "uid": "38c8e242-f325-4641-870f-239d5d9d4070",
+      "question": "Which districts have clients with the last name Hester and also have state and review information?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN client ON district.district_id = client.district_id\nJOIN state ON district.state_abbrev = state.statecode\nJOIN reviews ON district.district_id = reviews.district_id\nWHERE client.last = 'Hester'",
+      "pred_sql": "SELECT DISTINCT d.district_id\nFROM district d\nJOIN client c ON c.district_id = d.district_id\nJOIN state s ON d.state_abbrev = s.StateCode\nJOIN reviews r ON r.district_id = d.district_id\nWHERE c.last = 'Hester'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    },
+    {
+      "uid": "3d0f58a5-9b07-4556-a650-50b9e31fd8d8",
+      "question": "Which districts in the Pacific division have clients with an address of exactly '918 Beechwood Avenue' and a month value of at least 3, and also have associated reviews?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN client ON district.district_id = client.district_id\nJOIN reviews ON district.district_id = reviews.district_id\nWHERE district.division = 'Pacific' AND client.address_1 = '918 Beechwood Avenue' AND client.month >= 3",
+      "pred_sql": "SELECT DISTINCT d.district_id\nFROM district d\nJOIN client c ON c.district_id = d.district_id\nJOIN reviews r ON r.district_id = d.district_id\nWHERE d.division = 'Pacific'\n  AND c.address_1 = '918 Beechwood Avenue'\n  AND c.month >= 3",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "527ef09b-28bf-42ff-83c4-5804f9ce9862",
+      "question": "What districts are located exactly in Nashua?",
+      "gold_sql": "SELECT district.district_id FROM district\nWHERE district.city = 'Nashua'",
+      "pred_sql": "SELECT district_id FROM district WHERE city = 'Nashua'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.76
+    },
+    {
+      "uid": "7b8d62dc-5dcd-4fea-9d9f-12960fe90a1d",
+      "question": "Where are the districts located in the East South Central division that have clients with the middle name Finley?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN client ON district.district_id = client.district_id\nJOIN state ON district.state_abbrev = state.statecode\nWHERE district.division = 'East South Central' AND client.middle = 'Finley'",
+      "pred_sql": "SELECT DISTINCT district.district_id\nFROM district\nJOIN client ON district.district_id = client.district_id\nWHERE district.division = 'East South Central'\n  AND client.middle = 'Finley'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.01
+    },
+    {
+      "uid": "9a1e5e22-48cb-40f3-9fb4-e9a860de2223",
+      "question": "Which districts located in the city of New Britain and division New England have clients who are female, named Kendra, with the address 8333 South Dr., phone number 606-786-2317, and a zipcode at most 48707, and that also have related state records and reviews?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN client ON district.district_id = client.district_id\nJOIN state ON district.state_abbrev = state.statecode\nJOIN reviews ON district.district_id = reviews.district_id\nWHERE district.city = 'New Britain' AND client.first = 'Kendra' AND client.address_1 = '8333 South Dr.' AND client.zipcode <= 48707 AND district.division = 'New England' AND client.sex = 'Female' AND client.phone = '606-786-2317'",
+      "pred_sql": "SELECT DISTINCT d.district_id\nFROM district d\nJOIN client c ON c.district_id = d.district_id\nJOIN state s ON d.state_abbrev = s.StateCode\nJOIN reviews r ON r.district_id = d.district_id\nWHERE d.city = 'New Britain'\n  AND d.division = 'New England'\n  AND c.sex = 'female'\n  AND c.first = 'Kendra'\n  AND c.address_1 = '8333 South Dr.'\n  AND c.phone = '606-786-2317'\n  AND c.zipcode <= 48707",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "uid": "9cf5ec72-fae6-48a3-aef6-dccb3e5b85b3",
+      "question": "Which districts are located in Portland?",
+      "gold_sql": "SELECT district.district_id FROM district\nWHERE district.city = 'Portland'",
+      "pred_sql": "SELECT district_id FROM district WHERE city = 'Portland'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.72
+    },
+    {
+      "uid": "b09e39de-5757-4748-a828-b82f88e62e61",
+      "question": "Which districts are located in Pennsylvania within the Northeast region?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN state ON district.state_abbrev = state.statecode\nWHERE state.region = 'Northeast' AND state.state = 'Pennsylvania'",
+      "pred_sql": "SELECT district.district_id\nFROM district\nJOIN state ON district.state_abbrev = state.StateCode\nWHERE state.State = 'Pennsylvania' AND state.Region = 'Northeast'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "uid": "c5c16e26-acf7-4537-9f4b-090fb9434097",
+      "question": "Which districts located in the city of Chicago that have related clients with a month value at most 9, related states in the Midwest region, and related reviews are these?",
+      "gold_sql": "SELECT district.district_id FROM district\nJOIN client ON district.district_id = client.district_id\nJOIN state ON district.state_abbrev = state.statecode\nJOIN reviews ON district.district_id = reviews.district_id\nWHERE district.city = 'Chicago' AND state.region = 'Midwest' AND client.month <= 9",
+      "pred_sql": "SELECT DISTINCT district.district_id\nFROM district\nJOIN state ON district.state_abbrev = state.StateCode\nJOIN client ON client.district_id = district.district_id\nJOIN reviews ON reviews.district_id = district.district_id\nWHERE district.city = 'Chicago'\n  AND client.month <= 9\n  AND state.Region = 'Midwest'",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.19
+    }
+  ]
+}

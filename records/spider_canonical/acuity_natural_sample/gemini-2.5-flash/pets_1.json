@@ -1,0 +1,124 @@
+{
+  "db_id": "pets_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:28:35.628996+00:00",
+  "records": [
+    {
+      "uid": "1610d818-6199-4bb8-ab64-ca10a76791d3",
+      "question": "Who are the female students named Smith from BAL city, aged at least 18, with advisor number at most 1121 and major code no more than 600, who have pets weighing exactly 12.0 and aged at least 3?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nJOIN pets ON has_pet.petid = pets.petid\nWHERE student.advisor <= 1121 AND student.age >= 18 AND student.sex = 'F' AND pets.weight = 12.0 AND pets.pet_age >= 3 AND student.major <= 600 AND student.lname = 'Smith' AND student.city_code = 'BAL'",
+      "pred_sql": "SELECT T1.StuID\nFROM Student AS T1\nINNER JOIN Has_Pet AS T2\n  ON T1.StuID = T2.StuID\nINNER JOIN Pets AS T3\n  ON T2.PetID = T3.PetID\nWHERE\n  T1.Sex = 'F' AND T1.LName = 'Smith' AND T1.city_code = 'BAL' AND T1.Age >= 18 AND T1.Advisor <= 1121 AND T1.Major <= 600 AND T3.weight = 12.0 AND T3.pet_age >= 3",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    },
+    {
+      "uid": "30ca3fd5-c5dc-476a-b927-56eede664e7a",
+      "question": "Which male students named Eric, exactly 19 years old, have advisor 7134?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.advisor = 7134 AND student.fname = 'Eric' AND student.age = 19 AND student.sex = 'M'",
+      "pred_sql": "SELECT StuID FROM Student WHERE Fname = 'Eric' AND Sex = 'M' AND Age = 19 AND Advisor = 7134",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.75
+    },
+    {
+      "uid": "86a94247-4446-48d4-90d6-c2c302bdeb1b",
+      "question": "Which students are located in the city with the code DET?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.city_code = 'DET'",
+      "pred_sql": "SELECT StuID FROM Student WHERE city_code = 'DET'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.81
+    },
+    {
+      "uid": "a437b4aa-a082-4a90-aa4e-8998845ff5d3",
+      "question": "Who are the female students advised by 1121, living in city BAL, with a major code of at most 600, who have pets?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nJOIN pets ON has_pet.petid = pets.petid\nWHERE student.major <= 600 AND student.advisor = 1121 AND student.city_code = 'BAL' AND student.sex = 'F'",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID WHERE T1.Sex = 'F' AND T1.Advisor = 1121 AND T1.city_code = 'BAL' AND T1.Major <= 600",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "a48a44b2-9ade-446b-9874-4ff0a7085a68",
+      "question": "Who are the students at least 18 years old living in BAL that have pets?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nJOIN pets ON has_pet.petid = pets.petid\nWHERE student.city_code = 'BAL' AND student.age >= 18",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID WHERE T1.Age >= 18 AND T1.city_code = 'BAL'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.52
+    },
+    {
+      "uid": "d8052ed3-e6e7-4aab-855c-6c9c3961b586",
+      "question": "Which students with the last name Kim, age at most 19, advisor number no more than 7712, and major no more than 600 have pets?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nWHERE student.age <= 19 AND student.lname = 'Kim' AND student.advisor <= 7712 AND student.major <= 600",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID WHERE T1.LName = 'Kim' AND T1.Age <= 19 AND T1.Advisor <= 7712 AND T1.Major <= 600",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "d8b190e7-c873-42ce-b848-0802f02fb970",
+      "question": "Who are the students with advisor numbers at least 7712 who have a pet?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nWHERE student.advisor >= 7712",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID WHERE T1.Advisor >= 7712",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "df980442-5276-4145-9c56-132338252eea",
+      "question": "What female student named Tracy Kim, who is at least 19 years old, has advisor 7712, and a major number at most 600, has a pet?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN has_pet ON student.stuid = has_pet.stuid\nWHERE student.sex = 'F' AND student.major <= 600 AND student.fname = 'Tracy' AND student.lname = 'Kim' AND student.age >= 19 AND student.advisor = 7712",
+      "pred_sql": "SELECT T1.StuID FROM Student AS T1 INNER JOIN Has_Pet AS T2 ON T1.StuID = T2.StuID WHERE T1.Sex = 'F' AND T1.Fname = 'Tracy' AND T1.LName = 'Kim' AND T1.Age >= 19 AND T1.Advisor = 7712 AND T1.Major <= 600",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.83
+    },
+    {
+      "uid": "e364a4c2-0470-4192-b30b-eff1fd8c6c6d",
+      "question": "Which students are exactly 26 years old?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.age = 26",
+      "pred_sql": "SELECT StuID FROM Student WHERE Age = 26",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "f8d3b2c4-9702-4a8f-ba1d-abe5f5e88ea5",
+      "question": "Which male students named Bruce Wilson at most 27 years old, living in LON, advised by 1148, and with a major number no more than 600 do we have?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.sex = 'M' AND student.fname = 'Bruce' AND student.age <= 27 AND student.city_code = 'LON' AND student.lname = 'Wilson' AND student.advisor = 1148 AND student.major <= 600",
+      "pred_sql": "SELECT StuID FROM Student WHERE Sex = 'M' AND Fname = 'Bruce' AND LName = 'Wilson' AND Age <= 27 AND city_code = 'LON' AND Advisor = 1148 AND Major <= 600",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.92
+    }
+  ]
+}

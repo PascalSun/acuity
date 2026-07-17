@@ -1,0 +1,175 @@
+[project]
+name = "talk2metadata"
+version = "0.1.0"
+description = "Question Answer Pairs Generator for Metadata Retrieval"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "PascalSun", email = "pascalsun23@gmail.com" }
+]
+maintainers = [
+    { name = "PascalSun", email = "pascalsun23@gmail.com" }
+]
+requires-python = ">=3.11"
+keywords = [
+    "semantic-search",
+    "database",
+    "nlp",
+    "retrieval",
+    "hybrid-search",
+    "bm25",
+    "embeddings",
+    "faiss",
+    "metadata",
+    "multi-table",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Indexing",
+    "Typing :: Typed",
+]
+dependencies = [
+    # CLI
+    "click>=8.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    # Data Processing
+    "pandas>=1.5.0",
+    "sqlalchemy>=2.0",
+    # ML/Embeddings
+    "sentence-transformers>=2.2.0",
+    "faiss-cpu>=1.7.4",
+    "numpy>=1.22,<2.0",
+    # Utils / Logging
+    "loguru>=0.7.0",
+    "tqdm>=4.65.0",
+    "typing-extensions>=4.5",
+    "openai>=2.8.1",
+    "google-genai>=1.63.0",
+    "anthropic>=0.74.1",
+    "duckdb>=0.9.0",
+    "peft>=0.18.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/PascalSun/talk2metadata"
+Documentation = "https://pascalsun.github.io/Talk2Metadata"
+Repository = "https://github.com/PascalSun/talk2metadata"
+Issues = "https://github.com/PascalSun/talk2metadata/issues"
+
+
+[project.optional-dependencies]
+# Agent support (optional)
+agent = [
+    "openai>=1.0",
+    "anthropic>=0.7.0",
+]
+
+# TGR fine-tuning (TopologyReasoning paper)
+training = [
+    "transformers>=4.40.0",
+    "datasets>=2.19.0",
+    "accelerate>=0.30.0",
+    "bitsandbytes>=0.43.0",
+    "trl>=0.9.0",
+]
+
+# MCP server
+mcp = [
+    "mcp>=1.20.0",
+    "starlette>=0.27.0",
+    "httpx>=0.27.0",
+    "pyjwt>=2.8.0",
+    "uvicorn>=0.23.0",
+    "rank-bm25>=0.2.2",  # Hybrid search support
+    "boto3>=1.34.0",
+]
+
+# Development
+dev = [
+    "tox>=4.0",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-asyncio>=0.21.0",
+    "black==24.8.0",
+    "isort>=5.12",
+    "flake8>=6.0",
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.0.0",
+    "mkdocstrings>=0.24.0",
+    "mkdocstrings-python>=1.8.0",
+    "ipython>=8.0",
+]
+
+[project.scripts]
+talk2metadata = "talk2metadata.cli:main"
+talk2metadata-mcp = "talk2metadata.mcp.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = ["src/talk2metadata/mcp/static/**"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/talk2metadata"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311', 'py312']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --cov=talk2metadata --cov-report=term-missing --cov-report=html"
+filterwarnings = [
+    # Ignore deprecation warnings from external dependencies (Talk2Metadata)
+    "ignore::DeprecationWarning:talk2metadata",
+    # Ignore SWIG-related deprecation warnings (match by message pattern)
+    "ignore:builtin type SwigPy.* has no __module__ attribute:DeprecationWarning",
+    "ignore:builtin type swigvarlink has no __module__ attribute:DeprecationWarning",
+    # Ignore datetime.utcnow() deprecation warnings from external code
+    "ignore:datetime.datetime.utcnow.* is deprecated:DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src/talk2metadata"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+]
+precision = 2
+show_missing = true

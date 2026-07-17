@@ -1,0 +1,124 @@
+{
+  "db_id": "theme_gallery",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:53:06.949726+00:00",
+  "records": [
+    {
+      "uid": "022a8a35-502c-4512-b757-5022c5188bf4",
+      "question": "Which artists named Vijay Singh have exhibitions with ticket prices of at least 16.95?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.ticket_price >= 16.95 AND artist.name = 'Vijay Singh'",
+      "pred_sql": "SELECT artist.artist_id\nFROM artist\nINNER JOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.name = 'Vijay Singh' AND exhibition.ticket_price >= 16.95",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 35.43
+    },
+    {
+      "uid": "02fd435e-2a37-4a44-88a6-a441223cce5f",
+      "question": "Which artists are at most 50 years old?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 50",
+      "pred_sql": "SELECT Artist_ID \nFROM artist \nWHERE Age <= 50",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 17.69
+    },
+    {
+      "uid": "0c154b8c-5afb-41bf-9e66-57b828ac0233",
+      "question": "Which artists named Jeff Sluman from the United States exhibited work in 2006?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.name = 'Jeff Sluman' AND exhibition.year = 2006 AND artist.country = 'United States'",
+      "pred_sql": "SELECT DISTINCT artist.Artist_ID\nFROM artist\nINNER JOIN exhibition ON artist.Artist_ID = exhibition.Artist_ID\nWHERE artist.Name = 'Jeff Sluman'\n  AND artist.Country = 'United States'\n  AND exhibition.Year = 2006",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.91
+    },
+    {
+      "uid": "29f13a7f-cbd9-4995-99d4-abe0494861dd",
+      "question": "Which artists who joined in 1994 or later have participated in exhibitions with the theme Spring held in 2008 or earlier?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Spring' AND artist.year_join >= 1994 AND exhibition.year <= 2008",
+      "pred_sql": "SELECT DISTINCT artist.Artist_ID\nFROM artist\nINNER JOIN exhibition ON artist.Artist_ID = exhibition.Artist_ID\nWHERE artist.Year_Join >= 1994\n  AND exhibition.Theme = 'Spring'\n  AND exhibition.Year <= 2008",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.33
+    },
+    {
+      "uid": "53f542e4-ecc7-432f-8c3a-bd6e3a263ed1",
+      "question": "Which artists joined in 1996 and are from the United States?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.country = 'United States' AND artist.year_join = 1996",
+      "pred_sql": "SELECT Artist_ID \nFROM artist \nWHERE Country = 'United States' AND Year_Join = 1996",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.28
+    },
+    {
+      "uid": "7eeb0d8b-5367-4dfd-8ca3-29db3a20643b",
+      "question": "Who are the artists that have participated in exhibitions from 2009 or later?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year >= 2009",
+      "pred_sql": "artist.Artist_ID = exhibition.Artist_ID",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 35.8
+    },
+    {
+      "uid": "9a45a6cb-5e0d-4491-8cce-c9731ef231f6",
+      "question": "Who is Jeff Sluman from the United States that joined in 1988 or later and is at most 57 years old?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 57 AND artist.country = 'United States' AND artist.name = 'Jeff Sluman' AND artist.year_join >= 1988",
+      "pred_sql": "SELECT Artist_ID\nFROM artist\nWHERE Age <= 57\n  AND Country = 'United States'\n  AND Name = 'Jeff Sluman'\n  AND Year_Join >= 1988",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.78
+    },
+    {
+      "uid": "b43e1bcc-c644-4fe5-be71-410a86feed3b",
+      "question": "Which artists named Paul Azinger, aged 47 and who joined in 1993 or earlier, had exhibitions with the Summer theme in 2009 that charged ticket prices at most 9.95?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Summer' AND exhibition.ticket_price <= 9.95 AND exhibition.year = 2009 AND artist.name = 'Paul Azinger' AND artist.year_join <= 1993 AND artist.age = 47",
+      "pred_sql": "SELECT DISTINCT artist.Artist_ID\nFROM artist\nINNER JOIN exhibition ON artist.Artist_ID = exhibition.Artist_ID\nWHERE artist.Name = 'Paul Azinger'\n  AND artist.Year_Join <= 1993\n  AND artist.Age = 47\n  AND exhibition.Theme = 'Summer'\n  AND exhibition.Ticket_Price <= 9.95\n  AND exhibition.Year = 2009",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 57.58
+    },
+    {
+      "uid": "b7a1acf6-5232-4c50-9a70-ac216561852d",
+      "question": "Which artists named Vijay Singh from Fiji, aged at least 45 and who joined in 1998 or later, have exhibitions where the theme is Christmas Tree and the ticket price is at least 16.95?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.age >= 45 AND exhibition.theme = 'Christmas Tree' AND artist.year_join >= 1998 AND artist.name = 'Vijay Singh' AND exhibition.ticket_price >= 16.95 AND artist.country = 'Fiji'",
+      "pred_sql": "SELECT DISTINCT artist.Artist_ID\nFROM artist\nINNER JOIN exhibition ON artist.Artist_ID = exhibition.Artist_ID\nWHERE artist.Age >= 45\n  AND artist.Year_Join >= 1998\n  AND artist.Name = 'Vijay Singh'\n  AND artist.Country = 'Fiji'\n  AND exhibition.Theme = 'Christmas Tree'\n  AND exhibition.Ticket_Price >= 16.95",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 50.96
+    },
+    {
+      "uid": "d7e2141e-ead3-4dc7-8678-c538913ef603",
+      "question": "Which artists named Paul Azinger from the United States joined in 1993 or later and are at most 47 years old?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 47 AND artist.name = 'Paul Azinger' AND artist.year_join >= 1993 AND artist.country = 'United States'",
+      "pred_sql": "SELECT Artist_ID\nFROM artist\nWHERE Age <= 47\n  AND Name = 'Paul Azinger'\n  AND Year_Join >= 1993\n  AND Country = 'United States'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 35.8
+    }
+  ]
+}

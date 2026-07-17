@@ -1,0 +1,124 @@
+{
+  "db_id": "food_inspection",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:16:58.344205+00:00",
+  "records": [
+    {
+      "uid": "31379a72-7bea-43b8-88b0-91e3734ef9c9",
+      "question": "What businesses named Cafe Bellini located at 865 MARKET St C45 have the owner LEGRIN, INC., are in California with owner zip 94102, postal code 94103, tax code H24, and latitude 37.7843?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nJOIN violations ON businesses.business_id = violations.business_id\nWHERE businesses.owner_state = 'CA' AND businesses.owner_zip = '94102' AND businesses.tax_code = 'H24' AND businesses.postal_code = '94103' AND businesses.name = 'Cafe Bellini' AND businesses.address = '865 MARKET St C45' AND businesses.owner_name = 'LEGRIN, INC.' AND businesses.latitude = 37.7843",
+      "pred_sql": "SELECT business_id FROM businesses WHERE name = 'Cafe Bellini' AND address = '865 MARKET St C45' AND owner_name = 'LEGRIN, INC.' AND owner_state = 'CA' AND owner_zip = '94102' AND postal_code = '94103' AND tax_code = 'H24' AND latitude = 37.7843",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.97
+    },
+    {
+      "uid": "64f224e2-3c22-4dcc-bf6f-a922a3977a98",
+      "question": "Which businesses owned by Munchery Inc. in SF applied since 2013-08-29, had a Routine - Unscheduled inspection scoring exactly 92.0, and received a Moderate Risk violation for Insufficient hot water or running water on 2014-04-14?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nJOIN inspections ON businesses.business_id = inspections.business_id\nJOIN violations ON businesses.business_id = violations.business_id\nWHERE businesses.city = 'SF' AND violations.risk_category = 'Moderate Risk' AND violations.description = 'Insufficient hot water or running water' AND businesses.owner_name = 'Munchery Inc.' AND businesses.application_date >= '2013-08-29' AND inspections.type = 'Routine - Unscheduled' AND inspections.score = 92.0 AND violations.date = '2014-04-14'",
+      "pred_sql": "SELECT T1.business_id FROM businesses AS T1 INNER JOIN inspections AS T2 ON T1.business_id = T2.business_id INNER JOIN violations AS T3 ON T1.business_id = T3.business_id WHERE T1.owner_name = 'Munchery Inc.' AND T1.owner_city = 'SF' AND T1.application_date >= '2013-08-29' AND T2.type = 'Routine - Unscheduled' AND T2.score = 92 AND T3.risk_category = 'Moderate Risk' AND T3.description = 'Insufficient hot water or running water' AND T3.date = '2014-04-14'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.66
+    },
+    {
+      "uid": "69e26d59-a012-4a05-a0dd-def2c29b41da",
+      "question": "Which businesses are located exactly at latitude 37.7814 and longitude -122.399?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nWHERE businesses.latitude = 37.7814 AND businesses.longitude = -122.399",
+      "pred_sql": "SELECT business_id FROM businesses WHERE latitude = 37.7814 AND longitude = -122.399",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.21
+    },
+    {
+      "uid": "7e833896-18a3-4aaf-8dfb-7c0786ff7ea3",
+      "question": "Which businesses named Elephant Sushi 3 in SF applied on or after 2014-02-06, had an inspection on 2014-02-25, and received a Low Risk violation?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nJOIN inspections ON businesses.business_id = inspections.business_id\nJOIN violations ON businesses.business_id = violations.business_id\nWHERE violations.risk_category = 'Low Risk' AND businesses.city = 'SF' AND businesses.application_date >= '2014-02-06' AND inspections.date = '2014-02-25' AND businesses.name = 'Elephant Sushi 3'",
+      "pred_sql": "SELECT T1.business_id FROM businesses AS T1 WHERE T1.name = 'Elephant Sushi 3' AND T1.city = 'SF' AND T1.application_date >= '2014-02-06' AND EXISTS ( SELECT 1 FROM inspections AS T2 WHERE T2.business_id = T1.business_id AND T2.date = '2014-02-25' ) AND EXISTS ( SELECT 1 FROM violations AS T3 WHERE T3.business_id = T1.business_id AND T3.risk_category = 'Low Risk' )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.38
+    },
+    {
+      "uid": "824d8229-c299-4c76-88c5-02e5b8591e2d",
+      "question": "Which businesses named House of Thai are located in SF with a longitude of -122.418, have a business certificate number of at least 450957, and whose postal code and owner zip both are exactly 94109?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nWHERE businesses.longitude = -122.418 AND businesses.business_certificate >= 450957 AND businesses.postal_code = '94109' AND businesses.owner_zip = '94109' AND businesses.city = 'SF' AND businesses.name = 'House of Thai'",
+      "pred_sql": "SELECT business_id FROM businesses WHERE name = 'House of Thai' AND city = 'SF' AND longitude = -122.418 AND business_certificate >= 450957 AND postal_code = '94109' AND owner_zip = '94109'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.85
+    },
+    {
+      "uid": "84c5ef49-fe14-4e60-a6f5-052df6464587",
+      "question": "Which businesses owned by 'ENA USA, Inc Natasha Sun Hong' with an owner zip code of '94108' have recorded inspections and violations?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nJOIN inspections ON businesses.business_id = inspections.business_id\nJOIN violations ON businesses.business_id = violations.business_id\nWHERE businesses.owner_zip = '94108' AND businesses.owner_name = 'ENA USA, Inc   Natasha Sun Hong'",
+      "pred_sql": "SELECT T1.business_id FROM businesses AS T1 WHERE T1.owner_name = 'ENA USA, Inc Natasha Sun Hong' AND T1.owner_zip = '94108' AND EXISTS ( SELECT 1 FROM inspections AS T2 WHERE T2.business_id = T1.business_id ) AND EXISTS ( SELECT 1 FROM violations AS T3 WHERE T3.business_id = T1.business_id )",
+      "strategy": "2iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.28
+    },
+    {
+      "uid": "9b102cc0-77bb-4122-9992-55d3548a3bb6",
+      "question": "Which businesses named Yerba Buena Tea Co (formerly Tea Smiths of SF) at 3251 20th Ave have owner Chad H. Smith and a business certificate number of at least 482967?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nWHERE businesses.owner_name = 'Chad H. Smith' AND businesses.address = '3251 20th Ave' AND businesses.business_certificate >= 482967 AND businesses.name = 'Yerba Buena Tea Co (formerly Tea Smiths of SF)'",
+      "pred_sql": "SELECT business_id FROM businesses WHERE name = 'Yerba Buena Tea Co (formerly Tea Smiths of SF)' AND address = '3251 20th Ave' AND owner_name = 'Chad H. Smith' AND business_certificate >= 482967",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.85
+    },
+    {
+      "uid": "9f7837f5-d44f-4df5-89a1-a637569ab32f",
+      "question": "Which businesses have a latitude exactly equal to 37.6817 and have recorded violations?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nJOIN violations ON businesses.business_id = violations.business_id\nWHERE businesses.latitude = 37.6817",
+      "pred_sql": "SELECT DISTINCT\n  T1.business_id\nFROM businesses AS T1\nINNER JOIN violations AS T2\n  ON T1.business_id = T2.business_id\nWHERE\n  T1.latitude = 37.6817",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.47
+    },
+    {
+      "uid": "b08c1f56-044a-420a-ad20-949e83bc6c19",
+      "question": "Which businesses named Sweet Passion Bakery are located at latitude 37.7421?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nWHERE businesses.name = 'Sweet Passion Bakery' AND businesses.latitude = 37.7421",
+      "pred_sql": "SELECT business_id FROM businesses WHERE name = 'Sweet Passion Bakery' AND latitude = 37.7421",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "bffe9aaf-eae8-46db-9f64-b9d7b4e49d11",
+      "question": "Which businesses located in San Francisco with an owner address at 388 Potrero Ave. have violations categorized as Low Risk?",
+      "gold_sql": "SELECT businesses.business_id FROM businesses\nJOIN violations ON businesses.business_id = violations.business_id\nWHERE businesses.city = 'San Francisco' AND violations.risk_category = 'Low Risk' AND businesses.owner_address = '388 Potrero Ave.'",
+      "pred_sql": "SELECT DISTINCT T1.business_id FROM businesses AS T1 INNER JOIN violations AS T2 ON T1.business_id = T2.business_id WHERE T1.city = 'San Francisco' AND T1.owner_address = '388 Potrero Ave.' AND T2.risk_category = 'Low Risk'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.27
+    }
+  ]
+}

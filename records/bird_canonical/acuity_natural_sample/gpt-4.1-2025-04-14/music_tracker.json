@@ -1,0 +1,124 @@
+{
+  "db_id": "music_tracker",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 8,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:19:01.922369+00:00",
+  "records": [
+    {
+      "uid": "0562b862-894a-46f2-ad1d-9bc99d30e080",
+      "question": "Which EPs by frogs flipping the fuck out have no offense as their group name, a group ID of 73243639, were released in 2016 or earlier, and have been snatched at most 8 times?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'ep' AND torrents.totalsnatched <= 8 AND torrents.groupid = 73243639 AND torrents.groupyear <= 2016 AND torrents.groupname = 'no offense' AND torrents.artist = 'frogs flipping the fuck out'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE artist = 'frogs flipping the fuck out'\n  AND groupName = 'no offense'\n  AND groupId = 73243639\n  AND releaseType = 'EP'\n  AND groupYear <= 2016\n  AND totalSnatched <= 8",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.75
+    },
+    {
+      "uid": "3b67a893-c16e-4ffc-8e5c-529d2236a998",
+      "question": "Which torrents by haftbefehl have the group name lass die affen aus dem zoo (drunken masters remix), group year at least 2014, group ID exactly 72860334, and exactly 2 total snatches?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'lass die affen aus dem zoo (drunken masters remix)' AND torrents.groupyear >= 2014 AND torrents.totalsnatched = 2 AND torrents.groupid = 72860334 AND torrents.artist = 'haftbefehl'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE artist = 'haftbefehl'\n  AND groupName = 'lass die affen aus dem zoo (drunken masters remix)'\n  AND groupYear >= 2014\n  AND groupId = 72860334\n  AND totalSnatched = 2",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "52f9ef8f-da56-4a1a-a616-b6185e86cffa",
+      "question": "Which torrents belong to group 40397 and have been snatched at least 359 times?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched >= 359 AND torrents.groupid = 40397",
+      "pred_sql": "SELECT id FROM torrents WHERE groupId = 40397 AND totalSnatched >= 359",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    },
+    {
+      "uid": "5f7a71f2-09ce-4ea3-b0c1-478b61589894",
+      "question": "Which mixtapes by do$e money released in 2013 or later have group IDs no more than 72602752 and were snatched at most 34 times?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched <= 34 AND torrents.groupyear >= 2013 AND torrents.releasetype = 'mixtape' AND torrents.groupid <= 72602752 AND torrents.artist = 'do$e money'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE artist = 'do$e money'\n  AND releaseType = 'mixtape'\n  AND groupYear >= 2013\n  AND groupId <= 72602752\n  AND totalSnatched <= 34",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "60c7149f-be07-433d-85da-8926b6a1ba0a",
+      "question": "Which torrents have the groupname exactly equal to underground jazz file : piano?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'underground jazz file : piano'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE torrents.groupName = 'underground jazz file : piano'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    },
+    {
+      "uid": "79f2e089-ded8-4555-9918-20ec71599c57",
+      "question": "Which torrents belong to the group named exactly \"alles endet (aber nie die musik)\" and have a group ID of at least 72671578?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'alles endet (aber nie die musik)' AND torrents.groupid >= 72671578",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE groupName = 'alles endet (aber nie die musik)'\n  AND groupId >= 72671578",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.89
+    },
+    {
+      "uid": "85957188-890e-432b-9421-82e58136c907",
+      "question": "Which torrents from the artist bigbang (\ube45\ubc45) were released in 2011 and have a groupid of at most 71920632?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid <= 71920632 AND torrents.groupyear = 2011 AND torrents.artist = 'bigbang (\ube45\ubc45)'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE artist = 'bigbang (\ube45\ubc45)'\n  AND groupYear = 2011\n  AND groupId <= 71920632",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.85
+    },
+    {
+      "uid": "a38d2270-8e31-4d3a-8735-49f4bc965407",
+      "question": "Which EPs by the artist gowe in the group summer breeze sonatas from 2012 or earlier, with group ID 73309842, have been snatched at most once?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'ep' AND torrents.groupyear <= 2012 AND torrents.artist = 'gowe' AND torrents.groupname = 'summer breeze sonatas' AND torrents.groupid = 73309842 AND torrents.totalsnatched <= 1",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE artist = 'gowe'\n  AND groupName = 'summer breeze sonatas'\n  AND groupYear <= 2012\n  AND groupId = 73309842\n  AND releaseType = 'EP'\n  AND totalSnatched <= 1",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "e0b4f114-ece6-406c-a68b-6a6d9dcd7762",
+      "question": "Which albums by ras g released in 2014 belong to the group down 2 earth, vol. 2 (the standard bap edition) with groupid at most 72850928 and have been snatched no more than 229 times?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear = 2014 AND torrents.groupname = 'down 2 earth, vol. 2 (the standard bap edition)' AND torrents.groupid <= 72850928 AND torrents.artist = 'ras g' AND torrents.totalsnatched <= 229 AND torrents.releasetype = 'album'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE artist = 'ras g'\n  AND groupYear = 2014\n  AND groupName = 'down 2 earth, vol. 2 (the standard bap edition)'\n  AND groupId <= 72850928\n  AND totalSnatched <= 229",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.97
+    },
+    {
+      "uid": "fc8de171-558d-4a53-98fe-0b5a5b9c7eec",
+      "question": "Which torrents by ritarikunta have been snatched exactly 11 times?",
+      "gold_sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched = 11 AND torrents.artist = 'ritarikunta'",
+      "pred_sql": "SELECT torrents.id\nFROM torrents\nWHERE torrents.artist = 'ritarikunta' AND torrents.totalSnatched = 11",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.89
+    }
+  ]
+}

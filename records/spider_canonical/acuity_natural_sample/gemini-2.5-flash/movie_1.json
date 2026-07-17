@@ -1,0 +1,124 @@
+{
+  "db_id": "movie_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:27:41.130098+00:00",
+  "records": [
+    {
+      "uid": "2c2aa290-2716-42c4-8faa-28a37fe1f762",
+      "question": "Who are the reviewers named Mike Anderson with ratings of at least 3 stars given on or before 2011-01-09?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.ratingdate <= '2011-01-09' AND reviewer.name = 'Mike Anderson' AND rating.stars >= 3",
+      "pred_sql": "SELECT T1.rID FROM Reviewer AS T1 INNER JOIN Rating AS T2 ON T1.rID = T2.rID WHERE T1.name = 'Mike Anderson' AND T2.stars >= 3 AND T2.ratingDate <= '2011-01-09'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "32a8b19a-8ead-4a6d-aa0c-2da3612a123e",
+      "question": "Which reviewers have the name Daniel Lewis and have given ratings?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE reviewer.name = 'Daniel Lewis'",
+      "pred_sql": "SELECT DISTINCT T1.rID FROM Reviewer AS T1 INNER JOIN Rating AS T2 ON T1.rID = T2.rID WHERE T1.name = 'Daniel Lewis'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.7
+    },
+    {
+      "uid": "49a20276-fe91-4330-94e8-2ba3aaf1e00e",
+      "question": "Which reviewers rated Victor Fleming\u2019s movies with at most 2 stars since January 22, 2011?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate >= '2011-01-22' AND movie.director = 'Victor Fleming' AND rating.stars <= 2",
+      "pred_sql": "SELECT DISTINCT T2.rID FROM Movie AS T1 INNER JOIN Rating AS T2 ON T1.mID = T2.mID WHERE T1.director = 'Victor Fleming' AND T2.stars <= 2 AND T2.ratingDate >= '2011-01-22'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.23
+    },
+    {
+      "uid": "5d427847-83bd-4225-a47f-ee730bebe460",
+      "question": "Which reviewers have the name Chris Jackson?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Chris Jackson'",
+      "pred_sql": "SELECT rID FROM Reviewer WHERE name = 'Chris Jackson'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "60bb9c91-e8b1-4774-b3a7-8ac6c95cabf9",
+      "question": "Which reviewers have the name Sarah Martinez?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Sarah Martinez'",
+      "pred_sql": "SELECT rID FROM Reviewer WHERE name = 'Sarah Martinez'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "678c3080-29c6-4137-b210-acbb6fbcd3d0",
+      "question": "Which reviewers named Ashley White gave exactly 3 stars on 2011-01-02 to the movie E.T., directed by Steven Spielberg and released in 1982 or earlier?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year <= 1982 AND movie.title = 'E.T.' AND reviewer.name = 'Ashley White' AND rating.stars = 3 AND rating.ratingdate = '2011-01-02' AND movie.director = 'Steven Spielberg'",
+      "pred_sql": "SELECT T1.rID FROM Reviewer AS T1 INNER JOIN Rating AS T2 ON T1.rID = T2.rID INNER JOIN Movie AS T3 ON T2.mID = T3.mID WHERE T1.name = 'Ashley White' AND T2.stars = 3 AND T2.ratingDate = '2011-01-02' AND T3.title = 'E.T.' AND T3.director = 'Steven Spielberg' AND T3.year <= 1982",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.83
+    },
+    {
+      "uid": "7131b64c-9047-4370-9eba-3154d9a268f6",
+      "question": "Who is the reviewer named Brittany Harris that has rated movies?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE reviewer.name = 'Brittany Harris'",
+      "pred_sql": "SELECT DISTINCT T1.rID FROM Reviewer AS T1 INNER JOIN Rating AS T2 ON T1.rID = T2.rID WHERE T1.name = 'Brittany Harris'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.87
+    },
+    {
+      "uid": "859fed5a-352a-40a3-a192-393b4d53b3ca",
+      "question": "Which reviewers named Brittany Harris have given ratings of at least 2 stars on or before 2011-01-20?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 2 AND rating.ratingdate <= '2011-01-20' AND reviewer.name = 'Brittany Harris'",
+      "pred_sql": "SELECT T1.rID\nFROM Reviewer AS T1\nINNER JOIN Rating AS T2\n  ON T1.rID = T2.rID\nWHERE\n  T1.name = 'Brittany Harris' AND T2.stars >= 2 AND T2.ratingDate <= '2011-01-20'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "93956ebc-5499-40df-bb21-c35b3ff027d2",
+      "question": "Who are the reviewers with ratings of at least 5 stars given on or before 2011-01-19?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 5 AND rating.ratingdate <= '2011-01-19'",
+      "pred_sql": "SELECT DISTINCT T1.rID FROM Reviewer AS T1 INNER JOIN Rating AS T2 ON T1.rID = T2.rID WHERE T2.stars >= 5 AND T2.ratingDate <= '2011-01-19'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.14
+    },
+    {
+      "uid": "f1094be6-0323-44d0-a4f8-70287751f6bd",
+      "question": "Which reviewers have given a rating of exactly 4 stars to any movie?",
+      "gold_sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.stars = 4",
+      "pred_sql": "SELECT DISTINCT rID FROM Rating WHERE stars = 4",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    }
+  ]
+}

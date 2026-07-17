@@ -1,0 +1,124 @@
+{
+  "db_id": "baseball_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 6,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:19:31.683428+00:00",
+  "records": [
+    {
+      "uid": "09ede64b-95c5-4de4-8fa6-7cf5ac9e160e",
+      "question": "Who are the players that died in Kalamazoo, MI?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN player_college ON player.player_id = player_college.player_id\nJOIN college ON player_college.college_id = college.college_id\nWHERE player.death_city = 'Kalamazoo' AND player.death_state = 'MI'",
+      "pred_sql": "SELECT player_id FROM player WHERE death_city = 'Kalamazoo' AND death_state = 'MI'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "160e53b8-3f70-4382-b8ea-6fbf812c9ea8",
+      "question": "Which players named Pete who debuted on 1936-06-13 have a height of exactly 75?",
+      "gold_sql": "SELECT player.player_id FROM player\nWHERE player.height = 75 AND player.name_first = 'Pete' AND player.debut = '1936-06-13'",
+      "pred_sql": "SELECT player_id FROM player WHERE name_first = 'Pete' AND debut = '1936-06-13' AND height = 75",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.78
+    },
+    {
+      "uid": "1a0189e8-e3c5-4084-8b94-d6d163ef6771",
+      "question": "Which players who have recorded all_star appearances and player_award records were born in 1960, died in Poway, USA, throw left-handed, weigh exactly 185, and have a player_award note of 'OF' in the year 1990?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nJOIN player_award ON player.player_id = player_award.player_id\nWHERE player.death_city = 'Poway' AND player_award.notes = 'OF' AND player.throws = 'L' AND player.death_country = 'USA' AND player.weight = 185 AND player.birth_year = 1960 AND player_award.year = 1990",
+      "pred_sql": "SELECT DISTINCT T1.player_id FROM player AS T1 INNER JOIN all_star AS T2 ON T1.player_id = T2.player_id INNER JOIN player_award AS T3 ON T1.player_id = T3.player_id WHERE T1.birth_year = 1960 AND T1.death_city = 'Poway' AND T1.death_country = 'USA' AND T1.throws = 'L' AND T1.weight = 185 AND T3.notes = 'OF' AND T3.year = 1990",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.25
+    },
+    {
+      "uid": "3f4b4b18-3343-41ac-a560-578494f350ce",
+      "question": "What players born in Pensacola debuted on 2010-04-30, are 72 inches tall, bat and throw right-handed, have a birth month at most 12, and have exactly one all-star game played with game number 0?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nWHERE player.birth_city = 'Pensacola' AND all_star.game_num = 0 AND player.debut = '2010-04-30' AND player.birth_month <= 12 AND all_star.gp = 1 AND player.bats = 'R' AND player.throws = 'R' AND player.height = 72",
+      "pred_sql": "SELECT T1.player_id FROM player AS T1 INNER JOIN all_star AS T2 ON T1.player_id = T2.player_id WHERE T1.birth_city = 'Pensacola' AND T1.debut = '2010-04-30' AND T1.height = 72 AND T1.bats = 'R' AND T1.throws = 'R' AND T1.birth_month <= 12 AND T2.game_num = 0 GROUP BY T1.player_id HAVING COUNT(T2.game_id) = 1",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.07
+    },
+    {
+      "uid": "3fd92386-7246-4222-96d6-4354aff1cb06",
+      "question": "Which players died in Salisbury on the 18th day of the month or later?",
+      "gold_sql": "SELECT player.player_id FROM player\nWHERE player.death_city = 'Salisbury' AND player.death_day >= 18",
+      "pred_sql": "SELECT player_id FROM player WHERE death_city = 'Salisbury' AND death_day >= 18",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "49058254-ec17-4d3e-a6a9-9f93ab261607",
+      "question": "Which players born in Beaumont exactly in month 8 have been selected as all-stars and have also won a manager award?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nJOIN manager_award ON player.player_id = manager_award.player_id\nWHERE player.birth_city = 'Beaumont' AND player.birth_month = 8",
+      "pred_sql": "SELECT DISTINCT T1.player_id FROM player AS T1 INNER JOIN all_star AS T2 ON T1.player_id = T2.player_id INNER JOIN manager_award AS T3 ON T1.player_id = T3.player_id WHERE T1.birth_city = 'Beaumont' AND T1.birth_month = 8",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "4d02836b-f3d2-4e02-b693-8decac42d509",
+      "question": "What players with the last name Collins were born in month 5 or earlier and have received awards?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN player_award ON player.player_id = player_award.player_id\nWHERE player.birth_month <= 5 AND player.name_last = 'Collins'",
+      "pred_sql": "SELECT DISTINCT T1.player_id FROM player AS T1 INNER JOIN player_award AS T2 ON T1.player_id = T2.player_id WHERE T1.name_last = 'Collins' AND T1.birth_month <= 5",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.32
+    },
+    {
+      "uid": "9381eb39-b5fa-4c7f-83c9-668794529515",
+      "question": "Who are the players named Curt from Anchorage who debuted on 1988-09-07, are at most 77 inches tall, born in 1966 or later, and have both all-star appearances and player awards?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN all_star ON player.player_id = all_star.player_id\nJOIN player_award ON player.player_id = player_award.player_id\nWHERE player.name_first = 'Curt' AND player.height <= 77 AND player.birth_city = 'Anchorage' AND player.birth_year >= 1966 AND player.debut = '1988-09-07'",
+      "pred_sql": "SELECT T1.player_id FROM player AS T1 WHERE T1.name_first = 'Curt' AND T1.birth_city = 'Anchorage' AND T1.debut = '1988-09-07' AND T1.height <= 77 AND T1.birth_year >= 1966 AND EXISTS ( SELECT 1 FROM all_star AS T2 WHERE T2.player_id = T1.player_id ) AND EXISTS ( SELECT 1 FROM player_award AS T3 WHERE T3.player_id = T1.player_id )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.76
+    },
+    {
+      "uid": "a2679c10-a2d5-4c3c-a610-e949aac39cb8",
+      "question": "Which players named Buck Rodgers, born in Delaware on the 16th or earlier day of the month, weigh at least 190 pounds and have received a manager award?",
+      "gold_sql": "SELECT player.player_id FROM player\nJOIN manager_award ON player.player_id = manager_award.player_id\nWHERE player.birth_day <= 16 AND player.name_last = 'Rodgers' AND player.birth_city = 'Delaware' AND player.weight >= 190 AND player.name_first = 'Buck'",
+      "pred_sql": "SELECT T1.player_id FROM player AS T1 INNER JOIN manager_award AS T2 ON T1.player_id = T2.player_id WHERE T1.name_first = 'Buck' AND T1.name_last = 'Rodgers' AND T1.birth_state = 'DE' AND T1.birth_day <= 16 AND T1.weight >= 190",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.5
+    },
+    {
+      "uid": "fd62152e-05a2-4af3-9c33-77a4c58bb49a",
+      "question": "Which players named Gerald Arthur, born in Sacramento, CA, USA in August, who bat left-handed, weigh at most 185 pounds, and played their final game on or after July 8, 1993?",
+      "gold_sql": "SELECT player.player_id FROM player\nWHERE player.final_game >= '1993-07-08' AND player.name_given = 'Gerald Arthur' AND player.birth_state = 'CA' AND player.birth_city = 'Sacramento' AND player.birth_country = 'USA' AND player.bats = 'L' AND player.birth_month = 8 AND player.weight <= 185",
+      "pred_sql": "SELECT player_id FROM player WHERE name_first = 'Gerald' AND name_last = 'Arthur' AND birth_city = 'Sacramento' AND birth_state = 'CA' AND birth_country = 'USA' AND birth_month = 8 AND bats = 'L' AND weight <= 185 AND final_game >= '1993-07-08'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.51
+    }
+  ]
+}

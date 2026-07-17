@@ -1,0 +1,124 @@
+{
+  "db_id": "sakila_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:34:35.348004+00:00",
+  "records": [
+    {
+      "uid": "0f71097e-0f9b-4293-938f-e766fff7c8f2",
+      "question": "Which addresses in the district of Huanuco have the postal code 32515 and were last updated on 2006-02-15 04:45:30?",
+      "gold_sql": "SELECT address.address_id FROM address\nWHERE address.postal_code = '32515' AND address.last_update = '2006-02-15 04:45:30' AND address.district = 'Huanuco'",
+      "pred_sql": "SELECT address_id\nFROM address\nWHERE postal_code = '32515'\nAND last_update = '2006-02-15 04:45:30'\nAND district = 'Huanuco'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.03
+    },
+    {
+      "uid": "5b248be7-b128-4b0a-b123-f1bf396922bd",
+      "question": "Which addresses exactly at 771 Yaound Manor have the postal code 86768?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN country ON city.country_id = country.country_id\nWHERE address.postal_code = '86768' AND address.address = '771 Yaound Manor'",
+      "pred_sql": "SELECT a.address_id\nFROM address a\nWHERE a.postal_code = '86768'\n  AND a.address = '771 Yaound Manor'\n  AND EXISTS (\n    SELECT 1\n    FROM city c\n    WHERE c.city_id = a.city_id\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM country co\n    FROM city c\n    WHERE c.country_id = co.country_id\n      AND c.city_id = a.city_id\n  )",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 44.04
+    },
+    {
+      "uid": "63b4cba1-7854-4806-a4cb-c591bf93a3c9",
+      "question": "Which addresses exactly at 1214 Hanoi Way in Nebraska have the phone number 491001136577 and are in cities updated on or after 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nWHERE address.phone = '491001136577' AND city.last_update >= '2006-02-15 04:45:25' AND address.district = 'Nebraska' AND address.address = '1214 Hanoi Way'",
+      "pred_sql": "SELECT address.address_id\nFROM address\nWHERE address.phone = '491001136577'\nAND address.district = 'Nebraska'\nAND address.address = '1214 Hanoi Way'\nAND EXISTS (\n    SELECT 1\n    FROM city\n    WHERE city.city_id = address.city_id\n    AND city.last_update >= '2006-02-15 04:45:25'\n)",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 49.42
+    },
+    {
+      "uid": "6d41d202-d2d1-43e7-ab70-51a595d18af9",
+      "question": "Which addresses in Okayama with postal code 87212 and address 1404 Taguig Drive have been updated since 2006-02-15 04:45:30, belong to active customers named ISBELL with email FREDERICK.ISBELL@sakilacustomer.org, and are in cities last updated on 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN customer ON address.address_id = customer.address_id\nWHERE customer.active = 1 AND customer.email = 'FREDERICK.ISBELL@sakilacustomer.org' AND city.last_update = '2006-02-15 04:45:25' AND customer.last_name = 'ISBELL' AND address.postal_code = '87212' AND address.address = '1404 Taguig Drive' AND address.last_update >= '2006-02-15 04:45:30' AND address.district = 'Okayama'",
+      "pred_sql": "SELECT address.address_id\nFROM address\nINNER JOIN city ON address.city_id = city.city_id\nINNER JOIN customer ON address.address_id = customer.address_id\nWHERE address.postal_code = '87212'\nAND address.address = '1404 Taguig Drive'\nAND address.last_update >= '2006-02-15 04:45:30'\nAND address.district = 'Okayama'\nAND city.last_update = '2006-02-15 04:45:25'\nAND customer.active = 1\nAND customer.email = 'FREDERICK.ISBELL@sakilacustomer.org'\nAND customer.last_name = 'ISBELL'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 45.79
+    },
+    {
+      "uid": "7a3f08ba-2866-4258-bb51-c7be0e66308f",
+      "question": "Which addresses exactly at 1789 Saint-Denis Parkway with phone 936806643983 and postal code 8268 are in Coahuila de Zaragoza, updated on or after 2006-02-15 04:45:30, and located in Acua city updated at most 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nWHERE address.last_update >= '2006-02-15 04:45:30' AND address.address = '1789 Saint-Denis Parkway' AND address.phone = '936806643983' AND address.postal_code = '8268' AND city.city = 'Acua' AND city.last_update <= '2006-02-15 04:45:25' AND address.district = 'Coahuila de Zaragoza'",
+      "pred_sql": "SELECT a.address_id\nFROM address a\nINNER JOIN city c ON a.city_id = c.city_id\nWHERE a.last_update >= '2006-02-15 04:45:30'\n  AND a.address = '1789 Saint-Denis Parkway'\n  AND a.phone = '936806643983'\n  AND a.postal_code = '8268'\n  AND a.district = 'Coahuila de Zaragoza'\n  AND c.city = 'Acua'\n  AND c.last_update <= '2006-02-15 04:45:25'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.68
+    },
+    {
+      "uid": "890bb130-a9fe-47ee-9cee-aff5a80a118f",
+      "question": "Where are the addresses in Gauteng with postal code 9668 and phone number 248446668735 that belong to customers named SAUER and are in cities updated on or after 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN customer ON address.address_id = customer.address_id\nWHERE customer.last_name = 'SAUER' AND address.postal_code = '9668' AND city.last_update >= '2006-02-15 04:45:25' AND address.district = 'Gauteng' AND address.phone = '248446668735'",
+      "pred_sql": "SELECT a.address_id\nFROM address a\nWHERE a.postal_code = '9668'\n  AND a.district = 'Gauteng'\n  AND a.phone = '248446668735'\n  AND EXISTS (\n    SELECT 1\n    FROM city c\n    WHERE c.city_id = a.city_id\n      AND c.last_update >= '2006-02-15 04:45:25'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM customer cu\n    WHERE cu.address_id = a.address_id\n      AND cu.last_name = 'SAUER'\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 42.88
+    },
+    {
+      "uid": "99846f96-c6df-4515-8b1b-3df7c029ed52",
+      "question": "Which addresses belong to customers named DOROTHY in cities last updated on 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN customer ON address.address_id = customer.address_id\nWHERE customer.first_name = 'DOROTHY' AND city.last_update = '2006-02-15 04:45:25'",
+      "pred_sql": "SELECT a.address_id\nFROM address a\nINNER JOIN city c ON a.city_id = c.city_id\nINNER JOIN customer cu ON a.address_id = cu.address_id\nWHERE c.last_update = '2006-02-15 04:45:25'\nAND cu.first_name = 'DOROTHY'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.19
+    },
+    {
+      "uid": "ae486d71-3146-44c2-a0de-fb96faf3150d",
+      "question": "Which addresses are located in the Jilin district with the postal code 82161?",
+      "gold_sql": "SELECT address.address_id FROM address\nWHERE address.district = 'Jilin' AND address.postal_code = '82161'",
+      "pred_sql": "SELECT address_id\nFROM address\nWHERE district = 'Jilin' AND postal_code = '82161'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 26.06
+    },
+    {
+      "uid": "dd74d8d2-f787-4bc1-b0d9-c8c037f6c3dd",
+      "question": "Which addresses at 457 Tongliao Loop have the postal code exactly 56254?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nWHERE address.postal_code = '56254' AND address.address = '457 Tongliao Loop'",
+      "pred_sql": "SELECT address.address_id\nFROM address\nJOIN city ON address.city_id = city.city_id\nWHERE address.postal_code = '56254' AND address.address = '457 Tongliao Loop'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.25
+    },
+    {
+      "uid": "f86b09d1-ec0d-45ef-b06b-ab7a6d3795ef",
+      "question": "Where is the address exactly at 1923 Stara Zagora Lane in Nantou with postal code 95179, located in Taiwan whose country was last updated on 2006-02-15 04:44:00 and city updated on or after 2006-02-15 04:45:25?",
+      "gold_sql": "SELECT address.address_id FROM address\nJOIN city ON address.city_id = city.city_id\nJOIN country ON city.country_id = country.country_id\nWHERE address.postal_code = '95179' AND country.last_update = '2006-02-15 04:44:00' AND country.country = 'Taiwan' AND city.last_update >= '2006-02-15 04:45:25' AND address.address = '1923 Stara Zagora Lane' AND address.district = 'Nantou'",
+      "pred_sql": "SELECT a.address_id\nFROM address a\nINNER JOIN city c ON a.city_id = c.city_id\nINNER JOIN country co ON c.country_id = co.country_id\nWHERE a.postal_code = '95179'\n  AND a.address = '1923 Stara Zagora Lane'\n  AND a.district = 'Nantou'\n  AND c.last_update >= '2006-02-15 04:45:25'\n  AND co.last_update = '2006-02-15 04:44:00'\n  AND co.country = 'Taiwan'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 40.11
+    }
+  ]
+}

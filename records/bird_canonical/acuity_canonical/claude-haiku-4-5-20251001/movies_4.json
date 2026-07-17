@@ -1,0 +1,124 @@
+{
+  "db_id": "movies_4",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:15:16.174320+00:00",
+  "records": [
+    {
+      "uid": "322cb826-78d2-45f3-928c-fe7fded303f0",
+      "question": "Which movies have a revenue exactly 92913171 and include crew members with the job Stand In?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_crew ON movie.movie_id = movie_crew.movie_id\nJOIN department ON movie_crew.department_id = department.department_id\nWHERE movie_crew.job = 'Stand In' AND movie.revenue = 92913171",
+      "pred_sql": "SELECT DISTINCT m.movie_id\nFROM movie m\nINNER JOIN movie_crew mc ON m.movie_id = mc.movie_id\nINNER JOIN department d ON mc.department_id = d.department_id\nWHERE m.revenue = 92913171\nAND mc.job = 'Stand In'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "33b986ca-0045-46a7-b2ab-bfe630f88dd3",
+      "question": "Which movies have exactly 4185 votes and include crew members?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_crew ON movie.movie_id = movie_crew.movie_id\nWHERE movie.vote_count = 4185",
+      "pred_sql": "SELECT DISTINCT movie.movie_id\nFROM movie\nINNER JOIN movie_crew ON movie.movie_id = movie_crew.movie_id\nWHERE movie.vote_count = 4185",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "3e940585-c94c-48d6-a41b-a63cdb8b6815",
+      "question": "What movies released on or after 2006-11-22 have the tagline \"There glows the neighborhood,\" a vote count of exactly 109, a vote average of exactly 5.1, and a budget of exactly 0?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.tagline = 'There glows the neighborhood' AND movie.vote_count = 109 AND movie.vote_average = 5.1 AND movie.release_date >= '2006-11-22' AND movie.budget = 0",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.tagline = 'There glows the neighborhood'\n  AND movie.vote_count = 109\n  AND movie.vote_average = 5.1\n  AND movie.release_date >= '2006-11-22'\n  AND movie.budget = 0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.33
+    },
+    {
+      "uid": "503ddd41-3152-443b-b774-eedf00c41a77",
+      "question": "Which released movies titled Lucky Break have a runtime of at least 107 minutes, a vote average of exactly 6.5, popularity exactly 0.669169, no more than 11 votes, a budget of at most 0, and were released on or after 2001-08-24?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_genres ON movie.movie_id = movie_genres.movie_id\nWHERE movie.vote_count <= 11 AND movie.movie_status = 'Released' AND movie.runtime >= 107 AND movie.budget <= 0 AND movie.release_date >= '2001-08-24' AND movie.vote_average = 6.5 AND movie.title = 'Lucky Break' AND movie.popularity = 0.669169",
+      "pred_sql": "SELECT DISTINCT m.movie_id\nFROM movie m\nINNER JOIN movie_genres mg ON m.movie_id = mg.movie_id\nWHERE m.vote_count <= 11\n  AND m.movie_status = 'Released'\n  AND m.runtime >= 107\n  AND m.budget <= 0\n  AND m.release_date >= '2001-08-24'\n  AND m.vote_average = 6.5\n  AND m.title = 'Lucky Break'\n  AND m.popularity = 0.669169",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.92
+    },
+    {
+      "uid": "526a479d-f1c8-46ac-a2da-cbb4db089ad0",
+      "question": "Which released movies titled RED 2 have a runtime of exactly 116 minutes, a vote average of exactly 6.4, a homepage of http://red-themovie.com/, and at most 1526 votes?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_genres ON movie.movie_id = movie_genres.movie_id\nJOIN movie_crew ON movie.movie_id = movie_crew.movie_id\nWHERE movie.runtime = 116 AND movie.vote_average = 6.4 AND movie.homepage = 'http://red-themovie.com/' AND movie.vote_count <= 1526 AND movie.title = 'RED 2' AND movie.movie_status = 'Released'",
+      "pred_sql": "SELECT DISTINCT movie.movie_id\nFROM movie\nINNER JOIN movie_genres ON movie.movie_id = movie_genres.movie_id\nINNER JOIN movie_crew ON movie.movie_id = movie_crew.movie_id\nWHERE movie.runtime = 116\n  AND movie.vote_average = 6.4\n  AND movie.homepage = 'http://red-themovie.com/'\n  AND movie.vote_count <= 1526\n  AND movie.title = 'RED 2'\n  AND movie.movie_status = 'Released'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.78
+    },
+    {
+      "uid": "604ead2f-611d-40e3-931e-ca99a51487cb",
+      "question": "Which released movies have received at least 9106 votes?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_genres ON movie.movie_id = movie_genres.movie_id\nJOIN movie_crew ON movie.movie_id = movie_crew.movie_id\nWHERE movie.vote_count >= 9106 AND movie.movie_status = 'Released'",
+      "pred_sql": "SELECT DISTINCT movie.movie_id\nFROM movie\nWHERE movie.vote_count >= 9106\n  AND movie.movie_status = 'Released'\n  AND EXISTS (\n    SELECT 1\n    FROM movie_genres\n    WHERE movie_genres.movie_id = movie.movie_id\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM movie_crew\n    WHERE movie_crew.movie_id = movie.movie_id\n  )",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.79
+    },
+    {
+      "uid": "77bc5d96-cf7a-40b4-87ae-ab9665528aef",
+      "question": "Which released movies have the tagline \"Put this in your pipe and smoke it.\" and a vote average of 6.6?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_genres ON movie.movie_id = movie_genres.movie_id\nWHERE movie.movie_status = 'Released' AND movie.tagline = 'Put this in your pipe and smoke it.' AND movie.vote_average = 6.6",
+      "pred_sql": "SELECT DISTINCT m.movie_id\nFROM movie m\nINNER JOIN movie_genres mg ON m.movie_id = mg.movie_id\nWHERE m.movie_status = 'Released'\nAND m.tagline = 'Put this in your pipe and smoke it.'\nAND m.vote_average = 6.6",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    },
+    {
+      "uid": "9ce10851-ed18-4864-9b5a-fb5c7f39801f",
+      "question": "Which movies titled The Devil's Advocate have a popularity of exactly 33.8473 and revenue of at least 152944660?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nJOIN movie_genres ON movie.movie_id = movie_genres.movie_id\nJOIN movie_languages ON movie.movie_id = movie_languages.movie_id\nWHERE movie.popularity = 33.8473 AND movie.revenue >= 152944660 AND movie.title = 'The Devil''s Advocate'",
+      "pred_sql": "SELECT DISTINCT m.movie_id\nFROM movie m\nINNER JOIN movie_genres mg ON m.movie_id = mg.movie_id\nINNER JOIN movie_languages ml ON m.movie_id = ml.movie_id\nWHERE m.popularity = 33.8473\n  AND m.revenue >= 152944660\n  AND m.title = 'The Devil'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    },
+    {
+      "uid": "b4498d0f-9197-46e4-8324-d54c0df80685",
+      "question": "What movie titled The Final Destination has a revenue of 186167139, a vote average of 5.4, a popularity of 32.478077, the tagline Rest In Pieces, and the homepage http://www.TheFinalDestinationMovie.com/?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.revenue = 186167139 AND movie.tagline = 'Rest In Pieces' AND movie.vote_average = 5.4 AND movie.homepage = 'http://www.TheFinalDestinationMovie.com/' AND movie.popularity = 32.478077 AND movie.title = 'The Final Destination'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.revenue = 186167139\n  AND movie.tagline = 'Rest In Pieces'\n  AND movie.vote_average = 5.4\n  AND movie.homepage = 'http://www.TheFinalDestinationMovie.com/'\n  AND movie.popularity = 32.478077\n  AND movie.title = 'The Final Destination'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.67
+    },
+    {
+      "uid": "f6346027-07da-4c67-bf97-3360082ef478",
+      "question": "Which movies released on or after 2011-06-09 have the homepage exactly http://erapfilms.com/august/?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.release_date >= '2011-06-09' AND movie.homepage = 'http://erapfilms.com/august/'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.release_date >= '2011-06-09'\nAND movie.homepage = 'http://erapfilms.com/august/'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    }
+  ]
+}

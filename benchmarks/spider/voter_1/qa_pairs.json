@@ -1,0 +1,2652 @@
+{
+ "db_id": "voter_1",
+ "target_table": "CONTESTANTS",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1533020650,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/voter_1/voter_1.sqlite",
+  "generated_at": "2026-07-02T15:58:22.266488+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "contestants",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "2pE": 10,
+   "2pM": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "2pE": 10,
+   "2pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 18,
+    "inner_attempts": 18,
+    "failed_rounds": 8,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 8
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "2pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "duplicate_pair": 1,
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "near-identical question already generated in this run"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "f2f547c4-4d0d-47fb-93ab-2ce0e48d68cc",
+   "question": "Which contestants have the name Kurt Walser?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Kurt Walser'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kurt Walser",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kurt Walser"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kurt Walser'?"
+  },
+  {
+   "uid": "58c2c9ab-a3da-4512-aad7-971718dc1923",
+   "question": "Which contestants have the name Kelly Clauss?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Kelly Clauss'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss'?"
+  },
+  {
+   "uid": "018ef9c4-cbd1-4ebb-9ae2-013bfc42a4e8",
+   "question": "Which contestants have the name exactly Alana Bregman?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Alana Bregman'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Alana Bregman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman'?"
+  },
+  {
+   "uid": "dadb9d54-61bc-48a7-8f47-db0ab0330917",
+   "question": "Which contestants have the name exactly Allie Rogalski?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Allie Rogalski'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Allie Rogalski",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Allie Rogalski"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Allie Rogalski'?"
+  },
+  {
+   "uid": "f632e5ea-75eb-42ba-99ce-f39e9987df3f",
+   "question": "Which contestant has the name Edwina Burnam?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Edwina Burnam'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Edwina Burnam",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Edwina Burnam"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Edwina Burnam'?"
+  },
+  {
+   "uid": "f65e4872-6fe0-4dc1-8ad4-f88efc997f93",
+   "question": "What contestants have the name Ericka Dieter?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Ericka Dieter'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Ericka Dieter",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Ericka Dieter"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Ericka Dieter'?"
+  },
+  {
+   "uid": "0c10887e-08de-4d2a-a4d4-4fe42d702fda",
+   "question": "Which contestant is named Jessie Eichman?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Jessie Eichman'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Jessie Eichman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Jessie Eichman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Jessie Eichman'?"
+  },
+  {
+   "uid": "9d9b53a4-c797-42cf-93c3-de3969bf875a",
+   "question": "Which contestant has the exact name Nita Coster?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Nita Coster'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Nita Coster",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Nita Coster"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Nita Coster'?"
+  },
+  {
+   "uid": "01bce6de-1642-4cc6-b327-69c12c345b96",
+   "question": "Which contestants have the name Jessie Alloway?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Jessie Alloway'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Jessie Alloway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Jessie Alloway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Jessie Alloway'?"
+  },
+  {
+   "uid": "902b97f3-5690-458b-bc37-fb7395419278",
+   "question": "Which contestant has the name exactly Tabatha Gehling?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Tabatha Gehling'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Tabatha Gehling",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Tabatha Gehling"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Tabatha Gehling'?"
+  },
+  {
+   "uid": "52f72af3-70aa-4f1b-8ecd-3051be598ef9",
+   "question": "Which contestants named Tabatha Gehling received votes on or after 2018-03-09 19:03:21?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Tabatha Gehling' AND votes.created >= '2018-03-09 19:03:21'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Tabatha Gehling",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:21",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Tabatha Gehling",
+    "votes.created": "2018-03-09 19:03:21"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Tabatha Gehling', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:21'?"
+  },
+  {
+   "uid": "f1b50946-7158-4156-9fca-71c3c624e518",
+   "question": "Who is the contestant named Kelly Clauss that has received votes?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Kelly Clauss'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number)?"
+  },
+  {
+   "uid": "5e4731e6-a919-49c7-b753-85e48ee63cc7",
+   "question": "Which contestants named Tabatha Gehling have votes with phone numbers at most 7182887233?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Tabatha Gehling' AND votes.phone_number <= 7182887233",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Tabatha Gehling",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7182887233,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Tabatha Gehling",
+    "votes.phone_number": 7182887233
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Tabatha Gehling', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '7182887233'?"
+  },
+  {
+   "uid": "de40c27a-b425-436d-974b-17d9c0e036ae",
+   "question": "Who are the contestants that received votes from the phone number 7148407040?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.phone_number = 7148407040",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7148407040
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number equal to '7148407040'?"
+  },
+  {
+   "uid": "2bfd20da-b06e-4940-9761-f4709dd54794",
+   "question": "Who are the contestants that received votes exactly on 2018-03-09 19:03:40 from phone numbers at most 5112677315?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created = '2018-03-09 19:03:40' AND votes.phone_number <= 5112677315",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 5112677315,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:40",
+    "votes.phone_number": 5112677315
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:40' and phone number at most '5112677315'?"
+  },
+  {
+   "uid": "50b0103c-e669-4705-822c-863288cb93d8",
+   "question": "Who are the contestants that received votes on or after 2018-03-09 19:03:40?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created >= '2018-03-09 19:03:40'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:40"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:40'?"
+  },
+  {
+   "uid": "41e33321-ba33-4048-ac28-d53214ad25b5",
+   "question": "Which contestants named Kelly Clauss have votes recorded on or after 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.created >= '2018-03-09 19:03:39'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:39'?"
+  },
+  {
+   "uid": "73724373-3366-4335-8587-124f7466eec5",
+   "question": "Which contestants named exactly Alana Bregman received votes on or before 2018-03-09 19:03:40?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Alana Bregman' AND votes.created <= '2018-03-09 19:03:40'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Alana Bregman",
+    "votes.created": "2018-03-09 19:03:40"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at most '2018-03-09 19:03:40'?"
+  },
+  {
+   "uid": "459ed976-6a1b-4d52-8d92-2b905ad2257b",
+   "question": "Which contestants received votes exactly on 2018-03-09 19:03:21?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created = '2018-03-09 19:03:21'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:21",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:21"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:21'?"
+  },
+  {
+   "uid": "59d8c52d-8a5c-4cc8-a543-06d45a0cdb22",
+   "question": "Which contestants named Alana Bregman received votes on or after 2018-03-09 19:03:40?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created >= '2018-03-09 19:03:40' AND contestants.contestant_name = 'Alana Bregman'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:40",
+    "contestants.contestant_name": "Alana Bregman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:40'?"
+  },
+  {
+   "uid": "07fab8f6-99b5-44e7-a8d5-11a27f79cdd6",
+   "question": "Which contestants named Kelly Clauss have votes from phone number 7148407040 made on or after 2018-03-09 19:03:36?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number = 7148407040 AND votes.created >= '2018-03-09 19:03:36'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.phone_number",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.phone_number": 7148407040,
+    "votes.created": "2018-03-09 19:03:36"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number equal to '7148407040' and created at least '2018-03-09 19:03:36'?"
+  },
+  {
+   "uid": "fb42dfc8-154e-445c-8a99-227612f06922",
+   "question": "What contestants named Kelly Clauss received votes from the phone number 7148407040 on or before 2018-03-09 19:03:36?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.created <= '2018-03-09 19:03:36' AND votes.phone_number = 7148407040",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:36",
+    "votes.phone_number": 7148407040
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at most '2018-03-09 19:03:36' and phone number equal to '7148407040'?"
+  },
+  {
+   "uid": "eb09967a-6124-4b86-96db-445cbdb86bcf",
+   "question": "What contestants named Tabatha Gehling have votes from phone numbers at most 7182887233 made on or after 2018-03-09 19:03:21?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Tabatha Gehling' AND votes.created >= '2018-03-09 19:03:21' AND votes.phone_number <= 7182887233",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Tabatha Gehling",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:21",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7182887233,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Tabatha Gehling",
+    "votes.created": "2018-03-09 19:03:21",
+    "votes.phone_number": 7182887233
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Tabatha Gehling', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:21' and phone number at most '7182887233'?"
+  },
+  {
+   "uid": "8a3cde57-b150-4554-b856-0c211af770a5",
+   "question": "Which contestants named Kelly Clauss have votes from phone numbers at least 7148407040 made on or after 2018-03-09 19:03:36?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.phone_number >= 7148407040 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created >= '2018-03-09 19:03:36'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": ">=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7148407040,
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:36"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at least '7148407040' and created at least '2018-03-09 19:03:36'?"
+  },
+  {
+   "uid": "c58e66b0-cb74-4b5f-b267-8affae81a5ab",
+   "question": "Which contestants named Alana Bregman received votes from phone number 5112677315 on or after 2018-03-09 19:03:40?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created >= '2018-03-09 19:03:40' AND votes.phone_number = 5112677315 AND contestants.contestant_name = 'Alana Bregman'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "votes.phone_number",
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 5112677315,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:40",
+    "votes.phone_number": 5112677315,
+    "contestants.contestant_name": "Alana Bregman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:40' and phone number equal to '5112677315'?"
+  },
+  {
+   "uid": "08afd541-8a7f-4242-b16e-dc847c79a233",
+   "question": "Which contestants named Kelly Clauss received votes created on 2018-03-09 19:03:39 from phone numbers at most 6209222712?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.phone_number <= 6209222712 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created = '2018-03-09 19:03:39'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 6209222712,
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '6209222712' and created equal to '2018-03-09 19:03:39'?"
+  },
+  {
+   "uid": "b6ec1294-674b-4868-9663-a35535d86988",
+   "question": "Which contestants named Alana Bregman received votes created exactly on 2018-03-09 19:03:40 from phone numbers at most 5112677315?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.phone_number <= 5112677315 AND contestants.contestant_name = 'Alana Bregman' AND votes.created = '2018-03-09 19:03:40'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 5112677315,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 5112677315,
+    "contestants.contestant_name": "Alana Bregman",
+    "votes.created": "2018-03-09 19:03:40"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '5112677315' and created equal to '2018-03-09 19:03:40'?"
+  },
+  {
+   "uid": "7c2dd644-cc37-4fe4-b80e-0e76d9ab7351",
+   "question": "Which contestants named Alana Bregman received votes on 2018-03-09 at 19:03:40 from phone numbers with at least 5112677315?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created = '2018-03-09 19:03:40' AND contestants.contestant_name = 'Alana Bregman' AND votes.phone_number >= 5112677315",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "contestants.contestant_name",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": ">=",
+     "value": 5112677315,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:40",
+    "contestants.contestant_name": "Alana Bregman",
+    "votes.phone_number": 5112677315
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:40' and phone number at least '5112677315'?"
+  },
+  {
+   "uid": "18e44231-22ac-408a-be28-1f4aabbd4c15",
+   "question": "Which contestants named Kelly Clauss received votes since 2018-03-09 19:03:39 from phone numbers at most 6209222712?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.created >= '2018-03-09 19:03:39' AND votes.phone_number <= 6209222712",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39",
+    "votes.phone_number": 6209222712
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:39' and phone number at most '6209222712'?"
+  },
+  {
+   "uid": "3301392f-9847-4506-a334-098115571aa5",
+   "question": "Which contestants named Alana Bregman received votes on 2018-03-09 19:03:40 from phone numbers at most 5112677315?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Alana Bregman' AND votes.created = '2018-03-09 19:03:40' AND votes.phone_number <= 5112677315",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Alana Bregman",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:40",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 5112677315,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Alana Bregman",
+    "votes.created": "2018-03-09 19:03:40",
+    "votes.phone_number": 5112677315
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Alana Bregman', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:40' and phone number at most '5112677315'?"
+  },
+  {
+   "uid": "ffd40844-7403-4b1d-8c90-454cb2c2453a",
+   "question": "Which contestants received votes from states on or after 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created >= '2018-03-09 19:03:39'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "58f80b2e-3fb3-4caf-9019-22aa57d04509",
+   "question": "Which contestants received votes from phone numbers that are at most 7182887233?",
+   "answer_row_ids": [
+    2,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number <= 7182887233",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7182887233,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7182887233
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '7182887233', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "0e8e0cde-0599-4eb5-b988-4cb807dd1cd3",
+   "question": "Which contestants received votes exactly on 2018-03-09 19:03:36 from states in the area code state list?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created = '2018-03-09 19:03:36'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:36"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:36', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "02653eeb-6b2b-4702-a0cc-8f735aa4d381",
+   "question": "Which contestants named Kelly Clauss received votes from states listed in the area code state table?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE contestants.contestant_name = 'Kelly Clauss'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number), whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "bd63914a-bb71-42db-8148-717c28fbbfd8",
+   "question": "Which contestants named Tabatha Gehling have votes from phone numbers at most 7182887233?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number <= 7182887233 AND contestants.contestant_name = 'Tabatha Gehling'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7182887233,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Tabatha Gehling",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7182887233,
+    "contestants.contestant_name": "Tabatha Gehling"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Tabatha Gehling', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '7182887233', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "1a739a17-4222-40ec-8510-9832d4ab0f44",
+   "question": "Which contestants received votes on or before 2018-03-09 19:03:36 from states listed in the area code state data?",
+   "answer_row_ids": [
+    2,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created <= '2018-03-09 19:03:36'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:36"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at most '2018-03-09 19:03:36', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "239bd2e8-fb63-4d86-b2a7-d79c4c8ba751",
+   "question": "Which contestants named Kelly Clauss received votes exactly on 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created = '2018-03-09 19:03:39' AND contestants.contestant_name = 'Kelly Clauss'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:39",
+    "contestants.contestant_name": "Kelly Clauss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "7e4cbd13-048a-4c84-ada7-53ce227338e6",
+   "question": "Which contestants received votes from phone numbers that are at most 7148407040?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number <= 7148407040",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7148407040
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '7148407040', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "14683fc9-b85b-40d6-8513-55f74945de1d",
+   "question": "Which contestants received votes from states on or before 2018-03-09 19:03:21?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created <= '2018-03-09 19:03:21'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:21",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:21"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at most '2018-03-09 19:03:21', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "913a5ff3-9d01-45c0-9697-f4a3114816e9",
+   "question": "Which contestants named Kelly Clauss received votes from the phone number 6209222712?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number = 6209222712",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.phone_number": 6209222712
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number equal to '6209222712', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "aa6d2357-0bb1-4a56-b438-03ccb910ade6",
+   "question": "Which contestants named Kelly Clauss received votes from phone numbers at least 6209222712 on or before 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number >= 6209222712 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created <= '2018-03-09 19:03:39'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": ">=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 6209222712,
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at least '6209222712' and created at most '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "a95fb261-889d-4064-ada2-22fe9d805875",
+   "question": "Which contestants named Kelly Clauss received votes from the phone number 6209222712 on or before 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number = 6209222712 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created <= '2018-03-09 19:03:39'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 6209222712,
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number equal to '6209222712' and created at most '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "1442ac5e-0efb-40d0-a4e2-ffc5bfb8e029",
+   "question": "Which contestants named Kelly Clauss received votes from phone number 6209222712 on or after 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number = 6209222712 AND votes.created >= '2018-03-09 19:03:39'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.phone_number",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.phone_number": 6209222712,
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number equal to '6209222712' and created at least '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "5c3c0ebe-b595-4d05-9a63-dbe0ca83e027",
+   "question": "Which contestants named Tabatha Gehling received votes from phone numbers at most 7182887233 on or before 2018-03-09 19:03:21?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number <= 7182887233 AND contestants.contestant_name = 'Tabatha Gehling' AND votes.created <= '2018-03-09 19:03:21'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7182887233,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Tabatha Gehling",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:21",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7182887233,
+    "contestants.contestant_name": "Tabatha Gehling",
+    "votes.created": "2018-03-09 19:03:21"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Tabatha Gehling', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '7182887233' and created at most '2018-03-09 19:03:21', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "4e1c7f8d-2b1c-4816-822c-2f0d65e3ad7b",
+   "question": "What contestants named Kelly Clauss received votes on 2018-03-09 19:03:39 from phone numbers at least 6209222712?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE contestants.contestant_name = 'Kelly Clauss' AND votes.created = '2018-03-09 19:03:39' AND votes.phone_number >= 6209222712",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "contestants.contestant_name",
+    "votes.created",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": ">=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39",
+    "votes.phone_number": 6209222712
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created equal to '2018-03-09 19:03:39' and phone number at least '6209222712', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "7f595b30-5af1-44e5-97f4-71e3ef6e2eac",
+   "question": "Which contestants named Kelly Clauss received votes with phone numbers at most 6209222712 on or before 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created <= '2018-03-09 19:03:39' AND contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number <= 6209222712",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "contestants.contestant_name",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "<=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:39",
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.phone_number": 6209222712
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at most '2018-03-09 19:03:39' and phone number at most '6209222712', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "41152d96-8be2-4b0e-b0b6-b7506827a060",
+   "question": "Which contestants named Kelly Clauss received votes from phone numbers at most 6209222712 on or after 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number <= 6209222712 AND votes.created >= '2018-03-09 19:03:39' AND contestants.contestant_name = 'Kelly Clauss'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "votes.created",
+    "contestants.contestant_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 6209222712,
+    "votes.created": "2018-03-09 19:03:39",
+    "contestants.contestant_name": "Kelly Clauss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '6209222712' and created at least '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "b94b6257-7b57-458a-a13a-c0df0293831e",
+   "question": "Which contestants named Kelly Clauss received votes with phone numbers at least 7148407040 on or after March 9, 2018, 19:03:36?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created >= '2018-03-09 19:03:36' AND contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number >= 7148407040",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.created",
+    "contestants.contestant_name",
+    "votes.phone_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": ">=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "votes.created": "2018-03-09 19:03:36",
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.phone_number": 7148407040
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with created at least '2018-03-09 19:03:36' and phone number at least '7148407040', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "f4faa2f3-9c8a-4ac9-a9e3-ef6824351ed5",
+   "question": "Which contestants named Kelly Clauss received votes from the phone number 6209222712 on or after 2018-03-09 19:03:39?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number = 6209222712 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created >= '2018-03-09 19:03:39'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "=",
+     "value": 6209222712,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": ">=",
+     "value": "2018-03-09 19:03:39",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 6209222712,
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:39"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number equal to '6209222712' and created at least '2018-03-09 19:03:39', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  },
+  {
+   "uid": "55423f2c-bea8-4d8f-9e34-fb4a640eb7ab",
+   "question": "Which contestants named Kelly Clauss received votes created on 2018-03-09 19:03:36 from phone numbers at most 7148407040?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number <= 7148407040 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created = '2018-03-09 19:03:36'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "area_code_state",
+    "votes",
+    "contestants"
+   ],
+   "involved_columns": [
+    "votes.phone_number",
+    "contestants.contestant_name",
+    "votes.created"
+   ],
+   "involved_filters": [
+    {
+     "table": "votes",
+     "column": "phone_number",
+     "operator": "<=",
+     "value": 7148407040,
+     "column_type": "numeric"
+    },
+    {
+     "table": "contestants",
+     "column": "contestant_name",
+     "operator": "=",
+     "value": "Kelly Clauss",
+     "column_type": "enum"
+    },
+    {
+     "table": "votes",
+     "column": "created",
+     "operator": "=",
+     "value": "2018-03-09 19:03:36",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "votes.phone_number": 7148407040,
+    "contestants.contestant_name": "Kelly Clauss",
+    "votes.created": "2018-03-09 19:03:36"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "contestants"
+   },
+   "answer_table": "contestants",
+   "answer_id_column": "contestant_number",
+   "canonical_question": "Which contestants entities with contestant name equal to 'Kelly Clauss', having at least one related votes record (linked on contestants.contestant_number = votes.contestant_number) with phone number at most '7148407040' and created equal to '2018-03-09 19:03:36', whose votes record itself has at least one related area code state record (linked on votes.state = area_code_state.state)?"
+  }
+ ]
+}

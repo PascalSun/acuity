@@ -1,0 +1,3580 @@
+{
+ "db_id": "movie_platform",
+ "target_table": "lists",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1780151091,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/movie_platform/movie_platform.sqlite",
+  "generated_at": "2026-07-02T11:07:33.568377+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "lists",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "0M": 9,
+   "0H": 8,
+   "1pE": 8,
+   "1pM": 8,
+   "1pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "0H": 8,
+   "0M": 9,
+   "1pE": 8,
+   "1pH": 8,
+   "1pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 26,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0H": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 39,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 18,
+    "inner_attempts": 21,
+    "failed_rounds": 10,
+    "invalid_pairs_filtered": 10,
+    "failure_events": {
+     "qa_validation_failed": 10
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 16,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "c26fd11b-c653-4b63-9f77-53c19830bdf8",
+   "question": "Which lists have no more than 7 movies and have the URL exactly http://mubi.com/lists/7-films-i-literally-felt-uncomfortable-watching?",
+   "answer_row_ids": [
+    15996
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_movie_number <= 7 AND lists.list_url = 'http://mubi.com/lists/7-films-i-literally-felt-uncomfortable-watching'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_movie_number",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/7-films-i-literally-felt-uncomfortable-watching",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_movie_number": 7,
+    "lists.list_url": "http://mubi.com/lists/7-films-i-literally-felt-uncomfortable-watching"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list movie number at most '7' and list url equal to 'http://mubi.com/lists/7-films-i-literally-felt-uncomfortable-watching'?"
+  },
+  {
+   "uid": "8fdc3370-9441-42ea-9152-d155938c06ce",
+   "question": "Which lists were updated exactly on 2020-01-24 05:13:30?",
+   "answer_row_ids": [
+    183213
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_update_timestamp_utc = '2020-01-24 05:13:30'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2020-01-24 05:13:30",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2020-01-24 05:13:30"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc equal to '2020-01-24 05:13:30'?"
+  },
+  {
+   "uid": "2f7a200a-d1e4-42c6-bd47-261c3dbeea26",
+   "question": "Which lists have the URL http://mubi.com/lists/1962-cannes-film-festival-2c25b92d-9a3a-4cc0-b56e-aae3dfd14969?",
+   "answer_row_ids": [
+    170731
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/1962-cannes-film-festival-2c25b92d-9a3a-4cc0-b56e-aae3dfd14969'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/1962-cannes-film-festival-2c25b92d-9a3a-4cc0-b56e-aae3dfd14969",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/1962-cannes-film-festival-2c25b92d-9a3a-4cc0-b56e-aae3dfd14969"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/1962-cannes-film-festival-2c25b92d-9a3a-4cc0-b56e-aae3dfd14969'?"
+  },
+  {
+   "uid": "c8d04463-4fa9-4ed3-a74d-bf2ac8a5b162",
+   "question": "Which lists were created exactly on 2019-10-06 19:49:01 and updated on or after 2019-10-06 19:49:01?",
+   "answer_row_ids": [
+    183688
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_creation_timestamp_utc = '2019-10-06 19:49:01' AND lists.list_update_timestamp_utc >= '2019-10-06 19:49:01'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_update_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2019-10-06 19:49:01",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2019-10-06 19:49:01",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2019-10-06 19:49:01",
+    "lists.list_update_timestamp_utc": "2019-10-06 19:49:01"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc equal to '2019-10-06 19:49:01' and list update timestamp utc at least '2019-10-06 19:49:01'?"
+  },
+  {
+   "uid": "2ce4e246-21e8-4865-8290-d2d29fbd9bd5",
+   "question": "Which lists have the exact URL http://mubi.com/lists/2012--223?",
+   "answer_row_ids": [
+    47153
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/2012--223'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/2012--223",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/2012--223"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/2012--223'?"
+  },
+  {
+   "uid": "90e52f01-3e0c-47b4-b7f2-6e3d4466e64f",
+   "question": "Which lists have the URL http://mubi.com/lists/2018-5a88b09d-9d11-4f33-93af-ac2866a28300?",
+   "answer_row_ids": [
+    161190
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/2018-5a88b09d-9d11-4f33-93af-ac2866a28300'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/2018-5a88b09d-9d11-4f33-93af-ac2866a28300",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/2018-5a88b09d-9d11-4f33-93af-ac2866a28300"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/2018-5a88b09d-9d11-4f33-93af-ac2866a28300'?"
+  },
+  {
+   "uid": "1a93cd97-4268-4c81-8459-1846b82ec6d4",
+   "question": "Which lists have the URL http://mubi.com/lists/fronteiras?",
+   "answer_row_ids": [
+    184148
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/fronteiras'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/fronteiras",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/fronteiras"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/fronteiras'?"
+  },
+  {
+   "uid": "271a45ce-5a8b-4aaf-88d7-701b52e0b864",
+   "question": "Which lists with the URL http://mubi.com/lists/sexualities have been updated since 2019-09-23 03:59:09?",
+   "answer_row_ids": [
+    161991
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/sexualities' AND lists.list_update_timestamp_utc >= '2019-09-23 03:59:09'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url",
+    "lists.list_update_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/sexualities",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2019-09-23 03:59:09",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/sexualities",
+    "lists.list_update_timestamp_utc": "2019-09-23 03:59:09"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/sexualities' and list update timestamp utc at least '2019-09-23 03:59:09'?"
+  },
+  {
+   "uid": "c1abe5da-74ac-424b-be25-871f0e79ed2f",
+   "question": "Which lists were created exactly on 2011-07-03 12:05:11 and have a movie number exactly 138?",
+   "answer_row_ids": [
+    30458
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_creation_timestamp_utc = '2011-07-03 12:05:11' AND lists.list_movie_number = 138",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_movie_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2011-07-03 12:05:11",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 138,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2011-07-03 12:05:11",
+    "lists.list_movie_number": 138
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc equal to '2011-07-03 12:05:11' and list movie number equal to '138'?"
+  },
+  {
+   "uid": "6e581010-0996-403c-9fda-1599235d8b01",
+   "question": "Which lists exactly at the URL http://mubi.com/lists/best-of-2005--4 have 13 movies, zero followers, no less than 0 comments, were created on or before 2012-01-11 03:41:54, and updated on or after 2012-01-11 03:44:22?",
+   "answer_row_ids": [
+    40820
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_creation_timestamp_utc <= '2012-01-11 03:41:54' AND lists.list_url = 'http://mubi.com/lists/best-of-2005--4' AND lists.list_comments >= 0 AND lists.list_followers = 0 AND lists.list_movie_number = 13 AND lists.list_update_timestamp_utc >= '2012-01-11 03:44:22'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_url",
+    "lists.list_comments",
+    "lists.list_followers",
+    "lists.list_movie_number",
+    "lists.list_update_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2012-01-11 03:41:54",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/best-of-2005--4",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 13,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2012-01-11 03:44:22",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2012-01-11 03:41:54",
+    "lists.list_url": "http://mubi.com/lists/best-of-2005--4",
+    "lists.list_comments": 0,
+    "lists.list_followers": 0,
+    "lists.list_movie_number": 13,
+    "lists.list_update_timestamp_utc": "2012-01-11 03:44:22"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc at most '2012-01-11 03:41:54' and list url equal to 'http://mubi.com/lists/best-of-2005--4' and list comments at least '0' and list followers equal to '0' and list movie number equal to '13' and list update timestamp utc at least '2012-01-11 03:44:22'?"
+  },
+  {
+   "uid": "5a67bcec-0d93-4668-8d74-7b28506e599e",
+   "question": "What lists exactly match the URL http://mubi.com/lists/cry-me-an-ocean, were updated on 2019-11-01 21:39:56, created on or before 2019-04-22 19:43:19, have 10 movies, and have at least zero comments and followers?",
+   "answer_row_ids": [
+    177956
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_comments >= 0 AND lists.list_update_timestamp_utc = '2019-11-01 21:39:56' AND lists.list_creation_timestamp_utc <= '2019-04-22 19:43:19' AND lists.list_url = 'http://mubi.com/lists/cry-me-an-ocean' AND lists.list_followers >= 0 AND lists.list_movie_number = 10",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_comments",
+    "lists.list_update_timestamp_utc",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_url",
+    "lists.list_followers",
+    "lists.list_movie_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2019-11-01 21:39:56",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2019-04-22 19:43:19",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/cry-me-an-ocean",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 10,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_comments": 0,
+    "lists.list_update_timestamp_utc": "2019-11-01 21:39:56",
+    "lists.list_creation_timestamp_utc": "2019-04-22 19:43:19",
+    "lists.list_url": "http://mubi.com/lists/cry-me-an-ocean",
+    "lists.list_followers": 0,
+    "lists.list_movie_number": 10
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list comments at least '0' and list update timestamp utc equal to '2019-11-01 21:39:56' and list creation timestamp utc at most '2019-04-22 19:43:19' and list url equal to 'http://mubi.com/lists/cry-me-an-ocean' and list followers at least '0' and list movie number equal to '10'?"
+  },
+  {
+   "uid": "0d053cd6-9661-4e80-8af5-9c0ddd7da63c",
+   "question": "Which lists exactly updated on 2013-06-14 21:31:39 have no more than 0 comments, at least 0 followers, at most 19 movies, were created on or before 2013-06-14 21:31:39, and have the URL http://mubi.com/lists/coming-of-age-films-ranked?",
+   "answer_row_ids": [
+    63698
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_update_timestamp_utc = '2013-06-14 21:31:39' AND lists.list_comments <= 0 AND lists.list_followers >= 0 AND lists.list_movie_number <= 19 AND lists.list_creation_timestamp_utc <= '2013-06-14 21:31:39' AND lists.list_url = 'http://mubi.com/lists/coming-of-age-films-ranked'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists.list_followers",
+    "lists.list_movie_number",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2013-06-14 21:31:39",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2013-06-14 21:31:39",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/coming-of-age-films-ranked",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2013-06-14 21:31:39",
+    "lists.list_comments": 0,
+    "lists.list_followers": 0,
+    "lists.list_movie_number": 19,
+    "lists.list_creation_timestamp_utc": "2013-06-14 21:31:39",
+    "lists.list_url": "http://mubi.com/lists/coming-of-age-films-ranked"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc equal to '2013-06-14 21:31:39' and list comments at most '0' and list followers at least '0' and list movie number at most '19' and list creation timestamp utc at most '2013-06-14 21:31:39' and list url equal to 'http://mubi.com/lists/coming-of-age-films-ranked'?"
+  },
+  {
+   "uid": "01b3ecf0-48b7-409d-a8af-35f043affee7",
+   "question": "Which lists created on 2020-03-26 22:48:19 and updated exactly at 2020-03-26 23:00:59 have no more than 0 followers and comments, include at least 30 movies, and have the URL http://mubi.com/lists/10s-watchlist?",
+   "answer_row_ids": [
+    192751
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_update_timestamp_utc = '2020-03-26 23:00:59' AND lists.list_comments <= 0 AND lists.list_movie_number >= 30 AND lists.list_creation_timestamp_utc = '2020-03-26 22:48:19' AND lists.list_followers <= 0 AND lists.list_url = 'http://mubi.com/lists/10s-watchlist'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists.list_movie_number",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_followers",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2020-03-26 23:00:59",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": ">=",
+     "value": 30,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2020-03-26 22:48:19",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/10s-watchlist",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2020-03-26 23:00:59",
+    "lists.list_comments": 0,
+    "lists.list_movie_number": 30,
+    "lists.list_creation_timestamp_utc": "2020-03-26 22:48:19",
+    "lists.list_followers": 0,
+    "lists.list_url": "http://mubi.com/lists/10s-watchlist"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc equal to '2020-03-26 23:00:59' and list comments at most '0' and list movie number at least '30' and list creation timestamp utc equal to '2020-03-26 22:48:19' and list followers at most '0' and list url equal to 'http://mubi.com/lists/10s-watchlist'?"
+  },
+  {
+   "uid": "73b19a90-bd6c-46af-837f-eade71eeacc4",
+   "question": "Which lists created since 2012-01-30 21:23:56 have at least 40 movies, exactly 2 followers, no comments, the URL http://mubi.com/lists/a-few-films-that-expand-narrative-boundaries, and were updated on or before 2018-03-16 03:16:42?",
+   "answer_row_ids": [
+    42101
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_movie_number >= 40 AND lists.list_followers = 2 AND lists.list_url = 'http://mubi.com/lists/a-few-films-that-expand-narrative-boundaries' AND lists.list_update_timestamp_utc <= '2018-03-16 03:16:42' AND lists.list_creation_timestamp_utc >= '2012-01-30 21:23:56' AND lists.list_comments = 0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_movie_number",
+    "lists.list_followers",
+    "lists.list_url",
+    "lists.list_update_timestamp_utc",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_comments"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": ">=",
+     "value": 40,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/a-few-films-that-expand-narrative-boundaries",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2018-03-16 03:16:42",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": ">=",
+     "value": "2012-01-30 21:23:56",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_movie_number": 40,
+    "lists.list_followers": 2,
+    "lists.list_url": "http://mubi.com/lists/a-few-films-that-expand-narrative-boundaries",
+    "lists.list_update_timestamp_utc": "2018-03-16 03:16:42",
+    "lists.list_creation_timestamp_utc": "2012-01-30 21:23:56",
+    "lists.list_comments": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list movie number at least '40' and list followers equal to '2' and list url equal to 'http://mubi.com/lists/a-few-films-that-expand-narrative-boundaries' and list update timestamp utc at most '2018-03-16 03:16:42' and list creation timestamp utc at least '2012-01-30 21:23:56' and list comments equal to '0'?"
+  },
+  {
+   "uid": "a746b045-2c87-4c4b-a164-fffeea9793f4",
+   "question": "Which lists have exactly 8 followers, 34 movies, and 6 comments, use the URL http://mubi.com/lists/films-with-cows, were created on or after 2012-07-02 04:12:30, and updated on or before 2020-04-21 05:55:34?",
+   "answer_row_ids": [
+    48990
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_followers = 8 AND lists.list_movie_number = 34 AND lists.list_comments = 6 AND lists.list_url = 'http://mubi.com/lists/films-with-cows' AND lists.list_update_timestamp_utc <= '2020-04-21 05:55:34' AND lists.list_creation_timestamp_utc >= '2012-07-02 04:12:30'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_followers",
+    "lists.list_movie_number",
+    "lists.list_comments",
+    "lists.list_url",
+    "lists.list_update_timestamp_utc",
+    "lists.list_creation_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/films-with-cows",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2020-04-21 05:55:34",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": ">=",
+     "value": "2012-07-02 04:12:30",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_followers": 8,
+    "lists.list_movie_number": 34,
+    "lists.list_comments": 6,
+    "lists.list_url": "http://mubi.com/lists/films-with-cows",
+    "lists.list_update_timestamp_utc": "2020-04-21 05:55:34",
+    "lists.list_creation_timestamp_utc": "2012-07-02 04:12:30"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list followers equal to '8' and list movie number equal to '34' and list comments equal to '6' and list url equal to 'http://mubi.com/lists/films-with-cows' and list update timestamp utc at most '2020-04-21 05:55:34' and list creation timestamp utc at least '2012-07-02 04:12:30'?"
+  },
+  {
+   "uid": "49373865-72ac-4fd8-95b5-419ed6a4fa09",
+   "question": "Which lists with the URL http://mubi.com/lists/watched-92e3e59b-4140-4341-ae08-4b78fe8947ef were created on or after 2018-07-04 04:03:59, updated since 2018-07-11 04:25:25, have no comments, at most 6 movies, and at least 0 followers?",
+   "answer_row_ids": [
+    164961
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_creation_timestamp_utc >= '2018-07-04 04:03:59' AND lists.list_url = 'http://mubi.com/lists/watched-92e3e59b-4140-4341-ae08-4b78fe8947ef' AND lists.list_update_timestamp_utc >= '2018-07-11 04:25:25' AND lists.list_comments = 0 AND lists.list_movie_number <= 6 AND lists.list_followers >= 0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_url",
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists.list_movie_number",
+    "lists.list_followers"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": ">=",
+     "value": "2018-07-04 04:03:59",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/watched-92e3e59b-4140-4341-ae08-4b78fe8947ef",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2018-07-11 04:25:25",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2018-07-04 04:03:59",
+    "lists.list_url": "http://mubi.com/lists/watched-92e3e59b-4140-4341-ae08-4b78fe8947ef",
+    "lists.list_update_timestamp_utc": "2018-07-11 04:25:25",
+    "lists.list_comments": 0,
+    "lists.list_movie_number": 6,
+    "lists.list_followers": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc at least '2018-07-04 04:03:59' and list url equal to 'http://mubi.com/lists/watched-92e3e59b-4140-4341-ae08-4b78fe8947ef' and list update timestamp utc at least '2018-07-11 04:25:25' and list comments equal to '0' and list movie number at most '6' and list followers at least '0'?"
+  },
+  {
+   "uid": "204d7bcc-bc90-476e-a0a7-61a4b9519f8b",
+   "question": "Which lists at URL http://mubi.com/lists/comic-book were created on or before 2011-12-26 10:09:56, updated since 2011-12-26 10:10:56, have exactly 6 movies, zero followers, and no more than 0 comments?",
+   "answer_row_ids": [
+    39375
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/comic-book' AND lists.list_update_timestamp_utc >= '2011-12-26 10:10:56' AND lists.list_comments <= 0 AND lists.list_creation_timestamp_utc <= '2011-12-26 10:09:56' AND lists.list_movie_number = 6 AND lists.list_followers = 0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url",
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_movie_number",
+    "lists.list_followers"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/comic-book",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2011-12-26 10:10:56",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2011-12-26 10:09:56",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/comic-book",
+    "lists.list_update_timestamp_utc": "2011-12-26 10:10:56",
+    "lists.list_comments": 0,
+    "lists.list_creation_timestamp_utc": "2011-12-26 10:09:56",
+    "lists.list_movie_number": 6,
+    "lists.list_followers": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/comic-book' and list update timestamp utc at least '2011-12-26 10:10:56' and list comments at most '0' and list creation timestamp utc at most '2011-12-26 10:09:56' and list movie number equal to '6' and list followers equal to '0'?"
+  },
+  {
+   "uid": "2802f13e-3887-4dca-8c74-3e10291f72e1",
+   "question": "Which lists updated on 2020-02-08 05:51:19 have exactly 12 movies and the URL http://mubi.com/lists/top-jean-claude-brisseau?",
+   "answer_row_ids": [
+    168227
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/top-jean-claude-brisseau' AND lists.list_update_timestamp_utc = '2020-02-08 05:51:19' AND lists.list_movie_number = 12",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url",
+    "lists.list_update_timestamp_utc",
+    "lists.list_movie_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/top-jean-claude-brisseau",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2020-02-08 05:51:19",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 12,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/top-jean-claude-brisseau",
+    "lists.list_update_timestamp_utc": "2020-02-08 05:51:19",
+    "lists.list_movie_number": 12
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/top-jean-claude-brisseau' and list update timestamp utc equal to '2020-02-08 05:51:19' and list movie number equal to '12'?"
+  },
+  {
+   "uid": "58099749-d242-4fe0-8ae9-a57d9b844b56",
+   "question": "Which lists exactly at 'http://mubi.com/lists/woody-allen-b2f09a37-9653-4330-9218-671271f8c036' have no less than 0 comments and followers, were updated on or after 2015-09-27 09:59:35, and include at most 1 movie?",
+   "answer_row_ids": [
+    119702
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/woody-allen-b2f09a37-9653-4330-9218-671271f8c036' AND lists.list_comments >= 0 AND lists.list_followers >= 0 AND lists.list_update_timestamp_utc >= '2015-09-27 09:59:35' AND lists.list_movie_number <= 1",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_url",
+    "lists.list_comments",
+    "lists.list_followers",
+    "lists.list_update_timestamp_utc",
+    "lists.list_movie_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/woody-allen-b2f09a37-9653-4330-9218-671271f8c036",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2015-09-27 09:59:35",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/woody-allen-b2f09a37-9653-4330-9218-671271f8c036",
+    "lists.list_comments": 0,
+    "lists.list_followers": 0,
+    "lists.list_update_timestamp_utc": "2015-09-27 09:59:35",
+    "lists.list_movie_number": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/woody-allen-b2f09a37-9653-4330-9218-671271f8c036' and list comments at least '0' and list followers at least '0' and list update timestamp utc at least '2015-09-27 09:59:35' and list movie number at most '1'?"
+  },
+  {
+   "uid": "31d633ed-39f7-41bf-b1c5-9ffced113ac9",
+   "question": "Which lists updated on or after 2010-05-20 20:26:40 have no more than 0 followers and have the URL exactly http://mubi.com/lists/my-top-5-lars-von-trier-films?",
+   "answer_row_ids": [
+    9428
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_followers <= 0 AND lists.list_update_timestamp_utc >= '2010-05-20 20:26:40' AND lists.list_url = 'http://mubi.com/lists/my-top-5-lars-von-trier-films'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_followers",
+    "lists.list_update_timestamp_utc",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2010-05-20 20:26:40",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/my-top-5-lars-von-trier-films",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_followers": 0,
+    "lists.list_update_timestamp_utc": "2010-05-20 20:26:40",
+    "lists.list_url": "http://mubi.com/lists/my-top-5-lars-von-trier-films"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list followers at most '0' and list update timestamp utc at least '2010-05-20 20:26:40' and list url equal to 'http://mubi.com/lists/my-top-5-lars-von-trier-films'?"
+  },
+  {
+   "uid": "0f851080-f55b-4606-97be-1df6ba857bf8",
+   "question": "Which lists were created on or before 2011-09-03 23:45:58, have exactly 1 movie, no more than 0 comments, and were updated exactly on 2020-04-28 03:12:40?",
+   "answer_row_ids": [
+    33829
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_update_timestamp_utc = '2020-04-28 03:12:40' AND lists.list_movie_number = 1 AND lists.list_comments <= 0 AND lists.list_creation_timestamp_utc <= '2011-09-03 23:45:58'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists.list_movie_number",
+    "lists.list_comments",
+    "lists.list_creation_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2020-04-28 03:12:40",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2011-09-03 23:45:58",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2020-04-28 03:12:40",
+    "lists.list_movie_number": 1,
+    "lists.list_comments": 0,
+    "lists.list_creation_timestamp_utc": "2011-09-03 23:45:58"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc equal to '2020-04-28 03:12:40' and list movie number equal to '1' and list comments at most '0' and list creation timestamp utc at most '2011-09-03 23:45:58'?"
+  },
+  {
+   "uid": "4741305f-ac11-45f5-8e78-fb15b946cc35",
+   "question": "Which lists created on or before 2011-09-23 15:47:44 have at least 2 comments, include no more than 92 movies, and have the exact URL http://mubi.com/lists/the-things-i-saw-in-film-school?",
+   "answer_row_ids": [
+    34892
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_comments >= 2 AND lists.list_url = 'http://mubi.com/lists/the-things-i-saw-in-film-school' AND lists.list_creation_timestamp_utc <= '2011-09-23 15:47:44' AND lists.list_movie_number <= 92",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_comments",
+    "lists.list_url",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_movie_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/the-things-i-saw-in-film-school",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2011-09-23 15:47:44",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 92,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_comments": 2,
+    "lists.list_url": "http://mubi.com/lists/the-things-i-saw-in-film-school",
+    "lists.list_creation_timestamp_utc": "2011-09-23 15:47:44",
+    "lists.list_movie_number": 92
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list comments at least '2' and list url equal to 'http://mubi.com/lists/the-things-i-saw-in-film-school' and list creation timestamp utc at most '2011-09-23 15:47:44' and list movie number at most '92'?"
+  },
+  {
+   "uid": "5b0c8ca6-f3e2-4f53-8546-3c50a522710a",
+   "question": "Which lists created exactly on 2012-07-23 02:34:10 have the URL http://mubi.com/lists/marc-webbs-films-ranked, contain exactly 3 movies, were updated on or after 2014-03-29 19:45:12, and have at most 0 followers?",
+   "answer_row_ids": [
+    49864
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_creation_timestamp_utc = '2012-07-23 02:34:10' AND lists.list_url = 'http://mubi.com/lists/marc-webbs-films-ranked' AND lists.list_movie_number = 3 AND lists.list_update_timestamp_utc >= '2014-03-29 19:45:12' AND lists.list_followers <= 0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_url",
+    "lists.list_movie_number",
+    "lists.list_update_timestamp_utc",
+    "lists.list_followers"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2012-07-23 02:34:10",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/marc-webbs-films-ranked",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2014-03-29 19:45:12",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2012-07-23 02:34:10",
+    "lists.list_url": "http://mubi.com/lists/marc-webbs-films-ranked",
+    "lists.list_movie_number": 3,
+    "lists.list_update_timestamp_utc": "2014-03-29 19:45:12",
+    "lists.list_followers": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc equal to '2012-07-23 02:34:10' and list url equal to 'http://mubi.com/lists/marc-webbs-films-ranked' and list movie number equal to '3' and list update timestamp utc at least '2014-03-29 19:45:12' and list followers at most '0'?"
+  },
+  {
+   "uid": "55f640a4-ddd3-4003-80d5-d233d8cbd093",
+   "question": "What lists with at least 1 movie have the exact URL http://mubi.com/lists/hardy and were created on or before 2019-08-18 09:41:23 and updated on or before 2019-08-18 09:43:27?",
+   "answer_row_ids": [
+    181953
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_movie_number >= 1 AND lists.list_url = 'http://mubi.com/lists/hardy' AND lists.list_update_timestamp_utc <= '2019-08-18 09:43:27' AND lists.list_creation_timestamp_utc <= '2019-08-18 09:41:23'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_movie_number",
+    "lists.list_url",
+    "lists.list_update_timestamp_utc",
+    "lists.list_creation_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/hardy",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2019-08-18 09:43:27",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2019-08-18 09:41:23",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_movie_number": 1,
+    "lists.list_url": "http://mubi.com/lists/hardy",
+    "lists.list_update_timestamp_utc": "2019-08-18 09:43:27",
+    "lists.list_creation_timestamp_utc": "2019-08-18 09:41:23"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list movie number at least '1' and list url equal to 'http://mubi.com/lists/hardy' and list update timestamp utc at most '2019-08-18 09:43:27' and list creation timestamp utc at most '2019-08-18 09:41:23'?"
+  },
+  {
+   "uid": "df209927-44a7-404a-8c6f-44e475ac81f3",
+   "question": "Which lists have exactly 13 movies, were created on 2013-11-30 03:48:46, and have the URL http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi?",
+   "answer_row_ids": [
+    68036
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_movie_number = 13 AND lists.list_url = 'http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi' AND lists.list_creation_timestamp_utc = '2013-11-30 03:48:46'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_movie_number",
+    "lists.list_url",
+    "lists.list_creation_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "=",
+     "value": 13,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2013-11-30 03:48:46",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_movie_number": 13,
+    "lists.list_url": "http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi",
+    "lists.list_creation_timestamp_utc": "2013-11-30 03:48:46"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list movie number equal to '13' and list url equal to 'http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi' and list creation timestamp utc equal to '2013-11-30 03:48:46'?"
+  },
+  {
+   "uid": "0c347fd7-520e-49db-99b1-54aae92890e1",
+   "question": "What lists have no comments, at least 0 followers, were updated on or after 2016-12-13 08:31:36, and have the URL exactly http://mubi.com/lists/2016-a8612aaf-10df-47ee-8668-05d37af768a2?",
+   "answer_row_ids": [
+    132028
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_followers >= 0 AND lists.list_update_timestamp_utc >= '2016-12-13 08:31:36' AND lists.list_comments = 0 AND lists.list_url = 'http://mubi.com/lists/2016-a8612aaf-10df-47ee-8668-05d37af768a2'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "lists"
+   ],
+   "involved_columns": [
+    "lists.list_followers",
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2016-12-13 08:31:36",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/2016-a8612aaf-10df-47ee-8668-05d37af768a2",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_followers": 0,
+    "lists.list_update_timestamp_utc": "2016-12-13 08:31:36",
+    "lists.list_comments": 0,
+    "lists.list_url": "http://mubi.com/lists/2016-a8612aaf-10df-47ee-8668-05d37af768a2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list followers at least '0' and list update timestamp utc at least '2016-12-13 08:31:36' and list comments equal to '0' and list url equal to 'http://mubi.com/lists/2016-a8612aaf-10df-47ee-8668-05d37af768a2'?"
+  },
+  {
+   "uid": "8b42b9ab-e644-4046-b33b-1b093bd306db",
+   "question": "Which lists created on or after 2017-07-31 02:09:17 have an update timestamp exactly on 2017-07-31 02:09:17?",
+   "answer_row_ids": [
+    152923
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_creation_timestamp_utc >= '2017-07-31 02:09:17' AND lists.list_update_timestamp_utc = '2017-07-31 02:09:17'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_update_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": ">=",
+     "value": "2017-07-31 02:09:17",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2017-07-31 02:09:17",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2017-07-31 02:09:17",
+    "lists.list_update_timestamp_utc": "2017-07-31 02:09:17"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc at least '2017-07-31 02:09:17' and list update timestamp utc equal to '2017-07-31 02:09:17', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id)?"
+  },
+  {
+   "uid": "ce05740a-d087-425c-ac45-4683b3c9913b",
+   "question": "Which lists were created exactly on 2018-10-01 02:59:10 and have exactly 0 comments?",
+   "answer_row_ids": [
+    167496
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_creation_timestamp_utc = '2018-10-01 02:59:10' AND lists.list_comments = 0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists.list_comments"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2018-10-01 02:59:10",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2018-10-01 02:59:10",
+    "lists.list_comments": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc equal to '2018-10-01 02:59:10' and list comments equal to '0', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id)?"
+  },
+  {
+   "uid": "14ef6ca4-cd2f-4d94-b2c7-b1879a0238dd",
+   "question": "Which lists have the URL http://mubi.com/lists/pollution and are associated with their users?",
+   "answer_row_ids": [
+    136261
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_url = 'http://mubi.com/lists/pollution'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/pollution",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/pollution"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/pollution', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id)?"
+  },
+  {
+   "uid": "31c23896-47a9-43e8-9135-170333e73f33",
+   "question": "Which lists with the URL http://mubi.com/lists/grim-melancholic are associated with users who are not eligible for trial?",
+   "answer_row_ids": [
+    113232
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_eligible_for_trial = '0' AND lists.list_url = 'http://mubi.com/lists/grim-melancholic'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_eligible_for_trial",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/grim-melancholic",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_eligible_for_trial": "0",
+    "lists.list_url": "http://mubi.com/lists/grim-melancholic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/grim-melancholic', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user eligible for trial equal to '0'?"
+  },
+  {
+   "uid": "7985fc54-8a70-4e93-8771-783ecb6a184a",
+   "question": "Which lists were updated exactly on 2019-01-02 03:52:01 and have at least 0 comments?",
+   "answer_row_ids": [
+    171694
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_update_timestamp_utc = '2019-01-02 03:52:01' AND lists.list_comments >= 0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2019-01-02 03:52:01",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2019-01-02 03:52:01",
+    "lists.list_comments": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc equal to '2019-01-02 03:52:01' and list comments at least '0', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id)?"
+  },
+  {
+   "uid": "62de5312-5cc9-4f35-82ab-a7a9eebe5b43",
+   "question": "Which lists were updated exactly on 2018-02-28 14:56:15 and belong to users that are confirmed to have a payment method?",
+   "answer_row_ids": [
+    158760
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_update_timestamp_utc = '2018-02-28 14:56:15' AND lists_users.user_has_payment_method = '1'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists_users.user_has_payment_method"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2018-02-28 14:56:15",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2018-02-28 14:56:15",
+    "lists_users.user_has_payment_method": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc equal to '2018-02-28 14:56:15', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user has payment method equal to '1'?"
+  },
+  {
+   "uid": "5700baec-c283-453b-9580-c6070395ef55",
+   "question": "Which lists were created exactly on 2010-09-25 18:14:07 by users who do not have a payment method?",
+   "answer_row_ids": [
+    15001
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_creation_timestamp_utc = '2010-09-25 18:14:07' AND lists_users.user_has_payment_method = '0'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_creation_timestamp_utc",
+    "lists_users.user_has_payment_method"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2010-09-25 18:14:07",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "lists.list_creation_timestamp_utc": "2010-09-25 18:14:07",
+    "lists_users.user_has_payment_method": "0"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc equal to '2010-09-25 18:14:07', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user has payment method equal to '0'?"
+  },
+  {
+   "uid": "d121d5aa-9040-44fe-92d3-1109d2c67231",
+   "question": "Which lists created on 2016-01-10 21:17:09 have the URL http://mubi.com/lists/inedits-2016?",
+   "answer_row_ids": [
+    132186
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_url = 'http://mubi.com/lists/inedits-2016' AND lists.list_creation_timestamp_utc = '2016-01-10 21:17:09'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_url",
+    "lists.list_creation_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/inedits-2016",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2016-01-10 21:17:09",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/inedits-2016",
+    "lists.list_creation_timestamp_utc": "2016-01-10 21:17:09"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/inedits-2016' and list creation timestamp utc equal to '2016-01-10 21:17:09', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id)?"
+  },
+  {
+   "uid": "2d44e4e1-a1fa-453e-98af-5e79e8536705",
+   "question": "Which lists created on or before 2019-03-01 00:11:49 have the URL http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2, have no comments or followers, and belong to users who are not eligible for a trial but do have a payment method?",
+   "answer_row_ids": [
+    175780
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_eligible_for_trial = '0' AND lists.list_creation_timestamp_utc <= '2019-03-01 00:11:49' AND lists.list_url = 'http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2' AND lists_users.user_has_payment_method = '1' AND lists.list_comments = 0 AND lists.list_followers <= 0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_eligible_for_trial",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_url",
+    "lists_users.user_has_payment_method",
+    "lists.list_comments",
+    "lists.list_followers"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2019-03-01 00:11:49",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2",
+     "column_type": "label"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_eligible_for_trial": "0",
+    "lists.list_creation_timestamp_utc": "2019-03-01 00:11:49",
+    "lists.list_url": "http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2",
+    "lists_users.user_has_payment_method": "1",
+    "lists.list_comments": 0,
+    "lists.list_followers": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc at most '2019-03-01 00:11:49' and list url equal to 'http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2' and list comments equal to '0' and list followers at most '0', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user eligible for trial equal to '0' and user has payment method equal to '1'?"
+  },
+  {
+   "uid": "4c39110f-54ea-41f9-ab80-6aee0b5b4bdd",
+   "question": "Which lists updated on 2017-03-23 02:51:43 have the URL http://mubi.com/lists/lighting, no more than 1 follower, no more than 0 comments, and are linked to users who have a payment method, are eligible for trial, have at least 0 trials, and are no more than 0 subscribers?",
+   "answer_row_ids": [
+    110553
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_has_payment_method = '1' AND lists.list_followers <= 1 AND lists_users.user_eligible_for_trial = '1' AND lists_users.user_trialist >= 0 AND lists.list_update_timestamp_utc = '2017-03-23 02:51:43' AND lists_users.user_subscriber <= 0 AND lists.list_comments <= 0 AND lists.list_url = 'http://mubi.com/lists/lighting'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_has_payment_method",
+    "lists.list_followers",
+    "lists_users.user_eligible_for_trial",
+    "lists_users.user_trialist",
+    "lists.list_update_timestamp_utc",
+    "lists_users.user_subscriber",
+    "lists.list_comments",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2017-03-23 02:51:43",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/lighting",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_has_payment_method": "1",
+    "lists.list_followers": 1,
+    "lists_users.user_eligible_for_trial": "1",
+    "lists_users.user_trialist": 0,
+    "lists.list_update_timestamp_utc": "2017-03-23 02:51:43",
+    "lists_users.user_subscriber": 0,
+    "lists.list_comments": 0,
+    "lists.list_url": "http://mubi.com/lists/lighting"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list followers at most '1' and list update timestamp utc equal to '2017-03-23 02:51:43' and list comments at most '0' and list url equal to 'http://mubi.com/lists/lighting', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user has payment method equal to '1' and user eligible for trial equal to '1' and user trialist at least '0' and user subscriber at most '0'?"
+  },
+  {
+   "uid": "146124e2-d636-4a8d-8c8a-742823e0ad9f",
+   "question": "Which lists created on 2010-04-13 have no more than 0 subscribers or trialists, at least 2 followers, no more than 4 comments, and contain at most 128 movies?",
+   "answer_row_ids": [
+    7435,
+    7438,
+    7454,
+    7458,
+    7461
+   ],
+   "answer_count": 5,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_subscriber <= 0 AND lists_users.user_trialist <= 0 AND lists.list_followers >= 2 AND lists.list_comments <= 4 AND lists_users.list_creation_date_utc = '2010-04-13' AND lists.list_movie_number <= 128",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_subscriber",
+    "lists_users.user_trialist",
+    "lists.list_followers",
+    "lists.list_comments",
+    "lists_users.list_creation_date_utc",
+    "lists.list_movie_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_creation_date_utc",
+     "operator": "=",
+     "value": "2010-04-13",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 128,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_subscriber": 0,
+    "lists_users.user_trialist": 0,
+    "lists.list_followers": 2,
+    "lists.list_comments": 4,
+    "lists_users.list_creation_date_utc": "2010-04-13",
+    "lists.list_movie_number": 128
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list followers at least '2' and list comments at most '4' and list movie number at most '128', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user subscriber at most '0' and user trialist at most '0' and list creation date utc equal to '2010-04-13'?"
+  },
+  {
+   "uid": "e30885e3-abea-4dc1-b4ff-f79535def335",
+   "question": "Which lists created on 2012-09-11 20:21:50 have the URL http://mubi.com/lists/frances-mcdormand, contain at most 7 movies, have at least 0 followers, and include users who are eligible for trial, not subscribers, and updated on or before 2012-09-11?",
+   "answer_row_ids": [
+    52406
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_subscriber = 0 AND lists.list_creation_timestamp_utc = '2012-09-11 20:21:50' AND lists.list_followers >= 0 AND lists.list_movie_number <= 7 AND lists_users.list_update_date_utc <= '2012-09-11' AND lists_users.user_eligible_for_trial = '1' AND lists.list_url = 'http://mubi.com/lists/frances-mcdormand'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_subscriber",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_followers",
+    "lists.list_movie_number",
+    "lists_users.list_update_date_utc",
+    "lists_users.user_eligible_for_trial",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2012-09-11 20:21:50",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "<=",
+     "value": "2012-09-11",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/frances-mcdormand",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_subscriber": 0,
+    "lists.list_creation_timestamp_utc": "2012-09-11 20:21:50",
+    "lists.list_followers": 0,
+    "lists.list_movie_number": 7,
+    "lists_users.list_update_date_utc": "2012-09-11",
+    "lists_users.user_eligible_for_trial": "1",
+    "lists.list_url": "http://mubi.com/lists/frances-mcdormand"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list creation timestamp utc equal to '2012-09-11 20:21:50' and list followers at least '0' and list movie number at most '7' and list url equal to 'http://mubi.com/lists/frances-mcdormand', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user subscriber equal to '0' and list update date utc at most '2012-09-11' and user eligible for trial equal to '1'?"
+  },
+  {
+   "uid": "39a7ce6a-0642-4c1e-8d36-4fd7ec72183b",
+   "question": "Which lists have the URL http://mubi.com/lists/my-jazz, exactly 0 followers, were updated exactly on 2010-05-02 14:09:30, and include users who created the list on or after 2010-04-13, updated it exactly on 2010-05-02, are not subscribers or trialists, and are eligible for trial?",
+   "answer_row_ids": [
+    7456
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_url = 'http://mubi.com/lists/my-jazz' AND lists_users.list_creation_date_utc >= '2010-04-13' AND lists.list_update_timestamp_utc = '2010-05-02 14:09:30' AND lists_users.user_subscriber = 0 AND lists_users.user_trialist = 0 AND lists_users.list_update_date_utc = '2010-05-02' AND lists_users.user_eligible_for_trial = '1' AND lists.list_followers = 0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_url",
+    "lists_users.list_creation_date_utc",
+    "lists.list_update_timestamp_utc",
+    "lists_users.user_subscriber",
+    "lists_users.user_trialist",
+    "lists_users.list_update_date_utc",
+    "lists_users.user_eligible_for_trial",
+    "lists.list_followers"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/my-jazz",
+     "column_type": "label"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_creation_date_utc",
+     "operator": ">=",
+     "value": "2010-04-13",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2010-05-02 14:09:30",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "=",
+     "value": "2010-05-02",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_url": "http://mubi.com/lists/my-jazz",
+    "lists_users.list_creation_date_utc": "2010-04-13",
+    "lists.list_update_timestamp_utc": "2010-05-02 14:09:30",
+    "lists_users.user_subscriber": 0,
+    "lists_users.user_trialist": 0,
+    "lists_users.list_update_date_utc": "2010-05-02",
+    "lists_users.user_eligible_for_trial": "1",
+    "lists.list_followers": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list url equal to 'http://mubi.com/lists/my-jazz' and list update timestamp utc equal to '2010-05-02 14:09:30' and list followers equal to '0', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with list creation date utc at least '2010-04-13' and user subscriber equal to '0' and user trialist equal to '0' and list update date utc equal to '2010-05-02' and user eligible for trial equal to '1'?"
+  },
+  {
+   "uid": "9f4cf185-852d-4fc9-b40e-2f696d2ea69d",
+   "question": "Which lists with the URL exactly \"http://mubi.com/lists/richard-attenborough\" were created and updated on or before 2011-03-12 19:33:32, have at least 0 comments, and are linked to users who are not subscribers, have no payment method, and whose list creation and update dates are at most 2011-03-12?",
+   "answer_row_ids": [
+    24757
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_update_timestamp_utc <= '2011-03-12 19:33:32' AND lists.list_comments >= 0 AND lists_users.list_creation_date_utc <= '2011-03-12' AND lists_users.user_subscriber = 0 AND lists.list_url = 'http://mubi.com/lists/richard-attenborough' AND lists_users.list_update_date_utc <= '2011-03-12' AND lists_users.user_has_payment_method = '0' AND lists.list_creation_timestamp_utc <= '2011-03-12 19:33:32'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists_users.list_creation_date_utc",
+    "lists_users.user_subscriber",
+    "lists.list_url",
+    "lists_users.list_update_date_utc",
+    "lists_users.user_has_payment_method",
+    "lists.list_creation_timestamp_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2011-03-12 19:33:32",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_creation_date_utc",
+     "operator": "<=",
+     "value": "2011-03-12",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/richard-attenborough",
+     "column_type": "label"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "<=",
+     "value": "2011-03-12",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "<=",
+     "value": "2011-03-12 19:33:32",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2011-03-12 19:33:32",
+    "lists.list_comments": 0,
+    "lists_users.list_creation_date_utc": "2011-03-12",
+    "lists_users.user_subscriber": 0,
+    "lists.list_url": "http://mubi.com/lists/richard-attenborough",
+    "lists_users.list_update_date_utc": "2011-03-12",
+    "lists_users.user_has_payment_method": "0",
+    "lists.list_creation_timestamp_utc": "2011-03-12 19:33:32"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc at most '2011-03-12 19:33:32' and list comments at least '0' and list url equal to 'http://mubi.com/lists/richard-attenborough' and list creation timestamp utc at most '2011-03-12 19:33:32', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with list creation date utc at most '2011-03-12' and user subscriber equal to '0' and list update date utc at most '2011-03-12' and user has payment method equal to '0'?"
+  },
+  {
+   "uid": "ec767ab6-32cc-4f3c-881e-69ce95f1b618",
+   "question": "What lists created exactly on 2015-01-29 02:48:54 have at most zero comments and followers, were last updated on or before 2019-09-30 21:37:09, and are linked to users eligible for trial but not currently trialists whose list updates are at most 2019-09-30?",
+   "answer_row_ids": [
+    112532
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_update_timestamp_utc <= '2019-09-30 21:37:09' AND lists.list_comments <= 0 AND lists.list_creation_timestamp_utc = '2015-01-29 02:48:54' AND lists_users.list_update_date_utc <= '2019-09-30' AND lists.list_followers <= 0 AND lists_users.user_eligible_for_trial = '1' AND lists_users.user_trialist = 0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists.list_comments",
+    "lists.list_creation_timestamp_utc",
+    "lists_users.list_update_date_utc",
+    "lists.list_followers",
+    "lists_users.user_eligible_for_trial",
+    "lists_users.user_trialist"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2019-09-30 21:37:09",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2015-01-29 02:48:54",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "<=",
+     "value": "2019-09-30",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2019-09-30 21:37:09",
+    "lists.list_comments": 0,
+    "lists.list_creation_timestamp_utc": "2015-01-29 02:48:54",
+    "lists_users.list_update_date_utc": "2019-09-30",
+    "lists.list_followers": 0,
+    "lists_users.user_eligible_for_trial": "1",
+    "lists_users.user_trialist": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc at most '2019-09-30 21:37:09' and list comments at most '0' and list creation timestamp utc equal to '2015-01-29 02:48:54' and list followers at most '0', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with list update date utc at most '2019-09-30' and user eligible for trial equal to '1' and user trialist equal to '0'?"
+  },
+  {
+   "uid": "82bd1e0a-1d89-4782-9055-8ab7a4fd1b04",
+   "question": "What lists updated exactly on 2020-01-27 18:30:06 with no more than 0 comments, whose URL is http://mubi.com/lists/eternidade-pela-persistencia-da-visao, include users eligible for trial without a payment method and updated on or before 2020-01-27?",
+   "answer_row_ids": [
+    51570
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.list_update_date_utc <= '2020-01-27' AND lists_users.user_has_payment_method = '0' AND lists_users.user_eligible_for_trial = '1' AND lists.list_comments <= 0 AND lists.list_update_timestamp_utc = '2020-01-27 18:30:06' AND lists.list_url = 'http://mubi.com/lists/eternidade-pela-persistencia-da-visao'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.list_update_date_utc",
+    "lists_users.user_has_payment_method",
+    "lists_users.user_eligible_for_trial",
+    "lists.list_comments",
+    "lists.list_update_timestamp_utc",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "<=",
+     "value": "2020-01-27",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "=",
+     "value": "2020-01-27 18:30:06",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/eternidade-pela-persistencia-da-visao",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists_users.list_update_date_utc": "2020-01-27",
+    "lists_users.user_has_payment_method": "0",
+    "lists_users.user_eligible_for_trial": "1",
+    "lists.list_comments": 0,
+    "lists.list_update_timestamp_utc": "2020-01-27 18:30:06",
+    "lists.list_url": "http://mubi.com/lists/eternidade-pela-persistencia-da-visao"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list comments at most '0' and list update timestamp utc equal to '2020-01-27 18:30:06' and list url equal to 'http://mubi.com/lists/eternidade-pela-persistencia-da-visao', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with list update date utc at most '2020-01-27' and user has payment method equal to '0' and user eligible for trial equal to '1'?"
+  },
+  {
+   "uid": "67c50f40-3326-4945-965e-578dc2082dee",
+   "question": "Which lists have users that are exactly eligible for trial, are not trialists, and were updated on 2015-06-18?",
+   "answer_row_ids": [
+    104744,
+    105205,
+    113867,
+    114045,
+    116435,
+    116555,
+    116561,
+    116563,
+    116567,
+    116568,
+    116644,
+    116647,
+    116648
+   ],
+   "answer_count": 13,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_eligible_for_trial = '1' AND lists_users.user_trialist = 0 AND lists_users.list_update_date_utc = '2015-06-18'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_eligible_for_trial",
+    "lists_users.user_trialist",
+    "lists_users.list_update_date_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "=",
+     "value": "2015-06-18",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_eligible_for_trial": "1",
+    "lists_users.user_trialist": 0,
+    "lists_users.list_update_date_utc": "2015-06-18"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user eligible for trial equal to '1' and user trialist equal to '0' and list update date utc equal to '2015-06-18'?"
+  },
+  {
+   "uid": "c2b5944f-245b-4e87-a205-ee1ddcc2ff53",
+   "question": "Which lists created on 2014-08-22 06:22:36 have at most 3 movies and belong to users who are not trialists and have a payment method?",
+   "answer_row_ids": [
+    107250
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_movie_number <= 3 AND lists_users.user_trialist = 0 AND lists.list_creation_timestamp_utc = '2014-08-22 06:22:36' AND lists_users.user_has_payment_method = '1'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_movie_number",
+    "lists_users.user_trialist",
+    "lists.list_creation_timestamp_utc",
+    "lists_users.user_has_payment_method"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2014-08-22 06:22:36",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "lists.list_movie_number": 3,
+    "lists_users.user_trialist": 0,
+    "lists.list_creation_timestamp_utc": "2014-08-22 06:22:36",
+    "lists_users.user_has_payment_method": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list movie number at most '3' and list creation timestamp utc equal to '2014-08-22 06:22:36', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user trialist equal to '0' and user has payment method equal to '1'?"
+  },
+  {
+   "uid": "018cc63a-12f1-4326-8be8-921ead3c4ad1",
+   "question": "What lists created on or after 2015-05-09 05:38:20 have no more than 0 comments, were last updated on or before 2015-05-09 05:38:20, and belong to users who are eligible for trial and have at least 0 subscribers?",
+   "answer_row_ids": [
+    115640
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_update_timestamp_utc <= '2015-05-09 05:38:20' AND lists_users.user_subscriber >= 0 AND lists_users.user_eligible_for_trial = '1' AND lists.list_creation_timestamp_utc >= '2015-05-09 05:38:20' AND lists.list_comments <= 0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_update_timestamp_utc",
+    "lists_users.user_subscriber",
+    "lists_users.user_eligible_for_trial",
+    "lists.list_creation_timestamp_utc",
+    "lists.list_comments"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2015-05-09 05:38:20",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "1",
+     "column_type": "boolean"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": ">=",
+     "value": "2015-05-09 05:38:20",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "lists.list_update_timestamp_utc": "2015-05-09 05:38:20",
+    "lists_users.user_subscriber": 0,
+    "lists_users.user_eligible_for_trial": "1",
+    "lists.list_creation_timestamp_utc": "2015-05-09 05:38:20",
+    "lists.list_comments": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list update timestamp utc at most '2015-05-09 05:38:20' and list creation timestamp utc at least '2015-05-09 05:38:20' and list comments at most '0', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user subscriber at least '0' and user eligible for trial equal to '1'?"
+  },
+  {
+   "uid": "6c42a393-0cc6-447b-9ac5-d0ca9b5e1ca9",
+   "question": "What lists have no comments, belong to users who are not subscribers, were updated on or before 2015-02-18 02:28:38, and have the URL exactly http://mubi.com/lists/2008--76?",
+   "answer_row_ids": [
+    112447
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_comments = 0 AND lists_users.user_subscriber = 0 AND lists.list_update_timestamp_utc <= '2015-02-18 02:28:38' AND lists.list_url = 'http://mubi.com/lists/2008--76'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_comments",
+    "lists_users.user_subscriber",
+    "lists.list_update_timestamp_utc",
+    "lists.list_url"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": "<=",
+     "value": "2015-02-18 02:28:38",
+     "column_type": "date"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/2008--76",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "lists.list_comments": 0,
+    "lists_users.user_subscriber": 0,
+    "lists.list_update_timestamp_utc": "2015-02-18 02:28:38",
+    "lists.list_url": "http://mubi.com/lists/2008--76"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list comments equal to '0' and list update timestamp utc at most '2015-02-18 02:28:38' and list url equal to 'http://mubi.com/lists/2008--76', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user subscriber equal to '0'?"
+  },
+  {
+   "uid": "4e1b1505-7cad-4e8d-a47b-cde1930d0799",
+   "question": "What lists created on 2019-03-19 13:29:50 have no more than 0 comments, contain at most 42 movies, and belong to users who are subscribers but not eligible for a trial?",
+   "answer_row_ids": [
+    176651
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_comments <= 0 AND lists.list_movie_number <= 42 AND lists.list_creation_timestamp_utc = '2019-03-19 13:29:50' AND lists_users.user_subscriber = 1 AND lists_users.user_eligible_for_trial = '0'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_comments",
+    "lists.list_movie_number",
+    "lists.list_creation_timestamp_utc",
+    "lists_users.user_subscriber",
+    "lists_users.user_eligible_for_trial"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_comments",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 42,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_creation_timestamp_utc",
+     "operator": "=",
+     "value": "2019-03-19 13:29:50",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_eligible_for_trial",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "lists.list_comments": 0,
+    "lists.list_movie_number": 42,
+    "lists.list_creation_timestamp_utc": "2019-03-19 13:29:50",
+    "lists_users.user_subscriber": 1,
+    "lists_users.user_eligible_for_trial": "0"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list comments at most '0' and list movie number at most '42' and list creation timestamp utc equal to '2019-03-19 13:29:50', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user subscriber equal to '1' and user eligible for trial equal to '0'?"
+  },
+  {
+   "uid": "2b059ea8-def2-458e-8d09-8083985c6664",
+   "question": "Which lists were updated on 2012-12-11 by users who are trialists exactly 0 and have at most 0 subscribers?",
+   "answer_row_ids": [
+    11383,
+    39735,
+    47875,
+    53457,
+    56254,
+    56258,
+    56263,
+    56267,
+    56270,
+    56279,
+    56280,
+    56281,
+    56282,
+    56283
+   ],
+   "answer_count": 14,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_subscriber <= 0 AND lists_users.user_trialist = 0 AND lists_users.list_update_date_utc = '2012-12-11'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_subscriber",
+    "lists_users.user_trialist",
+    "lists_users.list_update_date_utc"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_update_date_utc",
+     "operator": "=",
+     "value": "2012-12-11",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_subscriber": 0,
+    "lists_users.user_trialist": 0,
+    "lists_users.list_update_date_utc": "2012-12-11"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user subscriber at most '0' and user trialist equal to '0' and list update date utc equal to '2012-12-11'?"
+  },
+  {
+   "uid": "ccc2f5d3-4a0d-4ed4-be78-ede1bc3c90ec",
+   "question": "Which lists have no more than 0 followers, exactly the URL http://mubi.com/lists/2013--371, no more than 11 movies, were updated on or after 2014-01-09 05:44:08, and belong to users that are not subscribed?",
+   "answer_row_ids": [
+    103994
+   ],
+   "answer_count": 1,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_followers <= 0 AND lists.list_url = 'http://mubi.com/lists/2013--371' AND lists.list_movie_number <= 11 AND lists.list_update_timestamp_utc >= '2014-01-09 05:44:08' AND lists_users.user_has_payment_method = '0'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists.list_followers",
+    "lists.list_url",
+    "lists.list_movie_number",
+    "lists.list_update_timestamp_utc",
+    "lists_users.user_has_payment_method"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists",
+     "column": "list_followers",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_url",
+     "operator": "=",
+     "value": "http://mubi.com/lists/2013--371",
+     "column_type": "label"
+    },
+    {
+     "table": "lists",
+     "column": "list_movie_number",
+     "operator": "<=",
+     "value": 11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists",
+     "column": "list_update_timestamp_utc",
+     "operator": ">=",
+     "value": "2014-01-09 05:44:08",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "lists.list_followers": 0,
+    "lists.list_url": "http://mubi.com/lists/2013--371",
+    "lists.list_movie_number": 11,
+    "lists.list_update_timestamp_utc": "2014-01-09 05:44:08",
+    "lists_users.user_has_payment_method": "0"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities with list followers at most '0' and list url equal to 'http://mubi.com/lists/2013--371' and list movie number at most '11' and list update timestamp utc at least '2014-01-09 05:44:08', having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user has payment method equal to '0'?"
+  },
+  {
+   "uid": "185f71bb-64ca-4732-822b-be973d2649c1",
+   "question": "Which lists created on 2010-05-11 are associated with users who are not trialists, have no payment method, and have at most zero subscribers?",
+   "answer_row_ids": [
+    8911,
+    8914,
+    8915,
+    8916,
+    8917,
+    8919,
+    8920,
+    8921,
+    8932,
+    8936,
+    8937,
+    8939,
+    8940,
+    8941,
+    8942
+   ],
+   "answer_count": 15,
+   "sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_trialist = 0 AND lists_users.list_creation_date_utc = '2010-05-11' AND lists_users.user_subscriber <= 0 AND lists_users.user_has_payment_method = '0'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "lists",
+    "lists_users"
+   ],
+   "involved_columns": [
+    "lists_users.user_trialist",
+    "lists_users.list_creation_date_utc",
+    "lists_users.user_subscriber",
+    "lists_users.user_has_payment_method"
+   ],
+   "involved_filters": [
+    {
+     "table": "lists_users",
+     "column": "user_trialist",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "list_creation_date_utc",
+     "operator": "=",
+     "value": "2010-05-11",
+     "column_type": "date"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_subscriber",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "lists_users",
+     "column": "user_has_payment_method",
+     "operator": "=",
+     "value": "0",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "lists_users.user_trialist": 0,
+    "lists_users.list_creation_date_utc": "2010-05-11",
+    "lists_users.user_subscriber": 0,
+    "lists_users.user_has_payment_method": "0"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "lists"
+   },
+   "answer_table": "lists",
+   "answer_id_column": "list_id",
+   "canonical_question": "Which lists entities having at least one related lists users record (linked on lists.list_id = lists_users.list_id and lists.user_id = lists_users.user_id) with user trialist equal to '0' and list creation date utc equal to '2010-05-11' and user subscriber at most '0' and user has payment method equal to '0'?"
+  }
+ ]
+}

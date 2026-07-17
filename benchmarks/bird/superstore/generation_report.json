@@ -1,0 +1,72 @@
+{
+  "generation_mode": "quota_guided",
+  "target_table": "west_superstore",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 0,
+  "shortfall_total": 50,
+  "overall_fulfillment_rate": 0.0,
+  "feasible_strategies": [
+    "0E",
+    "0M"
+  ],
+  "requested_strategies": [
+    "0E",
+    "0M"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+    "0E": 25,
+    "0M": 25
+  },
+  "realized_counts": {},
+  "shortfalls": {
+    "0E": 25,
+    "0M": 25
+  },
+  "shortfall_reason_counts": {
+    "result_size_out_of_range": 25,
+    "other": 25
+  },
+  "strategy_reports": {
+    "0E": {
+      "target_quota": 25,
+      "accepted_count": 0,
+      "shortfall": 25,
+      "fulfillment_rate": 0.0,
+      "is_feasible": true,
+      "outer_attempts": 300,
+      "inner_attempts": 3000,
+      "failed_rounds": 300,
+      "invalid_pairs_filtered": 0,
+      "failure_events": {
+        "other": 145,
+        "result_size_out_of_range": 155
+      },
+      "shortfall_reason_counts": {
+        "result_size_out_of_range": 25
+      },
+      "primary_shortfall_reason": "result_size_out_of_range",
+      "last_failure_summary": "random filter choices matched >15 rows in 7 attempts (query too broad); stored SQL did not reproduce answer_row_ids in 3 attempts (gold-answer mismatch); constraint error: gold mismatch: gold execution error: (sqlite3.OperationalError) no such column: west_superstore.row\n[SQL: SELECT west_superstore.row id FROM west_superstore\nWHERE west_superstore.profit = 385.3752 AND west_superstore.sales = 786.48]\n(Background on this error at: https://sqlalche.me/e/20/e3q8); gold mismatch: gold execution error: (sqlite3.OperationalError) no such column: west_superstore.row\n[SQL: SELECT west_superstore.row id FROM west_superstore\nWHERE west_superstore.quantity = 2 AND west_superstore.profit = 2.9372]\n(Background on this error at: https://sqlalche.me/e/20/e3q8)"
+    },
+    "0M": {
+      "target_quota": 25,
+      "accepted_count": 0,
+      "shortfall": 25,
+      "fulfillment_rate": 0.0,
+      "is_feasible": true,
+      "outer_attempts": 300,
+      "inner_attempts": 3000,
+      "failed_rounds": 300,
+      "invalid_pairs_filtered": 0,
+      "failure_events": {
+        "other": 300
+      },
+      "shortfall_reason_counts": {
+        "other": 25
+      },
+      "primary_shortfall_reason": "other",
+      "last_failure_summary": "stored SQL did not reproduce answer_row_ids in 10 attempts (gold-answer mismatch); constraint error: gold mismatch: gold execution error: (sqlite3.OperationalError) no such column: west_superstore.row\n[SQL: SELECT west_superstore.row id FROM west_superstore\nWHERE west_superstore.sales = 31.96 AND west_superstore.profit = 1.598 AND west_superstore.discount = 0.0 AND west_superstore.quantity >= 2]\n(Background on this error at: https://sqlalche.me/e/20/e3q8); gold mismatch: gold execution error: (sqlite3.OperationalError) no such column: west_superstore.row\n[SQL: SELECT west_superstore.row id FROM west_superstore\nWHERE west_superstore.discount = 0.0 AND west_superstore.profit = 6.8714 AND west_superstore.region = 'West' AND west_superstore.sales = 14.62]\n(Background on this error at: https://sqlalche.me/e/20/e3q8)"
+    }
+  }
+}

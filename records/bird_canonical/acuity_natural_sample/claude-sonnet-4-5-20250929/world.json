@@ -1,0 +1,124 @@
+{
+  "db_id": "world",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:40:01.102937+00:00",
+  "records": [
+    {
+      "uid": "1ad0557b-c2bd-493d-a6da-7fb78382ecf0",
+      "question": "Which countries that have cities and country languages have an independence year exactly 1947.0, a gross national product exactly 447114.0, a country code2 exactly 'IN', an old gross national product exactly 430572.0, a local name exactly 'Bharat/India', a language exactly 'Kannada', a capital city with an ID exactly 1109.0, and a surface area exactly 3287263.0?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.indepyear = 1947.0 AND country.gnp = 447114.0 AND country.code2 = 'IN' AND country.gnpold = 430572.0 AND country.localname = 'Bharat/India' AND countrylanguage.language = 'Kannada' AND country.capital = 1109.0 AND country.surfacearea = 3287263.0",
+      "pred_sql": "SELECT DISTINCT Country.Code\nFROM Country\nJOIN City ON Country.Code = City.CountryCode\nJOIN CountryLanguage ON Country.Code = CountryLanguage.CountryCode\nWHERE Country.IndepYear = 1947.0\n  AND Country.GNP = 447114.0\n  AND Country.Code2 = 'IN'\n  AND Country.GNPOld = 430572.0\n  AND Country.LocalName = 'Bharat/India'\n  AND CountryLanguage.Language = 'Kannada'\n  AND Country.Capital = 1109.0\n  AND Country.SurfaceArea = 3287263.0",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.22
+    },
+    {
+      "uid": "36b8289a-acc8-4749-b296-924a8d42b3be",
+      "question": "Which countries that have at least one city and at least one countrylanguage record are located in the Southern and Central Asia region and have a population of at least 1013662000?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.region = 'Southern and Central Asia' AND country.population >= 1013662000",
+      "pred_sql": "SELECT DISTINCT Country.Code\nFROM Country\nINNER JOIN City ON Country.Code = City.CountryCode\nINNER JOIN CountryLanguage ON Country.Code = CountryLanguage.CountryCode\nWHERE Country.Region = 'Southern and Central Asia'\nAND Country.Population >= 1013662000",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.97
+    },
+    {
+      "uid": "3870d745-e759-46b5-85ca-9ebf87444d35",
+      "question": "Which countries have a surface area of exactly 83859.0 and a life expectancy of exactly 77.7?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.surfacearea = 83859.0 AND country.lifeexpectancy = 77.7",
+      "pred_sql": "SELECT Code FROM Country WHERE SurfaceArea = 83859.0 AND LifeExpectancy = 77.7",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "4b6717e4-b53c-43b4-a97e-e8f4b2a6ad34",
+      "question": "Which countries in Europe have Vladimir Putin as head of state, are in Eastern Europe with a population of 146934000, a surface area of 17075400.0, the local name Rossija, and include a city district named Kemerovo?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nWHERE country.headofstate = 'Vladimir Putin' AND country.continent = 'Europe' AND country.population = 146934000 AND country.region = 'Eastern Europe' AND country.surfacearea = 17075400.0 AND city.district = 'Kemerovo' AND country.localname = 'Rossija'",
+      "pred_sql": "SELECT DISTINCT Country.Code\nFROM Country\nJOIN City ON Country.Code = City.CountryCode\nWHERE Country.Continent = 'Europe'\n  AND Country.HeadOfState = 'Vladimir Putin'\n  AND Country.Region = 'Eastern Europe'\n  AND Country.Population = 146934000\n  AND Country.SurfaceArea = 17075400.0\n  AND Country.LocalName = 'Rossija'\n  AND City.District = 'Kemerovo'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.59
+    },
+    {
+      "uid": "4faf119d-5d98-4d0f-81da-19be1b2b8717",
+      "question": "Which countries have the local name Burkina Faso and a capital with the exact ID 549.0?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.localname = 'Burkina Faso' AND country.capital = 549.0",
+      "pred_sql": "SELECT Code FROM Country WHERE LocalName = 'Burkina Faso' AND Capital = 549",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "6c0b2bb2-591d-4c3e-8b49-81f175ce1e52",
+      "question": "Which countries in the Oceania continent have a region of Micronesia, a capital with at most 2256, and a GNP exactly equal to 40.7?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.region = 'Micronesia' AND country.capital <= 2256.0 AND country.continent = 'Oceania' AND country.gnp = 40.7",
+      "pred_sql": "SELECT Code\nFROM Country\nWHERE Continent = 'Oceania'\n  AND Region = 'Micronesia'\n  AND Capital <= 2256\n  AND GNP = 40.7",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.06
+    },
+    {
+      "uid": "a10bd074-99d2-4802-817e-7a5f56bc93ab",
+      "question": "Which countries have a population less than or equal to 1013662000, a GNP exactly equal to 447114.0, a local name exactly equal to 'Bharat/India', a surface area exactly equal to 3287263.0, a government form exactly equal to 'Federal Republic', and that also have related city and countrylanguage records?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN city ON country.code = city.countrycode\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.population <= 1013662000 AND country.gnp = 447114.0 AND country.localname = 'Bharat/India' AND country.surfacearea = 3287263.0 AND country.governmentform = 'Federal Republic'",
+      "pred_sql": "SELECT DISTINCT Country.Code\nFROM Country\nINNER JOIN City ON Country.Code = City.CountryCode\nINNER JOIN CountryLanguage ON Country.Code = CountryLanguage.CountryCode\nWHERE Country.Population <= 1013662000\n  AND Country.GNP = 447114.0\n  AND Country.LocalName = 'Bharat/India'\n  AND Country.SurfaceArea = 3287263.0\n  AND Country.GovernmentForm = 'Federal Republic'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.43
+    },
+    {
+      "uid": "aba3f66d-c2e7-4288-a033-c6829ec05017",
+      "question": "Which countries in Africa have the local name Mayotte, code2 YT, a population of exactly 149000, a capital of 2514.0, and a government form of Territorial Collectivity of France?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.localname = 'Mayotte' AND country.code2 = 'YT' AND country.population = 149000 AND country.capital = 2514.0 AND country.continent = 'Africa' AND country.governmentform = 'Territorial Collectivity of France'",
+      "pred_sql": "SELECT Code FROM Country WHERE Continent = 'Africa' AND LocalName = 'Mayotte' AND Code2 = 'YT' AND Population = 149000 AND Capital = 2514 AND GovernmentForm = 'Territorial Collectivity of France'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.12
+    },
+    {
+      "uid": "b00db067-3db9-464c-b8dc-fa173224d42b",
+      "question": "What countries in Eastern Africa have a population of at most 21778000, a capital exactly equal to 3425.0, a GNP old value exactly 6887.0, and a surface area exactly 241038.0?",
+      "gold_sql": "SELECT country.code FROM country\nJOIN countrylanguage ON country.code = countrylanguage.countrycode\nWHERE country.population <= 21778000 AND country.region = 'Eastern Africa' AND country.capital = 3425.0 AND country.gnpold = 6887.0 AND country.surfacearea = 241038.0",
+      "pred_sql": "SELECT Code\nFROM Country\nWHERE Region = 'Eastern Africa'\n  AND Population <= 21778000\n  AND Capital = 3425.0\n  AND GNPOld = 6887.0\n  AND SurfaceArea = 241038.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.05
+    },
+    {
+      "uid": "edf2c758-7643-46a8-a5ed-924d4c863c3f",
+      "question": "What country has the code2 exactly SD and the name exactly Sudan?",
+      "gold_sql": "SELECT country.code FROM country\nWHERE country.code2 = 'SD' AND country.name = 'Sudan'",
+      "pred_sql": "SELECT Code FROM Country WHERE Code2 = 'SD' AND Name = 'Sudan'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.96
+    }
+  ]
+}

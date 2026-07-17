@@ -1,0 +1,124 @@
+{
+  "db_id": "mental_health_survey",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:18:45.028123+00:00",
+  "records": [
+    {
+      "uid": "0696a1c3-0e98-484a-8529-8ef6418dd26b",
+      "question": "Which answers are associated exactly with question 17?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 17",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE Answer.QuestionID = 17",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.79
+    },
+    {
+      "uid": "30a91eb6-b358-403c-82db-daaffdbd42cf",
+      "question": "What answers to question 13 come from users with IDs at least 2577 and surveys numbered at most 2016?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid >= 2577 AND answer.surveyid <= 2016 AND answer.questionid = 13",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE Answer.QuestionID = 13\n  AND Answer.UserID >= 2577\n  AND Answer.SurveyID <= 2016",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    },
+    {
+      "uid": "3469b659-5c72-49b6-b189-de6bf747db6e",
+      "question": "Which answers are associated exactly with question 102?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 102",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE QuestionID = 102",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.75
+    },
+    {
+      "uid": "36fb8a3d-b705-4356-aed1-a19ccee8e88e",
+      "question": "Which answers come from user 374 for survey 2014 or later and question ID at least 103?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 374 AND answer.questionid >= 103 AND answer.surveyid >= 2014",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nJOIN Survey ON Answer.SurveyID = Survey.SurveyID\nWHERE Answer.UserID = 374\n  AND Survey.SurveyID >= 2014\n  AND Answer.QuestionID >= 103",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02
+    },
+    {
+      "uid": "4c24925b-32a0-4d7c-88f5-95bf30a4a544",
+      "question": "Which answers come from user 460 in surveys numbered 2014 or less and for questions numbered at most 8?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 460 AND answer.surveyid <= 2014 AND answer.questionid <= 8",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE UserID = 460\n  AND SurveyID <= 2014\n  AND QuestionID <= 8",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "787a8a94-8841-44f9-a59d-faa155521d07",
+      "question": "Which answers did user 2654 provide in survey 2016 for questions numbered 12 or fewer?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid <= 12 AND answer.surveyid = 2016 AND answer.userid = 2654",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nJOIN Question ON Answer.QuestionID = Question.QuestionID\nWHERE Answer.UserID = 2654\n  AND Answer.SurveyID = 2016\n  AND Question.QuestionID <= 12",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "89664d70-1480-4650-9ee9-2750ec5a0341",
+      "question": "What answers are associated with question ID 95?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 95",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE Answer.QuestionID = 95",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.78
+    },
+    {
+      "uid": "90323958-8be9-4c01-8c9a-20a7eebe0d7a",
+      "question": "Which answers were given by user 1695 for questions numbered 110 or higher?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid >= 110 AND answer.userid = 1695",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE UserID = 1695 AND QuestionID >= 110",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.73
+    },
+    {
+      "uid": "a1e11ca5-220d-4c22-9a00-f0f3f1e1adee",
+      "question": "Which answers are associated exactly with question 18?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 18",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE QuestionID = 18",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.82
+    },
+    {
+      "uid": "b91c08d1-788a-43e5-a30e-558195a3488a",
+      "question": "Which answers from survey 2019 were given by user 3943 for question IDs 23 or higher?",
+      "gold_sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid >= 23 AND answer.surveyid = 2019 AND answer.userid = 3943",
+      "pred_sql": "SELECT Answer.AnswerText\nFROM Answer\nWHERE Answer.SurveyID = 2019\n  AND Answer.UserID = 3943\n  AND Answer.QuestionID >= 23",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.8
+    }
+  ]
+}

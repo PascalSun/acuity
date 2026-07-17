@@ -1,0 +1,1705 @@
+{
+ "db_id": "video_games",
+ "target_table": "genre",
+ "mode": "flexbench",
+ "total_qa_pairs": 37,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1631364886,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/video_games/video_games.sqlite",
+  "generated_at": "2026-07-02T11:18:19.764975+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "genre",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 37,
+  "shortfall_total": 13,
+  "overall_fulfillment_rate": 0.74,
+  "feasible_strategies": [
+   "0E",
+   "1pE"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 25,
+   "1pE": 25
+  },
+  "realized_counts": {
+   "0E": 12,
+   "1pE": 25
+  },
+  "shortfalls": {
+   "0E": 13
+  },
+  "shortfall_reason_counts": {
+   "duplicate_pair": 13
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 25,
+    "accepted_count": 12,
+    "shortfall": 13,
+    "fulfillment_rate": 0.48,
+    "is_feasible": true,
+    "outer_attempts": 2000,
+    "inner_attempts": 2000,
+    "failed_rounds": 1988,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1988
+    },
+    "shortfall_reason_counts": {
+     "duplicate_pair": 13
+    },
+    "primary_shortfall_reason": "duplicate_pair",
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 31,
+    "inner_attempts": 31,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2,
+     "duplicate_pair": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "eb3f36a3-6e22-46a6-af74-0e62e0eb27a1",
+   "question": "Which genres have the exact name Fighting?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Fighting'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Fighting",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Fighting"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Fighting'?"
+  },
+  {
+   "uid": "363c04a6-7734-4599-9c59-7f8e083e01fc",
+   "question": "Which genres are exactly Role-Playing?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Role-Playing'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Role-Playing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Role-Playing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Role-Playing'?"
+  },
+  {
+   "uid": "8bb46823-1e36-416e-a446-f59c7b1f1688",
+   "question": "What genres are exactly classified as Sports?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Sports'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Sports",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Sports"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Sports'?"
+  },
+  {
+   "uid": "afe9e86d-7ecf-4863-a8ed-2cafcd3e3e00",
+   "question": "Which genres have the exact name Adventure?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Adventure'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Adventure",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Adventure"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Adventure'?"
+  },
+  {
+   "uid": "e2db37d7-42b8-4613-b7b9-ea043d63d750",
+   "question": "Which genres are exactly Shooter?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Shooter'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Shooter",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Shooter"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Shooter'?"
+  },
+  {
+   "uid": "5b3d4899-8efd-4290-ba7f-21f45e614e81",
+   "question": "Which genres have the exact name Simulation?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Simulation'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Simulation",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Simulation"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Simulation'?"
+  },
+  {
+   "uid": "63696df7-d62f-4f2b-8be8-8987ce1134e8",
+   "question": "Which genres are exactly classified as Platform?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Platform'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Platform",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Platform"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Platform'?"
+  },
+  {
+   "uid": "2f6142f3-7b96-4305-9710-c7457ff38df6",
+   "question": "What genres are exactly Puzzle?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Puzzle'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Puzzle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Puzzle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Puzzle'?"
+  },
+  {
+   "uid": "b05d1feb-d787-41e3-bf24-3d85c4ffe4c4",
+   "question": "Which genres have the exact name Racing?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Racing'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Racing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Racing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Racing'?"
+  },
+  {
+   "uid": "4919f640-8252-4c97-8f88-4e2b5ebde9bb",
+   "question": "Which genres have the genre_name exactly as Action?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Action'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Action",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Action"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Action'?"
+  },
+  {
+   "uid": "557acfc7-e897-42a6-9899-e73571580178",
+   "question": "Which genres have the genre_name exactly equal to Misc?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Misc'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Misc",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Misc"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Misc'?"
+  },
+  {
+   "uid": "953c11d8-d1fe-44a1-b608-629563d5169e",
+   "question": "What genres are exactly classified as Strategy?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Strategy'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Strategy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Strategy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Strategy'?"
+  },
+  {
+   "uid": "b9061f6d-e03d-487d-a1ba-6a4743379a50",
+   "question": "Which genres are associated with the game named Code Lyoko: Fall of X.A.N.A?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Code Lyoko: Fall of X.A.N.A.'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Code Lyoko: Fall of X.A.N.A.",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Code Lyoko: Fall of X.A.N.A."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Code Lyoko: Fall of X.A.N.A.'?"
+  },
+  {
+   "uid": "8b7bca42-b75b-47e7-98bd-2934a4c0b72f",
+   "question": "Which genres include the game Buzz! The Schools Quiz?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Buzz! The Schools Quiz'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Buzz! The Schools Quiz",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Buzz! The Schools Quiz"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Buzz! The Schools Quiz'?"
+  },
+  {
+   "uid": "e1cefbbe-e54d-4e57-b2e6-6022721dd882",
+   "question": "Which genres is Super Monkey Ball: Banana Blitz classified under where the genre name is Misc?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Super Monkey Ball: Banana Blitz' AND genre.genre_name = 'Misc'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name",
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Super Monkey Ball: Banana Blitz",
+     "column_type": "label"
+    },
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Misc",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Super Monkey Ball: Banana Blitz",
+    "genre.genre_name": "Misc"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Misc', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Super Monkey Ball: Banana Blitz'?"
+  },
+  {
+   "uid": "c2027dc7-164a-48c6-bcd9-4e2d67a5f1b0",
+   "question": "Which genres are categorized as Sports and include the game named Racquet Sports?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Sports' AND game.game_name = 'Racquet Sports'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name",
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Sports",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Racquet Sports",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Sports",
+    "game.game_name": "Racquet Sports"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Sports', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Racquet Sports'?"
+  },
+  {
+   "uid": "9e4cd7d9-6455-4e73-a9f9-41aad2222da5",
+   "question": "Which genres are exactly named Adventure and have associated games?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Adventure'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Adventure",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Adventure"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Adventure', having at least one related game record (linked on genre.id = game.genre_id)?"
+  },
+  {
+   "uid": "44a37164-308d-4f57-90b4-8ef2737c3201",
+   "question": "Which genres labeled as Action include the game named Space Camp?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Space Camp' AND genre.genre_name = 'Action'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name",
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Space Camp",
+     "column_type": "label"
+    },
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Action",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Space Camp",
+    "genre.genre_name": "Action"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Action', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Space Camp'?"
+  },
+  {
+   "uid": "d9ba10b1-695d-4968-82c7-682656f1bf24",
+   "question": "Which genres are exactly named Strategy and have games associated with them?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Strategy'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Strategy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Strategy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Strategy', having at least one related game record (linked on genre.id = game.genre_id)?"
+  },
+  {
+   "uid": "c95ea219-92ec-4ae7-abc7-a5c5f7214275",
+   "question": "Which genres include the game SingStar Queen?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'SingStar Queen'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "SingStar Queen",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "SingStar Queen"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'SingStar Queen'?"
+  },
+  {
+   "uid": "8e7da465-bad8-41c3-b2ad-42d0eedf2880",
+   "question": "What genres are associated with the game exactly named Tenkaichi * Sengoku Lovers?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Tenkaichi * Sengoku Lovers'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Tenkaichi * Sengoku Lovers",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Tenkaichi * Sengoku Lovers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Tenkaichi * Sengoku Lovers'?"
+  },
+  {
+   "uid": "6d21560b-edc4-4407-b79a-9cef10c79a4a",
+   "question": "Which genres are categorized as Puzzle and include the game Ultra Bust-A-Move?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Puzzle' AND game.game_name = 'Ultra Bust-A-Move'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name",
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Puzzle",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Ultra Bust-A-Move",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Puzzle",
+    "game.game_name": "Ultra Bust-A-Move"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Puzzle', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Ultra Bust-A-Move'?"
+  },
+  {
+   "uid": "228517ea-8c84-4153-8c2c-e8a594417bcf",
+   "question": "Which genres named Misc include the game Black Jack vs. Matsudajun?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Misc' AND game.game_name = 'Black Jack vs. Matsudajun'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name",
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Misc",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Black Jack vs. Matsudajun",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Misc",
+    "game.game_name": "Black Jack vs. Matsudajun"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Misc', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Black Jack vs. Matsudajun'?"
+  },
+  {
+   "uid": "9ebfed4c-17a3-4da1-862b-5ab636917d2c",
+   "question": "Which genres have the name Racing and are associated with games?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Racing'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Racing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Racing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Racing', having at least one related game record (linked on genre.id = game.genre_id)?"
+  },
+  {
+   "uid": "532dfbc7-17f5-4a39-abeb-05cf4a9b952b",
+   "question": "Which genres labeled as Sports include the game Power Pro Kun Pocket 11?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Power Pro Kun Pocket 11' AND genre.genre_name = 'Sports'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name",
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Power Pro Kun Pocket 11",
+     "column_type": "label"
+    },
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Sports",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Power Pro Kun Pocket 11",
+    "genre.genre_name": "Sports"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Sports', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Power Pro Kun Pocket 11'?"
+  },
+  {
+   "uid": "fe9bd6fa-7a6d-4fce-b5c3-5765fb9049df",
+   "question": "What genres are associated with the game named Shrek: Ogres & Dronkeys?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Shrek: Ogres & Dronkeys'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Shrek: Ogres & Dronkeys",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Shrek: Ogres & Dronkeys"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Shrek: Ogres & Dronkeys'?"
+  },
+  {
+   "uid": "42432673-3379-4c0a-a824-fa79a195f47a",
+   "question": "Which genres include the game That's So Raven?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'That''s So Raven'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "That's So Raven",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "That's So Raven"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'That'?"
+  },
+  {
+   "uid": "1a9ced43-d016-41e7-8812-e7729f899b87",
+   "question": "Which genres include the game Senran Kagura Burst: Guren no Sh?jo-tachi?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Senran Kagura Burst: Guren no Sh?jo-tachi'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Senran Kagura Burst: Guren no Sh?jo-tachi",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Senran Kagura Burst: Guren no Sh?jo-tachi"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Senran Kagura Burst: Guren no Sh?jo-tachi'?"
+  },
+  {
+   "uid": "864a726b-d5b4-43e1-a648-70fcaa7cf140",
+   "question": "Which genres named Misc include the game Danganronpa 2: Goodbye Despair?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Misc' AND game.game_name = 'Danganronpa 2: Goodbye Despair'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name",
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Misc",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Danganronpa 2: Goodbye Despair",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Misc",
+    "game.game_name": "Danganronpa 2: Goodbye Despair"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Misc', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Danganronpa 2: Goodbye Despair'?"
+  },
+  {
+   "uid": "f2e64256-fa8b-4a5d-a70e-78080cdb713d",
+   "question": "What genres does the game Drome Racers belong to?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Drome Racers'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Drome Racers",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Drome Racers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Drome Racers'?"
+  },
+  {
+   "uid": "d8c10d29-2115-425d-b15e-5007bda3169c",
+   "question": "Which genres are classified as Strategy and include the game named Shattered Union?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Shattered Union' AND genre.genre_name = 'Strategy'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name",
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Shattered Union",
+     "column_type": "label"
+    },
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Strategy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Shattered Union",
+    "genre.genre_name": "Strategy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Strategy', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Shattered Union'?"
+  },
+  {
+   "uid": "42af27d4-195a-46c1-bc5d-540cade0bb7d",
+   "question": "What genres named Misc are associated with the game We Sing Deutsche Hits?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Misc' AND game.game_name = 'We Sing Deutsche Hits'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name",
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Misc",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "We Sing Deutsche Hits",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Misc",
+    "game.game_name": "We Sing Deutsche Hits"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Misc', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'We Sing Deutsche Hits'?"
+  },
+  {
+   "uid": "63d14046-60bb-40b4-a7c6-f9b13cf6ee26",
+   "question": "Which genres labeled Platform include the game Klonoa 2: Dream Champ Tournament?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Klonoa 2: Dream Champ Tournament' AND genre.genre_name = 'Platform'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name",
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Klonoa 2: Dream Champ Tournament",
+     "column_type": "label"
+    },
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Platform",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Klonoa 2: Dream Champ Tournament",
+    "genre.genre_name": "Platform"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Platform', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Klonoa 2: Dream Champ Tournament'?"
+  },
+  {
+   "uid": "6383d654-027d-4cd5-bdb3-fd77bd2c23cb",
+   "question": "Which genres named Misc have games associated with them?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Misc'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Misc",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Misc"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Misc', having at least one related game record (linked on genre.id = game.genre_id)?"
+  },
+  {
+   "uid": "9451533d-bbf9-4b19-8fe2-805fee66d2a2",
+   "question": "What genres are exactly Action where the game name is Dynasty Warriors 4: Xtreme Legends?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Action' AND game.game_name = 'Dynasty Warriors 4: Xtreme Legends'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "genre.genre_name",
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Action",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Dynasty Warriors 4: Xtreme Legends",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "genre.genre_name": "Action",
+    "game.game_name": "Dynasty Warriors 4: Xtreme Legends"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Action', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Dynasty Warriors 4: Xtreme Legends'?"
+  },
+  {
+   "uid": "5e66abcb-f853-4a53-9dff-6060c8b63a72",
+   "question": "Which genres include the game named exactly Sonic the Hedgehog 2 (8-bit)?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Sonic the Hedgehog 2 (8-bit)'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Sonic the Hedgehog 2 (8-bit)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Sonic the Hedgehog 2 (8-bit)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Sonic the Hedgehog 2 (8-bit)'?"
+  },
+  {
+   "uid": "ead2daa1-31df-474c-bd30-d1d7c4a8d1cf",
+   "question": "Which genres have the name Fighting and include the game Gundam Battle Assault?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Gundam Battle Assault' AND genre.genre_name = 'Fighting'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "game",
+    "genre"
+   ],
+   "involved_columns": [
+    "game.game_name",
+    "genre.genre_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "game_name",
+     "operator": "=",
+     "value": "Gundam Battle Assault",
+     "column_type": "label"
+    },
+    {
+     "table": "genre",
+     "column": "genre_name",
+     "operator": "=",
+     "value": "Fighting",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.game_name": "Gundam Battle Assault",
+    "genre.genre_name": "Fighting"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "genre"
+   },
+   "answer_table": "genre",
+   "answer_id_column": "id",
+   "canonical_question": "Which genre entities with genre name equal to 'Fighting', having at least one related game record (linked on genre.id = game.genre_id) with game name equal to 'Gundam Battle Assault'?"
+  }
+ ]
+}

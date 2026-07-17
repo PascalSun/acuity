@@ -1,0 +1,124 @@
+{
+  "db_id": "perpetrator",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:20:37.959124+00:00",
+  "records": [
+    {
+      "uid": "0541ba88-78e9-4329-8bc2-f996f2e75209",
+      "question": "Who named Rob Cunningham weighs at least 215 and caused at least 3 injuries where the location is Kaio?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.name = 'Rob Cunningham' AND people.weight >= 215.0 AND perpetrator.injured >= 3 AND perpetrator.location = 'Kaio'",
+      "pred_sql": "SELECT T1.people_id\nFROM people AS T1\nINNER JOIN perpetrator AS T2\nON T1.people_id = T2.people_id\nWHERE T1.name = 'Rob Cunningham'\n  AND T1.weight >= 215.0\n  AND T2.injured >= 3\n  AND T2.location = 'Kaio'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 45.19
+    },
+    {
+      "uid": "25da3f5a-9ce6-43d2-9e42-e7abd3c832fe",
+      "question": "Which people who weigh at most 190.0 are identified as perpetrators?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.weight <= 190.0",
+      "pred_sql": "SELECT DISTINCT people.people_id\nFROM people\nINNER JOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.weight <= 190.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.74
+    },
+    {
+      "uid": "48aec3a8-b16b-48b6-a0b6-03b207de769d",
+      "question": "Which people weigh exactly 200.0 and were involved as perpetrators in China where the location is Beijing, injured exactly 80, killed at least 23, and the year is at most 1994?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured = 80 AND perpetrator.location = 'Beijing' AND perpetrator.killed >= 23 AND perpetrator.country = 'China' AND perpetrator.year <= 1994.0 AND people.weight = 200.0",
+      "pred_sql": "SELECT DISTINCT p.people_id\nFROM people p\nJOIN perpetrator pe ON p.people_id = pe.people_id\nWHERE p.weight = 200.0\n  AND pe.injured = 80\n  AND pe.location = 'Beijing'\n  AND pe.killed >= 23\n  AND pe.country = 'China'\n  AND pe.year <= 1994.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 61.79
+    },
+    {
+      "uid": "65e69d22-e763-4509-a763-a1e169cbebea",
+      "question": "Who in the people database has the name Gary Goodner and a height that is exactly 6.7?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Gary Goodner' AND people.height = 6.7",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Name = 'Gary Goodner' AND Height = 6.7",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 19.52
+    },
+    {
+      "uid": "689947f2-b2ec-4ae1-8084-50843a79ae31",
+      "question": "Who named John Danks weighs at least 190.0 and is at most 6.6 tall?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.name = 'John Danks' AND people.weight >= 190.0 AND people.height <= 6.6",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Name = 'John Danks' \n  AND Weight >= 190.0 \n  AND Height <= 6.6",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.41
+    },
+    {
+      "uid": "75be85d6-49e7-4061-9d4d-2229a3a9817b",
+      "question": "Who weighs exactly 185.0 pounds?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.weight = 185.0",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Weight = 185.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.88
+    },
+    {
+      "uid": "9443702c-7786-4f95-82c8-f1fbd30042a6",
+      "question": "Who is Rob Cunningham with a weight of exactly 215.0 and a height at most 6.8?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.height <= 6.8 AND people.weight = 215.0 AND people.name = 'Rob Cunningham'",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Height <= 6.8 \n  AND Weight = 215.0 \n  AND Name = 'Rob Cunningham'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 31.3
+    },
+    {
+      "uid": "96eba21f-dcc4-4d8b-b3b6-64cc9d4bc679",
+      "question": "What people named Ron Baxter who weigh at most 205.0 and are at most 6.4 tall were involved as perpetrators in South Korea in 1982, specifically in Uiryeong on 04.26 April 26/27, and killed exactly 56?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.killed = 56 AND perpetrator.country = 'South Korea' AND people.weight <= 205.0 AND people.name = 'Ron Baxter' AND perpetrator.location = 'Uiryeong' AND perpetrator.date = '04.26 April 26/27' AND perpetrator.year = 1982.0 AND people.height <= 6.4",
+      "pred_sql": "SELECT DISTINCT people.People_ID\nFROM people\nINNER JOIN perpetrator\nON people.People_ID = perpetrator.People_ID\nWHERE people.Weight <= 205.0\n  AND people.Name = 'Ron Baxter'\n  AND people.Height <= 6.4\n  AND perpetrator.Killed = 56\n  AND perpetrator.Country = 'South Korea'\n  AND perpetrator.Location = 'Uiryeong'\n  AND perpetrator.Date = '04.26 April 26/27'\n  AND perpetrator.Year = 1982.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 67.88
+    },
+    {
+      "uid": "c307cead-946c-4ba0-b0cc-5eac7ebb3c9a",
+      "question": "Who from South Korea was involved as a perpetrator on 04.26 April 26/27 with at least 37 injured?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured >= 37 AND perpetrator.date = '04.26 April 26/27' AND perpetrator.country = 'South Korea'",
+      "pred_sql": "SELECT people.People_ID\nFROM people\nINNER JOIN perpetrator\nON people.People_ID = perpetrator.People_ID\nWHERE perpetrator.Injured >= 37\n  AND perpetrator.Date = '04.26 April 26/27'\n  AND perpetrator.Country = 'South Korea'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 45.86
+    },
+    {
+      "uid": "c89ce948-04f6-4135-a269-88e91e66ac2e",
+      "question": "Which people have caused at most 80 injured and no more than 23 killed?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured <= 80 AND perpetrator.killed <= 23",
+      "pred_sql": "SELECT DISTINCT people.People_ID\nFROM people\nINNER JOIN perpetrator\nON people.People_ID = perpetrator.People_ID\nWHERE perpetrator.Injured <= 80 AND perpetrator.Killed <= 23",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 48.28
+    }
+  ]
+}

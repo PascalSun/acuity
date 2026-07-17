@@ -1,0 +1,124 @@
+{
+  "db_id": "olympics",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:19:03.699201+00:00",
+  "records": [
+    {
+      "uid": "087c8266-d1ed-4924-92d8-d67913ef17b9",
+      "question": "Which games took place exactly in the year 2002?",
+      "gold_sql": "SELECT games.id FROM games\nWHERE games.games_year = 2002",
+      "pred_sql": "SELECT id FROM games WHERE games_year = 2002",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.7
+    },
+    {
+      "uid": "0937a105-04fe-4699-844b-9e01847db6f0",
+      "question": "Which games named exactly 1976 Summer include competitors aged at most 31?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_city ON games.id = games_city.games_id\nJOIN games_competitor ON games.id = games_competitor.games_id\nWHERE games_competitor.age <= 31 AND games.games_name = '1976 Summer'",
+      "pred_sql": "SELECT DISTINCT games.id\nFROM games\nJOIN games_competitor ON games.id = games_competitor.games_id\nWHERE games.games_name = '1976 Summer'\n  AND games_competitor.age <= 31",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.19
+    },
+    {
+      "uid": "0c5969da-6b47-4016-b637-44e1ab8fe653",
+      "question": "Which games feature Mansour Mohamed when his height is at most 0?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_competitor ON games.id = games_competitor.games_id\nJOIN person ON games_competitor.person_id = person.id\nJOIN person_region ON person.id = person_region.person_id\nWHERE person.height <= 0 AND person.full_name = 'Mansour Mohamed'",
+      "pred_sql": "SELECT games.id\nFROM games\nJOIN games_competitor ON games.id = games_competitor.games_id\nJOIN person ON games_competitor.person_id = person.id\nWHERE person.full_name = 'Mansour Mohamed'\n  AND person.height <= 0",
+      "strategy": "3pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    },
+    {
+      "uid": "555dff6b-6976-4597-8147-006f2e86ac6f",
+      "question": "What Winter games named 1968 Winter took place in 1968 or earlier?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_city ON games.id = games_city.games_id\nWHERE games.season = 'Winter' AND games.games_name = '1968 Winter' AND games.games_year <= 1968",
+      "pred_sql": "SELECT id FROM games WHERE season = 'Winter' AND games_name = '1968 Winter' AND games_year <= 1968",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.77
+    },
+    {
+      "uid": "721345ec-e1f4-4946-83af-5b2e5c00f536",
+      "question": "Which games from the 1988 Summer season feature male competitors aged at most 21 who are no more than 167 cm tall and weigh at most 60 kg?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_competitor ON games.id = games_competitor.games_id\nJOIN person ON games_competitor.person_id = person.id\nWHERE person.height <= 167 AND games.season = 'Summer' AND games.games_name = '1988 Summer' AND person.weight <= 60 AND games_competitor.age <= 21 AND person.gender = 'M'",
+      "pred_sql": "SELECT DISTINCT g.id\nFROM games g\nJOIN games_competitor gc ON gc.games_id = g.id\nJOIN person p ON p.id = gc.person_id\nWHERE g.games_year = 1988\n  AND g.season = 'Summer'\n  AND p.gender = 'M'\n  AND gc.age <= 21\n  AND p.height <= 167\n  AND p.weight <= 60",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "790c7cd7-31c7-4060-ad6c-c1f89888da18",
+      "question": "Which games named 1984 Winter took place in the Winter season?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_city ON games.id = games_city.games_id\nJOIN city ON games_city.city_id = city.id\nWHERE games.season = 'Winter' AND games.games_name = '1984 Winter'",
+      "pred_sql": "SELECT id FROM games WHERE games_name = '1984 Winter' AND season = 'Winter'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.74
+    },
+    {
+      "uid": "966b54cd-132b-4d24-88c1-b36f7950cec4",
+      "question": "Which games are exactly named 1988 Winter, have a Winter season, and took place in 1988 or later?",
+      "gold_sql": "SELECT games.id FROM games\nWHERE games.games_name = '1988 Winter' AND games.season = 'Winter' AND games.games_year >= 1988",
+      "pred_sql": "SELECT id FROM games WHERE games_name = '1988 Winter' AND season = 'Winter' AND games_year >= 1988",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.74
+    },
+    {
+      "uid": "b2dbb80d-84ad-49e3-ae1c-af63bbc4d268",
+      "question": "What games named 1984 Winter took place in Sarajevo during the Winter season?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_city ON games.id = games_city.games_id\nJOIN city ON games_city.city_id = city.id\nWHERE games.season = 'Winter' AND city.city_name = 'Sarajevo' AND games.games_name = '1984 Winter'",
+      "pred_sql": "SELECT games.id\nFROM games\nJOIN games_city ON games.id = games_city.games_id\nJOIN city ON games_city.city_id = city.id\nWHERE games.games_name = '1984 Winter'\n  AND games.season = 'Winter'\n  AND city.city_name = 'Sarajevo'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "bfe9a3cc-5ed2-43e2-9ea8-45f04f1904d5",
+      "question": "What games named 1988 Summer took place in the Summer season and included competitors who were exactly 32 years old?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_city ON games.id = games_city.games_id\nJOIN games_competitor ON games.id = games_competitor.games_id\nWHERE games_competitor.age = 32 AND games.season = 'Summer' AND games.games_name = '1988 Summer'",
+      "pred_sql": "SELECT DISTINCT games.id\nFROM games\nJOIN games_competitor ON games.id = games_competitor.games_id\nWHERE games.games_name = '1988 Summer'\n  AND games.season = 'Summer'\n  AND games_competitor.age = 32",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.89
+    },
+    {
+      "uid": "ce68c1cc-e836-42ea-8e1c-9acc4f80231f",
+      "question": "What games took place in cities up to and including the year 1932?",
+      "gold_sql": "SELECT games.id FROM games\nJOIN games_city ON games.id = games_city.games_id\nWHERE games.games_year <= 1932",
+      "pred_sql": "SELECT games.id\nFROM games\nJOIN games_city ON games.id = games_city.games_id\nJOIN city ON games_city.city_id = city.id\nWHERE games.games_year <= 1932",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    }
+  ]
+}

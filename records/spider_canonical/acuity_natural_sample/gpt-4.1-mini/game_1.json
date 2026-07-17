@@ -1,0 +1,133 @@
+{
+  "db_id": "game_1",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T04:46:57.580832+00:00",
+  "records": [
+    {
+      "uid": "1dae867b-b9ea-4cc8-ac8a-7a294291f63f",
+      "question": "What female students aged 18 or older with the last name Smith have an advisor number of at least 1121 and play games for exactly 1 hour?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN plays_games ON student.stuid = plays_games.stuid\nWHERE student.advisor >= 1121 AND student.sex = 'F' AND plays_games.hours_played = 1 AND student.age >= 18 AND student.lname = 'Smith'",
+      "pred_sql": "SELECT DISTINCT Student.StuID\nFROM Student\nJOIN Plays_Games ON Student.StuID = Plays_Games.StuID\nWHERE Student.Sex = 'F'\n  AND Student.Age >= 18\n  AND Student.LName = 'Smith'\n  AND Student.Advisor >= 1121\n  AND Plays_Games.Hours_Played = 1",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24,
+      "correct_multiset": true
+    },
+    {
+      "uid": "20bec2e0-0348-4f60-a7af-1a517b64c8ab",
+      "question": "Which female students named Jandy Nelson, aged 20 with advisor 9172, living in BAL, majoring in 600 or fewer, have played games for at least 50 hours?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN plays_games ON student.stuid = plays_games.stuid\nWHERE student.city_code = 'BAL' AND student.fname = 'Jandy' AND student.sex = 'F' AND student.major <= 600 AND student.age = 20 AND plays_games.hours_played >= 50 AND student.advisor = 9172 AND student.lname = 'Nelson'",
+      "pred_sql": "SELECT DISTINCT Student.StuID\nFROM Student\nJOIN Plays_Games ON Student.StuID = Plays_Games.StuID\nWHERE Student.Sex = 'F'\n  AND Student.Fname = 'Jandy'\n  AND Student.LName = 'Nelson'\n  AND Student.Age = 20\n  AND Student.Advisor = 9172\n  AND Student.city_code = 'BAL'\n  AND Student.Major <= 600\nGROUP BY Student.StuID\nHAVING SUM(Plays_Games.Hours_Played) >= 50",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61,
+      "correct_multiset": false
+    },
+    {
+      "uid": "65637274-75bf-4fe1-a3bc-6a3f624bb897",
+      "question": "Which students majoring exactly in 600 play Lacrosse?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN sportsinfo ON student.stuid = sportsinfo.stuid\nWHERE student.major = 600 AND sportsinfo.sportname = 'Lacrosse'",
+      "pred_sql": "SELECT Student.StuID\nFROM Student\nJOIN SportsInfo ON Student.StuID = SportsInfo.StuID\nWHERE Student.Major = 600 AND SportsInfo.SportName = 'Lacrosse'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99,
+      "correct_multiset": true
+    },
+    {
+      "uid": "7d940968-a67f-4c9f-8894-b98b4a8a95ce",
+      "question": "Which male students named Derek Lee have a major of 600 and an advisor number at most 2192?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.lname = 'Lee' AND student.advisor <= 2192 AND student.fname = 'Derek' AND student.major = 600 AND student.sex = 'M'",
+      "pred_sql": "SELECT StuID FROM Student WHERE Fname = 'Derek' AND LName = 'Lee' AND Sex = 'M' AND Major = 600 AND Advisor <= 2192",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99,
+      "correct_multiset": true
+    },
+    {
+      "uid": "9407906f-7141-46b6-b6ed-0244b3748162",
+      "question": "Who are the students named Linda Smith majoring in 600 or more, playing Athletics without a scholarship, who play at least 35 hours and spend at most 2 hours per week on that sport?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN plays_games ON student.stuid = plays_games.stuid\nJOIN sportsinfo ON student.stuid = sportsinfo.stuid\nWHERE plays_games.hours_played >= 35 AND sportsinfo.onscholarship = 'N' AND sportsinfo.sportname = 'Athletics' AND sportsinfo.hoursperweek <= 2 AND student.lname = 'Smith' AND student.fname = 'Linda' AND student.major >= 600",
+      "pred_sql": "SELECT Student.StuID\nFROM Student\nJOIN SportsInfo ON Student.StuID = SportsInfo.StuID\nJOIN Plays_Games ON Student.StuID = Plays_Games.StuID\nWHERE Student.Fname = 'Linda'\n  AND Student.LName = 'Smith'\n  AND Student.Major >= 600\n  AND SportsInfo.SportName = 'Athletics'\n  AND SportsInfo.OnScholarship = 'N'\n  AND Plays_Games.Hours_Played >= 35\n  AND SportsInfo.HoursPerWeek <= 2",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54,
+      "correct_multiset": true
+    },
+    {
+      "uid": "98acb98c-6532-4ad6-9420-dda7e3f617fa",
+      "question": "Which female students with the last name Smith, aged at least 18, advised by 1121, have played games for exactly 35 hours?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN plays_games ON student.stuid = plays_games.stuid\nJOIN sportsinfo ON student.stuid = sportsinfo.stuid\nWHERE student.sex = 'F' AND student.advisor = 1121 AND plays_games.hours_played = 35 AND student.lname = 'Smith' AND student.age >= 18",
+      "pred_sql": "SELECT Student.StuID\nFROM Student\nJOIN Plays_Games ON Student.StuID = Plays_Games.StuID\nWHERE Student.Sex = 'F'\n  AND Student.LName = 'Smith'\n  AND Student.Age >= 18\n  AND Student.Advisor = 1121\n  AND Plays_Games.Hours_Played = 35",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13,
+      "correct_multiset": true
+    },
+    {
+      "uid": "9bc9ce08-c799-4951-a0a9-1a3db034a361",
+      "question": "Which students have played no more than 15 hours of games but have participated in at least 5 games overall?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN plays_games ON student.stuid = plays_games.stuid\nJOIN sportsinfo ON student.stuid = sportsinfo.stuid\nWHERE plays_games.hours_played <= 15 AND sportsinfo.gamesplayed >= 5",
+      "pred_sql": "SELECT s.StuID\nFROM Student s\nLEFT JOIN Plays_Games pg ON s.StuID = pg.StuID\nGROUP BY s.StuID\nHAVING COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) > 0\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND COALESCE(SUM(pg.Hours_Played), 0) <= 15\n   AND",
+      "strategy": "2iE",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 31.18
+    },
+    {
+      "uid": "a9ca4713-dcdf-4751-b6e6-034a2f92f17d",
+      "question": "Which students from the city where the code is BAL play video games?",
+      "gold_sql": "SELECT student.stuid FROM student\nJOIN plays_games ON student.stuid = plays_games.stuid\nJOIN video_games ON plays_games.gameid = video_games.gameid\nWHERE student.city_code = 'BAL'",
+      "pred_sql": "SELECT DISTINCT Student.StuID\nFROM Student\nJOIN Plays_Games ON Student.StuID = Plays_Games.StuID\nWHERE Student.city_code = 'BAL'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.9,
+      "correct_multiset": false
+    },
+    {
+      "uid": "b7bfe59c-2d4d-4222-b239-d2bf32d06fc5",
+      "question": "Which male students named Michael Leighton, majoring in 600, living in PIT, have an advisor number of at least 1121?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.city_code = 'PIT' AND student.sex = 'M' AND student.advisor >= 1121 AND student.major = 600 AND student.fname = 'Michael' AND student.lname = 'Leighton'",
+      "pred_sql": "SELECT StuID FROM Student WHERE LName = 'Leighton' AND Fname = 'Michael' AND Sex = 'M' AND Major = 600 AND city_code = 'PIT' AND Advisor >= 1121",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02,
+      "correct_multiset": true
+    },
+    {
+      "uid": "cb65eb04-ef93-4006-be3d-e5285fcc4329",
+      "question": "Who are the students whose advisor is exactly 7723?",
+      "gold_sql": "SELECT student.stuid FROM student\nWHERE student.advisor = 7723",
+      "pred_sql": "SELECT StuID FROM Student WHERE Advisor = 7723",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.88,
+      "correct_multiset": true
+    }
+  ]
+}

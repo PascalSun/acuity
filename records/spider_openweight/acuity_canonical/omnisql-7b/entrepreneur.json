@@ -1,0 +1,124 @@
+{
+  "db_id": "entrepreneur",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:43:34.931760+00:00",
+  "records": [
+    {
+      "uid": "0ffab475-d9ac-4576-90cb-3f4d1fc654bc",
+      "question": "Which people named Goran Fiorentini are entrepreneurs and have a height of at most 1.78 meters?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE people.name = 'Goran Fiorentini' AND people.height <= 1.78",
+      "pred_sql": "SELECT T1.People_ID\nFROM people AS T1\nINNER JOIN entrepreneur AS T2\nON T1.People_ID = T2.People_ID\nWHERE T1.Name = 'Goran Fiorentini'\n  AND T1.Height <= 1.78",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.07
+    },
+    {
+      "uid": "2b6e7f7e-eb1d-494f-a873-cb79ed282048",
+      "question": "What people have the name Maurizio Felugo?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Maurizio Felugo'",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Name = 'Maurizio Felugo'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 17.84
+    },
+    {
+      "uid": "3beb13fd-32fb-454c-9ae2-15ad341bb829",
+      "question": "Who weighs at most 75.0?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.weight <= 75.0",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Weight <= 75.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.24
+    },
+    {
+      "uid": "47092b21-d6e3-4846-aba7-58dcd785dd63",
+      "question": "Which people named Goran Fiorentini, weighing exactly 89.0, born on or before 1981-11-21, are entrepreneurs at Mycorrhizal Systems?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE people.weight = 89.0 AND people.name = 'Goran Fiorentini' AND entrepreneur.company = 'Mycorrhizal Systems' AND people.date_of_birth <= '1981-11-21'",
+      "pred_sql": "SELECT DISTINCT people.People_ID\nFROM people\nINNER JOIN entrepreneur\nON people.People_ID = entrepreneur.People_ID\nWHERE people.Weight = 89.0\n  AND people.Name = 'Goran Fiorentini'\n  AND people.Date_of_Birth <= '1981-11-21'\n  AND entrepreneur.Company = 'Mycorrhizal Systems'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 59.05
+    },
+    {
+      "uid": "5a684129-c616-4077-871c-fe17103b8905",
+      "question": "What people named Roberto Calcaterra, born on 1972-02-06, who are at least 1.75 meters tall and weigh at least 67.0, requested exactly 50000.0 from entrepreneur company IV Cam where the investor is Peter Jones?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE entrepreneur.company = 'IV Cam' AND people.weight >= 67.0 AND people.name = 'Roberto Calcaterra' AND entrepreneur.investor = 'Peter Jones' AND people.date_of_birth = '1972-02-06' AND people.height >= 1.75 AND entrepreneur.money_requested = 50000.0",
+      "pred_sql": "SELECT DISTINCT p.People_ID\nFROM people p\nINNER JOIN entrepreneur e ON p.People_ID = e.People_ID\nWHERE p.Weight >= 67.0\n  AND p.Name = 'Roberto Calcaterra'\n  AND p.Date_of_Birth = '1972-02-06'\n  AND p.Height >= 1.75\n  AND e.Company = 'IV Cam'\n  AND e.Investor = 'Peter Jones'\n  AND e.Money_Requested = 50000.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 65.8
+    },
+    {
+      "uid": "99156bc9-2be7-4f3e-aed2-597e071844ef",
+      "question": "Which people named Francesco Postiglione, born exactly on 1972-04-29, weighing 80.0 and at most 1.9 meters tall, have requested at least 150000.0 from the company Umbrolly where the investor is Duncan Bannatyne?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE entrepreneur.money_requested >= 150000.0 AND people.date_of_birth = '1972-04-29' AND people.height <= 1.9 AND entrepreneur.investor = 'Duncan Bannatyne' AND people.name = 'Francesco Postiglione' AND people.weight = 80.0 AND entrepreneur.company = 'Umbrolly'",
+      "pred_sql": "SELECT DISTINCT P.People_ID\nFROM people AS P\nINNER JOIN entrepreneur AS E\nON P.People_ID = E.People_ID\nWHERE P.Date_of_Birth = '1972-04-29'\n  AND P.Height <= 1.9\n  AND P.Name = 'Francesco Postiglione'\n  AND P.Weight = 80.0\n  AND E.Money_Requested >= 150000.0\n  AND E.Investor = 'Duncan Bannatyne'\n  AND E.Company = 'Umbrolly'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 51.88
+    },
+    {
+      "uid": "a4a7ec68-2093-493c-a333-589ebb769d48",
+      "question": "What people named Francesco Postiglione were born on or after 1972-04-29 and whose weight is exactly 80.0 with a height of exactly 1.9?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.date_of_birth >= '1972-04-29' AND people.weight = 80.0 AND people.height = 1.9 AND people.name = 'Francesco Postiglione'",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Date_of_Birth >= '1972-04-29' \n  AND Weight = 80.0 \n  AND Height = 1.9 \n  AND Name = 'Francesco Postiglione'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.19
+    },
+    {
+      "uid": "be416528-65c0-4f73-8962-793981c3364f",
+      "question": "Which people are entrepreneurs at Le Beanock where the investor is exactly Rachel Elnaugh?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE entrepreneur.investor = 'Rachel Elnaugh' AND entrepreneur.company = 'Le Beanock'",
+      "pred_sql": "people.People_ID = entrepreneur.People_ID",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 40.58
+    },
+    {
+      "uid": "d2a272cd-3d18-4106-b199-0bec0c241ce4",
+      "question": "Who named Alberto Angelini was born on or before 1974-09-28 and has a height at most 1.82 meters and weighs no more than 58.0 kilograms?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.weight <= 58.0 AND people.name = 'Alberto Angelini' AND people.date_of_birth <= '1974-09-28' AND people.height <= 1.82",
+      "pred_sql": "SELECT People_ID \nFROM people \nWHERE Weight <= 58.0 \n  AND Name = 'Alberto Angelini' \n  AND Date_of_Birth <= '1974-09-28' \n  AND Height <= 1.82",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 23.9
+    },
+    {
+      "uid": "db043bb5-b2cd-412c-8ae3-4518db714af5",
+      "question": "Which people named Roberto Calcaterra are at most 1.75 meters tall and work for the company IV Cam?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE people.name = 'Roberto Calcaterra' AND people.height <= 1.75 AND entrepreneur.company = 'IV Cam'",
+      "pred_sql": "SELECT DISTINCT people.people_id\nFROM people\nINNER JOIN entrepreneur ON people.people_id = entrepreneur.people_id\nWHERE people.name = 'Roberto Calcaterra'\n  AND people.height <= 1.75\n  AND entrepreneur.company = 'IV Cam'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 50.73
+    }
+  ]
+}

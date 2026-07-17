@@ -1,0 +1,124 @@
+{
+  "db_id": "student_loan",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:19:42.821667+00:00",
+  "records": [
+    {
+      "uid": "0394a446-0495-435e-a9ea-bfeee35a4a3d",
+      "question": "Who has been enrolled at ucb for at least 6 months?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month >= 6 AND enrolled.school = 'ucb'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'ucb' AND enrolled.month >= 6",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.85
+    },
+    {
+      "uid": "03e8955e-7d23-4b40-85e9-84a5af19c420",
+      "question": "Who enrolled at occ for at most 1 month?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month <= 1 AND enrolled.school = 'occ'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'occ' AND enrolled.month <= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.84
+    },
+    {
+      "uid": "8bf2e129-952e-448b-bda5-2d481a9b50cb",
+      "question": "Who has been enrolled at the school occ for at least 15 months?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'occ' AND enrolled.month >= 15",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'occ' AND enrolled.month >= 15",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    },
+    {
+      "uid": "9629ba2a-b90a-432f-88d2-525b074d7277",
+      "question": "Which people were enrolled at uci during the month of 8?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'uci' AND enrolled.month = 8",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'uci' AND enrolled.month = 8",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.82
+    },
+    {
+      "uid": "97ae1a7d-2618-4fd2-80bf-963830be160d",
+      "question": "Which people were enrolled at the school occ during month 1?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 1 AND enrolled.school = 'occ'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'occ' AND enrolled.month = 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.77
+    },
+    {
+      "uid": "9a595963-c932-45d8-8fa5-61eaa527c292",
+      "question": "Who enrolled at UCLA exactly in month 7?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 7 AND enrolled.school = 'ucla'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'UCLA' AND enrolled.month = 7",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.79
+    },
+    {
+      "uid": "b34747d1-b77c-4d44-b120-8d748801cfc5",
+      "question": "Which people were enrolled at the school where the month is exactly 6 and the school is ucb?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 6 AND enrolled.school = 'ucb'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'ucb' AND enrolled.month = 6",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "b5095c3a-626c-4507-806a-f1ca1d591e19",
+      "question": "Which people enrolled at school smc in month 14?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 14 AND enrolled.school = 'smc'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'smc' AND enrolled.month = 14",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.79
+    },
+    {
+      "uid": "b7daf294-2974-4fd6-874d-d581f8339765",
+      "question": "Who enrolled in the school where the school is occ during month 6?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 6 AND enrolled.school = 'occ'",
+      "pred_sql": "SELECT person.name\nFROM enrolled\nJOIN person ON enrolled.name = person.name\nWHERE enrolled.school = 'occ' AND enrolled.month = 6",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    },
+    {
+      "uid": "ffec2533-7eb1-4e6f-a4d1-eee81c9f24d3",
+      "question": "Who enrolled at uci exactly in month 2?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 2 AND enrolled.school = 'uci'",
+      "pred_sql": "SELECT person.name\nFROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'uci' AND enrolled.month = 2\n  AND NOT EXISTS (\n    SELECT 1 FROM enrolled e2\n    WHERE e2.name = person.name AND e2.school = 'uci' AND e2.month <> 2\n  )",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    }
+  ]
+}

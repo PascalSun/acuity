@@ -1,0 +1,124 @@
+{
+  "db_id": "cs_semester",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:13:17.398378+00:00",
+  "records": [
+    {
+      "uid": "16f0669a-6303-4025-99e9-38f68ee5408d",
+      "question": "Which students named Robenia have an email of rfourmano@hku.hk, are type TPG, have a GPA of 3.5, and an intelligence level of 2?",
+      "gold_sql": "SELECT student.student_id FROM student\nWHERE student.email = 'rfourmano@hku.hk' AND student.type = 'TPG' AND student.gpa = 3.5 AND student.f_name = 'Robenia' AND student.intelligence = 2",
+      "pred_sql": "SELECT student.student_id FROM student WHERE email = 'rfourmano@hku.hk' AND type = 'TPG' AND gpa = 3.5 AND f_name = 'Robenia' AND intelligence = 2",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "252f86aa-cea6-4948-9f7a-a9dbf3219873",
+      "question": "Which students have the type exactly RPG and an email exactly ospratlingf@outlook.com?",
+      "gold_sql": "SELECT student.student_id FROM student\nWHERE student.type = 'RPG' AND student.email = 'ospratlingf@outlook.com'",
+      "pred_sql": "SELECT student.student_id FROM student WHERE student.type = 'RPG' AND student.email = 'ospratlingf@outlook.com'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.9
+    },
+    {
+      "uid": "28139d84-6d12-484b-941a-8ca16cb8751e",
+      "question": "Which students are enrolled in the course where the name is Advanced Database Systems?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN registration ON student.student_id = registration.student_id\nJOIN course ON registration.course_id = course.course_id\nWHERE course.name = 'Advanced Database Systems'",
+      "pred_sql": "SELECT DISTINCT student.student_id\nFROM student\nINNER JOIN registration ON student.student_id = registration.student_id\nINNER JOIN course ON registration.course_id = course.course_id\nWHERE course.name = 'Advanced Database Systems'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "3ae72813-a837-434a-a7be-516830f3a946",
+      "question": "Which students named Oliy with phone number (279) 1216435 and a GPA of 2.6 have a RA with a salary of med and capability of at least 3?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN ra ON student.student_id = ra.student_id\nWHERE student.phone_number = '(279) 1216435' AND student.gpa = 2.6 AND student.f_name = 'Oliy' AND ra.salary = 'med' AND ra.capability >= 3",
+      "pred_sql": "SELECT DISTINCT student.student_id\nFROM student\nINNER JOIN RA ON student.student_id = RA.student_id\nWHERE student.phone_number = '(279) 1216435'\n  AND student.gpa = 2.6\n  AND student.f_name = 'Oliy'\n  AND RA.salary = 'med'\n  AND RA.capability >= 3",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "4e2335b9-d944-4e18-8266-9af18c0d1419",
+      "question": "What students named Willie Rechert, with the email wrechert5@columbia.edu, phone number (781) 2506820, and a GPA of exactly 2.9 have a ra capability of at least 2 and where the ra salary is free?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN ra ON student.student_id = ra.student_id\nWHERE ra.capability >= 2 AND student.phone_number = '(781) 2506820' AND student.gpa = 2.9 AND student.f_name = 'Willie' AND student.l_name = 'Rechert' AND student.email = 'wrechert5@columbia.edu' AND ra.salary = 'free'",
+      "pred_sql": "SELECT student.student_id\nFROM student\nWHERE student.phone_number = '(781) 2506820'\n  AND student.gpa = 2.9\n  AND student.f_name = 'Willie'\n  AND student.l_name = 'Rechert'\n  AND student.email = 'wrechert5@columbia.edu'\n  AND EXISTS (\n    SELECT 1\n    FROM RA\n    WHERE RA.student_id = student.student_id\n      AND RA.capability >= 2\n      AND RA.salary = 'free'\n  )",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.71
+    },
+    {
+      "uid": "6451cf19-aaa1-4907-b355-6ee7f5c48198",
+      "question": "Which students named Grover Rosell have a salary of med and a registration SAT score of at least 1?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN ra ON student.student_id = ra.student_id\nJOIN registration ON student.student_id = registration.student_id\nWHERE registration.sat >= 1 AND student.l_name = 'Rosell' AND student.f_name = 'Grover' AND ra.salary = 'med'",
+      "pred_sql": "SELECT DISTINCT student.student_id\nFROM student\nWHERE student.l_name = 'Rosell'\n  AND student.f_name = 'Grover'\n  AND EXISTS (\n    SELECT 1\n    FROM RA\n    WHERE RA.student_id = student.student_id\n      AND RA.salary = 'med'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM registration\n    WHERE registration.student_id = student.student_id\n      AND registration.sat >= 1\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.15
+    },
+    {
+      "uid": "7fff7e62-495d-4eb0-96af-9515378d1529",
+      "question": "Which students have a first name exactly equal to 'Ingar', have at least one related ra record with capability at least 4, and have at least one related registration record?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN ra ON student.student_id = ra.student_id\nJOIN registration ON student.student_id = registration.student_id\nWHERE ra.capability >= 4 AND student.f_name = 'Ingar'",
+      "pred_sql": "SELECT DISTINCT student.student_id\nFROM student\nWHERE student.f_name = 'Ingar'\nAND EXISTS (\n    SELECT 1\n    FROM RA\n    WHERE RA.student_id = student.student_id\n    AND RA.capability >= 4\n)\nAND EXISTS (\n    SELECT 1\n    FROM registration\n    WHERE registration.student_id = student.student_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "81084cde-4efd-43e6-8587-01b81fdb8bb6",
+      "question": "What students named Flor Benkhe have a phone number of (308) 9646371, are type RPG, have a GPA of 3.1, an email of fbenkhee@hku.hk, and intelligence at most 3?",
+      "gold_sql": "SELECT student.student_id FROM student\nWHERE student.l_name = 'Benkhe' AND student.phone_number = '(308) 9646371' AND student.type = 'RPG' AND student.intelligence <= 3 AND student.f_name = 'Flor' AND student.gpa = 3.1 AND student.email = 'fbenkhee@hku.hk'",
+      "pred_sql": "SELECT student.student_id\nFROM student\nWHERE student.l_name = 'Benkhe'\n  AND student.phone_number = '(308) 9646371'\n  AND student.type = 'RPG'\n  AND student.intelligence <= 3\n  AND student.f_name = 'Flor'\n  AND student.gpa = 3.1\n  AND student.email = 'fbenkhee@hku.hk'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "8d6b1a8c-8a93-45c7-a2ac-e1310cc05180",
+      "question": "What students with the email hczaja8@hku.hk and last name Czaja are type TPG, have intelligence at most 2, receive a high RA salary, and earned an A grade with a SAT score of 5 in their registration?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN ra ON student.student_id = ra.student_id\nJOIN registration ON student.student_id = registration.student_id\nWHERE student.email = 'hczaja8@hku.hk' AND student.type = 'TPG' AND student.intelligence <= 2 AND student.l_name = 'Czaja' AND ra.salary = 'high' AND registration.grade = 'A' AND registration.sat = 5",
+      "pred_sql": "SELECT DISTINCT student.student_id\nFROM student\nWHERE student.email = 'hczaja8@hku.hk'\n  AND student.type = 'TPG'\n  AND student.intelligence <= 2\n  AND student.l_name = 'Czaja'\n  AND EXISTS (\n    SELECT 1\n    FROM RA\n    WHERE RA.student_id = student.student_id\n      AND RA.salary = 'high'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM registration\n    WHERE registration.student_id = student.student_id\n      AND registration.grade = 'A'\n      AND registration.sat = 5\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.38
+    },
+    {
+      "uid": "c28f7b05-e51a-45a8-ae26-422636c92e4f",
+      "question": "Which students have the email prawlesa@cs.hku.hk and an intelligence level exactly equal to 5?",
+      "gold_sql": "SELECT student.student_id FROM student\nJOIN registration ON student.student_id = registration.student_id\nWHERE student.email = 'prawlesa@cs.hku.hk' AND student.intelligence = 5",
+      "pred_sql": "SELECT DISTINCT student.student_id\nFROM student\nINNER JOIN registration ON student.student_id = registration.student_id\nWHERE student.email = 'prawlesa@cs.hku.hk' AND student.intelligence = 5",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    }
+  ]
+}

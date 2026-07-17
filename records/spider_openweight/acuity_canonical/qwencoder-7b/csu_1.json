@@ -1,0 +1,124 @@
+{
+  "db_id": "csu_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:42:07.065034+00:00",
+  "records": [
+    {
+      "uid": "07db6ad9-0e23-4948-b743-a474102dc52d",
+      "question": "Which campuses located in Turlock where the county is Stanislaus were established in 1957 and had exactly 395 undergraduate and at most 56 graduate enrollments in 2004, with campus fees of at least 1915 in or before 1996?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE discipline_enrollments.graduate <= 56 AND campuses.location = 'Turlock' AND discipline_enrollments.undergraduate = 395 AND discipline_enrollments.year = 2004 AND campuses.year = 1957 AND csu_fees.year <= 1996 AND campuses.county = 'Stanislaus' AND csu_fees.campusfee >= 1915",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE campuses.location = 'Turlock'\n  AND campuses.year = 1957\n  AND campuses.county = 'Stanislaus'\n  AND csu_fees.year <= 1996\n  AND csu_fees.campusfee >= 1915\n  AND discipline_enrollments.year = 2004\n  AND discipline_enrollments.undergraduate = 395\n  AND discipline_enrollments.graduate <= 56",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 10.81
+    },
+    {
+      "uid": "10ba6b7d-b0fa-400f-b590-391c4321c92c",
+      "question": "Which campuses exactly named California State University-Channel Islands are located in Camarillo?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nWHERE campuses.campus = 'California State University-Channel Islands' AND campuses.location = 'Camarillo'",
+      "pred_sql": "SELECT campuses.id FROM campuses WHERE campuses.campus = 'California State University-Channel Islands' AND campuses.location = 'Camarillo'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.94
+    },
+    {
+      "uid": "32c3836d-dfd7-4a93-964b-7b9ccd0539f8",
+      "question": "Which campuses have related csu_fees, degrees, and enrollments records, and have enrollments with a total enrollment in the academic year exactly equal to 704?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE enrollments.totalenrollment_ay = 704",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE enrollments.TotalEnrollment_AY = 704",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.26
+    },
+    {
+      "uid": "6dfef635-41e5-48a2-92bd-b33598cc7aef",
+      "question": "What campuses had exactly 4228 degrees awarded and enrollments with an FTE of 6234 in the year 1959 or earlier?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE enrollments.year <= 1959 AND enrollments.fte_ay = 6234 AND degrees.degrees = 4228",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE degrees.degrees = 4228\n  AND enrollments.year <= 1959\n  AND enrollments.FTE_AY = 6234\nGROUP BY campuses.id\nHAVING COUNT(degrees.campus) > 0\n  AND COUNT(enrollments.campus) > 0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.25
+    },
+    {
+      "uid": "6fa4a9c0-9da1-40f9-83d3-e356ceecc5fa",
+      "question": "Which campuses named California State University-Dominguez Hills, established in 1960 in Carson where the county is Los Angeles, had discipline enrollment in discipline 11 exactly in 2004?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE campuses.campus = 'California State University-Dominguez Hills' AND campuses.year = 1960 AND campuses.county = 'Los Angeles' AND campuses.location = 'Carson' AND discipline_enrollments.year = 2004 AND discipline_enrollments.discipline = 11",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE campuses.campus = 'California State University-Dominguez Hills'\n  AND campuses.year = 1960\n  AND campuses.county = 'Los Angeles'\n  AND campuses.location = 'Carson'\n  AND discipline_enrollments.year = 2004\n  AND discipline_enrollments.discipline = 11",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.07
+    },
+    {
+      "uid": "77290262-6d83-464d-b08a-581861f010cd",
+      "question": "What campuses are located in Los Angeles county that have discipline enrollments?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE campuses.county = 'Los Angeles'",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN discipline_enrollments ON campuses.id = discipline_enrollments.campus\nWHERE campuses.County = 'Los Angeles'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.25
+    },
+    {
+      "uid": "c314ac96-0cd6-4f7d-b6b4-fe07d61769e8",
+      "question": "Which campuses named California State University-Fullerton are located in Orange county and were established in 1957 or later?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nWHERE campuses.county = 'Orange' AND campuses.year >= 1957 AND campuses.campus = 'California State University-Fullerton'",
+      "pred_sql": "SELECT campuses.id \nFROM campuses \nJOIN csu_fees ON campuses.id = csu_fees.campus \nWHERE campuses.county = 'Orange' \n  AND campuses.year >= 1957 \n  AND campuses.campus = 'California State University-Fullerton'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.84
+    },
+    {
+      "uid": "dccd4861-7950-4d0a-bfc3-77c8921b2ede",
+      "question": "Which campuses had enrollments exactly in 1946 and CSU fees from 1996 or later?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE csu_fees.year >= 1996 AND enrollments.year = 1946",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus AND csu_fees.year >= 1996\nJOIN enrollments ON campuses.id = enrollments.campus AND enrollments.year = 1946",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.83
+    },
+    {
+      "uid": "e45c035d-9cd9-46d0-a245-1c2692ec532a",
+      "question": "Which campuses located in San Luis Obispo have a year of 1901, total enrollment of at least 16394 but full-time equivalent enrollment of at most 15148, at least 3411 degrees awarded, and fees from the year 1996?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus\nJOIN degrees ON campuses.id = degrees.campus\nJOIN enrollments ON campuses.id = enrollments.campus\nWHERE campuses.year = 1901 AND enrollments.totalenrollment_ay >= 16394 AND degrees.degrees >= 3411 AND enrollments.fte_ay <= 15148 AND campuses.location = 'San Luis Obispo' AND csu_fees.year = 1996",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN csu_fees ON campuses.id = csu_fees.campus AND csu_fees.year = 1996\nJOIN degrees ON campuses.id = degrees.campus AND degrees.degrees >= 3411 AND degrees.year = 1901\nJOIN enrollments ON campuses.id = enrollments.campus AND enrollments.totalenrollment_ay >= 16394 AND enrollments.fte_ay <= 15148\nWHERE campuses.year = 1901 AND campuses.location = 'San Luis Obispo'",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.09
+    },
+    {
+      "uid": "fc0334b0-0119-4c05-9303-febf6ba7c824",
+      "question": "Which campuses in Los Angeles county have the name Long Beach State University and offer degrees with at most 4593 awarded?",
+      "gold_sql": "SELECT campuses.id FROM campuses\nJOIN degrees ON campuses.id = degrees.campus\nWHERE campuses.county = 'Los Angeles' AND campuses.campus = 'Long Beach State University' AND degrees.degrees <= 4593",
+      "pred_sql": "SELECT campuses.id\nFROM campuses\nJOIN degrees ON campuses.id = degrees.campus\nWHERE campuses.county = 'Los Angeles' \n  AND campuses.campus = 'Long Beach State University' \n  AND degrees.degrees <= 4593\nGROUP BY campuses.id\nHAVING COUNT(degrees.degrees) > 0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.57
+    }
+  ]
+}

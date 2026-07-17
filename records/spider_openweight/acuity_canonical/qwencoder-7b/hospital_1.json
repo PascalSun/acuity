@@ -1,0 +1,124 @@
+{
+  "db_id": "hospital_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:48:54.650925+00:00",
+  "records": [
+    {
+      "uid": "0cf70af1-5f5a-4d48-96c3-acedd591ac57",
+      "question": "Which physicians lead the Surgery department and have certifications that started on or after 2008-01-01 and expire exactly on 2008-12-31?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE trained_in.certificationexpires = '2008-12-31' AND department.name = 'Surgery' AND trained_in.certificationdate >= '2008-01-01'",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE department.name = 'Surgery'\n  AND trained_in.certificationexpires = '2008-12-31'\n  AND trained_in.certificationdate >= '2008-01-01'\nGROUP BY physician.employeeid\nHAVING COUNT(department.departmentid) > 0\n  AND COUNT(trained_in.treatment) > 0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.43
+    },
+    {
+      "uid": "2bbe968e-837c-42ec-b372-1f8cc06d2534",
+      "question": "Which physicians lead the Surgery department and were certified on or before 2008-01-01?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE trained_in.certificationdate <= '2008-01-01' AND department.name = 'Surgery'",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE department.name = 'Surgery' AND trained_in.certificationdate <= '2008-01-01'\nGROUP BY physician.employeeid\nHAVING COUNT(department.departmentid) > 0 AND COUNT(trained_in.treatment) > 0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 10.02
+    },
+    {
+      "uid": "4737d6a4-0f5d-4614-8e8f-d077841cc879",
+      "question": "Which attending physicians named Elliot Reid have a social security number of at least 222222222 and had appointments in examination room B on or before 2008-04-24 11:00 with registered nurse Carla Espinosa?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN appointment ON physician.employeeid = appointment.physician\nJOIN nurse ON appointment.prepnurse = nurse.employeeid\nWHERE appointment.end <= '2008-04-24 11:00' AND physician.position = 'Attending Physician' AND nurse.name = 'Carla Espinosa' AND appointment.examinationroom = 'B' AND nurse.registered = 1 AND physician.ssn >= 222222222 AND physician.name = 'Elliot Reid'",
+      "pred_sql": "SELECT DISTINCT p.EmployeeID\nFROM Physician p\nJOIN Appointment a ON p.EmployeeID = a.Physician\nJOIN Nurse n ON a.PrepNurse = n.EmployeeID\nWHERE p.Position = 'Attending Physician'\n  AND p.SSN >= 222222222\n  AND p.Name = 'Elliot Reid'\n  AND a.End <= '2008-04-24 11:00'\n  AND a.ExaminationRoom = 'B'\n  AND n.Name = 'Carla Espinosa'\n  AND n.Registered = 1",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.37
+    },
+    {
+      "uid": "841b6094-0e0f-4953-b3ea-a8efb083c2d8",
+      "question": "Which physicians named John Dorian with SSN 111111111 and position Staff Internist have patients named John Smith living at 42 Foobar Lane with phone 555-0256 and insurance ID at least 68476213?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN patient ON physician.employeeid = patient.pcp\nWHERE patient.insuranceid >= 68476213 AND physician.ssn = 111111111 AND patient.name = 'John Smith' AND physician.name = 'John Dorian' AND patient.address = '42 Foobar Lane' AND physician.position = 'Staff Internist' AND patient.phone = '555-0256'",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN patient ON physician.employeeid = patient.pcp\nWHERE physician.ssn = '111111111'\n  AND physician.name = 'John Dorian'\n  AND physician.position = 'Staff Internist'\n  AND patient.insuranceid = 68476213\n  AND patient.name = 'John Smith'\n  AND patient.address = '42 Foobar Lane'\n  AND patient.phone = '555-0256'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.25
+    },
+    {
+      "uid": "84c072ef-4a0f-4e56-982a-2eb7d67822e9",
+      "question": "Which Surgical Attending Physician named John Wen, with SSN 777777777, heads the Surgery department and has training certifications dated at least 2008-01-01 that expire no earlier than 2008-12-31?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE physician.position = 'Surgical Attending Physician' AND physician.ssn = 777777777 AND physician.name = 'John Wen' AND department.name = 'Surgery' AND trained_in.certificationdate >= '2008-01-01' AND trained_in.certificationexpires >= '2008-12-31'",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN department ON physician.employeeid = department.head\nJOIN trained_in ON physician.employeeid = trained_in.physician\nWHERE physician.position = 'Surgical Attending Physician'\n  AND physician.ssn = 777777777\n  AND physician.name = 'John Wen'\n  AND department.name = 'Surgery'\n  AND trained_in.certificationdate >= '2008-01-01'\n  AND trained_in.certificationexpires >= '2008-12-31'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.91
+    },
+    {
+      "uid": "a454ed07-f314-4f6d-857a-76546e4eb415",
+      "question": "Which attending psychiatrist named Molly Clock with SSN 999999999 is the head of the Psychiatry department?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nWHERE department.name = 'Psychiatry' AND physician.position = 'Attending Psychiatrist' AND physician.name = 'Molly Clock' AND physician.ssn = 999999999",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN department ON physician.employeeid = department.head\nWHERE physician.position = 'Attending Psychiatrist'\n  AND physician.name = 'Molly Clock'\n  AND physician.ssn = 999999999\n  AND department.name = 'Psychiatry'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.6
+    },
+    {
+      "uid": "cafbeaeb-a379-410f-a425-bb8349898ee0",
+      "question": "Which physicians have the position of Head Chief of Medicine and an SSN that is exactly 555555555?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nWHERE physician.position = 'Head Chief of Medicine' AND physician.ssn = 555555555",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nWHERE physician.position = 'Head Chief of Medicine' AND physician.ssn = 555555555",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.6
+    },
+    {
+      "uid": "d15a48bb-92a0-4e02-aec1-289da1b275a9",
+      "question": "Who is the physician named Keith Dudemeister with the position of MD Resident and an SSN of at least 888888888?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nWHERE physician.position = 'MD Resident' AND physician.ssn >= 888888888 AND physician.name = 'Keith Dudemeister'",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nWHERE physician.position = 'MD Resident'\n  AND physician.ssn >= 888888888\n  AND physician.name = 'Keith Dudemeister'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.24
+    },
+    {
+      "uid": "d9b02828-a81c-471e-9d4c-cf770b642f11",
+      "question": "Which physicians hold the position of Attending Psychiatrist and have a primary affiliation with a department?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN affiliated_with ON physician.employeeid = affiliated_with.physician\nJOIN department ON affiliated_with.department = department.departmentid\nWHERE physician.position = 'Attending Psychiatrist' AND affiliated_with.primaryaffiliation = 1",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN affiliated_with ON physician.employeeid = affiliated_with.physician\nJOIN department ON affiliated_with.department = department.departmentid\nWHERE physician.position = 'Attending Psychiatrist' AND affiliated_with.primaryaffiliation = 1",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.98
+    },
+    {
+      "uid": "f8ab97fc-4a78-4c46-a9cf-d54ee37c7b02",
+      "question": "Who is the physician with SSN 777777777 that heads a department?",
+      "gold_sql": "SELECT physician.employeeid FROM physician\nJOIN department ON physician.employeeid = department.head\nWHERE physician.ssn = 777777777",
+      "pred_sql": "SELECT physician.employeeid\nFROM physician\nJOIN department ON physician.employeeid = department.head\nWHERE physician.ssn = '777777777'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.6
+    }
+  ]
+}

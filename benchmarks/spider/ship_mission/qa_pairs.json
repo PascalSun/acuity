@@ -1,0 +1,3317 @@
+{
+ "db_id": "ship_mission",
+ "target_table": "ship",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 50972795,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/ship_mission/ship_mission.sqlite",
+  "generated_at": "2026-07-02T14:33:53.528577+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "ship",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 30,
+    "inner_attempts": 30,
+    "failed_rounds": 20,
+    "invalid_pairs_filtered": 20,
+    "failure_events": {
+     "qa_validation_failed": 20
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 16,
+    "inner_attempts": 16,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 6,
+    "failure_events": {
+     "qa_validation_failed": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "3151f52d-fcfd-4035-b501-b2c231a3b3bf",
+   "question": "Which ships are exactly classified as Battle ship?",
+   "answer_row_ids": [
+    2,
+    5,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Battle ship'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Battle ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Battle ship'?"
+  },
+  {
+   "uid": "d0044cbd-0951-4768-99b7-e1f8c8f34654",
+   "question": "Which ships are from the United States and have a tonnage of at most 5816?",
+   "answer_row_ids": [
+    2,
+    6,
+    8
+   ],
+   "answer_count": 3,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United States' AND ship.tonnage <= 5816",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.nationality",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 5816,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.nationality": "United States",
+    "ship.tonnage": 5816
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United States' and tonnage at most '5816'?"
+  },
+  {
+   "uid": "c372a085-7ff1-4b7e-b5f5-f9f45dd7c102",
+   "question": "What ships have the name Dromonby?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Dromonby'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Dromonby",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Dromonby"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Dromonby'?"
+  },
+  {
+   "uid": "5e47af91-2611-42ca-abcd-e3596d7277be",
+   "question": "Which ships named Corbridge have a nationality that is exactly United Kingdom?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United Kingdom' AND ship.name = 'Corbridge'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.nationality",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Corbridge",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.nationality": "United Kingdom",
+    "ship.name": "Corbridge"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United Kingdom' and name equal to 'Corbridge'?"
+  },
+  {
+   "uid": "9ed35808-4397-4a5f-9cd4-6e9110f24de5",
+   "question": "What Battle ships have a tonnage of at least 3608?",
+   "answer_row_ids": [
+    5,
+    7
+   ],
+   "answer_count": 2,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.tonnage >= 3608 AND ship.type = 'Battle ship'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.tonnage",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3608,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.tonnage": 3608,
+    "ship.type": "Battle ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '3608' and type equal to 'Battle ship'?"
+  },
+  {
+   "uid": "9c8df4a7-9d1e-4a25-8516-493086863def",
+   "question": "Which ships named Farringford have a tonnage of at least 3146?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.tonnage >= 3146 AND ship.name = 'Farringford'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.tonnage",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3146,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Farringford",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.tonnage": 3146,
+    "ship.name": "Farringford"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '3146' and name equal to 'Farringford'?"
+  },
+  {
+   "uid": "24619c90-d356-43ad-9960-f2a6e283ad72",
+   "question": "What cargo ships are registered under the United Kingdom?",
+   "answer_row_ids": [
+    1,
+    3,
+    4
+   ],
+   "answer_count": 3,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Cargo ship' AND ship.nationality = 'United Kingdom'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Cargo ship",
+    "ship.nationality": "United Kingdom"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Cargo ship' and nationality equal to 'United Kingdom'?"
+  },
+  {
+   "uid": "26310916-75c2-4f6d-b77e-74df7137aa44",
+   "question": "Which ships have the name Author?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Author'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Author",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Author"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Author'?"
+  },
+  {
+   "uid": "2961d7b3-3544-4d0f-91aa-d97c908bc299",
+   "question": "Which ships named Trader have a tonnage of at most 3608?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Trader' AND ship.tonnage <= 3608",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Trader",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 3608,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Trader",
+    "ship.tonnage": 3608
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Trader' and tonnage at most '3608'?"
+  },
+  {
+   "uid": "6ddf750d-6265-448d-a7d4-fc5dfa1dabcb",
+   "question": "Which ships have the name Ariadne?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Ariadne'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Ariadne"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Ariadne'?"
+  },
+  {
+   "uid": "bb59a404-169a-457c-9d7b-f9f3a5a2c7e5",
+   "question": "Which cargo ship named Ariadne has a tonnage of exactly 3035 and is registered in the United States?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United States' AND ship.type = 'Cargo ship' AND ship.name = 'Ariadne' AND ship.tonnage = 3035",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.nationality",
+    "ship.type",
+    "ship.name",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "=",
+     "value": 3035,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.nationality": "United States",
+    "ship.type": "Cargo ship",
+    "ship.name": "Ariadne",
+    "ship.tonnage": 3035
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United States' and type equal to 'Cargo ship' and name equal to 'Ariadne' and tonnage equal to '3035'?"
+  },
+  {
+   "uid": "9bc56eb7-bba7-4f5d-91d5-091f7b2dbb5d",
+   "question": "Which cargo ships named Clan McTavish from the United States have a tonnage of at most 5816?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Clan McTavish' AND ship.type = 'Cargo ship' AND ship.nationality = 'United States' AND ship.tonnage <= 5816",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.type",
+    "ship.nationality",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Clan McTavish",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 5816,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Clan McTavish",
+    "ship.type": "Cargo ship",
+    "ship.nationality": "United States",
+    "ship.tonnage": 5816
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Clan McTavish' and type equal to 'Cargo ship' and nationality equal to 'United States' and tonnage at most '5816'?"
+  },
+  {
+   "uid": "b629ecfc-e732-4336-94cb-fdeb5d13f6bd",
+   "question": "Which Battle ships from the United Kingdom have a tonnage of at least 3608?",
+   "answer_row_ids": [
+    5,
+    7
+   ],
+   "answer_count": 2,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United Kingdom' AND ship.type = 'Battle ship' AND ship.tonnage >= 3608",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.nationality",
+    "ship.type",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3608,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.nationality": "United Kingdom",
+    "ship.type": "Battle ship",
+    "ship.tonnage": 3608
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United Kingdom' and type equal to 'Battle ship' and tonnage at least '3608'?"
+  },
+  {
+   "uid": "15900edc-8a41-48e2-8f45-d4b538e4620c",
+   "question": "Which cargo ships named Author have a tonnage of exactly 3496 and are registered in the United Kingdom?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Author' AND ship.nationality = 'United Kingdom' AND ship.tonnage = 3496 AND ship.type = 'Cargo ship'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.nationality",
+    "ship.tonnage",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Author",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "=",
+     "value": 3496,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Author",
+    "ship.nationality": "United Kingdom",
+    "ship.tonnage": 3496,
+    "ship.type": "Cargo ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Author' and nationality equal to 'United Kingdom' and tonnage equal to '3496' and type equal to 'Cargo ship'?"
+  },
+  {
+   "uid": "ac96d66f-c246-462c-8084-63241780a08a",
+   "question": "Which Battle ship named Farringford is from the United States and has a tonnage of at least 3146?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Battle ship' AND ship.name = 'Farringford' AND ship.nationality = 'United States' AND ship.tonnage >= 3146",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.name",
+    "ship.nationality",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Farringford",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3146,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Battle ship",
+    "ship.name": "Farringford",
+    "ship.nationality": "United States",
+    "ship.tonnage": 3146
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Battle ship' and name equal to 'Farringford' and nationality equal to 'United States' and tonnage at least '3146'?"
+  },
+  {
+   "uid": "c594f595-1ca2-4e23-aac7-05978b953e1a",
+   "question": "Which Cargo ship named Dromonby has nationality United Kingdom and a tonnage of at least 3627?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United Kingdom' AND ship.tonnage >= 3627 AND ship.name = 'Dromonby' AND ship.type = 'Cargo ship'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.nationality",
+    "ship.tonnage",
+    "ship.name",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3627,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Dromonby",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.nationality": "United Kingdom",
+    "ship.tonnage": 3627,
+    "ship.name": "Dromonby",
+    "ship.type": "Cargo ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United Kingdom' and tonnage at least '3627' and name equal to 'Dromonby' and type equal to 'Cargo ship'?"
+  },
+  {
+   "uid": "8d86f9a3-1d90-423f-996b-916ba3345b6f",
+   "question": "Which battle ships named Farringford are registered in the United States?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Farringford' AND ship.nationality = 'United States' AND ship.type = 'Battle ship'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.nationality",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Farringford",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Farringford",
+    "ship.nationality": "United States",
+    "ship.type": "Battle ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Farringford' and nationality equal to 'United States' and type equal to 'Battle ship'?"
+  },
+  {
+   "uid": "57e784fe-8fe1-4a45-ab2a-c30cbb0d4161",
+   "question": "Which Cargo ship named Dromonby has nationality United Kingdom and a tonnage of at most 3627?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.nationality = 'United Kingdom' AND ship.tonnage <= 3627 AND ship.name = 'Dromonby' AND ship.type = 'Cargo ship'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.nationality",
+    "ship.tonnage",
+    "ship.name",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 3627,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Dromonby",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.nationality": "United Kingdom",
+    "ship.tonnage": 3627,
+    "ship.name": "Dromonby",
+    "ship.type": "Cargo ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United Kingdom' and tonnage at most '3627' and name equal to 'Dromonby' and type equal to 'Cargo ship'?"
+  },
+  {
+   "uid": "cf53c26b-b73f-4169-939e-12604f402ad8",
+   "question": "What cargo ships from the United States have a tonnage of exactly 3035?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Cargo ship' AND ship.tonnage = 3035 AND ship.nationality = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.tonnage",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "=",
+     "value": 3035,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Cargo ship",
+    "ship.tonnage": 3035,
+    "ship.nationality": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Cargo ship' and tonnage equal to '3035' and nationality equal to 'United States'?"
+  },
+  {
+   "uid": "05734de4-d81a-4cda-86cd-02279524837b",
+   "question": "Which Cargo ships named Ariadne from the United States have a tonnage of at least 3035?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'Ariadne' AND ship.tonnage >= 3035 AND ship.nationality = 'United States' AND ship.type = 'Cargo ship'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.tonnage",
+    "ship.nationality",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3035,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Ariadne",
+    "ship.tonnage": 3035,
+    "ship.nationality": "United States",
+    "ship.type": "Cargo ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Ariadne' and tonnage at least '3035' and nationality equal to 'United States' and type equal to 'Cargo ship'?"
+  },
+  {
+   "uid": "49355211-a20d-48c9-ba65-3bb70ef8e36c",
+   "question": "Which ships named Trader have missions launched in 1916 or later?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year >= 1916 AND ship.name = 'Trader'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": ">=",
+     "value": 1916,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Trader",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1916,
+    "ship.name": "Trader"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Trader', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year at least '1916'?"
+  },
+  {
+   "uid": "3d5c1d70-408e-4b4c-93bc-f1cc2605437f",
+   "question": "Which Cargo ships were involved in missions launched in 1930?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year = 1930 AND ship.type = 'Cargo ship'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "=",
+     "value": 1930,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1930,
+    "ship.type": "Cargo ship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Cargo ship', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year equal to '1930'?"
+  },
+  {
+   "uid": "40ec3351-e447-4be9-8c81-17190865ac2e",
+   "question": "Which ships were involved in missions launched in the year 1930?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year = 1930",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "=",
+     "value": 1930,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1930
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year equal to '1930'?"
+  },
+  {
+   "uid": "85318cc6-9b6d-4bfc-9775-a81553a69e37",
+   "question": "Which ships named Appam were decommissioned in 1960?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.fate = 'Decommissioned 1960' AND ship.name = 'Appam'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.fate",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1960",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Appam",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.fate": "Decommissioned 1960",
+    "ship.name": "Appam"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Appam', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with fate equal to 'Decommissioned 1960'?"
+  },
+  {
+   "uid": "7dbf5579-8a6a-4758-96af-1eaa85e5a5f8",
+   "question": "Which ships named Ariadne have been involved in a mission?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Ariadne'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Ariadne"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Ariadne', having at least one related mission record (linked on ship.ship_id = mission.ship_id)?"
+  },
+  {
+   "uid": "ff779b90-82f1-4bb7-8cb5-d17b5ea1a7a0",
+   "question": "Which ships have a tonnage of at least 3687 and undertook a mission where the code is VMV-1?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.tonnage >= 3687 AND mission.code = 'VMV-1'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.tonnage",
+    "mission.code"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3687,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.tonnage": 3687,
+    "mission.code": "VMV-1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '3687', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with code equal to 'VMV-1'?"
+  },
+  {
+   "uid": "3cf2d994-73d4-4514-bbf8-ae95f7790e1e",
+   "question": "Which ships with a tonnage of at least 7781 have undertaken missions?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.tonnage >= 7781",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 7781,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.tonnage": 7781
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '7781', having at least one related mission record (linked on ship.ship_id = mission.ship_id)?"
+  },
+  {
+   "uid": "1472eba7-e4bb-48c5-8971-f7f98d8ae76e",
+   "question": "Which ships with a tonnage of at most 3608 have undertaken missions?",
+   "answer_row_ids": [
+    2,
+    5,
+    6
+   ],
+   "answer_count": 3,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.tonnage <= 3608",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 3608,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.tonnage": 3608
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at most '3608', having at least one related mission record (linked on ship.ship_id = mission.ship_id)?"
+  },
+  {
+   "uid": "da91d3af-47e0-493e-864e-b9f3760f3bb8",
+   "question": "Which ships named Appam have a tonnage of at least 7781?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Appam' AND ship.tonnage >= 7781",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Appam",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 7781,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Appam",
+    "ship.tonnage": 7781
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Appam' and tonnage at least '7781', having at least one related mission record (linked on ship.ship_id = mission.ship_id)?"
+  },
+  {
+   "uid": "37d1e4d0-82c1-46c7-b964-22ed74aba652",
+   "question": "Which ships have missions launched in 1930 or later?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 6,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year >= 1930",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": ">=",
+     "value": 1930,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1930
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year at least '1930'?"
+  },
+  {
+   "uid": "746e1811-c697-40f0-a7a0-504de8e2c22d",
+   "question": "Which ships named Ariadne from the United States, with at least 3035 tonnage, participated in missions launched in 1931 at locations containing Uusikaupunki, where the mission code is VMV-5, speed is 23 knots, and fate is Decommissioned 1959?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Ariadne' AND mission.location LIKE '%Uusikaupunki%' AND mission.code = 'VMV-5' AND mission.fate = 'Decommissioned 1959' AND ship.nationality = 'United States' AND mission.speed_knots = 23 AND ship.tonnage >= 3035 AND mission.launched_year = 1931",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "mission.location",
+    "mission.code",
+    "mission.fate",
+    "ship.nationality",
+    "mission.speed_knots",
+    "ship.tonnage",
+    "mission.launched_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Uusikaupunki",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-5",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1959",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3035,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "=",
+     "value": 1931,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Ariadne",
+    "mission.location": "Uusikaupunki",
+    "mission.code": "VMV-5",
+    "mission.fate": "Decommissioned 1959",
+    "ship.nationality": "United States",
+    "mission.speed_knots": 23,
+    "ship.tonnage": 3035,
+    "mission.launched_year": 1931
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Ariadne' and nationality equal to 'United States' and tonnage at least '3035', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with location matching '%Uusikaupunki%' and code equal to 'VMV-5' and fate equal to 'Decommissioned 1959' and speed knots equal to '23' and launched year equal to '1931'?"
+  },
+  {
+   "uid": "ade49a71-ee07-4ec2-827d-e4aa0e545c5e",
+   "question": "Which Cargo ships from the United States with tonnage at most 5816 took part in mission VMV-7 launched in 1932 or earlier that include locations containing Finland?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.location LIKE '%Finland%' AND mission.launched_year <= 1932 AND ship.type = 'Cargo ship' AND ship.nationality = 'United States' AND mission.code = 'VMV-7' AND ship.tonnage <= 5816",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.location",
+    "mission.launched_year",
+    "ship.type",
+    "ship.nationality",
+    "mission.code",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Finland",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1932,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-7",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 5816,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.location": "Finland",
+    "mission.launched_year": 1932,
+    "ship.type": "Cargo ship",
+    "ship.nationality": "United States",
+    "mission.code": "VMV-7",
+    "ship.tonnage": 5816
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Cargo ship' and nationality equal to 'United States' and tonnage at most '5816', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with location matching '%Finland%' and launched year at most '1932' and code equal to 'VMV-7'?"
+  },
+  {
+   "uid": "436d2366-289a-4e45-bc3f-41d1df9c7083",
+   "question": "Which Battle ship named Farringford has missions with code VMV-2 launched in 1930 or earlier, traveling at least 25 knots, and was decommissioned in 1950?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.fate = 'Decommissioned 1950' AND ship.name = 'Farringford' AND mission.launched_year <= 1930 AND mission.speed_knots >= 25 AND ship.type = 'Battle ship' AND mission.code = 'VMV-2'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.fate",
+    "ship.name",
+    "mission.launched_year",
+    "mission.speed_knots",
+    "ship.type",
+    "mission.code"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1950",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Farringford",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1930,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": ">=",
+     "value": 25,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.fate": "Decommissioned 1950",
+    "ship.name": "Farringford",
+    "mission.launched_year": 1930,
+    "mission.speed_knots": 25,
+    "ship.type": "Battle ship",
+    "mission.code": "VMV-2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Farringford' and type equal to 'Battle ship', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with fate equal to 'Decommissioned 1950' and launched year at most '1930' and speed knots at least '25' and code equal to 'VMV-2'?"
+  },
+  {
+   "uid": "57ee98f1-8be6-4bfc-813c-29047abd8a6e",
+   "question": "Which cargo ships with at least 3035 tonnage have missions coded VMV-5 that launched in 1931 or earlier, traveled at exactly 23 knots, and ended with a fate of Decommissioned 1959?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year <= 1931 AND ship.tonnage >= 3035 AND mission.fate = 'Decommissioned 1959' AND ship.type = 'Cargo ship' AND mission.code = 'VMV-5' AND mission.speed_knots = 23",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year",
+    "ship.tonnage",
+    "mission.fate",
+    "ship.type",
+    "mission.code",
+    "mission.speed_knots"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1931,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3035,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1959",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-5",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1931,
+    "ship.tonnage": 3035,
+    "mission.fate": "Decommissioned 1959",
+    "ship.type": "Cargo ship",
+    "mission.code": "VMV-5",
+    "mission.speed_knots": 23
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '3035' and type equal to 'Cargo ship', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year at most '1931' and fate equal to 'Decommissioned 1959' and code equal to 'VMV-5' and speed knots equal to '23'?"
+  },
+  {
+   "uid": "49603b3c-8591-438b-90a1-3ce248578415",
+   "question": "What Cargo ship named Dromonby from the United Kingdom, with at most 3627 tonnage, had missions where the code is VMV-3, speed is at least 23 knots, locations include Helsinki, and fate is Lost (burned) 1931?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.location LIKE '%Helsinki%' AND ship.tonnage <= 3627 AND mission.code = 'VMV-3' AND mission.speed_knots >= 23 AND ship.type = 'Cargo ship' AND ship.nationality = 'United Kingdom' AND ship.name = 'Dromonby' AND mission.fate = 'Lost (burned) 1931'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.location",
+    "ship.tonnage",
+    "mission.code",
+    "mission.speed_knots",
+    "ship.type",
+    "ship.nationality",
+    "ship.name",
+    "mission.fate"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Helsinki",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 3627,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-3",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Dromonby",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Lost (burned) 1931",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.location": "Helsinki",
+    "ship.tonnage": 3627,
+    "mission.code": "VMV-3",
+    "mission.speed_knots": 23,
+    "ship.type": "Cargo ship",
+    "ship.nationality": "United Kingdom",
+    "ship.name": "Dromonby",
+    "mission.fate": "Lost (burned) 1931"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at most '3627' and type equal to 'Cargo ship' and nationality equal to 'United Kingdom' and name equal to 'Dromonby', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with location matching '%Helsinki%' and code equal to 'VMV-3' and speed knots at least '23' and fate equal to 'Lost (burned) 1931'?"
+  },
+  {
+   "uid": "b7e41347-455e-4287-9af3-54a69038c0c9",
+   "question": "Which ships named Trader from the United Kingdom, with tonnage at most 3608, took missions containing Norway, traveled at least 16 knots, and had a fate of Retired 1939?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.location LIKE '%Norway%' AND ship.nationality = 'United Kingdom' AND mission.fate = 'Retired 1939' AND ship.name = 'Trader' AND mission.speed_knots >= 16 AND ship.tonnage <= 3608",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.location",
+    "ship.nationality",
+    "mission.fate",
+    "ship.name",
+    "mission.speed_knots",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Norway",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Retired 1939",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Trader",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": ">=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 3608,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.location": "Norway",
+    "ship.nationality": "United Kingdom",
+    "mission.fate": "Retired 1939",
+    "ship.name": "Trader",
+    "mission.speed_knots": 16,
+    "ship.tonnage": 3608
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United Kingdom' and name equal to 'Trader' and tonnage at most '3608', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with location matching '%Norway%' and fate equal to 'Retired 1939' and speed knots at least '16'?"
+  },
+  {
+   "uid": "1d03e4a9-f33d-44ba-bb7a-cb34629081c0",
+   "question": "Which Cargo ship named Dromonby, with nationality United Kingdom and tonnage at least 3627, had missions launched no later than 1930 at speeds of at least 23 knots that include locations containing Helsinki?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.location LIKE '%Helsinki%' AND ship.type = 'Cargo ship' AND ship.tonnage >= 3627 AND ship.nationality = 'United Kingdom' AND ship.name = 'Dromonby' AND mission.launched_year <= 1930 AND mission.speed_knots >= 23",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.location",
+    "ship.type",
+    "ship.tonnage",
+    "ship.nationality",
+    "ship.name",
+    "mission.launched_year",
+    "mission.speed_knots"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Helsinki",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3627,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Dromonby",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1930,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.location": "Helsinki",
+    "ship.type": "Cargo ship",
+    "ship.tonnage": 3627,
+    "ship.nationality": "United Kingdom",
+    "ship.name": "Dromonby",
+    "mission.launched_year": 1930,
+    "mission.speed_knots": 23
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Cargo ship' and tonnage at least '3627' and nationality equal to 'United Kingdom' and name equal to 'Dromonby', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with location matching '%Helsinki%' and launched year at most '1930' and speed knots at least '23'?"
+  },
+  {
+   "uid": "344e2e7f-2491-4f4b-9494-7965ebf546ff",
+   "question": "Which Cargo ship named Ariadne from the United States had missions with code VMV-5 that launched in 1931 or later, traveled at exactly 23 knots, were located in Uusikaupunki, and were decommissioned in 1959?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.fate = 'Decommissioned 1959' AND mission.launched_year >= 1931 AND mission.code = 'VMV-5' AND ship.name = 'Ariadne' AND mission.speed_knots = 23 AND ship.type = 'Cargo ship' AND ship.nationality = 'United States' AND mission.location LIKE '%Uusikaupunki%'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.fate",
+    "mission.launched_year",
+    "mission.code",
+    "ship.name",
+    "mission.speed_knots",
+    "ship.type",
+    "ship.nationality",
+    "mission.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1959",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": ">=",
+     "value": 1931,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-5",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Uusikaupunki",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "mission.fate": "Decommissioned 1959",
+    "mission.launched_year": 1931,
+    "mission.code": "VMV-5",
+    "ship.name": "Ariadne",
+    "mission.speed_knots": 23,
+    "ship.type": "Cargo ship",
+    "ship.nationality": "United States",
+    "mission.location": "Uusikaupunki"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Ariadne' and type equal to 'Cargo ship' and nationality equal to 'United States', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with fate equal to 'Decommissioned 1959' and launched year at least '1931' and code equal to 'VMV-5' and speed knots equal to '23' and location matching '%Uusikaupunki%'?"
+  },
+  {
+   "uid": "c0c63a7f-9782-4a69-84db-b6943dc8f30b",
+   "question": "Which Cargo ship named Clan McTavish, with tonnage at most 5816 and nationality United States, was involved in mission VMV-7 launched in 1932 or earlier and lost (burned and sunk) in 1933?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.fate = 'Lost (burned and sunk) 1933' AND ship.name = 'Clan McTavish' AND mission.code = 'VMV-7' AND ship.type = 'Cargo ship' AND ship.tonnage <= 5816 AND mission.launched_year <= 1932 AND ship.nationality = 'United States'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.fate",
+    "ship.name",
+    "mission.code",
+    "ship.type",
+    "ship.tonnage",
+    "mission.launched_year",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Lost (burned and sunk) 1933",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Clan McTavish",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-7",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 5816,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1932,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.fate": "Lost (burned and sunk) 1933",
+    "ship.name": "Clan McTavish",
+    "mission.code": "VMV-7",
+    "ship.type": "Cargo ship",
+    "ship.tonnage": 5816,
+    "mission.launched_year": 1932,
+    "ship.nationality": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Clan McTavish' and type equal to 'Cargo ship' and tonnage at most '5816' and nationality equal to 'United States', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with fate equal to 'Lost (burned and sunk) 1933' and code equal to 'VMV-7' and launched year at most '1932'?"
+  },
+  {
+   "uid": "179529a0-cbcf-4ae4-9a22-9b4d7a5cac37",
+   "question": "Which United States Battle ships with tonnage at most 3146 have missions coded VMV-2 launched in 1930 or earlier at exactly 25 knots speed?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year <= 1930 AND ship.type = 'Battle ship' AND ship.nationality = 'United States' AND mission.speed_knots = 25 AND ship.tonnage <= 3146 AND mission.code = 'VMV-2'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year",
+    "ship.type",
+    "ship.nationality",
+    "mission.speed_knots",
+    "ship.tonnage",
+    "mission.code"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1930,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 25,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "<=",
+     "value": 3146,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1930,
+    "ship.type": "Battle ship",
+    "ship.nationality": "United States",
+    "mission.speed_knots": 25,
+    "ship.tonnage": 3146,
+    "mission.code": "VMV-2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Battle ship' and nationality equal to 'United States' and tonnage at most '3146', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year at most '1930' and speed knots equal to '25' and code equal to 'VMV-2'?"
+  },
+  {
+   "uid": "155ba40e-5716-4656-ac95-b532ef431948",
+   "question": "Which battle ships were involved in the mission with code VMV-6 that launched in 1931 or earlier?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.type = 'Battle ship' AND mission.code = 'VMV-6' AND mission.launched_year <= 1931",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "mission.code",
+    "mission.launched_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-6",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "<=",
+     "value": 1931,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Battle ship",
+    "mission.code": "VMV-6",
+    "mission.launched_year": 1931
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Battle ship', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with code equal to 'VMV-6' and launched year at most '1931'?"
+  },
+  {
+   "uid": "fb42c653-cc16-493d-906e-7c1d9ad56f5d",
+   "question": "Which Battle ship named Appam, with a tonnage of at least 7781, was decommissioned in 1960 at a mission location containing Uusikaupunki?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.location LIKE '%Uusikaupunki%' AND ship.tonnage >= 7781 AND ship.type = 'Battle ship' AND mission.fate = 'Decommissioned 1960' AND ship.name = 'Appam'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.location",
+    "ship.tonnage",
+    "ship.type",
+    "mission.fate",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Uusikaupunki",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 7781,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Battle ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1960",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Appam",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.location": "Uusikaupunki",
+    "ship.tonnage": 7781,
+    "ship.type": "Battle ship",
+    "mission.fate": "Decommissioned 1960",
+    "ship.name": "Appam"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '7781' and type equal to 'Battle ship' and name equal to 'Appam', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with location matching '%Uusikaupunki%' and fate equal to 'Decommissioned 1960'?"
+  },
+  {
+   "uid": "0d03bf51-ece9-44f5-b940-c92145ab7817",
+   "question": "Which ships weighing at least 3608 tons participated in the mission where the code is VMV-4 Former: Sterling and the speed was at most 16 knots?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.code = 'VMV-4 Former: Sterling' AND mission.speed_knots <= 16 AND ship.tonnage >= 3608",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.code",
+    "mission.speed_knots",
+    "ship.tonnage"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-4 Former: Sterling",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "<=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 3608,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mission.code": "VMV-4 Former: Sterling",
+    "mission.speed_knots": 16,
+    "ship.tonnage": 3608
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '3608', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with code equal to 'VMV-4 Former: Sterling' and speed knots at most '16'?"
+  },
+  {
+   "uid": "faac3a53-09dc-47ca-81ae-ff9b1fbdb409",
+   "question": "What ships from the United Kingdom were involved in the VMV-1 mission and were decommissioned in 1950?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.fate = 'Decommissioned 1950' AND ship.nationality = 'United Kingdom' AND mission.code = 'VMV-1'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.fate",
+    "ship.nationality",
+    "mission.code"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1950",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.fate": "Decommissioned 1950",
+    "ship.nationality": "United Kingdom",
+    "mission.code": "VMV-1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United Kingdom', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with fate equal to 'Decommissioned 1950' and code equal to 'VMV-1'?"
+  },
+  {
+   "uid": "d3bdf087-e68b-4c5c-984a-d6272a46f41a",
+   "question": "Which Cargo ships from the United Kingdom have missions launched in 1930 with a speed of exactly 23 knots?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.launched_year = 1930 AND ship.type = 'Cargo ship' AND mission.speed_knots = 23 AND ship.nationality = 'United Kingdom'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.launched_year",
+    "ship.type",
+    "mission.speed_knots",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "=",
+     "value": 1930,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.launched_year": 1930,
+    "ship.type": "Cargo ship",
+    "mission.speed_knots": 23,
+    "ship.nationality": "United Kingdom"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Cargo ship' and nationality equal to 'United Kingdom', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year equal to '1930' and speed knots equal to '23'?"
+  },
+  {
+   "uid": "29489528-95b6-49f1-a558-04f3c8dec25a",
+   "question": "Which ships named Corbridge from the United Kingdom were involved in the mission with code VMV-1 that was decommissioned in 1950?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Corbridge' AND mission.code = 'VMV-1' AND mission.fate = 'Decommissioned 1950' AND ship.nationality = 'United Kingdom'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "mission.code",
+    "mission.fate",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Corbridge",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-1",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1950",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Corbridge",
+    "mission.code": "VMV-1",
+    "mission.fate": "Decommissioned 1950",
+    "ship.nationality": "United Kingdom"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Corbridge' and nationality equal to 'United Kingdom', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with code equal to 'VMV-1' and fate equal to 'Decommissioned 1950'?"
+  },
+  {
+   "uid": "7d347e12-3b80-4e85-a118-52767ef690f5",
+   "question": "Which ships from the United States were launched in 1931 or later, have a speed of exactly 23 knots, and were decommissioned in 1959?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.fate = 'Decommissioned 1959' AND mission.launched_year >= 1931 AND mission.speed_knots = 23 AND ship.nationality = 'United States'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.fate",
+    "mission.launched_year",
+    "mission.speed_knots",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1959",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": ">=",
+     "value": 1931,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.fate": "Decommissioned 1959",
+    "mission.launched_year": 1931,
+    "mission.speed_knots": 23,
+    "ship.nationality": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with nationality equal to 'United States', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with fate equal to 'Decommissioned 1959' and launched year at least '1931' and speed knots equal to '23'?"
+  },
+  {
+   "uid": "7d0097ab-c12b-46b6-89a9-0318a9e73430",
+   "question": "What ships named Ariadne with a tonnage of 3035 were involved in missions launched in 1931 that traveled at exactly 23 knots?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Ariadne' AND ship.tonnage = 3035 AND mission.launched_year = 1931 AND mission.speed_knots = 23",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.tonnage",
+    "mission.launched_year",
+    "mission.speed_knots"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Ariadne",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": "=",
+     "value": 3035,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "launched_year",
+     "operator": "=",
+     "value": 1931,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Ariadne",
+    "ship.tonnage": 3035,
+    "mission.launched_year": 1931,
+    "mission.speed_knots": 23
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Ariadne' and tonnage equal to '3035', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with launched year equal to '1931' and speed knots equal to '23'?"
+  },
+  {
+   "uid": "cb5fc1b0-1c6a-4a61-9c28-c9567e3ad991",
+   "question": "Which Cargo ships from the United States with at least 5816 tonnage traveled at speeds of at least 23 knots and were lost (burned and sunk) in 1933?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE mission.speed_knots >= 23 AND ship.tonnage >= 5816 AND ship.type = 'Cargo ship' AND mission.fate = 'Lost (burned and sunk) 1933' AND ship.nationality = 'United States'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "mission.speed_knots",
+    "ship.tonnage",
+    "ship.type",
+    "mission.fate",
+    "ship.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "tonnage",
+     "operator": ">=",
+     "value": 5816,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Cargo ship",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Lost (burned and sunk) 1933",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "nationality",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mission.speed_knots": 23,
+    "ship.tonnage": 5816,
+    "ship.type": "Cargo ship",
+    "mission.fate": "Lost (burned and sunk) 1933",
+    "ship.nationality": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with tonnage at least '5816' and type equal to 'Cargo ship' and nationality equal to 'United States', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with speed knots at least '23' and fate equal to 'Lost (burned and sunk) 1933'?"
+  },
+  {
+   "uid": "6efbdb07-37e1-4301-b3ac-8fb6d1790d71",
+   "question": "Which ships named Farringford had missions with a code of VMV-2, a fate of Decommissioned 1950, and speeds of at most 25 knots?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN mission ON ship.ship_id = mission.ship_id\nWHERE ship.name = 'Farringford' AND mission.speed_knots <= 25 AND mission.fate = 'Decommissioned 1950' AND mission.code = 'VMV-2'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "mission",
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "mission.speed_knots",
+    "mission.fate",
+    "mission.code"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "Farringford",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "speed_knots",
+     "operator": "<=",
+     "value": 25,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mission",
+     "column": "fate",
+     "operator": "=",
+     "value": "Decommissioned 1950",
+     "column_type": "enum"
+    },
+    {
+     "table": "mission",
+     "column": "code",
+     "operator": "=",
+     "value": "VMV-2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "Farringford",
+    "mission.speed_knots": 25,
+    "mission.fate": "Decommissioned 1950",
+    "mission.code": "VMV-2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'Farringford', having at least one related mission record (linked on ship.ship_id = mission.ship_id) with speed knots at most '25' and fate equal to 'Decommissioned 1950' and code equal to 'VMV-2'?"
+  }
+ ]
+}

@@ -1,0 +1,3461 @@
+{
+ "db_id": "company_1",
+ "target_table": "employee",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 641583129,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/company_1/company_1.sqlite",
+  "generated_at": "2026-07-02T17:13:35.244036+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "employee",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 17,
+   "0M": 17,
+   "0H": 16
+  },
+  "realized_counts": {
+   "0E": 17,
+   "0H": 16,
+   "0M": 17
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 17,
+    "accepted_count": 17,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 23,
+    "inner_attempts": 23,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 6,
+    "failure_events": {
+     "qa_validation_failed": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0H": {
+    "target_quota": 16,
+    "accepted_count": 16,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 53,
+    "inner_attempts": 53,
+    "failed_rounds": 37,
+    "invalid_pairs_filtered": 37,
+    "failure_events": {
+     "qa_validation_failed": 37
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 17,
+    "accepted_count": 17,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 27,
+    "inner_attempts": 27,
+    "failed_rounds": 10,
+    "invalid_pairs_filtered": 10,
+    "failure_events": {
+     "qa_validation_failed": 10
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "2cfad8ab-345c-416d-9a67-7fc1e6da3214",
+   "question": "Which employees have the last name Zelaya?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.lname = 'Zelaya'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Zelaya",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.lname": "Zelaya"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with lname equal to 'Zelaya'?"
+  },
+  {
+   "uid": "3a467a96-8c53-44b9-a153-9c6ba69d4bd4",
+   "question": "Which employees have an SSN of at least 666884444?",
+   "answer_row_ids": [
+    "Ramesh",
+    "James",
+    "Jennifier",
+    "Ahmad",
+    "Alicia"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn >= 666884444",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 666884444,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 666884444
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn at least '666884444'?"
+  },
+  {
+   "uid": "a8a8cc89-3a2b-44c1-8f5a-64842f6561f4",
+   "question": "Which male employees work in department number 4?",
+   "answer_row_ids": [
+    "Ahmad"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno = 4 AND employee.sex = 'M'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4,
+    "employee.sex": "M"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno equal to '4' and sex equal to 'M'?"
+  },
+  {
+   "uid": "918b0fbe-201c-48dc-a939-16ea6b05f306",
+   "question": "Who are the employees working in departments numbered at most 4?",
+   "answer_row_ids": [
+    "James",
+    "Jennifier",
+    "Ahmad",
+    "Alicia"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno <= 4",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at most '4'?"
+  },
+  {
+   "uid": "0d2da3ca-51d8-45a8-a5a0-d2fd2506b43f",
+   "question": "Which employees have a middle initial that is exactly J?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'J'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "J",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "J"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'J'?"
+  },
+  {
+   "uid": "402a837d-a6f7-40fc-bea6-824dd4e66a95",
+   "question": "Which male employees work in departments numbered at most 4?",
+   "answer_row_ids": [
+    "James",
+    "Ahmad"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno <= 4 AND employee.sex = 'M'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4,
+    "employee.sex": "M"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at most '4' and sex equal to 'M'?"
+  },
+  {
+   "uid": "3e0cb096-c2fe-482e-85e5-e9dcbb5243ff",
+   "question": "Which employees work in department number 5?",
+   "answer_row_ids": [
+    "Jonh",
+    "Franklin",
+    "Joyce",
+    "Ramesh"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno = 5",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno equal to '5'?"
+  },
+  {
+   "uid": "8690f373-2e76-4b62-9af0-3640f9326836",
+   "question": "Which employees work in department number 4?",
+   "answer_row_ids": [
+    "Jennifier",
+    "Ahmad",
+    "Alicia"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno = 4",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno equal to '4'?"
+  },
+  {
+   "uid": "7fc61f56-6cb8-4ede-b2d2-c46cfc35580d",
+   "question": "Who are the employees born on or before 1965-01-09?",
+   "answer_row_ids": [
+    "Jonh",
+    "Franklin",
+    "Ramesh",
+    "James",
+    "Jennifier"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.bdate <= '1965-01-09'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.bdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "employee.bdate": "1965-01-09"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with bdate at most '1965-01-09'?"
+  },
+  {
+   "uid": "9b26de2f-9f2e-451b-be24-946aef523bc7",
+   "question": "Which employees have a supervisor with the exact SSN 888665555?",
+   "answer_row_ids": [
+    "Franklin",
+    "Jennifier"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.super_ssn = 888665555.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.super_ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "=",
+     "value": 888665555.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.super_ssn": 888665555.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with super ssn equal to '888665555.0'?"
+  },
+  {
+   "uid": "41421ddc-19f1-455a-8a09-52cd984fc331",
+   "question": "Which employees have a middle initial of B and were born on or after 1965-01-09?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'B' AND employee.bdate >= '1965-01-09'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.bdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "B",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "B",
+    "employee.bdate": "1965-01-09"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'B' and bdate at least '1965-01-09'?"
+  },
+  {
+   "uid": "64852f5f-7c22-40aa-9ac0-c35ff9776752",
+   "question": "Who are the employees whose supervisor\u2019s SSN is at most 333445555?",
+   "answer_row_ids": [
+    "Jonh",
+    "Joyce",
+    "Ramesh"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.super_ssn <= 333445555.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.super_ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.super_ssn": 333445555.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with super ssn at most '333445555.0'?"
+  },
+  {
+   "uid": "d1a86933-49fc-4fae-821f-45bc7495d9f0",
+   "question": "Which employee has the SSN exactly 123456789?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn = 123456789",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "=",
+     "value": 123456789,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 123456789
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn equal to '123456789'?"
+  },
+  {
+   "uid": "73c50e7e-715f-44e5-a121-dc2f83d5c1ba",
+   "question": "Who is the employee with the social security number exactly 987654321?",
+   "answer_row_ids": [
+    "Jennifier"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn = 987654321",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "=",
+     "value": 987654321,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 987654321
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn equal to '987654321'?"
+  },
+  {
+   "uid": "4af4f797-3b64-41a2-843c-37cf1d1afa4a",
+   "question": "Which female employees have the middle initial S?",
+   "answer_row_ids": [
+    "Jennifier"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.sex = 'F' AND employee.minit = 'S'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.sex",
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "S",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.sex": "F",
+    "employee.minit": "S"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with sex equal to 'F' and minit equal to 'S'?"
+  },
+  {
+   "uid": "7ffebccf-98b2-4efd-81a9-2f09db8ca11e",
+   "question": "Which employees have a department number of at least 4 and a supervisor with a social security number at most 987654321?",
+   "answer_row_ids": [
+    "Jonh",
+    "Franklin",
+    "Joyce",
+    "Ramesh",
+    "Jennifier",
+    "Ahmad",
+    "Alicia"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno >= 4 AND employee.super_ssn <= 987654321.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.super_ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4,
+    "employee.super_ssn": 987654321.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at least '4' and super ssn at most '987654321.0'?"
+  },
+  {
+   "uid": "a57a1507-c061-4742-8fdd-bc2e5d9d9e6a",
+   "question": "Who works in department 5 with a supervisor social security number of at least 888665555?",
+   "answer_row_ids": [
+    "Franklin"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno = 5 AND employee.super_ssn >= 888665555.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.super_ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 888665555.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 5,
+    "employee.super_ssn": 888665555.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno equal to '5' and super ssn at least '888665555.0'?"
+  },
+  {
+   "uid": "4f75acb9-9801-4edb-bf64-4f53d6bd1e89",
+   "question": "Who are the male employees with last name Narayan in department 5 whose salary is at most 38000, super_ssn is at least 333445555, and ssn is at most 666884444?",
+   "answer_row_ids": [
+    "Ramesh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.salary <= 38000 AND employee.sex = 'M' AND employee.super_ssn >= 333445555.0 AND employee.ssn <= 666884444 AND employee.dno = 5 AND employee.lname = 'Narayan'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.salary",
+    "employee.sex",
+    "employee.super_ssn",
+    "employee.ssn",
+    "employee.dno",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "<=",
+     "value": 38000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 666884444,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Narayan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.salary": 38000,
+    "employee.sex": "M",
+    "employee.super_ssn": 333445555.0,
+    "employee.ssn": 666884444,
+    "employee.dno": 5,
+    "employee.lname": "Narayan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with salary at most '38000' and sex equal to 'M' and super ssn at least '333445555.0' and ssn at most '666884444' and dno equal to '5' and lname equal to 'Narayan'?"
+  },
+  {
+   "uid": "cb4630be-4fe7-461a-b067-7ede7f5879c8",
+   "question": "Which female employees with last name Zelaya, middle initial J, born on or after 1968-01-19, have an SSN at most 999887777 and a supervisor SSN no more than 987654321?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn <= 999887777 AND employee.minit = 'J' AND employee.sex = 'F' AND employee.bdate >= '1968-01-19' AND employee.lname = 'Zelaya' AND employee.super_ssn <= 987654321.0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn",
+    "employee.minit",
+    "employee.sex",
+    "employee.bdate",
+    "employee.lname",
+    "employee.super_ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 999887777,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "J",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1968-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Zelaya",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 999887777,
+    "employee.minit": "J",
+    "employee.sex": "F",
+    "employee.bdate": "1968-01-19",
+    "employee.lname": "Zelaya",
+    "employee.super_ssn": 987654321.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn at most '999887777' and minit equal to 'J' and sex equal to 'F' and bdate at least '1968-01-19' and lname equal to 'Zelaya' and super ssn at most '987654321.0'?"
+  },
+  {
+   "uid": "b25dff0f-e263-407e-9b34-44af8220ea02",
+   "question": "Which male employees with last name Narayan and middle initial K were born on or after 1962-09-15, have an SSN of at least 666884444, a salary of at least 38000, and a supervisor SSN of at least 333445555?",
+   "answer_row_ids": [
+    "Ramesh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn >= 666884444 AND employee.lname = 'Narayan' AND employee.salary >= 38000 AND employee.super_ssn >= 333445555.0 AND employee.bdate >= '1962-09-15' AND employee.sex = 'M' AND employee.minit = 'K'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn",
+    "employee.lname",
+    "employee.salary",
+    "employee.super_ssn",
+    "employee.bdate",
+    "employee.sex",
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 666884444,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Narayan",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 38000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1962-09-15",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "K",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 666884444,
+    "employee.lname": "Narayan",
+    "employee.salary": 38000,
+    "employee.super_ssn": 333445555.0,
+    "employee.bdate": "1962-09-15",
+    "employee.sex": "M",
+    "employee.minit": "K"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn at least '666884444' and lname equal to 'Narayan' and salary at least '38000' and super ssn at least '333445555.0' and bdate at least '1962-09-15' and sex equal to 'M' and minit equal to 'K'?"
+  },
+  {
+   "uid": "1b9bab15-9d1d-4d78-be14-fb86ad8af077",
+   "question": "Who are the female employees with the last name Zelaya whose middle initial is J, salary is 25000, birthdate is on or before 1968-01-19, department number is at most 4, super_ssn is at least 987654321, and ssn is at most 999887777?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'J' AND employee.dno <= 4 AND employee.bdate <= '1968-01-19' AND employee.sex = 'F' AND employee.lname = 'Zelaya' AND employee.super_ssn >= 987654321.0 AND employee.ssn <= 999887777 AND employee.salary = 25000",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.dno",
+    "employee.bdate",
+    "employee.sex",
+    "employee.lname",
+    "employee.super_ssn",
+    "employee.ssn",
+    "employee.salary"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "J",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1968-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Zelaya",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 999887777,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "=",
+     "value": 25000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "J",
+    "employee.dno": 4,
+    "employee.bdate": "1968-01-19",
+    "employee.sex": "F",
+    "employee.lname": "Zelaya",
+    "employee.super_ssn": 987654321.0,
+    "employee.ssn": 999887777,
+    "employee.salary": 25000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'J' and dno at most '4' and bdate at most '1968-01-19' and sex equal to 'F' and lname equal to 'Zelaya' and super ssn at least '987654321.0' and ssn at most '999887777' and salary equal to '25000'?"
+  },
+  {
+   "uid": "e45409c4-e106-4c5a-b1e5-b88ee7a7a999",
+   "question": "Which female employees with last name English have middle initial A, department number at most 5, supervisor SSN at least 333445555.0, and SSN no more than 453453453?",
+   "answer_row_ids": [
+    "Joyce"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'A' AND employee.dno <= 5 AND employee.lname = 'English' AND employee.super_ssn >= 333445555.0 AND employee.sex = 'F' AND employee.ssn <= 453453453",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.dno",
+    "employee.lname",
+    "employee.super_ssn",
+    "employee.sex",
+    "employee.ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "English",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 453453453,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "A",
+    "employee.dno": 5,
+    "employee.lname": "English",
+    "employee.super_ssn": 333445555.0,
+    "employee.sex": "F",
+    "employee.ssn": 453453453
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'A' and dno at most '5' and lname equal to 'English' and super ssn at least '333445555.0' and sex equal to 'F' and ssn at most '453453453'?"
+  },
+  {
+   "uid": "5f406d34-f9ee-4b10-bae9-bca73ca90c1f",
+   "question": "Which male employees with last name Smith, middle initial B, and birthdate on 1965-01-09 live at addresses containing 731 Fondren, earn at least 30000, have an SSN at most 123456789, and whose supervisor\u2019s SSN is exactly 333445555?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.address LIKE '%731 Fondren%' AND employee.salary >= 30000 AND employee.minit = 'B' AND employee.bdate = '1965-01-09' AND employee.ssn <= 123456789 AND employee.super_ssn = 333445555.0 AND employee.sex = 'M' AND employee.lname = 'Smith'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.address",
+    "employee.salary",
+    "employee.minit",
+    "employee.bdate",
+    "employee.ssn",
+    "employee.super_ssn",
+    "employee.sex",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "address",
+     "operator": "LIKE",
+     "value": "731 Fondren",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 30000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "B",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 123456789,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Smith",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.address": "731 Fondren",
+    "employee.salary": 30000,
+    "employee.minit": "B",
+    "employee.bdate": "1965-01-09",
+    "employee.ssn": 123456789,
+    "employee.super_ssn": 333445555.0,
+    "employee.sex": "M",
+    "employee.lname": "Smith"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with address matching '%731 Fondren%' and salary at least '30000' and minit equal to 'B' and bdate equal to '1965-01-09' and ssn at most '123456789' and super ssn equal to '333445555.0' and sex equal to 'M' and lname equal to 'Smith'?"
+  },
+  {
+   "uid": "2a8b6d13-4dfa-4e96-9950-d44e9e9f7f99",
+   "question": "Which employees in department 5 have a last name of Narayan, a middle initial of K, were born on 1962-09-15, earn at least 38000, and have a supervisor\u2019s SSN no more than 333445555?",
+   "answer_row_ids": [
+    "Ramesh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.salary >= 38000 AND employee.lname = 'Narayan' AND employee.bdate = '1962-09-15' AND employee.minit = 'K' AND employee.super_ssn <= 333445555.0 AND employee.dno = 5",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.salary",
+    "employee.lname",
+    "employee.bdate",
+    "employee.minit",
+    "employee.super_ssn",
+    "employee.dno"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 38000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Narayan",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1962-09-15",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "K",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.salary": 38000,
+    "employee.lname": "Narayan",
+    "employee.bdate": "1962-09-15",
+    "employee.minit": "K",
+    "employee.super_ssn": 333445555.0,
+    "employee.dno": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with salary at least '38000' and lname equal to 'Narayan' and bdate equal to '1962-09-15' and minit equal to 'K' and super ssn at most '333445555.0' and dno equal to '5'?"
+  },
+  {
+   "uid": "9f2e357d-7f97-4063-8a64-51edb6ed6fc0",
+   "question": "Who are the male employees with last name Borg, middle initial E, born on 1937-11-10, working in department 1 with a salary of at least 55000 and an SSN of at least 888665555?",
+   "answer_row_ids": [
+    "James"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.sex = 'M' AND employee.ssn >= 888665555 AND employee.minit = 'E' AND employee.salary >= 55000 AND employee.bdate = '1937-11-10' AND employee.dno = 1 AND employee.lname = 'Borg'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.sex",
+    "employee.ssn",
+    "employee.minit",
+    "employee.salary",
+    "employee.bdate",
+    "employee.dno",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 888665555,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "E",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 55000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1937-11-10",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Borg",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.sex": "M",
+    "employee.ssn": 888665555,
+    "employee.minit": "E",
+    "employee.salary": 55000,
+    "employee.bdate": "1937-11-10",
+    "employee.dno": 1,
+    "employee.lname": "Borg"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with sex equal to 'M' and ssn at least '888665555' and minit equal to 'E' and salary at least '55000' and bdate equal to '1937-11-10' and dno equal to '1' and lname equal to 'Borg'?"
+  },
+  {
+   "uid": "37da230d-1173-4dd2-a795-ab1a00f41d89",
+   "question": "Which female employees with last name English and middle initial A, born on or after 1972-07-31, have at most 453453453 as their SSN, a supervisor SSN no more than 333445555.0, and a salary at most 25000?",
+   "answer_row_ids": [
+    "Joyce"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.lname = 'English' AND employee.minit = 'A' AND employee.ssn <= 453453453 AND employee.sex = 'F' AND employee.super_ssn <= 333445555.0 AND employee.salary <= 25000 AND employee.bdate >= '1972-07-31'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.lname",
+    "employee.minit",
+    "employee.ssn",
+    "employee.sex",
+    "employee.super_ssn",
+    "employee.salary",
+    "employee.bdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "English",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 453453453,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "<=",
+     "value": 25000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1972-07-31",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "employee.lname": "English",
+    "employee.minit": "A",
+    "employee.ssn": 453453453,
+    "employee.sex": "F",
+    "employee.super_ssn": 333445555.0,
+    "employee.salary": 25000,
+    "employee.bdate": "1972-07-31"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with lname equal to 'English' and minit equal to 'A' and ssn at most '453453453' and sex equal to 'F' and super ssn at most '333445555.0' and salary at most '25000' and bdate at least '1972-07-31'?"
+  },
+  {
+   "uid": "6cc0aa8f-5e91-4285-b3c9-872ba0cd9a94",
+   "question": "Which female employees with the last name Zelaya, a middle initial of J, born on or after 1968-01-19, having a social security number at most 999887777, department number at most 4, and a supervisor's SSN of at least 987654321 are there?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.bdate >= '1968-01-19' AND employee.sex = 'F' AND employee.minit = 'J' AND employee.ssn <= 999887777 AND employee.dno <= 4 AND employee.super_ssn >= 987654321.0 AND employee.lname = 'Zelaya'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.bdate",
+    "employee.sex",
+    "employee.minit",
+    "employee.ssn",
+    "employee.dno",
+    "employee.super_ssn",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1968-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "J",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 999887777,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Zelaya",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.bdate": "1968-01-19",
+    "employee.sex": "F",
+    "employee.minit": "J",
+    "employee.ssn": 999887777,
+    "employee.dno": 4,
+    "employee.super_ssn": 987654321.0,
+    "employee.lname": "Zelaya"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with bdate at least '1968-01-19' and sex equal to 'F' and minit equal to 'J' and ssn at most '999887777' and dno at most '4' and super ssn at least '987654321.0' and lname equal to 'Zelaya'?"
+  },
+  {
+   "uid": "6cd7f406-a370-4ec1-9687-3ee7459a7993",
+   "question": "What employees named Smith who are male, born on 1965-01-09, with an SSN of at most 123456789, working in department 5 or higher, and living at addresses containing Houston, fit these criteria?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.address LIKE '%Houston%' AND employee.lname = 'Smith' AND employee.ssn <= 123456789 AND employee.bdate = '1965-01-09' AND employee.sex = 'M' AND employee.dno >= 5",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.address",
+    "employee.lname",
+    "employee.ssn",
+    "employee.bdate",
+    "employee.sex",
+    "employee.dno"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "address",
+     "operator": "LIKE",
+     "value": "Houston",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Smith",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 123456789,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.address": "Houston",
+    "employee.lname": "Smith",
+    "employee.ssn": 123456789,
+    "employee.bdate": "1965-01-09",
+    "employee.sex": "M",
+    "employee.dno": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with address matching '%Houston%' and lname equal to 'Smith' and ssn at most '123456789' and bdate equal to '1965-01-09' and sex equal to 'M' and dno at least '5'?"
+  },
+  {
+   "uid": "b3ec3d20-aa98-4da4-9aca-5b3a45e64408",
+   "question": "Which employees born on 1941-06-20 have a salary of 43000, work in department 4, have the last name Wallace with middle initial S, SSN 987654321, and live at an address containing Bellaire?",
+   "answer_row_ids": [
+    "Jennifier"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.bdate = '1941-06-20' AND employee.dno = 4 AND employee.salary = 43000 AND employee.lname = 'Wallace' AND employee.minit = 'S' AND employee.ssn = 987654321 AND employee.address LIKE '%Bellaire%'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.bdate",
+    "employee.dno",
+    "employee.salary",
+    "employee.lname",
+    "employee.minit",
+    "employee.ssn",
+    "employee.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1941-06-20",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "=",
+     "value": 43000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Wallace",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "S",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "=",
+     "value": 987654321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "address",
+     "operator": "LIKE",
+     "value": "Bellaire",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "employee.bdate": "1941-06-20",
+    "employee.dno": 4,
+    "employee.salary": 43000,
+    "employee.lname": "Wallace",
+    "employee.minit": "S",
+    "employee.ssn": 987654321,
+    "employee.address": "Bellaire"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with bdate equal to '1941-06-20' and dno equal to '4' and salary equal to '43000' and lname equal to 'Wallace' and minit equal to 'S' and ssn equal to '987654321' and address matching '%Bellaire%'?"
+  },
+  {
+   "uid": "714271c4-0ccb-47e0-a385-1d26716ba16d",
+   "question": "What employees have a middle initial of B, a supervisor SSN at most 333445555, work in department 5, earn a salary of at most 30000, were born on or before 1965-01-09, and have an SSN exactly 123456789?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'B' AND employee.super_ssn <= 333445555.0 AND employee.dno = 5 AND employee.salary <= 30000 AND employee.bdate <= '1965-01-09' AND employee.ssn = 123456789",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.super_ssn",
+    "employee.dno",
+    "employee.salary",
+    "employee.bdate",
+    "employee.ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "B",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "<=",
+     "value": 30000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "=",
+     "value": 123456789,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "B",
+    "employee.super_ssn": 333445555.0,
+    "employee.dno": 5,
+    "employee.salary": 30000,
+    "employee.bdate": "1965-01-09",
+    "employee.ssn": 123456789
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'B' and super ssn at most '333445555.0' and dno equal to '5' and salary at most '30000' and bdate at most '1965-01-09' and ssn equal to '123456789'?"
+  },
+  {
+   "uid": "8e043d88-d5aa-42b6-9ea5-1e3c63d5194d",
+   "question": "Which employees have an SSN of at least 123456789, work in department number 5 or fewer, have a middle initial of B, earn at least 30000, were born on or after 1965-01-09, and have a supervisor SSN of at most 333445555?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn >= 123456789 AND employee.dno <= 5 AND employee.minit = 'B' AND employee.salary >= 30000 AND employee.bdate >= '1965-01-09' AND employee.super_ssn <= 333445555.0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn",
+    "employee.dno",
+    "employee.minit",
+    "employee.salary",
+    "employee.bdate",
+    "employee.super_ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 123456789,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "B",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 30000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 123456789,
+    "employee.dno": 5,
+    "employee.minit": "B",
+    "employee.salary": 30000,
+    "employee.bdate": "1965-01-09",
+    "employee.super_ssn": 333445555.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn at least '123456789' and dno at most '5' and minit equal to 'B' and salary at least '30000' and bdate at least '1965-01-09' and super ssn at most '333445555.0'?"
+  },
+  {
+   "uid": "c4c0d8fd-a53b-42ea-8059-154e2f23d80a",
+   "question": "Who works in department 5 with a salary at most 25000, has the last name English, middle initial A, a supervisor with SSN 333445555.0, was born on 1972-07-31, and has an address containing Houston?",
+   "answer_row_ids": [
+    "Joyce"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.address LIKE '%Houston%' AND employee.dno = 5 AND employee.salary <= 25000 AND employee.lname = 'English' AND employee.minit = 'A' AND employee.super_ssn = 333445555.0 AND employee.bdate = '1972-07-31'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.address",
+    "employee.dno",
+    "employee.salary",
+    "employee.lname",
+    "employee.minit",
+    "employee.super_ssn",
+    "employee.bdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "address",
+     "operator": "LIKE",
+     "value": "Houston",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "<=",
+     "value": 25000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "English",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "=",
+     "value": 333445555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1972-07-31",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "employee.address": "Houston",
+    "employee.dno": 5,
+    "employee.salary": 25000,
+    "employee.lname": "English",
+    "employee.minit": "A",
+    "employee.super_ssn": 333445555.0,
+    "employee.bdate": "1972-07-31"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with address matching '%Houston%' and dno equal to '5' and salary at most '25000' and lname equal to 'English' and minit equal to 'A' and super ssn equal to '333445555.0' and bdate equal to '1972-07-31'?"
+  },
+  {
+   "uid": "779bea5d-e18f-48e8-aed9-0d27ddd2585e",
+   "question": "Which male employees named Wong with middle initial T were born on 1955-12-08, earn exactly 40000, have a department number of at least 5, and a social security number at most 333445555?",
+   "answer_row_ids": [
+    "Franklin"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.sex = 'M' AND employee.salary = 40000 AND employee.bdate = '1955-12-08' AND employee.dno >= 5 AND employee.ssn <= 333445555 AND employee.minit = 'T' AND employee.lname = 'Wong'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.sex",
+    "employee.salary",
+    "employee.bdate",
+    "employee.dno",
+    "employee.ssn",
+    "employee.minit",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "=",
+     "value": 40000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1955-12-08",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 333445555,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "T",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Wong",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.sex": "M",
+    "employee.salary": 40000,
+    "employee.bdate": "1955-12-08",
+    "employee.dno": 5,
+    "employee.ssn": 333445555,
+    "employee.minit": "T",
+    "employee.lname": "Wong"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with sex equal to 'M' and salary equal to '40000' and bdate equal to '1955-12-08' and dno at least '5' and ssn at most '333445555' and minit equal to 'T' and lname equal to 'Wong'?"
+  },
+  {
+   "uid": "74d7d06d-7375-4c8b-9773-3e7f8a75caa8",
+   "question": "Who are the male employees with the last name Wong, middle initial T, born on 1955-12-08, and with an SSN of at least 333445555?",
+   "answer_row_ids": [
+    "Franklin"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'T' AND employee.ssn >= 333445555 AND employee.sex = 'M' AND employee.lname = 'Wong' AND employee.bdate = '1955-12-08'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.ssn",
+    "employee.sex",
+    "employee.lname",
+    "employee.bdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "T",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 333445555,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Wong",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1955-12-08",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "T",
+    "employee.ssn": 333445555,
+    "employee.sex": "M",
+    "employee.lname": "Wong",
+    "employee.bdate": "1955-12-08"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'T' and ssn at least '333445555' and sex equal to 'M' and lname equal to 'Wong' and bdate equal to '1955-12-08'?"
+  },
+  {
+   "uid": "bace5b2e-4a45-4748-a59c-3e55b8392113",
+   "question": "Which female employees work in departments numbered at most 4, have a super_ssn no more than 987654321.0, and an ssn at least 999887777?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno <= 4 AND employee.sex = 'F' AND employee.super_ssn <= 987654321.0 AND employee.ssn >= 999887777",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.sex",
+    "employee.super_ssn",
+    "employee.ssn"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 999887777,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4,
+    "employee.sex": "F",
+    "employee.super_ssn": 987654321.0,
+    "employee.ssn": 999887777
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at most '4' and sex equal to 'F' and super ssn at most '987654321.0' and ssn at least '999887777'?"
+  },
+  {
+   "uid": "6b321bd9-8ecf-4cc4-a937-760c092596bc",
+   "question": "Which male employees with last name Jabbar have a department number at most 4 and both a super_ssn at least 987654321.0 and an ssn at least 987987987?",
+   "answer_row_ids": [
+    "Ahmad"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno <= 4 AND employee.sex = 'M' AND employee.super_ssn >= 987654321.0 AND employee.ssn >= 987987987 AND employee.lname = 'Jabbar'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.sex",
+    "employee.super_ssn",
+    "employee.ssn",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": ">=",
+     "value": 987987987,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Jabbar",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4,
+    "employee.sex": "M",
+    "employee.super_ssn": 987654321.0,
+    "employee.ssn": 987987987,
+    "employee.lname": "Jabbar"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at most '4' and sex equal to 'M' and super ssn at least '987654321.0' and ssn at least '987987987' and lname equal to 'Jabbar'?"
+  },
+  {
+   "uid": "c07132f8-5c6b-4ccd-b281-d8ca64b991cd",
+   "question": "Which female employees have a middle initial of J and were born on or after 1968-01-19?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'J' AND employee.bdate >= '1968-01-19' AND employee.sex = 'F'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.bdate",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "J",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": ">=",
+     "value": "1968-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "J",
+    "employee.bdate": "1968-01-19",
+    "employee.sex": "F"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'J' and bdate at least '1968-01-19' and sex equal to 'F'?"
+  },
+  {
+   "uid": "84f46e79-2ea6-4f89-bc23-b823e5e4768c",
+   "question": "Which female employees with middle initial S have a social security number at most 987654321?",
+   "answer_row_ids": [
+    "Jennifier"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn <= 987654321 AND employee.minit = 'S' AND employee.sex = 'F'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn",
+    "employee.minit",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 987654321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "S",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 987654321,
+    "employee.minit": "S",
+    "employee.sex": "F"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn at most '987654321' and minit equal to 'S' and sex equal to 'F'?"
+  },
+  {
+   "uid": "46037da4-1faa-4cb4-8dd6-095b6c430af6",
+   "question": "Which female employees with middle initial S, assigned to department 4, have a salary of at least 43000 and an SSN exactly 987654321?",
+   "answer_row_ids": [
+    "Jennifier"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn = 987654321 AND employee.minit = 'S' AND employee.salary >= 43000 AND employee.dno = 4 AND employee.sex = 'F'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.ssn",
+    "employee.minit",
+    "employee.salary",
+    "employee.dno",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "=",
+     "value": 987654321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "S",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 43000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.ssn": 987654321,
+    "employee.minit": "S",
+    "employee.salary": 43000,
+    "employee.dno": 4,
+    "employee.sex": "F"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with ssn equal to '987654321' and minit equal to 'S' and salary at least '43000' and dno equal to '4' and sex equal to 'F'?"
+  },
+  {
+   "uid": "26f73a6e-6eb9-4b0d-8881-d7bb280e4924",
+   "question": "What male employees with the last name Narayan have a middle initial exactly K?",
+   "answer_row_ids": [
+    "Ramesh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'K' AND employee.lname = 'Narayan' AND employee.sex = 'M'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.lname",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "K",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Narayan",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "K",
+    "employee.lname": "Narayan",
+    "employee.sex": "M"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'K' and lname equal to 'Narayan' and sex equal to 'M'?"
+  },
+  {
+   "uid": "bccaf099-24a0-4148-9c83-a15ab3a3286e",
+   "question": "Which employees with the last name Zelaya have a middle initial J, earn no more than 25000, and were born on or before 1968-01-19?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'J' AND employee.salary <= 25000 AND employee.bdate <= '1968-01-19' AND employee.lname = 'Zelaya'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.salary",
+    "employee.bdate",
+    "employee.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "J",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "<=",
+     "value": 25000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1968-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Zelaya",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "J",
+    "employee.salary": 25000,
+    "employee.bdate": "1968-01-19",
+    "employee.lname": "Zelaya"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'J' and salary at most '25000' and bdate at most '1968-01-19' and lname equal to 'Zelaya'?"
+  },
+  {
+   "uid": "845edef1-35e3-4960-9700-089dba52c084",
+   "question": "Which male employees with the last name Jabbar, middle initial V, born on or before 1969-03-29, and assigned to department number 4 or higher are there?",
+   "answer_row_ids": [
+    "Ahmad"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.lname = 'Jabbar' AND employee.bdate <= '1969-03-29' AND employee.sex = 'M' AND employee.dno >= 4 AND employee.minit = 'V'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.lname",
+    "employee.bdate",
+    "employee.sex",
+    "employee.dno",
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "lname",
+     "operator": "=",
+     "value": "Jabbar",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1969-03-29",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "V",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.lname": "Jabbar",
+    "employee.bdate": "1969-03-29",
+    "employee.sex": "M",
+    "employee.dno": 4,
+    "employee.minit": "V"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with lname equal to 'Jabbar' and bdate at most '1969-03-29' and sex equal to 'M' and dno at least '4' and minit equal to 'V'?"
+  },
+  {
+   "uid": "3413d1fd-c0a8-4bd8-8d09-534911219840",
+   "question": "Which male employees with middle initial B were born on or before 1965-01-09?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.bdate <= '1965-01-09' AND employee.sex = 'M' AND employee.minit = 'B'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.bdate",
+    "employee.sex",
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "B",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.bdate": "1965-01-09",
+    "employee.sex": "M",
+    "employee.minit": "B"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with bdate at most '1965-01-09' and sex equal to 'M' and minit equal to 'B'?"
+  },
+  {
+   "uid": "904d79d5-33e8-4f90-9dbf-b073ebe09771",
+   "question": "Who are the female employees with middle initial S supervised by 888665555.0, living at addresses containing Bellaire and having an SSN at most 987654321?",
+   "answer_row_ids": [
+    "Jennifier"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.address LIKE '%Bellaire%' AND employee.ssn <= 987654321 AND employee.super_ssn = 888665555.0 AND employee.sex = 'F' AND employee.minit = 'S'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.address",
+    "employee.ssn",
+    "employee.super_ssn",
+    "employee.sex",
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "address",
+     "operator": "LIKE",
+     "value": "Bellaire",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "<=",
+     "value": 987654321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "=",
+     "value": 888665555.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "S",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.address": "Bellaire",
+    "employee.ssn": 987654321,
+    "employee.super_ssn": 888665555.0,
+    "employee.sex": "F",
+    "employee.minit": "S"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with address matching '%Bellaire%' and ssn at most '987654321' and super ssn equal to '888665555.0' and sex equal to 'F' and minit equal to 'S'?"
+  },
+  {
+   "uid": "748a4db3-b042-4750-831c-9a35f9a4a128",
+   "question": "Who are the male employees with middle initial E, born on or before 1937-11-10, and earning a salary of at most 55000?",
+   "answer_row_ids": [
+    "James"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'E' AND employee.bdate <= '1937-11-10' AND employee.salary <= 55000 AND employee.sex = 'M'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.minit",
+    "employee.bdate",
+    "employee.salary",
+    "employee.sex"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "E",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "<=",
+     "value": "1937-11-10",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "<=",
+     "value": 55000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.minit": "E",
+    "employee.bdate": "1937-11-10",
+    "employee.salary": 55000,
+    "employee.sex": "M"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with minit equal to 'E' and bdate at most '1937-11-10' and salary at most '55000' and sex equal to 'M'?"
+  },
+  {
+   "uid": "93380b3c-c206-4dab-94ad-ab6402497bbf",
+   "question": "Who lives at an address containing 3321 Castle, has a super_ssn of at least 987654321, earns a salary of at least 25000, and works in department number 4 or higher?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.address LIKE '%3321 Castle%' AND employee.super_ssn >= 987654321.0 AND employee.salary >= 25000 AND employee.dno >= 4",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.address",
+    "employee.super_ssn",
+    "employee.salary",
+    "employee.dno"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "address",
+     "operator": "LIKE",
+     "value": "3321 Castle",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": ">=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 25000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.address": "3321 Castle",
+    "employee.super_ssn": 987654321.0,
+    "employee.salary": 25000,
+    "employee.dno": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with address matching '%3321 Castle%' and super ssn at least '987654321.0' and salary at least '25000' and dno at least '4'?"
+  },
+  {
+   "uid": "f1726659-667a-428b-8464-233b69669c3e",
+   "question": "Which employees have a middle initial of B, were born exactly on 1965-01-09, and belong to department number 5 or fewer?",
+   "answer_row_ids": [
+    "Jonh"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno <= 5 AND employee.bdate = '1965-01-09' AND employee.minit = 'B'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.bdate",
+    "employee.minit"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1965-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "B",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 5,
+    "employee.bdate": "1965-01-09",
+    "employee.minit": "B"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at most '5' and bdate equal to '1965-01-09' and minit equal to 'B'?"
+  },
+  {
+   "uid": "0c9e2891-965b-4948-b9d2-7d49ce98a2b7",
+   "question": "Who are the female employees born on 1968-01-19 with a salary of at least 25000?",
+   "answer_row_ids": [
+    "Alicia"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.bdate = '1968-01-19' AND employee.sex = 'F' AND employee.salary >= 25000",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.bdate",
+    "employee.sex",
+    "employee.salary"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "bdate",
+     "operator": "=",
+     "value": "1968-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 25000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.bdate": "1968-01-19",
+    "employee.sex": "F",
+    "employee.salary": 25000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with bdate equal to '1968-01-19' and sex equal to 'F' and salary at least '25000'?"
+  },
+  {
+   "uid": "bbdd5302-4634-4f96-b7d4-185ff63ccfa2",
+   "question": "Which male employees have a middle initial of V, a salary of exactly 25000, work in department number 4 or higher, and have an SSN of 987987987?",
+   "answer_row_ids": [
+    "Ahmad"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.sex = 'M' AND employee.dno >= 4 AND employee.ssn = 987987987 AND employee.minit = 'V' AND employee.salary = 25000",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.sex",
+    "employee.dno",
+    "employee.ssn",
+    "employee.minit",
+    "employee.salary"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "ssn",
+     "operator": "=",
+     "value": 987987987,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "minit",
+     "operator": "=",
+     "value": "V",
+     "column_type": "enum"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": "=",
+     "value": 25000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.sex": "M",
+    "employee.dno": 4,
+    "employee.ssn": 987987987,
+    "employee.minit": "V",
+    "employee.salary": 25000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with sex equal to 'M' and dno at least '4' and ssn equal to '987987987' and minit equal to 'V' and salary equal to '25000'?"
+  },
+  {
+   "uid": "36aed822-0e4a-42c8-b74d-49a092bd083f",
+   "question": "Which employees work in department number 4 or higher, have a supervisor with SSN at most 987654321.0, and earn a salary of at least 25000?",
+   "answer_row_ids": [
+    "Jonh",
+    "Franklin",
+    "Joyce",
+    "Ramesh",
+    "Jennifier",
+    "Ahmad",
+    "Alicia"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT employee.fname FROM employee\nWHERE employee.dno >= 4 AND employee.super_ssn <= 987654321.0 AND employee.salary >= 25000",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "employee"
+   ],
+   "involved_columns": [
+    "employee.dno",
+    "employee.super_ssn",
+    "employee.salary"
+   ],
+   "involved_filters": [
+    {
+     "table": "employee",
+     "column": "dno",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "super_ssn",
+     "operator": "<=",
+     "value": 987654321.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "employee",
+     "column": "salary",
+     "operator": ">=",
+     "value": 25000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "employee.dno": 4,
+    "employee.super_ssn": 987654321.0,
+    "employee.salary": 25000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "employee"
+   },
+   "answer_table": "employee",
+   "answer_id_column": "fname",
+   "canonical_question": "Which employee entities with dno at least '4' and super ssn at most '987654321.0' and salary at least '25000'?"
+  }
+ ]
+}

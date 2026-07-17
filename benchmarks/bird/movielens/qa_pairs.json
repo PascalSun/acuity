@@ -1,0 +1,2841 @@
+{
+ "db_id": "movielens",
+ "target_table": "u2base",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1002806205,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/movielens/movielens.sqlite",
+  "generated_at": "2026-07-02T11:13:53.269584+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "u2base",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E"
+  ],
+  "requested_strategies": [
+   "0E"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 50
+  },
+  "realized_counts": {
+   "0E": 50
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 50,
+    "accepted_count": 50,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 793,
+    "inner_attempts": 7718,
+    "failed_rounds": 743,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "result_size_out_of_range": 743
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "214f1fb9-375a-40e0-9c57-deebd8172d7b",
+   "question": "Which entries in u2base gave a rating of exactly 2 for the movie with ID 1933599?",
+   "answer_row_ids": [
+    839,
+    2122,
+    3546,
+    3675,
+    5269
+   ],
+   "answer_count": 5,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '2' AND u2base.movieid = 1933599",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1933599,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "2",
+    "u2base.movieid": 1933599
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '2' and movieid equal to '1933599'?"
+  },
+  {
+   "uid": "b5172bc4-5248-4a97-9ae4-89ca6e93a027",
+   "question": "Which entries have a rating of 3 for the movie with ID 2585507?",
+   "answer_row_ids": [
+    1182,
+    1279,
+    1503,
+    1570,
+    1780,
+    2436,
+    3288,
+    3484,
+    3550,
+    4416,
+    4852,
+    5202,
+    5445
+   ],
+   "answer_count": 13,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '3' AND u2base.movieid = 2585507",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2585507,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "3",
+    "u2base.movieid": 2585507
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '3' and movieid equal to '2585507'?"
+  },
+  {
+   "uid": "37fec4be-72d6-421f-96bd-7c48f8ab3cc6",
+   "question": "Which entries have a rating of 1 for the movie with ID 2559217?",
+   "answer_row_ids": [
+    1495,
+    1790,
+    2029,
+    3598,
+    3715,
+    4456,
+    4541,
+    4704,
+    5282
+   ],
+   "answer_count": 9,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '1' AND u2base.movieid = 2559217",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2559217,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "1",
+    "u2base.movieid": 2559217
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '1' and movieid equal to '2559217'?"
+  },
+  {
+   "uid": "2b400fda-ad07-425d-aa35-856765c54df9",
+   "question": "Which entries have a rating of exactly 4 for the movie with ID 2562421?",
+   "answer_row_ids": [
+    2241,
+    2820,
+    4147
+   ],
+   "answer_count": 3,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2562421",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2562421,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2562421
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2562421'?"
+  },
+  {
+   "uid": "823c5066-8db9-4343-a3d1-04837659cb4a",
+   "question": "What entries for the movie with ID 2148400 have a rating that is exactly 4?",
+   "answer_row_ids": [
+    216,
+    1274,
+    1301,
+    1451,
+    1680,
+    1698,
+    1941,
+    3300,
+    3808,
+    3842,
+    4281,
+    4819,
+    4907,
+    5015,
+    5306
+   ],
+   "answer_count": 15,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2148400 AND u2base.rating = '4'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2148400,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2148400,
+    "u2base.rating": "4"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2148400' and rating equal to '4'?"
+  },
+  {
+   "uid": "5366e5d2-d1f6-46ee-a243-7c30026e37af",
+   "question": "Who gave a rating of 2 to the movie with ID 1847595?",
+   "answer_row_ids": [
+    752,
+    1069,
+    2825,
+    2872,
+    3299,
+    3652,
+    3752,
+    3821,
+    4072
+   ],
+   "answer_count": 9,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '2' AND u2base.movieid = 1847595",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1847595,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "2",
+    "u2base.movieid": 1847595
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '2' and movieid equal to '1847595'?"
+  },
+  {
+   "uid": "9526ee4d-14c6-4b4a-8b90-321f6f558268",
+   "question": "Which entries for the movie with ID 2130504 have a rating that is exactly 2?",
+   "answer_row_ids": [
+    45,
+    889,
+    1059,
+    3829,
+    5599
+   ],
+   "answer_count": 5,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2130504 AND u2base.rating = '2'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2130504,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2130504,
+    "u2base.rating": "2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2130504' and rating equal to '2'?"
+  },
+  {
+   "uid": "37e8f5e0-92c5-429a-a25d-2d59136cd850",
+   "question": "Which entries in u2base have a rating of 1 for the movie with ID 1983617?",
+   "answer_row_ids": [
+    1812,
+    3311,
+    4448,
+    5412,
+    5788
+   ],
+   "answer_count": 5,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1983617 AND u2base.rating = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1983617,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1983617,
+    "u2base.rating": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1983617' and rating equal to '1'?"
+  },
+  {
+   "uid": "5aafe895-2322-4387-9d86-e45b20413582",
+   "question": "Which users gave a rating of exactly 4 for the movie with ID 2447164?",
+   "answer_row_ids": [
+    75,
+    629,
+    1501,
+    3458,
+    4048
+   ],
+   "answer_count": 5,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2447164",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2447164,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2447164
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2447164'?"
+  },
+  {
+   "uid": "91416a06-e022-4dc6-b1b8-033262224b24",
+   "question": "Who gave a rating of exactly 3 to the movie with ID 2012514?",
+   "answer_row_ids": [
+    1675,
+    1680,
+    2420,
+    3998,
+    4009,
+    4053,
+    5854,
+    6005
+   ],
+   "answer_count": 8,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '3' AND u2base.movieid = 2012514",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2012514,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "3",
+    "u2base.movieid": 2012514
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '3' and movieid equal to '2012514'?"
+  },
+  {
+   "uid": "693156f4-05ec-4a0e-a080-1b13da798abe",
+   "question": "Which entries for movie 1835618 have a rating that is exactly 2?",
+   "answer_row_ids": [
+    2205,
+    2753,
+    3026,
+    3417,
+    3829,
+    4183,
+    4522,
+    5434,
+    5643
+   ],
+   "answer_count": 9,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1835618 AND u2base.rating = '2'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1835618,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1835618,
+    "u2base.rating": "2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1835618' and rating equal to '2'?"
+  },
+  {
+   "uid": "6f436884-8ac4-4314-9bb4-82f81e7ea2d1",
+   "question": "Which entries rate the movie with ID 1996888 exactly 5 stars?",
+   "answer_row_ids": [
+    10,
+    53,
+    187,
+    223,
+    731,
+    1224,
+    1812,
+    3032,
+    5306,
+    5433,
+    5862
+   ],
+   "answer_count": 11,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1996888 AND u2base.rating = '5'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1996888,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1996888,
+    "u2base.rating": "5"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1996888' and rating equal to '5'?"
+  },
+  {
+   "uid": "994032d3-c53f-4eed-a895-123a7f442351",
+   "question": "Which users gave a rating of exactly 3 for the movie with ID 1729005?",
+   "answer_row_ids": [
+    2264
+   ],
+   "answer_count": 1,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '3' AND u2base.movieid = 1729005",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1729005,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "3",
+    "u2base.movieid": 1729005
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '3' and movieid equal to '1729005'?"
+  },
+  {
+   "uid": "4a51093e-1c27-467b-98df-7e16cdaed908",
+   "question": "Who watched the movie with the exact ID 2107892?",
+   "answer_row_ids": [
+    1470,
+    2685,
+    4041,
+    4682
+   ],
+   "answer_count": 4,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2107892",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2107892,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2107892
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2107892'?"
+  },
+  {
+   "uid": "12b6d6e5-f2ef-4a37-a04e-a26b4cf1a318",
+   "question": "Which entries in u2base gave a rating of 1 for the movie with ID 2480499?",
+   "answer_row_ids": [
+    1968,
+    3246,
+    3359,
+    3808,
+    4344,
+    4647,
+    5113,
+    5555,
+    5972
+   ],
+   "answer_count": 9,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2480499 AND u2base.rating = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2480499,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2480499,
+    "u2base.rating": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2480499' and rating equal to '1'?"
+  },
+  {
+   "uid": "316c0ce2-8e6f-4fb4-8833-e8ea722edda9",
+   "question": "Which entries have a rating of exactly 2 for the movie with ID 2040765?",
+   "answer_row_ids": [
+    117,
+    461,
+    475,
+    881,
+    889,
+    1470,
+    1941,
+    2909,
+    3841,
+    4242,
+    4377,
+    5726
+   ],
+   "answer_count": 12,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '2' AND u2base.movieid = 2040765",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2040765,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "2",
+    "u2base.movieid": 2040765
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '2' and movieid equal to '2040765'?"
+  },
+  {
+   "uid": "86ca189c-c71d-4740-a3b4-a6660fd8cf54",
+   "question": "Who gave a rating of 4 to the movie with ID 2462153?",
+   "answer_row_ids": [
+    210,
+    1083,
+    1658,
+    1764,
+    2090,
+    2144,
+    2195,
+    3834,
+    4048,
+    4285,
+    5568
+   ],
+   "answer_count": 11,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2462153",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2462153,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2462153
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2462153'?"
+  },
+  {
+   "uid": "3878973a-87de-4a62-af28-6b85ebbdb463",
+   "question": "Which entries have a rating of 2 for the movie with ID 2012308?",
+   "answer_row_ids": [
+    165,
+    3013,
+    4169,
+    4306,
+    5552
+   ],
+   "answer_count": 5,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '2' AND u2base.movieid = 2012308",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2012308,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "2",
+    "u2base.movieid": 2012308
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '2' and movieid equal to '2012308'?"
+  },
+  {
+   "uid": "f5a36468-d808-4889-9263-935314655872",
+   "question": "Which entries have a rating of exactly 5 for the movie with ID 1836984?",
+   "answer_row_ids": [
+    3246,
+    3611,
+    4695,
+    5459
+   ],
+   "answer_count": 4,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '5' AND u2base.movieid = 1836984",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1836984,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "5",
+    "u2base.movieid": 1836984
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '5' and movieid equal to '1836984'?"
+  },
+  {
+   "uid": "5f8ab26e-dcb6-4a75-baed-82b3da99c552",
+   "question": "Which entries for movie 2556055 have a rating that is exactly 3?",
+   "answer_row_ids": [
+    990,
+    1377,
+    1639,
+    1667,
+    1941,
+    2909,
+    2994,
+    3272,
+    3576,
+    4049,
+    4054,
+    4277,
+    4279,
+    4715,
+    4884
+   ],
+   "answer_count": 15,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2556055 AND u2base.rating = '3'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2556055,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2556055,
+    "u2base.rating": "3"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2556055' and rating equal to '3'?"
+  },
+  {
+   "uid": "7d1be78a-2898-4a85-9617-3b42e1517c8c",
+   "question": "Who gave a rating of 3 to the movie with ID 2238427?",
+   "answer_row_ids": [
+    1632,
+    2544,
+    2546,
+    2909,
+    2962,
+    3182,
+    3823,
+    4408,
+    4420,
+    4431,
+    5140,
+    5509
+   ],
+   "answer_count": 12,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2238427 AND u2base.rating = '3'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2238427,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2238427,
+    "u2base.rating": "3"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2238427' and rating equal to '3'?"
+  },
+  {
+   "uid": "62540521-c495-45de-b6f1-d77a971c7d72",
+   "question": "Which entries for movie 2472292 have a rating that is exactly 1?",
+   "answer_row_ids": [
+    587,
+    877,
+    1712,
+    2238,
+    3526,
+    5429,
+    5569
+   ],
+   "answer_count": 7,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2472292 AND u2base.rating = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2472292,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2472292,
+    "u2base.rating": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2472292' and rating equal to '1'?"
+  },
+  {
+   "uid": "3a2c88ec-593b-4963-a8f3-cc4393e5fbef",
+   "question": "Which entries have a rating of exactly 3 for the movie with ID 2050561?",
+   "answer_row_ids": [
+    3614
+   ],
+   "answer_count": 1,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '3' AND u2base.movieid = 2050561",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2050561,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "3",
+    "u2base.movieid": 2050561
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '3' and movieid equal to '2050561'?"
+  },
+  {
+   "uid": "40ec8678-5ab7-4e2f-8c69-9ad69e93a296",
+   "question": "Which users gave a rating of exactly 1 for the movie with ID 1828716?",
+   "answer_row_ids": [
+    1794,
+    3884,
+    4611
+   ],
+   "answer_count": 3,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '1' AND u2base.movieid = 1828716",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1828716,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "1",
+    "u2base.movieid": 1828716
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '1' and movieid equal to '1828716'?"
+  },
+  {
+   "uid": "3e90ee6a-8aa4-49c9-8621-948d5ea771fd",
+   "question": "What entries have a rating of 2 for the movie with ID 1777932?",
+   "answer_row_ids": [
+    1496,
+    1835,
+    1941,
+    2772,
+    4447,
+    4837
+   ],
+   "answer_count": 6,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '2' AND u2base.movieid = 1777932",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1777932,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "2",
+    "u2base.movieid": 1777932
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '2' and movieid equal to '1777932'?"
+  },
+  {
+   "uid": "98f695cb-3f03-4f85-8482-1b78e1b6959d",
+   "question": "Which entries have a rating of exactly 4 for the movie with ID 1939369?",
+   "answer_row_ids": [
+    721,
+    1181,
+    2304,
+    2909,
+    3377,
+    4079,
+    4213,
+    4243,
+    4250,
+    4285,
+    4333,
+    4388,
+    4722,
+    4927,
+    5837
+   ],
+   "answer_count": 15,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 1939369",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1939369,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 1939369
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '1939369'?"
+  },
+  {
+   "uid": "f5a9cdad-b999-4df2-bb0c-7d4f0e3d4e45",
+   "question": "Who gave a rating of exactly 5 to the movie with ID 2559855?",
+   "answer_row_ids": [
+    543,
+    549,
+    1645,
+    1676,
+    2015,
+    2751,
+    2885,
+    3032,
+    3192,
+    3503,
+    3517,
+    3792,
+    4688,
+    4754
+   ],
+   "answer_count": 14,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '5' AND u2base.movieid = 2559855",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2559855,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "5",
+    "u2base.movieid": 2559855
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '5' and movieid equal to '2559855'?"
+  },
+  {
+   "uid": "2c2078fc-e5b0-4063-a8a3-f95fed7865c7",
+   "question": "What users gave a rating of exactly 3 for the movie with ID 1787525?",
+   "answer_row_ids": [
+    214,
+    846,
+    881,
+    2153,
+    2181,
+    2913,
+    3471,
+    3847,
+    4064,
+    4122,
+    4609,
+    5198
+   ],
+   "answer_count": 12,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '3' AND u2base.movieid = 1787525",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1787525,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "3",
+    "u2base.movieid": 1787525
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '3' and movieid equal to '1787525'?"
+  },
+  {
+   "uid": "2cc7bb87-bd44-46e3-a121-2cdf451ea762",
+   "question": "Which entries for movie 1951390 have a rating that is exactly 1?",
+   "answer_row_ids": [
+    537,
+    1340
+   ],
+   "answer_count": 2,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1951390 AND u2base.rating = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1951390,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1951390,
+    "u2base.rating": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1951390' and rating equal to '1'?"
+  },
+  {
+   "uid": "1e74b71e-0bac-42ad-94d4-c74a31cb445b",
+   "question": "Which u2base entries have a rating of 4 for the movie with ID 2406492?",
+   "answer_row_ids": [
+    11,
+    752,
+    839,
+    1203,
+    1425,
+    1680,
+    1897,
+    2305,
+    3074,
+    3539,
+    3772,
+    3887,
+    4448,
+    4845,
+    5246
+   ],
+   "answer_count": 15,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2406492",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2406492,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2406492
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2406492'?"
+  },
+  {
+   "uid": "a1efcb85-1acf-4eba-815c-c2799e4c137f",
+   "question": "Which entries have a rating of exactly 3 for the movie with ID 2418253?",
+   "answer_row_ids": [
+    823,
+    889,
+    1088,
+    1273,
+    1912,
+    3471,
+    4169,
+    4771,
+    5198,
+    5643
+   ],
+   "answer_count": 10,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '3' AND u2base.movieid = 2418253",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2418253,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "3",
+    "u2base.movieid": 2418253
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '3' and movieid equal to '2418253'?"
+  },
+  {
+   "uid": "13bfeff1-8c0a-477a-9631-f00c36f953ee",
+   "question": "Which entries in u2base are associated with the movieid 1875764?",
+   "answer_row_ids": [
+    670,
+    2872,
+    998,
+    1352,
+    2811,
+    3110,
+    205,
+    4651
+   ],
+   "answer_count": 8,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1875764",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1875764,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1875764
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1875764'?"
+  },
+  {
+   "uid": "8eb2f5a7-fd77-42d5-842d-32d04537b94a",
+   "question": "Which entries for the movie with ID 2066931 have a rating that is exactly 4?",
+   "answer_row_ids": [
+    408,
+    493,
+    1227,
+    2672,
+    3135,
+    4169
+   ],
+   "answer_count": 6,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2066931 AND u2base.rating = '4'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2066931,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2066931,
+    "u2base.rating": "4"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2066931' and rating equal to '4'?"
+  },
+  {
+   "uid": "5c14e832-74cf-4bc6-8d37-8fc254a76b4c",
+   "question": "Which entries for the movie with ID 2416139 have a rating that is exactly 3?",
+   "answer_row_ids": [
+    68,
+    169,
+    1057,
+    1088,
+    1150,
+    1980,
+    2030,
+    2091,
+    4579,
+    4854,
+    5289
+   ],
+   "answer_count": 11,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2416139 AND u2base.rating = '3'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2416139,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "3",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2416139,
+    "u2base.rating": "3"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2416139' and rating equal to '3'?"
+  },
+  {
+   "uid": "881442a7-2b5b-4974-86b9-4fe7839b6e5e",
+   "question": "Which entries in u2base are associated with the movie that has the ID 1698547?",
+   "answer_row_ids": [
+    1470,
+    1671,
+    4169
+   ],
+   "answer_count": 3,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1698547",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1698547,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1698547
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1698547'?"
+  },
+  {
+   "uid": "a0f9623d-1b80-467c-a92d-dc2eb069d094",
+   "question": "Which entries have a rating of 4 for the movie with ID 2324198?",
+   "answer_row_ids": [
+    3163,
+    5675
+   ],
+   "answer_count": 2,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2324198",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2324198,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2324198
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2324198'?"
+  },
+  {
+   "uid": "5baa9674-be6b-4dc7-ba77-c9b1ca1e7561",
+   "question": "Which entries for movie 1689117 have a rating that is exactly 2?",
+   "answer_row_ids": [
+    699,
+    999,
+    2038,
+    2051,
+    2962,
+    3013,
+    3824,
+    5249,
+    5511
+   ],
+   "answer_count": 9,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1689117 AND u2base.rating = '2'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1689117,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1689117,
+    "u2base.rating": "2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1689117' and rating equal to '2'?"
+  },
+  {
+   "uid": "99498d6d-cf4b-4bd3-b910-19524dfd402f",
+   "question": "What entries have a rating of 2 for the movie with ID 1755524?",
+   "answer_row_ids": [
+    45,
+    1169,
+    1473,
+    1607,
+    1874,
+    2092,
+    2279,
+    2537,
+    2820,
+    3478,
+    4344,
+    5074
+   ],
+   "answer_count": 12,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1755524 AND u2base.rating = '2'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1755524,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1755524,
+    "u2base.rating": "2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1755524' and rating equal to '2'?"
+  },
+  {
+   "uid": "bf2015ad-3aa9-4dfe-baca-ae5ecb7e865b",
+   "question": "Which entries have a rating of 2 for the movie with ID 2475387?",
+   "answer_row_ids": [
+    1088,
+    1170,
+    2072,
+    2088,
+    2348,
+    4169,
+    4408,
+    5643
+   ],
+   "answer_count": 8,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '2' AND u2base.movieid = 2475387",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2475387,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "2",
+    "u2base.movieid": 2475387
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '2' and movieid equal to '2475387'?"
+  },
+  {
+   "uid": "2e28c100-fb18-4f93-8a3d-b1f80955f1a6",
+   "question": "Which entries for movie 2542489 have a rating that is exactly 5?",
+   "answer_row_ids": [
+    2235,
+    2534,
+    3032,
+    4014,
+    4318,
+    4374,
+    5837
+   ],
+   "answer_count": 7,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2542489 AND u2base.rating = '5'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2542489,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2542489,
+    "u2base.rating": "5"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2542489' and rating equal to '5'?"
+  },
+  {
+   "uid": "72457b2b-a0f1-4100-9cac-501e65016d57",
+   "question": "Which entries for the movie with ID 2130832 have a rating that is exactly 1?",
+   "answer_row_ids": [
+    2015,
+    3312,
+    3610
+   ],
+   "answer_count": 3,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2130832 AND u2base.rating = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2130832,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2130832,
+    "u2base.rating": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2130832' and rating equal to '1'?"
+  },
+  {
+   "uid": "2989d172-be17-4d1b-b584-3a4091cb0233",
+   "question": "Which entries have a rating of 4 for the movie with ID 2032173?",
+   "answer_row_ids": [
+    386,
+    2041,
+    3755,
+    3985,
+    5468,
+    5643,
+    5848
+   ],
+   "answer_count": 7,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2032173",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2032173,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2032173
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2032173'?"
+  },
+  {
+   "uid": "9353589a-983a-41e8-95d5-a47a46b60e2f",
+   "question": "Which entries have a rating of exactly 5 for the movie with ID 2104759?",
+   "answer_row_ids": [
+    3135,
+    3596,
+    4685,
+    4861,
+    5446,
+    5653
+   ],
+   "answer_count": 6,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '5' AND u2base.movieid = 2104759",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2104759,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "5",
+    "u2base.movieid": 2104759
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '5' and movieid equal to '2104759'?"
+  },
+  {
+   "uid": "5e2bfbf3-eca1-49d8-bf9f-a3258d94394e",
+   "question": "Who gave a rating of 5 to the movie with ID 2494739?",
+   "answer_row_ids": [
+    635,
+    1147,
+    1211,
+    1986,
+    2002,
+    2072,
+    2701,
+    3026,
+    3507,
+    4448,
+    4921,
+    5157,
+    5758
+   ],
+   "answer_count": 13,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '5' AND u2base.movieid = 2494739",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2494739,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "5",
+    "u2base.movieid": 2494739
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '5' and movieid equal to '2494739'?"
+  },
+  {
+   "uid": "8ad7463b-82b9-47f9-9bb8-bd8d34506fa4",
+   "question": "Which entries in u2base have a rating of exactly 4 for the movie with ID 2285997?",
+   "answer_row_ids": [
+    570,
+    731,
+    1501,
+    1680,
+    1850,
+    1881,
+    2125,
+    3309,
+    4261,
+    4591,
+    4697,
+    6004
+   ],
+   "answer_count": 12,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '4' AND u2base.movieid = 2285997",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2285997,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "4",
+    "u2base.movieid": 2285997
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '4' and movieid equal to '2285997'?"
+  },
+  {
+   "uid": "23247429-95db-47fd-9db4-5e74f8933d23",
+   "question": "Which entries in u2base are associated exactly with the movie ID 1992100?",
+   "answer_row_ids": [
+    889,
+    1470,
+    4714,
+    5463,
+    2293,
+    238,
+    1140,
+    1335,
+    1505,
+    1569,
+    2942,
+    3253,
+    3572,
+    4476
+   ],
+   "answer_count": 14,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 1992100",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 1992100,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 1992100
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '1992100'?"
+  },
+  {
+   "uid": "678348c4-7390-4630-a260-3d261356d9e4",
+   "question": "Which users gave a rating of exactly 1 to the movie with ID 2305587?",
+   "answer_row_ids": [
+    223,
+    673,
+    752,
+    780,
+    1033,
+    1061,
+    2062,
+    2628,
+    3052,
+    3086,
+    3246,
+    3312,
+    4523,
+    5268,
+    6031
+   ],
+   "answer_count": 15,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '1' AND u2base.movieid = 2305587",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2305587,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "1",
+    "u2base.movieid": 2305587
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '1' and movieid equal to '2305587'?"
+  },
+  {
+   "uid": "a889671e-7375-4539-ad2b-7ce0462a9733",
+   "question": "Which entries have a rating of 5 for the movie with ID 2412518?",
+   "answer_row_ids": [
+    911,
+    1071,
+    1333,
+    2465,
+    2471,
+    2909,
+    3841,
+    3864,
+    4016,
+    4021,
+    4705,
+    4904,
+    5583
+   ],
+   "answer_count": 13,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.rating = '5' AND u2base.movieid = 2412518",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.rating",
+    "u2base.movieid"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "5",
+     "column_type": "enum"
+    },
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2412518,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "u2base.rating": "5",
+    "u2base.movieid": 2412518
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with rating equal to '5' and movieid equal to '2412518'?"
+  },
+  {
+   "uid": "22d4021c-a82a-40f2-aa61-2358bb36de0a",
+   "question": "Who gave a rating of 1 to the movie with ID 2201311?",
+   "answer_row_ids": [
+    2546,
+    4704,
+    4852
+   ],
+   "answer_count": 3,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2201311 AND u2base.rating = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2201311,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2201311,
+    "u2base.rating": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2201311' and rating equal to '1'?"
+  },
+  {
+   "uid": "6d27111e-dd07-4b32-a01f-ca8626cb6c54",
+   "question": "Which entries in u2base have a movieid of 2192782 with a rating that is exactly 4?",
+   "answer_row_ids": [
+    869,
+    881,
+    1186,
+    2085,
+    3032,
+    5182
+   ],
+   "answer_count": 6,
+   "sql": "SELECT u2base.userid FROM u2base\nWHERE u2base.movieid = 2192782 AND u2base.rating = '4'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "u2base"
+   ],
+   "involved_columns": [
+    "u2base.movieid",
+    "u2base.rating"
+   ],
+   "involved_filters": [
+    {
+     "table": "u2base",
+     "column": "movieid",
+     "operator": "=",
+     "value": 2192782,
+     "column_type": "numeric"
+    },
+    {
+     "table": "u2base",
+     "column": "rating",
+     "operator": "=",
+     "value": "4",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "u2base.movieid": 2192782,
+    "u2base.rating": "4"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "u2base"
+   },
+   "answer_table": "u2base",
+   "answer_id_column": "userid",
+   "canonical_question": "Which u2base entities with movieid equal to '2192782' and rating equal to '4'?"
+  }
+ ]
+}

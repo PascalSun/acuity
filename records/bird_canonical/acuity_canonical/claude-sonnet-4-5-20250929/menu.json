@@ -1,0 +1,124 @@
+{
+  "db_id": "menu",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:30:04.408649+00:00",
+  "records": [
+    {
+      "uid": "2d490d6c-60f3-451f-bc85-69105ce69325",
+      "question": "Which menus have a status of complete, no more than 2 pages, date on or after 1963-07-24, call number exactly 1963-0043_wotm, physical description exactly 26x20.5cm folded; 26x41cm open, notes exactly English is secondary language, and dish count exactly 85?",
+      "gold_sql": "SELECT menu.id FROM menu\nWHERE menu.status = 'complete' AND menu.page_count <= 2 AND menu.date >= '1963-07-24' AND menu.call_number = '1963-0043_wotm' AND menu.physical_description = '26x20.5cm folded; 26x41cm open' AND menu.notes = 'English is secondary language' AND menu.dish_count = 85",
+      "pred_sql": "SELECT id\nFROM Menu\nWHERE status = 'complete'\n  AND page_count <= 2\n  AND date >= '1963-07-24'\n  AND call_number = '1963-0043_wotm'\n  AND physical_description = '26x20.5cm folded; 26x41cm open'\n  AND notes = 'English is secondary language'\n  AND dish_count = 85",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "4aa7a8f7-cf86-4fff-a5e0-c9a586031fc8",
+      "question": "What menus dated on 1906-12-31 have a status of complete, use Dollars with the $ symbol, contain no more than 266 dishes, and have exactly 4 pages?",
+      "gold_sql": "SELECT menu.id FROM menu\nWHERE menu.status = 'complete' AND menu.currency = 'Dollars' AND menu.dish_count <= 266 AND menu.page_count = 4 AND menu.currency_symbol = '$' AND menu.date = '1906-12-31'",
+      "pred_sql": "SELECT id FROM Menu WHERE status = 'complete' AND currency = 'Dollars' AND dish_count <= 266 AND page_count = 4 AND currency_symbol = '$' AND date = '1906-12-31'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "669cf10f-c5ba-45b4-a855-7180d95354f2",
+      "question": "Which menus have a status of complete and a call number exactly equal to 1933-0260_wotm?",
+      "gold_sql": "SELECT menu.id FROM menu\nWHERE menu.status = 'complete' AND menu.call_number = '1933-0260_wotm'",
+      "pred_sql": "SELECT id FROM Menu WHERE status = 'complete' AND call_number = '1933-0260_wotm'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "8d23fb1b-2e69-41bb-8c86-71a7ab72b563",
+      "question": "Which menus with call number 1906-093 have exactly 21 dishes, at least 12 pages, and are from SAVOY, NEW YORK, NY for a COMPLIMENTARY/TESTIMONIAL occasion, where the pages are at least 2414.0 wide but no more than 3713.0 high, and notes say MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;?",
+      "gold_sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.call_number = '1906-093' AND menu.dish_count = 21 AND menu.page_count >= 12 AND menu.place = 'SAVOY, NEW YORK, NY' AND menu.occasion = 'COMPLIMENTARY/TESTIMONIAL' AND menupage.full_width >= 2414.0 AND menupage.full_height <= 3713.0 AND menu.notes = 'MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;'",
+      "pred_sql": "SELECT DISTINCT m.id\nFROM Menu m\nINNER JOIN MenuPage mp ON m.id = mp.menu_id\nWHERE m.call_number = '1906-093'\n  AND m.dish_count = 21\n  AND m.page_count >= 12\n  AND m.place = 'SAVOY, NEW YORK, NY'\n  AND m.occasion = 'COMPLIMENTARY/TESTIMONIAL'\n  AND m.notes = 'MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;'\n  AND mp.full_width >= 2414.0\n  AND mp.full_height <= 3713.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.35
+    },
+    {
+      "uid": "9240218d-5742-47c2-8090-685c882b8b77",
+      "question": "Which menus have exactly 10 dishes and a call number of 1916-0047_wotm?",
+      "gold_sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.dish_count = 10 AND menu.call_number = '1916-0047_wotm'",
+      "pred_sql": "SELECT DISTINCT m.id\nFROM Menu m\nINNER JOIN MenuPage mp ON m.id = mp.menu_id\nWHERE m.dish_count = 10 AND m.call_number = '1916-0047_wotm'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.69
+    },
+    {
+      "uid": "b6d870e0-239e-4640-ba2b-3ba5e5d207b7",
+      "question": "Which menus from The New Broadway Restaurant and Lunch Room have at least 1 page and 55 or more dishes?",
+      "gold_sql": "SELECT menu.id FROM menu\nWHERE menu.page_count >= 1 AND menu.dish_count >= 55 AND menu.name = 'The New Broadway Restaurant and Lunch Room'",
+      "pred_sql": "SELECT id FROM Menu WHERE page_count >= 1 AND dish_count >= 55 AND name = 'The New Broadway Restaurant and Lunch Room'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.78
+    },
+    {
+      "uid": "b833c55a-3969-40f9-a874-9bac07e32a23",
+      "question": "Which menu items are available at the Commercial venue in Liverpool, [ENGLAND]?",
+      "gold_sql": "SELECT menu.id FROM menu\nWHERE menu.place = 'LIVERPOOL, [ENGLAND]' AND menu.venue = 'COMMERCIAL'",
+      "pred_sql": "SELECT id FROM Menu WHERE place = 'LIVERPOOL, [ENGLAND]' AND venue = 'COMMERCIAL'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "uid": "c6ceb157-8a98-40ec-8261-0e693928ee1b",
+      "question": "Which menus dated on 1933-11-21 with call number 1933-0343_wotm have a physical description of 21.5x14cm folded; 21.5x28cm open and contain at most 13 dishes?",
+      "gold_sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.physical_description = '21.5x14cm folded; 21.5x28cm open' AND menu.dish_count <= 13 AND menu.date = '1933-11-21' AND menu.call_number = '1933-0343_wotm'",
+      "pred_sql": "SELECT DISTINCT m.id\nFROM Menu m\nINNER JOIN MenuPage mp ON m.id = mp.menu_id\nWHERE m.physical_description = '21.5x14cm folded; 21.5x28cm open'\n  AND m.dish_count <= 13\n  AND m.date = '1933-11-21'\n  AND m.call_number = '1933-0343_wotm'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.69
+    },
+    {
+      "uid": "c7e1f9ed-afa0-4160-ad83-7e5cbf4e6c21",
+      "question": "Which menus priced in Dollars have no more than 2 pages and come from the U.S.M.S. St. Louis, Luncheon location?",
+      "gold_sql": "SELECT menu.id FROM menu\nWHERE menu.currency = 'Dollars' AND menu.page_count <= 2 AND menu.location = 'U.S.M.S. St. Louis, Luncheon.'",
+      "pred_sql": "SELECT id FROM Menu WHERE currency = 'Dollars' AND page_count <= 2 AND location = 'U.S.M.S. St. Louis, Luncheon.'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.59
+    },
+    {
+      "uid": "fc4c2ae5-3296-44b9-8540-6137629a304d",
+      "question": "Which menus priced in Dollars have a menupage with a full width exactly equal to 3384.0?",
+      "gold_sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.currency = 'Dollars' AND menupage.full_width = 3384.0",
+      "pred_sql": "SELECT DISTINCT m.id\nFROM Menu m\nJOIN MenuPage mp ON m.id = mp.menu_id\nWHERE m.currency = 'Dollars' AND mp.full_width = 3384.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    }
+  ]
+}

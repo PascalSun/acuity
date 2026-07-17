@@ -1,0 +1,124 @@
+{
+  "db_id": "computer_student",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 3,
+  "accuracy": 0.3,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:21:27.595329+00:00",
+  "records": [
+    {
+      "uid": "1470c0e2-37ec-4935-bab5-e011b256475a",
+      "question": "What people without a position teach courses that are exactly Level_300?",
+      "gold_sql": "SELECT person.p_id FROM person\nJOIN taughtby ON person.p_id = taughtby.p_id\nJOIN course ON taughtby.course_id = course.course_id\nWHERE person.hasposition = '0' AND course.courselevel = 'Level_300'",
+      "pred_sql": "SELECT DISTINCT p.p_id\nFROM person p\nJOIN taughtBy t ON p.p_id = t.p_id\nJOIN course c ON t.course_id = c.course_id\nWHERE p.hasPosition IS NULL\nAND c.courseLevel = 'Level_300'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    },
+    {
+      "uid": "1e63192f-dc4a-4925-9424-506aec01deec",
+      "question": "Which people are professors with a value of at least 1, are not students, have no position, have zero years in the program, where inphase is 0, and who teach Level_300 courses?",
+      "gold_sql": "SELECT person.p_id FROM person\nJOIN taughtby ON person.p_id = taughtby.p_id\nJOIN course ON taughtby.course_id = course.course_id\nWHERE person.professor >= 1 AND person.inphase = '0' AND course.courselevel = 'Level_300' AND person.student = 0 AND person.hasposition = '0' AND person.yearsinprogram = '0'",
+      "pred_sql": "SELECT DISTINCT p.p_id\nFROM person p\nJOIN taughtBy t ON p.p_id = t.p_id\nJOIN course c ON t.course_id = c.course_id\nWHERE p.professor >= 1\n  AND p.student IS NULL\n  AND p.hasPosition IS NULL\n  AND p.yearsInProgram = '0'\n  AND p.inPhase = '0'\n  AND c.courseLevel = 'Level_300'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "6fcb5e12-4da3-4e73-966b-53b37c743704",
+      "question": "Which people are in Year_9 of the program, have at most 1 student role, at most 0 professor role, are exactly in the Post_Generals phase, and have position exactly 0?",
+      "gold_sql": "SELECT person.p_id FROM person\nWHERE person.yearsinprogram = 'Year_9' AND person.student <= 1 AND person.professor <= 0 AND person.inphase = 'Post_Generals' AND person.hasposition = '0'",
+      "pred_sql": "SELECT p_id\nFROM person\nWHERE yearsInProgram = 'Year_9'\n  AND student <= 1\n  AND professor <= 0\n  AND inPhase = 'Post_Generals'\n  AND hasPosition = '0'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "80d33ca2-ae44-45e7-8dd0-0b8ead05043c",
+      "question": "Which people hold the position Faculty_eme and have a professor rating of at least 1?",
+      "gold_sql": "SELECT person.p_id FROM person\nJOIN taughtby ON person.p_id = taughtby.p_id\nWHERE person.hasposition = 'Faculty_eme' AND person.professor >= 1",
+      "pred_sql": "SELECT person.p_id\nFROM person\nWHERE person.hasPosition = 'Faculty_eme' AND person.professor >= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    },
+    {
+      "uid": "865e5438-731b-4146-9045-92e3c8f3a65c",
+      "question": "Which people are in Year_12 of the program?",
+      "gold_sql": "SELECT person.p_id FROM person\nWHERE person.yearsinprogram = 'Year_12'",
+      "pred_sql": "SELECT p_id FROM person WHERE yearsInProgram = 'Year_12'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.89
+    },
+    {
+      "uid": "8f6ac54d-64aa-4688-9156-33488c1fa045",
+      "question": "Which faculty adjuncts have zero years in the program?",
+      "gold_sql": "SELECT person.p_id FROM person\nJOIN taughtby ON person.p_id = taughtby.p_id\nWHERE person.hasposition = 'Faculty_adj' AND person.yearsinprogram = '0'",
+      "pred_sql": "SELECT DISTINCT p.p_id\nFROM person p\nWHERE p.professor = 1\nAND p.hasPosition = 'adjunct'\nAND p.yearsInProgram = '0'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "a30159a3-545c-47d5-891d-4f08c81c6c13",
+      "question": "Which people have no position and have been in the program exactly as Year_10?",
+      "gold_sql": "SELECT person.p_id FROM person\nWHERE person.hasposition = '0' AND person.yearsinprogram = 'Year_10'",
+      "pred_sql": "SELECT person.p_id\nFROM person\nWHERE person.hasPosition IS NULL\nAND person.yearsInProgram = 'Year_10'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    },
+    {
+      "uid": "e8511f45-d41f-446b-b396-362b466cd397",
+      "question": "Which faculty members with exactly 0 years in the program, who are not students and have a professor rating of at least 1, teach courses at Level_300?",
+      "gold_sql": "SELECT person.p_id FROM person\nJOIN taughtby ON person.p_id = taughtby.p_id\nJOIN course ON taughtby.course_id = course.course_id\nWHERE person.yearsinprogram = '0' AND person.hasposition = 'Faculty' AND person.professor >= 1 AND person.student = 0 AND course.courselevel = 'Level_300'",
+      "pred_sql": "SELECT DISTINCT p.p_id\nFROM person p\nJOIN taughtBy t ON p.p_id = t.p_id\nJOIN course c ON t.course_id = c.course_id\nWHERE p.yearsInProgram = '0'\nAND p.student = 0\nAND p.professor >= 1\nAND c.courseLevel = 'Level_300'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "f152c875-bbf2-417b-9e7b-353e30a8c343",
+      "question": "Which students are in Year_12 and currently in the Post_Generals phase but do not hold any position?",
+      "gold_sql": "SELECT person.p_id FROM person\nWHERE person.yearsinprogram = 'Year_12' AND person.inphase = 'Post_Generals' AND person.student = 1 AND person.hasposition = '0'",
+      "pred_sql": "SELECT person.p_id\nFROM person\nWHERE person.yearsInProgram = 'Year_12'\n  AND person.inPhase = 'Post_Generals'\n  AND person.hasPosition IS NULL\n  AND person.student = 1",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.73
+    },
+    {
+      "uid": "f974f268-ee8e-4ded-9dd5-8213a8b30b88",
+      "question": "Which faculty-affiliated people are not students, have been in the program for exactly 0 years, are not inphase, and have a professor level of at most 1?",
+      "gold_sql": "SELECT person.p_id FROM person\nJOIN taughtby ON person.p_id = taughtby.p_id\nWHERE person.inphase = '0' AND person.yearsinprogram = '0' AND person.professor <= 1 AND person.hasposition = 'Faculty_aff' AND person.student = 0",
+      "pred_sql": "SELECT person.p_id\nFROM person\nWHERE person.professor IS NOT NULL\n  AND person.student IS NULL\n  AND person.yearsInProgram = '0'\n  AND person.inPhase IS NULL\n  AND person.professor <= 1",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    }
+  ]
+}

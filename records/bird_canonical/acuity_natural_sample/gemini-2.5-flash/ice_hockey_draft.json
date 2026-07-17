@@ -1,0 +1,124 @@
+{
+  "db_id": "ice_hockey_draft",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:17:38.299776+00:00",
+  "records": [
+    {
+      "uid": "45767aee-a3d8-42cf-9fa5-a9378f300b9f",
+      "question": "Which height_info entries have a height of exactly 6'5\" and are at least 195 cm tall?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nWHERE height_info.height_in_cm >= 195 AND height_info.height_in_inch = '6''5\"'",
+      "pred_sql": "SELECT height_id FROM height_info WHERE height_in_inch = '6''5\"' AND height_in_cm >= 195",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.68
+    },
+    {
+      "uid": "476ecf5a-cf70-48ae-9762-613b8e308aa2",
+      "question": "What height entries are at most 193 cm tall?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nWHERE height_info.height_in_cm <= 193",
+      "pred_sql": "SELECT height_id FROM height_info WHERE height_in_cm <= 193",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "47ed5f47-56d4-4246-93e0-5b042c35de95",
+      "question": "Which heights correspond to players that have played at least one game, were born on or before 1982-12-09, have a CSS rank of at least 11, accumulated 2862 or more total 7-year ice time, and where shoots is exactly L?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nJOIN weight_info ON playerinfo.weight = weight_info.weight_id\nWHERE playerinfo.gp_greater_than_0 = 'yes' AND playerinfo.birthdate <= '1982-12-09' AND playerinfo.css_rank >= 11 AND playerinfo.sum_7yr_toi >= 2862 AND playerinfo.shoots = 'L'",
+      "pred_sql": "SELECT\n  T1.height\nFROM PlayerInfo AS T1\nINNER JOIN SeasonStatus AS T2\n  ON T1.ELITEID = T2.ELITEID\nWHERE\n  T2.GP >= 1 AND T1.birthdate <= '1982-12-09' AND T1.CSS_rank >= 11 AND T1.sum_7yr_TOI >= 2862 AND T1.shoots = 'L'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "uid": "61d1d986-6cf5-4c5e-beb1-5d1f189ae925",
+      "question": "Which height entries correspond to players drafted in 1998 or earlier who are at most 190 cm tall?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nWHERE playerinfo.draftyear <= 1998 AND height_info.height_in_cm <= 190",
+      "pred_sql": "SELECT DISTINCT T1.height_id FROM height_info AS T1 INNER JOIN PlayerInfo AS T2 ON T1.height_id = T2.height WHERE T2.draftyear <= 1998 AND T1.height_in_cm <= 190",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.23
+    },
+    {
+      "uid": "6f03aeec-4c8d-4522-a773-36348df4afe2",
+      "question": "Which height records are associated with the player Jarkko Immonen from Finland who has exactly 207 sum_7yr_toi and at most 20 sum_7yr_gp?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nWHERE playerinfo.nation = 'Finland' AND playerinfo.sum_7yr_toi = 207 AND playerinfo.sum_7yr_gp <= 20 AND playerinfo.playername = 'Jarkko Immonen'",
+      "pred_sql": "SELECT T1.height_id FROM height_info AS T1 INNER JOIN PlayerInfo AS T2 ON T1.height_id = T2.height WHERE T2.PlayerName = 'Jarkko Immonen' AND T2.nation = 'Finland' AND T2.sum_7yr_TOI = 207 AND T2.sum_7yr_GP <= 20",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "b6ce2cea-a471-4bc6-8260-032ff9fb5b6b",
+      "question": "Which height information corresponds to players whose position is exactly C/RW?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nWHERE playerinfo.position_info = 'C/RW'",
+      "pred_sql": "SELECT T1.height_id FROM height_info AS T1 INNER JOIN PlayerInfo AS T2 ON T1.height_id = T2.height WHERE T2.position_info = 'C/RW'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.49
+    },
+    {
+      "uid": "d13c1146-dd67-4e0a-8672-43d0547d0378",
+      "question": "Which height records correspond to players exactly 5'10\" tall who are right wings from Italy, named Anthony Aquino, drafted in round 3, with at least 0 sum_7yr_toi?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nWHERE height_info.height_in_inch = '5''10\"' AND playerinfo.sum_7yr_toi >= 0 AND playerinfo.position_info = 'RW' AND playerinfo.nation = 'Italy' AND playerinfo.playername = 'Anthony Aquino' AND playerinfo.draftround = 3",
+      "pred_sql": "SELECT\n  T1.height_id\nFROM height_info AS T1\nINNER JOIN PlayerInfo AS T2\n  ON T1.height_id = T2.height\nWHERE\n  T1.height_in_inch = '5''10\"' AND T2.position_info = 'RW' AND T2.nation = 'Italy' AND T2.PlayerName = 'Anthony Aquino' AND T2.draftround = 3 AND T2.sum_7yr_TOI >= 0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "e841e872-0fad-453b-bc1c-7ad9bedfc045",
+      "question": "What height information is associated with Rene Vydareny, a Slovakian defenseman who shoots left, was born in 1981, drafted in 1999 or earlier, and is at least 185 cm tall?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nJOIN weight_info ON playerinfo.weight = weight_info.weight_id\nWHERE playerinfo.position_info = 'D' AND playerinfo.playername = 'Rene Vydareny' AND playerinfo.shoots = 'L' AND playerinfo.birthyear = 1981 AND playerinfo.draftyear <= 1999 AND playerinfo.nation = 'Slovakia' AND height_info.height_in_cm >= 185",
+      "pred_sql": "SELECT T1.height_id FROM height_info AS T1 INNER JOIN PlayerInfo AS T2 ON T1.height_id = T2.height WHERE T2.PlayerName = 'Rene Vydareny' AND T2.nation = 'Slovakia' AND T2.position_info = 'D' AND T2.shoots = 'L' AND T2.birthyear = 1981 AND T2.draftyear <= 1999 AND T1.height_in_cm >= 185",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.89
+    },
+    {
+      "uid": "f619501b-20c5-41e0-a3ae-b191f02660f2",
+      "question": "Which height entries correspond to players from the USA who are exactly 190 cm tall?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nJOIN weight_info ON playerinfo.weight = weight_info.weight_id\nWHERE playerinfo.nation = 'USA' AND height_info.height_in_cm = 190",
+      "pred_sql": "SELECT T1.height_id FROM height_info AS T1 INNER JOIN PlayerInfo AS T2 ON T1.height_id = T2.height WHERE T2.nation = 'USA' AND T1.height_in_cm = 190",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.18
+    },
+    {
+      "uid": "fbf48d56-370d-4471-b365-f6644e121eaa",
+      "question": "Which height_info entries represent players exactly 6'2\" tall who are RW/C born in 1986 in the USA, drafted in round 5 or later, with a CSS rank of at most 208, birthmonth no more than 3, and have not played any games?",
+      "gold_sql": "SELECT height_info.height_id FROM height_info\nJOIN playerinfo ON height_info.height_id = playerinfo.height\nWHERE playerinfo.birthyear = 1986 AND playerinfo.draftround >= 5 AND height_info.height_in_inch = '6''2\"' AND playerinfo.position_info = 'RW/C' AND playerinfo.css_rank <= 208 AND playerinfo.gp_greater_than_0 = 'no' AND playerinfo.nation = 'USA' AND playerinfo.birthmonth <= 3",
+      "pred_sql": "SELECT\n  T1.height_id\nFROM height_info AS T1\nINNER JOIN PlayerInfo AS T2\n  ON T1.height_id = T2.height\nWHERE\n  T1.height_in_inch = '6''2\"' AND T2.position_info = 'RW/C' AND T2.birthyear = 1986 AND T2.nation = 'USA' AND T2.draftround >= 5 AND T2.CSS_rank <= 208 AND T2.birthmonth <= 3 AND T2.GP_greater_than_0 = 'no'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.99
+    }
+  ]
+}

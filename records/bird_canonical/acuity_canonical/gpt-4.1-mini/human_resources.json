@@ -1,0 +1,124 @@
+{
+  "db_id": "human_resources",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T09:56:23.208100+00:00",
+  "records": [
+    {
+      "uid": "10430d83-7d80-45f2-a7db-c011fe8eb0b2",
+      "question": "What locations are in Boston with the office phone number (617)123-4444 and the zipcode 2190?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.locationcity = 'Boston' AND location.officephone = '(617)123-4444' AND location.zipcode = 2190",
+      "pred_sql": "SELECT locationID FROM location WHERE locationcity = 'Boston' AND officephone = '(617)123-4444' AND zipcode = 2190",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.97
+    },
+    {
+      "uid": "3d6a0182-2e76-48ca-ab68-7d9acf64c678",
+      "question": "Which locations in Boston have the office phone number (617)123-4444?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.officephone = '(617)123-4444' AND location.locationcity = 'Boston'",
+      "pred_sql": "SELECT locationID FROM location WHERE officephone = '(617)123-4444' AND locationcity = 'Boston'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.8
+    },
+    {
+      "uid": "7f45e879-8388-4357-a79d-ba898f9c07b7",
+      "question": "What locations have female managers hired exactly on 5/14/84 and with a zipcode of at least 60620?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN employee ON location.locationid = employee.locationid\nJOIN position ON employee.positionid = position.positionid\nWHERE position.positiontitle = 'Manager' AND employee.gender = 'F' AND location.zipcode >= 60620 AND employee.hiredate = '5/14/84'",
+      "pred_sql": "SELECT DISTINCT location.locationID\nFROM location\nJOIN employee ON location.locationID = employee.locationID\nJOIN position ON employee.positionID = position.positionID\nWHERE location.zipcode >= 60620\n  AND employee.gender = 'F'\n  AND employee.hiredate = '5/14/84'\n  AND position.positiontitle = 'Manager'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    },
+    {
+      "uid": "a312f15c-6092-4e0a-96a2-82f569402a69",
+      "question": "Which locations in New York City at 1650 Washington Blvd have a zipcode of at most 15648 and employ male staff hired on 7/16/98 with a Good performance rating?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN employee ON location.locationid = employee.locationid\nWHERE location.zipcode <= 15648 AND location.locationcity = 'New York City' AND employee.hiredate = '7/16/98' AND location.address = '1650 Washington Blvd' AND employee.gender = 'M' AND employee.performance = 'Good'",
+      "pred_sql": "SELECT DISTINCT location.locationID\nFROM location\nJOIN employee ON location.locationID = employee.locationID\nWHERE location.zipcode <= 15648\n  AND location.locationcity = 'New York City'\n  AND location.address = '1650 Washington Blvd'\n  AND employee.hiredate = '7/16/98'\n  AND employee.gender = 'M'\n  AND employee.performance = 'Good'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.31
+    },
+    {
+      "uid": "b5f4e944-f259-456c-a066-b4d8fd7ec6db",
+      "question": "What locations are in the city of Atlanta?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.locationcity = 'Atlanta'",
+      "pred_sql": "SELECT locationID FROM location WHERE locationcity = 'Atlanta'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.75
+    },
+    {
+      "uid": "b7a75dd5-12ea-49f9-b2cc-51f3af40c044",
+      "question": "What locations in Chicago with the address 500 Loop Highway and zipcode 60620 have an employee named Mary Smith hired on 1/1/06 whose performance is exactly Average?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN employee ON location.locationid = employee.locationid\nJOIN position ON employee.positionid = position.positionid\nWHERE location.locationcity = 'Chicago' AND employee.lastname = 'Smith' AND location.address = '500 Loop Highway' AND location.zipcode = 60620 AND employee.hiredate = '1/1/06' AND employee.firstname = 'Mary' AND employee.performance = 'Average'",
+      "pred_sql": "SELECT DISTINCT location.locationID\nFROM location\nJOIN employee ON location.locationID = employee.locationID\nJOIN position ON employee.positionID = position.positionID\nWHERE location.locationcity = 'Chicago'\n  AND location.address = '500 Loop Highway'\n  AND location.zipcode = 60620\n  AND employee.lastname = 'Smith'\n  AND employee.hiredate = '1/1/06'\n  AND employee.firstname = 'Mary'\n  AND employee.performance = 'Average'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "c2e4ed1e-e0ee-48a3-be99-fa6d88984fb5",
+      "question": "What locations in Boston have employees whose performance is Poor?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN employee ON location.locationid = employee.locationid\nWHERE location.locationcity = 'Boston' AND employee.performance = 'Poor'",
+      "pred_sql": "SELECT DISTINCT location.locationID\nFROM location\nJOIN employee ON location.locationID = employee.locationID\nWHERE location.locationcity = 'Boston' AND employee.performance = 'Poor'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "c7207850-0112-4e52-9e02-31f71f4b4a52",
+      "question": "What locations in Miami, Florida have the address 210 Biscayne Blvd with the office phone number (305)787-9999 and the zipcode 33103?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.state = 'FL' AND location.officephone = '(305)787-9999' AND location.locationcity = 'Miami' AND location.address = '210 Biscayne Blvd' AND location.zipcode = 33103",
+      "pred_sql": "SELECT locationID FROM location WHERE state = 'FL' AND officephone = '(305)787-9999' AND locationcity = 'Miami' AND address = '210 Biscayne Blvd' AND zipcode = 33103",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "d64994cd-1f5c-4838-8d99-ed59d16f8fe3",
+      "question": "Which locations in Illinois have female employees?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN employee ON location.locationid = employee.locationid\nJOIN position ON employee.positionid = position.positionid\nWHERE employee.gender = 'F' AND location.state = 'IL'",
+      "pred_sql": "SELECT DISTINCT location.locationID\nFROM location\nJOIN employee ON location.locationID = employee.locationID\nJOIN position ON employee.positionID = position.positionID\nWHERE location.state = 'IL' AND employee.gender = 'F'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    },
+    {
+      "uid": "d67f6c22-088e-4dac-8143-15fd9bcd2b0f",
+      "question": "Which locations at 500 Loop Highway have female employees hired on 9/25/97 with exactly average performance?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN employee ON location.locationid = employee.locationid\nWHERE employee.performance = 'Average' AND location.address = '500 Loop Highway' AND employee.gender = 'F' AND employee.hiredate = '9/25/97'",
+      "pred_sql": "SELECT DISTINCT location.locationID\nFROM location\nJOIN employee ON location.locationID = employee.locationID\nWHERE location.address = '500 Loop Highway'\n  AND employee.performance = 'Average'\n  AND employee.gender = 'F'\n  AND employee.hiredate = '9/25/97'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "food_inspection_2",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:29:14.587748+00:00",
+  "records": [
+    {
+      "uid": "23e44312-98c0-4ba4-9b2f-967efd5256c9",
+      "question": "Which employees living at 1241 W 72nd Pl have a supervisor among the other employees?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nJOIN employee AS employee__1 ON employee.supervisor = employee__1.employee_id\nWHERE employee.address = '1241 W 72nd Pl'",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE address = '1241 W 72nd Pl'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    },
+    {
+      "uid": "5c2b16c8-2f44-4532-bf78-83cdb15ea7fa",
+      "question": "Which employees named Valeria work as Sanitarians at 4033 N Kenneth Ave in Chicago with a zip code of at least 60641 and earn a salary of at most 84800?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nWHERE employee.zip >= 60641 AND employee.address = '4033 N Kenneth Ave' AND employee.city = 'Chicago' AND employee.salary <= 84800 AND employee.title = 'Sanitarian' AND employee.first_name = 'Valeria'",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE zip >= 60641\n  AND address = '4033 N Kenneth Ave'\n  AND city = 'Chicago'\n  AND salary <= 84800\n  AND title = 'Sanitarian'\n  AND first_name = 'Valeria'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "70d3839b-bede-4cdd-b3b4-d5965fdeb880",
+      "question": "Which employees with the last name Langley earn at most 63500 and have supervisors who themselves report to another supervisor?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nJOIN employee AS employee__1 ON employee.supervisor = employee__1.employee_id\nJOIN employee AS employee__2 ON employee__1.supervisor = employee__2.employee_id\nWHERE employee.salary <= 63500 AND employee.last_name = 'Langley'",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE salary <= 63500 AND last_name = 'Langley'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.31
+    },
+    {
+      "uid": "78412b9f-ffb4-4bc2-998b-ba2cdebf8ee7",
+      "question": "Which employees live in zip code 60649 and earn a salary of at least 80600?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nWHERE employee.salary >= 80600 AND employee.zip = 60649",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE salary >= 80600 AND zip = 60649",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "uid": "7d675603-db5c-4608-bbd0-1947aca7af9b",
+      "question": "Which Sanitarian in Chicago, Illinois has the address 3336 W Madison St, phone number (773) 826-0976, a salary of 70200, and zip code 60624?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nWHERE employee.state = 'IL' AND employee.title = 'Sanitarian' AND employee.address = '3336 W Madison St' AND employee.phone = '(773) 826-0976' AND employee.city = 'Chicago' AND employee.salary = 70200 AND employee.zip = 60624",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE state = 'IL' \n  AND title = 'Sanitarian' \n  AND address = '3336 W Madison St' \n  AND phone = '(773) 826-0976' \n  AND city = 'Chicago' \n  AND salary = 70200 \n  AND zip = 60624",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.17
+    },
+    {
+      "uid": "815f0130-1800-4f9d-8315-9c29881e9d07",
+      "question": "Which employees have the phone number (773) 253-7036?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nWHERE employee.phone = '(773) 253-7036'",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE phone = '(773) 253-7036'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.63
+    },
+    {
+      "uid": "97427032-d297-4763-bb4b-99d6705bc3e2",
+      "question": "Who works at 7723 S Paxton Ave and reports to a supervisor whose own supervisor is also an employee?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nJOIN employee AS employee__1 ON employee.supervisor = employee__1.employee_id\nJOIN employee AS employee__2 ON employee__1.supervisor = employee__2.employee_id\nWHERE employee.address = '7723 S Paxton Ave'",
+      "pred_sql": "SELECT employee_id FROM employee WHERE address = '7723 S Paxton Ave'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.19
+    },
+    {
+      "uid": "c36c4327-b022-4c3b-8665-ba9d6e481bfa",
+      "question": "Which employees named Holder are located in Illinois and earn a salary of at most 63600?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nWHERE employee.last_name = 'Holder' AND employee.state = 'IL' AND employee.salary <= 63600",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE last_name = 'Holder' AND state = 'IL' AND salary <= 63600",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.9
+    },
+    {
+      "uid": "c4e6df54-ea7e-4dc9-81c3-9c563cca4ce8",
+      "question": "Which employees have the phone number (773) 293-8204 and report to a supervisor in the company?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nJOIN employee AS employee__1 ON employee.supervisor = employee__1.employee_id\nWHERE employee.phone = '(773) 293-8204'",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE phone = '(773) 293-8204'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    },
+    {
+      "uid": "f5c96f51-d70b-45b8-8688-6193e56566ca",
+      "question": "Who is the employee named Melisa with a salary of 81500, phone number (773) 855-9501, and based in Chicago, Illinois?",
+      "gold_sql": "SELECT employee.employee_id FROM employee\nWHERE employee.state = 'IL' AND employee.city = 'Chicago' AND employee.salary = 81500 AND employee.phone = '(773) 855-9501' AND employee.first_name = 'Melisa'",
+      "pred_sql": "SELECT employee_id\nFROM employee\nWHERE state = 'IL' AND city = 'Chicago' AND salary = 81500 AND phone = '(773) 855-9501' AND first_name = 'Melisa'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    }
+  ]
+}

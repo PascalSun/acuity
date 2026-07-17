@@ -1,0 +1,657 @@
+{
+ "db_id": "airline",
+ "target_table": "Airports",
+ "mode": "flexbench",
+ "total_qa_pairs": 13,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1730161747,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/airline/airline.sqlite",
+  "generated_at": "2026-07-02T17:31:34.248188+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "airports",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 13,
+  "shortfall_total": 37,
+  "overall_fulfillment_rate": 0.26,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 13,
+   "1pE": 13,
+   "1pM": 12,
+   "1pH": 12
+  },
+  "realized_counts": {
+   "0E": 13
+  },
+  "shortfalls": {
+   "1pE": 13,
+   "1pH": 12,
+   "1pM": 12
+  },
+  "shortfall_reason_counts": {
+   "sparse_combinations": 37
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 41,
+    "inner_attempts": 41,
+    "failed_rounds": 28,
+    "invalid_pairs_filtered": 28,
+    "failure_events": {
+     "qa_validation_failed": 28
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 13,
+    "accepted_count": 0,
+    "shortfall": 13,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 156,
+    "inner_attempts": 1560,
+    "failed_rounds": 156,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 156
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 13
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pH": {
+    "target_quota": 12,
+    "accepted_count": 0,
+    "shortfall": 12,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 144,
+    "inner_attempts": 1440,
+    "failed_rounds": 144,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 144
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 12
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pM": {
+    "target_quota": 12,
+    "accepted_count": 0,
+    "shortfall": 12,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 144,
+    "inner_attempts": 1440,
+    "failed_rounds": 144,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 144
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 12
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "4e7134c7-37d3-44f7-be9d-1d9868a07c4e",
+   "question": "Which airports have descriptions containing Bolivia: El Trompillo?",
+   "answer_row_ids": [
+    "SRZ"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Bolivia: El Trompillo%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Bolivia: El Trompillo",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Bolivia: El Trompillo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Bolivia: El Trompillo%'?"
+  },
+  {
+   "uid": "5ae3ca67-85b5-4a7f-b054-1a7a81cc8c6e",
+   "question": "Which airports have descriptions containing Al Kharj?",
+   "answer_row_ids": [
+    "AKH",
+    "XWP"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Al Kharj%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Al Kharj",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Al Kharj"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Al Kharj%'?"
+  },
+  {
+   "uid": "db57f5be-cb92-463e-9b1a-78d77a8ee6e1",
+   "question": "Which airports have descriptions containing India: Lengpui?",
+   "answer_row_ids": [
+    "AJL"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%India: Lengpui%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "India: Lengpui",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "India: Lengpui"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%India: Lengpui%'?"
+  },
+  {
+   "uid": "1d61a0bb-824a-491d-9fdb-e17e247f8c4e",
+   "question": "What airports have descriptions containing Canada: Halifax Stanfield International?",
+   "answer_row_ids": [
+    "YHZ"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Canada: Halifax Stanfield International%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Canada: Halifax Stanfield International",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Canada: Halifax Stanfield International"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Canada: Halifax Stanfield International%'?"
+  },
+  {
+   "uid": "d5a41113-018c-46c7-8a59-ead6f3de9209",
+   "question": "Which airports have descriptions that include Al Taqaddum?",
+   "answer_row_ids": [
+    "IQ1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Al Taqaddum%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Al Taqaddum",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Al Taqaddum"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Al Taqaddum%'?"
+  },
+  {
+   "uid": "3bdc549f-e4d9-4ea1-9c0b-7e079c1b9cae",
+   "question": "Which airports have descriptions containing Saudi Arabia: Hafr Al Batin?",
+   "answer_row_ids": [
+    "AQI"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Saudi Arabia: Hafr Al Batin%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Saudi Arabia: Hafr Al Batin",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Saudi Arabia: Hafr Al Batin"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Saudi Arabia: Hafr Al Batin%'?"
+  },
+  {
+   "uid": "a901c4a0-056a-4e69-a9fd-fe8e4bcf1dfd",
+   "question": "Which airports have descriptions that include United Kingdom: Southampton Airport?",
+   "answer_row_ids": [
+    "SOU"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%United Kingdom: Southampton Airport%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "United Kingdom: Southampton Airport",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "United Kingdom: Southampton Airport"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%United Kingdom: Southampton Airport%'?"
+  },
+  {
+   "uid": "552ff209-da41-4b82-8a3e-3e44fe1d81fb",
+   "question": "Which airports have descriptions that include Pakistan: Gilgit Airport?",
+   "answer_row_ids": [
+    "GIL"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Pakistan: Gilgit Airport%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Pakistan: Gilgit Airport",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Pakistan: Gilgit Airport"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Pakistan: Gilgit Airport%'?"
+  },
+  {
+   "uid": "5d28b227-ae34-421f-b3d7-42e9893b236f",
+   "question": "Which airports have descriptions containing Chalons-En-Champagne?",
+   "answer_row_ids": [
+    "XCR"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Chalons-En-Champagne%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Chalons-En-Champagne",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Chalons-En-Champagne"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Chalons-En-Champagne%'?"
+  },
+  {
+   "uid": "21db46dc-4212-4e5a-9a65-9c5de07b6f09",
+   "question": "Which airports have descriptions containing Cote d'Ivoire: Korhogo Airport?",
+   "answer_row_ids": [
+    "HGO"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Cote d''Ivoire: Korhogo Airport%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Cote d'Ivoire: Korhogo Airport",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Cote d'Ivoire: Korhogo Airport"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Cote d'?"
+  },
+  {
+   "uid": "57a5708a-3572-4298-8b7e-08db58fafddf",
+   "question": "What airports have descriptions containing Arthur's Town?",
+   "answer_row_ids": [
+    "ATC"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Arthur''s Town%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Arthur's Town",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Arthur's Town"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Arthur'?"
+  },
+  {
+   "uid": "431057a9-c3a9-4416-bfe2-13dfc31c8064",
+   "question": "Which airports have descriptions containing Bolivia: Tte Av Salvador Ogaya G International?",
+   "answer_row_ids": [
+    "PSZ"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%Bolivia: Tte Av Salvador Ogaya G International%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "Bolivia: Tte Av Salvador Ogaya G International",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "Bolivia: Tte Av Salvador Ogaya G International"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%Bolivia: Tte Av Salvador Ogaya G International%'?"
+  },
+  {
+   "uid": "2f8bca9d-6a63-4110-9c6e-5e2a90a1db0a",
+   "question": "What airports have descriptions containing AL: South Alabama Regional at Bill Benton Field?",
+   "answer_row_ids": [
+    "AL4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT airports.code FROM airports\nWHERE airports.description LIKE '%AL: South Alabama Regional at Bill Benton Field%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "airports"
+   ],
+   "involved_columns": [
+    "airports.description"
+   ],
+   "involved_filters": [
+    {
+     "table": "airports",
+     "column": "description",
+     "operator": "LIKE",
+     "value": "AL: South Alabama Regional at Bill Benton Field",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "airports.description": "AL: South Alabama Regional at Bill Benton Field"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "airports"
+   },
+   "answer_table": "airports",
+   "answer_id_column": "code",
+   "canonical_question": "Which airports entities with description matching '%AL: South Alabama Regional at Bill Benton Field%'?"
+  }
+ ]
+}

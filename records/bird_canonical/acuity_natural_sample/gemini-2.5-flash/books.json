@@ -1,0 +1,124 @@
+{
+  "db_id": "books",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:15:14.284789+00:00",
+  "records": [
+    {
+      "uid": "0c658ff6-466f-459a-8d22-520ce6953e6b",
+      "question": "Which country has the name exactly Bangladesh?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.country_name = 'Bangladesh'",
+      "pred_sql": "SELECT country.country_id FROM country WHERE country.country_name = 'Bangladesh'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "28a32d3c-6971-4747-a4e4-b313b946f3df",
+      "question": "Which countries have addresses with a street number exactly equal to 0?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN address ON country.country_id = address.country_id\nWHERE address.street_number = '0'",
+      "pred_sql": "SELECT T1.country_id FROM country AS T1 INNER JOIN address AS T2 ON T1.country_id = T2.country_id WHERE T2.street_number = '0'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "31079d8a-176f-4df8-ac29-561cb2020154",
+      "question": "What country has the exact name Bohemia?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.country_name = 'Bohemia'",
+      "pred_sql": "SELECT country_id FROM country WHERE country_name = 'Bohemia'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "43bbbd03-59b7-4d8a-a0fb-5aafdb86dba5",
+      "question": "Which countries named Montenegro have an address on Dennis Road in the city of Ro\u017eaje?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN address ON country.country_id = address.country_id\nWHERE address.city = 'Ro\u017eaje' AND country.country_name = 'Montenegro' AND address.street_name = 'Dennis Road'",
+      "pred_sql": "SELECT\n  T1.country_id\nFROM country AS T1\nINNER JOIN address AS T2\n  ON T1.country_id = T2.country_id\nWHERE\n  T1.country_name = 'Montenegro' AND T2.street_name = 'Dennis Road' AND T2.city = 'Ro\u017eaje'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.01
+    },
+    {
+      "uid": "7f12b249-7874-43e2-86a5-db733f8467bd",
+      "question": "Which countries have addresses located on Meadow Valley Drive in the city of Zvezdara?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN address ON country.country_id = address.country_id\nWHERE address.street_name = 'Meadow Valley Drive' AND address.city = 'Zvezdara'",
+      "pred_sql": "SELECT T1.country_id FROM country AS T1 INNER JOIN address AS T2 ON T1.country_id = T2.country_id WHERE T2.street_name = 'Meadow Valley Drive' AND T2.city = 'Zvezdara'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.79
+    },
+    {
+      "uid": "83470933-9258-48ea-afe9-fe1519863b5c",
+      "question": "Which countries named China have an address on Bonner Center with street number 0 in the city of Xiaolong?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN address ON country.country_id = address.country_id\nWHERE address.street_number = '0' AND address.city = 'Xiaolong' AND address.street_name = 'Bonner Center' AND country.country_name = 'China'",
+      "pred_sql": "SELECT T1.country_id FROM country AS T1 INNER JOIN address AS T2 ON T1.country_id = T2.country_id WHERE T1.country_name = 'China' AND T2.street_name = 'Bonner Center' AND T2.street_number = '0' AND T2.city = 'Xiaolong'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.62
+    },
+    {
+      "uid": "86788183-cf48-438a-96a6-7a20b597e81d",
+      "question": "Which countries have an address in the city of Saurama?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN address ON country.country_id = address.country_id\nWHERE address.city = 'Saurama'",
+      "pred_sql": "SELECT T1.country_id FROM country AS T1 INNER JOIN address AS T2 ON T1.country_id = T2.country_id WHERE T2.city = 'Saurama'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "a5f2b52e-b284-4cad-b7fa-e0590e34f62f",
+      "question": "Which countries named China have an address in Shuyuan city with the street number 4661 on Coleman Street?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN address ON country.country_id = address.country_id\nWHERE address.street_number = '4661' AND address.street_name = 'Coleman Street' AND country.country_name = 'China' AND address.city = 'Shuyuan'",
+      "pred_sql": "SELECT\n  T1.country_id\nFROM country AS T1\nINNER JOIN address AS T2\n  ON T1.country_id = T2.country_id\nWHERE\n  T1.country_name = 'China' AND T2.city = 'Shuyuan' AND T2.street_number = '4661' AND T2.street_name = 'Coleman Street'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.9
+    },
+    {
+      "uid": "ba2f16cf-83b5-4377-a180-02d6d41f3eae",
+      "question": "Which country has the exact name Nauru?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.country_name = 'Nauru'",
+      "pred_sql": "SELECT country.country_id FROM country WHERE country.country_name = 'Nauru'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "f9d6747d-96a1-4dfe-af45-26c249941749",
+      "question": "Which country is named exactly Palestine?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.country_name = 'Palestine'",
+      "pred_sql": "SELECT country.country_id FROM country WHERE country.country_name = 'Palestine'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.24
+    }
+  ]
+}

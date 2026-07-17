@@ -1,0 +1,110 @@
+{
+  "db_id": "shop_membership",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 8,
+  "n_correct": 8,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T08:44:11.053579+00:00",
+  "records": [
+    {
+      "uid": "0f7db96c-cc4b-4f8a-bd6e-50899e3bfb62",
+      "question": "Which branches named Saint Amant are located in London?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.city = 'London' AND branch.name = 'Saint Amant'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE City = 'London' AND Name = 'Saint Amant'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18,
+      "correct_multiset": true
+    },
+    {
+      "uid": "352d8fce-b8b1-41bd-9978-6ede41600a3e",
+      "question": "What branches are located in London?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.city = 'London'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE City = 'London'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08,
+      "correct_multiset": true
+    },
+    {
+      "uid": "44479492-51fb-4b86-868f-f487253aa291",
+      "question": "What branches opened in 2009 in London where the membership amount is exactly 11?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.city = 'London' AND branch.membership_amount = '11' AND branch.open_year = '2009'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE City = 'London' AND membership_amount = '11' AND Open_year = '2009'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55,
+      "correct_multiset": true
+    },
+    {
+      "uid": "446ae80c-be78-4871-86d7-77c4bec50d8d",
+      "question": "Which branches named Cochrane on Brampton Road opened in 2012 with a membership amount of exactly 1418?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.open_year = '2012' AND branch.membership_amount = '1418' AND branch.address_road = 'Brampton Road' AND branch.name = 'Cochrane'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE Open_year = '2012' AND membership_amount = '1418' AND Address_road = 'Brampton Road' AND Name = 'Cochrane'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84,
+      "correct_multiset": true
+    },
+    {
+      "uid": "53f06e75-1f1b-42ac-ab8b-51c0cb0eae7b",
+      "question": "Which branches named Popert opened in 2009?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.name = 'Popert' AND branch.open_year = '2009'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE Name = 'Popert' AND Open_year = '2009'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.21,
+      "correct_multiset": true
+    },
+    {
+      "uid": "9cff46bf-5c3c-497e-9614-60fa089d774f",
+      "question": "Which branches opened in 2009 and are located on Oaks Crescent?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.open_year = '2009' AND branch.address_road = 'Oaks Crescent'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE Open_year = '2009' AND Address_road = 'Oaks Crescent'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37,
+      "correct_multiset": true
+    },
+    {
+      "uid": "c6c9bba6-4564-496c-843f-e27d2422f63b",
+      "question": "Which branches named Cochrane opened in 2012 on Brampton Road?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.open_year = '2012' AND branch.address_road = 'Brampton Road' AND branch.name = 'Cochrane'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE Open_year = '2012' AND Address_road = 'Brampton Road' AND Name = 'Cochrane'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.63,
+      "correct_multiset": true
+    },
+    {
+      "uid": "ed2c7adb-86fe-45d2-8bef-dcbbcc21afee",
+      "question": "Which branches named Saint Amant opened in 2015 on Concord Road with a membership amount of 91?",
+      "gold_sql": "SELECT branch.branch_id FROM branch\nWHERE branch.address_road = 'Concord Road' AND branch.membership_amount = '91' AND branch.open_year = '2015' AND branch.name = 'Saint Amant'",
+      "pred_sql": "SELECT Branch_ID FROM branch WHERE Address_road = 'Concord Road' AND membership_amount = '91' AND Open_year = '2015' AND Name = 'Saint Amant'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.91,
+      "correct_multiset": true
+    }
+  ]
+}

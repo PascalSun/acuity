@@ -1,0 +1,124 @@
+{
+  "db_id": "financial",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T09:56:09.897230+00:00",
+  "records": [
+    {
+      "uid": "0b18e666-e78a-46a8-9cba-6588eb346475",
+      "question": "Which accounts dated on or before 1993-01-11 are linked to districts where a11 is exactly 10673 and the clients are female?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nJOIN client ON district.district_id = client.district_id\nWHERE account.date <= '1993-01-11' AND client.gender = 'F' AND district.a11 = 10673",
+      "pred_sql": "SELECT DISTINCT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nJOIN client ON district.district_id = client.district_id\nWHERE account.date <= '1993-01-11'\n  AND district.A11 = 10673\n  AND client.gender = 'F'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "36ff905f-ec15-47b5-8e22-b63e81f8f298",
+      "question": "Which accounts have monthly payment frequency where the owner has a loan exactly on 1995-03-19 with status A, payments of 5616.0, a loan duration of at least 24 months, and an amount of at least 134784?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN disp ON account.account_id = disp.account_id\nJOIN loan ON account.account_id = loan.account_id\nWHERE loan.date = '1995-03-19' AND disp.type = 'OWNER' AND loan.duration >= 24 AND account.frequency = 'POPLATEK MESICNE' AND loan.status = 'A' AND loan.payments = 5616.0 AND loan.amount >= 134784",
+      "pred_sql": "SELECT DISTINCT account.account_id\nFROM account\nJOIN disp ON account.account_id = disp.account_id\nJOIN loan ON account.account_id = loan.account_id\nWHERE account.frequency = 'POPLATEK MESICNE'\n  AND disp.type = 'OWNER'\n  AND loan.date = '1995-03-19'\n  AND loan.duration >= 24\n  AND loan.status = 'A'\n  AND loan.payments = 5616.0\n  AND loan.amount >= 134784",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.65
+    },
+    {
+      "uid": "6170abc2-a7f1-424e-8d94-b178d5ca48e1",
+      "question": "Which accounts dated exactly on 1995-05-26 are from districts where a3 is Prague, a13 is 0.43, a10 is 100.0, a12 is 0.2, a16 is at least 99107, a11 is at most 12541, and whose clients were born on or before 1970-03-25?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nJOIN client ON district.district_id = client.district_id\nWHERE account.date = '1995-05-26' AND district.a13 = 0.43 AND client.birth_date <= '1970-03-25' AND district.a16 >= 99107 AND district.a11 <= 12541 AND district.a3 = 'Prague' AND district.a10 = 100.0 AND district.a12 = 0.2",
+      "pred_sql": "SELECT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nJOIN client ON district.district_id = client.district_id\nWHERE account.date = '1995-05-26'\n  AND district.A13 = 0.43\n  AND district.A16 >= 99107\n  AND district.A11 <= 12541\n  AND district.A3 = 'Prague'\n  AND district.A10 = 100.0\n  AND district.A12 = 0.2\n  AND client.birth_date <= '1970-03-25'\nGROUP BY account.account_id",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "6770d5dc-255c-48a1-9113-b8a83a57c049",
+      "question": "Which accounts that have associated loans and transactions have a transaction with a balance exactly equal to 45558?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN loan ON account.account_id = loan.account_id\nJOIN trans ON account.account_id = trans.account_id\nWHERE trans.balance = 45558",
+      "pred_sql": "SELECT DISTINCT account.account_id\nFROM account\nJOIN loan ON account.account_id = loan.account_id\nJOIN trans ON account.account_id = trans.account_id\nWHERE trans.balance = 45558",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.51
+    },
+    {
+      "uid": "b002c7af-8b52-4f0f-b2b7-95fa17b5af83",
+      "question": "What accounts on September 17, 1997, are associated with districts where a5 is 0?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nWHERE account.date = '1997-09-17' AND district.a5 = '0'",
+      "pred_sql": "SELECT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nWHERE account.date = '1997-09-17' AND district.A5 = '0'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "b1f18db7-a118-424b-bc4b-371a142f39cf",
+      "question": "Which accounts have a frequency of POPLATEK TYDNE since 1997-11-29 and are linked to districts where a7 is 10, a3 is south Bohemia, a6 is 21, a8 is at least 1, and a11 is 8427?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nWHERE district.a7 = '10' AND district.a3 = 'south Bohemia' AND district.a6 = '21' AND district.a8 >= 1 AND account.frequency = 'POPLATEK TYDNE' AND account.date >= '1997-11-29' AND district.a11 = 8427",
+      "pred_sql": "SELECT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nWHERE account.frequency = 'POPLATEK TYDNE'\n  AND account.date >= '1997-11-29'\n  AND district.A7 = '10'\n  AND district.A3 = 'south Bohemia'\n  AND district.A6 = '21'\n  AND district.A8 >= 1\n  AND district.A11 = 8427",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "cd540038-4745-4f10-92a3-3939c48dd64a",
+      "question": "What accounts dated on or after 1997-08-21 belong to districts where a14 is exactly 109?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nJOIN client ON district.district_id = client.district_id\nWHERE account.date >= '1997-08-21' AND district.a14 = 109",
+      "pred_sql": "SELECT DISTINCT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nJOIN client ON district.district_id = client.district_id\nWHERE account.date >= '1997-08-21' AND district.A14 = 109",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.19
+    },
+    {
+      "uid": "cd89285b-cd9c-4c53-b27e-f79d42a6db60",
+      "question": "Which accounts that have related district and loan records are in a district where a6 is exactly '10' and a12 is exactly 2.8, and have a frequency exactly equal to 'POPLATEK MESICNE'?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nJOIN loan ON account.account_id = loan.account_id\nWHERE district.a6 = '10' AND account.frequency = 'POPLATEK MESICNE' AND district.a12 = 2.8",
+      "pred_sql": "SELECT DISTINCT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nJOIN loan ON account.account_id = loan.account_id\nWHERE account.frequency = 'POPLATEK MESICNE'\n  AND district.A6 = '10'\n  AND district.A12 = 2.8",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.3
+    },
+    {
+      "uid": "d26ecff5-9a53-45a1-84c6-d2f420262cde",
+      "question": "Which accounts from district 35 with a16 value 3529 have a frequency of POPLATEK MESICNE on 1993-11-18 and where district a11 is at most 9622?",
+      "gold_sql": "SELECT account.account_id FROM account\nJOIN district ON account.district_id = district.district_id\nWHERE district.a11 <= 9622 AND account.frequency = 'POPLATEK MESICNE' AND account.date = '1993-11-18' AND district.a5 = '35' AND district.a16 = 3529",
+      "pred_sql": "SELECT account.account_id\nFROM account\nJOIN district ON account.district_id = district.district_id\nWHERE account.frequency = 'POPLATEK MESICNE'\n  AND account.date = '1993-11-18'\n  AND district.A11 <= 9622\n  AND district.A5 = '35'\n  AND district.A16 = 3529",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.45
+    },
+    {
+      "uid": "f0fdbd12-bf3e-4fd3-bcd8-03ed7a1219d4",
+      "question": "Which accounts have a date exactly on 1993-06-08 and a frequency that is POPLATEK MESICNE?",
+      "gold_sql": "SELECT account.account_id FROM account\nWHERE account.date = '1993-06-08' AND account.frequency = 'POPLATEK MESICNE'",
+      "pred_sql": "SELECT account_id FROM account WHERE date = '1993-06-08' AND frequency = 'POPLATEK MESICNE'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    }
+  ]
+}

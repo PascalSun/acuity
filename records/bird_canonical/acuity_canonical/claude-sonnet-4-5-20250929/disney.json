@@ -1,0 +1,124 @@
+{
+  "db_id": "disney",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:28:30.430660+00:00",
+  "records": [
+    {
+      "uid": "35370392-12b9-4652-84de-6bd7fb007dc8",
+      "question": "Which characters released exactly on 19-May-00 have Aladar as their hero and Kron as their villian?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nWHERE characters.release_date = '19-May-00' AND characters.hero = 'Aladar' AND characters.villian = 'Kron'",
+      "pred_sql": "SELECT movie_title FROM characters WHERE release_date = '19-May-00' AND hero = 'Aladar' AND villian = 'Kron'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "3793c088-82c0-403e-889f-a437634f7a37",
+      "question": "Which characters have Governor Ratcliffe as their villian?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nWHERE characters.villian = 'Governor Ratcliffe'",
+      "pred_sql": "SELECT movie_title FROM characters WHERE villian = 'Governor Ratcliffe'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.21
+    },
+    {
+      "uid": "3e7af9b2-2dd3-456e-84d1-c3edb03497ad",
+      "question": "Which characters released exactly on 30-Mar-07 have Lewis as their hero and Doris as their villian?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nWHERE characters.release_date = '30-Mar-07' AND characters.hero = 'Lewis' AND characters.villian = 'Doris'",
+      "pred_sql": "SELECT movie_title FROM characters WHERE release_date = '30-Mar-07' AND hero = 'Lewis' AND villian = 'Doris'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.27
+    },
+    {
+      "uid": "59c49bac-0a36-46eb-90ce-d4cc09de1d3d",
+      "question": "Which characters have Lewis as their hero and Doris as their villian?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nJOIN movies_total_gross ON characters.movie_title = movies_total_gross.movie_title\nWHERE characters.hero = 'Lewis' AND characters.villian = 'Doris'",
+      "pred_sql": "SELECT c.movie_title\nFROM characters c\nINNER JOIN movies_total_gross m ON c.movie_title = m.movie_title\nWHERE c.hero = 'Lewis' AND c.villian = 'Doris'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.79
+    },
+    {
+      "uid": "8166dffa-71c5-4eaa-9d65-b96ec94f5c63",
+      "question": "Which characters released exactly on 22-Nov-91 have Gaston as the villain and Belle as the hero?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nWHERE characters.release_date = '22-Nov-91' AND characters.villian = 'Gaston' AND characters.hero = 'Belle'",
+      "pred_sql": "SELECT movie_title FROM characters WHERE release_date = '22-Nov-91' AND villian = 'Gaston' AND hero = 'Belle'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.11
+    },
+    {
+      "uid": "aae0307f-cc99-4df3-af47-223820385fd1",
+      "question": "What characters appear in movies released in 2002?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nJOIN movies_total_gross ON characters.movie_title = movies_total_gross.movie_title\nWHERE movies_total_gross.release_date LIKE '%2002%'",
+      "pred_sql": "SELECT DISTINCT c.movie_title\nFROM characters c\nINNER JOIN movies_total_gross mtg ON c.movie_title = mtg.movie_title\nWHERE mtg.release_date LIKE '%2002%'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.01
+    },
+    {
+      "uid": "adb76912-2d14-4220-bc91-d518a9c6253d",
+      "question": "Which characters have Taran as their hero and were released exactly on 24-Jul-85?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nWHERE characters.release_date = '24-Jul-85' AND characters.hero = 'Taran'",
+      "pred_sql": "SELECT movie_title FROM characters WHERE release_date = '24-Jul-85' AND hero = 'Taran'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "bd1ac622-7e2c-46b6-ac53-4e22a089b527",
+      "question": "Which characters appear in movies directed by Wolfgang Reitherman?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nJOIN director ON characters.movie_title = director.name\nJOIN movies_total_gross ON characters.movie_title = movies_total_gross.movie_title\nWHERE director.director = 'Wolfgang Reitherman'",
+      "pred_sql": "SELECT DISTINCT c.movie_title\nFROM characters c\nINNER JOIN director d ON c.movie_title = d.name\nINNER JOIN movies_total_gross m ON c.movie_title = m.movie_title\nWHERE d.director = 'Wolfgang Reitherman'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "c6e73fe4-3129-44fe-beaf-aee4cc7417cc",
+      "question": "Which characters appear in movies directed exactly by Mike Gabriel?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nJOIN director ON characters.movie_title = director.name\nJOIN movies_total_gross ON characters.movie_title = movies_total_gross.movie_title\nWHERE director.director = 'Mike Gabriel'",
+      "pred_sql": "SELECT DISTINCT c.movie_title\nFROM characters c\nWHERE EXISTS (\n    SELECT 1 \n    FROM director d \n    WHERE d.name = c.movie_title \n    AND d.director = 'Mike Gabriel'\n)\nAND EXISTS (\n    SELECT 1 \n    FROM movies_total_gross m \n    WHERE m.movie_title = c.movie_title\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.73
+    },
+    {
+      "uid": "e13797f3-6369-474c-bedd-fef168268ec4",
+      "question": "Which characters appear in movies released exactly on 27-Nov-02 where the villain is John Silver?",
+      "gold_sql": "SELECT characters.movie_title FROM characters\nWHERE characters.release_date = '27-Nov-02' AND characters.villian = 'John Silver'",
+      "pred_sql": "SELECT movie_title FROM characters WHERE release_date = '27-Nov-02' AND villian = 'John Silver'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.97
+    }
+  ]
+}

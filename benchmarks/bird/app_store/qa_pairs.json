@@ -1,0 +1,2810 @@
+{
+ "db_id": "app_store",
+ "target_table": "user_reviews",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 748743212,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/app_store/app_store.sqlite",
+  "generated_at": "2026-07-02T11:14:33.642844+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "user_reviews",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 25,
+   "0M": 25
+  },
+  "realized_counts": {
+   "0E": 25,
+   "0M": 25
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 38,
+    "inner_attempts": 144,
+    "failed_rounds": 13,
+    "invalid_pairs_filtered": 11,
+    "failure_events": {
+     "qa_validation_failed": 11,
+     "result_size_out_of_range": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 28,
+    "inner_attempts": 65,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "6419fea8-2471-42b2-a0cd-5b058c708c93",
+   "question": "Which user reviews have a sentiment polarity exactly 0.2089285714285714 and where sentiment is Positive?",
+   "answer_row_ids": [
+    "Calorie Counter - Macros",
+    "Essential Anatomy 3"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.2089285714285714' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.2089285714285714",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.2089285714285714",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.2089285714285714' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "e3f45ee2-6ad6-4b8e-9ac4-233da143482d",
+   "question": "Which user reviews have a sentiment polarity exactly 0.14242424242424243 and a sentiment subjectivity exactly 0.37196969696969695?",
+   "answer_row_ids": [
+    "Fox Business"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.14242424242424243' AND user_reviews.sentiment_subjectivity = '0.37196969696969695'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.14242424242424243",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.37196969696969695",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.14242424242424243",
+    "user_reviews.sentiment_subjectivity": "0.37196969696969695"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.14242424242424243' and sentiment subjectivity equal to '0.37196969696969695'?"
+  },
+  {
+   "uid": "1eff0dd1-7602-4b6a-b615-bb9dd25a24cb",
+   "question": "Which user reviews have a sentiment subjectivity of 0.5411111111111111 and a sentiment that is Positive?",
+   "answer_row_ids": [
+    "Backgrounds HD (Wallpapers)"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.5411111111111111' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5411111111111111",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.5411111111111111",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.5411111111111111' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "b4b3ed6d-1cf1-4307-a125-d3a8024e918a",
+   "question": "Which user reviews have a sentiment that is Positive and a sentiment_subjectivity exactly 0.49142857142857144?",
+   "answer_row_ids": [
+    "DMV Permit Practice Test 2018 Edition",
+    "Facetune - Ad Free"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.49142857142857144'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.49142857142857144",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.49142857142857144"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment subjectivity equal to '0.49142857142857144'?"
+  },
+  {
+   "uid": "f614dfa8-8aba-4941-b054-449b566ac987",
+   "question": "Which user reviews have a Positive sentiment with a sentiment polarity of exactly 0.13190476190476189?",
+   "answer_row_ids": [
+    "Fox Business"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.13190476190476189'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.13190476190476189",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.13190476190476189"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.13190476190476189'?"
+  },
+  {
+   "uid": "f01665dc-bbb0-454f-92d2-7b5ddb6bbeb0",
+   "question": "What user reviews have a sentiment polarity that is exactly 0.08507936507936507?",
+   "answer_row_ids": [
+    "Happy Street"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.08507936507936507'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.08507936507936507",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.08507936507936507"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.08507936507936507'?"
+  },
+  {
+   "uid": "a28df7f6-3926-4ad1-a876-06bcf4921913",
+   "question": "Which user reviews have a sentiment subjectivity of 0.875 and a sentiment polarity of 0.8401041666666667?",
+   "answer_row_ids": [
+    "Doctor On Demand"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.875' AND user_reviews.sentiment_polarity = '0.8401041666666667'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.875",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.8401041666666667",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.875",
+    "user_reviews.sentiment_polarity": "0.8401041666666667"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.875' and sentiment polarity equal to '0.8401041666666667'?"
+  },
+  {
+   "uid": "c35b76e1-c3e6-4e9d-bb7c-57e43c4a1f52",
+   "question": "Which user reviews have a sentiment polarity that is exactly 0.25857142857142856 and a subjectivity that is exactly 0.32?",
+   "answer_row_ids": [
+    "Banfield Pet Health Tracker"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.25857142857142856' AND user_reviews.sentiment_subjectivity = '0.32'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.25857142857142856",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.32",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.25857142857142856",
+    "user_reviews.sentiment_subjectivity": "0.32"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.25857142857142856' and sentiment subjectivity equal to '0.32'?"
+  },
+  {
+   "uid": "800a3de7-4d98-4fe7-b733-4d5cdc7f6fc4",
+   "question": "What user reviews have a sentiment that is Positive with a sentiment_polarity exactly 0.24000000000000005?",
+   "answer_row_ids": [
+    "Colorfy: Coloring Book for Adults - Free",
+    "Comedy Central",
+    "ConvertPad - Unit Converter",
+    "English-Myanmar Dictionary",
+    "Evernote \u2013 Organizer, Planner for Notes & Memos",
+    "Flow Free",
+    "Helix Jump"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.24000000000000005'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.24000000000000005",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.24000000000000005"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.24000000000000005'?"
+  },
+  {
+   "uid": "91236cb8-1410-423b-b514-c1544e8e6789",
+   "question": "Which user reviews have a sentiment subjectivity of exactly 0.645?",
+   "answer_row_ids": [
+    "CBS Sports App - Scores, News, Stats & Watch Live",
+    "Calorie Counter - MyNetDiary",
+    "Cisco Webex Meetings",
+    "Color by Number \u2013 New Coloring Book",
+    "Domino's Pizza USA",
+    "Edmodo",
+    "Family Locator - GPS Tracker",
+    "Goldstar: Live Event Tickets",
+    "Herpes Positive Singles Dating"
+   ],
+   "answer_count": 9,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.645'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.645",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.645"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.645'?"
+  },
+  {
+   "uid": "161f2600-47b9-409a-82a0-5df354b3f7bf",
+   "question": "Which user reviews have a sentiment subjectivity that is exactly 0.3236111111111111?",
+   "answer_row_ids": [
+    "Gardenscapes",
+    "Homestyler Interior Design & Decorating Ideas"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.3236111111111111'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.3236111111111111",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.3236111111111111"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.3236111111111111'?"
+  },
+  {
+   "uid": "87e3a974-4949-4b9b-9132-20e7bf4de1d3",
+   "question": "Which user reviews have a sentiment polarity exactly 0.6125 and where the sentiment is Positive?",
+   "answer_row_ids": [
+    "Allrecipes Dinner Spinner",
+    "Barcode Scanner",
+    "Bloglovin'",
+    "Checkers \u2714\ufe0f",
+    "Choice Hotels",
+    "Eve Period Tracker - Love, Sex & Relationships App",
+    "Family Album Mitene: Private Photo & Video Sharing",
+    "File Explorer",
+    "Fun Kid Racing - Motocross",
+    "GoBank"
+   ],
+   "answer_count": 10,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.6125' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.6125",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.6125",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.6125' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "6ba72de1-76db-4b2a-b084-205a214c5772",
+   "question": "Which user reviews have a sentiment polarity that is exactly -0.3125?",
+   "answer_row_ids": [
+    "ABC Preschool Free",
+    "Baseball Boy!",
+    "Best Wallpapers QHD",
+    "Block Puzzle Classic Legend !",
+    "Blood Donor",
+    "Chapters: Interactive Stories",
+    "Color Road",
+    "Dr. Panda & Toto's Treehouse",
+    "Easy Installer - Apps On SD",
+    "Flow Free",
+    "Free TV Shows App:News, TV Series, Episode, Movies",
+    "Funny Pics",
+    "Gay Sugar Daddy Dating & Hookup \u2013 Sudy Gay",
+    "Google Fit - Fitness Tracking",
+    "HealtheLife"
+   ],
+   "answer_count": 15,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '-0.3125'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.3125",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "-0.3125"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '-0.3125'?"
+  },
+  {
+   "uid": "ab962298-6d07-4cd2-834c-ef384d0f1b79",
+   "question": "Which user reviews have a sentiment polarity of 0.3555555555555556 and are positive?",
+   "answer_row_ids": [
+    "Diabetes:M"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.3555555555555556' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.3555555555555556",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.3555555555555556",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.3555555555555556' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "f72d6019-c62f-4d5b-b49d-a0d759e603fa",
+   "question": "Which user reviews have a sentiment subjectivity of 0.875 and a sentiment polarity of 1.0?",
+   "answer_row_ids": [
+    "Azpen eReader",
+    "Bloglovin'",
+    "Cookbook Recipes",
+    "Ebook Reader",
+    "FreePrints \u2013 Free Photos Delivered",
+    "Genius Scan - PDF Scanner",
+    "HD Camera - Quick Snap Photo & Video"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.875' AND user_reviews.sentiment_polarity = '1.0'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.875",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "1.0",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.875",
+    "user_reviews.sentiment_polarity": "1.0"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.875' and sentiment polarity equal to '1.0'?"
+  },
+  {
+   "uid": "3ead73d5-d8a7-4b43-8079-67cbb3462e71",
+   "question": "Which user reviews have a sentiment that is Neutral and a sentiment subjectivity that is exactly 0.47916666666666663?",
+   "answer_row_ids": [
+    "Candy Crush Saga"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Neutral' AND user_reviews.sentiment_subjectivity = '0.47916666666666663'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Neutral",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.47916666666666663",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Neutral",
+    "user_reviews.sentiment_subjectivity": "0.47916666666666663"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Neutral' and sentiment subjectivity equal to '0.47916666666666663'?"
+  },
+  {
+   "uid": "49616557-3a4c-4f0a-bcb6-6bf6cba3767e",
+   "question": "Which user reviews have a sentiment polarity that is exactly -0.4628571428571428?",
+   "answer_row_ids": [
+    "Gboard - the Google Keyboard"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '-0.4628571428571428'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.4628571428571428",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "-0.4628571428571428"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '-0.4628571428571428'?"
+  },
+  {
+   "uid": "53ca5c1c-67fe-4fb9-ac35-7b674c85f4fd",
+   "question": "Which user reviews have a sentiment that is Positive and a sentiment_polarity exactly 0.1587719298245614?",
+   "answer_row_ids": [
+    "Hopper - Watch & Book Flights"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.1587719298245614'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.1587719298245614",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.1587719298245614"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.1587719298245614'?"
+  },
+  {
+   "uid": "c1d52a47-facd-4740-a378-d49f64055f96",
+   "question": "What user reviews have a sentiment subjectivity of 0.5388888888888889 and a sentiment polarity of 0.0065972222222222335?",
+   "answer_row_ids": [
+    "Helix Jump"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.5388888888888889' AND user_reviews.sentiment_polarity = '0.0065972222222222335'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5388888888888889",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.0065972222222222335",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.5388888888888889",
+    "user_reviews.sentiment_polarity": "0.0065972222222222335"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.5388888888888889' and sentiment polarity equal to '0.0065972222222222335'?"
+  },
+  {
+   "uid": "d352f47f-3396-49c4-8aae-82e80b47fb39",
+   "question": "Which user reviews have a sentiment subjectivity of 0.4909090909090909 and where the sentiment is Positive?",
+   "answer_row_ids": [
+    "Checkers \u2714\ufe0f",
+    "Clash Royale",
+    "Cooking Madness - A Chef's Restaurant Games",
+    "Foursquare City Guide"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.4909090909090909' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.4909090909090909",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.4909090909090909",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.4909090909090909' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "f77efce0-92e7-4853-abc8-897484223cff",
+   "question": "Which user reviews have a sentiment that is Positive with a sentiment polarity exactly equal to 0.495?",
+   "answer_row_ids": [
+    "Android Auto - Maps, Media, Messaging & Voice",
+    "DU Recorder \u2013 Screen Recorder, Video Editor, Live",
+    "Die TK-App \u2013 alles im Griff"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.495'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.495",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.495"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.495'?"
+  },
+  {
+   "uid": "3cb17180-1aae-440b-b648-dbc8ac7da0b8",
+   "question": "Which user reviews have a sentiment polarity exactly equal to -0.21679292929292932?",
+   "answer_row_ids": [
+    "Barbie\u2122 Fashion Closet"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '-0.21679292929292932'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.21679292929292932",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "-0.21679292929292932"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '-0.21679292929292932'?"
+  },
+  {
+   "uid": "e88c25b3-f352-43f6-a65e-6af1479b3ecd",
+   "question": "Which user reviews have a positive sentiment with a sentiment_subjectivity of exactly 0.4125?",
+   "answer_row_ids": [
+    "1800 Contacts - Lens Store",
+    "8fit Workouts & Meal Planner",
+    "Android Auto - Maps, Media, Messaging & Voice",
+    "Angry Birds Classic",
+    "ConvertPad - Unit Converter",
+    "Digit Save Money Automatically",
+    "Full Screen Caller ID",
+    "Gardenscapes",
+    "Gboard - the Google Keyboard",
+    "GoodRx Drug Prices and Coupons",
+    "Google Keep",
+    "HD Widgets",
+    "Harkins Theatres",
+    "Hill Climb Racing 2",
+    "Hotels.com: Book Hotel Rooms & Find Vacation Deals"
+   ],
+   "answer_count": 15,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.4125'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.4125",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.4125"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment subjectivity equal to '0.4125'?"
+  },
+  {
+   "uid": "726ede32-d402-4cee-b3d5-2f6b76b09d66",
+   "question": "Which user reviews have a sentiment polarity that is exactly 0.15393939393939393?",
+   "answer_row_ids": [
+    "Ebook Reader"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.15393939393939393'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.15393939393939393",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.15393939393939393"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.15393939393939393'?"
+  },
+  {
+   "uid": "15c04fdb-277f-44f2-a048-34f93d217ea8",
+   "question": "What user reviews have a sentiment that is Positive and a sentiment_subjectivity that is exactly 0.4729166666666667?",
+   "answer_row_ids": [
+    "GroupMe"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.4729166666666667'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.4729166666666667",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.4729166666666667"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment subjectivity equal to '0.4729166666666667'?"
+  },
+  {
+   "uid": "e9e5a2cf-eb88-4ebb-b732-f87abf7c6b5d",
+   "question": "Which user reviews have a sentiment that is Positive with a sentiment polarity of 0.875 and a sentiment subjectivity of 0.8?",
+   "answer_row_ids": [
+    "Airway Ex - Intubate. Anesthetize. Train.",
+    "Goal Live Scores"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.875' AND user_reviews.sentiment_subjectivity = '0.8'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.875",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.8",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.875",
+    "user_reviews.sentiment_subjectivity": "0.8"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.875' and sentiment subjectivity equal to '0.8'?"
+  },
+  {
+   "uid": "07872a2b-5b4b-49ed-89a0-3813997800f7",
+   "question": "Which user reviews have a sentiment polarity exactly 0.09999999999999999, a sentiment subjectivity exactly 0.44999999999999996, and where sentiment is Positive?",
+   "answer_row_ids": [
+    "Basketball FRVR - Shoot the Hoop and Slam Dunk!"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.09999999999999999' AND user_reviews.sentiment_subjectivity = '0.44999999999999996' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.09999999999999999",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.44999999999999996",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.09999999999999999",
+    "user_reviews.sentiment_subjectivity": "0.44999999999999996",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.09999999999999999' and sentiment subjectivity equal to '0.44999999999999996' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "a6150316-3f82-41d9-88f0-cf5961d14870",
+   "question": "What user reviews have a sentiment exactly Neutral with a polarity of 0.0 and subjectivity exactly 0.5694444444444444?",
+   "answer_row_ids": [
+    "Google Pay"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.0' AND user_reviews.sentiment_subjectivity = '0.5694444444444444' AND user_reviews.sentiment = 'Neutral'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.0",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5694444444444444",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Neutral",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.0",
+    "user_reviews.sentiment_subjectivity": "0.5694444444444444",
+    "user_reviews.sentiment": "Neutral"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.0' and sentiment subjectivity equal to '0.5694444444444444' and sentiment equal to 'Neutral'?"
+  },
+  {
+   "uid": "4e951106-5b10-45a1-ac2c-e7fbf790b46b",
+   "question": "What user reviews have a sentiment that is Positive with a sentiment_subjectivity of 0.5599999999999999 and a sentiment_polarity of 0.41?",
+   "answer_row_ids": [
+    "Google Photos"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.5599999999999999' AND user_reviews.sentiment_polarity = '0.41'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5599999999999999",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.41",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.5599999999999999",
+    "user_reviews.sentiment_polarity": "0.41"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment subjectivity equal to '0.5599999999999999' and sentiment polarity equal to '0.41'?"
+  },
+  {
+   "uid": "ec6f3dda-cf34-4fc3-a6ae-e305a1f36a18",
+   "question": "Which user reviews have a sentiment subjectivity of 0.71, a sentiment that is Negative, and a sentiment polarity exactly equal to -0.020000000000000004?",
+   "answer_row_ids": [
+    "BaconReader for Reddit"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.71' AND user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_polarity = '-0.020000000000000004'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.71",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.020000000000000004",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.71",
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_polarity": "-0.020000000000000004"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.71' and sentiment equal to 'Negative' and sentiment polarity equal to '-0.020000000000000004'?"
+  },
+  {
+   "uid": "fc0b5a26-498c-4829-8429-5003298ec768",
+   "question": "Which user reviews have a sentiment that is Negative with a sentiment polarity exactly -0.16666666666666666 and a sentiment subjectivity exactly 0.43333333333333335?",
+   "answer_row_ids": [
+    "Anatomy Learning - 3D Atlas",
+    "Ancestry",
+    "Apple Daily \u860b\u679c\u52d5\u65b0\u805e",
+    "BLK - Swipe. Match. Chat.",
+    "Bloomberg: Market & Financial News",
+    "CAIXA",
+    "Disney Magic Kingdoms: Build Your Own Magical Park",
+    "Dr. Panda & Toto's Treehouse",
+    "Fast Scanner : Free PDF Scan",
+    "FindShip"
+   ],
+   "answer_count": 10,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_polarity = '-0.16666666666666666' AND user_reviews.sentiment_subjectivity = '0.43333333333333335'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.16666666666666666",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.43333333333333335",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_polarity": "-0.16666666666666666",
+    "user_reviews.sentiment_subjectivity": "0.43333333333333335"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Negative' and sentiment polarity equal to '-0.16666666666666666' and sentiment subjectivity equal to '0.43333333333333335'?"
+  },
+  {
+   "uid": "4d061cc3-c071-47ce-91b3-60ddf9e117cf",
+   "question": "Which user reviews have a sentiment that is Positive with a polarity exactly 0.4840909090909091 and subjectivity exactly 0.8125?",
+   "answer_row_ids": [
+    "DU Recorder \u2013 Screen Recorder, Video Editor, Live"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.4840909090909091' AND user_reviews.sentiment_subjectivity = '0.8125' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.4840909090909091",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.8125",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.4840909090909091",
+    "user_reviews.sentiment_subjectivity": "0.8125",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.4840909090909091' and sentiment subjectivity equal to '0.8125' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "9c3fd8a7-2ac8-4523-9538-7a06445fb0e1",
+   "question": "Which user reviews have a sentiment that is Positive with a sentiment_subjectivity of 0.7833333333333333 and a sentiment_polarity of 0.6666666666666666?",
+   "answer_row_ids": [
+    "Amazon Drive",
+    "Anime Manga Coloring Book",
+    "Four In A Line",
+    "Free Dating App - Meet Local Singles - Flirt Chat"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.7833333333333333' AND user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.6666666666666666'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.7833333333333333",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.6666666666666666",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.7833333333333333",
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.6666666666666666"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.7833333333333333' and sentiment equal to 'Positive' and sentiment polarity equal to '0.6666666666666666'?"
+  },
+  {
+   "uid": "6ca503e0-678d-49b6-bb14-f9d1a00ee34f",
+   "question": "Which user reviews have a Positive sentiment with a sentiment polarity of 0.08125 and a sentiment subjectivity of 0.2125?",
+   "answer_row_ids": [
+    "FollowMyHealth\u00ae"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.08125' AND user_reviews.sentiment_subjectivity = '0.2125'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.08125",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.2125",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.08125",
+    "user_reviews.sentiment_subjectivity": "0.2125"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.08125' and sentiment subjectivity equal to '0.2125'?"
+  },
+  {
+   "uid": "ebec36b3-6596-4964-9422-16f31f9042e9",
+   "question": "Which user reviews have a Positive sentiment with a sentiment polarity of 0.2947916666666667 and a sentiment subjectivity of 0.6218750000000001?",
+   "answer_row_ids": [
+    "Helix Jump"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.2947916666666667' AND user_reviews.sentiment_subjectivity = '0.6218750000000001'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.2947916666666667",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.6218750000000001",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.2947916666666667",
+    "user_reviews.sentiment_subjectivity": "0.6218750000000001"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment polarity equal to '0.2947916666666667' and sentiment subjectivity equal to '0.6218750000000001'?"
+  },
+  {
+   "uid": "2380ed8b-283d-4a10-b13a-6da8262926bc",
+   "question": "Which user reviews have a sentiment polarity of 0.23124999999999998 with a positive sentiment and a subjectivity of 0.625?",
+   "answer_row_ids": [
+    "A Call From Santa Claus!"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.23124999999999998' AND user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.625'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.23124999999999998",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.625",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.23124999999999998",
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.625"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.23124999999999998' and sentiment equal to 'Positive' and sentiment subjectivity equal to '0.625'?"
+  },
+  {
+   "uid": "3f019b45-d326-4093-b01f-00c9cb3aca4f",
+   "question": "What user reviews have a sentiment that is Positive with a sentiment_subjectivity of 0.5625 and a sentiment_polarity of 0.275?",
+   "answer_row_ids": [
+    "Dude Perfect 2",
+    "Fly Delta",
+    "Galaxy Attack: Alien Shooter"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.5625' AND user_reviews.sentiment_polarity = '0.275'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5625",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.275",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.5625",
+    "user_reviews.sentiment_polarity": "0.275"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Positive' and sentiment subjectivity equal to '0.5625' and sentiment polarity equal to '0.275'?"
+  },
+  {
+   "uid": "aca0f809-98c3-4d11-989b-8d8790224e99",
+   "question": "Which user reviews have a sentiment subjectivity of 0.2, a sentiment that is Positive, and a sentiment polarity of 0.375?",
+   "answer_row_ids": [
+    "Babbel \u2013 Learn Spanish",
+    "Baby Name Together",
+    "Bowmasters",
+    "Bubble Shooter",
+    "CATS: Crash Arena Turbo Stars",
+    "Color by Number - Draw Sandbox Pixel Art",
+    "Doctor Pets",
+    "Extreme Match",
+    "Fruits Bomb",
+    "Galaxy Attack: Alien Shooter",
+    "Groupon - Shop Deals, Discounts & Coupons",
+    "Happy Fruits Bomb - Cube Blast"
+   ],
+   "answer_count": 12,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.2' AND user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.375'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.2",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.375",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.2",
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.375"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.2' and sentiment equal to 'Positive' and sentiment polarity equal to '0.375'?"
+  },
+  {
+   "uid": "da59185e-d923-4e02-8b6b-dbcbd69c4df9",
+   "question": "Which user reviews have a sentiment polarity exactly -0.44333333333333325, where the sentiment is Negative and the sentiment subjectivity is exactly 0.7666666666666666?",
+   "answer_row_ids": [
+    "GoPro (formerly Capture)"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '-0.44333333333333325' AND user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_subjectivity = '0.7666666666666666'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.44333333333333325",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.7666666666666666",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "-0.44333333333333325",
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_subjectivity": "0.7666666666666666"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '-0.44333333333333325' and sentiment equal to 'Negative' and sentiment subjectivity equal to '0.7666666666666666'?"
+  },
+  {
+   "uid": "6931b967-b263-49d8-9308-8ab8683a3082",
+   "question": "Which user reviews have a sentiment subjectivity of 0.78, a sentiment polarity of -0.52, and where the sentiment is Negative?",
+   "answer_row_ids": [
+    "AT&T Visual Voicemail",
+    "AliExpress - Smarter Shopping, Better Living",
+    "Azar",
+    "Badoo - Free Chat & Dating App",
+    "BestCam Selfie-selfie, beauty camera, photo editor",
+    "FOX",
+    "HipChat - Chat Built for Teams"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.78' AND user_reviews.sentiment_polarity = '-0.52' AND user_reviews.sentiment = 'Negative'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.78",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.52",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.78",
+    "user_reviews.sentiment_polarity": "-0.52",
+    "user_reviews.sentiment": "Negative"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.78' and sentiment polarity equal to '-0.52' and sentiment equal to 'Negative'?"
+  },
+  {
+   "uid": "33cb625f-5124-4589-b37a-bc8a9b681e7a",
+   "question": "What user reviews have a sentiment that is Positive with a sentiment_subjectivity of 0.44999999999999996 and a sentiment_polarity of 0.2333333333333333?",
+   "answer_row_ids": [
+    "Candy Bomb",
+    "Doodle Jump",
+    "Farm Fruit Pop: Party Time",
+    "Galaxy Attack: Alien Shooter"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.44999999999999996' AND user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_polarity = '0.2333333333333333'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.44999999999999996",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.2333333333333333",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.44999999999999996",
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_polarity": "0.2333333333333333"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.44999999999999996' and sentiment equal to 'Positive' and sentiment polarity equal to '0.2333333333333333'?"
+  },
+  {
+   "uid": "e83ac7c3-04a1-476a-8611-b07b1298d715",
+   "question": "What user reviews have a sentiment that is Negative with sentiment_subjectivity exactly 0.13333333333333333 and sentiment_polarity exactly -0.016666666666666666?",
+   "answer_row_ids": [
+    "Calorie Counter - MyFitnessPal",
+    "HTC Gallery"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_subjectivity = '0.13333333333333333' AND user_reviews.sentiment_polarity = '-0.016666666666666666'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.13333333333333333",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.016666666666666666",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_subjectivity": "0.13333333333333333",
+    "user_reviews.sentiment_polarity": "-0.016666666666666666"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Negative' and sentiment subjectivity equal to '0.13333333333333333' and sentiment polarity equal to '-0.016666666666666666'?"
+  },
+  {
+   "uid": "6bacef8e-6858-41ad-9d24-35175d39862b",
+   "question": "Which user reviews have a sentiment subjectivity of 0.3, a sentiment that is Negative, and a sentiment polarity exactly equal to -0.5?",
+   "answer_row_ids": [
+    "AliExpress - Smarter Shopping, Better Living",
+    "All Video Downloader 2018",
+    "Apartment, Home Rental Search: Realtor.com Rentals",
+    "BiggerCity: Chat for gay bears, chubs & chasers",
+    "Buienradar - weer",
+    "CheapTickets \u2013 Hotels, Flights & Travel Deals",
+    "Cookpad",
+    "DStv Now",
+    "Expedia Hotels, Flights & Car Rental Travel Deals",
+    "Garmin Connect\u2122",
+    "HTC Weather"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.3' AND user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_polarity = '-0.5'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.3",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.5",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.3",
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_polarity": "-0.5"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.3' and sentiment equal to 'Negative' and sentiment polarity equal to '-0.5'?"
+  },
+  {
+   "uid": "77b912a0-2171-4c15-9cf3-3437a5396668",
+   "question": "Which user reviews have a sentiment that is Positive with a polarity exactly 0.08333333333333326 and a subjectivity exactly 0.6833333333333335?",
+   "answer_row_ids": [
+    "Block Puzzle",
+    "Goal Live Scores"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.08333333333333326' AND user_reviews.sentiment_subjectivity = '0.6833333333333335' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.08333333333333326",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.6833333333333335",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.08333333333333326",
+    "user_reviews.sentiment_subjectivity": "0.6833333333333335",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.08333333333333326' and sentiment subjectivity equal to '0.6833333333333335' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "bfeceea7-e3ff-4fed-89f2-c44019bf1018",
+   "question": "What user reviews have a sentiment that is Negative with a sentiment polarity exactly -0.1333333333333333 and sentiment subjectivity exactly 0.6277777777777778?",
+   "answer_row_ids": [
+    "Angry Birds Classic"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '-0.1333333333333333' AND user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_subjectivity = '0.6277777777777778'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.1333333333333333",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.6277777777777778",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "-0.1333333333333333",
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_subjectivity": "0.6277777777777778"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '-0.1333333333333333' and sentiment equal to 'Negative' and sentiment subjectivity equal to '0.6277777777777778'?"
+  },
+  {
+   "uid": "f103285d-f432-4b8f-a248-3fca39c36da3",
+   "question": "Which user reviews have a sentiment polarity of 0.18727272727272723, sentiment exactly Positive, and sentiment subjectivity of 0.6709090909090909?",
+   "answer_row_ids": [
+    "Garena Free Fire"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.18727272727272723' AND user_reviews.sentiment = 'Positive' AND user_reviews.sentiment_subjectivity = '0.6709090909090909'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.18727272727272723",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.6709090909090909",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.18727272727272723",
+    "user_reviews.sentiment": "Positive",
+    "user_reviews.sentiment_subjectivity": "0.6709090909090909"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.18727272727272723' and sentiment equal to 'Positive' and sentiment subjectivity equal to '0.6709090909090909'?"
+  },
+  {
+   "uid": "a5721e5a-c3b2-4d79-82a9-fe1049e04a89",
+   "question": "Which user reviews have a sentiment that is Positive with a sentiment subjectivity of 0.47196969696969693 and a sentiment polarity of 0.12575757575757576?",
+   "answer_row_ids": [
+    "Fast Scanner : Free PDF Scan"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.47196969696969693' AND user_reviews.sentiment_polarity = '0.12575757575757576' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.47196969696969693",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.12575757575757576",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.47196969696969693",
+    "user_reviews.sentiment_polarity": "0.12575757575757576",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.47196969696969693' and sentiment polarity equal to '0.12575757575757576' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "90651eb6-060c-4eb1-8131-202b733fe243",
+   "question": "Which user reviews have a sentiment that is Positive with a sentiment_polarity exactly 0.14285714285714285 and a sentiment_subjectivity exactly 0.5803571428571428?",
+   "answer_row_ids": [
+    "Firefox Focus: The privacy browser"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_polarity = '0.14285714285714285' AND user_reviews.sentiment_subjectivity = '0.5803571428571428' AND user_reviews.sentiment = 'Positive'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "0.14285714285714285",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5803571428571428",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Positive",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_polarity": "0.14285714285714285",
+    "user_reviews.sentiment_subjectivity": "0.5803571428571428",
+    "user_reviews.sentiment": "Positive"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment polarity equal to '0.14285714285714285' and sentiment subjectivity equal to '0.5803571428571428' and sentiment equal to 'Positive'?"
+  },
+  {
+   "uid": "d0040fd2-973d-4f40-bce9-12a74308e4b8",
+   "question": "Which user reviews have a Negative sentiment with a sentiment subjectivity of 0.5 and a sentiment polarity of -0.26?",
+   "answer_row_ids": [
+    "Bowmasters"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment = 'Negative' AND user_reviews.sentiment_subjectivity = '0.5' AND user_reviews.sentiment_polarity = '-0.26'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment",
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.5",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.26",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment": "Negative",
+    "user_reviews.sentiment_subjectivity": "0.5",
+    "user_reviews.sentiment_polarity": "-0.26"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment equal to 'Negative' and sentiment subjectivity equal to '0.5' and sentiment polarity equal to '-0.26'?"
+  },
+  {
+   "uid": "03a56ed2-6df9-4a83-a3fc-bfb88bbe14c7",
+   "question": "Which user reviews have a sentiment that is Negative with subjectivity exactly 0.475 and polarity exactly -0.32916666666666666?",
+   "answer_row_ids": [
+    "Flow Free"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT user_reviews.app FROM user_reviews\nWHERE user_reviews.sentiment_subjectivity = '0.475' AND user_reviews.sentiment_polarity = '-0.32916666666666666' AND user_reviews.sentiment = 'Negative'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "user_reviews"
+   ],
+   "involved_columns": [
+    "user_reviews.sentiment_subjectivity",
+    "user_reviews.sentiment_polarity",
+    "user_reviews.sentiment"
+   ],
+   "involved_filters": [
+    {
+     "table": "user_reviews",
+     "column": "sentiment_subjectivity",
+     "operator": "=",
+     "value": "0.475",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment_polarity",
+     "operator": "=",
+     "value": "-0.32916666666666666",
+     "column_type": "label"
+    },
+    {
+     "table": "user_reviews",
+     "column": "sentiment",
+     "operator": "=",
+     "value": "Negative",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "user_reviews.sentiment_subjectivity": "0.475",
+    "user_reviews.sentiment_polarity": "-0.32916666666666666",
+    "user_reviews.sentiment": "Negative"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "user_reviews"
+   },
+   "answer_table": "user_reviews",
+   "answer_id_column": "app",
+   "canonical_question": "Which user reviews entities with sentiment subjectivity equal to '0.475' and sentiment polarity equal to '-0.32916666666666666' and sentiment equal to 'Negative'?"
+  }
+ ]
+}

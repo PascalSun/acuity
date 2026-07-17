@@ -1,0 +1,1869 @@
+{
+ "db_id": "concert_singer",
+ "target_table": "stadium",
+ "mode": "flexbench",
+ "total_qa_pairs": 26,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 839364963,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/concert_singer/concert_singer.sqlite",
+  "generated_at": "2026-07-02T18:53:30.182070+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "stadium",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 26,
+  "shortfall_total": 24,
+  "overall_fulfillment_rate": 0.52,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "0M": 9,
+   "0H": 8,
+   "1pE": 8,
+   "1pM": 8,
+   "1pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "0H": 8,
+   "0M": 9
+  },
+  "shortfalls": {
+   "1pE": 8,
+   "1pH": 8,
+   "1pM": 8
+  },
+  "shortfall_reason_counts": {
+   "sparse_combinations": 24
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0H": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 8,
+    "accepted_count": 0,
+    "shortfall": 8,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 96,
+    "inner_attempts": 960,
+    "failed_rounds": 96,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 96
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 8
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pH": {
+    "target_quota": 8,
+    "accepted_count": 0,
+    "shortfall": 8,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 96,
+    "inner_attempts": 960,
+    "failed_rounds": 96,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 96
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 8
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 0,
+    "shortfall": 8,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 96,
+    "inner_attempts": 960,
+    "failed_rounds": 96,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 96
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 8
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "d28e33a8-a7ee-4782-85e0-e98c795cf146",
+   "question": "Which stadium has the name Forthbank Stadium?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.name = 'Forthbank Stadium'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Forthbank Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Forthbank Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with name equal to 'Forthbank Stadium'?"
+  },
+  {
+   "uid": "00edcf4c-7112-4fd6-9e40-afa2f874c6d3",
+   "question": "Which stadiums are located in Brechin City?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.location = 'Brechin City'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Brechin City",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.location": "Brechin City"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with location equal to 'Brechin City'?"
+  },
+  {
+   "uid": "fc6bd5f3-602a-4fe5-b1f9-9dc3e5c03b22",
+   "question": "Which stadiums have a highest capacity of at least 1057?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7
+   ],
+   "answer_count": 6,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.highest >= 1057",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 1057,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.highest": 1057
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with highest at least '1057'?"
+  },
+  {
+   "uid": "a1fbea80-e1fd-4f6c-af6f-3300acbc8dd9",
+   "question": "Which stadiums have a highest point at most 1057?",
+   "answer_row_ids": [
+    6,
+    7,
+    9,
+    10
+   ],
+   "answer_count": 4,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.highest <= 1057",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "<=",
+     "value": 1057,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.highest": 1057
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with highest at most '1057'?"
+  },
+  {
+   "uid": "172b4149-a536-4bda-9244-faa23ba350fb",
+   "question": "Which stadium has the name Gayfield Park with an average of exactly 638?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average = 638 AND stadium.name = 'Gayfield Park'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 638,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Gayfield Park",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.average": 638,
+    "stadium.name": "Gayfield Park"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with average equal to '638' and name equal to 'Gayfield Park'?"
+  },
+  {
+   "uid": "bc025749-49ca-41a4-a8e3-88f71b31817d",
+   "question": "Which stadium has the name Bayview Stadium and has its highest value exactly at 1980?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.highest = 1980 AND stadium.name = 'Bayview Stadium'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.highest",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 1980,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Bayview Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.highest": 1980,
+    "stadium.name": "Bayview Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with highest equal to '1980' and name equal to 'Bayview Stadium'?"
+  },
+  {
+   "uid": "c86458f3-0573-48f3-ae48-b18bd01f52ae",
+   "question": "Which stadiums have a highest point of at least 1980 and a capacity of at least 2000?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.highest >= 1980 AND stadium.capacity >= 2000",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.highest",
+    "stadium.capacity"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 1980,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 2000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.highest": 1980,
+    "stadium.capacity": 2000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with highest at least '1980' and capacity at least '2000'?"
+  },
+  {
+   "uid": "a2a9d285-6a72-49dd-84e1-482e7c003c08",
+   "question": "Which stadium has the name Balmoor?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.name = 'Balmoor'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Balmoor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Balmoor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with name equal to 'Balmoor'?"
+  },
+  {
+   "uid": "253193a6-1edc-4fcf-9ea9-59cabe84c22c",
+   "question": "Which stadiums have a lowest value of at most 400?",
+   "answer_row_ids": [
+    7,
+    9,
+    10
+   ],
+   "answer_count": 3,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.lowest <= 400",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.lowest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "<=",
+     "value": 400,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.lowest": 400
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with lowest at most '400'?"
+  },
+  {
+   "uid": "6407df00-3474-4cb4-a65a-b263ad058c48",
+   "question": "Which stadium in Peterhead is named Balmoor, has a capacity of at least 4000, a lowest attendance of at most 400, and an average and highest attendance exactly 615 and 837 respectively?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.location = 'Peterhead' AND stadium.name = 'Balmoor' AND stadium.capacity >= 4000 AND stadium.lowest <= 400 AND stadium.average = 615 AND stadium.highest = 837",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.location",
+    "stadium.name",
+    "stadium.capacity",
+    "stadium.lowest",
+    "stadium.average",
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Peterhead",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Balmoor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 4000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "<=",
+     "value": 400,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 615,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 837,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.location": "Peterhead",
+    "stadium.name": "Balmoor",
+    "stadium.capacity": 4000,
+    "stadium.lowest": 400,
+    "stadium.average": 615,
+    "stadium.highest": 837
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with location equal to 'Peterhead' and name equal to 'Balmoor' and capacity at least '4000' and lowest at most '400' and average equal to '615' and highest equal to '837'?"
+  },
+  {
+   "uid": "5f6c121d-44c9-4494-8787-26676f1ab6ed",
+   "question": "Which stadium named Recreation Park is located at Alloa Athletic, has a capacity of exactly 3100, a lowest point of 331, a highest point of 1057, and an average value of at most 637?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.lowest = 331 AND stadium.capacity = 3100 AND stadium.location = 'Alloa Athletic' AND stadium.highest = 1057 AND stadium.name = 'Recreation Park' AND stadium.average <= 637",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.lowest",
+    "stadium.capacity",
+    "stadium.location",
+    "stadium.highest",
+    "stadium.name",
+    "stadium.average"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 331,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "=",
+     "value": 3100,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Alloa Athletic",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 1057,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Recreation Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 637,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.lowest": 331,
+    "stadium.capacity": 3100,
+    "stadium.location": "Alloa Athletic",
+    "stadium.highest": 1057,
+    "stadium.name": "Recreation Park",
+    "stadium.average": 637
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with lowest equal to '331' and capacity equal to '3100' and location equal to 'Alloa Athletic' and highest equal to '1057' and name equal to 'Recreation Park' and average at most '637'?"
+  },
+  {
+   "uid": "ab3dc1eb-1613-4c44-9f9b-90c42ac51179",
+   "question": "Which stadium named Glebe Park in Brechin City has a capacity of exactly 3960, an average attendance of at most 552, a lowest attendance of exactly 315, and a highest attendance of at least 780?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average <= 552 AND stadium.capacity = 3960 AND stadium.location = 'Brechin City' AND stadium.name = 'Glebe Park' AND stadium.lowest = 315 AND stadium.highest >= 780",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average",
+    "stadium.capacity",
+    "stadium.location",
+    "stadium.name",
+    "stadium.lowest",
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 552,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "=",
+     "value": 3960,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Brechin City",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Glebe Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 315,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 780,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.average": 552,
+    "stadium.capacity": 3960,
+    "stadium.location": "Brechin City",
+    "stadium.name": "Glebe Park",
+    "stadium.lowest": 315,
+    "stadium.highest": 780
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with average at most '552' and capacity equal to '3960' and location equal to 'Brechin City' and name equal to 'Glebe Park' and lowest equal to '315' and highest at least '780'?"
+  },
+  {
+   "uid": "dfc97113-23a5-4906-af39-6f52709a0ca4",
+   "question": "What stadium named Somerset Park located at Ayr United has a capacity of at least 11998, a lowest value of exactly 1057, a highest value of at least 2363, and an average of exactly 1477?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.lowest = 1057 AND stadium.name = 'Somerset Park' AND stadium.location = 'Ayr United' AND stadium.capacity >= 11998 AND stadium.highest >= 2363 AND stadium.average = 1477",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.lowest",
+    "stadium.name",
+    "stadium.location",
+    "stadium.capacity",
+    "stadium.highest",
+    "stadium.average"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 1057,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Somerset Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Ayr United",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 11998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 2363,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 1477,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.lowest": 1057,
+    "stadium.name": "Somerset Park",
+    "stadium.location": "Ayr United",
+    "stadium.capacity": 11998,
+    "stadium.highest": 2363,
+    "stadium.average": 1477
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with lowest equal to '1057' and name equal to 'Somerset Park' and location equal to 'Ayr United' and capacity at least '11998' and highest at least '2363' and average equal to '1477'?"
+  },
+  {
+   "uid": "159c2163-5c39-4407-865a-9098c069d947",
+   "question": "Which stadium named Stark's Park is located at Raith Rovers, has a capacity of at least 10104, a lowest attendance exactly 1294, an average attendance of at least 2106, and a highest attendance of at most 4812?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.name = 'Stark''s Park' AND stadium.highest <= 4812 AND stadium.average >= 2106 AND stadium.lowest = 1294 AND stadium.capacity >= 10104 AND stadium.location = 'Raith Rovers'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.highest",
+    "stadium.average",
+    "stadium.lowest",
+    "stadium.capacity",
+    "stadium.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Stark's Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "<=",
+     "value": 4812,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": ">=",
+     "value": 2106,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 1294,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 10104,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Raith Rovers",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Stark's Park",
+    "stadium.highest": 4812,
+    "stadium.average": 2106,
+    "stadium.lowest": 1294,
+    "stadium.capacity": 10104,
+    "stadium.location": "Raith Rovers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with name equal to 'Stark' and highest at most '4812' and average at least '2106' and lowest equal to '1294' and capacity at least '10104' and location equal to 'Raith Rovers'?"
+  },
+  {
+   "uid": "707f8397-2d50-4595-a8e3-5ea07aa14759",
+   "question": "What stadium in Peterhead is named Balmoor, has a capacity of exactly 4000, a highest score of 837, and averages at least 615 with a lowest score of at least 400?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.lowest >= 400 AND stadium.capacity = 4000 AND stadium.location = 'Peterhead' AND stadium.name = 'Balmoor' AND stadium.average >= 615 AND stadium.highest = 837",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.lowest",
+    "stadium.capacity",
+    "stadium.location",
+    "stadium.name",
+    "stadium.average",
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": ">=",
+     "value": 400,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "=",
+     "value": 4000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Peterhead",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Balmoor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": ">=",
+     "value": 615,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 837,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.lowest": 400,
+    "stadium.capacity": 4000,
+    "stadium.location": "Peterhead",
+    "stadium.name": "Balmoor",
+    "stadium.average": 615,
+    "stadium.highest": 837
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with lowest at least '400' and capacity equal to '4000' and location equal to 'Peterhead' and name equal to 'Balmoor' and average at least '615' and highest equal to '837'?"
+  },
+  {
+   "uid": "c6ed3003-928b-40d0-afa0-f49a4498ee40",
+   "question": "Which stadium named Forthbank Stadium in Stirling Albion has a lowest attendance exactly 404, a highest attendance exactly 1125, an average attendance of at least 642, and a capacity of at most 3808?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.highest = 1125 AND stadium.capacity <= 3808 AND stadium.average >= 642 AND stadium.location = 'Stirling Albion' AND stadium.lowest = 404 AND stadium.name = 'Forthbank Stadium'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.highest",
+    "stadium.capacity",
+    "stadium.average",
+    "stadium.location",
+    "stadium.lowest",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 1125,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "<=",
+     "value": 3808,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": ">=",
+     "value": 642,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Stirling Albion",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 404,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Forthbank Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.highest": 1125,
+    "stadium.capacity": 3808,
+    "stadium.average": 642,
+    "stadium.location": "Stirling Albion",
+    "stadium.lowest": 404,
+    "stadium.name": "Forthbank Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with highest equal to '1125' and capacity at most '3808' and average at least '642' and location equal to 'Stirling Albion' and lowest equal to '404' and name equal to 'Forthbank Stadium'?"
+  },
+  {
+   "uid": "b838e6c0-2466-48cc-bae1-28084fe930ec",
+   "question": "Which stadium named Gayfield Park in Arbroath has an average of exactly 638, capacity of at least 4125, highest value at most 921, and lowest value no more than 411?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average = 638 AND stadium.highest <= 921 AND stadium.location = 'Arbroath' AND stadium.name = 'Gayfield Park' AND stadium.capacity >= 4125 AND stadium.lowest <= 411",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average",
+    "stadium.highest",
+    "stadium.location",
+    "stadium.name",
+    "stadium.capacity",
+    "stadium.lowest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 638,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "<=",
+     "value": 921,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Arbroath",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Gayfield Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 4125,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "<=",
+     "value": 411,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.average": 638,
+    "stadium.highest": 921,
+    "stadium.location": "Arbroath",
+    "stadium.name": "Gayfield Park",
+    "stadium.capacity": 4125,
+    "stadium.lowest": 411
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with average equal to '638' and highest at most '921' and location equal to 'Arbroath' and name equal to 'Gayfield Park' and capacity at least '4125' and lowest at most '411'?"
+  },
+  {
+   "uid": "50813e41-2069-4c03-9606-ba5bc5f44d6e",
+   "question": "Which stadiums located in Ayr United have a capacity of exactly 11998, an average of 1477, and lowest and highest values of at least 1057 and 2363 respectively?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.lowest >= 1057 AND stadium.average = 1477 AND stadium.location = 'Ayr United' AND stadium.highest >= 2363 AND stadium.capacity = 11998",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.lowest",
+    "stadium.average",
+    "stadium.location",
+    "stadium.highest",
+    "stadium.capacity"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": ">=",
+     "value": 1057,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 1477,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Ayr United",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 2363,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "=",
+     "value": 11998,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.lowest": 1057,
+    "stadium.average": 1477,
+    "stadium.location": "Ayr United",
+    "stadium.highest": 2363,
+    "stadium.capacity": 11998
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with lowest at least '1057' and average equal to '1477' and location equal to 'Ayr United' and highest at least '2363' and capacity equal to '11998'?"
+  },
+  {
+   "uid": "d6ea4ab2-29fe-4609-9024-864fc436daa7",
+   "question": "Which stadium named Forthbank Stadium has a capacity of at least 3808 and an average exactly equal to 642?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.capacity >= 3808 AND stadium.name = 'Forthbank Stadium' AND stadium.average = 642",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity",
+    "stadium.name",
+    "stadium.average"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 3808,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Forthbank Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 642,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity": 3808,
+    "stadium.name": "Forthbank Stadium",
+    "stadium.average": 642
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with capacity at least '3808' and name equal to 'Forthbank Stadium' and average equal to '642'?"
+  },
+  {
+   "uid": "085cc5a4-7326-433f-82a4-b1519ef528fa",
+   "question": "Which stadiums in Stirling Albion have a capacity of exactly 3808, an average of at most 642, and a highest of at least 1125?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.capacity = 3808 AND stadium.average <= 642 AND stadium.highest >= 1125 AND stadium.location = 'Stirling Albion'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity",
+    "stadium.average",
+    "stadium.highest",
+    "stadium.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "=",
+     "value": 3808,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 642,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 1125,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Stirling Albion",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity": 3808,
+    "stadium.average": 642,
+    "stadium.highest": 1125,
+    "stadium.location": "Stirling Albion"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with capacity equal to '3808' and average at most '642' and highest at least '1125' and location equal to 'Stirling Albion'?"
+  },
+  {
+   "uid": "fb8784a4-3d30-4f5f-9d73-fc7c44821247",
+   "question": "Which stadium named Somerset Park has a capacity of at least 11998 and a highest value exactly equal to 2363?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.capacity >= 11998 AND stadium.name = 'Somerset Park' AND stadium.highest = 2363",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity",
+    "stadium.name",
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 11998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Somerset Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 2363,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity": 11998,
+    "stadium.name": "Somerset Park",
+    "stadium.highest": 2363
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with capacity at least '11998' and name equal to 'Somerset Park' and highest equal to '2363'?"
+  },
+  {
+   "uid": "5183061e-3ef9-4258-8bcc-d1642746f42a",
+   "question": "Which stadium named Somerset Park is located at Ayr United and has an average of at most 1477?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.name = 'Somerset Park' AND stadium.average <= 1477 AND stadium.location = 'Ayr United'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.average",
+    "stadium.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Somerset Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 1477,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Ayr United",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Somerset Park",
+    "stadium.average": 1477,
+    "stadium.location": "Ayr United"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with name equal to 'Somerset Park' and average at most '1477' and location equal to 'Ayr United'?"
+  },
+  {
+   "uid": "962e2341-88bc-4dd1-925b-a6a070f60155",
+   "question": "Which stadium named Glebe Park is located in Brechin City with an average attendance of at most 552, a lowest attendance exactly 315, and a highest attendance of at least 780?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.name = 'Glebe Park' AND stadium.average <= 552 AND stadium.location = 'Brechin City' AND stadium.highest >= 780 AND stadium.lowest = 315",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.average",
+    "stadium.location",
+    "stadium.highest",
+    "stadium.lowest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Glebe Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 552,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Brechin City",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 780,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 315,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Glebe Park",
+    "stadium.average": 552,
+    "stadium.location": "Brechin City",
+    "stadium.highest": 780,
+    "stadium.lowest": 315
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with name equal to 'Glebe Park' and average at most '552' and location equal to 'Brechin City' and highest at least '780' and lowest equal to '315'?"
+  },
+  {
+   "uid": "40bfeeea-6673-4f20-91fc-e5099e5c0752",
+   "question": "Which stadium named Recreation Park located at Alloa Athletic has a capacity of at least 3100, an average of at most 637, and a highest value exactly 1057?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average <= 637 AND stadium.highest = 1057 AND stadium.capacity >= 3100 AND stadium.name = 'Recreation Park' AND stadium.location = 'Alloa Athletic'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average",
+    "stadium.highest",
+    "stadium.capacity",
+    "stadium.name",
+    "stadium.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 637,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": "=",
+     "value": 1057,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 3100,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Recreation Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Alloa Athletic",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.average": 637,
+    "stadium.highest": 1057,
+    "stadium.capacity": 3100,
+    "stadium.name": "Recreation Park",
+    "stadium.location": "Alloa Athletic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with average at most '637' and highest equal to '1057' and capacity at least '3100' and name equal to 'Recreation Park' and location equal to 'Alloa Athletic'?"
+  },
+  {
+   "uid": "7d995e2e-2f02-44e2-bfee-7e2bbfbd2f80",
+   "question": "Which stadium named Stark's Park located at Raith Rovers has an average of at most 2106, a highest of at least 4812, and a capacity of at most 10104?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average <= 2106 AND stadium.highest >= 4812 AND stadium.capacity <= 10104 AND stadium.name = 'Stark''s Park' AND stadium.location = 'Raith Rovers'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average",
+    "stadium.highest",
+    "stadium.capacity",
+    "stadium.name",
+    "stadium.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "<=",
+     "value": 2106,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 4812,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": "<=",
+     "value": 10104,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Stark's Park",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "location",
+     "operator": "=",
+     "value": "Raith Rovers",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.average": 2106,
+    "stadium.highest": 4812,
+    "stadium.capacity": 10104,
+    "stadium.name": "Stark's Park",
+    "stadium.location": "Raith Rovers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with average at most '2106' and highest at least '4812' and capacity at most '10104' and name equal to 'Stark' and location equal to 'Raith Rovers'?"
+  },
+  {
+   "uid": "0d952aa3-ea01-49d4-b33b-2116075434a3",
+   "question": "What stadiums have an average of exactly 642 and a lowest of exactly 404, with a capacity of at least 3808 and a highest of at least 1125?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.stadium_id FROM stadium\nWHERE stadium.average = 642 AND stadium.lowest = 404 AND stadium.capacity >= 3808 AND stadium.highest >= 1125",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average",
+    "stadium.lowest",
+    "stadium.capacity",
+    "stadium.highest"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average",
+     "operator": "=",
+     "value": 642,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "lowest",
+     "operator": "=",
+     "value": 404,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity",
+     "operator": ">=",
+     "value": 3808,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "highest",
+     "operator": ">=",
+     "value": 1125,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.average": 642,
+    "stadium.lowest": 404,
+    "stadium.capacity": 3808,
+    "stadium.highest": 1125
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "stadium_id",
+   "canonical_question": "Which stadium entities with average equal to '642' and lowest equal to '404' and capacity at least '3808' and highest at least '1125'?"
+  }
+ ]
+}

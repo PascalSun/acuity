@@ -1,0 +1,124 @@
+{
+  "db_id": "assets_maintenance",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T15:57:34.649098+00:00",
+  "records": [
+    {
+      "uid": "1ac34e80-d5a1-462b-ac6a-f4c327140a04",
+      "question": "What third party companies are Suppliers from Kiribati with maintenance contracts starting on or before 2017-06-14 01:46:59 and ending on or before 2018-03-09 10:40:10?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN maintenance_contracts ON third_party_companies.company_id = maintenance_contracts.maintenance_contract_company_id\nWHERE third_party_companies.other_company_details = 'Kiribati' AND maintenance_contracts.contract_start_date <= '2017-06-14 01:46:59' AND maintenance_contracts.contract_end_date <= '2018-03-09 10:40:10' AND third_party_companies.company_type = 'Supplier'",
+      "pred_sql": "SELECT tpc.company_id\nFROM Third_Party_Companies tpc\nJOIN Maintenance_Contracts mc ON tpc.company_id = mc.maintenance_contract_company_id\nWHERE tpc.other_company_details = 'Kiribati'\n  AND tpc.company_type = 'Supplier'\n  AND mc.contract_start_date <= '2017-06-14 01:46:59'\n  AND mc.contract_end_date <= '2018-03-09 10:40:10'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 55.82
+    },
+    {
+      "uid": "23c9e20c-e3a5-4209-98a2-62f596f6d2ad",
+      "question": "What suppliers located at 9405 Leffler Hollow Apt. 753 with other company details exactly Kiribati have maintenance contracts starting on or before 2017-05-14 11:57:50 and ending on or after 2018-03-23 17:29:21, and supply assets where asset_details is monitor1?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN maintenance_contracts ON third_party_companies.company_id = maintenance_contracts.maintenance_contract_company_id\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nWHERE maintenance_contracts.contract_start_date <= '2017-05-14 11:57:50' AND assets.asset_details = 'monitor1' AND third_party_companies.company_address = '9405 Leffler Hollow Apt. 753' AND third_party_companies.other_company_details = 'Kiribati' AND maintenance_contracts.contract_end_date >= '2018-03-23 17:29:21' AND third_party_companies.company_type = 'Supplier'",
+      "pred_sql": "SELECT \n    tpc.company_id\nFROM \n    Third_Party_Companies tpc\nINNER JOIN \n    Maintenance_Contracts mc ON tpc.company_id = mc.maintenance_contract_company_id\nINNER JOIN \n    Assets a ON tpc.company_id = a.supplier_company_id\nWHERE \n    tpc.company_address = '9405 Leffler Hollow Apt. 753'\n    AND tpc.other_company_details = 'Kiribati'\n    AND tpc.company_type = 'Supplier'\n    AND mc.contract_start_date <= '2017-05-14 11:57:50'\n    AND mc.contract_end_date >= '2018-03-23 17:29:21'\n    AND a.asset_details = 'monitor1'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 46.47
+    },
+    {
+      "uid": "3a1a8240-bfc2-4e55-aac8-bba5edf57525",
+      "question": "Which third party companies named McDermott Group, located at 873 Conrad Creek Apt. 286 with other details as China, have assets made by FR with model 20 tl acquired on 2017-09-19 16:15:45 and disposed on or after 2018-03-06 20:36:14?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nWHERE assets.asset_model = '20 tl' AND third_party_companies.company_address = '873 Conrad Creek Apt. 286' AND assets.asset_acquired_date = '2017-09-19 16:15:45' AND third_party_companies.company_name = 'McDermott Group' AND assets.asset_disposed_date >= '2018-03-06 20:36:14' AND third_party_companies.other_company_details = 'China' AND assets.asset_make = 'FR'",
+      "pred_sql": "SELECT \n    tpc.company_id\nFROM \n    Third_Party_Companies tpc\nJOIN \n    Assets a ON tpc.company_id = a.supplier_company_id\nWHERE \n    tpc.company_address = '873 Conrad Creek Apt. 286'\n    AND tpc.company_name = 'McDermott Group'\n    AND tpc.other_company_details = 'China'\n    AND a.asset_model = '20 tl'\n    AND a.asset_acquired_date = '2017-09-19 16:15:45'\n    AND a.asset_disposed_date >= '2018-03-06 20:36:14'\n    AND a.asset_make = 'FR'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 48.78
+    },
+    {
+      "uid": "591ed512-88f1-46c1-be2e-282bda474e9b",
+      "question": "Who are the third party companies supplying assets where the asset model is 20 tl?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nWHERE assets.asset_model = '20 tl'",
+      "pred_sql": "SELECT DISTINCT tpc.company_id\nFROM Third_Party_Companies tpc\nJOIN Assets a ON tpc.company_id = a.supplier_company_id\nWHERE a.asset_model = '20 tl'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.28
+    },
+    {
+      "uid": "690ac0cc-ac30-4e57-a723-fedb18cda5f1",
+      "question": "Which maintenance contractor named Dooley-Langosh is located at 9576 Jacynthe Point Suite 747 and has other company details listed as Albania?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nWHERE third_party_companies.company_address = '9576 Jacynthe Point Suite 747' AND third_party_companies.company_type = 'Maintenance Contractor' AND third_party_companies.company_name = 'Dooley-Langosh' AND third_party_companies.other_company_details = 'Albania'",
+      "pred_sql": "SELECT company_id\nFROM Third_Party_Companies\nWHERE company_address = '9576 Jacynthe Point Suite 747'\nAND company_type = 'Maintenance Contractor'\nAND company_name = 'Dooley-Langosh'\nAND other_company_details = 'Albania'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 27.89
+    },
+    {
+      "uid": "73319cfc-5cc6-429c-b908-901b2eb72b7f",
+      "question": "Which third party companies are Maintenance Contractors based in Albania?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nWHERE third_party_companies.company_type = 'Maintenance Contractor' AND third_party_companies.other_company_details = 'Albania'",
+      "pred_sql": "SELECT company_id\nFROM Third_Party_Companies\nWHERE company_type = 'Maintenance Contractor' AND other_company_details = 'Albania'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 25.14
+    },
+    {
+      "uid": "855c95f6-793d-4afa-afb5-30cbe206bf90",
+      "question": "Which third-party companies supply assets that are exactly machine1 made by RU and have maintenance contracts ending on or after 2018-02-27 05:03:22?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN maintenance_contracts ON third_party_companies.company_id = maintenance_contracts.maintenance_contract_company_id\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nWHERE assets.asset_details = 'machine1' AND assets.asset_make = 'RU' AND maintenance_contracts.contract_end_date >= '2018-02-27 05:03:22'",
+      "pred_sql": "SELECT DISTINCT tpc.company_id\nFROM Third_Party_Companies tpc\nINNER JOIN Maintenance_Contracts mc ON tpc.company_id = mc.maintenance_contract_company_id\nINNER JOIN Assets a ON tpc.company_id = a.supplier_company_id\nWHERE mc.contract_end_date >= '2018-02-27 05:03:22'\n  AND a.asset_details = 'machine1'\n  AND a.asset_make = 'RU'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.33
+    },
+    {
+      "uid": "a3e044cb-adde-4dc5-a9fe-89def666e713",
+      "question": "Which third party companies supply assets made exactly by RU that have maintenance contracts starting on or after 2017-07-23 05:07:37?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nJOIN maintenance_contracts ON assets.maintenance_contract_id = maintenance_contracts.maintenance_contract_id\nWHERE assets.asset_make = 'RU' AND maintenance_contracts.contract_start_date >= '2017-07-23 05:07:37'",
+      "pred_sql": "SELECT DISTINCT tpc.company_id\nFROM Third_Party_Companies tpc\nJOIN Assets a ON tpc.company_id = a.supplier_company_id\nJOIN Maintenance_Contracts mc ON a.maintenance_contract_id = mc.maintenance_contract_id\nWHERE a.asset_make = 'RU'\nAND mc.contract_start_date >= '2017-07-23 05:07:37'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 47.69
+    },
+    {
+      "uid": "e36edc0e-f944-43da-ae69-10663baff02f",
+      "question": "Which third party companies located at 016 Kaitlyn Fall Suite 236 with other company details exactly Egypt supplied assets model 94 kg acquired on or before 2017-10-24 04:29:17, disposed on or before 2018-02-28 18:14:13, and having maintenance contracts starting on or before 2017-05-14 11:57:50?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nJOIN maintenance_contracts ON assets.maintenance_contract_id = maintenance_contracts.maintenance_contract_id\nWHERE assets.asset_model = '94 kg' AND maintenance_contracts.contract_start_date <= '2017-05-14 11:57:50' AND assets.asset_acquired_date <= '2017-10-24 04:29:17' AND third_party_companies.company_address = '016 Kaitlyn Fall Suite 236' AND third_party_companies.other_company_details = 'Egypt' AND assets.asset_disposed_date <= '2018-02-28 18:14:13'",
+      "pred_sql": "SELECT T1.company_id\nFROM Third_Party_Companies AS T1\nINNER JOIN Assets AS T2 ON T1.company_id = T2.supplier_company_id\nINNER JOIN Maintenance_Contracts AS T3 ON T2.maintenance_contract_id = T3.maintenance_contract_id\nWHERE T1.company_address = '016 Kaitlyn Fall Suite 236'\n  AND T1.other_company_details = 'Egypt'\n  AND T2.asset_model = '94 kg'\n  AND T2.asset_acquired_date <= '2017-10-24 04:29:17'\n  AND T2.asset_disposed_date <= '2018-02-28 18:14:13'\n  AND T3.contract_start_date <= '2017-05-14 11:57:50'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.14
+    },
+    {
+      "uid": "ebec4693-b884-4241-a51c-01d044c5ae52",
+      "question": "Which suppliers based in Kiribati have both maintenance contracts and supply assets?",
+      "gold_sql": "SELECT third_party_companies.company_id FROM third_party_companies\nJOIN maintenance_contracts ON third_party_companies.company_id = maintenance_contracts.maintenance_contract_company_id\nJOIN assets ON third_party_companies.company_id = assets.supplier_company_id\nWHERE third_party_companies.company_type = 'Supplier' AND third_party_companies.other_company_details = 'Kiribati'",
+      "pred_sql": "SELECT tpc.company_id\nFROM Third_Party_Companies tpc\nWHERE tpc.company_type = 'Supplier'\nAND tpc.other_company_details = 'Kiribati'\nAND EXISTS (\n    SELECT 1\n    FROM Maintenance_Contracts mc\n    WHERE mc.maintenance_contract_company_id = tpc.company_id\n)\nAND EXISTS (\n    SELECT 1\n    FROM Assets a\n    WHERE a.supplier_company_id = tpc.company_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.59
+    }
+  ]
+}

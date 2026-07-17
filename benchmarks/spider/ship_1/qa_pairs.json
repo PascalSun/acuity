@@ -1,0 +1,3396 @@
+{
+ "db_id": "ship_1",
+ "target_table": "Ship",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 83491319,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/ship_1/ship_1.sqlite",
+  "generated_at": "2026-07-02T10:48:00.957727+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "ship",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 15,
+    "inner_attempts": 15,
+    "failed_rounds": 5,
+    "invalid_pairs_filtered": 5,
+    "failure_events": {
+     "qa_validation_failed": 5
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "c82bcc97-0b8d-4826-9a1f-2056c1340bfe",
+   "question": "What ship has the name HMS Destiny and was built in 1998?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'HMS Destiny' AND ship.built_year = 1998.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Destiny",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "HMS Destiny",
+    "ship.built_year": 1998.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HMS Destiny' and built year equal to '1998.0'?"
+  },
+  {
+   "uid": "e163964d-5c41-4d6e-a323-ce50059976d3",
+   "question": "Which ships flying the Malta flag were built in 1998 or later?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.flag = 'Malta' AND ship.built_year >= 1998.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Malta",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Malta",
+    "ship.built_year": 1998.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Malta' and built year at least '1998.0'?"
+  },
+  {
+   "uid": "f5c58251-0ffe-4984-bb84-d3f2241e45ba",
+   "question": "Which ships were built in 1998 and have Panama as their flag?",
+   "answer_row_ids": [
+    2,
+    4,
+    5
+   ],
+   "answer_count": 3,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year = 1998.0 AND ship.flag = 'Panama'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0,
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1998.0' and flag equal to 'Panama'?"
+  },
+  {
+   "uid": "0ae8bba9-8aff-4805-b446-b5a6ff462e92",
+   "question": "What ships are Panamax type and fly the Panama flag?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 8,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Panamax' AND ship.flag = 'Panama'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Panamax",
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and flag equal to 'Panama'?"
+  },
+  {
+   "uid": "12698623-cfc2-42a9-82b5-c7a971836e59",
+   "question": "Which ships were built in the year 1997?",
+   "answer_row_ids": [
+    1,
+    3,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 5,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year = 1997.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1997.0'?"
+  },
+  {
+   "uid": "0c7558a2-fc4e-4885-b0c7-274efe480c0e",
+   "question": "Which ships belong exactly to the class KR?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 8,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.class = 'KR'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with class equal to 'KR'?"
+  },
+  {
+   "uid": "f32f2804-9e16-419b-8024-a993fa1fe485",
+   "question": "What ships have the flag set to Panama and belong to the KR class?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 8,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.flag = 'Panama' AND ship.class = 'KR'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama' and class equal to 'KR'?"
+  },
+  {
+   "uid": "2815e502-9aba-42cc-b019-f331dd1456e1",
+   "question": "Which ships are Panamax type and have a flag that is Panama?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 8,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.flag = 'Panama' AND ship.type = 'Panamax'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama' and type equal to 'Panamax'?"
+  },
+  {
+   "uid": "6d3c6d93-3c45-439b-a64a-25ee695252c3",
+   "question": "Which ships belong to the KR class and are of the Panamax type?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 8,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.class = 'KR' AND ship.type = 'Panamax'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.class",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.class": "KR",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with class equal to 'KR' and type equal to 'Panamax'?"
+  },
+  {
+   "uid": "0f0123ec-a0b1-4200-b378-23aac1b1d0c8",
+   "question": "Which ships named HMS Phalarope are exactly of the Panamax type?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Panamax' AND ship.name = 'HMS Phalarope'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Phalarope",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Panamax",
+    "ship.name": "HMS Phalarope"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and name equal to 'HMS Phalarope'?"
+  },
+  {
+   "uid": "c1626304-c23b-433a-bb09-b18a44700b0c",
+   "question": "What ships named HMS Trojan were built in 1997 and have a type of Panamax?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Panamax' AND ship.name = 'HMS Trojan' AND ship.built_year = 1997.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.name",
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Trojan",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Panamax",
+    "ship.name": "HMS Trojan",
+    "ship.built_year": 1997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and name equal to 'HMS Trojan' and built year equal to '1997.0'?"
+  },
+  {
+   "uid": "cbec7ca0-0010-42c5-8add-f8c3dc3f2a03",
+   "question": "Which ship built in 1997 exactly is named HM Sloop Sparrow and belongs to class KR?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year = 1997.0 AND ship.class = 'KR' AND ship.name = 'HM Sloop Sparrow'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.class",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Sloop Sparrow",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0,
+    "ship.class": "KR",
+    "ship.name": "HM Sloop Sparrow"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1997.0' and class equal to 'KR' and name equal to 'HM Sloop Sparrow'?"
+  },
+  {
+   "uid": "490e46a2-017b-45b3-b6f0-e22d52b9b059",
+   "question": "Which ships are Panamax type with class GL and flagged in Malta?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.class = 'GL' AND ship.flag = 'Malta' AND ship.type = 'Panamax'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.class",
+    "ship.flag",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "GL",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Malta",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.class": "GL",
+    "ship.flag": "Malta",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with class equal to 'GL' and flag equal to 'Malta' and type equal to 'Panamax'?"
+  },
+  {
+   "uid": "1c614004-b6eb-46fd-b722-df6dd5a83245",
+   "question": "Which ships named HMS Undine built in 1998 or earlier are Panamax type and flagged in Malta?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year <= 1998.0 AND ship.name = 'HMS Undine' AND ship.type = 'Panamax' AND ship.flag = 'Malta'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.name",
+    "ship.type",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "<=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Undine",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Malta",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0,
+    "ship.name": "HMS Undine",
+    "ship.type": "Panamax",
+    "ship.flag": "Malta"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at most '1998.0' and name equal to 'HMS Undine' and type equal to 'Panamax' and flag equal to 'Malta'?"
+  },
+  {
+   "uid": "c0516138-89e1-4e61-ba03-a68c8532d5e1",
+   "question": "Which ships named HMS Phalarope are Panamax type, flagged in Panama, and built exactly in 1997?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year = 1997.0 AND ship.name = 'HMS Phalarope' AND ship.flag = 'Panama' AND ship.type = 'Panamax'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.name",
+    "ship.flag",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Phalarope",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0,
+    "ship.name": "HMS Phalarope",
+    "ship.flag": "Panama",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1997.0' and name equal to 'HMS Phalarope' and flag equal to 'Panama' and type equal to 'Panamax'?"
+  },
+  {
+   "uid": "826c2ed8-59d9-4a02-92ce-bb8d47c3439d",
+   "question": "What ship has the name HM Sloop Sparrow, is of the Panamax type, was built in 1997, and belongs to the KR class?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Panamax' AND ship.name = 'HM Sloop Sparrow' AND ship.built_year = 1997.0 AND ship.class = 'KR'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.name",
+    "ship.built_year",
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Sloop Sparrow",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Panamax",
+    "ship.name": "HM Sloop Sparrow",
+    "ship.built_year": 1997.0,
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and name equal to 'HM Sloop Sparrow' and built year equal to '1997.0' and class equal to 'KR'?"
+  },
+  {
+   "uid": "ef854c16-7735-4e51-9531-1bda11e6ec28",
+   "question": "Which ships named HMS Trojan are flagged in Panama and were built in 1997 or later with class KR?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year >= 1997.0 AND ship.class = 'KR' AND ship.name = 'HMS Trojan' AND ship.flag = 'Panama'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.class",
+    "ship.name",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Trojan",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0,
+    "ship.class": "KR",
+    "ship.name": "HMS Trojan",
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at least '1997.0' and class equal to 'KR' and name equal to 'HMS Trojan' and flag equal to 'Panama'?"
+  },
+  {
+   "uid": "ef788b0d-79c2-4e91-ad63-5f39e9086342",
+   "question": "Which ships named HMS Destiny were built in 1998, have class KR, and fly the Panama flag?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.built_year = 1998.0 AND ship.class = 'KR' AND ship.name = 'HMS Destiny' AND ship.flag = 'Panama'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.class",
+    "ship.name",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Destiny",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0,
+    "ship.class": "KR",
+    "ship.name": "HMS Destiny",
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1998.0' and class equal to 'KR' and name equal to 'HMS Destiny' and flag equal to 'Panama'?"
+  },
+  {
+   "uid": "25dbd7f5-837f-4888-af71-5fcc521faecd",
+   "question": "Which ships are Panamax type, belong to the GL class, and fly the Malta flag?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.type = 'Panamax' AND ship.class = 'GL' AND ship.flag = 'Malta'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.class",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "GL",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Malta",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Panamax",
+    "ship.class": "GL",
+    "ship.flag": "Malta"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and class equal to 'GL' and flag equal to 'Malta'?"
+  },
+  {
+   "uid": "df8b6724-4d7b-4224-9766-f542a46e0a8e",
+   "question": "Which ships named HMS Phalarope are Panamax type, belong to class KR, fly the Panama flag, and were built in 1997 or later?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nWHERE ship.name = 'HMS Phalarope' AND ship.class = 'KR' AND ship.type = 'Panamax' AND ship.flag = 'Panama' AND ship.built_year >= 1997.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "ship"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "ship.class",
+    "ship.type",
+    "ship.flag",
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Phalarope",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "HMS Phalarope",
+    "ship.class": "KR",
+    "ship.type": "Panamax",
+    "ship.flag": "Panama",
+    "ship.built_year": 1997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HMS Phalarope' and class equal to 'KR' and type equal to 'Panamax' and flag equal to 'Panama' and built year at least '1997.0'?"
+  },
+  {
+   "uid": "d18d940b-93fa-457a-b4e7-b1c7109ddbcf",
+   "question": "What ships have captains and fly the flag of Panama?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "answer_count": 5,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama', having at least one related captain record (linked on ship.ship_id = captain.ship_id)?"
+  },
+  {
+   "uid": "e0ed6d1c-1aea-4b6c-b936-517196328638",
+   "question": "Which ships named HM Cutter Avenger have a captain whose rank is exactly Commander, junior captain?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.name = 'HM Cutter Avenger' AND captain.rank = 'Commander, junior captain'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "captain.rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Cutter Avenger",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Commander, junior captain",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "HM Cutter Avenger",
+    "captain.rank": "Commander, junior captain"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HM Cutter Avenger', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Commander, junior captain'?"
+  },
+  {
+   "uid": "82d26401-5f5d-4709-9fa0-f5591fc045bf",
+   "question": "Which ship has the name HMS Gorgon and is captained by Captain Gilbert Pears?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.name = 'HMS Gorgon' AND captain.name = 'Captain Gilbert Pears'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "captain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Gilbert Pears",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "HMS Gorgon",
+    "captain.name": "Captain Gilbert Pears"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HMS Gorgon', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Captain Gilbert Pears'?"
+  },
+  {
+   "uid": "b6a43655-b254-40a4-b0b9-2ba274da39fa",
+   "question": "Which ships flying the Panama flag have captains commanding Sloop-of-war class vessels?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama' AND captain.class = 'Sloop-of-war'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "captain.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Sloop-of-war",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "captain.class": "Sloop-of-war"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with class equal to 'Sloop-of-war'?"
+  },
+  {
+   "uid": "07193f2f-819c-449e-a637-359873c5bee1",
+   "question": "Which ships flying the Panama flag have Captain Henry Dumaresq in command?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama' AND captain.name = 'Captain Henry Dumaresq'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "captain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Henry Dumaresq",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "captain.name": "Captain Henry Dumaresq"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Captain Henry Dumaresq'?"
+  },
+  {
+   "uid": "65046266-fa40-4ec3-94c3-6dceadf188b8",
+   "question": "Which ships that were built in 1997 have captains assigned to them?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year = 1997.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1997.0', having at least one related captain record (linked on ship.ship_id = captain.ship_id)?"
+  },
+  {
+   "uid": "19f264da-cc3d-490c-8514-d0dede62cb9a",
+   "question": "Which ships flying the Panama flag are of the Panamax type?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "answer_count": 5,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama' AND ship.type = 'Panamax'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama' and type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id)?"
+  },
+  {
+   "uid": "27d73637-da62-43b7-9c4b-9e4b7df114df",
+   "question": "Which ships built in 1998 or earlier have captains assigned to them?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "answer_count": 5,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year <= 1998.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "<=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at most '1998.0', having at least one related captain record (linked on ship.ship_id = captain.ship_id)?"
+  },
+  {
+   "uid": "c987ec45-55ef-40fa-88e4-9629100ff606",
+   "question": "Which ships have captains whose class is Third-rate ship of the line and whose rank is Midshipman?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.class = 'Third-rate ship of the line' AND captain.rank = 'Midshipman'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.class",
+    "captain.rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Third-rate ship of the line",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.class": "Third-rate ship of the line",
+    "captain.rank": "Midshipman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities having at least one related captain record (linked on ship.ship_id = captain.ship_id) with class equal to 'Third-rate ship of the line' and rank equal to 'Midshipman'?"
+  },
+  {
+   "uid": "3132da53-a5fd-4a72-b133-c3928df555c9",
+   "question": "Which ships have class KR and are of the Panamax type?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "answer_count": 5,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.class = 'KR' AND ship.type = 'Panamax'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.class",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.class": "KR",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with class equal to 'KR' and type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id)?"
+  },
+  {
+   "uid": "5c337545-114d-483e-8420-57f689a3262c",
+   "question": "What ships named HM Cutter Avenger built in 1997 with class KR and flag Panama have captains who are Commander, junior captain rank and serve on Sloop-of-war class vessels?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year = 1997.0 AND ship.class = 'KR' AND ship.name = 'HM Cutter Avenger' AND captain.rank = 'Commander, junior captain' AND captain.class = 'Sloop-of-war' AND ship.flag = 'Panama'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.class",
+    "ship.name",
+    "captain.rank",
+    "captain.class",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Cutter Avenger",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Commander, junior captain",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Sloop-of-war",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0,
+    "ship.class": "KR",
+    "ship.name": "HM Cutter Avenger",
+    "captain.rank": "Commander, junior captain",
+    "captain.class": "Sloop-of-war",
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1997.0' and class equal to 'KR' and name equal to 'HM Cutter Avenger' and flag equal to 'Panama', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Commander, junior captain' and class equal to 'Sloop-of-war'?"
+  },
+  {
+   "uid": "e68c6ad7-f968-48cd-8260-c38f842b298a",
+   "question": "Which ships named HM Cutter Avenger, built in 1997 or later, have the Panama flag, are Panamax type with class KR, and are captained by Commander Richard Bolitho of the Sloop-of-war class?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year >= 1997.0 AND ship.flag = 'Panama' AND captain.name = 'Commander Richard Bolitho' AND ship.type = 'Panamax' AND captain.class = 'Sloop-of-war' AND ship.class = 'KR' AND ship.name = 'HM Cutter Avenger'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.flag",
+    "captain.name",
+    "ship.type",
+    "captain.class",
+    "ship.class",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Commander Richard Bolitho",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Sloop-of-war",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Cutter Avenger",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1997.0,
+    "ship.flag": "Panama",
+    "captain.name": "Commander Richard Bolitho",
+    "ship.type": "Panamax",
+    "captain.class": "Sloop-of-war",
+    "ship.class": "KR",
+    "ship.name": "HM Cutter Avenger"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at least '1997.0' and flag equal to 'Panama' and type equal to 'Panamax' and class equal to 'KR' and name equal to 'HM Cutter Avenger', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Commander Richard Bolitho' and class equal to 'Sloop-of-war'?"
+  },
+  {
+   "uid": "e163d9a7-d98c-4be5-8952-88ce6a3622f7",
+   "question": "Which ships named HMS Gorgon have the class KR, flag Panama, type Panamax, and are captained by 54-year-old Captain Beves Conway of the Third-rate ship of the line class?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.class = 'KR' AND captain.class = 'Third-rate ship of the line' AND ship.flag = 'Panama' AND captain.name = 'Captain Beves Conway' AND captain.age = '54' AND ship.type = 'Panamax' AND ship.name = 'HMS Gorgon'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.class",
+    "captain.class",
+    "ship.flag",
+    "captain.name",
+    "captain.age",
+    "ship.type",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Third-rate ship of the line",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Beves Conway",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "54",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.class": "KR",
+    "captain.class": "Third-rate ship of the line",
+    "ship.flag": "Panama",
+    "captain.name": "Captain Beves Conway",
+    "captain.age": "54",
+    "ship.type": "Panamax",
+    "ship.name": "HMS Gorgon"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with class equal to 'KR' and flag equal to 'Panama' and type equal to 'Panamax' and name equal to 'HMS Gorgon', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with class equal to 'Third-rate ship of the line' and name equal to 'Captain Beves Conway' and age equal to '54'?"
+  },
+  {
+   "uid": "fd8a7c12-7dc3-43c0-890c-dbd13be4d96e",
+   "question": "Which ships named HMS Manxman, flagged in Panama and built in 1997 or earlier, are Panamax type with a captain named Captain Sir Henry Langford who is a 40-year-old Midshipman?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.rank = 'Midshipman' AND captain.age = '40' AND captain.name = 'Captain Sir Henry Langford' AND ship.flag = 'Panama' AND ship.name = 'HMS Manxman' AND ship.built_year <= 1997.0 AND ship.type = 'Panamax'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.rank",
+    "captain.age",
+    "captain.name",
+    "ship.flag",
+    "ship.name",
+    "ship.built_year",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "40",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Sir Henry Langford",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Manxman",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "<=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.rank": "Midshipman",
+    "captain.age": "40",
+    "captain.name": "Captain Sir Henry Langford",
+    "ship.flag": "Panama",
+    "ship.name": "HMS Manxman",
+    "ship.built_year": 1997.0,
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama' and name equal to 'HMS Manxman' and built year at most '1997.0' and type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Midshipman' and age equal to '40' and name equal to 'Captain Sir Henry Langford'?"
+  },
+  {
+   "uid": "3bb1e282-da3d-441d-8a0a-20975bde2ea4",
+   "question": "What ships named HMS Destiny, built in 1998, are Panamax type with class KR and flag Panama, captained by a 38-year-old Lieutenant of the Frigate class?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year = 1998.0 AND ship.name = 'HMS Destiny' AND captain.age = '38' AND captain.class = 'Frigate' AND ship.type = 'Panamax' AND ship.flag = 'Panama' AND captain.rank = 'Lieutenant' AND ship.class = 'KR'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.name",
+    "captain.age",
+    "captain.class",
+    "ship.type",
+    "ship.flag",
+    "captain.rank",
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Destiny",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "38",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Frigate",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Lieutenant",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0,
+    "ship.name": "HMS Destiny",
+    "captain.age": "38",
+    "captain.class": "Frigate",
+    "ship.type": "Panamax",
+    "ship.flag": "Panama",
+    "captain.rank": "Lieutenant",
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year equal to '1998.0' and name equal to 'HMS Destiny' and type equal to 'Panamax' and flag equal to 'Panama' and class equal to 'KR', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with age equal to '38' and class equal to 'Frigate' and rank equal to 'Lieutenant'?"
+  },
+  {
+   "uid": "6df5392b-5303-4c18-a960-a9e765485249",
+   "question": "What ships named HMS Gorgon flagged in Panama were built in 1998 or later and have a Midshipman captain named Captain Beves Conway whose class is Third-rate ship of the line and type is Panamax?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama' AND captain.name = 'Captain Beves Conway' AND captain.rank = 'Midshipman' AND ship.type = 'Panamax' AND ship.name = 'HMS Gorgon' AND captain.class = 'Third-rate ship of the line' AND ship.built_year >= 1998.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "captain.name",
+    "captain.rank",
+    "ship.type",
+    "ship.name",
+    "captain.class",
+    "ship.built_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Beves Conway",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Third-rate ship of the line",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "captain.name": "Captain Beves Conway",
+    "captain.rank": "Midshipman",
+    "ship.type": "Panamax",
+    "ship.name": "HMS Gorgon",
+    "captain.class": "Third-rate ship of the line",
+    "ship.built_year": 1998.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama' and type equal to 'Panamax' and name equal to 'HMS Gorgon' and built year at least '1998.0', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Captain Beves Conway' and rank equal to 'Midshipman' and class equal to 'Third-rate ship of the line'?"
+  },
+  {
+   "uid": "c10e4025-0888-45fb-881c-9b24f90152ed",
+   "question": "What ships named HMS Gorgon are Panamax type and class KR, commanded by a 54-year-old captain named Captain Beves Conway with the rank Midshipman?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.rank = 'Midshipman' AND captain.name = 'Captain Beves Conway' AND ship.name = 'HMS Gorgon' AND captain.age = '54' AND ship.class = 'KR' AND ship.type = 'Panamax'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.rank",
+    "captain.name",
+    "ship.name",
+    "captain.age",
+    "ship.class",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Beves Conway",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "54",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.rank": "Midshipman",
+    "captain.name": "Captain Beves Conway",
+    "ship.name": "HMS Gorgon",
+    "captain.age": "54",
+    "ship.class": "KR",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HMS Gorgon' and class equal to 'KR' and type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Midshipman' and name equal to 'Captain Beves Conway' and age equal to '54'?"
+  },
+  {
+   "uid": "c3ea42f9-8603-4224-80fc-3d201563f103",
+   "question": "Which Panamax ships named HM Cutter Avenger, built in 1997 or later, with class KR and flag Panama, have a 38-year-old captain named Commander Richard Bolitho whose class is Sloop-of-war?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.name = 'Commander Richard Bolitho' AND ship.type = 'Panamax' AND ship.name = 'HM Cutter Avenger' AND ship.built_year >= 1997.0 AND ship.class = 'KR' AND ship.flag = 'Panama' AND captain.class = 'Sloop-of-war' AND captain.age = '38'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.name",
+    "ship.type",
+    "ship.name",
+    "ship.built_year",
+    "ship.class",
+    "ship.flag",
+    "captain.class",
+    "captain.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Commander Richard Bolitho",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Cutter Avenger",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Sloop-of-war",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "38",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.name": "Commander Richard Bolitho",
+    "ship.type": "Panamax",
+    "ship.name": "HM Cutter Avenger",
+    "ship.built_year": 1997.0,
+    "ship.class": "KR",
+    "ship.flag": "Panama",
+    "captain.class": "Sloop-of-war",
+    "captain.age": "38"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and name equal to 'HM Cutter Avenger' and built year at least '1997.0' and class equal to 'KR' and flag equal to 'Panama', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Commander Richard Bolitho' and class equal to 'Sloop-of-war' and age equal to '38'?"
+  },
+  {
+   "uid": "fe7477f1-9652-443f-b6a2-614dc266781b",
+   "question": "Which ships named HMS Gorgon were built in 1998 or earlier, have class KR, and are captained by 60-year-old Captain Gilbert Pears commanding a Third-rate ship of the line?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year <= 1998.0 AND ship.name = 'HMS Gorgon' AND captain.class = 'Third-rate ship of the line' AND captain.age = '60' AND ship.class = 'KR' AND captain.name = 'Captain Gilbert Pears'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.name",
+    "captain.class",
+    "captain.age",
+    "ship.class",
+    "captain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "<=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Third-rate ship of the line",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "60",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Gilbert Pears",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0,
+    "ship.name": "HMS Gorgon",
+    "captain.class": "Third-rate ship of the line",
+    "captain.age": "60",
+    "ship.class": "KR",
+    "captain.name": "Captain Gilbert Pears"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at most '1998.0' and name equal to 'HMS Gorgon' and class equal to 'KR', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with class equal to 'Third-rate ship of the line' and age equal to '60' and name equal to 'Captain Gilbert Pears'?"
+  },
+  {
+   "uid": "14826f78-9cd3-48c6-821d-f6697b77e39d",
+   "question": "Which ships named HM Cutter Avenger, built in 1997 or later with a Panamax type and Panama flag, have a Cutter-class captain exactly 43 years old named Lieutenant Hugh Bolitho?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.name = 'Lieutenant Hugh Bolitho' AND ship.built_year >= 1997.0 AND ship.flag = 'Panama' AND ship.name = 'HM Cutter Avenger' AND captain.age = '43' AND captain.class = 'Cutter' AND ship.type = 'Panamax'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.name",
+    "ship.built_year",
+    "ship.flag",
+    "ship.name",
+    "captain.age",
+    "captain.class",
+    "ship.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Lieutenant Hugh Bolitho",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Cutter Avenger",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "43",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Cutter",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.name": "Lieutenant Hugh Bolitho",
+    "ship.built_year": 1997.0,
+    "ship.flag": "Panama",
+    "ship.name": "HM Cutter Avenger",
+    "captain.age": "43",
+    "captain.class": "Cutter",
+    "ship.type": "Panamax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at least '1997.0' and flag equal to 'Panama' and name equal to 'HM Cutter Avenger' and type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Lieutenant Hugh Bolitho' and age equal to '43' and class equal to 'Cutter'?"
+  },
+  {
+   "uid": "38e61e9d-19bc-440a-b7b7-c3da8de5d729",
+   "question": "Which ships named HMS Manxman fly the Panama flag and have a captain with the rank of Midshipman?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.name = 'HMS Manxman' AND captain.rank = 'Midshipman' AND ship.flag = 'Panama'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.name",
+    "captain.rank",
+    "ship.flag"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Manxman",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.name": "HMS Manxman",
+    "captain.rank": "Midshipman",
+    "ship.flag": "Panama"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HMS Manxman' and flag equal to 'Panama', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Midshipman'?"
+  },
+  {
+   "uid": "aab10ca6-83c7-4367-b873-5fe1f23c63c6",
+   "question": "Which ships built in 1998 or later have the Panama flag, belong to class KR, and are captained by Lieutenant Montagu Verling?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.built_year >= 1998.0 AND ship.flag = 'Panama' AND captain.name = 'Lieutenant Montagu Verling' AND ship.class = 'KR'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.built_year",
+    "ship.flag",
+    "captain.name",
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": ">=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Lieutenant Montagu Verling",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.built_year": 1998.0,
+    "ship.flag": "Panama",
+    "captain.name": "Lieutenant Montagu Verling",
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at least '1998.0' and flag equal to 'Panama' and class equal to 'KR', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Lieutenant Montagu Verling'?"
+  },
+  {
+   "uid": "2214aa6f-a3b3-4dc2-9a00-38876f3f935d",
+   "question": "Which ships of class KR have a Midshipman captain named Lieutenant Hugh Bolitho who is exactly 43 years old?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.name = 'Lieutenant Hugh Bolitho' AND captain.age = '43' AND captain.rank = 'Midshipman' AND ship.class = 'KR'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.name",
+    "captain.age",
+    "captain.rank",
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Lieutenant Hugh Bolitho",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "43",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.name": "Lieutenant Hugh Bolitho",
+    "captain.age": "43",
+    "captain.rank": "Midshipman",
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with class equal to 'KR', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with name equal to 'Lieutenant Hugh Bolitho' and age equal to '43' and rank equal to 'Midshipman'?"
+  },
+  {
+   "uid": "e44053f5-9c49-47dc-952c-f791edeafb46",
+   "question": "Which ships built in 1997 or earlier have captains of class Sloop-of-war with the rank Commander, junior captain?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.rank = 'Commander, junior captain' AND ship.built_year <= 1997.0 AND captain.class = 'Sloop-of-war'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.rank",
+    "ship.built_year",
+    "captain.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Commander, junior captain",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "<=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Sloop-of-war",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.rank": "Commander, junior captain",
+    "ship.built_year": 1997.0,
+    "captain.class": "Sloop-of-war"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with built year at most '1997.0', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Commander, junior captain' and class equal to 'Sloop-of-war'?"
+  },
+  {
+   "uid": "00935579-ef55-4dc2-8fd1-8f2dd835d3ac",
+   "question": "Which ships of type Panamax have a Midshipman captain who is 43 years old and whose class is Cutter?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.class = 'Cutter' AND ship.type = 'Panamax' AND captain.age = '43' AND captain.rank = 'Midshipman'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.class",
+    "ship.type",
+    "captain.age",
+    "captain.rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Cutter",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "43",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Midshipman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.class": "Cutter",
+    "ship.type": "Panamax",
+    "captain.age": "43",
+    "captain.rank": "Midshipman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with class equal to 'Cutter' and age equal to '43' and rank equal to 'Midshipman'?"
+  },
+  {
+   "uid": "20af8b0b-87d2-424e-9c80-e49a8ec50d22",
+   "question": "Which ships named HM Schooner Hotspur were built in 1998, have class KR and type Panamax, and have captains whose class is Armed schooner?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.class = 'Armed schooner' AND ship.type = 'Panamax' AND ship.built_year = 1998.0 AND ship.class = 'KR' AND ship.name = 'HM Schooner Hotspur'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.class",
+    "ship.type",
+    "ship.built_year",
+    "ship.class",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "class",
+     "operator": "=",
+     "value": "Armed schooner",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Schooner Hotspur",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.class": "Armed schooner",
+    "ship.type": "Panamax",
+    "ship.built_year": 1998.0,
+    "ship.class": "KR",
+    "ship.name": "HM Schooner Hotspur"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and built year equal to '1998.0' and class equal to 'KR' and name equal to 'HM Schooner Hotspur', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with class equal to 'Armed schooner'?"
+  },
+  {
+   "uid": "4d6cf350-79fe-4c8f-b7dc-f44dce5597c6",
+   "question": "Which ships named HMS Gorgon built in 1998 or earlier have a Lieutenant captain named Captain Gilbert Pears who is exactly 60 years old?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.rank = 'Lieutenant' AND ship.name = 'HMS Gorgon' AND ship.built_year <= 1998.0 AND captain.name = 'Captain Gilbert Pears' AND captain.age = '60'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.rank",
+    "ship.name",
+    "ship.built_year",
+    "captain.name",
+    "captain.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Lieutenant",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "built_year",
+     "operator": "<=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "captain",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain Gilbert Pears",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "60",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.rank": "Lieutenant",
+    "ship.name": "HMS Gorgon",
+    "ship.built_year": 1998.0,
+    "captain.name": "Captain Gilbert Pears",
+    "captain.age": "60"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with name equal to 'HMS Gorgon' and built year at most '1998.0', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Lieutenant' and name equal to 'Captain Gilbert Pears' and age equal to '60'?"
+  },
+  {
+   "uid": "bb78d0c0-1bac-4a51-a05d-07b06e6b2acb",
+   "question": "Which ships named HM Cutter Avenger flying the Panama flag have captains who are exactly 38 years old?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.flag = 'Panama' AND captain.age = '38' AND ship.name = 'HM Cutter Avenger'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.flag",
+    "captain.age",
+    "ship.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "flag",
+     "operator": "=",
+     "value": "Panama",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "38",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HM Cutter Avenger",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.flag": "Panama",
+    "captain.age": "38",
+    "ship.name": "HM Cutter Avenger"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with flag equal to 'Panama' and name equal to 'HM Cutter Avenger', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with age equal to '38'?"
+  },
+  {
+   "uid": "59488e9f-b4b3-4ded-88f6-908ec1437707",
+   "question": "What ships of type Panamax have a captain who is exactly 60 years old and holds the rank of Lieutenant?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE captain.rank = 'Lieutenant' AND ship.type = 'Panamax' AND captain.age = '60'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "captain.rank",
+    "ship.type",
+    "captain.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Lieutenant",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "age",
+     "operator": "=",
+     "value": "60",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "captain.rank": "Lieutenant",
+    "ship.type": "Panamax",
+    "captain.age": "60"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Lieutenant' and age equal to '60'?"
+  },
+  {
+   "uid": "8e5e27cd-1e02-45aa-a5f1-a1954993331d",
+   "question": "Which ships named HMS Gorgon have type Panamax, class KR, and are commanded by a captain with the rank Lieutenant?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT ship.ship_id FROM ship\nJOIN captain ON ship.ship_id = captain.ship_id\nWHERE ship.type = 'Panamax' AND ship.name = 'HMS Gorgon' AND captain.rank = 'Lieutenant' AND ship.class = 'KR'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "ship",
+    "captain"
+   ],
+   "involved_columns": [
+    "ship.type",
+    "ship.name",
+    "captain.rank",
+    "ship.class"
+   ],
+   "involved_filters": [
+    {
+     "table": "ship",
+     "column": "type",
+     "operator": "=",
+     "value": "Panamax",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "name",
+     "operator": "=",
+     "value": "HMS Gorgon",
+     "column_type": "enum"
+    },
+    {
+     "table": "captain",
+     "column": "rank",
+     "operator": "=",
+     "value": "Lieutenant",
+     "column_type": "enum"
+    },
+    {
+     "table": "ship",
+     "column": "class",
+     "operator": "=",
+     "value": "KR",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "ship.type": "Panamax",
+    "ship.name": "HMS Gorgon",
+    "captain.rank": "Lieutenant",
+    "ship.class": "KR"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "ship"
+   },
+   "answer_table": "ship",
+   "answer_id_column": "ship_id",
+   "canonical_question": "Which ship entities with type equal to 'Panamax' and name equal to 'HMS Gorgon' and class equal to 'KR', having at least one related captain record (linked on ship.ship_id = captain.ship_id) with rank equal to 'Lieutenant'?"
+  }
+ ]
+}

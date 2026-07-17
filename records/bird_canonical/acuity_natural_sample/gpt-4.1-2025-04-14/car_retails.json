@@ -1,0 +1,124 @@
+{
+  "db_id": "car_retails",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:17:16.628191+00:00",
+  "records": [
+    {
+      "uid": "22ff44bc-ee11-44b3-a493-cf01952910d8",
+      "question": "Which customers have the address line 59 rue de l'Abbaye, have the contact last name Henriot, are associated with employees through their sales representative employee number, and have related payments records?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN employees ON customers.salesrepemployeenumber = employees.employeenumber\nJOIN payments ON customers.customernumber = payments.customernumber\nWHERE customers.addressline1 = '59 rue de l''Abbaye' AND customers.contactlastname = 'Henriot'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber\nJOIN payments ON customers.customerNumber = payments.customerNumber\nWHERE customers.addressLine1 = \"59 rue de l'Abbaye\"\n  AND customers.contactLastName = \"Henriot\"",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "4748abe4-f5d7-448c-9852-d99f761cc571",
+      "question": "What customers have the address Arenales 1938 3'A', with the contact name Tony Snowden and a credit limit exactly 110000.0?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nWHERE customers.addressline1 = 'Arenales 1938 3''A''' AND customers.contactlastname = 'Snowden' AND customers.contactfirstname = 'Tony' AND customers.creditlimit = 110000.0",
+      "pred_sql": "SELECT customerNumber\nFROM customers\nWHERE addressLine1 = \"Arenales 1938 3'A'\"\n  AND contactFirstName = 'Tony'\n  AND contactLastName = 'Snowden'\n  AND creditLimit = 110000.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "49a7daff-3383-45f6-a6e3-25e2a2a0edf7",
+      "question": "Which customers have the contact first name Mel and an address exactly at Obere Str. 57?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nWHERE customers.contactfirstname = 'Mel' AND customers.addressline1 = 'Obere Str. 57'",
+      "pred_sql": "SELECT customerNumber FROM customers WHERE contactFirstName = 'Mel' AND addressLine1 = 'Obere Str. 57'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "599e710f-8b51-4720-9e82-2d22e2c56027",
+      "question": "Which customers have the customer name exactly 'Diecast Classics Inc.', have a sales representative employee whose first name is exactly 'Steve', have a city exactly 'Allentown', have a contact first name exactly 'Kelvin', have a postal code exactly '70267', and also have related payments records?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN employees ON customers.salesrepemployeenumber = employees.employeenumber\nJOIN payments ON customers.customernumber = payments.customernumber\nWHERE customers.customername = 'Diecast Classics Inc.' AND employees.firstname = 'Steve' AND customers.city = 'Allentown' AND customers.contactfirstname = 'Kelvin' AND customers.postalcode = '70267'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber\nJOIN payments ON customers.customerNumber = payments.customerNumber\nWHERE customers.customerName = 'Diecast Classics Inc.'\n  AND employees.firstName = 'Steve'\n  AND customers.city = 'Allentown'\n  AND customers.contactFirstName = 'Kelvin'\n  AND customers.postalCode = '70267'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "uid": "67fb8e93-7f34-477e-bd1c-70cfe2d149ac",
+      "question": "Which customers located in the city of Madrid with the contact last name 'Freyre', phone number '(91) 555 94 44', customer name 'Euro+ Shopping Channel', address line 1 'C/ Moralzarzal, 86', and postal code '28034' have recorded orders dated exactly '2005-05-13' and also have associated payments?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN orders ON customers.customernumber = orders.customernumber\nJOIN payments ON customers.customernumber = payments.customernumber\nWHERE customers.city = 'Madrid' AND customers.contactlastname = 'Freyre' AND customers.phone = '(91) 555 94 44' AND customers.customername = 'Euro+ Shopping Channel' AND customers.addressline1 = 'C/ Moralzarzal, 86' AND customers.postalcode = '28034' AND orders.orderdate = '2005-05-13'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN orders ON customers.customerNumber = orders.customerNumber\nJOIN payments ON customers.customerNumber = payments.customerNumber\nWHERE customers.city = 'Madrid'\n  AND customers.contactLastName = 'Freyre'\n  AND customers.phone = '(91) 555 94 44'\n  AND customers.customerName = 'Euro+ Shopping Channel'\n  AND customers.addressLine1 = 'C/ Moralzarzal, 86'\n  AND customers.postalCode = '28034'\n  AND orders.orderDate = '2005-05-13'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "6901d0b8-9633-4c37-b81d-e6ae524c8098",
+      "question": "Which customers live at 782 First Street with postal code 71270 and have Firrelli as their sales rep whose extension is x2173?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN employees ON customers.salesrepemployeenumber = employees.employeenumber\nWHERE employees.lastname = 'Firrelli' AND customers.postalcode = '71270' AND customers.addressline1 = '782 First Street' AND employees.extension = 'x2173'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber\nWHERE customers.addressLine1 = '782 First Street'\n  AND customers.postalCode = '71270'\n  AND employees.lastName = 'Firrelli'\n  AND employees.extension = 'x2173'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.97
+    },
+    {
+      "uid": "9defd684-464d-4eb1-a2cb-e38c5e514650",
+      "question": "Which customers have lbott@classicmodelcars.com as their sales representative?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN employees ON customers.salesrepemployeenumber = employees.employeenumber\nWHERE employees.email = 'lbott@classicmodelcars.com'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber\nWHERE employees.email = 'lbott@classicmodelcars.com'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.95
+    },
+    {
+      "uid": "c53abeff-ce58-4963-bb6d-42ebc50c2027",
+      "question": "Who are the customers named Rovelli Gifts with contact last name Rovelli living at Via Ludovico il Moro 22 in Bergamo, Italy, having postal code 24100, phone 035-640555, and a credit limit of 119600.0?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nWHERE customers.contactlastname = 'Rovelli' AND customers.customername = 'Rovelli Gifts' AND customers.postalcode = '24100' AND customers.phone = '035-640555' AND customers.country = 'Italy' AND customers.creditlimit = 119600.0 AND customers.city = 'Bergamo' AND customers.addressline1 = 'Via Ludovico il Moro 22'",
+      "pred_sql": "SELECT customerNumber\nFROM customers\nWHERE customerName = 'Rovelli Gifts'\n  AND contactLastName = 'Rovelli'\n  AND addressLine1 = 'Via Ludovico il Moro 22'\n  AND city = 'Bergamo'\n  AND country = 'Italy'\n  AND postalCode = '24100'\n  AND phone = '035-640555'\n  AND creditLimit = 119600.0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.15
+    },
+    {
+      "uid": "dddc0536-3117-4137-9d9d-846427b6bbdb",
+      "question": "Which customers have a credit limit of 43400.0 and are served by employees whose jobtitle is Sales Rep?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN employees ON customers.salesrepemployeenumber = employees.employeenumber\nJOIN offices ON employees.officecode = offices.officecode\nWHERE customers.creditlimit = 43400.0 AND employees.jobtitle = 'Sales Rep'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber\nWHERE customers.creditLimit = 43400.0\n  AND employees.jobTitle = 'Sales Rep'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "e698d8d0-064c-44f2-9909-7f661bf1a291",
+      "question": "Which customers named Down Under Souveniers, Inc with contact last name Graham are located at 162-164 Grafton Road, Level 2 in New Zealand and have a sales rep whose last name is Marsh, job title is Sales Rep, and extension is x102?",
+      "gold_sql": "SELECT customers.customernumber FROM customers\nJOIN employees ON customers.salesrepemployeenumber = employees.employeenumber\nWHERE employees.lastname = 'Marsh' AND customers.contactlastname = 'Graham' AND customers.customername = 'Down Under Souveniers, Inc' AND customers.addressline2 = 'Level 2' AND customers.country = 'New Zealand' AND customers.addressline1 = '162-164 Grafton Road' AND employees.jobtitle = 'Sales Rep' AND employees.extension = 'x102'",
+      "pred_sql": "SELECT customers.customerNumber\nFROM customers\nJOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber\nWHERE customers.customerName = 'Down Under Souveniers, Inc'\n  AND customers.contactLastName = 'Graham'\n  AND customers.addressLine1 = '162-164 Grafton Road, Level 2'\n  AND customers.country = 'New Zealand'\n  AND employees.lastName = 'Marsh'\n  AND employees.jobTitle = 'Sales Rep'\n  AND employees.extension = 'x102'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.15
+    }
+  ]
+}

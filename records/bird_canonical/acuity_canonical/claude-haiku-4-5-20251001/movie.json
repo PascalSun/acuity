@@ -1,0 +1,124 @@
+{
+  "db_id": "movie",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:15:06.674697+00:00",
+  "records": [
+    {
+      "uid": "01d78823-36f7-4cc9-a6f2-4cc9223bb295",
+      "question": "What actors named Elias Koteas have ethnicity exactly White?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nJOIN characters ON actor.actorid = characters.actorid\nWHERE actor.name = 'Elias Koteas' AND actor.ethnicity = 'White'",
+      "pred_sql": "SELECT DISTINCT a.ActorID\nFROM actor a\nINNER JOIN characters c ON a.ActorID = c.ActorID\nWHERE a.Name = 'Elias Koteas'\nAND a.Ethnicity = 'White'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "0a255745-67ad-4572-adaf-1e3f833d7480",
+      "question": "Who is the actor whose name is exactly Katie Sagona?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nWHERE actor.name = 'Katie Sagona'",
+      "pred_sql": "SELECT actor.ActorID FROM actor WHERE actor.Name = 'Katie Sagona'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    },
+    {
+      "uid": "220c0ced-7cea-4401-b405-805a3f691973",
+      "question": "Which actors named Adam Hann-Byrd appeared with a credit order of at least 9 in the Family movie Jumanji, where the rating is exactly 7.0, runtime is at least 104 minutes, budget is at most 65000000, and gross is at least 262797249?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nJOIN characters ON actor.actorid = characters.actorid\nJOIN movie ON characters.movieid = movie.movieid\nWHERE movie.gross >= 262797249.0 AND actor.name = 'Adam Hann-Byrd' AND movie.genre = 'Family' AND movie.title = 'Jumanji' AND movie.rating = 7.0 AND movie.runtime >= 104 AND characters.creditorder >= 9 AND movie.budget <= 65000000",
+      "pred_sql": "SELECT DISTINCT a.ActorID\nFROM actor a\nINNER JOIN characters c ON a.ActorID = c.ActorID\nINNER JOIN movie m ON c.MovieID = m.MovieID\nWHERE a.Name = 'Adam Hann-Byrd'\n  AND c.creditOrder >= 9\n  AND m.Gross >= 262797249.0\n  AND m.Genre = 'Family'\n  AND m.Title = 'Jumanji'\n  AND m.Rating = 7.0\n  AND m.Runtime >= 104\n  AND m.Budget <= 65000000",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.12
+    },
+    {
+      "uid": "6136fe68-3f52-490b-8afd-6a2af7b80919",
+      "question": "Which White male actors named Robert Wuhl have a net worth containing '000' and have characters with at least credit order 4 and screentime exactly 0:08:45?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nJOIN characters ON actor.actorid = characters.actorid\nWHERE actor.ethnicity = 'White' AND characters.creditorder >= 4 AND characters.screentime = '0:08:45' AND actor.networth LIKE '%000%' AND actor.name = 'Robert Wuhl' AND actor.gender = 'Male'",
+      "pred_sql": "SELECT DISTINCT a.ActorID\nFROM actor a\nINNER JOIN characters c ON a.ActorID = c.ActorID\nWHERE a.Ethnicity = 'White'\n  AND a.NetWorth LIKE '%000%'\n  AND a.Name = 'Robert Wuhl'\n  AND a.Gender = 'Male'\n  AND c.creditOrder >= 4\n  AND c.screentime = '0:08:45'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "66f947c5-842d-4b20-9d29-6ec42c02c340",
+      "question": "Who is the actor named William Hall Jr. whose gender is Male and ethnicity is African American?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nWHERE actor.name = 'William Hall Jr.' AND actor.gender = 'Male' AND actor.ethnicity = 'African American'",
+      "pred_sql": "SELECT actor.ActorID FROM actor WHERE actor.Name = 'William Hall Jr.' AND actor.Gender = 'Male' AND actor.Ethnicity = 'African American'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "6e3ace87-7e12-4dd6-8ccb-bfcd938b1684",
+      "question": "Who acted in Bram Stoker's Dracula, the movie that grossed exactly 215900000.0?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nJOIN characters ON actor.actorid = characters.actorid\nJOIN movie ON characters.movieid = movie.movieid\nWHERE movie.title = 'Bram Stoker''s Dracula' AND movie.gross = 215900000.0",
+      "pred_sql": "SELECT DISTINCT a.ActorID\nFROM actor a\nINNER JOIN characters c ON a.ActorID = c.ActorID\nINNER JOIN movie m ON c.MovieID = m.MovieID\nWHERE m.Title = 'Bram Stoker' AND m.Gross = 215900000",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "7e503afa-6378-402f-920b-f82f00ddfa7c",
+      "question": "Which actors appeared in the Comedy movie Bringing Down the House with a rating exactly 5.6?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nJOIN characters ON actor.actorid = characters.actorid\nJOIN movie ON characters.movieid = movie.movieid\nWHERE movie.title = 'Bringing Down the House' AND movie.rating = 5.6 AND movie.genre = 'Comedy'",
+      "pred_sql": "SELECT DISTINCT a.ActorID\nFROM actor a\nINNER JOIN characters c ON a.ActorID = c.ActorID\nINNER JOIN movie m ON c.MovieID = m.MovieID\nWHERE m.Title = 'Bringing Down the House'\nAND m.Rating = 5.6\nAND m.Genre = 'Comedy'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "8d80ec19-315d-4260-b78c-710da26d1390",
+      "question": "Which male actors named Rodney A. Grant have an ethnicity that is Native American?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nWHERE actor.ethnicity = 'Native American' AND actor.name = 'Rodney A. Grant' AND actor.gender = 'Male'",
+      "pred_sql": "SELECT actor.ActorID FROM actor WHERE actor.Ethnicity = 'Native American' AND actor.Name = 'Rodney A. Grant' AND actor.Gender = 'Male'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "91d815f1-9337-4fff-8765-29e8642e904e",
+      "question": "Which female actors named Mary Steenburgen have ethnicity White?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nJOIN characters ON actor.actorid = characters.actorid\nWHERE actor.name = 'Mary Steenburgen' AND actor.ethnicity = 'White' AND actor.gender = 'Female'",
+      "pred_sql": "SELECT DISTINCT a.ActorID\nFROM actor a\nINNER JOIN characters c ON a.ActorID = c.ActorID\nWHERE a.Name = 'Mary Steenburgen'\nAND a.Ethnicity = 'White'\nAND a.Gender = 'Female'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "c8f525fe-a1d3-4c04-b52e-e706ca58a549",
+      "question": "Which actors have the exact name Steve Harris?",
+      "gold_sql": "SELECT actor.actorid FROM actor\nWHERE actor.name = 'Steve Harris'",
+      "pred_sql": "SELECT actor.ActorID FROM actor WHERE actor.Name = 'Steve Harris'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.84
+    }
+  ]
+}

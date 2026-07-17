@@ -1,0 +1,124 @@
+{
+  "db_id": "aircraft",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:19:01.270316+00:00",
+  "records": [
+    {
+      "uid": "03520b6c-b435-46e3-b067-054b912acfb9",
+      "question": "Which aircraft is the Robinson R-22 with max disk loading exactly 2.6 lb/ft\u00b2 (14 kg/m\u00b2), described as a Light utility helicopter, and containing 497 ft\u00b2 (46.2 m\u00b2) total disk area and 370 lb (635 kg) max gross weight?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nWHERE aircraft.max_disk_loading = '2.6 lb/ft\u00b2 (14 kg/m\u00b2)' AND aircraft.description = 'Light utility helicopter' AND aircraft.total_disk_area LIKE '%497 ft\u00b2 (46.2 m\u00b2)%' AND aircraft.max_gross_weight LIKE '%370 lb (635 kg)%' AND aircraft.aircraft = 'Robinson R-22'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Aircraft = 'Robinson R-22' AND Max_disk_Loading = '2.6 lb/ft\u00b2 (14 kg/m\u00b2)' AND Description = 'Light utility helicopter' AND Total_disk_area = '497 ft\u00b2 (46.2 m\u00b2)' AND Max_Gross_Weight = '370 lb (635 kg)'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.53
+    },
+    {
+      "uid": "09654d44-8467-458d-9fe9-2b9b0d05db1b",
+      "question": "Which aircraft is the CH-47D Chinook described as a Tandem rotor helicopter, with max disk loading exactly 8.8 lb/ft\u00b2 (43 kg/m\u00b2), max gross weight containing 50, and total disk area containing 655 ft\u00b2 (526 m\u00b2)?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nWHERE aircraft.max_disk_loading = '8.8 lb/ft\u00b2 (43 kg/m\u00b2)' AND aircraft.max_gross_weight LIKE '%50%' AND aircraft.aircraft = 'CH-47D Chinook' AND aircraft.description = 'Tandem rotor helicopter' AND aircraft.total_disk_area LIKE '%655 ft\u00b2 (526 m\u00b2)%'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Aircraft = 'CH-47D Chinook' AND Description = 'Tandem rotor helicopter' AND \"Max_disk_Loading\" = '8.8 lb/ft\u00b2 (43 kg/m\u00b2)' AND Max_Gross_Weight LIKE '%50%' AND Total_disk_area LIKE '%655 ft\u00b2 (526 m\u00b2)%'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.21
+    },
+    {
+      "uid": "1fdcf88b-8a0f-447e-8711-88a8993a9400",
+      "question": "Which aircraft have a max disk loading of 8.8 lb/ft\u00b2 (43 kg/m\u00b2) and operate at airports where transit passengers is exactly 38458.0 and domestic passengers is at most 1171605.0?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nJOIN airport ON airport_aircraft.airport_id = airport.airport_id\nWHERE airport.transit_passengers = 38458.0 AND airport.domestic_passengers <= 1171605.0 AND aircraft.max_disk_loading = '8.8 lb/ft\u00b2 (43 kg/m\u00b2)'",
+      "pred_sql": "SELECT T1.Aircraft_ID FROM aircraft AS T1 INNER JOIN airport_aircraft AS T2 ON T1.Aircraft_ID = T2.Aircraft_ID INNER JOIN airport AS T3 ON T2.Airport_ID = T3.Airport_ID WHERE T1.Max_disk_Loading = '8.8 lb/ft\u00b2 (43 kg/m\u00b2)' AND T3.Transit_Passengers = 38458.0 AND T3.Domestic_Passengers <= 1171605.0",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.06
+    },
+    {
+      "uid": "25d1cb8a-d6c8-4494-995b-0a1a3e9cb93b",
+      "question": "Which aircraft are described exactly as Turboshaft utility helicopter?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nWHERE aircraft.description = 'Turboshaft utility helicopter'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Description = 'Turboshaft utility helicopter'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "uid": "2bf38868-dd13-4e70-b105-a385d98a041a",
+      "question": "Which tandem rotor helicopters have a total disk area containing 655 ft\u00b2 (526 m\u00b2) and a max disk loading exactly 8.8 lb/ft\u00b2 (43 kg/m\u00b2)?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nWHERE aircraft.description = 'Tandem rotor helicopter' AND aircraft.total_disk_area LIKE '%655 ft\u00b2 (526 m\u00b2)%' AND aircraft.max_disk_loading = '8.8 lb/ft\u00b2 (43 kg/m\u00b2)'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Description LIKE '%tandem rotor helicopters%' AND Total_disk_area = '655 ft\u00b2 (526 m\u00b2)' AND Max_disk_Loading = '8.8 lb/ft\u00b2 (43 kg/m\u00b2)'",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.73
+    },
+    {
+      "uid": "8407fff5-e0c1-46d6-986e-10994169e686",
+      "question": "Which aircraft exactly described as Light utility helicopter and with max disk loading of 2.6 lb/ft\u00b2 (14 kg/m\u00b2) are Robinson R-22 and operate at airports where international passengers is 30431051.0, total passengers is 34205887.0, aircraft movements is at least 263653.0, freight metric tonnes is at least 107702.0, and domestic passengers is at least 3730963.0?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nJOIN airport ON airport_aircraft.airport_id = airport.airport_id\nWHERE aircraft.aircraft = 'Robinson R-22' AND airport.international_passengers = 30431051.0 AND airport.aircraft_movements >= 263653.0 AND airport.freight_metric_tonnes >= 107702.0 AND airport.total_passengers = 34205887.0 AND airport.domestic_passengers >= 3730963.0 AND aircraft.description = 'Light utility helicopter' AND aircraft.max_disk_loading = '2.6 lb/ft\u00b2 (14 kg/m\u00b2)'",
+      "pred_sql": "SELECT T1.Aircraft_ID FROM aircraft AS T1 INNER JOIN airport_aircraft AS T2 ON T1.Aircraft_ID = T2.Aircraft_ID INNER JOIN airport AS T3 ON T2.Airport_ID = T3.Airport_ID WHERE T1.Description = 'Light utility helicopter' AND T1.Max_disk_Loading = '2.6 lb/ft\u00b2 (14 kg/m\u00b2)' AND T1.Aircraft = 'Robinson R-22' AND T3.International_Passengers = 30431051.0 AND T3.Total_Passengers = 34205887.0 AND T3.Aircraft_Movements >= 263653.0 AND T3.Freight_Metric_Tonnes >= 107702.0 AND T3.Domestic_Passengers >= 3730963.0",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.79
+    },
+    {
+      "uid": "8e951c33-dd78-4e88-b159-aa3c884d64fa",
+      "question": "Which aircraft are classified as Light utility helicopters?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nWHERE aircraft.description = 'Light utility helicopter'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Description = 'Light utility helicopters'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "9286d178-e817-4c9b-a815-ba18b2419641",
+      "question": "Which aircraft are associated with airports that have no more than 6267114 total passengers and exactly 5057051 international passengers?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nJOIN airport_aircraft ON aircraft.aircraft_id = airport_aircraft.aircraft_id\nJOIN airport ON airport_aircraft.airport_id = airport.airport_id\nWHERE airport.total_passengers <= 6267114.0 AND airport.international_passengers = 5057051.0",
+      "pred_sql": "SELECT T1.Aircraft_ID FROM aircraft AS T1 INNER JOIN airport_aircraft AS T2 ON T1.Aircraft_ID = T2.Aircraft_ID INNER JOIN airport AS T3 ON T2.Airport_ID = T3.Airport_ID WHERE T3.Total_Passengers <= 6267114 AND T3.International_Passengers = 5057051",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    },
+    {
+      "uid": "9381f464-13ef-4cac-b676-2adae4b53be3",
+      "question": "Which aircraft are heavy-lift helicopters?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nWHERE aircraft.description = 'Heavy-lift helicopter'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Description LIKE '%heavy-lift helicopter%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "uid": "d2818040-ab80-4c3c-a45f-ba905d83d320",
+      "question": "Which aircraft is exactly Bell 206B3 JetRanger?",
+      "gold_sql": "SELECT aircraft.aircraft_id FROM aircraft\nWHERE aircraft.aircraft = 'Bell 206B3 JetRanger'",
+      "pred_sql": "SELECT Aircraft_ID FROM aircraft WHERE Aircraft = 'Bell 206B3 JetRanger'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    }
+  ]
+}

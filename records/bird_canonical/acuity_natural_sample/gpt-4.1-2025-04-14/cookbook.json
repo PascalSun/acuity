@@ -1,0 +1,124 @@
+{
+  "db_id": "cookbook",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:17:42.380273+00:00",
+  "records": [
+    {
+      "uid": "0b9ee61e-3c74-428a-a244-c196314f068a",
+      "question": "Which recipes have a sodium content exactly equal to 188.86 and a standard minimum value of 0.0?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN quantity ON recipe.recipe_id = quantity.recipe_id\nJOIN nutrition ON quantity.recipe_id = nutrition.recipe_id\nWHERE nutrition.sodium = 188.86 AND recipe.stnd_min = 0.0",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Nutrition ON Recipe.recipe_id = Nutrition.recipe_id\nWHERE Nutrition.sodium = 188.86 AND Recipe.stnd_min = 0.0",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.82
+    },
+    {
+      "uid": "3b7b5225-13c8-47f8-b8ed-211cfb41159b",
+      "question": "Which recipes take exactly 5 minutes to prepare, require at most 90 minutes to cook, and have nutrition values with exactly 88.24% calories from carbs, 0.0 cholesterol, 41.24 vitamin C, 17.3 carbo, and 0.25 total fat?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN nutrition ON recipe.recipe_id = nutrition.recipe_id\nWHERE nutrition.pcnt_cal_carb = 88.24 AND nutrition.cholestrl = 0.0 AND recipe.stnd_min <= 90.0 AND nutrition.vitamin_c = 41.24 AND nutrition.carbo = 17.3 AND recipe.prep_min = 5.0 AND nutrition.total_fat = 0.25",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Nutrition ON Recipe.recipe_id = Nutrition.recipe_id\nWHERE Recipe.prep_min = 5\n  AND Recipe.cook_min <= 90\n  AND Nutrition.pcnt_cal_carb = 88.24\n  AND Nutrition.cholestrl = 0.0\n  AND Nutrition.vitamin_c = 41.24\n  AND Nutrition.carbo = 17.3\n  AND Nutrition.total_fat = 0.25",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "592ec2ed-c65c-45f0-8c0a-1d61c735d7c9",
+      "question": "Which recipes titled exactly \"Pistachio Fruits and Fun\" take at least 15 minutes to prepare, require no cooking time, have a standing time of at least 60 minutes, and serve at least 8 people?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nWHERE recipe.cook_min <= 0.0 AND recipe.stnd_min >= 60.0 AND recipe.servings >= 8.0 AND recipe.title = 'Pistachio Fruits and Fun' AND recipe.prep_min >= 15.0",
+      "pred_sql": "SELECT recipe_id\nFROM Recipe\nWHERE title = 'Pistachio Fruits and Fun'\n  AND prep_min >= 15\n  AND cook_min = 0\n  AND stnd_min >= 60\n  AND servings >= 8",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.0
+    },
+    {
+      "uid": "6fc9bda5-7028-4661-886a-f911a9e17cb1",
+      "question": "Which recipes have a cook time of exactly 25.0 minutes, a preparation time of at most 10.0 minutes, servings of at least 4.0, associated nutrition records with exactly 66.22 percent calories from carbohydrates, exactly 235.82 calories, exactly 895.74 sodium, exactly 4.5 percent calories from protein, and exactly 7.67 total fat, and also have associated quantity records?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN nutrition ON recipe.recipe_id = nutrition.recipe_id\nJOIN quantity ON recipe.recipe_id = quantity.recipe_id\nWHERE recipe.cook_min = 25.0 AND recipe.prep_min <= 10.0 AND nutrition.pcnt_cal_carb = 66.22 AND nutrition.calories = 235.82 AND nutrition.sodium = 895.74 AND nutrition.pcnt_cal_prot = 4.5 AND nutrition.total_fat = 7.67 AND recipe.servings >= 4.0",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Nutrition ON Recipe.recipe_id = Nutrition.recipe_id\nWHERE Recipe.cook_min = 25.0\n  AND Recipe.prep_min <= 10.0\n  AND Recipe.servings >= 4.0\n  AND Nutrition.pcnt_cal_carb = 66.22\n  AND Nutrition.calories = 235.82\n  AND Nutrition.sodium = 895.74\n  AND Nutrition.pcnt_cal_prot = 4.5\n  AND Nutrition.total_fat = 7.67\n  AND EXISTS (\n      SELECT 1\n      FROM Quantity\n      WHERE Quantity.recipe_id = Recipe.recipe_id\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.69
+    },
+    {
+      "uid": "896a04b2-9fb6-4129-b7ce-ba02d603cca9",
+      "question": "Which recipes titled California Beef and Black Bean Chili come from the California Beef Council, serve at most 6 people, have a standard minimum of at most 0.0, and include a quantity with a max quantity of exactly 1.5?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN quantity ON recipe.recipe_id = quantity.recipe_id\nWHERE recipe.stnd_min <= 0.0 AND recipe.servings <= 6.0 AND recipe.title = 'California Beef and Black Bean Chili' AND quantity.max_qty = 1.5 AND recipe.source = 'California Beef Council'",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Quantity ON Recipe.recipe_id = Quantity.recipe_id\nWHERE Recipe.title = 'California Beef and Black Bean Chili'\n  AND Recipe.source = 'California Beef Council'\n  AND Recipe.servings <= 6\n  AND (Recipe.stnd_min <= 0.0 OR Recipe.stnd_min IS NULL)\n  AND Quantity.max_qty = 1.5",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "8b4b1863-c40d-4ec4-800e-636abc44d4e7",
+      "question": "Which recipes have nutrition records with vitamin_c exactly 9.89 and also have related quantity records?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN nutrition ON recipe.recipe_id = nutrition.recipe_id\nJOIN quantity ON recipe.recipe_id = quantity.recipe_id\nWHERE nutrition.vitamin_c = 9.89",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Nutrition ON Recipe.recipe_id = Nutrition.recipe_id\nWHERE Nutrition.vitamin_c = 9.89\nAND EXISTS (\n    SELECT 1 FROM Quantity\n    WHERE Quantity.recipe_id = Recipe.recipe_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02
+    },
+    {
+      "uid": "aacc54bb-ca01-4bd2-896b-fce82ab25562",
+      "question": "Which recipes have exactly 83.13 sodium?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN nutrition ON recipe.recipe_id = nutrition.recipe_id\nWHERE nutrition.sodium = 83.13",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Nutrition ON Recipe.recipe_id = Nutrition.recipe_id\nWHERE Nutrition.sodium = 83.13",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.81
+    },
+    {
+      "uid": "ce60234a-b3a0-4035-8a90-0ea723a736cb",
+      "question": "Which recipes from The Potato Board take at most 45 minutes to cook?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nWHERE recipe.cook_min <= 45.0 AND recipe.source = 'The Potato Board'",
+      "pred_sql": "SELECT recipe_id\nFROM Recipe\nWHERE source = 'The Potato Board'\n  AND cook_min <= 45",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.63
+    },
+    {
+      "uid": "df2d576b-8fca-48a7-94e2-9f37c598d7e8",
+      "question": "Which recipes have a total fat of exactly 14.58 and carbohydrates of exactly 44.66, with ingredients prepared as diced?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nJOIN nutrition ON recipe.recipe_id = nutrition.recipe_id\nJOIN quantity ON recipe.recipe_id = quantity.recipe_id\nWHERE nutrition.total_fat = 14.58 AND quantity.preparation = 'diced' AND nutrition.carbo = 44.66",
+      "pred_sql": "SELECT Recipe.recipe_id\nFROM Recipe\nJOIN Nutrition ON Recipe.recipe_id = Nutrition.recipe_id\nJOIN Quantity ON Recipe.recipe_id = Quantity.recipe_id\nWHERE Nutrition.total_fat = 14.58\n  AND Nutrition.carbo = 44.66\n  AND Quantity.preparation = 'diced'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "f946ece1-017f-4c23-b148-96285c8a7ed9",
+      "question": "What recipes titled Zesty Lamb Taco Casserole from the American Lamb Council serve exactly 4, have no standing time, take at most 15 minutes to prep, and require at least 10 minutes of cooking?",
+      "gold_sql": "SELECT recipe.recipe_id FROM recipe\nWHERE recipe.prep_min <= 15.0 AND recipe.source = 'American Lamb Council' AND recipe.stnd_min = 0.0 AND recipe.servings = 4.0 AND recipe.cook_min >= 10.0 AND recipe.title = 'Zesty Lamb Taco Casserole'",
+      "pred_sql": "SELECT recipe_id\nFROM Recipe\nWHERE title = 'Zesty Lamb Taco Casserole'\n  AND source = 'American Lamb Council'\n  AND servings = 4\n  AND (stnd_min IS NULL OR stnd_min = 0)\n  AND prep_min <= 15\n  AND cook_min >= 10",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    }
+  ]
+}

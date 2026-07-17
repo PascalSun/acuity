@@ -1,0 +1,124 @@
+{
+  "db_id": "voter_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:32:15.070210+00:00",
+  "records": [
+    {
+      "uid": "1a739a17-4222-40ec-8510-9832d4ab0f44",
+      "question": "Which contestants received votes on or before 2018-03-09 19:03:36 from states listed in the area code state data?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created <= '2018-03-09 19:03:36'",
+      "pred_sql": "SELECT DISTINCT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T2.created <= '2018-03-09 19:03:36'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.47
+    },
+    {
+      "uid": "52f72af3-70aa-4f1b-8ecd-3051be598ef9",
+      "question": "Which contestants named Tabatha Gehling received votes on or after 2018-03-09 19:03:21?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Tabatha Gehling' AND votes.created >= '2018-03-09 19:03:21'",
+      "pred_sql": "SELECT DISTINCT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.contestant_name = 'Tabatha Gehling' AND T2.created >= '2018-03-09 19:03:21'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.94
+    },
+    {
+      "uid": "9d9b53a4-c797-42cf-93c3-de3969bf875a",
+      "question": "Which contestant has the exact name Nita Coster?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Nita Coster'",
+      "pred_sql": "SELECT contestant_number FROM CONTESTANTS WHERE contestant_name = 'Nita Coster'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "b6ec1294-674b-4868-9663-a35535d86988",
+      "question": "Which contestants named Alana Bregman received votes created exactly on 2018-03-09 19:03:40 from phone numbers at most 5112677315?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.phone_number <= 5112677315 AND contestants.contestant_name = 'Alana Bregman' AND votes.created = '2018-03-09 19:03:40'",
+      "pred_sql": "SELECT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.contestant_name = 'Alana Bregman' AND T2.created = '2018-03-09 19:03:40' AND T2.phone_number <= 5112677315",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.39
+    },
+    {
+      "uid": "b94b6257-7b57-458a-a13a-c0df0293831e",
+      "question": "Which contestants named Kelly Clauss received votes with phone numbers at least 7148407040 on or after March 9, 2018, 19:03:36?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created >= '2018-03-09 19:03:36' AND contestants.contestant_name = 'Kelly Clauss' AND votes.phone_number >= 7148407040",
+      "pred_sql": "SELECT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.contestant_name = 'Kelly Clauss' AND T2.phone_number >= 7148407040 AND T2.created >= '2018-03-09 19:03:36'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.03
+    },
+    {
+      "uid": "c58e66b0-cb74-4b5f-b267-8affae81a5ab",
+      "question": "Which contestants named Alana Bregman received votes from phone number 5112677315 on or after 2018-03-09 19:03:40?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE votes.created >= '2018-03-09 19:03:40' AND votes.phone_number = 5112677315 AND contestants.contestant_name = 'Alana Bregman'",
+      "pred_sql": "SELECT DISTINCT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.contestant_name = 'Alana Bregman' AND T2.phone_number = 5112677315 AND T2.created >= '2018-03-09 19:03:40'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.67
+    },
+    {
+      "uid": "f1b50946-7158-4156-9fca-71c3c624e518",
+      "question": "Who is the contestant named Kelly Clauss that has received votes?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nWHERE contestants.contestant_name = 'Kelly Clauss'",
+      "pred_sql": "SELECT T1.contestant_number FROM CONTESTANTS AS T1 JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.contestant_name = 'Kelly Clauss' GROUP BY T1.contestant_number",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    },
+    {
+      "uid": "f4faa2f3-9c8a-4ac9-a9e3-ef6824351ed5",
+      "question": "Which contestants named Kelly Clauss received votes from the phone number 6209222712 on or after 2018-03-09 19:03:39?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.phone_number = 6209222712 AND contestants.contestant_name = 'Kelly Clauss' AND votes.created >= '2018-03-09 19:03:39'",
+      "pred_sql": "SELECT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.contestant_name = 'Kelly Clauss' AND T2.phone_number = 6209222712 AND T2.created >= '2018-03-09 19:03:39'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    },
+    {
+      "uid": "f632e5ea-75eb-42ba-99ce-f39e9987df3f",
+      "question": "Which contestant has the name Edwina Burnam?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nWHERE contestants.contestant_name = 'Edwina Burnam'",
+      "pred_sql": "SELECT contestant_number FROM CONTESTANTS WHERE contestant_name = 'Edwina Burnam'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "ffd40844-7403-4b1d-8c90-454cb2c2453a",
+      "question": "Which contestants received votes from states on or after 2018-03-09 19:03:39?",
+      "gold_sql": "SELECT contestants.contestant_number FROM contestants\nJOIN votes ON contestants.contestant_number = votes.contestant_number\nJOIN area_code_state ON votes.state = area_code_state.state\nWHERE votes.created >= '2018-03-09 19:03:39'",
+      "pred_sql": "SELECT DISTINCT T1.contestant_number FROM CONTESTANTS AS T1 INNER JOIN VOTES AS T2 ON T1.contestant_number = T2.contestant_number WHERE T2.created >= '2018-03-09 19:03:39'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    }
+  ]
+}

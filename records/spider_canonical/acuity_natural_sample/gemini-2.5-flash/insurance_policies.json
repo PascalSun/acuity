@@ -1,0 +1,124 @@
+{
+  "db_id": "insurance_policies",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:26:10.406299+00:00",
+  "records": [
+    {
+      "uid": "2c8f5dd1-e531-4afa-bc0b-aed2d5051592",
+      "question": "Which customers had policies that ended exactly on 2017-09-29?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customer_policies.end_date = '2017-09-29'",
+      "pred_sql": "SELECT DISTINCT T1.Customer_ID FROM Customers AS T1 INNER JOIN Customer_Policies AS T2 ON T1.Customer_ID = T2.Customer_ID WHERE T2.End_Date = '2017-09-29'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "5e8a56a8-9ea1-4a8e-89b1-3b14a6a015ad",
+      "question": "Which customers have customer details exactly matching Sydnie Friesen?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_details = 'Sydnie Friesen'",
+      "pred_sql": "SELECT Customer_ID FROM Customers WHERE Customer_Details = 'Sydnie Friesen'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "5f3993ce-d31b-4095-991d-4d0fe7b170cc",
+      "question": "Which customers have a travel policy?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customer_policies.policy_type_code = 'Travel'",
+      "pred_sql": "SELECT T1.Customer_ID FROM Customers AS T1 INNER JOIN Customer_Policies AS T2 ON T1.Customer_ID = T2.Customer_ID WHERE T2.Policy_Type_Code = 'travel'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    },
+    {
+      "uid": "92e218ef-6f2f-462c-9a20-0848f96bc045",
+      "question": "Which customers named Dr. Diana Rath have car policies that started on 2016-12-25 and last at least until 2018-01-25?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customers.customer_details = 'Dr. Diana Rath' AND customer_policies.start_date = '2016-12-25' AND customer_policies.end_date >= '2018-01-25' AND customer_policies.policy_type_code = 'Car'",
+      "pred_sql": "SELECT T1.Customer_ID\nFROM Customers AS T1\nINNER JOIN Customer_Policies AS T2\n  ON T1.Customer_ID = T2.Customer_ID\nWHERE\n  T1.Customer_Details = 'Dr. Diana Rath' AND T2.Policy_Type_Code = 'Car' AND T2.Start_Date = '2016-12-25' AND T2.End_Date >= '2018-01-25'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.25
+    },
+    {
+      "uid": "a0c72fe4-bf04-4f7b-8025-1ef3fe6ac919",
+      "question": "Which customers have the exact customer details of Mr. Randal Lynch III?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_details = 'Mr. Randal Lynch III'",
+      "pred_sql": "SELECT T1.Customer_ID FROM Customers AS T1 WHERE T1.Customer_Details = (SELECT T2.Customer_Details FROM Customers AS T2 WHERE T2.Customer_Details = 'Mr. Randal Lynch III')",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "c9c173a1-663e-4b14-bae5-4113fd2bce68",
+      "question": "Who are the customers whose customer details are exactly Mrs. Hanna Willms?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_details = 'Mrs. Hanna Willms'",
+      "pred_sql": "SELECT Customer_ID FROM Customers WHERE Customer_Details = 'Mrs. Hanna Willms'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "uid": "cef5cde5-c44e-4e14-8bf2-d7ea7c635ba7",
+      "question": "Who are the customers where customer_details is Ellsworth Paucek with Property policies that start exactly on 2017-01-20 and end on or before 2017-12-11?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customer_policies.start_date = '2017-01-20' AND customer_policies.end_date <= '2017-12-11' AND customers.customer_details = 'Ellsworth Paucek' AND customer_policies.policy_type_code = 'Property'",
+      "pred_sql": "SELECT T1.Customer_ID FROM Customers AS T1 INNER JOIN Customer_Policies AS T2 ON T1.Customer_ID = T2.Customer_ID WHERE T1.Customer_Details = 'Ellsworth Paucek' AND T2.Policy_Type_Code = 'Property' AND T2.Start_Date = '2017-01-20' AND T2.End_Date <= '2017-12-11'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "efc71f44-15be-4cf3-9109-4299d0665f7f",
+      "question": "Which customers had policies that ended exactly on 2018-01-25?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customer_policies.end_date = '2018-01-25'",
+      "pred_sql": "SELECT T1.Customer_ID FROM Customers AS T1 INNER JOIN Customer_Policies AS T2 ON T1.Customer_ID = T2.Customer_ID WHERE T2.End_Date = '2018-01-25'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "efccb0f7-10d6-4ffa-bdfe-9b926b317681",
+      "question": "Which customers have customer details exactly matching Dr. Diana Rath?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nWHERE customers.customer_details = 'Dr. Diana Rath'",
+      "pred_sql": "SELECT Customer_ID FROM Customers WHERE Customer_Details = 'Dr. Diana Rath'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "uid": "fc9e3a80-9fba-4710-a622-cdd4c7edb11f",
+      "question": "Which customers named Selena Gerhold have Life policies that started on or after 2016-07-17 and ended exactly on 2018-01-05?",
+      "gold_sql": "SELECT customers.customer_id FROM customers\nJOIN customer_policies ON customers.customer_id = customer_policies.customer_id\nWHERE customer_policies.policy_type_code = 'Life' AND customers.customer_details = 'Selena Gerhold' AND customer_policies.start_date >= '2016-07-17' AND customer_policies.end_date = '2018-01-05'",
+      "pred_sql": "SELECT T1.Customer_ID FROM Customers AS T1 INNER JOIN Customer_Policies AS T2 ON T1.Customer_ID = T2.Customer_ID WHERE T1.Customer_Details = 'Selena Gerhold' AND T2.Policy_Type_Code = 'Life' AND T2.Start_Date >= '2016-07-17' AND T2.End_Date = '2018-01-05'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    }
+  ]
+}

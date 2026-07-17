@@ -1,0 +1,124 @@
+{
+  "db_id": "candidate_poll",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:38:04.198081+00:00",
+  "records": [
+    {
+      "uid": "1ba87e39-847a-4f1f-9619-ce14c01d9fa2",
+      "question": "Which people have the name Hubert Henno and were born on 06.10.1976?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Hubert Henno' AND people.date_of_birth = '06.10.1976'",
+      "pred_sql": "SELECT people.people_id\nFROM people\nWHERE people.Name = 'Hubert Henno' AND people.Date_of_Birth = '06.10.1976'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.06
+    },
+    {
+      "uid": "23148d88-8433-4eae-83f9-392fd04438de",
+      "question": "Who in the people table has a height that is exactly 196.0?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.height = 196.0",
+      "pred_sql": "SELECT people.people_id FROM people WHERE people.height = 196.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.83
+    },
+    {
+      "uid": "23e04ff6-efa7-408c-9834-3b089dfd2a9f",
+      "question": "Which men who are no more than 188.0 cm tall and weigh at most 83.0 have a support rate of at most 0.25 in the WNBC/Marist Poll?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.sex = 'M' AND people.weight <= 83.0 AND candidate.support_rate <= 0.25 AND candidate.poll_source = 'WNBC/Marist Poll' AND people.height <= 188.0",
+      "pred_sql": "SELECT people.people_id\nFROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.sex = 'M' \n  AND people.weight <= 83.0 \n  AND people.height <= 188.0 \n  AND candidate.support_rate <= 0.25 \n  AND candidate.poll_source = 'WNBC/Marist Poll'\nGROUP BY people.people_id\nHAVING COUNT(candidate.Candidate_ID) > 0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.5
+    },
+    {
+      "uid": "64e1beb2-78d4-4267-aed1-2d337c06bea7",
+      "question": "Which people have a consider_rate of at most 0.34 as candidates?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE candidate.consider_rate <= 0.34",
+      "pred_sql": "SELECT people.people_id\nFROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE candidate.consider_rate <= 0.34\nGROUP BY people.people_id\nHAVING COUNT(candidate.Candidate_ID) >= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.8
+    },
+    {
+      "uid": "656d3c4c-d472-4fb2-9205-08d4b2290b1b",
+      "question": "What people born on 06.10.1976 with a weight of exactly 83.0 and height at most 188.0 have candidate data from WNBC/Marist Poll showing a consider rate of at most 0.3, unsure rate no more than 0.2, support rate at least 0.25, and oppose rate at least 0.43?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.weight = 83.0 AND people.date_of_birth = '06.10.1976' AND candidate.consider_rate <= 0.3 AND candidate.poll_source = 'WNBC/Marist Poll' AND people.height <= 188.0 AND candidate.unsure_rate <= 0.2 AND candidate.support_rate >= 0.25 AND candidate.oppose_rate >= 0.43",
+      "pred_sql": "SELECT people.people_id\nFROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.weight = 83.0\n  AND people.date_of_birth = '06.10.1976'\n  AND people.height <= 188.0\n  AND candidate.consider_rate <= 0.3\n  AND candidate.poll_source = 'WNBC/Marist Poll'\n  AND candidate.unsure_rate <= 0.2\n  AND candidate.support_rate >= 0.25\n  AND candidate.oppose_rate >= 0.43",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.23
+    },
+    {
+      "uid": "72300734-4267-48ce-9fbe-423a6c2112af",
+      "question": "Which people born exactly on 01.09.1977 weigh at most 88.0?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.weight <= 88.0 AND people.date_of_birth = '01.09.1977'",
+      "pred_sql": "SELECT people.people_id\nFROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.weight <= 88.0 AND people.date_of_birth = '01.09.1977'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.56
+    },
+    {
+      "uid": "b48b9336-0caa-4862-b25d-deccae5d644e",
+      "question": "Who is Laurent Capet with a weight of 92.0 where the FOX News/Opinion Dynamics Poll shows a support rate of 0.18, oppose rate of at least 0.44, unsure rate of at most 0.3, and consider rate of at most 0.34?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE candidate.unsure_rate <= 0.3 AND candidate.poll_source = 'FOX News/Opinion Dynamics Poll' AND people.weight = 92.0 AND candidate.oppose_rate >= 0.44 AND people.name = 'Laurent Capet' AND candidate.support_rate = 0.18 AND candidate.consider_rate <= 0.34",
+      "pred_sql": "SELECT people.people_id\nFROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.weight = 92.0\n  AND people.name = 'Laurent Capet'\n  AND candidate.unsure_rate <= 0.3\n  AND candidate.poll_source = 'FOX News/Opinion Dynamics Poll'\n  AND candidate.oppose_rate >= 0.44\n  AND candidate.support_rate = 0.18\n  AND candidate.consider_rate <= 0.34",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.93
+    },
+    {
+      "uid": "ccaf8937-384c-43f9-a225-fcbfbf7306b3",
+      "question": "Who is the male named Philippe Bar\u00e7a-Cysique born on 22.04.1977 with a height at most 194.0 and weight at most 88.0?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.date_of_birth = '22.04.1977' AND people.name = 'Philippe Bar\u00e7a-Cysique' AND people.sex = 'M' AND people.height <= 194.0 AND people.weight <= 88.0",
+      "pred_sql": "SELECT people.people_id\nFROM people\nWHERE people.date_of_birth = '22.04.1977'\n  AND people.name = 'Philippe Bar\u00e7a-Cysique'\n  AND people.sex = 'M'\n  AND people.height <= 194.0\n  AND people.weight <= 88.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.13
+    },
+    {
+      "uid": "d3c46b84-edaa-4b7f-b3fd-95d2ce3bb93d",
+      "question": "What female individuals have an oppose rate of exactly 0.32, an unsure rate of at least 0.9, and a consider rate of at most 0.42?",
+      "gold_sql": "SELECT people.people_id FROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.sex = 'F' AND candidate.oppose_rate = 0.32 AND candidate.unsure_rate >= 0.9 AND candidate.consider_rate <= 0.42",
+      "pred_sql": "SELECT people.people_id\nFROM people\nJOIN candidate ON people.people_id = candidate.people_id\nWHERE people.Sex = 'F'\n  AND candidate.oppose_rate = 0.32\n  AND candidate.unsure_rate >= 0.9\n  AND candidate.consider_rate <= 0.42",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.52
+    },
+    {
+      "uid": "eeef74d4-645c-4ab5-88d4-6fcab5569ea5",
+      "question": "Which people named Frantz Granvorka, born on 10.03.1976, are female and weigh at most 90.0 with a height no more than 195.0?",
+      "gold_sql": "SELECT people.people_id FROM people\nWHERE people.sex = 'F' AND people.name = 'Frantz Granvorka' AND people.date_of_birth = '10.03.1976' AND people.weight <= 90.0 AND people.height <= 195.0",
+      "pred_sql": "SELECT people.people_id\nFROM people\nWHERE people.sex = 'F'\n  AND people.name = 'Frantz Granvorka'\n  AND people.date_of_birth = '10.03.1976'\n  AND people.weight <= 90.0\n  AND people.height <= 195.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.07
+    }
+  ]
+}

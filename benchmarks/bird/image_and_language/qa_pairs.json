@@ -1,0 +1,791 @@
+{
+ "db_id": "image_and_language",
+ "target_table": "OBJ_CLASSES",
+ "mode": "flexbench",
+ "total_qa_pairs": 17,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 347882922,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/image_and_language/image_and_language.sqlite",
+  "generated_at": "2026-07-02T17:46:48.875165+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "obj_classes",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 17,
+  "shortfall_total": 33,
+  "overall_fulfillment_rate": 0.34,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 17,
+   "1pE": 17,
+   "1pM": 16
+  },
+  "realized_counts": {
+   "0E": 17
+  },
+  "shortfalls": {
+   "1pE": 17,
+   "1pM": 16
+  },
+  "shortfall_reason_counts": {
+   "sparse_combinations": 33
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 17,
+    "accepted_count": 17,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 17,
+    "inner_attempts": 17,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 17,
+    "accepted_count": 0,
+    "shortfall": 17,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 204,
+    "inner_attempts": 2040,
+    "failed_rounds": 204,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 204
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 17
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pM": {
+    "target_quota": 16,
+    "accepted_count": 0,
+    "shortfall": 16,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 192,
+    "inner_attempts": 1920,
+    "failed_rounds": 192,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 192
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 16
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "715f04ad-e6c8-4851-ae38-fb38243ca497",
+   "question": "Which obj_classes have an obj_class exactly equal to sock?",
+   "answer_row_ids": [
+    181
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'sock'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "sock",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "sock"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'sock'?"
+  },
+  {
+   "uid": "7d84931e-d64f-4198-9800-c4444d952c4b",
+   "question": "Which obj_classes have the obj_class exactly equal to shirt?",
+   "answer_row_ids": [
+    296
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'shirt'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "shirt",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "shirt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'shirt'?"
+  },
+  {
+   "uid": "ba32c549-7354-4dc3-8ef2-4b2c099b5b5d",
+   "question": "Which obj_classes have an obj_class that is exactly reflection?",
+   "answer_row_ids": [
+    197
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'reflection'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "reflection",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "reflection"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'reflection'?"
+  },
+  {
+   "uid": "edf1fbe3-62fb-49bc-b92e-88a08ab4a86f",
+   "question": "Which obj_classes have the obj_class exactly equal to 'column'?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'column'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "column",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "column"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'column'?"
+  },
+  {
+   "uid": "ca269514-5299-4918-98d9-4294aef58c6f",
+   "question": "Which obj_classes have an obj_class value exactly equal to beak?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'beak'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "beak",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "beak"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'beak'?"
+  },
+  {
+   "uid": "441f1d7f-3111-4a66-9183-3e305cf8916d",
+   "question": "Which obj_classes have the name exactly desk?",
+   "answer_row_ids": [
+    114
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'desk'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "desk",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "desk"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'desk'?"
+  },
+  {
+   "uid": "9463dc51-e616-4de8-ac9d-d3773f9e94c1",
+   "question": "Which obj_classes have an obj_class value exactly equal to tile?",
+   "answer_row_ids": [
+    249
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'tile'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "tile",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "tile"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'tile'?"
+  },
+  {
+   "uid": "d6554434-7797-43ab-91d2-b30ceb31f887",
+   "question": "Which obj_classes have the exact obj_class value of 'trim'?",
+   "answer_row_ids": [
+    43
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'trim'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "trim",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "trim"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'trim'?"
+  },
+  {
+   "uid": "8c4a0ded-1974-4358-b420-9512ee73e17e",
+   "question": "Which obj_classes are exactly lamps?",
+   "answer_row_ids": [
+    189
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'lamp'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "lamp",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "lamp"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'lamp'?"
+  },
+  {
+   "uid": "e0c426a9-b5d7-423c-8469-0e21c0764eb4",
+   "question": "Which obj_classes have an obj_class exactly equal to cheese?",
+   "answer_row_ids": [
+    109
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'cheese'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "cheese",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "cheese"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'cheese'?"
+  },
+  {
+   "uid": "c49828d0-bd8d-43fd-9cbe-81d2fbdaaa1f",
+   "question": "Which obj_classes are exactly named carrot?",
+   "answer_row_ids": [
+    106
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'carrot'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "carrot",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "carrot"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'carrot'?"
+  },
+  {
+   "uid": "b9cc08d0-2516-4863-b977-82fd9cb53873",
+   "question": "Which obj_classes are exactly labeled zebra?",
+   "answer_row_ids": [
+    171
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'zebra'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "zebra",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "zebra"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'zebra'?"
+  },
+  {
+   "uid": "6f9761ba-2406-4eea-9631-1a1784dcfe9c",
+   "question": "Which obj_classes have the obj_class exactly equal to line?",
+   "answer_row_ids": [
+    277
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'line'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "line",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "line"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'line'?"
+  },
+  {
+   "uid": "8a716d38-4457-486b-9803-b0b12d69ffe5",
+   "question": "Which obj_classes are exactly labeled as person?",
+   "answer_row_ids": [
+    294
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'person'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "person",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "person"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'person'?"
+  },
+  {
+   "uid": "8c91b4c4-8654-4569-b52b-f19797059b3e",
+   "question": "Which obj_classes have the exact obj_class value of banner?",
+   "answer_row_ids": [
+    45
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'banner'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "banner",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "banner"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'banner'?"
+  },
+  {
+   "uid": "37f82cdc-3ddd-440c-8d91-6c33eed0b7bb",
+   "question": "Which obj_classes are exactly labeled as sidewalk?",
+   "answer_row_ids": [
+    246
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'sidewalk'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "sidewalk",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "sidewalk"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'sidewalk'?"
+  },
+  {
+   "uid": "4df37b60-88f5-4a43-9c23-282c63802ded",
+   "question": "Which obj_classes have the exact obj_class value ripples?",
+   "answer_row_ids": [
+    60
+   ],
+   "answer_count": 1,
+   "sql": "SELECT obj_classes.obj_class_id FROM obj_classes\nWHERE obj_classes.obj_class = 'ripples'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "obj_classes"
+   ],
+   "involved_columns": [
+    "obj_classes.obj_class"
+   ],
+   "involved_filters": [
+    {
+     "table": "obj_classes",
+     "column": "obj_class",
+     "operator": "=",
+     "value": "ripples",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "obj_classes.obj_class": "ripples"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "obj_classes"
+   },
+   "answer_table": "obj_classes",
+   "answer_id_column": "obj_class_id",
+   "canonical_question": "Which obj classes entities with obj class equal to 'ripples'?"
+  }
+ ]
+}

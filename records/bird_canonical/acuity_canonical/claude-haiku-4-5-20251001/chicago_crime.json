@@ -1,0 +1,124 @@
+{
+  "db_id": "chicago_crime",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:12:49.309779+00:00",
+  "records": [
+    {
+      "uid": "026a4bda-4892-44dc-974c-16ec2ae696b3",
+      "question": "What community areas have crimes linked to wards with a city hall office phone number exactly 312.744.3062?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nJOIN ward ON crime.ward_no = ward.ward_no\nWHERE ward.city_hall_office_phone = '312.744.3062'",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nINNER JOIN Crime c ON ca.community_area_no = c.community_area_no\nINNER JOIN Ward w ON c.ward_no = w.ward_no\nWHERE w.city_hall_office_phone = '312.744.3062'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "28fa5642-f46f-49bb-b82c-39e84ea5c4f4",
+      "question": "Which community areas have crimes at beat 621 or higher, with case number JB486467 on 078XX S SANGAMON ST at longitude -87.64771366 that occurred on 10/23/2018 0:25, involving property crimes in an apartment where no arrest was made?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nJOIN fbi_code ON crime.fbi_code_no = fbi_code.fbi_code_no\nWHERE crime.beat >= 621 AND crime.block = '078XX S SANGAMON ST' AND crime.case_number = 'JB486467' AND crime.longitude = '-87.64771366' AND crime.date = '10/23/2018 0:25' AND fbi_code.crime_against = 'Property' AND crime.location_description = 'APARTMENT' AND crime.arrest = 'FALSE'",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nINNER JOIN Crime c ON ca.community_area_no = c.community_area_no\nINNER JOIN FBI_Code fc ON c.fbi_code_no = fc.fbi_code_no\nWHERE c.beat >= 621\n  AND c.block = '078XX S SANGAMON ST'\n  AND c.case_number = 'JB486467'\n  AND c.longitude = '-87.64771366'\n  AND c.date = '10/23/2018 0:25'\n  AND c.location_description = 'APARTMENT'\n  AND c.arrest = 'FALSE'\n  AND fc.crime_against = 'Property'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    },
+    {
+      "uid": "3bae056b-f1af-4bd5-a9c7-baa7741dfde2",
+      "question": "Which community areas include crimes with case number JB239539 that happened exactly at latitude 41.70567778 and longitude -87.60094436, occurred in an APARTMENT, and have a beat number of at least 512?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nWHERE crime.longitude = '-87.60094436' AND crime.location_description = 'APARTMENT' AND crime.beat >= 512 AND crime.case_number = 'JB239539' AND crime.latitude = '41.70567778'",
+      "pred_sql": "SELECT DISTINCT community_area.community_area_no\nFROM Community_Area\nINNER JOIN Crime ON community_area.community_area_no = Crime.community_area_no\nWHERE Crime.longitude = '-87.60094436'\n  AND Crime.location_description = 'APARTMENT'\n  AND Crime.beat >= 512\n  AND Crime.case_number = 'JB239539'\n  AND Crime.latitude = '41.70567778'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.49
+    },
+    {
+      "uid": "6113188d-a66a-4f08-860d-c13f9ba09786",
+      "question": "Which community areas have crimes reported exactly at 022XX S KEDZIE AVE?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nWHERE crime.block = '022XX S KEDZIE AVE'",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nINNER JOIN Crime c ON ca.community_area_no = c.community_area_no\nWHERE c.block = '022XX S KEDZIE AVE'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    },
+    {
+      "uid": "b30272fc-0938-47fa-8ad4-96cb7f23616f",
+      "question": "Which community area is named Near North Side and located on the Central side?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nWHERE community_area.side = 'Central' AND community_area.community_area_name = 'Near North Side'",
+      "pred_sql": "SELECT community_area_no FROM Community_Area WHERE side = 'Central' AND community_area_name = 'Near North Side'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.9
+    },
+    {
+      "uid": "cd4129f5-1c8c-4067-b839-f068671fe85f",
+      "question": "Which community area is named South Deering?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nWHERE community_area.community_area_name = 'South Deering'",
+      "pred_sql": "SELECT community_area_no FROM Community_Area WHERE community_area_name = 'South Deering'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "cddd0423-9af6-4cf5-ad03-7eeea0f28c77",
+      "question": "Which community areas on the Central side have had crimes reported at a DEPARTMENT STORE?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nWHERE crime.location_description = 'DEPARTMENT STORE' AND community_area.side = 'Central'",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nINNER JOIN Crime c ON ca.community_area_no = c.community_area_no\nWHERE ca.side = 'Central'\nAND c.location_description = 'DEPARTMENT STORE'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    },
+    {
+      "uid": "d4e67846-8ec2-41c8-92ed-289f67a6a4ab",
+      "question": "Which community areas on the Central side are associated with wards where the alderman\u2019s first name is Brendan, the city hall office phone is 312.744.3062, and the ward email is ward42@cityofchicago.org?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nJOIN ward ON crime.ward_no = ward.ward_no\nWHERE ward.city_hall_office_phone = '312.744.3062' AND community_area.side = 'Central' AND ward.alderman_first_name = 'Brendan' AND ward.ward_email = 'ward42@cityofchicago.org'",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nJOIN Crime c ON ca.community_area_no = c.community_area_no\nJOIN Ward w ON c.ward_no = w.ward_no\nWHERE ca.side = 'Central'\n  AND w.city_hall_office_phone = '312.744.3062'\n  AND w.alderman_first_name = 'Brendan'\n  AND w.ward_email = 'ward42@cityofchicago.org'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "e62ce630-fdaa-433c-ad4d-bc7caa3bf00f",
+      "question": "Which community areas include crimes that happened exactly on 5/20/2018 20:14 at 006XX N SPRINGFIELD AVE with case number JB271667, latitude 41.89217923, location description SIDEWALK, and a beat number of at least 1122?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nWHERE crime.latitude = '41.89217923' AND crime.case_number = 'JB271667' AND crime.block = '006XX N SPRINGFIELD AVE' AND crime.beat >= 1122 AND crime.date = '5/20/2018 20:14' AND crime.location_description = 'SIDEWALK'",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nINNER JOIN Crime c ON ca.community_area_no = c.community_area_no\nWHERE c.latitude = '41.89217923'\n  AND c.case_number = 'JB271667'\n  AND c.block = '006XX N SPRINGFIELD AVE'\n  AND c.beat >= 1122\n  AND c.date = '5/20/2018 20:14'\n  AND c.location_description = 'SIDEWALK'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.73
+    },
+    {
+      "uid": "f317611d-4b74-446b-a553-83f455f8c073",
+      "question": "Which community areas named Austin have crimes with no arrests or domestic involvement that occurred in an apartment, have the case number JB324810, and a beat number at most 1533?",
+      "gold_sql": "SELECT community_area.community_area_no FROM community_area\nJOIN crime ON community_area.community_area_no = crime.community_area_no\nWHERE crime.arrest = 'FALSE' AND crime.domestic = 'FALSE' AND crime.location_description = 'APARTMENT' AND crime.case_number = 'JB324810' AND community_area.community_area_name = 'Austin' AND crime.beat <= 1533",
+      "pred_sql": "SELECT DISTINCT ca.community_area_no\nFROM Community_Area ca\nWHERE ca.community_area_name = 'Austin'\nAND EXISTS (\n    SELECT 1\n    FROM Crime c\n    WHERE c.community_area_no = ca.community_area_no\n    AND c.arrest = 'FALSE'\n    AND c.domestic = 'FALSE'\n    AND c.location_description = 'APARTMENT'\n    AND c.case_number = 'JB324810'\n    AND c.beat <= 1533\n)",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.42
+    }
+  ]
+}

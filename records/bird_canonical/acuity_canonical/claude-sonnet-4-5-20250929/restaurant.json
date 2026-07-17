@@ -1,0 +1,124 @@
+{
+  "db_id": "restaurant",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:30:52.085310+00:00",
+  "records": [
+    {
+      "uid": "01beb4a0-3ef0-4513-9003-627881801941",
+      "question": "Where in san francisco county and the bay area can I find places on geary with street numbers at least 4142 that serve chinese food with a 2.0 review?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN location ON geographic.city = location.city\nJOIN generalinfo ON location.id_restaurant = generalinfo.id_restaurant\nWHERE geographic.county = 'san francisco county' AND geographic.region = 'bay area' AND generalinfo.review = 2.0 AND generalinfo.food_type = 'chinese' AND location.street_num >= 4142.0 AND location.street_name = 'geary'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nWHERE g.county = 'san francisco county'\n  AND g.region = 'bay area'\n  AND EXISTS (\n    SELECT 1\n    FROM location l\n    WHERE l.city = g.city\n      AND l.street_num >= 4142.0\n      AND l.street_name = 'geary'\n      AND EXISTS (\n        SELECT 1\n        FROM generalinfo gi\n        WHERE gi.id_restaurant = l.id_restaurant\n          AND gi.review = 2.0\n          AND gi.food_type = 'chinese'\n      )\n  )",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.3
+    },
+    {
+      "uid": "22659cc3-1180-4f47-8b1d-c54cbd2e375b",
+      "question": "Which geographic entities in the bay area have related generalinfo records and related location records with a street name exactly equal to 'tennessee st'?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN generalinfo ON geographic.city = generalinfo.city\nJOIN location ON geographic.city = location.city\nWHERE geographic.region = 'bay area' AND location.street_name = 'tennessee st'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nWHERE g.region = 'bay area'\nAND EXISTS (\n    SELECT 1 \n    FROM generalinfo gi \n    WHERE gi.city = g.city\n)\nAND EXISTS (\n    SELECT 1 \n    FROM location l \n    WHERE l.city = g.city \n    AND l.street_name = 'tennessee st'\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.42
+    },
+    {
+      "uid": "6462c482-4eab-41bb-ad18-c9b3aa9e2288",
+      "question": "What geographic areas are located in Alameda County\u2019s Bay Area region on Elgin St with the street number exactly 868?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN location ON geographic.city = location.city\nWHERE location.street_num = 868.0 AND geographic.county = 'alameda county' AND geographic.region = 'bay area' AND location.street_name = 'elgin st'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nJOIN location l ON g.city = l.city\nWHERE g.county = 'alameda county'\n  AND g.region = 'bay area'\n  AND l.street_num = 868.0\n  AND l.street_name = 'elgin st'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.5
+    },
+    {
+      "uid": "74dad397-b46b-4457-ba35-1b911dad4a03",
+      "question": "Which geographic areas in napa county have bars?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN location ON geographic.city = location.city\nJOIN generalinfo ON location.id_restaurant = generalinfo.id_restaurant\nWHERE generalinfo.food_type = 'bar' AND geographic.county = 'napa county'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nJOIN location l ON g.city = l.city\nJOIN generalinfo gi ON l.id_restaurant = gi.id_restaurant\nWHERE g.county = 'napa county'\nAND gi.food_type = 'bar'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "7a455cdd-d1ac-4660-bf8c-0bcc8db919e0",
+      "question": "Which geographic areas in the bay area region have a street named moraga way # d, belong to the unknown county, and are associated with pizza restaurants?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN location ON geographic.city = location.city\nJOIN generalinfo ON location.id_restaurant = generalinfo.id_restaurant\nWHERE geographic.region = 'bay area' AND location.street_name = 'moraga way # d' AND geographic.county = 'unknown' AND generalinfo.food_type = 'pizza'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nWHERE g.region = 'bay area'\n  AND g.county = 'unknown'\n  AND EXISTS (\n    SELECT 1\n    FROM location l\n    WHERE l.city = g.city\n      AND l.street_name = 'moraga way # d'\n      AND EXISTS (\n        SELECT 1\n        FROM generalinfo gi\n        WHERE gi.id_restaurant = l.id_restaurant\n          AND gi.food_type = 'pizza'\n      )\n  )",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.96
+    },
+    {
+      "uid": "8b9162c2-4c19-4f73-b52d-a9b7e2147cd6",
+      "question": "Which geographic locations in the bay area are in santa clara county on meridian ave at 905 with a review of 2.0 for snack man deli chinese rest serving chinese food?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN generalinfo ON geographic.city = generalinfo.city\nJOIN location ON geographic.city = location.city\nWHERE generalinfo.food_type = 'chinese' AND geographic.region = 'bay area' AND generalinfo.label = 'snack man deli chinese rest' AND geographic.county = 'santa clara county' AND location.street_name = 'meridian ave' AND location.street_num = 905.0 AND generalinfo.review = 2.0",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nWHERE g.region = 'bay area'\n  AND g.county = 'santa clara county'\n  AND EXISTS (\n    SELECT 1\n    FROM generalinfo gi\n    WHERE gi.city = g.city\n      AND gi.food_type = 'chinese'\n      AND gi.label = 'snack man deli chinese rest'\n      AND gi.review = 2.0\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM location l\n    WHERE l.city = g.city\n      AND l.street_name = 'meridian ave'\n      AND l.street_num = 905.0\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.7
+    },
+    {
+      "uid": "b467eacb-f4d8-4fd2-b635-be651f2418d4",
+      "question": "Which places are located in san francisco county?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN generalinfo ON geographic.city = generalinfo.city\nWHERE geographic.county = 'san francisco county'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nINNER JOIN generalinfo gi ON g.city = gi.city\nWHERE g.county = 'san francisco county'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "bb8836de-aa70-4ad7-833f-56312ae6a576",
+      "question": "Which places are located in sonoma county?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nWHERE geographic.county = 'sonoma county'",
+      "pred_sql": "SELECT city FROM geographic WHERE county = 'sonoma county'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.42
+    },
+    {
+      "uid": "ddfb2c71-6f7e-42d2-ba62-fa58b48b42c2",
+      "question": "What geographic areas in san francisco county have a place named exactly bella luna with a review of exactly 1.6 located on a street named exactly powell?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nJOIN generalinfo ON geographic.city = generalinfo.city\nJOIN location ON geographic.city = location.city\nWHERE generalinfo.label = 'bella luna' AND location.street_name = 'powell' AND generalinfo.review = 1.6 AND geographic.county = 'san francisco county'",
+      "pred_sql": "SELECT DISTINCT g.city\nFROM geographic g\nWHERE g.county = 'san francisco county'\nAND EXISTS (\n    SELECT 1\n    FROM generalinfo gi\n    WHERE gi.city = g.city\n    AND gi.label = 'bella luna'\n    AND gi.review = 1.6\n)\nAND EXISTS (\n    SELECT 1\n    FROM location l\n    WHERE l.city = g.city\n    AND l.street_name = 'powell'\n)",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.28
+    },
+    {
+      "uid": "ed6e15cd-cbfa-4c39-ba7a-a9518ff7cba1",
+      "question": "Which places are located in Marin County within the Bay Area region?",
+      "gold_sql": "SELECT geographic.city FROM geographic\nWHERE geographic.county = 'marin county' AND geographic.region = 'bay area'",
+      "pred_sql": "SELECT city FROM geographic WHERE county = 'marin county' AND region = 'bay area'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    }
+  ]
+}

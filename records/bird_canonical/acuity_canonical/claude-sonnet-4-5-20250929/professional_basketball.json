@@ -1,0 +1,124 @@
+{
+  "db_id": "professional_basketball",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:30:47.692607+00:00",
+  "records": [
+    {
+      "uid": "1d1dd185-2d1a-42f6-a3ac-fbeb8182af1d",
+      "question": "Which players named Dennis Nutt who are guards from TCU were born in the USA and have a race of W?",
+      "gold_sql": "SELECT players.playerid FROM players\nWHERE players.race = 'W' AND players.birthcountry = 'USA' AND players.pos = 'G' AND players.college = 'TCU' AND players.firstname = 'Dennis' AND players.lastname = 'Nutt'",
+      "pred_sql": "SELECT playerID\nFROM players\nWHERE race = 'W' \n  AND birthCountry = 'USA' \n  AND pos = 'G' \n  AND college = 'TCU' \n  AND firstName = 'Dennis' \n  AND lastName = 'Nutt'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "1dd1edf1-6aff-46c3-b42a-4cb1c67aeab5",
+      "question": "Who are the players with the last name Netolicky who played in the ABA, had a last season of at least 0.0, and have a death date exactly on 0000-00-00?",
+      "gold_sql": "SELECT players.playerid FROM players\nJOIN awards_players ON players.playerid = awards_players.playerid\nWHERE players.lastname = 'Netolicky' AND awards_players.lgid = 'ABA' AND players.lastseason >= 0.0 AND players.deathdate = '0000-00-00'",
+      "pred_sql": "SELECT DISTINCT p.playerID\nFROM players p\nWHERE p.lastName = 'Netolicky'\n  AND p.lastseason >= 0.0\n  AND p.deathDate = '0000-00-00'\n  AND EXISTS (\n    SELECT 1\n    FROM awards_players ap\n    WHERE ap.playerID = p.playerID\n      AND ap.lgID = 'ABA'\n  )",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.77
+    },
+    {
+      "uid": "2db5fcf5-abc4-451b-9171-4a99936ae05a",
+      "question": "Which players have the last name exactly Vap?",
+      "gold_sql": "SELECT players.playerid FROM players\nWHERE players.lastname = 'Vap'",
+      "pred_sql": "SELECT playerID\nFROM players\nWHERE lastName = 'Vap'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "3313e011-bcf6-476c-90ac-2b2cdc466c47",
+      "question": "What players have the middle name Harding and have received awards as well as been selected as All-Stars?",
+      "gold_sql": "SELECT players.playerid FROM players\nJOIN awards_players ON players.playerid = awards_players.playerid\nJOIN player_allstar ON players.playerid = player_allstar.playerid\nWHERE players.middlename = 'Harding'",
+      "pred_sql": "SELECT DISTINCT p.playerID\nFROM players p\nWHERE p.middleName = 'Harding'\nAND EXISTS (\n    SELECT 1 \n    FROM awards_players ap \n    WHERE ap.playerID = p.playerID\n)\nAND EXISTS (\n    SELECT 1 \n    FROM player_allstar pa \n    WHERE pa.playerID = p.playerID\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.13
+    },
+    {
+      "uid": "3cf1ca07-af3a-4c04-8f38-c2d19ff9fd34",
+      "question": "Which players have the position C, were born in the USA, are named Chuck, started playing in season 0.0 or later, and died on or before 2012-06-07?",
+      "gold_sql": "SELECT players.playerid FROM players\nWHERE players.pos = 'C' AND players.hscountry = 'USA' AND players.usefirst = 'Chuck' AND players.firstseason >= 0.0 AND players.deathdate <= '2012-06-07'",
+      "pred_sql": "SELECT playerID\nFROM players\nWHERE pos = 'C' \n  AND hsCountry = 'USA' \n  AND useFirst = 'Chuck' \n  AND firstseason >= 0.0 \n  AND deathDate <= '2012-06-07'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.77
+    },
+    {
+      "uid": "40f51e75-be29-480e-99ec-0c821d97b683",
+      "question": "Which players named Timothy Theodore from ISV have won the All-Defensive Second Team award and recorded at most 7 offensive rebounds, at most 1 steal, and no more than 0 free throws made in all-star games?",
+      "gold_sql": "SELECT players.playerid FROM players\nJOIN awards_players ON players.playerid = awards_players.playerid\nJOIN player_allstar ON players.playerid = player_allstar.playerid\nWHERE awards_players.award = 'All-Defensive Second Team' AND players.firstname = 'Timothy' AND players.hscountry = 'ISV' AND player_allstar.o_rebounds <= 7.0 AND player_allstar.steals <= 1.0 AND players.middlename = 'Theodore' AND player_allstar.ft_made <= 0.0",
+      "pred_sql": "SELECT DISTINCT p.playerID\nFROM players p\nWHERE p.firstName = 'Timothy'\n  AND p.hsCountry = 'ISV'\n  AND p.middleName = 'Theodore'\n  AND EXISTS (\n    SELECT 1\n    FROM awards_players ap\n    WHERE ap.playerID = p.playerID\n      AND ap.award = 'All-Defensive Second Team'\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM player_allstar pa\n    WHERE pa.playerID = p.playerID\n      AND pa.o_rebounds <= 7.0\n      AND pa.steals <= 1.0\n      AND pa.ft_made <= 0.0\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.12
+    },
+    {
+      "uid": "474ee14a-ceed-4a91-a4eb-42f3042b6710",
+      "question": "Who are the players from UNLV whose position is exactly F and have received any awards?",
+      "gold_sql": "SELECT players.playerid FROM players\nJOIN awards_players ON players.playerid = awards_players.playerid\nWHERE players.college = 'UNLV' AND players.pos = 'F'",
+      "pred_sql": "SELECT DISTINCT p.playerID\nFROM players p\nINNER JOIN awards_players ap ON p.playerID = ap.playerID\nWHERE p.college = 'UNLV' AND p.pos = 'F'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.05
+    },
+    {
+      "uid": "62686451-ba7f-4901-ac48-b70f9a315322",
+      "question": "Who are the players whose usefirst name is exactly Oscar and whose first season is at least 0.0?",
+      "gold_sql": "SELECT players.playerid FROM players\nWHERE players.usefirst = 'Oscar' AND players.firstseason >= 0.0",
+      "pred_sql": "SELECT playerID\nFROM players\nWHERE useFirst = 'Oscar' AND firstseason >= 0.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    },
+    {
+      "uid": "89ec4467-8876-4602-a76d-8ad628070b5b",
+      "question": "What players named John J. who were born in the USA, went to Bridgeport High School and Ohio State, and have won the All-NBA Second Team award but have no recorded death date are there?",
+      "gold_sql": "SELECT players.playerid FROM players\nJOIN awards_players ON players.playerid = awards_players.playerid\nWHERE awards_players.award = 'All-NBA Second Team' AND players.college = 'Ohio State' AND players.birthcountry = 'USA' AND players.usefirst = 'John' AND players.middlename = 'J.' AND players.deathdate = '0000-00-00' AND players.highschool = 'Bridgeport'",
+      "pred_sql": "SELECT DISTINCT p.playerID\nFROM players p\nINNER JOIN awards_players ap ON p.playerID = ap.playerID\nWHERE p.college = 'Ohio State'\n  AND p.birthCountry = 'USA'\n  AND p.useFirst = 'John'\n  AND p.middleName = 'J.'\n  AND p.deathDate = '0000-00-00'\n  AND p.highSchool = 'Bridgeport'\n  AND ap.award = 'All-NBA Second Team'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.42
+    },
+    {
+      "uid": "b03dd4bf-b74f-4834-9994-ee1eaf5b732e",
+      "question": "Who are the players with the middle name Verner Agerskov, born in the USA, and who attended high school in MN, that have both awards and All-Star appearances?",
+      "gold_sql": "SELECT players.playerid FROM players\nJOIN awards_players ON players.playerid = awards_players.playerid\nJOIN player_allstar ON players.playerid = player_allstar.playerid\nWHERE players.middlename = 'Verner Agerskov' AND players.hsstate = 'MN' AND players.birthcountry = 'USA'",
+      "pred_sql": "SELECT DISTINCT p.playerID\nFROM players p\nWHERE p.middleName = 'Verner Agerskov'\n  AND p.hsState = 'MN'\n  AND p.birthCountry = 'USA'\n  AND EXISTS (\n    SELECT 1 \n    FROM awards_players ap \n    WHERE ap.playerID = p.playerID\n  )\n  AND EXISTS (\n    SELECT 1 \n    FROM player_allstar pa \n    WHERE pa.playerID = p.playerID\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.13
+    }
+  ]
+}

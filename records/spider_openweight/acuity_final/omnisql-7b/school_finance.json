@@ -1,0 +1,212 @@
+{
+  "db_id": "school_finance",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 18,
+  "n_correct": 15,
+  "accuracy": 0.8333333333333334,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T14:57:43.361668+00:00",
+  "records": [
+    {
+      "uid": "0b7d5e9d-aee0-4b8a-9e0e-de62b7aa1c3b",
+      "question": "Which schools named Glenn have Falcons as their mascot, are in 71 St. Joseph county, and have both their IHSAA football class and IHSAA class exactly as AAA?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.school_name = 'Glenn' AND school.ihsaa_football_class = 'AAA' AND school.ihsaa_class = 'AAA' AND school.county = '71 St. Joseph' AND school.mascot = 'Falcons'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name LIKE '%Glenn%'\n  AND Mascot = 'Falcons'\n  AND County = '71 St. Joseph'\n  AND IHSAA_Class = 'AAA'\n  AND IHSAA_Football_Class = 'AAA'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.12
+    },
+    {
+      "uid": "154d1523-c952-4632-8a17-3d14a5299375",
+      "question": "Which schools named Triton in 50 Marshall county have the Trojans as a mascot, play in both A football and A overall IHSAA classes, and have at least 316 students enrolled?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.mascot = 'Trojans' AND school.school_name = 'Triton' AND school.ihsaa_football_class = 'A' AND school.ihsaa_class = 'A' AND school.county = '50 Marshall' AND school.enrollment >= 316",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name LIKE '%Triton%'\n  AND County = 'Marshall'\n  AND Mascot = 'Trojans'\n  AND IHSAA_Class = 'A'\n  AND IHSAA_Football_Class = 'A'\n  AND Enrollment >= 316",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 46.86
+    },
+    {
+      "uid": "18e2c72d-3a56-42cf-b5cc-15399635b7de",
+      "question": "Which schools named Knox Community have an enrollment of 620 and are classified as AAA in both ihsaa football and ihsaa class?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.ihsaa_football_class = 'AAA' AND school.ihsaa_class = 'AAA' AND school.school_name = 'Knox Community' AND school.enrollment = 620",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name = 'Knox Community'\n  AND Enrollment = 620\n  AND IHSAA_Class = 'AAA'\n  AND IHSAA_Football_Class = 'AAA'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.22
+    },
+    {
+      "uid": "1f2fe3d8-480e-4039-abb9-2afdac65c6bb",
+      "question": "Which schools named Culver Community have Cavaliers as their mascot and are located in Culver?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.mascot = 'Cavaliers' AND school.location = 'Culver' AND school.school_name = 'Culver Community'",
+      "pred_sql": "SELECT School_id \nFROM School \nWHERE School_name = 'Culver Community' \n  AND Mascot = 'Cavaliers' \n  AND Location = 'Culver'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 25.38
+    },
+    {
+      "uid": "35b505ec-f1bd-4190-804c-5ec2647e37d5",
+      "question": "Which schools named Triton are located in Bourbon with exactly 316 students, have the mascot Trojans, and belong to both IHSAA class A and IHSAA football class A in county 50 Marshall?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.enrollment = 316 AND school.mascot = 'Trojans' AND school.ihsaa_class = 'A' AND school.school_name = 'Triton' AND school.county = '50 Marshall' AND school.ihsaa_football_class = 'A' AND school.location = 'Bourbon'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name = 'Triton'\n  AND Location = 'Bourbon'\n  AND Enrollment = 316\n  AND Mascot = 'Trojans'\n  AND IHSAA_Class = 'A'\n  AND IHSAA_Football_Class = 'A'\n  AND County = '50 Marshall'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 50.14
+    },
+    {
+      "uid": "4b609cda-44c2-4707-be8e-b430cb432714",
+      "question": "Which schools named LaVille have a mascot of Lancers, are located in Lakeville within 71 St. Joseph county, have an enrollment of at most 379, and are classified as AA overall with A in football?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.location = 'Lakeville' AND school.mascot = 'Lancers' AND school.county = '71 St. Joseph' AND school.school_name = 'LaVille' AND school.enrollment <= 379 AND school.ihsaa_class = 'AA' AND school.ihsaa_football_class = 'A'",
+      "pred_sql": "SELECT school_id\nFROM School\nWHERE school_name LIKE '%LaVille%'\n  AND mascot = 'Lancers'\n  AND location = 'Lakeville'\n  AND county = '71 St. Joseph'\n  AND enrollment <= 379\n  AND IHSAA_Class = 'AA overall'\n  AND IHSAA_Football_Class = 'A'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 47.63
+    },
+    {
+      "uid": "73d0f5da-7dbc-4deb-bf95-2c46627e9697",
+      "question": "Which schools named Glenn have a mascot that is Falcons, belong to the AAA football class, and have enrollment at most 605?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.ihsaa_football_class = 'AAA' AND school.mascot = 'Falcons' AND school.enrollment <= 605 AND school.school_name = 'Glenn'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name LIKE '%Glenn%'\n  AND Mascot = 'Falcons'\n  AND IHSAA_Football_Class = 'AAA'\n  AND Enrollment <= 605",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.72
+    },
+    {
+      "uid": "76525e4c-19e6-4dbe-8412-1e0928322700",
+      "question": "Which schools are located in New Carlisle and have an ihsaa_class of AAA?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.location = 'New Carlisle' AND school.ihsaa_class = 'AAA'",
+      "pred_sql": "SELECT School_id \nFROM School \nWHERE Location = 'New Carlisle' \n  AND IHSAA_Class = 'AAA'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.92
+    },
+    {
+      "uid": "78736c51-2028-4d0f-b610-62426067def9",
+      "question": "Which schools have an ihsaa_class that is exactly AAA?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.ihsaa_class = 'AAA'",
+      "pred_sql": "SELECT School_id \nFROM School \nWHERE IHSAA_Class = 'AAA'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.88
+    },
+    {
+      "uid": "8d65fa7b-597e-48b4-bd82-73ea284c671c",
+      "question": "What schools have the mascot Lions and are classified as AA in both ihsaa_football_class and ihsaa_class?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.ihsaa_football_class = 'AA' AND school.ihsaa_class = 'AA' AND school.mascot = 'Lions'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE Mascot = 'Lions'\n  AND IHSAA_Football_Class = 'AA'\n  AND IHSAA_Class = 'AA'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 27.13
+    },
+    {
+      "uid": "909a9dfa-e7a0-4435-abbb-2c38eb764864",
+      "question": "Which schools named Glenn in Walkerton have Falcons as their mascot, belong to the AAA IHSAA class and football class, and have an enrollment of at most 605?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.enrollment <= 605 AND school.location = 'Walkerton' AND school.ihsaa_football_class = 'AAA' AND school.school_name = 'Glenn' AND school.ihsaa_class = 'AAA' AND school.mascot = 'Falcons'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name LIKE '%Glenn%'\n  AND Location = 'Walkerton'\n  AND Mascot = 'Falcons'\n  AND IHSAA_Class = 'AAA'\n  AND IHSAA_Football_Class = 'AAA'\n  AND Enrollment <= 605",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 40.02
+    },
+    {
+      "uid": "9415a5ce-3a5c-41a6-b962-45f31f215a2c",
+      "question": "Which schools have a mascot that is exactly Cavaliers?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.mascot = 'Cavaliers'",
+      "pred_sql": "SELECT school_id \nFROM School \nWHERE mascot = 'Cavaliers'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.79
+    },
+    {
+      "uid": "abcadb93-bcf0-45d0-9cc2-15d5212a31bb",
+      "question": "What schools in Culver have the name Culver Community, are in county 50 Marshall, have the Cavaliers as their mascot, belong to IHSAA football class A, and have enrollment of at most 287?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.location = 'Culver' AND school.school_name = 'Culver Community' AND school.ihsaa_football_class = 'A' AND school.mascot = 'Cavaliers' AND school.county = '50 Marshall' AND school.enrollment <= 287",
+      "pred_sql": "SELECT school_id\nFROM School\nWHERE Location = 'Culver'\n  AND School_name = 'Culver Community'\n  AND County = '50 Marshall'\n  AND Mascot = 'Cavaliers'\n  AND IHSAA_Football_Class = 'A'\n  AND Enrollment <= 287",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 34.54
+    },
+    {
+      "uid": "b4d8bbac-1774-4fa0-9f2f-2e43bd9d005b",
+      "question": "Which schools named Glenn are located in Walkerton within 71 St. Joseph county, have Falcons as their mascot, are classified as AAA, and have an enrollment of at most 605?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.school_name = 'Glenn' AND school.county = '71 St. Joseph' AND school.enrollment <= 605 AND school.mascot = 'Falcons' AND school.ihsaa_class = 'AAA' AND school.location = 'Walkerton'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE School_name LIKE '%Glenn%'\n  AND Location = 'Walkerton'\n  AND County = '71 St. Joseph'\n  AND Mascot = 'Falcons'\n  AND IHSAA_Class = 'AAA'\n  AND Enrollment <= 605",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 45.35
+    },
+    {
+      "uid": "c10535e7-03f9-414c-b56c-d921fd831c47",
+      "question": "Which schools are located in Bourbon and have the Trojans as their mascot?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.location = 'Bourbon' AND school.mascot = 'Trojans'",
+      "pred_sql": "SELECT school_id \nFROM School \nWHERE Location = 'Bourbon' AND Mascot = 'Trojans'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 23.44
+    },
+    {
+      "uid": "d6e6365c-51c4-4887-96e2-e3abe368a725",
+      "question": "Which schools have the mascot Lions and belong to the IHSAA class AA?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.mascot = 'Lions' AND school.ihsaa_class = 'AA'",
+      "pred_sql": "SELECT school_id \nFROM School \nWHERE Mascot = 'Lions' AND IHSAA_Class = 'AA'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 24.63
+    },
+    {
+      "uid": "d92ab296-7695-4923-8aff-54b6ab439019",
+      "question": "Which schools in 50 Marshall county have the Cavaliers as their mascot and are classified as A in both ihsaa_class and ihsaa_football_class?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.mascot = 'Cavaliers' AND school.ihsaa_class = 'A' AND school.county = '50 Marshall' AND school.ihsaa_football_class = 'A'",
+      "pred_sql": "SELECT School_id\nFROM School\nWHERE County = \"Marshall\"\n  AND Mascot = \"Chiefs\"\n  AND IHSAA_Class = \"A\"\n  AND IHSAA_Football_Class = \"A\"",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.22
+    },
+    {
+      "uid": "f9600361-a0c2-4c76-b1ce-803b75618388",
+      "question": "Which schools have an ihsaa_football_class that is exactly AA?",
+      "gold_sql": "SELECT school.school_id FROM school\nWHERE school.ihsaa_football_class = 'AA'",
+      "pred_sql": "SELECT School_id \nFROM School \nWHERE IHSAA_Football_Class = 'AA'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 23.76
+    }
+  ]
+}

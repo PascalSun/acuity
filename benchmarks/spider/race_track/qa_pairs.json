@@ -1,0 +1,1220 @@
+{
+ "db_id": "race_track",
+ "target_table": "track",
+ "mode": "flexbench",
+ "total_qa_pairs": 20,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 691325945,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/race_track/race_track.sqlite",
+  "generated_at": "2026-07-02T10:35:56.002632+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "track",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 20,
+  "shortfall_total": 30,
+  "overall_fulfillment_rate": 0.4,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10
+  },
+  "shortfalls": {
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfall_reason_counts": {
+   "sparse_combinations": 30
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 84,
+    "inner_attempts": 84,
+    "failed_rounds": 74,
+    "invalid_pairs_filtered": 74,
+    "failure_events": {
+     "qa_validation_failed": 74
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 0,
+    "shortfall": 10,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 120,
+    "inner_attempts": 1200,
+    "failed_rounds": 120,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 120
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 10
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 0,
+    "shortfall": 10,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 120,
+    "inner_attempts": 1200,
+    "failed_rounds": 120,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 120
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 10
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 0,
+    "shortfall": 10,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 120,
+    "inner_attempts": 1200,
+    "failed_rounds": 120,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 120
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 10
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "b08b74d2-96ab-4866-bfab-8d89c981f3bb",
+   "question": "Which track has the name Michigan International Speedway?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.name = 'Michigan International Speedway'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Michigan International Speedway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.name": "Michigan International Speedway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with name equal to 'Michigan International Speedway'?"
+  },
+  {
+   "uid": "4d5ef578-b65e-42e5-b6a2-51a2205b736b",
+   "question": "Which tracks named Daytona International Speedway opened in 1959 or later?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.name = 'Daytona International Speedway' AND track.year_opened >= 1959.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.name",
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Daytona International Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": ">=",
+     "value": 1959.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.name": "Daytona International Speedway",
+    "track.year_opened": 1959.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with name equal to 'Daytona International Speedway' and year opened at least '1959.0'?"
+  },
+  {
+   "uid": "9a6ec1ea-7706-4868-af7c-b4e482fc93a3",
+   "question": "Which tracks named Phoenix International Raceway have seating capacity of at most 76812?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.seating <= 76812.0 AND track.name = 'Phoenix International Raceway'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.seating",
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "<=",
+     "value": 76812.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Phoenix International Raceway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.seating": 76812.0,
+    "track.name": "Phoenix International Raceway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with seating at most '76812.0' and name equal to 'Phoenix International Raceway'?"
+  },
+  {
+   "uid": "8ef13392-ee98-47b4-a44a-d36754f7fbee",
+   "question": "Which tracks have exactly 65000.0 seats?",
+   "answer_row_ids": [
+    5,
+    7
+   ],
+   "answer_count": 2,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.seating = 65000.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.seating"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "=",
+     "value": 65000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.seating": 65000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with seating equal to '65000.0'?"
+  },
+  {
+   "uid": "81033db1-40ca-4237-817c-dd26a824ae5f",
+   "question": "Which track has the name Daytona International Speedway and a seating capacity of exactly 168000.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.name = 'Daytona International Speedway' AND track.seating = 168000.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.name",
+    "track.seating"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Daytona International Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "=",
+     "value": 168000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.name": "Daytona International Speedway",
+    "track.seating": 168000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with name equal to 'Daytona International Speedway' and seating equal to '168000.0'?"
+  },
+  {
+   "uid": "bfccb2fd-9de6-4c66-84f1-2a08b7684852",
+   "question": "Which tracks have seating capacity of at least 81687?",
+   "answer_row_ids": [
+    1,
+    4,
+    6,
+    8
+   ],
+   "answer_count": 4,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.seating >= 81687.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.seating"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": ">=",
+     "value": 81687.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.seating": 81687.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with seating at least '81687.0'?"
+  },
+  {
+   "uid": "6dc0110b-260e-4532-88ae-da474073b2bb",
+   "question": "Which tracks named Kansas Speedway opened in 2001 or later?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened >= 2001.0 AND track.name = 'Kansas Speedway'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened",
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": ">=",
+     "value": 2001.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Kansas Speedway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 2001.0,
+    "track.name": "Kansas Speedway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened at least '2001.0' and name equal to 'Kansas Speedway'?"
+  },
+  {
+   "uid": "29066baa-b0b4-401e-b54f-30f494c2b650",
+   "question": "Which tracks opened in 1997 or earlier?",
+   "answer_row_ids": [
+    1,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+   ],
+   "answer_count": 7,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened <= 1997.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 1997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened at most '1997.0'?"
+  },
+  {
+   "uid": "3aa8f68d-01bd-4ab7-82e2-66625cd11b3c",
+   "question": "What tracks were opened in 1950 or earlier?",
+   "answer_row_ids": [
+    3,
+    7
+   ],
+   "answer_count": 2,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened <= 1950.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 1950.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 1950.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened at most '1950.0'?"
+  },
+  {
+   "uid": "206cd259-e637-4fc1-a74d-c5c975f5d3e9",
+   "question": "Which tracks were opened in the year 1959?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened = 1959.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "=",
+     "value": 1959.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 1959.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened equal to '1959.0'?"
+  },
+  {
+   "uid": "433fe664-23ce-490f-b747-525ba53d3e6a",
+   "question": "Which tracks named Phoenix International Raceway have exactly 76812 seating and opened in 1964 or earlier?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.seating = 76812.0 AND track.year_opened <= 1964.0 AND track.name = 'Phoenix International Raceway'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.seating",
+    "track.year_opened",
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "=",
+     "value": 76812.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 1964.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Phoenix International Raceway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.seating": 76812.0,
+    "track.year_opened": 1964.0,
+    "track.name": "Phoenix International Raceway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with seating equal to '76812.0' and year opened at most '1964.0' and name equal to 'Phoenix International Raceway'?"
+  },
+  {
+   "uid": "0234c096-d8a8-4d90-ac1f-102bbcdff668",
+   "question": "Which track opened in 1964, has exactly 76812 seats, and is named Phoenix International Raceway?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened = 1964.0 AND track.seating = 76812.0 AND track.name = 'Phoenix International Raceway'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened",
+    "track.seating",
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "=",
+     "value": 1964.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "=",
+     "value": 76812.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Phoenix International Raceway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 1964.0,
+    "track.seating": 76812.0,
+    "track.name": "Phoenix International Raceway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened equal to '1964.0' and seating equal to '76812.0' and name equal to 'Phoenix International Raceway'?"
+  },
+  {
+   "uid": "50ee1a1c-cd9b-43d8-b921-bde726f30112",
+   "question": "What tracks named Auto Club Speedway are located in places containing Fontana and opened in 1997 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.location LIKE '%Fontana%' AND track.year_opened <= 1997.0 AND track.name = 'Auto Club Speedway'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.location",
+    "track.year_opened",
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Fontana",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 1997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Auto Club Speedway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.location": "Fontana",
+    "track.year_opened": 1997.0,
+    "track.name": "Auto Club Speedway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with location matching '%Fontana%' and year opened at most '1997.0' and name equal to 'Auto Club Speedway'?"
+  },
+  {
+   "uid": "bd263ac0-e1a1-4a66-b6ad-7fcd4eec0517",
+   "question": "Which tracks named Chicagoland Speedway that include IL in their location have seating for at most 75000 and opened in 2001 or earlier?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.location LIKE '%IL%' AND track.seating <= 75000.0 AND track.name = 'Chicagoland Speedway' AND track.year_opened <= 2001.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.location",
+    "track.seating",
+    "track.name",
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "IL",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "<=",
+     "value": 75000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Chicagoland Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 2001.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.location": "IL",
+    "track.seating": 75000.0,
+    "track.name": "Chicagoland Speedway",
+    "track.year_opened": 2001.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with location matching '%IL%' and seating at most '75000.0' and name equal to 'Chicagoland Speedway' and year opened at most '2001.0'?"
+  },
+  {
+   "uid": "391c1a31-fa09-4f1a-b7b8-f90e932e832c",
+   "question": "Which tracks named Martinsville Speedway opened exactly in 1947 and have seating for at least 65000 spectators?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened = 1947.0 AND track.seating >= 65000.0 AND track.name = 'Martinsville Speedway'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened",
+    "track.seating",
+    "track.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "=",
+     "value": 1947.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": ">=",
+     "value": 65000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Martinsville Speedway",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 1947.0,
+    "track.seating": 65000.0,
+    "track.name": "Martinsville Speedway"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened equal to '1947.0' and seating at least '65000.0' and name equal to 'Martinsville Speedway'?"
+  },
+  {
+   "uid": "a4db93bd-5d18-4d39-9cef-378c6f3efa59",
+   "question": "Which tracks named Michigan International Speedway opened in 1968 or earlier and have seating for at least 137243 spectators?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.year_opened <= 1968.0 AND track.name = 'Michigan International Speedway' AND track.seating >= 137243.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.year_opened",
+    "track.name",
+    "track.seating"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 1968.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Michigan International Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": ">=",
+     "value": 137243.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.year_opened": 1968.0,
+    "track.name": "Michigan International Speedway",
+    "track.seating": 137243.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with year opened at most '1968.0' and name equal to 'Michigan International Speedway' and seating at least '137243.0'?"
+  },
+  {
+   "uid": "6810b9be-7a50-485c-935a-cc83119d680a",
+   "question": "Which tracks named Kansas Speedway opened in 2001 and located in places containing Kansas City have seating for at most 81687?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.location LIKE '%Kansas City%' AND track.seating <= 81687.0 AND track.name = 'Kansas Speedway' AND track.year_opened = 2001.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.location",
+    "track.seating",
+    "track.name",
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Kansas City",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "<=",
+     "value": 81687.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Kansas Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "=",
+     "value": 2001.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.location": "Kansas City",
+    "track.seating": 81687.0,
+    "track.name": "Kansas Speedway",
+    "track.year_opened": 2001.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with location matching '%Kansas City%' and seating at most '81687.0' and name equal to 'Kansas Speedway' and year opened equal to '2001.0'?"
+  },
+  {
+   "uid": "d4c857db-7a4d-419b-923c-765f36ec217b",
+   "question": "What tracks named Daytona International Speedway located in FL opened in 1959 or earlier and have seating for at least 168000 people?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.location LIKE '%FL%' AND track.year_opened <= 1959.0 AND track.name = 'Daytona International Speedway' AND track.seating >= 168000.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.location",
+    "track.year_opened",
+    "track.name",
+    "track.seating"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "FL",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": "<=",
+     "value": 1959.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Daytona International Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": ">=",
+     "value": 168000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.location": "FL",
+    "track.year_opened": 1959.0,
+    "track.name": "Daytona International Speedway",
+    "track.seating": 168000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with location matching '%FL%' and year opened at most '1959.0' and name equal to 'Daytona International Speedway' and seating at least '168000.0'?"
+  },
+  {
+   "uid": "5bbaa313-c4d0-4df1-8430-b0266ac2caee",
+   "question": "Which tracks named Chicagoland Speedway have exactly 75000 seating and opened in 2001 or later?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.seating = 75000.0 AND track.name = 'Chicagoland Speedway' AND track.year_opened >= 2001.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.seating",
+    "track.name",
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": "=",
+     "value": 75000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Chicagoland Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": ">=",
+     "value": 2001.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.seating": 75000.0,
+    "track.name": "Chicagoland Speedway",
+    "track.year_opened": 2001.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with seating equal to '75000.0' and name equal to 'Chicagoland Speedway' and year opened at least '2001.0'?"
+  },
+  {
+   "uid": "833693b3-337c-4905-90d8-8ab47333a135",
+   "question": "Where can I find tracks named Daytona International Speedway located in Daytona Beach with seating of at least 168000 and opened in 1959 or later?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT track.track_id FROM track\nWHERE track.location LIKE '%Daytona Beach%' AND track.seating >= 168000.0 AND track.name = 'Daytona International Speedway' AND track.year_opened >= 1959.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "track"
+   ],
+   "involved_columns": [
+    "track.location",
+    "track.seating",
+    "track.name",
+    "track.year_opened"
+   ],
+   "involved_filters": [
+    {
+     "table": "track",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Daytona Beach",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "track",
+     "column": "seating",
+     "operator": ">=",
+     "value": 168000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "track",
+     "column": "name",
+     "operator": "=",
+     "value": "Daytona International Speedway",
+     "column_type": "enum"
+    },
+    {
+     "table": "track",
+     "column": "year_opened",
+     "operator": ">=",
+     "value": 1959.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "track.location": "Daytona Beach",
+    "track.seating": 168000.0,
+    "track.name": "Daytona International Speedway",
+    "track.year_opened": 1959.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "track"
+   },
+   "answer_table": "track",
+   "answer_id_column": "track_id",
+   "canonical_question": "Which track entities with location matching '%Daytona Beach%' and seating at least '168000.0' and name equal to 'Daytona International Speedway' and year opened at least '1959.0'?"
+  }
+ ]
+}

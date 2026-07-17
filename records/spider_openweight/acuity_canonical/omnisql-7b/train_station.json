@@ -1,0 +1,124 @@
+{
+  "db_id": "train_station",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:57:06.973969+00:00",
+  "records": [
+    {
+      "uid": "086c9fb0-1def-498e-a915-70ce6081d89b",
+      "question": "Which stations named East Croydon have exactly 6.341 annual interchanges, exactly 20.551 annual entry and exit, no more than 6 platforms, and whose main services are Brighton Main Line?",
+      "gold_sql": "SELECT station.station_id FROM station\nJOIN train_station ON station.station_id = train_station.station_id\nWHERE station.name = 'East Croydon' AND station.annual_interchanges = 6.341 AND station.annual_entry_exit = 20.551 AND station.number_of_platforms <= 6 AND station.main_services = 'Brighton Main Line'",
+      "pred_sql": "SELECT station.Station_ID\nFROM station\nINNER JOIN train_station ON station.Station_ID = train_station.Station_ID\nWHERE station.Name = 'East Croydon'\n  AND station.Annual_interchanges = 6.341\n  AND station.Annual_entry_exit = 20.551\n  AND station.Number_of_Platforms <= 6\n  AND station.Main_Services = 'Brighton Main Line'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 59.2
+    },
+    {
+      "uid": "18db7000-b636-4ff7-a6ec-8ef5716872a0",
+      "question": "Which stations have at least 85.38 total passengers and annual interchanges of 9.157 or more?",
+      "gold_sql": "SELECT station.station_id FROM station\nJOIN train_station ON station.station_id = train_station.station_id\nWHERE station.total_passengers >= 85.38 AND station.annual_interchanges >= 9.157",
+      "pred_sql": "SELECT DISTINCT station.Station_ID\nFROM station\nINNER JOIN train_station ON station.Station_ID = train_station.Station_ID\nWHERE station.Total_Passengers >= 85.38\n  AND station.Annual_interchanges >= 9.157",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 51.38
+    },
+    {
+      "uid": "1915e2bd-b36f-4935-b2b8-11748efff0f2",
+      "question": "Which stations in London have no more than 3.832 annual interchanges, at most 40.44 total passengers, and are served by trains where the time is exactly 11:15?",
+      "gold_sql": "SELECT station.station_id FROM station\nJOIN train_station ON station.station_id = train_station.station_id\nJOIN train ON train_station.train_id = train.train_id\nWHERE train.time = '11:15' AND station.annual_interchanges <= 3.832 AND station.location = 'London' AND station.total_passengers <= 40.44",
+      "pred_sql": "SELECT DISTINCT station.station_id\nFROM station\nINNER JOIN train_station ON station.station_id = train_station.station_id\nINNER JOIN train ON train_station.train_id = train.train_id\nWHERE station.annual_interchanges <= 3.832\n  AND station.location = 'London'\n  AND station.total_passengers <= 40.44\n  AND train.time = '11:15'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 61.34
+    },
+    {
+      "uid": "1fa2ca7d-4c0a-4690-8781-665e10096645",
+      "question": "Where is the station named London Euston that has exactly 3.832 annual interchanges, at most 40.44 total passengers, at most 18 platforms, and at least 36.609 annual entry and exit?",
+      "gold_sql": "SELECT station.station_id FROM station\nWHERE station.annual_interchanges = 3.832 AND station.total_passengers <= 40.44 AND station.number_of_platforms <= 18 AND station.name = 'London Euston' AND station.annual_entry_exit >= 36.609",
+      "pred_sql": "SELECT station_id\nFROM station\nWHERE Annual_interchanges = 3.832\n  AND Total_Passengers <= 40.44\n  AND Number_of_Platforms <= 18\n  AND Name = 'London Euston'\n  AND Annual_entry_exit >= 36.609",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 51.31
+    },
+    {
+      "uid": "5ffd41de-a402-42e1-9439-e91af806dbe1",
+      "question": "Which stations named London St Pancras in London have exactly 15 platforms, serve Midland Main Line Thameslink High-Speed 1 Eurostar, and have at least 22.996 annual entry-exits, 3.676 interchanges, and 26.672 total passengers?",
+      "gold_sql": "SELECT station.station_id FROM station\nWHERE station.annual_entry_exit >= 22.996 AND station.annual_interchanges >= 3.676 AND station.name = 'London St Pancras' AND station.location = 'London' AND station.number_of_platforms = 15 AND station.main_services = 'Midland Main Line Thameslink High-Speed 1 Eurostar' AND station.total_passengers >= 26.672",
+      "pred_sql": "SELECT Station_ID\nFROM station\nWHERE Annual_entry_exit >= 22.996\n  AND Annual_interchanges >= 3.676\n  AND Name = 'London St Pancras'\n  AND Location = 'London'\n  AND Number_of_Platforms = 15\n  AND Main_Services = 'Midland Main Line Thameslink High-Speed 1 Eurostar'\n  AND Total_Passengers >= 26.672",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 54.76
+    },
+    {
+      "uid": "66d96691-9081-4516-bf1c-523a3f39e8a0",
+      "question": "Which stations provide services exactly on the South Western Main Line West of England Main Line?",
+      "gold_sql": "SELECT station.station_id FROM station\nJOIN train_station ON station.station_id = train_station.station_id\nJOIN train ON train_station.train_id = train.train_id\nWHERE station.main_services = 'South Western Main Line West of England Main Line'",
+      "pred_sql": "SELECT DISTINCT station.Station_ID\nFROM station\nINNER JOIN train_station ON station.Station_ID = train_station.Station_ID\nWHERE station.Main_Services = 'South Western Main Line West of England Main Line'\n  AND EXISTS (\n    SELECT 1\n    FROM train\n    WHERE train.Train_ID = train_station.Train_ID\n  )",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 53.25
+    },
+    {
+      "uid": "67097b02-ec97-4c0c-9340-b4c46cd5bd69",
+      "question": "What stations have main services exactly Brighton Main Line Chatham Main Line with annual interchanges exactly 9.157?",
+      "gold_sql": "SELECT station.station_id FROM station\nWHERE station.main_services = 'Brighton Main Line Chatham Main Line' AND station.annual_interchanges = 9.157",
+      "pred_sql": "SELECT station_id \nFROM station \nWHERE main_services = 'Brighton Main Line Chatham Main Line' \n  AND annual_interchanges = 9.157",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 32.47
+    },
+    {
+      "uid": "6eece4f6-f810-4030-bd6d-9ecdab8184e4",
+      "question": "What stations named Glasgow Central in Glasgow have at least 3.018 annual interchanges, at most 17 platforms, serve the West Coast Main Line, and connect with the Island Express train running daily at 16:59?",
+      "gold_sql": "SELECT station.station_id FROM station\nJOIN train_station ON station.station_id = train_station.station_id\nJOIN train ON train_station.train_id = train.train_id\nWHERE train.service = 'Daily' AND train.time = '16:59' AND station.annual_interchanges >= 3.018 AND station.location = 'Glasgow' AND station.main_services = 'West Coast Main Line' AND train.name = 'Island Express' AND station.name = 'Glasgow Central' AND station.number_of_platforms <= 17",
+      "pred_sql": "SELECT DISTINCT s.station_id\nFROM station s\nINNER JOIN train_station ts ON s.station_id = ts.station_id\nINNER JOIN train t ON ts.train_id = t.train_id\nWHERE s.annual_interchanges >= 3.018\n  AND s.location = 'Glasgow'\n  AND s.main_services = 'West Coast Main Line'\n  AND s.name = 'Glasgow Central'\n  AND s.number_of_platforms <= 17\n  AND t.service = 'Daily'\n  AND t.time = '16:59'\n  AND t.name = 'Island Express'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 65.65
+    },
+    {
+      "uid": "82e1386c-ed4e-45b5-97b8-471c41db67f2",
+      "question": "What stations named London St Pancras have exactly 3.676 annual interchanges?",
+      "gold_sql": "SELECT station.station_id FROM station\nWHERE station.annual_interchanges = 3.676 AND station.name = 'London St Pancras'",
+      "pred_sql": "SELECT Station_ID \nFROM station \nWHERE Annual_interchanges = 3.676 \n  AND Name = 'London St Pancras'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 27.73
+    },
+    {
+      "uid": "f933f36a-62b4-45d0-b63e-7288ef7db65f",
+      "question": "Which stations named London Waterloo located in London have at most 103.534 total passengers, at least 94.046 annual entry and exit, exactly 9.489 annual interchanges, at least 19 platforms, and whose main services are South Western Main Line West of England Main Line?",
+      "gold_sql": "SELECT station.station_id FROM station\nJOIN train_station ON station.station_id = train_station.station_id\nWHERE station.total_passengers <= 103.534 AND station.annual_entry_exit >= 94.046 AND station.annual_interchanges = 9.489 AND station.number_of_platforms >= 19 AND station.name = 'London Waterloo' AND station.main_services = 'South Western Main Line West of England Main Line' AND station.location = 'London'",
+      "pred_sql": "SELECT station.station_id\nFROM station\nINNER JOIN train_station ON station.Station_ID = train_station.Station_ID\nWHERE station.Total_Passengers <= 103.534\n  AND station.Annual_entry_exit >= 94.046\n  AND station.Annual_interchanges = 9.489\n  AND station.Number_of_Platforms >= 19\n  AND station.Name = 'London Waterloo'\n  AND station.Main_Services = 'South Western Main Line West of England Main Line'\n  AND station.Location = 'London'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 62.99
+    }
+  ]
+}

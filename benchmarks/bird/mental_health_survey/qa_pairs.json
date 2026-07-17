@@ -1,0 +1,2927 @@
+{
+ "db_id": "mental_health_survey",
+ "target_table": "answer",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 2130463212,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/mental_health_survey/mental_health_survey.sqlite",
+  "generated_at": "2026-07-02T11:24:09.423151+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "answer",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 25,
+   "0M": 25
+  },
+  "realized_counts": {
+   "0E": 25,
+   "0M": 25
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 35,
+    "inner_attempts": 166,
+    "failed_rounds": 10,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3,
+     "result_size_out_of_range": 7
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   },
+   "0M": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 30,
+    "inner_attempts": 65,
+    "failed_rounds": 5,
+    "invalid_pairs_filtered": 5,
+    "failure_events": {
+     "qa_validation_failed": 5
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "cd1773db-0593-40a6-8fcb-b6f75059a6bb",
+   "question": "Which answers correspond exactly to question 56 from surveys conducted in 2017 or later?",
+   "answer_row_ids": [
+    "Yes, I experienced",
+    "Yes, I observed",
+    "Maybe/Not sure",
+    "No",
+    "I've always been self-employed",
+    "-1"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 56 AND answer.surveyid >= 2017",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 56,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2017,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 56,
+    "answer.surveyid": 2017
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '56' and surveyid at least '2017'?"
+  },
+  {
+   "uid": "fa11bbd5-2de6-4e21-b52c-22f81640de10",
+   "question": "Which answers correspond exactly to question 15 and come from users with IDs at most 1960?",
+   "answer_row_ids": [
+    "No",
+    "Yes",
+    "-1",
+    "I don't know"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 15 AND answer.userid <= 1960",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 1960,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 15,
+    "answer.userid": 1960
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '15' and userid at most '1960'?"
+  },
+  {
+   "uid": "90323958-8be9-4c01-8c9a-20a7eebe0d7a",
+   "question": "Which answers were given by user 1695 for questions numbered 110 or higher?",
+   "answer_row_ids": [
+    "No, at none of my previous employers",
+    "I don't know",
+    "None of them",
+    "Maybe",
+    "Sometimes",
+    "-1",
+    "Mood Disorder (Depression, Bipolar Disorder, etc)",
+    "Executive Leadership"
+   ],
+   "answer_count": 8,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid >= 110 AND answer.userid = 1695",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 110,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 1695,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 110,
+    "answer.userid": 1695
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at least '110' and userid equal to '1695'?"
+  },
+  {
+   "uid": "3469b659-5c72-49b6-b189-de6bf747db6e",
+   "question": "Which answers are associated exactly with question 102?",
+   "answer_row_ids": [
+    "No",
+    "Yes"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 102",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 102,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 102
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '102'?"
+  },
+  {
+   "uid": "743a37f9-be1a-42c7-abc4-7069ebfaf8fd",
+   "question": "What answers were provided by the user whose ID is exactly 240?",
+   "answer_row_ids": [
+    "28",
+    "Female",
+    "Canada",
+    "-1",
+    "0",
+    "Yes",
+    "1",
+    "6-25",
+    "No",
+    "Sometimes",
+    "Don't know",
+    "Some of them"
+   ],
+   "answer_count": 12,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 240",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 240,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 240
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '240'?"
+  },
+  {
+   "uid": "5156019f-2062-42c6-b2c9-318ce4eb876a",
+   "question": "What answers did user 854 provide in surveys from 2014 or earlier?",
+   "answer_row_ids": [
+    "26",
+    "Male",
+    "Canada",
+    "-1",
+    "0",
+    "No",
+    "6-25",
+    "1",
+    "Don't know",
+    "Maybe",
+    "Sometimes",
+    "Yes",
+    "Very difficult",
+    "Some of them"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid <= 2014 AND answer.userid = 854",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "<=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 854,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2014,
+    "answer.userid": 854
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at most '2014' and userid equal to '854'?"
+  },
+  {
+   "uid": "f6ef34cf-0557-4071-8369-e8a3bec7f915",
+   "question": "What answers were provided by user 3182 for questions numbered 86 or higher?",
+   "answer_row_ids": [
+    "-1",
+    "0",
+    "White"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 3182 AND answer.questionid >= 86",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 3182,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 86,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 3182,
+    "answer.questionid": 86
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '3182' and questionid at least '86'?"
+  },
+  {
+   "uid": "1a2c9288-0466-4590-af31-c620fcce9d3a",
+   "question": "What answers are associated with question 33?",
+   "answer_row_ids": [
+    "No",
+    "Yes",
+    "Maybe",
+    "Possibly",
+    "Don't Know"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 33",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 33,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 33
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '33'?"
+  },
+  {
+   "uid": "89664d70-1480-4650-9ee9-2750ec5a0341",
+   "question": "What answers are associated with question ID 95?",
+   "answer_row_ids": [
+    "No",
+    "Don't know",
+    "Yes"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 95",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 95,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 95
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '95'?"
+  },
+  {
+   "uid": "81cb9a94-28fb-4125-b831-7d7cd504f265",
+   "question": "Which answers are associated exactly with question 108?",
+   "answer_row_ids": [
+    "Some of them",
+    "None of them",
+    "I don't know",
+    "Yes, all of them",
+    "-1"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 108",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 108,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 108
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '108'?"
+  },
+  {
+   "uid": "95eb0b84-9c08-4904-ace5-583d17005299",
+   "question": "Which answers were provided by the user whose ID is exactly 990?",
+   "answer_row_ids": [
+    "8",
+    "A little about you",
+    "Bahamas, The",
+    "Illinois",
+    "1",
+    "Yes",
+    "1-5",
+    "Often",
+    "Very easy",
+    "-1"
+   ],
+   "answer_count": 10,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 990",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 990,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 990
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '990'?"
+  },
+  {
+   "uid": "a1e11ca5-220d-4c22-9a00-f0f3f1e1adee",
+   "question": "Which answers are associated exactly with question 18?",
+   "answer_row_ids": [
+    "Maybe",
+    "-1",
+    "Yes",
+    "No"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 18",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 18,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 18
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '18'?"
+  },
+  {
+   "uid": "e6ea5d0a-0378-48aa-a592-fccddd0919ee",
+   "question": "Which answers did user 923 provide for questions numbered 98 or higher?",
+   "answer_row_ids": [
+    "Maybe",
+    "Some of them",
+    "No",
+    "-1"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid >= 98 AND answer.userid = 923",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 98,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 923,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 98,
+    "answer.userid": 923
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at least '98' and userid equal to '923'?"
+  },
+  {
+   "uid": "33985df1-e5a4-4230-9226-69ff9c0b1c5f",
+   "question": "Which answers come from surveys numbered 2016 or higher that are specifically for question 5?",
+   "answer_row_ids": [
+    "0",
+    "1"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid >= 2016 AND answer.questionid = 5",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2016,
+    "answer.questionid": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at least '2016' and questionid equal to '5'?"
+  },
+  {
+   "uid": "b6d45592-d0e8-4099-ada4-291ceefd6aef",
+   "question": "Which answers come from user 3708 for questions numbered 22 or fewer?",
+   "answer_row_ids": [
+    "46",
+    "Male",
+    "Norway",
+    "-1",
+    "0",
+    "No",
+    "1",
+    "6-25",
+    "I don't know",
+    "Yes",
+    "Neither easy nor difficult"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid <= 22 AND answer.userid = 3708",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 3708,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 22,
+    "answer.userid": 3708
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at most '22' and userid equal to '3708'?"
+  },
+  {
+   "uid": "3f20f154-d36a-460d-a415-10448851c96d",
+   "question": "Which answers were provided by user 211 in survey 2014?",
+   "answer_row_ids": [
+    "40",
+    "Female",
+    "United States",
+    "DC",
+    "0",
+    "No",
+    "26-100",
+    "1",
+    "Yes",
+    "-1",
+    "Somewhat easy",
+    "Some of them"
+   ],
+   "answer_count": 12,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 211 AND answer.surveyid = 2014",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 211,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2014,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 211,
+    "answer.surveyid": 2014
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '211' and surveyid equal to '2014'?"
+  },
+  {
+   "uid": "6bf54be4-5485-4d85-8777-93964bdd25be",
+   "question": "Which answers are associated with question 26?",
+   "answer_row_ids": [
+    "None did",
+    "Some did",
+    "-1",
+    "Yes, they all did"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 26",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 26,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 26
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '26'?"
+  },
+  {
+   "uid": "c1fe6406-66a4-4a53-945a-65a63ff9a978",
+   "question": "Which answers did user 2333 provide for question IDs 49 or higher?",
+   "answer_row_ids": [
+    "Sometimes",
+    "United States of America",
+    "Massachusetts",
+    "-1",
+    "No",
+    "Maybe",
+    "Yes",
+    "Yes, all of them",
+    "None of them",
+    "No, at none of my previous employers",
+    "None did",
+    "Yes, I think it would",
+    "Yes, I think they would",
+    "Mood Disorder (Depression, Bipolar Disorder, etc)",
+    "Support"
+   ],
+   "answer_count": 15,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 2333 AND answer.questionid >= 49",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 2333,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 49,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 2333,
+    "answer.questionid": 49
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '2333' and questionid at least '49'?"
+  },
+  {
+   "uid": "6ef8f32f-6fc1-4a91-992d-f27fa714eb7c",
+   "question": "What answers did user 2234 give for question 26?",
+   "answer_row_ids": [
+    "None did"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 2234 AND answer.questionid = 26",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 2234,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 26,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 2234,
+    "answer.questionid": 26
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '2234' and questionid equal to '26'?"
+  },
+  {
+   "uid": "80a566a7-47a3-40ab-a31b-867cfcaefb58",
+   "question": "Which answers come from user 1614 for questions numbered at most 15?",
+   "answer_row_ids": [
+    "39",
+    "Male",
+    "Denmark",
+    "-1",
+    "1",
+    "No",
+    "0",
+    "Yes"
+   ],
+   "answer_count": 8,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid <= 15 AND answer.userid = 1614",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 1614,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 15,
+    "answer.userid": 1614
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at most '15' and userid equal to '1614'?"
+  },
+  {
+   "uid": "0696a1c3-0e98-484a-8529-8ef6418dd26b",
+   "question": "Which answers are associated exactly with question 17?",
+   "answer_row_ids": [
+    "Very easy",
+    "Somewhat easy",
+    "Neither easy nor difficult",
+    "-1",
+    "Very difficult",
+    "Somewhat difficult",
+    "I don't know",
+    "Difficult"
+   ],
+   "answer_count": 8,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 17",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 17,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 17
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '17'?"
+  },
+  {
+   "uid": "a6e66f66-5718-4e73-a07f-c94cc10068a2",
+   "question": "Which answers were given by user 2627 for question 1?",
+   "answer_row_ids": [
+    "30"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 2627 AND answer.questionid = 1",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 2627,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 2627,
+    "answer.questionid": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '2627' and questionid equal to '1'?"
+  },
+  {
+   "uid": "40a9f4b4-e453-42da-bdb5-bc65a82f850b",
+   "question": "What answers did user 1758 provide for questions numbered 56 or higher?",
+   "answer_row_ids": [
+    "No",
+    "Maybe",
+    "Yes",
+    "-1",
+    "I don't know",
+    "Some of them",
+    "Some of my previous employers",
+    "Some did",
+    "Yes, I think it would",
+    "Sometimes",
+    "DevOps/SysAdmin"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 1758 AND answer.questionid >= 56",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 1758,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 56,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 1758,
+    "answer.questionid": 56
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '1758' and questionid at least '56'?"
+  },
+  {
+   "uid": "8d6532b2-7747-497b-ab20-4eae79fbf26b",
+   "question": "What answers were given for question 92 in survey 2014?",
+   "answer_row_ids": [
+    "Often",
+    "Rarely",
+    "Never",
+    "Sometimes",
+    "-1"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 92 AND answer.surveyid = 2014",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 92,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2014,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 92,
+    "answer.surveyid": 2014
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '92' and surveyid equal to '2014'?"
+  },
+  {
+   "uid": "30b494d5-9d2d-49bb-9726-a43f0a616160",
+   "question": "Which answers come from surveys conducted in 2016 or later where the question is exactly 30?",
+   "answer_row_ids": [
+    "Somewhat open",
+    "Neutral",
+    "Not applicable to me (I do not have a mental illness)",
+    "Very open",
+    "Not open at all",
+    "Somewhat not open"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid >= 2016 AND answer.questionid = 30",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 30,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2016,
+    "answer.questionid": 30
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at least '2016' and questionid equal to '30'?"
+  },
+  {
+   "uid": "64259dc9-0034-4a75-a15e-5853903593cc",
+   "question": "Which answers come from survey 2016 for question 107 submitted by users with IDs at most 1573?",
+   "answer_row_ids": [
+    "-1",
+    "I'm not sure",
+    "No",
+    "Yes",
+    "Not applicable to me"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 107 AND answer.surveyid = 2016 AND answer.userid <= 1573",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 107,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 1573,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 107,
+    "answer.surveyid": 2016,
+    "answer.userid": 1573
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '107' and surveyid equal to '2016' and userid at most '1573'?"
+  },
+  {
+   "uid": "a5414fe0-b55d-4ec1-a60f-c624b0dc4f9a",
+   "question": "Which answers did user 386 provide for questions numbered at most 90 in surveys from 2014 or later?",
+   "answer_row_ids": [
+    "27",
+    "Female",
+    "United States",
+    "Colorado",
+    "0",
+    "Yes",
+    "1",
+    "More than 1000",
+    "Don't know",
+    "No",
+    "Maybe"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid <= 90 AND answer.surveyid >= 2014 AND answer.userid = 386",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 90,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 386,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 90,
+    "answer.surveyid": 2014,
+    "answer.userid": 386
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at most '90' and surveyid at least '2014' and userid equal to '386'?"
+  },
+  {
+   "uid": "27fc44fa-b3b6-47b0-b25b-e9f4933f84ac",
+   "question": "Which answers come from users with IDs at most 3147 for question 9 in surveys from 2017 or later?",
+   "answer_row_ids": [
+    "1",
+    "-1",
+    "0"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid <= 3147 AND answer.questionid = 9 AND answer.surveyid >= 2017",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 3147,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 9,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2017,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 3147,
+    "answer.questionid": 9,
+    "answer.surveyid": 2017
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid at most '3147' and questionid equal to '9' and surveyid at least '2017'?"
+  },
+  {
+   "uid": "20236adf-d5bc-4ac1-9997-933287a16d16",
+   "question": "Which answers come from users with IDs at least 1378 in surveys numbered at most 2016 for question 24?",
+   "answer_row_ids": [
+    "N/A (not currently aware)",
+    "I was aware of some",
+    "Yes, I was aware of all of them",
+    "No, I only became aware later",
+    "-1"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid >= 1378 AND answer.surveyid <= 2016 AND answer.questionid = 24",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.surveyid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": ">=",
+     "value": 1378,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 24,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 1378,
+    "answer.surveyid": 2016,
+    "answer.questionid": 24
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid at least '1378' and surveyid at most '2016' and questionid equal to '24'?"
+  },
+  {
+   "uid": "98e88750-1f14-4e47-9af6-12b4c4459e61",
+   "question": "Which answers did user 1651 provide for question 20 in survey 2016?",
+   "answer_row_ids": [
+    "-1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid = 2016 AND answer.questionid = 20 AND answer.userid = 1651",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 20,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 1651,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2016,
+    "answer.questionid": 20,
+    "answer.userid": 1651
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid equal to '2016' and questionid equal to '20' and userid equal to '1651'?"
+  },
+  {
+   "uid": "4c24925b-32a0-4d7c-88f5-95bf30a4a544",
+   "question": "Which answers come from user 460 in surveys numbered 2014 or less and for questions numbered at most 8?",
+   "answer_row_ids": [
+    "37",
+    "Male",
+    "United States",
+    "Oregon",
+    "0",
+    "No",
+    "500-1000"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 460 AND answer.surveyid <= 2014 AND answer.questionid <= 8",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.surveyid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 460,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "<=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 460,
+    "answer.surveyid": 2014,
+    "answer.questionid": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '460' and surveyid at most '2014' and questionid at most '8'?"
+  },
+  {
+   "uid": "787a8a94-8841-44f9-a59d-faa155521d07",
+   "question": "Which answers did user 2654 provide in survey 2016 for questions numbered 12 or fewer?",
+   "answer_row_ids": [
+    "22",
+    "Agender",
+    "United States of America",
+    "Virginia",
+    "0",
+    "Yes",
+    "1",
+    "More than 1000",
+    "Not eligible for coverage / NA",
+    "Maybe"
+   ],
+   "answer_count": 10,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid <= 12 AND answer.surveyid = 2016 AND answer.userid = 2654",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 2654,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 12,
+    "answer.surveyid": 2016,
+    "answer.userid": 2654
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at most '12' and surveyid equal to '2016' and userid equal to '2654'?"
+  },
+  {
+   "uid": "fff611f4-1bcf-47b1-8f87-ec279841a4a5",
+   "question": "Which answers did user 3128 provide for question 65 in surveys from 2017 or later?",
+   "answer_row_ids": [
+    "2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid >= 2017 AND answer.questionid = 65 AND answer.userid = 3128",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2017,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 65,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 3128,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2017,
+    "answer.questionid": 65,
+    "answer.userid": 3128
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at least '2017' and questionid equal to '65' and userid equal to '3128'?"
+  },
+  {
+   "uid": "81618253-4d32-4447-9bfb-6c9eb282ff47",
+   "question": "What answers did user 731 provide for survey 2014 on questions numbered 96 or higher?",
+   "answer_row_ids": [
+    "No",
+    "Don't know",
+    "Yes",
+    "-1"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid = 2014 AND answer.userid = 731 AND answer.questionid >= 96",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 731,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 96,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2014,
+    "answer.userid": 731,
+    "answer.questionid": 96
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid equal to '2014' and userid equal to '731' and questionid at least '96'?"
+  },
+  {
+   "uid": "ab5a7e3f-bbb1-4ea9-aacb-47ae6a67754e",
+   "question": "Which answers come from users with IDs at most 3117 for question 68 in survey 2017?",
+   "answer_row_ids": [
+    "0",
+    "1",
+    "-1"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid <= 3117 AND answer.questionid = 68 AND answer.surveyid = 2017",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 3117,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 68,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2017,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 3117,
+    "answer.questionid": 68,
+    "answer.surveyid": 2017
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid at most '3117' and questionid equal to '68' and surveyid equal to '2017'?"
+  },
+  {
+   "uid": "0567934f-9a13-4186-b433-51e923b401cd",
+   "question": "Which answers come from question 12 in surveys numbered 2016 or higher and by users with IDs at most 1611?",
+   "answer_row_ids": [
+    "Maybe",
+    "No",
+    "Yes"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid >= 2016 AND answer.userid <= 1611 AND answer.questionid = 12",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 1611,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 12,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2016,
+    "answer.userid": 1611,
+    "answer.questionid": 12
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at least '2016' and userid at most '1611' and questionid equal to '12'?"
+  },
+  {
+   "uid": "f56a5478-aaeb-4f46-a4df-84e707f1ea25",
+   "question": "Which answers did user 2449 provide for question IDs of at least 28 in surveys numbered no more than 2016?",
+   "answer_row_ids": [
+    "Yes, at all of my previous employers",
+    "Yes",
+    "Somewhat open",
+    "-1",
+    "No",
+    "Not applicable to me",
+    "Sweden",
+    "I don't know",
+    "Some of them",
+    "None of them",
+    "Maybe",
+    "No, I don't think they would",
+    "Always",
+    "Back-end Developer"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 2449 AND answer.questionid >= 28 AND answer.surveyid <= 2016",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 2449,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 28,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 2449,
+    "answer.questionid": 28,
+    "answer.surveyid": 2016
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '2449' and questionid at least '28' and surveyid at most '2016'?"
+  },
+  {
+   "uid": "698f1522-d565-41e3-acb9-46a0f9a9da4e",
+   "question": "What answers were given for question 49 in survey 2017 by users with userid at most 3355?",
+   "answer_row_ids": [
+    "Sometimes",
+    "Often",
+    "Not applicable to me",
+    "Rarely",
+    "Never"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid <= 3355 AND answer.questionid = 49 AND answer.surveyid = 2017",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 3355,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 49,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2017,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 3355,
+    "answer.questionid": 49,
+    "answer.surveyid": 2017
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid at most '3355' and questionid equal to '49' and surveyid equal to '2017'?"
+  },
+  {
+   "uid": "8eb523d5-a368-4138-8b80-347ff00a5f43",
+   "question": "Which answers come from survey 2018 for question 70 given by users with IDs at most 3785?",
+   "answer_row_ids": [
+    "0",
+    "-1",
+    "1"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 70 AND answer.userid <= 3785 AND answer.surveyid = 2018",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.userid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 70,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 3785,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2018,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 70,
+    "answer.userid": 3785,
+    "answer.surveyid": 2018
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '70' and userid at most '3785' and surveyid equal to '2018'?"
+  },
+  {
+   "uid": "e28671ab-e955-498f-8547-b025e08b2439",
+   "question": "What answers did user 3667 provide for survey 2018 for questions numbered 22 or fewer?",
+   "answer_row_ids": [
+    "43",
+    "Male",
+    "United States of America",
+    "Nebraska",
+    "0",
+    "No",
+    "1",
+    "6-25",
+    "Yes",
+    "Very easy",
+    "-1"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid = 2018 AND answer.questionid <= 22 AND answer.userid = 3667",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2018,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 3667,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2018,
+    "answer.questionid": 22,
+    "answer.userid": 3667
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid equal to '2018' and questionid at most '22' and userid equal to '3667'?"
+  },
+  {
+   "uid": "cf32c938-4556-4cd2-9323-e571157370fe",
+   "question": "Which answers are from question 30 in surveys from 2018 or later by users with IDs at least 3544?",
+   "answer_row_ids": [
+    "Very open",
+    "Not open at all",
+    "Somewhat not open",
+    "Somewhat open",
+    "Neutral"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid = 30 AND answer.surveyid >= 2018 AND answer.userid >= 3544",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 30,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2018,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": ">=",
+     "value": 3544,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 30,
+    "answer.surveyid": 2018,
+    "answer.userid": 3544
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid equal to '30' and surveyid at least '2018' and userid at least '3544'?"
+  },
+  {
+   "uid": "57dd6741-ea8e-4b46-8cae-a3a8506af558",
+   "question": "Which answers come from users with IDs at most 4103 for survey 2019 when the question is exactly 8?",
+   "answer_row_ids": [
+    "26-100",
+    "100-500",
+    "-1",
+    "6-25",
+    "More than 1000",
+    "500-1000",
+    "1-5"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid <= 4103 AND answer.surveyid = 2019 AND answer.questionid = 8",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.surveyid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "<=",
+     "value": 4103,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2019,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 4103,
+    "answer.surveyid": 2019,
+    "answer.questionid": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid at most '4103' and surveyid equal to '2019' and questionid equal to '8'?"
+  },
+  {
+   "uid": "b91c08d1-788a-43e5-a30e-558195a3488a",
+   "question": "Which answers from survey 2019 were given by user 3943 for question IDs 23 or higher?",
+   "answer_row_ids": [
+    "-1",
+    "No",
+    "Somewhat open",
+    "Possibly",
+    "Not applicable to me",
+    "Portugal",
+    "Physical health",
+    "0",
+    "6",
+    "3"
+   ],
+   "answer_count": 10,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid >= 23 AND answer.surveyid = 2019 AND answer.userid = 3943",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2019,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 3943,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 23,
+    "answer.surveyid": 2019,
+    "answer.userid": 3943
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at least '23' and surveyid equal to '2019' and userid equal to '3943'?"
+  },
+  {
+   "uid": "36fb8a3d-b705-4356-aed1-a19ccee8e88e",
+   "question": "Which answers come from user 374 for survey 2014 or later and question ID at least 103?",
+   "answer_row_ids": [
+    "My employer does what they can providing a wellness program and pointing it out after particularly stressful times. But the interaction between the wellness program and the medical insurance is unpleasant, and finding a long-term therapist / psychiatrist covered by insurance is amazingly difficult. My current lack of active treatment is due to insurance friction more than workplace friction."
+   ],
+   "answer_count": 1,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 374 AND answer.questionid >= 103 AND answer.surveyid >= 2014",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 374,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": ">=",
+     "value": 103,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2014,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 374,
+    "answer.questionid": 103,
+    "answer.surveyid": 2014
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '374' and questionid at least '103' and surveyid at least '2014'?"
+  },
+  {
+   "uid": "f15b6998-2fc8-4041-b329-043568b9270b",
+   "question": "Which answers come from user 2855 in surveys numbered 2017 or fewer and questions numbered 3 or fewer?",
+   "answer_row_ids": [
+    "24",
+    "female",
+    "Jordan"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid <= 2017 AND answer.userid = 2855 AND answer.questionid <= 3",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "<=",
+     "value": 2017,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 2855,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2017,
+    "answer.userid": 2855,
+    "answer.questionid": 3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at most '2017' and userid equal to '2855' and questionid at most '3'?"
+  },
+  {
+   "uid": "44e21453-59ee-4502-be0e-20ab0176907e",
+   "question": "Which answers come from user 1505 in survey 2016 for questions numbered at most 17?",
+   "answer_row_ids": [
+    "33",
+    "Male",
+    "Germany",
+    "-1",
+    "1",
+    "No",
+    "0",
+    "Maybe"
+   ],
+   "answer_count": 8,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.questionid <= 17 AND answer.surveyid = 2016 AND answer.userid = 1505",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.questionid",
+    "answer.surveyid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 17,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 1505,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.questionid": 17,
+    "answer.surveyid": 2016,
+    "answer.userid": 1505
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with questionid at most '17' and surveyid equal to '2016' and userid equal to '1505'?"
+  },
+  {
+   "uid": "fc3550de-64c4-4eff-bf74-14b7f65ac906",
+   "question": "Which answers did user 496 provide for questions numbered at most 5 in surveys from 2014 or later?",
+   "answer_row_ids": [
+    "23",
+    "Female",
+    "United States",
+    "New York",
+    "0"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid >= 2014 AND answer.questionid <= 5 AND answer.userid = 496",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.questionid",
+    "answer.userid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 496,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2014,
+    "answer.questionid": 5,
+    "answer.userid": 496
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at least '2014' and questionid at most '5' and userid equal to '496'?"
+  },
+  {
+   "uid": "001028d0-b9c7-4e35-9bbc-3530bc65d1e4",
+   "question": "Which answers did user 555 give for question 5 in survey 2014?",
+   "answer_row_ids": [
+    "0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid = 555 AND answer.questionid = 5 AND answer.surveyid = 2014",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.questionid",
+    "answer.surveyid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": "=",
+     "value": 555,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "=",
+     "value": 2014,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 555,
+    "answer.questionid": 5,
+    "answer.surveyid": 2014
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid equal to '555' and questionid equal to '5' and surveyid equal to '2014'?"
+  },
+  {
+   "uid": "30a91eb6-b358-403c-82db-daaffdbd42cf",
+   "question": "What answers to question 13 come from users with IDs at least 2577 and surveys numbered at most 2016?",
+   "answer_row_ids": [
+    "-1",
+    "1"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.userid >= 2577 AND answer.surveyid <= 2016 AND answer.questionid = 13",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.userid",
+    "answer.surveyid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": ">=",
+     "value": 2577,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 13,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.userid": 2577,
+    "answer.surveyid": 2016,
+    "answer.questionid": 13
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with userid at least '2577' and surveyid at most '2016' and questionid equal to '13'?"
+  },
+  {
+   "uid": "d6501932-36cf-4368-83a1-9b414a93b065",
+   "question": "What answers come from surveys with an ID of at least 2016 and users with an ID of at least 2114 for question 10?",
+   "answer_row_ids": [
+    "I don't know",
+    "Yes",
+    "-1",
+    "No",
+    "Not eligible for coverage / NA"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT answer.answertext FROM answer\nWHERE answer.surveyid >= 2016 AND answer.userid >= 2114 AND answer.questionid = 10",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "answer"
+   ],
+   "involved_columns": [
+    "answer.surveyid",
+    "answer.userid",
+    "answer.questionid"
+   ],
+   "involved_filters": [
+    {
+     "table": "answer",
+     "column": "surveyid",
+     "operator": ">=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "userid",
+     "operator": ">=",
+     "value": 2114,
+     "column_type": "numeric"
+    },
+    {
+     "table": "answer",
+     "column": "questionid",
+     "operator": "=",
+     "value": 10,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "answer.surveyid": 2016,
+    "answer.userid": 2114,
+    "answer.questionid": 10
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "answer"
+   },
+   "answer_table": "answer",
+   "answer_id_column": "answertext",
+   "canonical_question": "Which answer entities with surveyid at least '2016' and userid at least '2114' and questionid equal to '10'?"
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "talkingdata",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 6,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:32:31.422831+00:00",
+  "records": [
+    {
+      "uid": "349e667f-e2e5-432e-baa7-b6efa81c2450",
+      "question": "What apps are active with at least 1 activity, installed at most once, and have events exactly at latitude 1.0, longitude 1.0, and timestamp 2330237574372846585?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.longitude = 1.0 AND events_relevant.timestamp = 2330237574372846585 AND app_events_relevant.is_installed <= 1 AND events_relevant.latitude = 1.0 AND app_events_relevant.is_active >= 1",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nWHERE EXISTS (\n    SELECT 1\n    FROM app_events_relevant\n    WHERE app_events_relevant.app_id = app_all.app_id\n    AND app_events_relevant.is_installed <= 1\n    AND app_events_relevant.is_active >= 1\n    AND EXISTS (\n        SELECT 1\n        FROM events_relevant\n        WHERE events_relevant.event_id = app_events_relevant.event_id\n        AND events_relevant.longitude = 1.0\n        AND events_relevant.timestamp = '2330237574372846585'\n        AND events_relevant.latitude = 1.0\n    )\n)",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 24.9
+    },
+    {
+      "uid": "5ac74779-f3fa-47b5-8738-3acafb72cd64",
+      "question": "Which apps are inactive and installed at most once that have an event with the timestamp exactly -1633857882530784964?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE app_events_relevant.is_installed <= 1 AND events_relevant.timestamp = -1633857882530784964 AND app_events_relevant.is_active <= 0",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nWHERE EXISTS (\n    SELECT 1\n    FROM app_events_relevant\n    WHERE app_events_relevant.app_id = app_all.app_id\n    AND app_events_relevant.is_installed <= 1\n    AND app_events_relevant.is_active <= 0\n    AND EXISTS (\n        SELECT 1\n        FROM events_relevant\n        WHERE events_relevant.event_id = app_events_relevant.event_id\n        AND events_relevant.timestamp = '-1633857882530784964'\n    )\n)",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 26.45
+    },
+    {
+      "uid": "636e2b1e-4b53-4ccf-a195-8486d2f77c2f",
+      "question": "What apps are linked to events where longitude is 1.0 and timestamp is -6724177369271476238, with those events being inactive but installed at least once?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.longitude = 1.0 AND app_events_relevant.is_active = 0 AND app_events_relevant.is_installed >= 1 AND events_relevant.timestamp = -6724177369271476238",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE app_events_relevant.is_active = 0\n  AND app_events_relevant.is_installed >= 1\n  AND events_relevant.longitude = 1.0\n  AND events_relevant.timestamp = '-6724177369271476238'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.63
+    },
+    {
+      "uid": "7ea86d8d-5252-48f8-b06e-566e43b75eec",
+      "question": "Which apps have events with the timestamp exactly 8693964245073640147?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.timestamp = 8693964245073640147",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.timestamp = '8693964245073640147'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.8
+    },
+    {
+      "uid": "826e530c-b9f5-4bfb-80c9-fc68960f2088",
+      "question": "Which apps have events with a timestamp of 5990212993719420372 where the latitude is exactly 1.0?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.timestamp = 5990212993719420372 AND events_relevant.latitude = 1.0",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.timestamp = '5990212993719420372' AND events_relevant.latitude = 1.0",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 10.1
+    },
+    {
+      "uid": "95d6fab5-ddb2-4b61-98a2-685b6c888718",
+      "question": "Which apps have an active event with the exact timestamp -8482947534152245953?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE app_events_relevant.is_active = 1 AND events_relevant.timestamp = -8482947534152245953",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE app_events_relevant.is_active = 1\nAND events_relevant.timestamp = '-8482947534152245953'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.4
+    },
+    {
+      "uid": "af33ccf8-24a8-4c35-9cdf-602b416beb0e",
+      "question": "Which apps have active events with is_active at least 1 and a timestamp exactly equal to -4616735474893214586?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE app_events_relevant.is_active >= 1 AND events_relevant.timestamp = -4616735474893214586",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE app_events_relevant.is_active >= 1\nAND events_relevant.timestamp = '-4616735474893214586'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.42
+    },
+    {
+      "uid": "e67450c8-162f-46e2-8d20-f06206f5c5e7",
+      "question": "Which apps are associated with events where the longitude is exactly 1.0, the timestamp is exactly -7956439643308507004, and the apps are installed at most once and active at most zero times?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.longitude = 1.0 AND app_events_relevant.is_active <= 0 AND app_events_relevant.is_installed <= 1 AND events_relevant.timestamp = -7956439643308507004",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nWHERE EXISTS (\n    SELECT 1\n    FROM app_events_relevant\n    WHERE app_events_relevant.app_id = app_all.app_id\n    AND app_events_relevant.is_active <= 0\n    AND app_events_relevant.is_installed <= 1\n    AND EXISTS (\n        SELECT 1\n        FROM events_relevant\n        WHERE events_relevant.event_id = app_events_relevant.event_id\n        AND events_relevant.longitude = 1.0\n        AND events_relevant.timestamp = '-7956439643308507004'\n    )\n)",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 25.25
+    },
+    {
+      "uid": "ebbf3338-e4cd-44d0-913a-bfaaf56c1fa2",
+      "question": "Which apps are associated with the Hotel Chain category?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_labels ON app_all.app_id = app_labels.app_id\nJOIN label_categories ON app_labels.label_id = label_categories.label_id\nWHERE label_categories.category = 'Hotel Chain'",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nJOIN app_labels ON app_all.app_id = app_labels.app_id\nJOIN label_categories ON app_labels.label_id = label_categories.label_id\nWHERE label_categories.category = 'Hotel Chain'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.37
+    },
+    {
+      "uid": "fd7bc7f0-91c7-464f-b0b7-c0e36e7262d5",
+      "question": "Which apps are linked to events with timestamp -3286051814066471962 located exactly at latitude 1.0 and longitude 1.0, where the related activity is at most 0?",
+      "gold_sql": "SELECT app_all.app_id FROM app_all\nJOIN app_events_relevant ON app_all.app_id = app_events_relevant.app_id\nJOIN events_relevant ON app_events_relevant.event_id = events_relevant.event_id\nWHERE events_relevant.timestamp = -3286051814066471962 AND events_relevant.latitude = 1.0 AND app_events_relevant.is_active <= 0 AND events_relevant.longitude = 1.0",
+      "pred_sql": "SELECT DISTINCT app_all.app_id\nFROM app_all\nWHERE EXISTS (\n    SELECT 1\n    FROM app_events_relevant\n    WHERE app_events_relevant.app_id = app_all.app_id\n    AND app_events_relevant.is_active <= 0\n    AND EXISTS (\n        SELECT 1\n        FROM events_relevant\n        WHERE events_relevant.event_id = app_events_relevant.event_id\n        AND events_relevant.timestamp = '-3286051814066471962'\n        AND events_relevant.latitude = 1.0\n        AND events_relevant.longitude = 1.0\n    )\n)",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 25.62
+    }
+  ]
+}

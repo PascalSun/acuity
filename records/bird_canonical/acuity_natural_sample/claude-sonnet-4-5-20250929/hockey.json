@@ -1,0 +1,124 @@
+{
+  "db_id": "hockey",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 5,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:36:28.879694+00:00",
+  "records": [
+    {
+      "uid": "114ec9dc-cef7-48b4-a8d3-273a4dd2dfe5",
+      "question": "What players named Anderson, born in December 1930, weighing exactly 165 pounds, who played left wing and last played in the NHL in 1967, were coached in 1974?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nWHERE master.lastnhl = '1967' AND master.birthyear = '1930' AND master.lastname = 'Anderson' AND master.weight = '165' AND master.birthmon = '12' AND master.pos = 'L' AND coaches.year = 1974",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nJOIN Scoring s ON m.playerID = s.playerID\nJOIN Coaches c ON s.year = c.year AND s.tmID = c.tmID\nWHERE m.lastName = 'Anderson'\nAND m.birthYear = '1930'\nAND m.birthMon = '12'\nAND m.weight = '165'\nAND m.pos = 'L'\nAND m.lastNHL = '1967'\nAND c.year = 1974",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.4
+    },
+    {
+      "uid": "141eb0df-43f5-4d28-a965-382073eae67d",
+      "question": "Who is the Canadian defenseman named Daryl, born in December, who shoots left, has hrefid stanlda01, ihdbid 5141, and started their first NHL season in 1983?",
+      "gold_sql": "SELECT master.playerid FROM master\nWHERE master.hrefid = 'stanlda01' AND master.shootcatch = 'L' AND master.firstname = 'Daryl' AND master.pos = 'D' AND master.birthcountry = 'Canada' AND master.birthmon = '12' AND master.ihdbid = '5141' AND master.firstnhl = '1983'",
+      "pred_sql": "SELECT playerID\nFROM Master\nWHERE birthCountry = 'Canada'\nAND pos = 'D'\nAND firstName = 'Daryl'\nAND birthMon = '12'\nAND shootCatch = 'L'\nAND hrefID = 'stanlda01'\nAND ihdbID = '5141'\nAND firstNHL = '1983'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.51
+    },
+    {
+      "uid": "24585bc4-83d7-4096-9bcc-242c579c8d82",
+      "question": "What players named Abel born in Melville have coaches with postg exactly 6, l exactly 29.0, and at least 70.0 games coached, who earned the Second Team All-Star award in the NHL in 1941 or earlier?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nJOIN awardsplayers ON master.playerid = awardsplayers.playerid\nWHERE coaches.postg = '6' AND master.birthcity = 'Melville' AND coaches.l = 29.0 AND coaches.g >= 70.0 AND master.lastname = 'Abel' AND awardsplayers.award = 'Second Team All-Star' AND awardsplayers.year <= 1941 AND awardsplayers.lgid = 'NHL'",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nJOIN AwardsPlayers ap ON m.playerID = ap.playerID\nJOIN Coaches c ON m.coachID = c.coachID\nWHERE m.firstName = 'Abel'\nAND m.birthCity = 'Melville'\nAND c.postg = '6'\nAND c.l = 29.0\nAND CAST(c.g AS REAL) >= 70.0\nAND ap.award = 'Second Team All-Star'\nAND ap.lgID = 'NHL'\nAND ap.year <= 1941",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.3
+    },
+    {
+      "uid": "46a7515a-a09a-43e3-ad9a-f843ee53b9aa",
+      "question": "Which players born in Canada who shoot right-handed have the hrefid desbigu01 and a height of 74?",
+      "gold_sql": "SELECT master.playerid FROM master\nWHERE master.shootcatch = 'R' AND master.birthcountry = 'Canada' AND master.hrefid = 'desbigu01' AND master.height = '74'",
+      "pred_sql": "SELECT playerID\nFROM Master\nWHERE birthCountry = 'Canada'\n  AND shootCatch = 'R'\n  AND hrefID = 'desbigu01'\n  AND height = '74'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.89
+    },
+    {
+      "uid": "52813568-163d-42b6-93b5-2bc5cea5474c",
+      "question": "What players named Hap, weighing exactly 175 and born in ON, have coaches where the lgid is NHL and whose death month is 2?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nWHERE coaches.lgid = 'NHL' AND master.deathmon = '2' AND master.firstname = 'Hap' AND master.weight = '175' AND master.birthstate = 'ON'",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nJOIN Coaches c ON m.coachID = c.coachID\nWHERE m.nameNick = 'Hap'\n  AND m.weight = '175'\n  AND m.birthState = 'ON'\n  AND c.lgID = 'NHL'\n  AND m.deathMon = '2'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.47
+    },
+    {
+      "uid": "92eb9eb5-ad79-472d-8946-7083ae645231",
+      "question": "Which entries in master have an ihdbid that is exactly 51241?",
+      "gold_sql": "SELECT master.playerid FROM master\nWHERE master.ihdbid = '51241'",
+      "pred_sql": "SELECT playerID FROM Master WHERE ihdbID = '51241'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.09
+    },
+    {
+      "uid": "d709a2cb-b408-4321-a8b4-0bd3af22bdb5",
+      "question": "Which players have the last name Quinn and were coached by someone with exactly 46.0 wins?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nWHERE master.lastname = 'Quinn' AND coaches.w = 46.0",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nJOIN Scoring s ON m.playerID = s.playerID\nJOIN Coaches c ON s.year = c.year AND s.tmID = c.tmID\nWHERE m.lastName = 'Quinn' AND c.w = 46.0",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.36
+    },
+    {
+      "uid": "dc6b0b4c-9b4e-4231-bf65-8441a9d2a664",
+      "question": "Which master entities that have related coaches and awardsplayers records have a legendsid exactly equal to 'P197802'?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nJOIN awardsplayers ON master.playerid = awardsplayers.playerid\nWHERE master.legendsid = 'P197802'",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nINNER JOIN Coaches c ON m.coachID = c.coachID\nINNER JOIN AwardsPlayers ap ON m.playerID = ap.playerID\nWHERE m.legendsID = 'P197802'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "ea068c70-414f-4bcd-a651-ae4e9970495b",
+      "question": "What players were born in ON and have a height that is exactly 69 and were coached by coaches who received awards?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nJOIN awardscoaches ON coaches.coachid = awardscoaches.coachid\nWHERE master.birthstate = 'ON' AND master.height = '69'",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nJOIN Scoring s ON m.playerID = s.playerID\nJOIN Coaches c ON s.year = c.year AND s.tmID = c.tmID\nJOIN AwardsCoaches ac ON c.coachID = ac.coachID\nWHERE m.birthState = 'ON' AND m.height = '69'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.98
+    },
+    {
+      "uid": "f40d10a1-a424-4482-b869-694b0f258cfc",
+      "question": "Which master entities have the first name exactly 'Larry', have an ihdbid exactly '4612', have related coaches with lgid exactly 'NHL' and postg exactly '4', and also have related awardsplayers records?",
+      "gold_sql": "SELECT master.playerid FROM master\nJOIN coaches ON master.coachid = coaches.coachid\nJOIN awardsplayers ON master.playerid = awardsplayers.playerid\nWHERE master.firstname = 'Larry' AND coaches.lgid = 'NHL' AND coaches.postg = '4' AND master.ihdbid = '4612'",
+      "pred_sql": "SELECT DISTINCT m.playerID\nFROM Master m\nINNER JOIN Coaches c ON m.coachID = c.coachID\nINNER JOIN AwardsPlayers ap ON m.playerID = ap.playerID\nWHERE m.firstName = 'Larry'\nAND m.ihdbID = '4612'\nAND c.lgID = 'NHL'\nAND c.postg = '4'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.22
+    }
+  ]
+}

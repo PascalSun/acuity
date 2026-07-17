@@ -1,0 +1,124 @@
+{
+  "db_id": "law_episode",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:29:53.850895+00:00",
+  "records": [
+    {
+      "uid": "2e3695f1-afd5-47be-a5ce-d8ae66ff4047",
+      "question": "Which episodes have a number in series at most 204, a rating exactly 8.5, at least 199 votes, a related keyword record, and also have a related vote record with percent exactly 20.1 and votes exactly 40?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN keyword ON episode.episode_id = keyword.episode_id\nJOIN vote ON episode.episode_id = vote.episode_id\nWHERE episode.number_in_series <= 204 AND episode.rating = 8.5 AND vote.percent = 20.1 AND episode.votes >= 199 AND vote.votes = 40",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nWHERE e.number_in_series <= 204\n  AND e.rating = 8.5\n  AND e.votes >= 199\n  AND EXISTS (\n    SELECT 1\n    FROM Keyword k\n    WHERE k.episode_id = e.episode_id\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Vote v\n    WHERE v.episode_id = e.episode_id\n      AND v.percent = 20.1\n      AND v.votes = 40\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.49
+    },
+    {
+      "uid": "38017bc7-569f-4689-ac9d-5bced0d11afe",
+      "question": "Which episodes that have related keywords and credits have a number in the series at least 204 and an episode number at most 23?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN keyword ON episode.episode_id = keyword.episode_id\nJOIN credit ON episode.episode_id = credit.episode_id\nWHERE episode.number_in_series >= 204 AND episode.episode <= 23",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nWHERE e.number_in_series >= 204\n  AND e.episode <= 23\n  AND EXISTS (SELECT 1 FROM Keyword k WHERE k.episode_id = e.episode_id)\n  AND EXISTS (SELECT 1 FROM Credit c WHERE c.episode_id = e.episode_id)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.84
+    },
+    {
+      "uid": "51e7709c-eb48-4142-a521-2a047b679375",
+      "question": "Which episodes titled Agony are part of the Law and Order series and have received awards involving any person?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nJOIN person ON award.person_id = person.person_id\nWHERE episode.title = 'Agony' AND episode.series = 'Law and Order'",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nJOIN Award a ON e.episode_id = a.episode_id\nJOIN Person p ON a.person_id = p.person_id\nWHERE e.title = 'Agony' AND e.series = 'Law and Order'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.64
+    },
+    {
+      "uid": "584b3fbf-5b1a-43ba-9d68-5a232aeb70a3",
+      "question": "Which episodes that have related keyword and award records have an episode image containing \"224\", belong to season 9, have the title exactly \"Refuge: Part 1\", have an episode number at most 23, have an award exactly \"Best Television Episode\", have an air date on or after 1999-05-26, have exactly 199 votes, and have a number in series at least 204?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN keyword ON episode.episode_id = keyword.episode_id\nJOIN award ON episode.episode_id = award.episode_id\nWHERE episode.episode_image LIKE '%224%' AND episode.season = 9 AND episode.title = 'Refuge: Part 1' AND episode.episode <= 23 AND award.award = 'Best Television Episode' AND episode.air_date >= '1999-05-26' AND episode.votes = 199 AND episode.number_in_series >= 204",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nWHERE e.episode_image LIKE '%224%'\n  AND e.season = 9\n  AND e.title = 'Refuge: Part 1'\n  AND e.episode <= 23\n  AND e.air_date >= '1999-05-26'\n  AND e.votes = 199\n  AND e.number_in_series >= 204\n  AND EXISTS (\n    SELECT 1 \n    FROM Keyword k \n    WHERE k.episode_id = e.episode_id\n  )\n  AND EXISTS (\n    SELECT 1 \n    FROM Award a \n    WHERE a.episode_id = e.episode_id \n      AND a.award = 'Best Television Episode'\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.37
+    },
+    {
+      "uid": "7549347a-f909-4f37-b03a-32f5034249d7",
+      "question": "Which episodes of Law and Order titled Empire from season 9 or later, with episode number in series at least 201, were nominated by the Primetime Emmy Awards where the production mixer role is credited in the Law and Order series?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nWHERE episode.title = 'Empire' AND award.role = 'production mixer' AND award.series = 'Law and Order' AND episode.season >= 9 AND award.organization = 'Primetime Emmy Awards' AND award.result = 'Nominee' AND episode.number_in_series >= 201 AND episode.series = 'Law and Order'",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nWHERE e.title = 'Empire'\n  AND e.season >= 9\n  AND e.number_in_series >= 201\n  AND e.series = 'Law and Order'\n  AND EXISTS (\n    SELECT 1\n    FROM Award a\n    WHERE a.episode_id = e.episode_id\n      AND a.role = 'production mixer'\n      AND a.series = 'Law and Order'\n      AND a.organization = 'Primetime Emmy Awards'\n      AND a.result = 'Nominee'\n  )",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.48
+    },
+    {
+      "uid": "7e0a13c4-5ce8-419a-adac-65390b19e69f",
+      "question": "What episodes have an episode number of at most 10 and include credits?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN credit ON episode.episode_id = credit.episode_id\nWHERE episode.episode <= 10",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nINNER JOIN Credit c ON e.episode_id = c.episode_id\nWHERE e.episode <= 10",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.45
+    },
+    {
+      "uid": "8e60a802-d2d5-49ab-b50d-c72f0a4499d6",
+      "question": "Which episodes have the episode number exactly 18?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nWHERE episode.episode = 18",
+      "pred_sql": "SELECT episode_id FROM Episode WHERE episode = 18",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "bc1ca042-3fce-4798-9895-7f1ba7070f13",
+      "question": "Which episodes aired on or after 1998-11-18 have at least 183 votes and a vote percentage exactly equal to 13.1?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN vote ON episode.episode_id = vote.episode_id\nWHERE episode.air_date >= '1998-11-18' AND vote.percent = 13.1 AND episode.votes >= 183",
+      "pred_sql": "SELECT DISTINCT e.episode_id\nFROM Episode e\nWHERE e.air_date >= '1998-11-18'\n  AND e.votes >= 183\n  AND EXISTS (\n    SELECT 1\n    FROM Vote v\n    WHERE v.episode_id = e.episode_id\n      AND v.percent = 13.1\n  )",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.55
+    },
+    {
+      "uid": "c3b240c3-33c1-4c50-89f0-57e6567ad0c9",
+      "question": "Which episodes of Law and Order titled Ramparts have a rating of 8.0 with at least 181 votes, appear in season 9 or earlier and episode 11 or earlier, have a number in series no more than 192, and include the specified episode image?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nWHERE episode.episode_image LIKE '%https://m.media-amazon.com/images/M/MV5BNWY5ZWMwMTUtYjNhZS00YTY5LTlhMzctMTBhMmFhZThlYzg4XkEyXkFqcGdeQXVyMzkyOTQ0NzY@._V1_UY126_UX224_AL_.jpg%' AND episode.episode <= 11 AND episode.season <= 9 AND episode.rating = 8.0 AND episode.votes >= 181 AND episode.series = 'Law and Order' AND episode.number_in_series <= 192 AND episode.title = 'Ramparts'",
+      "pred_sql": "SELECT episode_id\nFROM Episode\nWHERE episode_image LIKE '%https://m.media-amazon.com/images/M/MV5BNWY5ZWMwMTUtYjNhZS00YTY5LTlhMzctMTBhMmFhZThlYzg4XkEyXkFqcGdeQXVyMzkyOTQ0NzY@._V1_UY126_UX224_AL_.jpg%'\nAND episode <= 11\nAND season <= 9\nAND rating = 8.0\nAND votes >= 181\nAND series = 'Law and Order'\nAND number_in_series <= 192\nAND title = 'Ramparts'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.72
+    },
+    {
+      "uid": "e154cb69-b7a8-4618-898d-cb2c5fa12712",
+      "question": "Which episodes titled Hate aired on or before 1999-01-06, have at least 174 votes, and have episode numbers no more than 10 and number in series no more than 191?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nWHERE episode.votes >= 174 AND episode.episode <= 10 AND episode.number_in_series <= 191 AND episode.title = 'Hate' AND episode.air_date <= '1999-01-06'",
+      "pred_sql": "SELECT episode_id\nFROM Episode\nWHERE votes >= 174\n  AND episode <= 10\n  AND number_in_series <= 191\n  AND title = 'Hate'\n  AND air_date <= '1999-01-06'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.38
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "card_games",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:34:18.725991+00:00",
+  "records": [
+    {
+      "uid": "00d7ec10-3e67-4f80-937b-fad63011c828",
+      "question": "Which cards are reprints with mtgarenaid 73861 that are exactly of type Legendary Creature \u2014 Sphinx and have types exactly Creature?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.type = 'Legendary Creature \u2014 Sphinx' AND cards.types = 'Creature' AND cards.isreprint = 1 AND cards.mtgarenaid = '73861'",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE cards.isReprint = 1\n  AND cards.mtgArenaId = '73861'\n  AND cards.type = 'Legendary Creature \u2014 Sphinx'\n  AND cards.types = 'Creature'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.06
+    },
+    {
+      "uid": "1ed2a5bc-70fe-48b0-9d48-52270dfdc62a",
+      "question": "Which cards were illustrated by rk post with the scryfall ID 867de3d2-2178-4931-823e-ff439e1a45ea and have the mtgofoil ID 17880?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.artist = 'rk post' AND cards.scryfallid = '867de3d2-2178-4931-823e-ff439e1a45ea' AND cards.mtgofoilid = '17880'",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE artist = 'rk post' \n  AND scryfallId = '867de3d2-2178-4931-823e-ff439e1a45ea' \n  AND mtgoFoilId = '17880'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    },
+    {
+      "uid": "27d8268f-7552-435c-a251-49f73f14bb68",
+      "question": "Which cards have a multiverseid exactly 439850 and a story spotlight value of at least 0?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.multiverseid = '439850' AND cards.isstoryspotlight >= 0",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE cards.multiverseId = '439850' AND cards.isStorySpotlight >= 0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.99
+    },
+    {
+      "uid": "356a0d45-7c04-4977-862b-39618d054688",
+      "question": "What cards have the scryfallillustrationid exactly 07caddf7-939c-4af3-9657-32f7d6a45ab3 and colors exactly B?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.scryfallillustrationid = '07caddf7-939c-4af3-9657-32f7d6a45ab3' AND cards.colors = 'B'",
+      "pred_sql": "SELECT id FROM cards WHERE scryfallIllustrationId = '07caddf7-939c-4af3-9657-32f7d6a45ab3' AND colors = 'B'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24
+    },
+    {
+      "uid": "505bfaea-1a6f-4530-8f5b-e33a140dd1e3",
+      "question": "Which cards illustrated by Dameon Willich have a black border, are not full art or reserved, include non-foil versions, have no more than zero content warnings, at least zero starter value, and have a scryfall oracle ID exactly 6021c2d6-d098-4de2-9c7e-4c571f9238f6?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.isfullart = 0 AND cards.artist = 'Dameon Willich' AND cards.isreserved = 0 AND cards.bordercolor = 'black' AND cards.isstarter >= 0 AND cards.hascontentwarning <= 0 AND cards.scryfalloracleid = '6021c2d6-d098-4de2-9c7e-4c571f9238f6' AND cards.hasnonfoil = 1",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE cards.artist = 'Dameon Willich'\n  AND cards.borderColor = 'black'\n  AND cards.isFullArt = 0\n  AND cards.isReserved = 0\n  AND cards.hasNonFoil = 1\n  AND cards.hasContentWarning <= 0\n  AND cards.isStarter >= 0\n  AND cards.scryfallOracleId = '6021c2d6-d098-4de2-9c7e-4c571f9238f6'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.35
+    },
+    {
+      "uid": "641843dc-fa14-439c-9af9-3e59006315d8",
+      "question": "Which cards have a mana cost of {2}{U}, are exactly Creature \u2014 Human Wizard with types Creature, have cardkingdomid 187584, scryfallid ba912207-a8bf-4ffb-9967-34029cb09f7f, scryfallillustrationid 29cb0011-ee90-4830-a8e0-406843843896, are not story spotlight, and have at least one nonfoil available?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.isstoryspotlight = 0 AND cards.manacost = '{2}{U}' AND cards.originaltype = 'Creature \u2014 Human Wizard' AND cards.cardkingdomid = '187584' AND cards.scryfallid = 'ba912207-a8bf-4ffb-9967-34029cb09f7f' AND cards.types = 'Creature' AND cards.hasnonfoil >= 1 AND cards.scryfallillustrationid = '29cb0011-ee90-4830-a8e0-406843843896'",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE cards.manaCost = '{2}{U}'\nAND cards.type = 'Creature \u2014 Human Wizard'\nAND cards.types = 'Creature'\nAND cards.cardKingdomId = '187584'\nAND cards.scryfallId = 'ba912207-a8bf-4ffb-9967-34029cb09f7f'\nAND cards.scryfallIllustrationId = '29cb0011-ee90-4830-a8e0-406843843896'\nAND cards.isStorySpotlight = 0\nAND cards.hasNonFoil = 1",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.87
+    },
+    {
+      "uid": "c3ab44fd-1f28-4fde-a494-dd19624581ac",
+      "question": "Which cards have the name Detonate and are exactly red in color?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.name = 'Detonate' AND cards.colors = 'R'",
+      "pred_sql": "SELECT id FROM cards WHERE name = 'Detonate' AND colors = 'R'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 14.48
+    },
+    {
+      "uid": "cb01fbfe-f958-4fe3-b17d-ed98c541d7ff",
+      "question": "Which cards have the color identity G,R, are originally Land types, have mcmmetaid 7768, cardkingdomid 187417, are online-only at least 0, and have the number 119?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.coloridentity = 'G,R' AND cards.originaltype = 'Land' AND cards.mcmmetaid = '7768' AND cards.cardkingdomid = '187417' AND cards.isonlineonly >= 0 AND cards.number = '119'",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE cards.colorIdentity = 'G,R'\nAND cards.originalType = 'Land'\nAND cards.mcmMetaId = '7768'\nAND cards.cardKingdomId = '187417'\nAND cards.isOnlineOnly >= 0\nAND cards.number = '119'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.81
+    },
+    {
+      "uid": "df5d71a0-a712-4658-b8a9-b23422f06c4c",
+      "question": "Which cards have istimeshifted exactly 0 and multiverseid exactly 423 with cardkingdomid exactly 53233?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.istimeshifted = 0 AND cards.multiverseid = '423' AND cards.cardkingdomid = '53233'",
+      "pred_sql": "SELECT cards.id\nFROM cards\nWHERE cards.isTimeshifted = 0 \n  AND cards.multiverseId = '423' \n  AND cards.cardKingdomId = '53233'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    },
+    {
+      "uid": "fb843aa5-efff-41f1-a7d7-ced2660bbdf9",
+      "question": "Which cards have the name exactly equal to Vampire Nighthawk?",
+      "gold_sql": "SELECT cards.id FROM cards\nWHERE cards.name = 'Vampire Nighthawk'",
+      "pred_sql": "SELECT id FROM cards WHERE name = 'Vampire Nighthawk'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.3
+    }
+  ]
+}

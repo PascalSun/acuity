@@ -1,0 +1,3233 @@
+{
+ "db_id": "customers_card_transactions",
+ "target_table": "Accounts",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1554382458,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/customers_card_transactions/customers_card_transactions.sqlite",
+  "generated_at": "2026-07-02T14:42:20.709974+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "accounts",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "1pE": 9,
+   "1pM": 8,
+   "2pE": 8,
+   "2pM": 8,
+   "2pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "1pE": 9,
+   "1pM": 8,
+   "2pE": 8,
+   "2pH": 8,
+   "2pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 5,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 5
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1,
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 6,
+    "failure_events": {
+     "qa_validation_failed": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "a2647079-e076-460e-aec3-1d9400aa9fe8",
+   "question": "Which accounts have the account name 858 and other account details exactly Regular?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '858' AND accounts.other_account_details = 'Regular'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "858",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "858",
+    "accounts.other_account_details": "Regular"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '858' and other account details equal to 'Regular'?"
+  },
+  {
+   "uid": "a8b817db-9b70-4107-8ddb-f6814a313ea3",
+   "question": "Which accounts have an account name of 866 and are classified as VIP?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '866' AND accounts.other_account_details = 'VIP'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "866",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "866",
+    "accounts.other_account_details": "VIP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '866' and other account details equal to 'VIP'?"
+  },
+  {
+   "uid": "30b22396-b7a2-43f9-9da3-640f029f8fa8",
+   "question": "What accounts have other account details that are exactly VIP?",
+   "answer_row_ids": [
+    2,
+    3,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "answer_count": 8,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.other_account_details = 'VIP'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.other_account_details": "VIP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'VIP'?"
+  },
+  {
+   "uid": "db19770d-1dbd-4bc3-a218-9ad96683a07a",
+   "question": "Which accounts have the account name exactly 725?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '725'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "725"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725'?"
+  },
+  {
+   "uid": "e2dcd63b-a940-4164-bf6e-d5daa966059d",
+   "question": "Which accounts have an account name exactly 262 and other account details that are Regular?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '262' AND accounts.other_account_details = 'Regular'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "262",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "262",
+    "accounts.other_account_details": "Regular"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '262' and other account details equal to 'Regular'?"
+  },
+  {
+   "uid": "54f898cb-428e-47ba-997d-eede54287b69",
+   "question": "Which accounts have other account details that are exactly Regular?",
+   "answer_row_ids": [
+    1,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "answer_count": 7,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.other_account_details = 'Regular'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.other_account_details": "Regular"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'Regular'?"
+  },
+  {
+   "uid": "79eb6c50-d5c4-40dc-bdf8-4ff64e9fcbc3",
+   "question": "Which accounts have the account name exactly 557 and are marked as VIP?",
+   "answer_row_ids": [
+    14
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '557' AND accounts.other_account_details = 'VIP'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "557",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "557",
+    "accounts.other_account_details": "VIP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '557' and other account details equal to 'VIP'?"
+  },
+  {
+   "uid": "07d673c9-30a2-486e-8225-ce4b6eab4e6a",
+   "question": "Which accounts have the account name exactly 262?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '262'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "262",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "262"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '262'?"
+  },
+  {
+   "uid": "5ee54db9-a5d2-4eba-b87c-8573ad794712",
+   "question": "Which accounts have the account name exactly 234 and are marked as VIP?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nWHERE accounts.account_name = '234' AND accounts.other_account_details = 'VIP'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "accounts"
+   ],
+   "involved_columns": [
+    "accounts.account_name",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "234",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "234",
+    "accounts.other_account_details": "VIP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '234' and other account details equal to 'VIP'?"
+  },
+  {
+   "uid": "9fc42966-5b81-4701-bcb8-e8bb047fd114",
+   "question": "Which accounts have transactions of at least 1475.56?",
+   "answer_row_ids": [
+    1,
+    3,
+    5,
+    8,
+    9,
+    10,
+    12,
+    15
+   ],
+   "answer_count": 8,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_amount >= 1475.56",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": ">=",
+     "value": 1475.56,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 1475.56
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at least '1475.56'?"
+  },
+  {
+   "uid": "0451964c-25f1-451a-9455-6a7b6d87bb63",
+   "question": "What accounts with the name 725 have financial transactions where the transaction type is Refund?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_type = 'Refund' AND accounts.account_name = '725'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Refund",
+    "accounts.account_name": "725"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund'?"
+  },
+  {
+   "uid": "cbda4a20-8b72-4c34-a9b9-30701628b2c4",
+   "question": "Which accounts have a transaction with an amount exactly 1475.56?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_amount = 1475.56",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1475.56,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 1475.56
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount equal to '1475.56'?"
+  },
+  {
+   "uid": "1eecafa2-fb02-46eb-a629-f47d8d8e0227",
+   "question": "Which accounts named 022 have transactions on or after 2018-03-24 10:39:09?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_date >= '2018-03-24 10:39:09' AND accounts.account_name = '022'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 10:39:09",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "022",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 10:39:09",
+    "accounts.account_name": "022"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '022', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at least '2018-03-24 10:39:09'?"
+  },
+  {
+   "uid": "c0730176-a832-4205-89c4-3ad59b2fb8aa",
+   "question": "Which accounts have had a Refund transaction on or before 2018-03-24 12:08:55?",
+   "answer_row_ids": [
+    1,
+    3,
+    11,
+    12,
+    13,
+    15
+   ],
+   "answer_count": 6,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_date <= '2018-03-24 12:08:55' AND financial_transactions.transaction_type = 'Refund'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "financial_transactions.transaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "<=",
+     "value": "2018-03-24 12:08:55",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 12:08:55",
+    "financial_transactions.transaction_type": "Refund"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at most '2018-03-24 12:08:55' and transaction type equal to 'Refund'?"
+  },
+  {
+   "uid": "be083c1a-f7e3-4005-9ed8-83f5845b83c7",
+   "question": "Which accounts named 725 have financial transactions where the transaction type is Payment?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_type = 'Payment' AND accounts.account_name = '725'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Payment",
+    "accounts.account_name": "725"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Payment'?"
+  },
+  {
+   "uid": "54a96ef4-4c4d-413d-9a55-1c42d6275bb5",
+   "question": "What accounts have refund transactions with amounts at most 945.43?",
+   "answer_row_ids": [
+    10,
+    11,
+    13
+   ],
+   "answer_count": 3,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_amount <= 945.43",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "<=",
+     "value": 945.43,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Refund",
+    "financial_transactions.transaction_amount": 945.43
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund' and transaction amount at most '945.43'?"
+  },
+  {
+   "uid": "ad2c244f-039b-4719-800e-240f5de9fedb",
+   "question": "Which accounts have financial transactions where the transaction type is exactly Refund?",
+   "answer_row_ids": [
+    1,
+    3,
+    6,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "answer_count": 9,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_type = 'Refund'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Refund"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund'?"
+  },
+  {
+   "uid": "2deebaba-af51-4e07-b3be-65c18957c64f",
+   "question": "Which accounts have the account name exactly equal to 725 and have financial transactions?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE accounts.account_name = '725'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "725"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id)?"
+  },
+  {
+   "uid": "3ad3bf72-1020-4ea7-9c5f-526ba4d6089a",
+   "question": "What accounts with account_name 262 and other_account_details exactly Regular have financial transactions of at most 1194.48?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE accounts.account_name = '262' AND financial_transactions.transaction_amount <= 1194.48 AND accounts.other_account_details = 'Regular'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "accounts.account_name",
+    "financial_transactions.transaction_amount",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "262",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "<=",
+     "value": 1194.48,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.account_name": "262",
+    "financial_transactions.transaction_amount": 1194.48,
+    "accounts.other_account_details": "Regular"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '262' and other account details equal to 'Regular', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at most '1194.48'?"
+  },
+  {
+   "uid": "3268ba5b-9081-4443-aff5-a93cc73d0bff",
+   "question": "Which accounts named 557 had a refund transaction exactly 1298.73 on or before 2018-03-24 17:00:41?",
+   "answer_row_ids": [
+    14
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_date <= '2018-03-24 17:00:41' AND financial_transactions.transaction_amount = 1298.73 AND accounts.account_name = '557' AND financial_transactions.transaction_type = 'Refund'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "financial_transactions.transaction_amount",
+    "accounts.account_name",
+    "financial_transactions.transaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "<=",
+     "value": "2018-03-24 17:00:41",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1298.73,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "557",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 17:00:41",
+    "financial_transactions.transaction_amount": 1298.73,
+    "accounts.account_name": "557",
+    "financial_transactions.transaction_type": "Refund"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '557', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at most '2018-03-24 17:00:41' and transaction amount equal to '1298.73' and transaction type equal to 'Refund'?"
+  },
+  {
+   "uid": "c214f8e8-a4d9-44c0-91c6-fa6cf3551254",
+   "question": "Which accounts with account_name 767 and other_account_details VIP have had Refund transactions exactly 945.43 on or after 2018-03-24 16:31:34?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_amount = 945.43 AND accounts.account_name = '767' AND financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_date >= '2018-03-24 16:31:34' AND accounts.other_account_details = 'VIP'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount",
+    "accounts.account_name",
+    "financial_transactions.transaction_type",
+    "financial_transactions.transaction_date",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 945.43,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "767",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 16:31:34",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 945.43,
+    "accounts.account_name": "767",
+    "financial_transactions.transaction_type": "Refund",
+    "financial_transactions.transaction_date": "2018-03-24 16:31:34",
+    "accounts.other_account_details": "VIP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '767' and other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount equal to '945.43' and transaction type equal to 'Refund' and transaction date at least '2018-03-24 16:31:34'?"
+  },
+  {
+   "uid": "f767a9d2-5ca4-477e-8634-30645ebc6739",
+   "question": "Which accounts named 338 have had a refund transaction of exactly 1483.05 on or after 2018-03-24 05:13:42?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_amount = 1483.05 AND financial_transactions.transaction_date >= '2018-03-24 05:13:42' AND accounts.account_name = '338'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "financial_transactions.transaction_amount",
+    "financial_transactions.transaction_date",
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1483.05,
+     "column_type": "numeric"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 05:13:42",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "338",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Refund",
+    "financial_transactions.transaction_amount": 1483.05,
+    "financial_transactions.transaction_date": "2018-03-24 05:13:42",
+    "accounts.account_name": "338"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '338', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund' and transaction amount equal to '1483.05' and transaction date at least '2018-03-24 05:13:42'?"
+  },
+  {
+   "uid": "c8dfe53b-34c3-499d-a7b5-bc3b27cbd1ca",
+   "question": "Which accounts named 858 have a payment transaction exactly equal to 1795.66?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_type = 'Payment' AND accounts.account_name = '858' AND financial_transactions.transaction_amount = 1795.66",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "accounts.account_name",
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "858",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1795.66,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Payment",
+    "accounts.account_name": "858",
+    "financial_transactions.transaction_amount": 1795.66
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '858', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Payment' and transaction amount equal to '1795.66'?"
+  },
+  {
+   "uid": "a6b73d0d-555b-45ab-9b65-3decbfde164e",
+   "question": "What accounts named 725 have transactions of at least 1336.21 that occurred on or before 2018-03-23 21:59:28?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_amount >= 1336.21 AND accounts.account_name = '725' AND financial_transactions.transaction_date <= '2018-03-23 21:59:28'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount",
+    "accounts.account_name",
+    "financial_transactions.transaction_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": ">=",
+     "value": 1336.21,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "<=",
+     "value": "2018-03-23 21:59:28",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 1336.21,
+    "accounts.account_name": "725",
+    "financial_transactions.transaction_date": "2018-03-23 21:59:28"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at least '1336.21' and transaction date at most '2018-03-23 21:59:28'?"
+  },
+  {
+   "uid": "46c9a655-6ec1-455e-9f3c-55a4801ffc54",
+   "question": "Which accounts with other_account_details exactly Regular have had refunds on or after 2018-03-24 05:13:42?",
+   "answer_row_ids": [
+    1,
+    6
+   ],
+   "answer_count": 2,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_date >= '2018-03-24 05:13:42' AND financial_transactions.transaction_type = 'Refund' AND accounts.other_account_details = 'Regular'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "financial_transactions.transaction_type",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 05:13:42",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 05:13:42",
+    "financial_transactions.transaction_type": "Refund",
+    "accounts.other_account_details": "Regular"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'Regular', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at least '2018-03-24 05:13:42' and transaction type equal to 'Refund'?"
+  },
+  {
+   "uid": "59102d1b-d82f-4930-a160-3d1858886e3d",
+   "question": "Which accounts have refunds of at least 1931.76 on or before 2018-03-24 12:08:55?",
+   "answer_row_ids": [
+    3,
+    12
+   ],
+   "answer_count": 2,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nWHERE financial_transactions.transaction_date <= '2018-03-24 12:08:55' AND financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_amount >= 1931.76",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "financial_transactions.transaction_type",
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "<=",
+     "value": "2018-03-24 12:08:55",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": ">=",
+     "value": 1931.76,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 12:08:55",
+    "financial_transactions.transaction_type": "Refund",
+    "financial_transactions.transaction_amount": 1931.76
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at most '2018-03-24 12:08:55' and transaction type equal to 'Refund' and transaction amount at least '1931.76'?"
+  },
+  {
+   "uid": "dce3ea44-cef9-4b7e-b6ec-f4a7bd3342f0",
+   "question": "What accounts have transactions on or after 2018-03-24 14:47:05 where the other_card_details is exactly 6011771512810699?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date >= '2018-03-24 14:47:05' AND customers_cards.other_card_details = '6011771512810699'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "customers_cards.other_card_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 14:47:05",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "6011771512810699",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 14:47:05",
+    "customers_cards.other_card_details": "6011771512810699"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at least '2018-03-24 14:47:05', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '6011771512810699'?"
+  },
+  {
+   "uid": "d251ac2b-a58f-4e1c-a80e-4b9a11c30877",
+   "question": "Which accounts with other_account_details exactly Regular are linked to the card number 4716674779726?",
+   "answer_row_ids": [
+    5,
+    6
+   ],
+   "answer_count": 2,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE accounts.other_account_details = 'Regular' AND customers_cards.card_number = '4716674779726'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "accounts.other_account_details",
+    "customers_cards.card_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4716674779726",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accounts.other_account_details": "Regular",
+    "customers_cards.card_number": "4716674779726"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'Regular', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id), whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with card number equal to '4716674779726'?"
+  },
+  {
+   "uid": "ee2f989f-72cb-4f8c-b296-5e0009ab249e",
+   "question": "Which accounts have transactions using cards where other_card_details is 5513587359761653 and the card\u2019s valid-to date is at most 2018-03-11 01:12:33?",
+   "answer_row_ids": [
+    1,
+    9,
+    12
+   ],
+   "answer_count": 3,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.date_valid_to <= '2018-03-11 01:12:33' AND customers_cards.other_card_details = '5513587359761653'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.date_valid_to",
+    "customers_cards.other_card_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": "<=",
+     "value": "2018-03-11 01:12:33",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "5513587359761653",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.date_valid_to": "2018-03-11 01:12:33",
+    "customers_cards.other_card_details": "5513587359761653"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id), whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with date valid to at most '2018-03-11 01:12:33' and other card details equal to '5513587359761653'?"
+  },
+  {
+   "uid": "f2f58d3c-11ce-41e6-8e8c-547513a85db7",
+   "question": "Which accounts have transactions using customer cards where the transaction amount is at most 1194.48?",
+   "answer_row_ids": [
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "answer_count": 5,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_amount <= 1194.48",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "<=",
+     "value": 1194.48,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 1194.48
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at most '1194.48', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id)?"
+  },
+  {
+   "uid": "1bf8f909-bd31-4605-8ef1-9bad615de350",
+   "question": "Which accounts have transactions of at least 1529.97 made using customers\u2019 cards?",
+   "answer_row_ids": [
+    3,
+    5,
+    8,
+    10,
+    12,
+    15
+   ],
+   "answer_count": 6,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_amount >= 1529.97",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": ">=",
+     "value": 1529.97,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 1529.97
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at least '1529.97', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id)?"
+  },
+  {
+   "uid": "2fbdb437-528f-413a-b429-c00a5751df11",
+   "question": "Which accounts have transactions of at most 1701.23 using cards where other_card_details is 5567915676420343?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_amount <= 1701.23 AND customers_cards.other_card_details = '5567915676420343'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount",
+    "customers_cards.other_card_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "<=",
+     "value": 1701.23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "5567915676420343",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 1701.23,
+    "customers_cards.other_card_details": "5567915676420343"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at most '1701.23', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '5567915676420343'?"
+  },
+  {
+   "uid": "945ad2a5-5f92-4d18-a061-1f357b6e1777",
+   "question": "What accounts have financial transactions with a transaction amount exactly 357.06?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_amount = 357.06",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 357.06,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_amount": 357.06
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount equal to '357.06', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id)?"
+  },
+  {
+   "uid": "15a29a88-eaf3-4b4a-98cf-c1380424741d",
+   "question": "Which accounts have transactions made with Credit cards that became valid on or after 2012-05-22 02:05:41?",
+   "answer_row_ids": [
+    3,
+    5,
+    6,
+    11,
+    13
+   ],
+   "answer_count": 5,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.card_type_code = 'Credit' AND customers_cards.date_valid_from >= '2012-05-22 02:05:41'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.card_type_code",
+    "customers_cards.date_valid_from"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "card_type_code",
+     "operator": "=",
+     "value": "Credit",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": ">=",
+     "value": "2012-05-22 02:05:41",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.card_type_code": "Credit",
+    "customers_cards.date_valid_from": "2012-05-22 02:05:41"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id), whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with card type code equal to 'Credit' and date valid from at least '2012-05-22 02:05:41'?"
+  },
+  {
+   "uid": "7999ddcc-8b78-499d-a8ad-f56b80fa1228",
+   "question": "Which accounts named 767 with other details as VIP have debit cards valid on or before 2015-05-09 04:05:26, card details 4556142375374, and refunds dated since 2018-03-24 16:31:34?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.date_valid_from <= '2015-05-09 04:05:26' AND financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_date >= '2018-03-24 16:31:34' AND customers_cards.other_card_details = '4556142375374' AND accounts.other_account_details = 'VIP' AND accounts.account_name = '767' AND customers_cards.card_type_code = 'Debit'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.date_valid_from",
+    "financial_transactions.transaction_type",
+    "financial_transactions.transaction_date",
+    "customers_cards.other_card_details",
+    "accounts.other_account_details",
+    "accounts.account_name",
+    "customers_cards.card_type_code"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "<=",
+     "value": "2015-05-09 04:05:26",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 16:31:34",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "4556142375374",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "767",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_type_code",
+     "operator": "=",
+     "value": "Debit",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.date_valid_from": "2015-05-09 04:05:26",
+    "financial_transactions.transaction_type": "Refund",
+    "financial_transactions.transaction_date": "2018-03-24 16:31:34",
+    "customers_cards.other_card_details": "4556142375374",
+    "accounts.other_account_details": "VIP",
+    "accounts.account_name": "767",
+    "customers_cards.card_type_code": "Debit"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'VIP' and account name equal to '767', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund' and transaction date at least '2018-03-24 16:31:34', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with date valid from at most '2015-05-09 04:05:26' and other card details equal to '4556142375374' and card type code equal to 'Debit'?"
+  },
+  {
+   "uid": "6899a149-e74e-422a-a694-538e1cc6d58f",
+   "question": "Which accounts with other_account_details exactly Regular have a refund transaction of 1483.05 linked to a Debit card numbered 5102229294602335 and other_card_details exactly 5513587359761653?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.card_type_code = 'Debit' AND customers_cards.card_number = '5102229294602335' AND financial_transactions.transaction_type = 'Refund' AND customers_cards.other_card_details = '5513587359761653' AND accounts.other_account_details = 'Regular' AND financial_transactions.transaction_amount = 1483.05",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.card_type_code",
+    "customers_cards.card_number",
+    "financial_transactions.transaction_type",
+    "customers_cards.other_card_details",
+    "accounts.other_account_details",
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "card_type_code",
+     "operator": "=",
+     "value": "Debit",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "5102229294602335",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "5513587359761653",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1483.05,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.card_type_code": "Debit",
+    "customers_cards.card_number": "5102229294602335",
+    "financial_transactions.transaction_type": "Refund",
+    "customers_cards.other_card_details": "5513587359761653",
+    "accounts.other_account_details": "Regular",
+    "financial_transactions.transaction_amount": 1483.05
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'Regular', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund' and transaction amount equal to '1483.05', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with card type code equal to 'Debit' and card number equal to '5102229294602335' and other card details equal to '5513587359761653'?"
+  },
+  {
+   "uid": "091ae74a-d0ee-4f3e-a097-33d36aafac53",
+   "question": "Which accounts named 162 with other details as VIP have refunds of at least 1931.76 on 2018-03-24 12:08:55 using cards exactly 4539333582760 valid from at most 2012-05-22 02:05:41 and valid to at least 2018-02-25 15:43:32?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.other_card_details = '4539333582760' AND accounts.account_name = '162' AND financial_transactions.transaction_type = 'Refund' AND financial_transactions.transaction_date = '2018-03-24 12:08:55' AND customers_cards.date_valid_to >= '2018-02-25 15:43:32' AND financial_transactions.transaction_amount >= 1931.76 AND accounts.other_account_details = 'VIP' AND customers_cards.date_valid_from <= '2012-05-22 02:05:41'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.other_card_details",
+    "accounts.account_name",
+    "financial_transactions.transaction_type",
+    "financial_transactions.transaction_date",
+    "customers_cards.date_valid_to",
+    "financial_transactions.transaction_amount",
+    "accounts.other_account_details",
+    "customers_cards.date_valid_from"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "4539333582760",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "162",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "=",
+     "value": "2018-03-24 12:08:55",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": ">=",
+     "value": "2018-02-25 15:43:32",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": ">=",
+     "value": 1931.76,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "<=",
+     "value": "2012-05-22 02:05:41",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.other_card_details": "4539333582760",
+    "accounts.account_name": "162",
+    "financial_transactions.transaction_type": "Refund",
+    "financial_transactions.transaction_date": "2018-03-24 12:08:55",
+    "customers_cards.date_valid_to": "2018-02-25 15:43:32",
+    "financial_transactions.transaction_amount": 1931.76,
+    "accounts.other_account_details": "VIP",
+    "customers_cards.date_valid_from": "2012-05-22 02:05:41"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '162' and other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Refund' and transaction date equal to '2018-03-24 12:08:55' and transaction amount at least '1931.76', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '4539333582760' and date valid to at least '2018-02-25 15:43:32' and date valid from at most '2012-05-22 02:05:41'?"
+  },
+  {
+   "uid": "12443ea4-5f47-4040-a271-ad6a9ad7acb2",
+   "question": "Which VIP accounts have payments on 2018-03-24 15:17:49 of at most 1658.32 using card number 4929590358481 with other card details 5307019264041461 and a card valid to 2018-03-12 02:16:45?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date = '2018-03-24 15:17:49' AND financial_transactions.transaction_amount <= 1658.32 AND customers_cards.other_card_details = '5307019264041461' AND financial_transactions.transaction_type = 'Payment' AND customers_cards.card_number = '4929590358481' AND accounts.other_account_details = 'VIP' AND customers_cards.date_valid_to = '2018-03-12 02:16:45'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "financial_transactions.transaction_amount",
+    "customers_cards.other_card_details",
+    "financial_transactions.transaction_type",
+    "customers_cards.card_number",
+    "accounts.other_account_details",
+    "customers_cards.date_valid_to"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "=",
+     "value": "2018-03-24 15:17:49",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "<=",
+     "value": 1658.32,
+     "column_type": "numeric"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "5307019264041461",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4929590358481",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": "=",
+     "value": "2018-03-12 02:16:45",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 15:17:49",
+    "financial_transactions.transaction_amount": 1658.32,
+    "customers_cards.other_card_details": "5307019264041461",
+    "financial_transactions.transaction_type": "Payment",
+    "customers_cards.card_number": "4929590358481",
+    "accounts.other_account_details": "VIP",
+    "customers_cards.date_valid_to": "2018-03-12 02:16:45"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date equal to '2018-03-24 15:17:49' and transaction amount at most '1658.32' and transaction type equal to 'Payment', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '5307019264041461' and card number equal to '4929590358481' and date valid to equal to '2018-03-12 02:16:45'?"
+  },
+  {
+   "uid": "7b4130db-33c6-4fe3-8ae3-19a067e98bff",
+   "question": "Which accounts have payments of at most 1795.66 made with card number 4716674779726 and other card details 6011771512810699, where the card was valid from on or before 2016-12-11 03:01:12 and to on or before 2018-03-15 06:27:45?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.other_card_details = '6011771512810699' AND customers_cards.card_number = '4716674779726' AND financial_transactions.transaction_amount <= 1795.66 AND financial_transactions.transaction_type = 'Payment' AND customers_cards.date_valid_to <= '2018-03-15 06:27:45' AND customers_cards.date_valid_from <= '2016-12-11 03:01:12'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.other_card_details",
+    "customers_cards.card_number",
+    "financial_transactions.transaction_amount",
+    "financial_transactions.transaction_type",
+    "customers_cards.date_valid_to",
+    "customers_cards.date_valid_from"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "6011771512810699",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4716674779726",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "<=",
+     "value": 1795.66,
+     "column_type": "numeric"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": "<=",
+     "value": "2018-03-15 06:27:45",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "<=",
+     "value": "2016-12-11 03:01:12",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.other_card_details": "6011771512810699",
+    "customers_cards.card_number": "4716674779726",
+    "financial_transactions.transaction_amount": 1795.66,
+    "financial_transactions.transaction_type": "Payment",
+    "customers_cards.date_valid_to": "2018-03-15 06:27:45",
+    "customers_cards.date_valid_from": "2016-12-11 03:01:12"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at most '1795.66' and transaction type equal to 'Payment', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '6011771512810699' and card number equal to '4716674779726' and date valid to at most '2018-03-15 06:27:45' and date valid from at most '2016-12-11 03:01:12'?"
+  },
+  {
+   "uid": "71af4d74-48fa-4506-9504-8d279b355a38",
+   "question": "Which accounts with other_account_details as VIP have a payment transaction exactly on 2018-03-24 06:41:41 using card number 4560596484842 that was valid on or before 2011-04-17 09:05:28 and expires exactly on 2018-03-07 17:06:19?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date = '2018-03-24 06:41:41' AND accounts.other_account_details = 'VIP' AND customers_cards.date_valid_to = '2018-03-07 17:06:19' AND customers_cards.card_number = '4560596484842' AND financial_transactions.transaction_type = 'Payment' AND customers_cards.date_valid_from <= '2011-04-17 09:05:28'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "accounts.other_account_details",
+    "customers_cards.date_valid_to",
+    "customers_cards.card_number",
+    "financial_transactions.transaction_type",
+    "customers_cards.date_valid_from"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "=",
+     "value": "2018-03-24 06:41:41",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": "=",
+     "value": "2018-03-07 17:06:19",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4560596484842",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "<=",
+     "value": "2011-04-17 09:05:28",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 06:41:41",
+    "accounts.other_account_details": "VIP",
+    "customers_cards.date_valid_to": "2018-03-07 17:06:19",
+    "customers_cards.card_number": "4560596484842",
+    "financial_transactions.transaction_type": "Payment",
+    "customers_cards.date_valid_from": "2011-04-17 09:05:28"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date equal to '2018-03-24 06:41:41' and transaction type equal to 'Payment', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with date valid to equal to '2018-03-07 17:06:19' and card number equal to '4560596484842' and date valid from at most '2011-04-17 09:05:28'?"
+  },
+  {
+   "uid": "16466a80-9cac-4376-b78d-1692b5da9ddb",
+   "question": "Which VIP accounts have transactions on or after 2018-03-24 16:31:34 using the card numbered 4929896676202959 where other_card_details is 4556142375374, the card\u2019s valid from date is at most 2015-05-09 04:05:26, and its valid to date is exactly 2018-03-16 16:00:19?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date >= '2018-03-24 16:31:34' AND customers_cards.other_card_details = '4556142375374' AND customers_cards.date_valid_to = '2018-03-16 16:00:19' AND accounts.other_account_details = 'VIP' AND customers_cards.date_valid_from <= '2015-05-09 04:05:26' AND customers_cards.card_number = '4929896676202959'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "customers_cards.other_card_details",
+    "customers_cards.date_valid_to",
+    "accounts.other_account_details",
+    "customers_cards.date_valid_from",
+    "customers_cards.card_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 16:31:34",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "4556142375374",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": "=",
+     "value": "2018-03-16 16:00:19",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "<=",
+     "value": "2015-05-09 04:05:26",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4929896676202959",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 16:31:34",
+    "customers_cards.other_card_details": "4556142375374",
+    "customers_cards.date_valid_to": "2018-03-16 16:00:19",
+    "accounts.other_account_details": "VIP",
+    "customers_cards.date_valid_from": "2015-05-09 04:05:26",
+    "customers_cards.card_number": "4929896676202959"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at least '2018-03-24 16:31:34', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '4556142375374' and date valid to equal to '2018-03-16 16:00:19' and date valid from at most '2015-05-09 04:05:26' and card number equal to '4929896676202959'?"
+  },
+  {
+   "uid": "97336c02-6dc0-4b36-b41c-b9dfbb09eae3",
+   "question": "Which accounts named 725 with VIP status have a payment of 1701.23 on 2018-03-24 06:41:41 using card number 4560596484842 valid from 2011-04-17 09:05:28 and valid to at least 2018-03-07 17:06:19?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_type = 'Payment' AND accounts.account_name = '725' AND financial_transactions.transaction_date = '2018-03-24 06:41:41' AND customers_cards.date_valid_to >= '2018-03-07 17:06:19' AND customers_cards.card_number = '4560596484842' AND customers_cards.date_valid_from = '2011-04-17 09:05:28' AND accounts.other_account_details = 'VIP' AND financial_transactions.transaction_amount = 1701.23",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "accounts.account_name",
+    "financial_transactions.transaction_date",
+    "customers_cards.date_valid_to",
+    "customers_cards.card_number",
+    "customers_cards.date_valid_from",
+    "accounts.other_account_details",
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "=",
+     "value": "2018-03-24 06:41:41",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": ">=",
+     "value": "2018-03-07 17:06:19",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4560596484842",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "=",
+     "value": "2011-04-17 09:05:28",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1701.23,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Payment",
+    "accounts.account_name": "725",
+    "financial_transactions.transaction_date": "2018-03-24 06:41:41",
+    "customers_cards.date_valid_to": "2018-03-07 17:06:19",
+    "customers_cards.card_number": "4560596484842",
+    "customers_cards.date_valid_from": "2011-04-17 09:05:28",
+    "accounts.other_account_details": "VIP",
+    "financial_transactions.transaction_amount": 1701.23
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725' and other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Payment' and transaction date equal to '2018-03-24 06:41:41' and transaction amount equal to '1701.23', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with date valid to at least '2018-03-07 17:06:19' and card number equal to '4560596484842' and date valid from equal to '2011-04-17 09:05:28'?"
+  },
+  {
+   "uid": "cdc82ea4-e6b7-495b-8b62-c80a17258630",
+   "question": "Which accounts have transactions on or before 2018-03-23 21:59:28 using cards where other_card_details is 5296134475180061 and date_valid_from is 2009-11-05 09:26:01?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date <= '2018-03-23 21:59:28' AND customers_cards.other_card_details = '5296134475180061' AND customers_cards.date_valid_from = '2009-11-05 09:26:01'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "customers_cards.other_card_details",
+    "customers_cards.date_valid_from"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "<=",
+     "value": "2018-03-23 21:59:28",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "5296134475180061",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "=",
+     "value": "2009-11-05 09:26:01",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-23 21:59:28",
+    "customers_cards.other_card_details": "5296134475180061",
+    "customers_cards.date_valid_from": "2009-11-05 09:26:01"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at most '2018-03-23 21:59:28', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '5296134475180061' and date valid from equal to '2009-11-05 09:26:01'?"
+  },
+  {
+   "uid": "6f07d816-0f47-4c81-ba87-6a19eca46427",
+   "question": "Which VIP accounts are linked to debit cards with the number 5513587359761653 and have refund transactions dated on or before 2018-03-24 11:48:28?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date <= '2018-03-24 11:48:28' AND customers_cards.card_type_code = 'Debit' AND financial_transactions.transaction_type = 'Refund' AND accounts.other_account_details = 'VIP' AND customers_cards.other_card_details = '5513587359761653'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "customers_cards.card_type_code",
+    "financial_transactions.transaction_type",
+    "accounts.other_account_details",
+    "customers_cards.other_card_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": "<=",
+     "value": "2018-03-24 11:48:28",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_type_code",
+     "operator": "=",
+     "value": "Debit",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Refund",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "5513587359761653",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 11:48:28",
+    "customers_cards.card_type_code": "Debit",
+    "financial_transactions.transaction_type": "Refund",
+    "accounts.other_account_details": "VIP",
+    "customers_cards.other_card_details": "5513587359761653"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at most '2018-03-24 11:48:28' and transaction type equal to 'Refund', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with card type code equal to 'Debit' and other card details equal to '5513587359761653'?"
+  },
+  {
+   "uid": "7932caee-ef23-4228-80d4-320ccc7524f8",
+   "question": "Which accounts named 725 with VIP status have payments made on or after 2018-03-24 06:41:41 using card number 4560596484842?",
+   "answer_row_ids": [
+    15
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_type = 'Payment' AND accounts.account_name = '725' AND financial_transactions.transaction_date >= '2018-03-24 06:41:41' AND customers_cards.card_number = '4560596484842' AND accounts.other_account_details = 'VIP'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "accounts.account_name",
+    "financial_transactions.transaction_date",
+    "customers_cards.card_number",
+    "accounts.other_account_details"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "725",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 06:41:41",
+     "column_type": "date"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4560596484842",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "VIP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Payment",
+    "accounts.account_name": "725",
+    "financial_transactions.transaction_date": "2018-03-24 06:41:41",
+    "customers_cards.card_number": "4560596484842",
+    "accounts.other_account_details": "VIP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '725' and other account details equal to 'VIP', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Payment' and transaction date at least '2018-03-24 06:41:41', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with card number equal to '4560596484842'?"
+  },
+  {
+   "uid": "3fa001d8-5268-41b0-ab2b-0155cc331c15",
+   "question": "Which accounts named 038 with other_account_details exactly Regular have debit cards valid on or before 2014-08-01 14:26:45?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.date_valid_from <= '2014-08-01 14:26:45' AND accounts.other_account_details = 'Regular' AND customers_cards.card_type_code = 'Debit' AND accounts.account_name = '038'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.date_valid_from",
+    "accounts.other_account_details",
+    "customers_cards.card_type_code",
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": "<=",
+     "value": "2014-08-01 14:26:45",
+     "column_type": "date"
+    },
+    {
+     "table": "accounts",
+     "column": "other_account_details",
+     "operator": "=",
+     "value": "Regular",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_type_code",
+     "operator": "=",
+     "value": "Debit",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "038",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.date_valid_from": "2014-08-01 14:26:45",
+    "accounts.other_account_details": "Regular",
+    "customers_cards.card_type_code": "Debit",
+    "accounts.account_name": "038"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with other account details equal to 'Regular' and account name equal to '038', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id), whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with date valid from at most '2014-08-01 14:26:45' and card type code equal to 'Debit'?"
+  },
+  {
+   "uid": "716a11f8-7da2-444f-b97a-bb75d17e8c0e",
+   "question": "Which accounts have payments made using the card numbered 4716674779726 that is valid at least until 2018-03-15 06:27:45?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_type = 'Payment' AND customers_cards.card_number = '4716674779726' AND customers_cards.date_valid_to >= '2018-03-15 06:27:45'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "customers_cards.card_number",
+    "customers_cards.date_valid_to"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "card_number",
+     "operator": "=",
+     "value": "4716674779726",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_to",
+     "operator": ">=",
+     "value": "2018-03-15 06:27:45",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Payment",
+    "customers_cards.card_number": "4716674779726",
+    "customers_cards.date_valid_to": "2018-03-15 06:27:45"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Payment', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with card number equal to '4716674779726' and date valid to at least '2018-03-15 06:27:45'?"
+  },
+  {
+   "uid": "81a4dc8f-b4b7-4c68-9be8-05fd7c384730",
+   "question": "Which accounts where account_name is 338 have transactions of exactly 1483.05 dated on or after 2018-03-24 05:13:42?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_date >= '2018-03-24 05:13:42' AND financial_transactions.transaction_amount = 1483.05 AND accounts.account_name = '338'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_date",
+    "financial_transactions.transaction_amount",
+    "accounts.account_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 05:13:42",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1483.05,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "338",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_date": "2018-03-24 05:13:42",
+    "financial_transactions.transaction_amount": 1483.05,
+    "accounts.account_name": "338"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '338', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction date at least '2018-03-24 05:13:42' and transaction amount equal to '1483.05', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id)?"
+  },
+  {
+   "uid": "ad2f7ba1-2519-4e90-b1a1-c956eaca82ce",
+   "question": "What accounts named 858 have a payment transaction of exactly 1795.66 made with the card number 6011771512810699?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE financial_transactions.transaction_type = 'Payment' AND accounts.account_name = '858' AND customers_cards.other_card_details = '6011771512810699' AND financial_transactions.transaction_amount = 1795.66",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "financial_transactions.transaction_type",
+    "accounts.account_name",
+    "customers_cards.other_card_details",
+    "financial_transactions.transaction_amount"
+   ],
+   "involved_filters": [
+    {
+     "table": "financial_transactions",
+     "column": "transaction_type",
+     "operator": "=",
+     "value": "Payment",
+     "column_type": "enum"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "858",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "6011771512810699",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": "=",
+     "value": 1795.66,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "financial_transactions.transaction_type": "Payment",
+    "accounts.account_name": "858",
+    "customers_cards.other_card_details": "6011771512810699",
+    "financial_transactions.transaction_amount": 1795.66
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '858', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction type equal to 'Payment' and transaction amount equal to '1795.66', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '6011771512810699'?"
+  },
+  {
+   "uid": "16bac5ed-782b-4aa7-98ca-e90b3da4b276",
+   "question": "Which accounts named 858 have transactions of at least 1795.66 since 2018-03-24 05:45:57 using cards with other_card_details 6011771512810699 valid on or after 2016-12-11 03:01:12?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT accounts.account_id FROM accounts\nJOIN financial_transactions ON accounts.account_id = financial_transactions.account_id\nJOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id\nWHERE customers_cards.other_card_details = '6011771512810699' AND financial_transactions.transaction_amount >= 1795.66 AND accounts.account_name = '858' AND customers_cards.date_valid_from >= '2016-12-11 03:01:12' AND financial_transactions.transaction_date >= '2018-03-24 05:45:57'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accounts",
+    "financial_transactions",
+    "customers_cards"
+   ],
+   "involved_columns": [
+    "customers_cards.other_card_details",
+    "financial_transactions.transaction_amount",
+    "accounts.account_name",
+    "customers_cards.date_valid_from",
+    "financial_transactions.transaction_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "customers_cards",
+     "column": "other_card_details",
+     "operator": "=",
+     "value": "6011771512810699",
+     "column_type": "enum"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_amount",
+     "operator": ">=",
+     "value": 1795.66,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accounts",
+     "column": "account_name",
+     "operator": "=",
+     "value": "858",
+     "column_type": "enum"
+    },
+    {
+     "table": "customers_cards",
+     "column": "date_valid_from",
+     "operator": ">=",
+     "value": "2016-12-11 03:01:12",
+     "column_type": "date"
+    },
+    {
+     "table": "financial_transactions",
+     "column": "transaction_date",
+     "operator": ">=",
+     "value": "2018-03-24 05:45:57",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "customers_cards.other_card_details": "6011771512810699",
+    "financial_transactions.transaction_amount": 1795.66,
+    "accounts.account_name": "858",
+    "customers_cards.date_valid_from": "2016-12-11 03:01:12",
+    "financial_transactions.transaction_date": "2018-03-24 05:45:57"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "accounts"
+   },
+   "answer_table": "accounts",
+   "answer_id_column": "account_id",
+   "canonical_question": "Which accounts entities with account name equal to '858', having at least one related financial transactions record (linked on accounts.account_id = financial_transactions.account_id) with transaction amount at least '1795.66' and transaction date at least '2018-03-24 05:45:57', whose financial transactions record itself has at least one related customers cards record (linked on financial_transactions.card_id = customers_cards.card_id) with other card details equal to '6011771512810699' and date valid from at least '2016-12-11 03:01:12'?"
+  }
+ ]
+}

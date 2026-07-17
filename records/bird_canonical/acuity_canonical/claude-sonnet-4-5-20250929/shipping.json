@@ -1,0 +1,124 @@
+{
+  "db_id": "shipping",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:31:17.940482+00:00",
+  "records": [
+    {
+      "uid": "28c6f8f9-fe24-47ff-a9fc-fe1c8b91d051",
+      "question": "Which customers live at 108 South Polk Street in Amarillo with the zip code 79101.0?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nWHERE customer.zip = 79101.0 AND customer.city = 'Amarillo' AND customer.address = '108 South Polk Street'",
+      "pred_sql": "SELECT cust_id\nFROM customer\nWHERE zip = 79101.0 AND city = 'Amarillo' AND address = '108 South Polk Street'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "uid": "2e4948f8-cfad-488c-8477-da4aec004ee5",
+      "question": "Which customers are retailers located in the 98409.0 zip code?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nWHERE customer.zip = 98409.0 AND customer.cust_type = 'retailer'",
+      "pred_sql": "SELECT cust_id\nFROM customer\nWHERE zip = 98409.0 AND cust_type = 'retailer'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.31
+    },
+    {
+      "uid": "4516af1c-3728-452c-912c-138072903369",
+      "question": "Who is the manufacturer named Lee's Hitch & Welding located at 707 North USHighway 287 in Fort Collins, CO 80524 with phone number (970) 224-9618 and annual revenue exactly 1757510?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nWHERE customer.zip = 80524.0 AND customer.address = '707 North USHighway 287' AND customer.state = 'CO' AND customer.cust_name = 'Lee''s Hitch & Welding' AND customer.city = 'Fort Collins' AND customer.phone = '(970) 224-9618' AND customer.annual_revenue = 1757510 AND customer.cust_type = 'manufacturer'",
+      "pred_sql": "SELECT cust_id\nFROM customer\nWHERE zip = 80524.0\n  AND address = '707 North USHighway 287'\n  AND state = 'CO'\n  AND cust_name = 'Lee'\n  AND city = 'Fort Collins'\n  AND phone = '(970) 224-9618'\n  AND annual_revenue = 1757510\n  AND cust_type = 'manufacturer'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    },
+    {
+      "uid": "4a19953f-edbc-420e-b5db-9847a5fa288f",
+      "question": "Which customers have the phone number (951) 361-4968?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nWHERE customer.phone = '(951) 361-4968'",
+      "pred_sql": "SELECT cust_id FROM customer WHERE phone = '(951) 361-4968'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.98
+    },
+    {
+      "uid": "56f1ac12-df92-41e8-8c97-14e9ca0a2409",
+      "question": "What customers have an address exactly at 4030 Northeast Buffalo Street and have made shipments?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nWHERE customer.address = '4030 Northeast Buffalo Street'",
+      "pred_sql": "SELECT DISTINCT c.cust_id\nFROM customer c\nINNER JOIN shipment s ON c.cust_id = s.cust_id\nWHERE c.address = '4030 Northeast Buffalo Street'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "7b350e13-a771-45fa-af1f-c6737acc342c",
+      "question": "Which customers with annual revenue at most 18839770 have shipments on or after 2017-06-05 using trucks made exactly by Kenworth?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nJOIN truck ON shipment.truck_id = truck.truck_id\nWHERE truck.make = 'Kenworth' AND customer.annual_revenue <= 18839770 AND shipment.ship_date >= '2017-06-05'",
+      "pred_sql": "SELECT DISTINCT c.cust_id\nFROM customer c\nJOIN shipment s ON c.cust_id = s.cust_id\nJOIN truck t ON s.truck_id = t.truck_id\nWHERE c.annual_revenue <= 18839770\nAND s.ship_date >= '2017-06-05'\nAND t.make = 'Kenworth'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.38
+    },
+    {
+      "uid": "9742105b-0005-4d7e-8acb-61ecaa712650",
+      "question": "Who are the customers that had shipments on 2017-06-17?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nJOIN city ON shipment.city_id = city.city_id\nWHERE shipment.ship_date = '2017-06-17'",
+      "pred_sql": "SELECT DISTINCT customer.cust_id\nFROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nJOIN city ON shipment.city_id = city.city_id\nWHERE shipment.ship_date = '2017-06-17'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.8
+    },
+    {
+      "uid": "aa442067-f465-4049-908e-90d7bc6b13c5",
+      "question": "Who are the customers named AAA Rentals Sales & Service with phone (714) 633-6626 and address 400 North Tustin Street, located in Washington, whose annual revenue is at most 11901075 and have shipments on or before 2017-06-24?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nJOIN city ON shipment.city_id = city.city_id\nWHERE shipment.ship_date <= '2017-06-24' AND customer.phone = '(714) 633-6626' AND customer.address = '400 North Tustin Street' AND customer.annual_revenue <= 11901075 AND customer.cust_name = 'AAA Rentals Sales & Service' AND city.state = 'Washington'",
+      "pred_sql": "SELECT DISTINCT c.cust_id\nFROM customer c\nWHERE c.phone = '(714) 633-6626'\n  AND c.address = '400 North Tustin Street'\n  AND c.annual_revenue <= 11901075\n  AND c.cust_name = 'AAA Rentals Sales & Service'\n  AND EXISTS (\n    SELECT 1\n    FROM shipment s\n    JOIN city ci ON s.city_id = ci.city_id\n    WHERE s.cust_id = c.cust_id\n      AND s.ship_date <= '2017-06-24'\n      AND ci.state = 'Washington'\n  )",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.26
+    },
+    {
+      "uid": "b832fde7-c3e0-48cc-bfc3-c0c568c1b77f",
+      "question": "What customers are retailers located at 2701 East Luzerne Street in Philadelphia with phone number (215) 743-1000, zip 19137.0, annual revenue at most 33611123, who had shipments weighing exactly 14751.0 on or before 2017-10-03?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nWHERE customer.phone = '(215) 743-1000' AND customer.annual_revenue <= 33611123 AND shipment.ship_date <= '2017-10-03' AND shipment.weight = 14751.0 AND customer.city = 'Philadelphia' AND customer.zip = 19137.0 AND customer.cust_type = 'retailer' AND customer.address = '2701 East Luzerne Street'",
+      "pred_sql": "SELECT DISTINCT c.cust_id\nFROM customer c\nWHERE c.phone = '(215) 743-1000'\n  AND c.annual_revenue <= 33611123\n  AND c.city = 'Philadelphia'\n  AND c.zip = 19137.0\n  AND c.cust_type = 'retailer'\n  AND c.address = '2701 East Luzerne Street'\n  AND EXISTS (\n    SELECT 1\n    FROM shipment s\n    WHERE s.cust_id = c.cust_id\n      AND s.ship_date <= '2017-10-03'\n      AND s.weight = 14751.0\n  )",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.04
+    },
+    {
+      "uid": "cab59b64-d7fb-4e54-8e0a-4890042ef4b2",
+      "question": "Who are the wholesalers in Amarillo, TX with annual revenue at most 46957859 that have shipments weighing exactly 16650.0?",
+      "gold_sql": "SELECT customer.cust_id FROM customer\nJOIN shipment ON customer.cust_id = shipment.cust_id\nWHERE customer.state = 'TX' AND customer.annual_revenue <= 46957859 AND customer.city = 'Amarillo' AND shipment.weight = 16650.0 AND customer.cust_type = 'wholesaler'",
+      "pred_sql": "SELECT DISTINCT c.cust_id\nFROM customer c\nJOIN shipment s ON c.cust_id = s.cust_id\nWHERE c.state = 'TX'\n  AND c.annual_revenue <= 46957859\n  AND c.city = 'Amarillo'\n  AND c.cust_type = 'wholesaler'\n  AND s.weight = 16650.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.94
+    }
+  ]
+}

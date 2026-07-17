@@ -1,0 +1,124 @@
+{
+  "db_id": "college_3",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:21:24.417879+00:00",
+  "records": [
+    {
+      "uid": "067ed03d-c036-47ca-bcaf-c3d26df25d9a",
+      "question": "Which departments named ECE are located in room 105 of the Barton building, belong to the EN division, have a phone number at most 7033, and include members whose appointment type is exactly Primary?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nWHERE department.dname = 'ECE' AND department.dphone <= 7033 AND department.room = '105' AND member_of.appt_type = 'Primary' AND department.division = 'EN' AND department.building = 'Barton'",
+      "pred_sql": "SELECT DISTINCT T1.DNO FROM Department AS T1 INNER JOIN Member_of AS T2 ON T1.DNO = T2.DNO WHERE T1.DName = 'ECE' AND T1.Room = '105' AND T1.Building = 'Barton' AND T1.Division = 'EN' AND T1.DPhone <= 7033 AND T2.Appt_Type = 'Primary'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.43
+    },
+    {
+      "uid": "1fe81b99-de97-43f9-a182-f83d2a139777",
+      "question": "Which departments have the name 'ECE' and division 'EN' and also have courses held on 'W' days and have minor_in records?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN course ON department.dno = course.dno\nJOIN minor_in ON department.dno = minor_in.dno\nWHERE department.dname = 'ECE' AND department.division = 'EN' AND course.days = 'W'",
+      "pred_sql": "SELECT DISTINCT T1.DNO FROM Department AS T1 INNER JOIN Course AS T2 ON T1.DNO = T2.DNO INNER JOIN Minor_in AS T3 ON T1.DNO = T3.DNO WHERE T1.DName = 'ECE' AND T1.Division = 'EN' AND T2.Days = 'W'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.71
+    },
+    {
+      "uid": "7a6bc25e-41da-4331-b33c-6f2e3dea3667",
+      "question": "Which departments are located in room 245 of the Gilman building and have a phone number exactly 7508?",
+      "gold_sql": "SELECT department.dno FROM department\nWHERE department.room = '245' AND department.building = 'Gilman' AND department.dphone = 7508",
+      "pred_sql": "SELECT DNO FROM Department WHERE Room = '245' AND Building = 'Gilman' AND DPhone = 7508",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "80233393-5973-42da-9575-8cd362d7a8ef",
+      "question": "Which departments located in room 245 have students minoring in them?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN minor_in ON department.dno = minor_in.dno\nJOIN student ON minor_in.stuid = student.stuid\nWHERE department.room = '245'",
+      "pred_sql": "SELECT DISTINCT T1.DNO\nFROM Department AS T1\nINNER JOIN Minor_in AS T2\n  ON T1.DNO = T2.DNO\nWHERE\n  T1.Room = '245'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "85547484-b2ac-43dc-9a5c-dffd5aa42232",
+      "question": "Which departments have members whose appointment type is exactly Primary?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nWHERE member_of.appt_type = 'Primary'",
+      "pred_sql": "SELECT T1.DNO FROM Department AS T1 INNER JOIN Member_of AS T2 ON T1.DNO = T2.DNO WHERE T2.Appt_Type = 'Primary'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "885aa2f4-1816-449e-9963-d9c87fa37952",
+      "question": "Which departments named ECE in division EN have room 105, a phone number of at least 7033, offer courses exactly 2 hours long on MTW, and include members with a Primary appointment type?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nJOIN course ON department.dno = course.dno\nWHERE department.dphone >= 7033 AND course.hours = '2' AND department.division = 'EN' AND department.room = '105' AND department.dname = 'ECE' AND member_of.appt_type = 'Primary' AND course.days = 'MTW'",
+      "pred_sql": "SELECT DNO\nFROM Department\nWHERE DName = 'ECE'\n  AND Division = 'EN'\n  AND Room = '105'\n  AND DPhone >= 7033\n  AND EXISTS (\n    SELECT 1\n    FROM Course\n    WHERE Course.DNO = Department.DNO\n      AND Course.Days = 'MTW'\n      AND (\n        (JULIANDAY('2000-01-01 ' || SUBSTR(Course.Hours, INSTR(Course.Hours, '-') + 1)) -\n         JULIANDAY('2000-01-01 ' || SUBSTR(Course.Hours, 1, INSTR(Course.Hours, '-') - 1))) * 24\n      ) = 2\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM Member_of\n    WHERE Member_of.DNO = Department.DNO\n      AND Member_of.Appt_Type = 'Primary'\n  )",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 19.5
+    },
+    {
+      "uid": "91badd57-ec0f-4699-9bd0-18de652a0a12",
+      "question": "Which departments in building NEB with room 224 and division EN have a phone number of at least 8577 and offer courses worth exactly 3 credits?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN course ON department.dno = course.dno\nWHERE department.dphone >= 8577 AND department.division = 'EN' AND course.credits = 3 AND department.room = '224' AND department.building = 'NEB'",
+      "pred_sql": "SELECT DISTINCT T1.DNO FROM Department AS T1 INNER JOIN Course AS T2 ON T1.DNO = T2.DNO WHERE T1.Building = 'NEB' AND T1.Room = '224' AND T1.Division = 'EN' AND T1.DPhone >= 8577 AND T2.Credits = 3",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.31
+    },
+    {
+      "uid": "a4688f70-b4d3-46b5-96b8-71d6c4c6302e",
+      "question": "Which departments have a phone number that is exactly 7399?",
+      "gold_sql": "SELECT department.dno FROM department\nWHERE department.dphone = 7399",
+      "pred_sql": "SELECT DNO FROM Department WHERE DPhone = 7399",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.47
+    },
+    {
+      "uid": "c2376dfc-b091-4824-b9f9-53b31f87656e",
+      "question": "What departments in division AS have a phone number of at least 7119 and are associated with both courses and minors?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN course ON department.dno = course.dno\nJOIN minor_in ON department.dno = minor_in.dno\nWHERE department.division = 'AS' AND department.dphone >= 7119",
+      "pred_sql": "SELECT DNO FROM Department WHERE Division = 'AS' AND DPhone >= 7119 AND DNO IN ( SELECT DNO FROM Course ) AND DNO IN ( SELECT DNO FROM Minor_in )",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.81
+    },
+    {
+      "uid": "e2311f3e-5f70-4c74-b1e4-a53c5d69bd79",
+      "question": "Which departments are located in building Krieger, division AS, room 381, have a department phone number at most 7119, and include faculty member Salzberg with a phone number at most 2641 who has a Secondary appointment?",
+      "gold_sql": "SELECT department.dno FROM department\nJOIN member_of ON department.dno = member_of.dno\nJOIN faculty ON member_of.facid = faculty.facid\nWHERE department.building = 'Krieger' AND department.division = 'AS' AND department.room = '381' AND member_of.appt_type = 'Secondary' AND faculty.phone <= 2641 AND faculty.lname = 'Salzberg' AND department.dphone <= 7119",
+      "pred_sql": "SELECT T1.DNO\nFROM Department AS T1\nINNER JOIN Member_of AS T2\n  ON T1.DNO = T2.DNO\nINNER JOIN Faculty AS T3\n  ON T2.FacID = T3.FacID\nWHERE\n  T1.Building = 'Krieger' AND T1.Division = 'AS' AND T1.Room = '381' AND T1.DPhone <= 7119 AND T3.Lname = 'Salzberg' AND T3.Phone <= 2641 AND T2.Appt_Type = 'Secondary'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.21
+    }
+  ]
+}

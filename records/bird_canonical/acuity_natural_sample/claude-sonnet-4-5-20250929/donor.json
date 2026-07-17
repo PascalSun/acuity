@@ -1,0 +1,124 @@
+{
+  "db_id": "donor",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:35:54.290789+00:00",
+  "records": [
+    {
+      "uid": "2f01a44b-1e29-49b8-8a5e-90fc6e2ef4a1",
+      "question": "Which projects posted on 2012-01-21 in Massachusetts that are not KIPP have a fulfillment labor and materials cost of 35.0, total price including optional support of 441.34, donations with a total of 25.0 and optional support of 3.75, and resources priced at 30.73 per unit?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nJOIN donations ON projects.projectid = donations.projectid\nJOIN resources ON projects.projectid = resources.projectid\nWHERE projects.date_posted = '2012-01-21' AND projects.fulfillment_labor_materials = 35.0 AND donations.donation_total = 25.0 AND resources.item_unit_price = 30.73 AND donations.donation_optional_support = 3.75 AND projects.school_state = 'MA' AND projects.school_kipp = 'f' AND projects.total_price_including_optional_support = 441.34",
+      "pred_sql": "SELECT DISTINCT p.projectid\nFROM projects p\nJOIN donations d ON p.projectid = d.projectid\nJOIN resources r ON p.projectid = r.projectid\nWHERE p.date_posted = '2012-01-21'\n  AND p.school_state = 'Massachusetts'\n  AND (p.school_kipp IS NULL OR p.school_kipp != 't')\n  AND p.fulfillment_labor_materials = 35.0\n  AND p.total_price_including_optional_support = 441.34\n  AND d.donation_total = 25.0\n  AND d.donation_optional_support = 3.75\n  AND r.item_unit_price = 30.73",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.63
+    },
+    {
+      "uid": "43879d33-9052-4788-8d65-2682a3199263",
+      "question": "What projects that are not part of a KIPP school have a total price excluding optional support exactly equal to 1417.0?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nWHERE projects.school_kipp = 'f' AND projects.total_price_excluding_optional_support = 1417.0",
+      "pred_sql": "SELECT projectid\nFROM projects\nWHERE school_kipp = 'f' AND total_price_excluding_optional_support = 1417.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.73
+    },
+    {
+      "uid": "64c6cee9-5d8a-4fd5-8f0d-3be52c536681",
+      "question": "Which projects in Baltimore City have resources with an item quantity exactly 49.0?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nJOIN resources ON projects.projectid = resources.projectid\nWHERE resources.item_quantity = 49.0 AND projects.school_county = 'Baltimore City'",
+      "pred_sql": "SELECT DISTINCT projects.projectid\nFROM projects\nJOIN resources ON projects.projectid = resources.projectid\nWHERE projects.school_district = 'Baltimore City' AND resources.item_quantity = 49.0",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.08
+    },
+    {
+      "uid": "657c9778-a4a4-46d1-8c6f-8c4cd3b29704",
+      "question": "Which projects have a total price including optional support exactly 479.41 and are associated with the teacher account ID 84fcf259993218fe0f3f9b9836e028f5?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nWHERE projects.total_price_including_optional_support = 479.41 AND projects.teacher_acctid = '84fcf259993218fe0f3f9b9836e028f5'",
+      "pred_sql": "SELECT projectid\nFROM projects\nWHERE total_price_including_optional_support = 479.41\nAND teacher_acctid = '84fcf259993218fe0f3f9b9836e028f5'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.39
+    },
+    {
+      "uid": "90c46010-6c9d-48cd-a717-e2502b744227",
+      "question": "What projects led by teacher 075447c5d4f0b607f43f2c74595d913d are not year-round and have donations that are neither for honorees nor made via giving pages?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nJOIN donations ON projects.projectid = donations.projectid\nWHERE projects.teacher_acctid = '075447c5d4f0b607f43f2c74595d913d' AND donations.for_honoree = 'f' AND projects.school_year_round = 'f' AND donations.via_giving_page = 'f'",
+      "pred_sql": "SELECT DISTINCT p.projectid\nFROM projects p\nJOIN donations d ON p.projectid = d.projectid\nWHERE p.teacher_acctid = '075447c5d4f0b607f43f2c74595d913d'\n  AND p.school_year_round = 'f'\n  AND d.for_honoree = 'f'\n  AND d.via_giving_page = 'f'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.8
+    },
+    {
+      "uid": "98244bd0-9b41-429d-804e-b69f8eba35d6",
+      "question": "Which projects have a school latitude exactly equal to 39.97806, have related donations where payment_included_campaign_gift_card is 't', and also have related resources?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nJOIN donations ON projects.projectid = donations.projectid\nJOIN resources ON projects.projectid = resources.projectid\nWHERE projects.school_latitude = 39.97806 AND donations.payment_included_campaign_gift_card = 't'",
+      "pred_sql": "SELECT DISTINCT p.projectid\nFROM projects p\nJOIN donations d ON p.projectid = d.projectid\nJOIN resources r ON p.projectid = r.projectid\nWHERE p.school_latitude = 39.97806\nAND d.payment_included_campaign_gift_card = 't'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 22.1
+    },
+    {
+      "uid": "b85584a3-2e87-4266-a6ee-e269e30399a6",
+      "question": "Which projects have a total price excluding optional support of 677.69, are not part of the charter ready promise or NLNS programs, where the school metro is urban, and that are not eligible for the almost home match?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nWHERE projects.total_price_excluding_optional_support = 677.69 AND projects.school_charter_ready_promise = 'f' AND projects.school_nlns = 'f' AND projects.school_metro = 'urban' AND projects.eligible_almost_home_match = 'f'",
+      "pred_sql": "SELECT projectid\nFROM projects\nWHERE total_price_excluding_optional_support = 677.69\n  AND (school_charter_ready_promise IS NULL OR school_charter_ready_promise != 't')\n  AND (school_nlns IS NULL OR school_nlns != 't')\n  AND school_metro = 'urban'\n  AND (eligible_almost_home_match IS NULL OR eligible_almost_home_match != 't')",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.8
+    },
+    {
+      "uid": "cd2f6727-6813-4464-a189-bf9d61d6b8e4",
+      "question": "Which projects for Grades 6-8 in Gallup Mckinley Co School Dist, NM, with a school latitude of 35.500444, a total price of 831.37, resource type Books, teacher account ID 62dc563347ec64587fcb2ba83872a740, and fulfillment labor materials cost of 9.0 are available?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nWHERE projects.grade_level = 'Grades 6-8' AND projects.school_latitude = 35.500444 AND projects.total_price_excluding_optional_support = 831.37 AND projects.school_state = 'NM' AND projects.school_district = 'Gallup Mckinley Co School Dist' AND projects.resource_type = 'Books' AND projects.teacher_acctid = '62dc563347ec64587fcb2ba83872a740' AND projects.fulfillment_labor_materials = 9.0",
+      "pred_sql": "SELECT projects.projectid\nFROM projects\nWHERE grade_level = 'Grades 6-8'\n  AND school_district = 'Gallup Mckinley Co School Dist'\n  AND school_state = 'NM'\n  AND school_latitude = 35.500444\n  AND total_price_including_optional_support = 831.37\n  AND resource_type = 'Books'\n  AND teacher_acctid = '62dc563347ec64587fcb2ba83872a740'\n  AND fulfillment_labor_materials = 9.0",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.08
+    },
+    {
+      "uid": "e8ad2804-fb7f-4bd0-b269-b28358edc8f2",
+      "question": "Which projects that have related donations and resources records have a resource type exactly equal to 'Technology', a school latitude exactly equal to 33.134323, at least 30.0 students reached, and that have related resources with an item quantity exactly equal to 1.0?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nJOIN donations ON projects.projectid = donations.projectid\nJOIN resources ON projects.projectid = resources.projectid\nWHERE projects.resource_type = 'Technology' AND projects.school_latitude = 33.134323 AND resources.item_quantity = 1.0 AND projects.students_reached >= 30.0",
+      "pred_sql": "SELECT DISTINCT p.projectid\nFROM projects p\nINNER JOIN donations d ON p.projectid = d.projectid\nINNER JOIN resources r ON p.projectid = r.projectid\nWHERE p.resource_type = 'Technology'\nAND p.school_latitude = 33.134323\nAND p.students_reached >= 30\nAND r.item_quantity = 1",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 24.99
+    },
+    {
+      "uid": "f4f66804-98f0-402e-8cfd-f368278fc3a9",
+      "question": "Which projects are not magnet or year-round schools, have a total price including optional support of 616.75 and excluding it of 524.24, are not led by NY Teaching Fellows, are not charter schools, and are located in urban metro areas?",
+      "gold_sql": "SELECT projects.projectid FROM projects\nJOIN resources ON projects.projectid = resources.projectid\nWHERE projects.school_magnet = 'f' AND projects.school_year_round = 'f' AND projects.total_price_including_optional_support = 616.75 AND projects.teacher_ny_teaching_fellow = 'f' AND projects.total_price_excluding_optional_support = 524.24 AND projects.school_charter = 'f' AND projects.school_metro = 'urban'",
+      "pred_sql": "SELECT projectid\nFROM projects\nWHERE school_magnet != 't'\n  AND school_year_round != 't'\n  AND total_price_including_optional_support = 616.75\n  AND total_price_excluding_optional_support = 524.24\n  AND teacher_ny_teaching_fellow != 't'\n  AND school_charter != 't'\n  AND school_metro = 'urban'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.45
+    }
+  ]
+}

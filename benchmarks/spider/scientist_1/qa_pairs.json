@@ -1,0 +1,2613 @@
+{
+ "db_id": "scientist_1",
+ "target_table": "Projects",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1454818756,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/scientist_1/scientist_1.sqlite",
+  "generated_at": "2026-07-02T18:52:17.664681+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "projects",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "2pE",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "2pE",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 13,
+   "1pE": 13,
+   "2pE": 12,
+   "2pM": 12
+  },
+  "realized_counts": {
+   "0E": 13,
+   "1pE": 13,
+   "2pE": 12,
+   "2pM": 12
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 36,
+    "inner_attempts": 36,
+    "failed_rounds": 23,
+    "invalid_pairs_filtered": 21,
+    "failure_events": {
+     "qa_validation_failed": 21,
+     "duplicate_pair": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pE": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 20,
+    "inner_attempts": 20,
+    "failed_rounds": 8,
+    "invalid_pairs_filtered": 5,
+    "failure_events": {
+     "qa_validation_failed": 5,
+     "duplicate_pair": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "2pM": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "8cf50f38-12df-47eb-b96e-cb75d0af05de",
+   "question": "Which projects have at least 545 hours logged?",
+   "answer_row_ids": [
+    "AeH4",
+    "Ast3",
+    "Bte2",
+    "Che1",
+    "Che2"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours >= 545",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 545,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 545
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at least '545'?"
+  },
+  {
+   "uid": "e00ee3b8-8ad7-4742-b6b0-ba0b6a02a883",
+   "question": "Which projects have the name Juicy: Extracting Apple Juice with Pectinase?",
+   "answer_row_ids": [
+    "Bte1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.name = 'Juicy: Extracting Apple Juice with Pectinase'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Juicy: Extracting Apple Juice with Pectinase",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Juicy: Extracting Apple Juice with Pectinase"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Juicy: Extracting Apple Juice with Pectinase'?"
+  },
+  {
+   "uid": "a4ce8b0e-81f9-4ce0-aebd-008e90b7df09",
+   "question": "Which projects named A Magnetic Primer Designer have at least 9684 hours?",
+   "answer_row_ids": [
+    "Bte2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.name = 'A Magnetic Primer Designer' AND projects.hours >= 9684",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Magnetic Primer Designer",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 9684,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Magnetic Primer Designer",
+    "projects.hours": 9684
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Magnetic Primer Designer' and hours at least '9684'?"
+  },
+  {
+   "uid": "8d05f253-4a18-474d-a834-b62a8a25461c",
+   "question": "Which projects require at most 321 hours?",
+   "answer_row_ids": [
+    "AeH1",
+    "AeH2",
+    "AeH3",
+    "AeH5",
+    "AeH6",
+    "Ast1",
+    "Ast2",
+    "Bte1",
+    "Bte3"
+   ],
+   "answer_count": 9,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours <= 321",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 321,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 321
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '321'?"
+  },
+  {
+   "uid": "8055c071-a5f7-4cfa-a1da-7ee9de531398",
+   "question": "What projects named A Magnetic Primer Designer have at least 9684 hours?",
+   "answer_row_ids": [
+    "Bte2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours >= 9684 AND projects.name = 'A Magnetic Primer Designer'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 9684,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Magnetic Primer Designer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 9684,
+    "projects.name": "A Magnetic Primer Designer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at least '9684' and name equal to 'A Magnetic Primer Designer'?"
+  },
+  {
+   "uid": "a6b628c8-0bd5-45c9-8fc0-958539b7a0ae",
+   "question": "What projects named exactly A Magnetic Primer Designer have no more than 9684 hours?",
+   "answer_row_ids": [
+    "Bte2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.name = 'A Magnetic Primer Designer' AND projects.hours <= 9684",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Magnetic Primer Designer",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 9684,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Magnetic Primer Designer",
+    "projects.hours": 9684
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Magnetic Primer Designer' and hours at most '9684'?"
+  },
+  {
+   "uid": "43eeb293-d014-4434-83d1-f0bb2f1d1c04",
+   "question": "Which projects have the name A Matter of Time?",
+   "answer_row_ids": [
+    "Ast1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.name = 'A Matter of Time'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Matter of Time",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Matter of Time"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Matter of Time'?"
+  },
+  {
+   "uid": "02cb76cb-d45c-4906-8c70-b8e99775013e",
+   "question": "Which projects require at most 299 hours to complete?",
+   "answer_row_ids": [
+    "AeH1",
+    "AeH2",
+    "AeH3",
+    "AeH5",
+    "AeH6",
+    "Ast1",
+    "Ast2"
+   ],
+   "answer_count": 7,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours <= 299",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 299,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 299
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '299'?"
+  },
+  {
+   "uid": "6cdf7f73-8b59-4c47-b184-29added98933",
+   "question": "Which projects require exactly 9684 hours?",
+   "answer_row_ids": [
+    "Bte2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours = 9684",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 9684,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 9684
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '9684'?"
+  },
+  {
+   "uid": "c2eeeeb0-2992-4b2b-a9d9-7501290f044b",
+   "question": "Which projects named A Matter of Time require at most 112 hours?",
+   "answer_row_ids": [
+    "Ast1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours <= 112 AND projects.name = 'A Matter of Time'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 112,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Matter of Time",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 112,
+    "projects.name": "A Matter of Time"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '112' and name equal to 'A Matter of Time'?"
+  },
+  {
+   "uid": "7d371553-f0fb-45ae-b957-93466bc95090",
+   "question": "Which projects named Juicy: Extracting Apple Juice with Pectinase have at least 321 hours?",
+   "answer_row_ids": [
+    "Bte1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.name = 'Juicy: Extracting Apple Juice with Pectinase' AND projects.hours >= 321",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Juicy: Extracting Apple Juice with Pectinase",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 321,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Juicy: Extracting Apple Juice with Pectinase",
+    "projects.hours": 321
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Juicy: Extracting Apple Juice with Pectinase' and hours at least '321'?"
+  },
+  {
+   "uid": "a2382252-bc28-4ade-ab23-11dba5123bea",
+   "question": "Which projects named Aerodynamics of Air Hockey require exactly 89 hours?",
+   "answer_row_ids": [
+    "AeH6"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours = 89 AND projects.name = 'Aerodynamics of Air Hockey'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 89,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Aerodynamics of Air Hockey",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 89,
+    "projects.name": "Aerodynamics of Air Hockey"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '89' and name equal to 'Aerodynamics of Air Hockey'?"
+  },
+  {
+   "uid": "1d4aaab8-f650-4a5d-bdc4-8db4041ef0a6",
+   "question": "Which projects named Bacterial Transformation Efficiency require at most 321 hours?",
+   "answer_row_ids": [
+    "Bte3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nWHERE projects.hours <= 321 AND projects.name = 'Bacterial Transformation Efficiency'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Bacterial Transformation Efficiency",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 321,
+    "projects.name": "Bacterial Transformation Efficiency"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '321' and name equal to 'Bacterial Transformation Efficiency'?"
+  },
+  {
+   "uid": "9ea3ab95-b323-4bdd-b22b-2f0bee98f3c6",
+   "question": "What projects named Build Your Own Telescope require exactly 6546 hours?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours = 6546 AND projects.name = 'Build Your Own Telescope'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 6546,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Build Your Own Telescope",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 6546,
+    "projects.name": "Build Your Own Telescope"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '6546' and name equal to 'Build Your Own Telescope', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "534e6d94-4cb5-48a8-b331-c27efad0f2fc",
+   "question": "Which projects named A Matter of Time have at most 112 hours logged?",
+   "answer_row_ids": [
+    "Ast1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours <= 112 AND projects.name = 'A Matter of Time'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 112,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Matter of Time",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 112,
+    "projects.name": "A Matter of Time"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '112' and name equal to 'A Matter of Time', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "1e4b5388-2c7f-473f-90d7-258ca52ff865",
+   "question": "Which projects that have assigned team members require at least 6546 hours?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours >= 6546",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 6546,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 6546
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at least '6546', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "d8f7f58a-e351-4803-bf4f-779270e02a98",
+   "question": "Which projects assigned to someone have at most 545 hours?",
+   "answer_row_ids": [
+    "AeH1",
+    "AeH3",
+    "Ast1",
+    "Ast2",
+    "Bte1",
+    "Che1"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours <= 545",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 545,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 545
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '545', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "67887e95-398d-471b-ad4a-c5a116af572e",
+   "question": "Which projects with at least 545 hours have team members assigned to them?",
+   "answer_row_ids": [
+    "AeH4",
+    "Ast3",
+    "Che1"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours >= 545",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 545,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 545
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at least '545', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "46d7e15d-9e99-4b7e-bf39-f4a46223866f",
+   "question": "Which projects named Build Your Own Telescope require at least 6546 hours?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours >= 6546 AND projects.name = 'Build Your Own Telescope'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 6546,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Build Your Own Telescope",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 6546,
+    "projects.name": "Build Your Own Telescope"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at least '6546' and name equal to 'Build Your Own Telescope', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "83acfc59-25a7-4c41-9dc3-f1642347a0c1",
+   "question": "Which projects named Aerodynamics and Gas Mileage require at most 256 hours?",
+   "answer_row_ids": [
+    "AeH3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.name = 'Aerodynamics and Gas Mileage' AND projects.hours <= 256",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Aerodynamics and Gas Mileage",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 256,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Aerodynamics and Gas Mileage",
+    "projects.hours": 256
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Aerodynamics and Gas Mileage' and hours at most '256', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "75ebc198-6a54-40b0-8e9a-6687cb2f59ed",
+   "question": "Which projects where the name is Aerodynamics and Gas Mileage have exactly 256 hours?",
+   "answer_row_ids": [
+    "AeH3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours = 256 AND projects.name = 'Aerodynamics and Gas Mileage'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 256,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Aerodynamics and Gas Mileage",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 256,
+    "projects.name": "Aerodynamics and Gas Mileage"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '256' and name equal to 'Aerodynamics and Gas Mileage', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "fdce78b8-f6ff-414b-9a70-97985f040d6d",
+   "question": "Which projects where the name is A Silver-Cleaning Battery have exactly 545 hours?",
+   "answer_row_ids": [
+    "Che1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours = 545 AND projects.name = 'A Silver-Cleaning Battery'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 545,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Silver-Cleaning Battery",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 545,
+    "projects.name": "A Silver-Cleaning Battery"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '545' and name equal to 'A Silver-Cleaning Battery', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "2e51bb6f-b774-46dd-912e-5c9fcaf9e38a",
+   "question": "Which projects named A Puzzling Parallax have assigned team members?",
+   "answer_row_ids": [
+    "Ast2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.name = 'A Puzzling Parallax'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Puzzling Parallax",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Puzzling Parallax"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Puzzling Parallax', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "fe6dbb66-393f-4b99-b719-c08e14bbfb69",
+   "question": "Which projects named A Silver-Cleaning Battery have someone assigned to them?",
+   "answer_row_ids": [
+    "Che1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.name = 'A Silver-Cleaning Battery'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Silver-Cleaning Battery",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Silver-Cleaning Battery"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Silver-Cleaning Battery', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "b2d673ea-351b-4457-8dbd-f854f62ed6e1",
+   "question": "Which projects named exactly A Matter of Time have assigned team members?",
+   "answer_row_ids": [
+    "Ast1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.name = 'A Matter of Time'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Matter of Time",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Matter of Time"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Matter of Time', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "854288d3-d186-4e45-b3c9-e5675950eb7b",
+   "question": "What projects require exactly 321 hours and have the name Juicy: Extracting Apple Juice with Pectinase?",
+   "answer_row_ids": [
+    "Bte1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nWHERE projects.hours = 321 AND projects.name = 'Juicy: Extracting Apple Juice with Pectinase'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Juicy: Extracting Apple Juice with Pectinase",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 321,
+    "projects.name": "Juicy: Extracting Apple Juice with Pectinase"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '321' and name equal to 'Juicy: Extracting Apple Juice with Pectinase', having at least one related assignedto record (linked on projects.code = assignedto.project)?"
+  },
+  {
+   "uid": "ceb5a532-b418-4d8c-b9d7-ebd3ca671647",
+   "question": "Which projects have at least 545 hours and involve assigned scientists?",
+   "answer_row_ids": [
+    "AeH4",
+    "Ast3",
+    "Che1"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours >= 545",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 545,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 545
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at least '545', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn)?"
+  },
+  {
+   "uid": "a3612c81-c3f8-4055-bdc6-897c20a93473",
+   "question": "Which projects involve the scientist whose name is Kumar Swamy?",
+   "answer_row_ids": [
+    "Ast2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Kumar Swamy'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Kumar Swamy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Kumar Swamy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Kumar Swamy'?"
+  },
+  {
+   "uid": "532fcbf5-fe4c-4acd-990a-d03f56e14ba3",
+   "question": "Which projects with exactly 6546 hours have Joe Stevens assigned to them?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Joe Stevens' AND projects.hours = 6546",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Joe Stevens",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 6546,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Joe Stevens",
+    "projects.hours": 6546
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '6546', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Joe Stevens'?"
+  },
+  {
+   "uid": "ac086aaf-5bb0-4dc4-a173-a6c499c92bda",
+   "question": "Which projects named A Silver-Cleaning Battery involve the scientist whose name is John Doe?",
+   "answer_row_ids": [
+    "Che1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'John Doe' AND projects.name = 'A Silver-Cleaning Battery'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "John Doe",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Silver-Cleaning Battery",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "John Doe",
+    "projects.name": "A Silver-Cleaning Battery"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Silver-Cleaning Battery', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'John Doe'?"
+  },
+  {
+   "uid": "3ae91a16-476e-4740-8693-05b17a513ae0",
+   "question": "Which projects named Build Your Own Telescope involve the scientist whose name is Carol Smith?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Carol Smith' AND projects.name = 'Build Your Own Telescope'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Carol Smith",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Build Your Own Telescope",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Carol Smith",
+    "projects.name": "Build Your Own Telescope"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Build Your Own Telescope', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Carol Smith'?"
+  },
+  {
+   "uid": "8748c087-199d-4ca5-9362-d6649717e77a",
+   "question": "Which projects named A Silver-Cleaning Battery involve scientists assigned to them?",
+   "answer_row_ids": [
+    "Che1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'A Silver-Cleaning Battery'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Silver-Cleaning Battery",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Silver-Cleaning Battery"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Silver-Cleaning Battery', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn)?"
+  },
+  {
+   "uid": "45bcbe2f-859a-4d0d-b092-bb1ed6cea0cd",
+   "question": "Which projects that involve scientists require at most 112 hours?",
+   "answer_row_ids": [
+    "Ast1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours <= 112",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 112,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 112
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '112', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn)?"
+  },
+  {
+   "uid": "6e33dcfb-f848-4654-8932-2facd15e8870",
+   "question": "What projects named Build Your Own Telescope involve the scientist whose name is Joe Stevens?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Joe Stevens' AND projects.name = 'Build Your Own Telescope'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Joe Stevens",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Build Your Own Telescope",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Joe Stevens",
+    "projects.name": "Build Your Own Telescope"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Build Your Own Telescope', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Joe Stevens'?"
+  },
+  {
+   "uid": "9ab3b9b8-fada-4d2c-b81a-0ebf439f9ee5",
+   "question": "What projects have the name Juicy: Extracting Apple Juice with Pectinase that involve any scientists?",
+   "answer_row_ids": [
+    "Bte1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'Juicy: Extracting Apple Juice with Pectinase'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Juicy: Extracting Apple Juice with Pectinase",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Juicy: Extracting Apple Juice with Pectinase"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Juicy: Extracting Apple Juice with Pectinase', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn)?"
+  },
+  {
+   "uid": "e7238f36-82ce-435e-8bdf-7161551588fb",
+   "question": "Which projects have Michael Rogers assigned to them?",
+   "answer_row_ids": [
+    "AeH1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Michael Rogers'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Michael Rogers",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Michael Rogers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Michael Rogers'?"
+  },
+  {
+   "uid": "3a563e91-68fd-42f4-b920-700259b6aa17",
+   "question": "Which projects require exactly 789 hours and involve the scientist where name is George ODonnell?",
+   "answer_row_ids": [
+    "AeH4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours = 789 AND scientists.name = 'George ODonnell'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 789,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "George ODonnell",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 789,
+    "scientists.name": "George ODonnell"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '789', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'George ODonnell'?"
+  },
+  {
+   "uid": "4e7bcc83-0b07-4194-b7d2-5240d73fb2bc",
+   "question": "Which projects require at most 299 hours and have Kumar Swamy assigned to them?",
+   "answer_row_ids": [
+    "Ast2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours <= 299 AND scientists.name = 'Kumar Swamy'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 299,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Kumar Swamy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 299,
+    "scientists.name": "Kumar Swamy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '299', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Kumar Swamy'?"
+  },
+  {
+   "uid": "1d790e5a-81e5-4f18-91f6-417f47139bcf",
+   "question": "Which projects named A Puzzling Parallax involve Kumar Swamy and require at least 299 hours?",
+   "answer_row_ids": [
+    "Ast2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Kumar Swamy' AND projects.name = 'A Puzzling Parallax' AND projects.hours >= 299",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Kumar Swamy",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Puzzling Parallax",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 299,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Kumar Swamy",
+    "projects.name": "A Puzzling Parallax",
+    "projects.hours": 299
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Puzzling Parallax' and hours at least '299', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Kumar Swamy'?"
+  },
+  {
+   "uid": "21916ea7-8ef2-4988-9596-a4815be640f3",
+   "question": "What projects named Juicy: Extracting Apple Juice with Pectinase require at least 321 hours and involve Mary-Anne Foster?",
+   "answer_row_ids": [
+    "Bte1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'Juicy: Extracting Apple Juice with Pectinase' AND projects.hours >= 321 AND scientists.name = 'Mary-Anne Foster'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "projects.hours",
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Juicy: Extracting Apple Juice with Pectinase",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Mary-Anne Foster",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Juicy: Extracting Apple Juice with Pectinase",
+    "projects.hours": 321,
+    "scientists.name": "Mary-Anne Foster"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Juicy: Extracting Apple Juice with Pectinase' and hours at least '321', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Mary-Anne Foster'?"
+  },
+  {
+   "uid": "941dc8dd-fe9b-4b9e-88d8-d5257c5bf2ca",
+   "question": "Which projects named Aerodynamics and Ice Hockey with at least 789 hours involve scientist George ODonnell?",
+   "answer_row_ids": [
+    "AeH4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'Aerodynamics and Ice Hockey' AND projects.hours >= 789 AND scientists.name = 'George ODonnell'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "projects.hours",
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Aerodynamics and Ice Hockey",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 789,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "George ODonnell",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Aerodynamics and Ice Hockey",
+    "projects.hours": 789,
+    "scientists.name": "George ODonnell"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Aerodynamics and Ice Hockey' and hours at least '789', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'George ODonnell'?"
+  },
+  {
+   "uid": "bc782c73-f5bf-4b89-aa69-e3f408d80b13",
+   "question": "Which projects named Winds: Studying Bernoullis Principle involve Michael Rogers and require at least 156 hours?",
+   "answer_row_ids": [
+    "AeH1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'Winds: Studying Bernoullis Principle' AND scientists.name = 'Michael Rogers' AND projects.hours >= 156",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "scientists.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Winds: Studying Bernoullis Principle",
+     "column_type": "enum"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Michael Rogers",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 156,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "Winds: Studying Bernoullis Principle",
+    "scientists.name": "Michael Rogers",
+    "projects.hours": 156
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Winds: Studying Bernoullis Principle' and hours at least '156', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Michael Rogers'?"
+  },
+  {
+   "uid": "eb4d1ecd-3c41-4e6b-be9c-6454b9d80fd8",
+   "question": "What projects named A Silver-Cleaning Battery, involving John Doe, have no more than 545 hours?",
+   "answer_row_ids": [
+    "Che1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'John Doe' AND projects.name = 'A Silver-Cleaning Battery' AND projects.hours <= 545",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "John Doe",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Silver-Cleaning Battery",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 545,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "John Doe",
+    "projects.name": "A Silver-Cleaning Battery",
+    "projects.hours": 545
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Silver-Cleaning Battery' and hours at most '545', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'John Doe'?"
+  },
+  {
+   "uid": "5df3ed09-3abb-4471-80e6-bdeee12ec958",
+   "question": "Which projects named A Silver-Cleaning Battery that John Doe worked on required at most 545 hours?",
+   "answer_row_ids": [
+    "Che1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.name = 'A Silver-Cleaning Battery' AND scientists.name = 'John Doe' AND projects.hours <= 545",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.name",
+    "scientists.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "A Silver-Cleaning Battery",
+     "column_type": "enum"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "John Doe",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 545,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "projects.name": "A Silver-Cleaning Battery",
+    "scientists.name": "John Doe",
+    "projects.hours": 545
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'A Silver-Cleaning Battery' and hours at most '545', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'John Doe'?"
+  },
+  {
+   "uid": "306b89df-3303-42ee-9fcb-fcc70abbb099",
+   "question": "Which projects named Winds: Studying Bernoullis Principle involve Michael Rogers and require at most 156 hours?",
+   "answer_row_ids": [
+    "AeH1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'Michael Rogers' AND projects.hours <= 156 AND projects.name = 'Winds: Studying Bernoullis Principle'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.hours",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Michael Rogers",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 156,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Winds: Studying Bernoullis Principle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "Michael Rogers",
+    "projects.hours": 156,
+    "projects.name": "Winds: Studying Bernoullis Principle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '156' and name equal to 'Winds: Studying Bernoullis Principle', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Michael Rogers'?"
+  },
+  {
+   "uid": "5f4f302f-d922-477a-a967-298d9efcc631",
+   "question": "Which projects named Aerodynamics and Gas Mileage, requiring exactly 256 hours, involve the scientist where name is Anand Manikutty?",
+   "answer_row_ids": [
+    "AeH3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours = 256 AND scientists.name = 'Anand Manikutty' AND projects.name = 'Aerodynamics and Gas Mileage'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "scientists.name",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "=",
+     "value": 256,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Anand Manikutty",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Aerodynamics and Gas Mileage",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 256,
+    "scientists.name": "Anand Manikutty",
+    "projects.name": "Aerodynamics and Gas Mileage"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours equal to '256' and name equal to 'Aerodynamics and Gas Mileage', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Anand Manikutty'?"
+  },
+  {
+   "uid": "707ddd9a-612c-425d-9a8f-577b42519707",
+   "question": "Which projects named Winds: Studying Bernoullis Principle, with at most 156 hours, involve a scientist whose name is Michael Rogers?",
+   "answer_row_ids": [
+    "AeH1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours <= 156 AND scientists.name = 'Michael Rogers' AND projects.name = 'Winds: Studying Bernoullis Principle'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "scientists.name",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 156,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Michael Rogers",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Winds: Studying Bernoullis Principle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 156,
+    "scientists.name": "Michael Rogers",
+    "projects.name": "Winds: Studying Bernoullis Principle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '156' and name equal to 'Winds: Studying Bernoullis Principle', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Michael Rogers'?"
+  },
+  {
+   "uid": "340a34de-1934-4a8b-a454-0742e8cc82df",
+   "question": "Which projects named Build Your Own Telescope involve David Smith and require at least 6546 hours?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE scientists.name = 'David Smith' AND projects.name = 'Build Your Own Telescope' AND projects.hours >= 6546",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "scientists.name",
+    "projects.name",
+    "projects.hours"
+   ],
+   "involved_filters": [
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "David Smith",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Build Your Own Telescope",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": ">=",
+     "value": 6546,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "scientists.name": "David Smith",
+    "projects.name": "Build Your Own Telescope",
+    "projects.hours": 6546
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with name equal to 'Build Your Own Telescope' and hours at least '6546', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'David Smith'?"
+  },
+  {
+   "uid": "a06f28fe-8376-4d43-91bc-ef166e8735be",
+   "question": "Which projects named Build Your Own Telescope involve David Smith and have at most 6546 hours?",
+   "answer_row_ids": [
+    "Ast3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours <= 6546 AND projects.name = 'Build Your Own Telescope' AND scientists.name = 'David Smith'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "projects.name",
+    "scientists.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 6546,
+     "column_type": "numeric"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Build Your Own Telescope",
+     "column_type": "enum"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "David Smith",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 6546,
+    "projects.name": "Build Your Own Telescope",
+    "scientists.name": "David Smith"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '6546' and name equal to 'Build Your Own Telescope', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'David Smith'?"
+  },
+  {
+   "uid": "61f874c1-bd28-4f03-ac06-11ecac3edcf0",
+   "question": "Which projects named Juicy: Extracting Apple Juice with Pectinase, assigned to Mary-Anne Foster, require at most 321 hours?",
+   "answer_row_ids": [
+    "Bte1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT projects.code FROM projects\nJOIN assignedto ON projects.code = assignedto.project\nJOIN scientists ON assignedto.scientist = scientists.ssn\nWHERE projects.hours <= 321 AND scientists.name = 'Mary-Anne Foster' AND projects.name = 'Juicy: Extracting Apple Juice with Pectinase'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "scientists",
+    "assignedto",
+    "projects"
+   ],
+   "involved_columns": [
+    "projects.hours",
+    "scientists.name",
+    "projects.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "projects",
+     "column": "hours",
+     "operator": "<=",
+     "value": 321,
+     "column_type": "numeric"
+    },
+    {
+     "table": "scientists",
+     "column": "name",
+     "operator": "=",
+     "value": "Mary-Anne Foster",
+     "column_type": "enum"
+    },
+    {
+     "table": "projects",
+     "column": "name",
+     "operator": "=",
+     "value": "Juicy: Extracting Apple Juice with Pectinase",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "projects.hours": 321,
+    "scientists.name": "Mary-Anne Foster",
+    "projects.name": "Juicy: Extracting Apple Juice with Pectinase"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "projects"
+   },
+   "answer_table": "projects",
+   "answer_id_column": "code",
+   "canonical_question": "Which projects entities with hours at most '321' and name equal to 'Juicy: Extracting Apple Juice with Pectinase', having at least one related assignedto record (linked on projects.code = assignedto.project), whose assignedto record itself has at least one related scientists record (linked on assignedto.scientist = scientists.ssn) with name equal to 'Mary-Anne Foster'?"
+  }
+ ]
+}

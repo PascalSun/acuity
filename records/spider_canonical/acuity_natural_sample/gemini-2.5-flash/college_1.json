@@ -1,0 +1,124 @@
+{
+  "db_id": "college_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 4,
+  "accuracy": 0.4,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:20:52.783545+00:00",
+  "records": [
+    {
+      "uid": "0601d52e-b379-4d04-ac2e-771556e7202c",
+      "question": "What employees named Henry with the initial B were hired on 1994-11-15 and born exactly on 1961-11-2?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nWHERE employee.emp_initial = 'B' AND employee.emp_hiredate = '1994-11-15' AND employee.emp_dob = '1961-11-2' AND employee.emp_fname = 'Henry'",
+      "pred_sql": "SELECT EMP_NUM FROM EMPLOYEE WHERE EMP_FNAME = 'Henry' AND EMP_INITIAL = 'B' AND EMP_HIREDATE = '1994-11-15' AND EMP_DOB = '1961-11-02'",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.86
+    },
+    {
+      "uid": "21ee6806-23d2-43cb-8d67-fd83fc5cf1a7",
+      "question": "Which employees named Todd H. Wilson, born on 1966-10-19, hired on 1990-11-6, have the job code CUST?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nWHERE employee.emp_hiredate = '1990-11-6' AND employee.emp_initial = 'H' AND employee.emp_lname = 'Wilson' AND employee.emp_dob = '1966-10-19' AND employee.emp_fname = 'Todd' AND employee.emp_jobcode = 'CUST'",
+      "pred_sql": "SELECT EMP_NUM FROM EMPLOYEE WHERE EMP_FNAME = 'Todd' AND EMP_INITIAL = 'H' AND EMP_LNAME = 'Wilson' AND EMP_DOB = '1966-10-19' AND EMP_HIREDATE = '1990-11-6' AND EMP_JOBCODE = 'CUST'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.28
+    },
+    {
+      "uid": "417e5073-3556-4ddc-9131-eedbd5cb3bd7",
+      "question": "Which employees with the initial B, hired on 1978-8-1, have the job code PROF and work in the Accounting department within the BUS school?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_initial = 'B' AND department.dept_name = 'Accounting' AND department.school_code = 'BUS' AND employee.emp_jobcode = 'PROF' AND employee.emp_hiredate = '1978-8-1'",
+      "pred_sql": "SELECT\n  T1.EMP_NUM\nFROM EMPLOYEE AS T1\nINNER JOIN PROFESSOR AS T2\n  ON T1.EMP_NUM = T2.EMP_NUM\nINNER JOIN DEPARTMENT AS T3\n  ON T2.DEPT_CODE = T3.DEPT_CODE\nWHERE\n  T1.EMP_INITIAL = 'B' AND T1.EMP_HIREDATE = '1978-08-01' AND T1.EMP_JOBCODE = 'PROF' AND T3.DEPT_NAME = 'Accounting' AND T3.SCHOOL_CODE = 'BUS'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.76
+    },
+    {
+      "uid": "4b547cf0-79e6-4194-82f1-601b0ea61701",
+      "question": "Who is the employee named Gerald Graztevski, born on 1939-3-18, with initial B, teaching in class room KLR211, working in the BUS school with a department extension of 3119?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_initial = 'B' AND department.school_code = 'BUS' AND class.class_room = 'KLR211' AND employee.emp_fname = 'Gerald' AND employee.emp_lname = 'Graztevski' AND employee.emp_dob = '1939-3-18' AND department.dept_extension = '3119'",
+      "pred_sql": "SELECT T1.EMP_NUM FROM EMPLOYEE AS T1 INNER JOIN CLASS AS T2 ON T1.EMP_NUM = T2.PROF_NUM INNER JOIN PROFESSOR AS T3 ON T1.EMP_NUM = T3.EMP_NUM INNER JOIN DEPARTMENT AS T4 ON T3.DEPT_CODE = T4.DEPT_CODE WHERE T1.EMP_FNAME = 'Gerald' AND T1.EMP_LNAME = 'Graztevski' AND T1.EMP_DOB = '1939-03-18' AND T1.EMP_INITIAL = 'B' AND T2.CLASS_ROOM = 'KLR211' AND T4.SCHOOL_CODE = 'BUS' AND T4.DEPT_EXTENSION = '3119'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.55
+    },
+    {
+      "uid": "745017d2-65ff-48d1-a2e6-75a6d77356ed",
+      "question": "Which employees were born exactly on 1940-6-20 and have taught classes linked to courses?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN course ON class.crs_code = course.crs_code\nWHERE employee.emp_dob = '1940-6-20'",
+      "pred_sql": "SELECT T1.EMP_NUM FROM EMPLOYEE AS T1 INNER JOIN CLASS AS T2 ON T1.EMP_NUM = T2.PROF_NUM WHERE T1.EMP_DOB = '1940-06-20'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.27
+    },
+    {
+      "uid": "96dd9392-12cc-4253-861d-45bea61a3e98",
+      "question": "Which employees teach classes that meet exactly at MWF 8:00-8:50 a.m?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nWHERE class.class_time = 'MWF 8:00-8:50 a.m.'",
+      "pred_sql": "SELECT T1.EMP_NUM FROM EMPLOYEE AS T1 INNER JOIN CLASS AS T2 ON T1.EMP_NUM = T2.PROF_NUM WHERE T2.CLASS_TIME = 'MWF 8:00-8:50 a.m.'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.65
+    },
+    {
+      "uid": "aeb178ab-ec98-48a1-b44f-34a7ec5b3f11",
+      "question": "Which employees were born exactly on 1970-3-12?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nWHERE employee.emp_dob = '1970-3-12'",
+      "pred_sql": "SELECT EMP_NUM FROM EMPLOYEE WHERE EMP_DOB = '1970-03-12'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    },
+    {
+      "uid": "b370fd2f-f852-4f8f-9cb2-ed5e69f52d39",
+      "question": "Which employees named Ralph F Matler, born on 1973-12-2 with job code PROF, have a professor record where the highest degree is MBA and the extension is 2851?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN professor ON employee.emp_num = professor.emp_num\nWHERE professor.prof_high_degree = 'MBA' AND employee.emp_dob = '1973-12-2' AND employee.emp_fname = 'Ralph' AND employee.emp_initial = 'F' AND professor.prof_extension = '2851' AND employee.emp_lname = 'Matler' AND employee.emp_jobcode = 'PROF'",
+      "pred_sql": "SELECT T1.EMP_NUM FROM EMPLOYEE AS T1 INNER JOIN PROFESSOR AS T2 ON T1.EMP_NUM = T2.EMP_NUM WHERE T1.EMP_FNAME = 'Ralph' AND T1.EMP_LNAME = 'Matler' AND T1.EMP_INITIAL = 'F' AND T1.EMP_DOB = '1973-12-2' AND T1.EMP_JOBCODE = 'PROF' AND T2.PROF_HIGH_DEGREE = 'MBA' AND T2.PROF_EXTENSION = '2851'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.08
+    },
+    {
+      "uid": "f32c0e7c-7ea5-4006-a3bc-3e8b8285d3d6",
+      "question": "Which employees whose initial is B are involved in both classes and departments?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_initial = 'B'",
+      "pred_sql": "SELECT T1.EMP_NUM FROM EMPLOYEE AS T1 WHERE T1.EMP_INITIAL = 'B' AND T1.EMP_NUM IN (SELECT PROF_NUM FROM CLASS) AND T1.EMP_NUM IN (SELECT EMP_NUM FROM DEPARTMENT)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.24
+    },
+    {
+      "uid": "f780d4ba-a6a6-46d6-b401-c1c53c2d7157",
+      "question": "Which employees with the first name Gerald, last name Graztevski, and hire date 1978-8-1 have related class records taught by them and have department records in the Accounting department of the BUS school code?",
+      "gold_sql": "SELECT employee.emp_num FROM employee\nJOIN class ON employee.emp_num = class.prof_num\nJOIN department ON employee.emp_num = department.emp_num\nWHERE employee.emp_fname = 'Gerald' AND department.dept_name = 'Accounting' AND employee.emp_hiredate = '1978-8-1' AND department.school_code = 'BUS' AND employee.emp_lname = 'Graztevski'",
+      "pred_sql": "SELECT DISTINCT T1.EMP_NUM FROM EMPLOYEE AS T1 INNER JOIN PROFESSOR AS T2 ON T1.EMP_NUM = T2.EMP_NUM INNER JOIN DEPARTMENT AS T3 ON T2.DEPT_CODE = T3.DEPT_CODE INNER JOIN CLASS AS T4 ON T1.EMP_NUM = T4.PROF_NUM WHERE T1.EMP_FNAME = 'Gerald' AND T1.EMP_LNAME = 'Graztevski' AND T1.EMP_HIREDATE = '1978-08-01' AND T3.DEPT_NAME = 'Accounting' AND T3.SCHOOL_CODE = 'BUS'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.44
+    }
+  ]
+}

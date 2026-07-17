@@ -1,0 +1,124 @@
+{
+  "db_id": "roller_coaster",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:33:45.909987+00:00",
+  "records": [
+    {
+      "uid": "1793c7f2-8ced-41f4-9bfd-301fead43f51",
+      "question": "Which countries have an area of at most 449964 and a population of at least 9047752 where the language is exactly Swedish?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.area <= 449964 AND country.population >= 9047752 AND country.languages = 'Swedish'",
+      "pred_sql": "SELECT Country_ID \nFROM country \nWHERE Area <= 449964 \n  AND Population >= 9047752 \n  AND Languages = 'Swedish'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.12
+    },
+    {
+      "uid": "407f7884-094e-4967-b219-e1e175f42bb6",
+      "question": "Which country has the name Austria?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.name = 'Austria'",
+      "pred_sql": "SELECT Country_ID \nFROM country \nWHERE Name = 'Austria'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 16.49
+    },
+    {
+      "uid": "5b796ed9-f089-49d7-b23f-74dd833353e3",
+      "question": "Which countries have roller coasters located in the park Gr\u00f6na Lund?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.park = 'Gr\u00f6na Lund'",
+      "pred_sql": "SELECT DISTINCT country.Country_ID\nFROM country\nINNER JOIN roller_coaster\nON country.Country_ID = roller_coaster.Country_ID\nWHERE roller_coaster.Park = 'Gr\u00f6na Lund'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.62
+    },
+    {
+      "uid": "70340933-8132-4061-8962-66dbf5939b22",
+      "question": "Which countries have a population of at least 5261008 and feature a roller coaster exactly 50.0 meters tall in the park Gr\u00f6na Lund?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE country.population >= 5261008 AND roller_coaster.park = 'Gr\u00f6na Lund' AND roller_coaster.height = 50.0",
+      "pred_sql": "SELECT DISTINCT country.Country_ID\nFROM country\nINNER JOIN roller_coaster\nON country.Country_ID = roller_coaster.Country_ID\nWHERE country.Population >= 5261008\n  AND roller_coaster.Park = 'Gr\u00f6na Lund'\n  AND roller_coaster.Height = 50.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.49
+    },
+    {
+      "uid": "9eb21273-995a-47df-a0ef-bc3bc97d4a94",
+      "question": "Which countries have an area of at least 449964?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.area >= 449964",
+      "pred_sql": "SELECT Country_ID \nFROM country \nWHERE Area >= 449964",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 18.77
+    },
+    {
+      "uid": "a3e7c31f-e631-4699-b088-395a4cab69f1",
+      "question": "Which countries have a population of at least 8206524 and feature operating roller coasters that have a speed of exactly 55 and opened in 2012?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.speed = '55' AND roller_coaster.status = 'Operating' AND country.population >= 8206524 AND roller_coaster.opened LIKE '%2012%'",
+      "pred_sql": "SELECT \n    country.Country_ID\nFROM \n    country\nINNER JOIN \n    roller_coaster\nON \n    country.Country_ID = roller_coaster.Country_ID\nWHERE \n    country.Population >= 8206524\n    AND roller_coaster.Speed = '55'\n    AND roller_coaster.Status = 'Operating'\n    AND roller_coaster.Opened LIKE '%2012%'\nGROUP BY \n    country.Country_ID\nHAVING \n    COUNT(roller_coaster.Roller_Coaster_ID) >= 1",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 63.15
+    },
+    {
+      "uid": "a8f204f2-1004-412d-9901-340116d80b4b",
+      "question": "Which country named Finland has a population of 5261008, an area of at most 338145, languages exactly Finnish Swedish, and features an operating roller coaster that is exactly 120.0 meters tall?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.status = 'Operating' AND roller_coaster.height = 120.0 AND country.name = 'Finland' AND country.population = 5261008 AND country.area <= 338145 AND country.languages = 'Finnish Swedish'",
+      "pred_sql": "SELECT DISTINCT country.country_id\nFROM country\nINNER JOIN roller_coaster\nON country.country_id = roller_coaster.country_id\nWHERE country.name = 'Finland'\n  AND country.population = 5261008\n  AND country.area <= 338145\n  AND country.languages = 'Finnish Swedish'\n  AND roller_coaster.status = 'Operating'\n  AND roller_coaster.height = 120.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 56.73
+    },
+    {
+      "uid": "c507f9f7-007e-4552-b50c-59d2bb2a2a28",
+      "question": "Which country has the name Austria, speaks German, has a population of exactly 8206524, an area of at least 83871, and features the operating roller coaster named Hades 360 that is exactly 136.0 tall?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.status = 'Operating' AND roller_coaster.height = 136.0 AND roller_coaster.name = 'Hades 360' AND country.name = 'Austria' AND country.population = 8206524 AND country.languages = 'German' AND country.area >= 83871",
+      "pred_sql": "SELECT DISTINCT country.country_id\nFROM country\nINNER JOIN roller_coaster\nON country.country_id = roller_coaster.country_id\nWHERE country.name = 'Austria'\n  AND country.population = 8206524\n  AND country.languages = 'German'\n  AND country.area >= 83871\n  AND roller_coaster.status = 'Operating'\n  AND roller_coaster.height = 136.0\n  AND roller_coaster.name = 'Hades 360'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 67.25
+    },
+    {
+      "uid": "c6afa334-9f8e-440e-968d-fee71a240afa",
+      "question": "Which country has the name Austria, speaks German, has an area exactly 83871, and a population of at most 8206524?",
+      "gold_sql": "SELECT country.country_id FROM country\nWHERE country.area = 83871 AND country.name = 'Austria' AND country.languages = 'German' AND country.population <= 8206524",
+      "pred_sql": "SELECT Country_ID\nFROM country\nWHERE Area = 83871\n  AND Name = 'Austria'\n  AND Languages = 'German'\n  AND Population <= 8206524",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 42.97
+    },
+    {
+      "uid": "fd5fb30f-4d8c-4ebc-a433-ff9a53118586",
+      "question": "Which countries have roller coasters where the speed is 70?",
+      "gold_sql": "SELECT country.country_id FROM country\nJOIN roller_coaster ON country.country_id = roller_coaster.country_id\nWHERE roller_coaster.speed = '70'",
+      "pred_sql": "SELECT DISTINCT country.Country_ID\nFROM country\nINNER JOIN roller_coaster\nON country.Country_ID = roller_coaster.Country_ID\nWHERE roller_coaster.Speed = '70'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 36.56
+    }
+  ]
+}

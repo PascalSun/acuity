@@ -1,0 +1,124 @@
+{
+  "db_id": "social_media",
+  "model": "claude-haiku-4-5-20251001",
+  "provider": "anthropic",
+  "tag": "claude-haiku-4-5-20251001",
+  "n": 10,
+  "n_correct": 6,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:23:52.344264+00:00",
+  "records": [
+    {
+      "uid": "00ca0d75-2a21-4f01-af4f-ffc77911dc77",
+      "question": "What locations are associated with users who have Twitter accounts and are exactly in the city Dublin?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN twitter ON location.locationid = twitter.locationid\nJOIN user ON twitter.userid = user.userid\nWHERE location.city = 'Dublin'",
+      "pred_sql": "SELECT DISTINCT location.LocationID\nFROM location\nWHERE location.City = 'Dublin'\nAND location.LocationID IN (\n    SELECT DISTINCT twitter.LocationID\n    FROM twitter\n    WHERE twitter.LocationID IS NOT NULL\n)",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "58281650-9e2b-48d1-afe4-26a4d19cf198",
+      "question": "Which locations are in Denver within the United States?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.city = 'Denver' AND location.country = 'United States'",
+      "pred_sql": "SELECT location.LocationID\nFROM location\nWHERE location.City = 'Denver' AND location.Country = 'United States'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.85
+    },
+    {
+      "uid": "5ea687af-0a18-4d28-b5ac-0aebf03025b7",
+      "question": "What locations are in the city of Lubuklinggau within South Sumatra state, Indonesia, with the state code ID?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.state = 'South Sumatra' AND location.statecode = 'ID' AND location.country = 'Indonesia' AND location.city = 'Lubuklinggau'",
+      "pred_sql": "SELECT location.LocationID\nFROM location\nWHERE location.City = 'Lubuklinggau'\nAND location.State = 'South Sumatra'\nAND location.Country = 'Indonesia'\nAND location.StateCode = 'ID'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "68060a34-7607-4c4f-bda8-e0ab354cfd42",
+      "question": "Which locations are in Deerfield, Illinois, within the United States?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.country = 'United States' AND location.city = 'Deerfield' AND location.state = 'Illinois'",
+      "pred_sql": "SELECT location.LocationID\nFROM location\nWHERE location.City = 'Deerfield'\nAND location.State = 'Illinois'\nAND location.Country = 'United States'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.87
+    },
+    {
+      "uid": "8787ee90-8bb1-48d2-a948-0171af9d6af6",
+      "question": "What locations in India have tweets at exactly hour 12 on day 3 that are reshares with a klout score of at least 13?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN twitter ON location.locationid = twitter.locationid\nWHERE twitter.hour = 12.0 AND twitter.day = 3.0 AND twitter.klout >= 13.0 AND twitter.isreshare = 'TRUE' AND location.country = 'India'",
+      "pred_sql": "SELECT DISTINCT location.LocationID\nFROM location\nJOIN twitter ON location.LocationID = twitter.LocationID\nWHERE location.Country = 'India'\nAND twitter.Hour = 12\nAND twitter.Day = 3\nAND twitter.IsReshare = 'true'\nAND twitter.Klout >= 13",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "8c4ce182-c3ff-414e-b470-273153f78106",
+      "question": "Which locations in San Francisco, California with state code US-CA have Twitter posts in English on Saturdays that occur no later than hour 8, on day 13 or later, and have no more than 0 likes?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN twitter ON location.locationid = twitter.locationid\nJOIN user ON twitter.userid = user.userid\nWHERE twitter.hour <= 8.0 AND twitter.lang = 'en' AND location.state = 'California' AND twitter.day >= 13.0 AND location.statecode = 'US-CA' AND twitter.weekday = 'Saturday' AND location.city = 'San Francisco' AND twitter.likes <= 0.0",
+      "pred_sql": "SELECT DISTINCT location.LocationID\nFROM location\nJOIN twitter ON location.LocationID = twitter.LocationID\nWHERE location.City = 'San Francisco'\n  AND location.Country = 'California'\n  AND location.StateCode = 'US-CA'\n  AND twitter.Lang = 'English'\n  AND twitter.Weekday = 'Saturday'\n  AND twitter.Hour <= 8\n  AND twitter.Day >= 13\n  AND twitter.Likes <= 0",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.71
+    },
+    {
+      "uid": "966974f3-8641-4d9a-b8dd-b5a29704b897",
+      "question": "Which locations in Ile-de-France, France have English tweets posted at hour 1 with exactly 23 retweets, no more than 0 likes, and on day 17 or earlier?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN twitter ON location.locationid = twitter.locationid\nWHERE location.state = 'Ile-de-France' AND twitter.hour = 1.0 AND twitter.lang = 'en' AND twitter.likes <= 0.0 AND twitter.retweetcount = 23.0 AND twitter.day <= 17.0 AND location.statecode = 'FR'",
+      "pred_sql": "SELECT DISTINCT location.LocationID\nFROM location\nJOIN twitter ON location.LocationID = twitter.LocationID\nWHERE location.State = 'Ile-de-France'\nAND location.Country = 'France'\nAND twitter.Lang = 'English'\nAND twitter.Hour = 1\nAND twitter.RetweetCount = 23\nAND twitter.Likes <= 0\nAND twitter.Day <= 17",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.31
+    },
+    {
+      "uid": "b14b5ed3-3b80-4473-b642-8e9cf7c37335",
+      "question": "Which locations have a twitter reach of exactly 3668.0 on day 18 or later?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN twitter ON location.locationid = twitter.locationid\nWHERE twitter.reach = 3668.0 AND twitter.day >= 18.0",
+      "pred_sql": "SELECT DISTINCT location.LocationID\nFROM location\nJOIN twitter ON location.LocationID = twitter.LocationID\nWHERE twitter.Reach = 3668 AND twitter.Day >= 18",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "b2c4475d-a530-4c77-a3ed-2267f2aa9789",
+      "question": "Which locations have tweets in English with a reach of exactly 1390.0, zero likes, exactly one retweet, and that are reshares?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN twitter ON location.locationid = twitter.locationid\nJOIN user ON twitter.userid = user.userid\nWHERE twitter.reach = 1390.0 AND twitter.lang = 'en' AND twitter.likes = 0.0 AND twitter.retweetcount = 1.0 AND twitter.isreshare = 'TRUE'",
+      "pred_sql": "SELECT DISTINCT location.LocationID\nFROM location\nJOIN twitter ON location.LocationID = twitter.LocationID\nWHERE twitter.Lang = 'English'\nAND twitter.Reach = 1390\nAND twitter.Likes = 0\nAND twitter.RetweetCount = 1\nAND twitter.IsReshare = 'true'",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.7
+    },
+    {
+      "uid": "d6d5583a-7c0a-4b17-8844-a249906b6492",
+      "question": "Which locations are in the city of Tigaon within the Philippines?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.country = 'Philippines' AND location.city = 'Tigaon'",
+      "pred_sql": "SELECT location.LocationID\nFROM location\nWHERE location.City = 'Tigaon' AND location.Country = 'Philippines'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.86
+    }
+  ]
+}

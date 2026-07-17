@@ -1,0 +1,3263 @@
+{
+ "db_id": "news_report",
+ "target_table": "event",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1509634421,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/news_report/news_report.sqlite",
+  "generated_at": "2026-07-02T16:51:40.454969+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "event",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 8,
+   "0M": 7,
+   "1pE": 7,
+   "1pM": 7,
+   "2pE": 7,
+   "2pM": 7,
+   "2pH": 7
+  },
+  "realized_counts": {
+   "0E": 8,
+   "0M": 7,
+   "1pE": 7,
+   "1pM": 7,
+   "2pE": 7,
+   "2pH": 7,
+   "2pM": 7
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "near-identical question already generated in this run"
+   },
+   "0M": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pE": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pH": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pM": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "6e4d116f-8361-4317-9106-2f6c914107ca",
+   "question": "Which events have exactly 225 attendees?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.event_attendance = 225",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 225,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 225
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance equal to '225'?"
+  },
+  {
+   "uid": "6af293b1-b90e-4ab9-9b3e-d231e448f0e7",
+   "question": "What events named Special Exhibition have exactly 225 attendees?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.event_attendance = 225 AND event.name = 'Special Exhibition'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 225,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Special Exhibition",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 225,
+    "event.name": "Special Exhibition"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance equal to '225' and name equal to 'Special Exhibition'?"
+  },
+  {
+   "uid": "4ee96b7c-576b-40f2-b8a5-4f58688c2a92",
+   "question": "Which events had an attendance of at most 1675 people?",
+   "answer_row_ids": [
+    2,
+    3,
+    5
+   ],
+   "answer_count": 3,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.event_attendance <= 1675",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 1675,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 1675
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at most '1675'?"
+  },
+  {
+   "uid": "1a742ce3-bee0-4cc2-9044-4c2e205e5eb6",
+   "question": "Which events named Government Hearing took place on 11 October 2007?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.date = '11 October 2007' AND event.name = 'Government Hearing'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "11 October 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Government Hearing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "11 October 2007",
+    "event.name": "Government Hearing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '11 October 2007' and name equal to 'Government Hearing'?"
+  },
+  {
+   "uid": "e43f7866-4160-4591-8eb7-5a28a65f7142",
+   "question": "Which events named Special Exhibition took place on 9 April 2014?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.name = 'Special Exhibition' AND event.date = '9 April 2014'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.name",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Special Exhibition",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "9 April 2014",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.name": "Special Exhibition",
+    "event.date": "9 April 2014"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Special Exhibition' and date equal to '9 April 2014'?"
+  },
+  {
+   "uid": "fa4239ba-2d78-4c11-a403-fafede39dd8d",
+   "question": "Which events have attendance of at most 225 people?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.event_attendance <= 225",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 225,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 225
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at most '225'?"
+  },
+  {
+   "uid": "f18963f4-4bbb-457d-b737-a6d4e94dc294",
+   "question": "Which events took place exactly on 20 June 2018?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.date = '20 June 2018'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "20 June 2018",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "20 June 2018"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '20 June 2018'?"
+  },
+  {
+   "uid": "f6c631ad-0957-44a2-a65f-882446a524bc",
+   "question": "Which events named Global Awarding took place exactly on 20 June 2018?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.date = '20 June 2018' AND event.name = 'Global Awarding'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "20 June 2018",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Global Awarding",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "20 June 2018",
+    "event.name": "Global Awarding"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '20 June 2018' and name equal to 'Global Awarding'?"
+  },
+  {
+   "uid": "83d92467-b409-4686-a660-bb7a0733226d",
+   "question": "What events held at Victoria on 11 October 2007 had an attendance of at least 369?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.event_attendance >= 369 AND event.venue = 'Victoria' AND event.date = '11 October 2007'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "event.venue",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 369,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Victoria",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "11 October 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 369,
+    "event.venue": "Victoria",
+    "event.date": "11 October 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at least '369' and venue equal to 'Victoria' and date equal to '11 October 2007'?"
+  },
+  {
+   "uid": "3af2f7f6-13d0-4de4-8531-575dc7d4dfa0",
+   "question": "Which events named Public Debating took place at Motagua with exactly 1675 attendees on 7 October 2010?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.date = '7 October 2010' AND event.event_attendance = 1675 AND event.venue = 'Motagua' AND event.name = 'Public Debating'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.event_attendance",
+    "event.venue",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "7 October 2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 1675,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Public Debating",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "7 October 2010",
+    "event.event_attendance": 1675,
+    "event.venue": "Motagua",
+    "event.name": "Public Debating"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '7 October 2010' and event attendance equal to '1675' and venue equal to 'Motagua' and name equal to 'Public Debating'?"
+  },
+  {
+   "uid": "4ab5bfbb-422c-410d-8654-488c65cf1284",
+   "question": "Which events named Government Hearing took place at Victoria on 11 October 2007?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.date = '11 October 2007' AND event.venue = 'Victoria' AND event.name = 'Government Hearing'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.venue",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "11 October 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Victoria",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Government Hearing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "11 October 2007",
+    "event.venue": "Victoria",
+    "event.name": "Government Hearing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '11 October 2007' and venue equal to 'Victoria' and name equal to 'Government Hearing'?"
+  },
+  {
+   "uid": "5ad40735-6f52-409d-abc0-4f7a3fa12033",
+   "question": "Which events held at Motagua on 7 October 2010 had an attendance of at most 1675?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.event_attendance <= 1675 AND event.date = '7 October 2010' AND event.venue = 'Motagua'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "event.date",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 1675,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "7 October 2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 1675,
+    "event.date": "7 October 2010",
+    "event.venue": "Motagua"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at most '1675' and date equal to '7 October 2010' and venue equal to 'Motagua'?"
+  },
+  {
+   "uid": "d3976157-2dad-4ed2-b81b-1f54d374f2cd",
+   "question": "Which events named Global Awarding took place at Platense on 20 June 2018 with attendance of at most 2356?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.venue = 'Platense' AND event.event_attendance <= 2356 AND event.name = 'Global Awarding' AND event.date = '20 June 2018'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.venue",
+    "event.event_attendance",
+    "event.name",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Platense",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 2356,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Global Awarding",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "20 June 2018",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.venue": "Platense",
+    "event.event_attendance": 2356,
+    "event.name": "Global Awarding",
+    "event.date": "20 June 2018"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with venue equal to 'Platense' and event attendance at most '2356' and name equal to 'Global Awarding' and date equal to '20 June 2018'?"
+  },
+  {
+   "uid": "90cf1fbb-3e4c-48b6-9187-a53cfdd018f2",
+   "question": "What events named Public Debating took place at Motagua on 7 October 2010 with attendance of at most 1675?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.name = 'Public Debating' AND event.venue = 'Motagua' AND event.event_attendance <= 1675 AND event.date = '7 October 2010'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.name",
+    "event.venue",
+    "event.event_attendance",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Public Debating",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 1675,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "7 October 2010",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.name": "Public Debating",
+    "event.venue": "Motagua",
+    "event.event_attendance": 1675,
+    "event.date": "7 October 2010"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Public Debating' and venue equal to 'Motagua' and event attendance at most '1675' and date equal to '7 October 2010'?"
+  },
+  {
+   "uid": "7a9eba45-a26e-40b3-a968-063f8c2e0338",
+   "question": "Which Special Exhibition events held at Hispano on 9 April 2014 had an attendance of at least 225?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nWHERE event.name = 'Special Exhibition' AND event.date = '9 April 2014' AND event.event_attendance >= 225 AND event.venue = 'Hispano'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "event"
+   ],
+   "involved_columns": [
+    "event.name",
+    "event.date",
+    "event.event_attendance",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Special Exhibition",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "9 April 2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 225,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Hispano",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.name": "Special Exhibition",
+    "event.date": "9 April 2014",
+    "event.event_attendance": 225,
+    "event.venue": "Hispano"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Special Exhibition' and date equal to '9 April 2014' and event attendance at least '225' and venue equal to 'Hispano'?"
+  },
+  {
+   "uid": "08384f10-847b-4244-88d0-aae0b36e5516",
+   "question": "Which events named Global Awarding have news reports where the work_type is Host?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE news_report.work_type = 'Host' AND event.name = 'Global Awarding'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "news_report.work_type",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Host",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Global Awarding",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "news_report.work_type": "Host",
+    "event.name": "Global Awarding"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Global Awarding', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Host'?"
+  },
+  {
+   "uid": "8bcedee5-b77b-4ea2-b840-39d871573e4b",
+   "question": "What events have an attendance of at least 2356 and are covered in news reports?",
+   "answer_row_ids": [
+    1,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.event_attendance >= 2356",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 2356,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 2356
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at least '2356', having at least one related news report record (linked on event.event_id = news_report.event_id)?"
+  },
+  {
+   "uid": "f8e0cd06-6296-4136-baef-72d02a609edb",
+   "question": "Which events covered in news reports have an attendance of at most 6650?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "answer_count": 5,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.event_attendance <= 6650",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 6650,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 6650
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at most '6650', having at least one related news report record (linked on event.event_id = news_report.event_id)?"
+  },
+  {
+   "uid": "9eb23710-1a16-4c38-9591-14925d8d14ce",
+   "question": "Which events took place where the venue is Motagua and have related news reports?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.venue = 'Motagua'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.venue": "Motagua"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with venue equal to 'Motagua', having at least one related news report record (linked on event.event_id = news_report.event_id)?"
+  },
+  {
+   "uid": "ddfb9363-1baa-4f22-9e07-39ff0c638f9c",
+   "question": "What events reported in the news occurred exactly on 13 October 2008?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.date = '13 October 2008'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "13 October 2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "13 October 2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '13 October 2008', having at least one related news report record (linked on event.event_id = news_report.event_id)?"
+  },
+  {
+   "uid": "f2a0299b-793e-4f38-8481-bc38e1006252",
+   "question": "What events named Olympia Games Openning took place at the venue Marathon?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.venue = 'Marathon' AND event.name = 'Olympia Games Openning'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.venue",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Marathon",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Olympia Games Openning",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.venue": "Marathon",
+    "event.name": "Olympia Games Openning"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with venue equal to 'Marathon' and name equal to 'Olympia Games Openning', having at least one related news report record (linked on event.event_id = news_report.event_id)?"
+  },
+  {
+   "uid": "b71a63a1-05ea-43b9-8a15-1a10e4fcb4bd",
+   "question": "Which events reported in the news occurred on 9 April 2014?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.date = '9 April 2014'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "9 April 2014",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "9 April 2014"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '9 April 2014', having at least one related news report record (linked on event.event_id = news_report.event_id)?"
+  },
+  {
+   "uid": "0f28ce44-e2e7-4267-96ae-a38d80084cc2",
+   "question": "Which events named Global Awarding took place at Platense on 20 June 2018 with exactly 2356 attendees and had a news report where the work type is Host?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.event_attendance = 2356 AND event.name = 'Global Awarding' AND news_report.work_type = 'Host' AND event.venue = 'Platense' AND event.date = '20 June 2018'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "event.name",
+    "news_report.work_type",
+    "event.venue",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 2356,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Global Awarding",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Host",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Platense",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "20 June 2018",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 2356,
+    "event.name": "Global Awarding",
+    "news_report.work_type": "Host",
+    "event.venue": "Platense",
+    "event.date": "20 June 2018"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance equal to '2356' and name equal to 'Global Awarding' and venue equal to 'Platense' and date equal to '20 June 2018', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Host'?"
+  },
+  {
+   "uid": "5896e6bb-0663-48b8-b16b-97f6210c4d6a",
+   "question": "Which events named Olympia Games Openning took place at the Marathon venue on 13 October 2008 and had news reports where the work_type is Screening?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE news_report.work_type = 'Screening' AND event.venue = 'Marathon' AND event.date = '13 October 2008' AND event.name = 'Olympia Games Openning'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "news_report.work_type",
+    "event.venue",
+    "event.date",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Screening",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Marathon",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "13 October 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Olympia Games Openning",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "news_report.work_type": "Screening",
+    "event.venue": "Marathon",
+    "event.date": "13 October 2008",
+    "event.name": "Olympia Games Openning"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with venue equal to 'Marathon' and date equal to '13 October 2008' and name equal to 'Olympia Games Openning', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Screening'?"
+  },
+  {
+   "uid": "edb560f3-9d7c-4f11-bc55-44433b3afb83",
+   "question": "What Special Exhibition held at Hispano on 9 April 2014 featured music in its news reports?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.name = 'Special Exhibition' AND event.date = '9 April 2014' AND event.venue = 'Hispano' AND news_report.work_type = 'Music'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.name",
+    "event.date",
+    "event.venue",
+    "news_report.work_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Special Exhibition",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "9 April 2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Hispano",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Music",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.name": "Special Exhibition",
+    "event.date": "9 April 2014",
+    "event.venue": "Hispano",
+    "news_report.work_type": "Music"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Special Exhibition' and date equal to '9 April 2014' and venue equal to 'Hispano', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Music'?"
+  },
+  {
+   "uid": "076dc86f-8fd8-4eab-ac78-03a8bd9db475",
+   "question": "Which events named Olympia Games Openning held at the Marathon venue had an attendance of at least 6650 and included a news report with work type Screening?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.event_attendance >= 6650 AND event.venue = 'Marathon' AND event.name = 'Olympia Games Openning' AND news_report.work_type = 'Screening'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "event.venue",
+    "event.name",
+    "news_report.work_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 6650,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Marathon",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Olympia Games Openning",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Screening",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 6650,
+    "event.venue": "Marathon",
+    "event.name": "Olympia Games Openning",
+    "news_report.work_type": "Screening"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at least '6650' and venue equal to 'Marathon' and name equal to 'Olympia Games Openning', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Screening'?"
+  },
+  {
+   "uid": "262c9884-6c7e-478b-b832-719365bb8a99",
+   "question": "Which events named Public Debating with exactly 1675 attendees have news reports where the work type is Screening?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.name = 'Public Debating' AND event.event_attendance = 1675 AND news_report.work_type = 'Screening'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.name",
+    "event.event_attendance",
+    "news_report.work_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Public Debating",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 1675,
+     "column_type": "numeric"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Screening",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.name": "Public Debating",
+    "event.event_attendance": 1675,
+    "news_report.work_type": "Screening"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Public Debating' and event attendance equal to '1675', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Screening'?"
+  },
+  {
+   "uid": "696f4700-001e-4d08-a49b-df7b71c86c37",
+   "question": "What events named Government Hearing took place at Victoria on 11 October 2007 with exactly 369 attendees and had news reports where the work type is Music?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE event.date = '11 October 2007' AND event.venue = 'Victoria' AND event.event_attendance = 369 AND news_report.work_type = 'Music' AND event.name = 'Government Hearing'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.venue",
+    "event.event_attendance",
+    "news_report.work_type",
+    "event.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "11 October 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Victoria",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 369,
+     "column_type": "numeric"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Music",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Government Hearing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "11 October 2007",
+    "event.venue": "Victoria",
+    "event.event_attendance": 369,
+    "news_report.work_type": "Music",
+    "event.name": "Government Hearing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '11 October 2007' and venue equal to 'Victoria' and event attendance equal to '369' and name equal to 'Government Hearing', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Music'?"
+  },
+  {
+   "uid": "90121f4d-708d-4cff-9009-5c80fc2ee6c9",
+   "question": "Which events on 11 October 2007 had no more than 369 attendees and were associated with news reports where the work_type is Music?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nWHERE news_report.work_type = 'Music' AND event.event_attendance <= 369 AND event.date = '11 October 2007'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "news_report",
+    "event"
+   ],
+   "involved_columns": [
+    "news_report.work_type",
+    "event.event_attendance",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Music",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 369,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "11 October 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "news_report.work_type": "Music",
+    "event.event_attendance": 369,
+    "event.date": "11 October 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at most '369' and date equal to '11 October 2007', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Music'?"
+  },
+  {
+   "uid": "b32e4baa-645b-48e2-9fb4-d18bf217a8fd",
+   "question": "Which events were covered by journalists who are exactly 28 years old and have at least 7 years of experience?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.age = '28' AND journalist.years_working >= 7",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.age",
+    "journalist.years_working"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "28",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": ">=",
+     "value": 7,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "journalist.age": "28",
+    "journalist.years_working": 7
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with age equal to '28' and years working at least '7'?"
+  },
+  {
+   "uid": "c50d0e71-c24c-418c-808d-ce7dfc0c0852",
+   "question": "What events were covered by journalists who are exactly 43 years old and worked as Hosts?",
+   "answer_row_ids": [
+    1,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.age = '43' AND news_report.work_type = 'Host'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.age",
+    "news_report.work_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "43",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Host",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.age": "43",
+    "news_report.work_type": "Host"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Host', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with age equal to '43'?"
+  },
+  {
+   "uid": "ea00099a-63ec-42e3-aad6-3cffc9547175",
+   "question": "Which events were covered in Screening reports where the journalist\u2019s name is Herbert Swindells?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.name = 'Herbert Swindells' AND news_report.work_type = 'Screening'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.name",
+    "news_report.work_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Herbert Swindells",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Screening",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.name": "Herbert Swindells",
+    "news_report.work_type": "Screening"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Screening', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with name equal to 'Herbert Swindells'?"
+  },
+  {
+   "uid": "0e3c36d5-6f8c-4eeb-a9ab-96d8ed4bab80",
+   "question": "Which events have news reports written by journalists who are exactly 25 years old?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.age = '25'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "25",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.age": "25"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with age equal to '25'?"
+  },
+  {
+   "uid": "1d1f8a79-0865-4c57-acb8-14ad19b5980f",
+   "question": "What events attended by journalists have at least 2356 people?",
+   "answer_row_ids": [
+    1,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.event_attendance >= 2356",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 2356,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 2356
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at least '2356', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id)?"
+  },
+  {
+   "uid": "14833a34-628d-4ce7-86f4-bc8aff0badf2",
+   "question": "Which events with at least 369 attendees were reported by journalist Jackie Waring?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.event_attendance >= 369 AND journalist.name = 'Jackie Waring'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "journalist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 369,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jackie Waring",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 369,
+    "journalist.name": "Jackie Waring"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at least '369', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with name equal to 'Jackie Waring'?"
+  },
+  {
+   "uid": "66bdd822-4bda-4bed-a969-9c00567adde9",
+   "question": "Which events were covered by journalists whose age is 37?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.age = '37'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "37",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.age": "37"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with age equal to '37'?"
+  },
+  {
+   "uid": "a17c29a3-2f0e-4e93-88e8-02781f1d0409",
+   "question": "Which events named Special Exhibition on 9 April 2014 had at least 225 attendees and were covered by John Meaney, a 28-year-old journalist from England with no more than 7 years of experience?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.name = 'John Meaney' AND event.name = 'Special Exhibition' AND event.date = '9 April 2014' AND journalist.nationality = 'England' AND journalist.age = '28' AND event.event_attendance >= 225 AND journalist.years_working <= 7",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.name",
+    "event.name",
+    "event.date",
+    "journalist.nationality",
+    "journalist.age",
+    "event.event_attendance",
+    "journalist.years_working"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Meaney",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Special Exhibition",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "9 April 2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "28",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 225,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "<=",
+     "value": 7,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "journalist.name": "John Meaney",
+    "event.name": "Special Exhibition",
+    "event.date": "9 April 2014",
+    "journalist.nationality": "England",
+    "journalist.age": "28",
+    "event.event_attendance": 225,
+    "journalist.years_working": 7
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Special Exhibition' and date equal to '9 April 2014' and event attendance at least '225', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with name equal to 'John Meaney' and nationality equal to 'England' and age equal to '28' and years working at most '7'?"
+  },
+  {
+   "uid": "06b6601b-3e51-4f7e-bb10-4dccc562c872",
+   "question": "What events named Global Awarding held at Platense on 20 June 2018 had exactly 2356 attendees and involved Tony Waddington, aged 43 with at most 12 years working, hosting the news report?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.date = '20 June 2018' AND event.event_attendance = 2356 AND journalist.years_working <= 12 AND journalist.age = '43' AND event.venue = 'Platense' AND news_report.work_type = 'Host' AND event.name = 'Global Awarding' AND journalist.name = 'Tony Waddington'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.event_attendance",
+    "journalist.years_working",
+    "journalist.age",
+    "event.venue",
+    "news_report.work_type",
+    "event.name",
+    "journalist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "20 June 2018",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 2356,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "<=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "43",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Platense",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Host",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Global Awarding",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Tony Waddington",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "20 June 2018",
+    "event.event_attendance": 2356,
+    "journalist.years_working": 12,
+    "journalist.age": "43",
+    "event.venue": "Platense",
+    "news_report.work_type": "Host",
+    "event.name": "Global Awarding",
+    "journalist.name": "Tony Waddington"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '20 June 2018' and event attendance equal to '2356' and venue equal to 'Platense' and name equal to 'Global Awarding', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Host', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with years working at most '12' and age equal to '43' and name equal to 'Tony Waddington'?"
+  },
+  {
+   "uid": "fc0063df-9b00-4aa6-88c5-0a22fc4db0e4",
+   "question": "Which Government Hearing events on 11 October 2007 had no more than 369 attendees and were covered by Jackie Waring, a journalist with at most 21 years working, writing music reports?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.event_attendance <= 369 AND event.name = 'Government Hearing' AND event.date = '11 October 2007' AND journalist.years_working <= 21 AND news_report.work_type = 'Music' AND journalist.name = 'Jackie Waring'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.event_attendance",
+    "event.name",
+    "event.date",
+    "journalist.years_working",
+    "news_report.work_type",
+    "journalist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 369,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Government Hearing",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "11 October 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "<=",
+     "value": 21,
+     "column_type": "numeric"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Music",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jackie Waring",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.event_attendance": 369,
+    "event.name": "Government Hearing",
+    "event.date": "11 October 2007",
+    "journalist.years_working": 21,
+    "news_report.work_type": "Music",
+    "journalist.name": "Jackie Waring"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance at most '369' and name equal to 'Government Hearing' and date equal to '11 October 2007', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Music', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with years working at most '21' and name equal to 'Jackie Waring'?"
+  },
+  {
+   "uid": "4306e6a1-1ecf-461e-9aa0-6a057c0272c3",
+   "question": "Which events named Public Debating at Motagua on 7 October 2010 had at most 1675 attendees and were covered by Herbert Swindells, a 37-year-old English journalist with at least 10 years of experience?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.nationality = 'England' AND event.venue = 'Motagua' AND event.name = 'Public Debating' AND journalist.years_working >= 10 AND journalist.age = '37' AND event.event_attendance <= 1675 AND journalist.name = 'Herbert Swindells' AND event.date = '7 October 2010'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.nationality",
+    "event.venue",
+    "event.name",
+    "journalist.years_working",
+    "journalist.age",
+    "event.event_attendance",
+    "journalist.name",
+    "event.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Public Debating",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": ">=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "37",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 1675,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Herbert Swindells",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "7 October 2010",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.nationality": "England",
+    "event.venue": "Motagua",
+    "event.name": "Public Debating",
+    "journalist.years_working": 10,
+    "journalist.age": "37",
+    "event.event_attendance": 1675,
+    "journalist.name": "Herbert Swindells",
+    "event.date": "7 October 2010"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with venue equal to 'Motagua' and name equal to 'Public Debating' and event attendance at most '1675' and date equal to '7 October 2010', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with nationality equal to 'England' and years working at least '10' and age equal to '37' and name equal to 'Herbert Swindells'?"
+  },
+  {
+   "uid": "79693601-1fd0-424b-ae8b-84a2deab88a0",
+   "question": "Which events took place at Marathon on 13 October 2008 and were reported by 29-year-old Ray Ferris from Northern Ireland who has exactly 3 years of working experience?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.years_working = 3 AND journalist.name = 'Ray Ferris' AND event.date = '13 October 2008' AND journalist.nationality = 'Northern Ireland' AND journalist.age = '29' AND event.venue = 'Marathon'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.years_working",
+    "journalist.name",
+    "event.date",
+    "journalist.nationality",
+    "journalist.age",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Ray Ferris",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "13 October 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Northern Ireland",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "29",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Marathon",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.years_working": 3,
+    "journalist.name": "Ray Ferris",
+    "event.date": "13 October 2008",
+    "journalist.nationality": "Northern Ireland",
+    "journalist.age": "29",
+    "event.venue": "Marathon"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '13 October 2008' and venue equal to 'Marathon', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with years working equal to '3' and name equal to 'Ray Ferris' and nationality equal to 'Northern Ireland' and age equal to '29'?"
+  },
+  {
+   "uid": "a0959119-6c05-4cdf-a6e6-83eff9fef9b1",
+   "question": "Which events named Global Awarding took place at Platense on 20 June 2018 with at least 2356 attendees and had news reports hosted by journalists with at least 12 years of experience?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.years_working >= 12 AND news_report.work_type = 'Host' AND event.date = '20 June 2018' AND event.name = 'Global Awarding' AND event.event_attendance >= 2356 AND event.venue = 'Platense'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.years_working",
+    "news_report.work_type",
+    "event.date",
+    "event.name",
+    "event.event_attendance",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": ">=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Host",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "20 June 2018",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Global Awarding",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 2356,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Platense",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.years_working": 12,
+    "news_report.work_type": "Host",
+    "event.date": "20 June 2018",
+    "event.name": "Global Awarding",
+    "event.event_attendance": 2356,
+    "event.venue": "Platense"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '20 June 2018' and name equal to 'Global Awarding' and event attendance at least '2356' and venue equal to 'Platense', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Host', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with years working at least '12'?"
+  },
+  {
+   "uid": "1904b252-10fe-403b-ac1b-4ba16bc5b7a9",
+   "question": "Which events held at Hispano on 9 April 2014 had exactly 225 attendees and were covered by John Meaney, a journalist from England with at most 7 years of experience?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.name = 'John Meaney' AND event.event_attendance = 225 AND event.venue = 'Hispano' AND event.date = '9 April 2014' AND journalist.years_working <= 7 AND journalist.nationality = 'England'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.name",
+    "event.event_attendance",
+    "event.venue",
+    "event.date",
+    "journalist.years_working",
+    "journalist.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Meaney",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 225,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Hispano",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "9 April 2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "<=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.name": "John Meaney",
+    "event.event_attendance": 225,
+    "event.venue": "Hispano",
+    "event.date": "9 April 2014",
+    "journalist.years_working": 7,
+    "journalist.nationality": "England"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance equal to '225' and venue equal to 'Hispano' and date equal to '9 April 2014', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with name equal to 'John Meaney' and years working at most '7' and nationality equal to 'England'?"
+  },
+  {
+   "uid": "0a36371e-343a-4e66-8177-49cb49e19f7a",
+   "question": "Which Special Exhibition events held at Hispano have an attendance of at most 225 and were reported by 25-year-old journalists from England?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.name = 'Special Exhibition' AND journalist.nationality = 'England' AND event.event_attendance <= 225 AND journalist.age = '25' AND event.venue = 'Hispano'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.name",
+    "journalist.nationality",
+    "event.event_attendance",
+    "journalist.age",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Special Exhibition",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "<=",
+     "value": 225,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "25",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Hispano",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.name": "Special Exhibition",
+    "journalist.nationality": "England",
+    "event.event_attendance": 225,
+    "journalist.age": "25",
+    "event.venue": "Hispano"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Special Exhibition' and event attendance at most '225' and venue equal to 'Hispano', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with nationality equal to 'England' and age equal to '25'?"
+  },
+  {
+   "uid": "084e21ab-c9d0-4009-9ff3-8b8e68e0ac87",
+   "question": "Which events named Public Debating took place at Motagua where the date is 7 October 2010?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.date = '7 October 2010' AND event.name = 'Public Debating' AND event.venue = 'Motagua'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "event.name",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "7 October 2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Public Debating",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "event.date": "7 October 2010",
+    "event.name": "Public Debating",
+    "event.venue": "Motagua"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '7 October 2010' and name equal to 'Public Debating' and venue equal to 'Motagua', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id)?"
+  },
+  {
+   "uid": "03fbd00d-4e11-4cb7-a781-9ef01255af18",
+   "question": "Which events held at Marathon on 13 October 2008 had an attendance of at least 6650 and were covered by journalists with exactly 3 years of experience writing Screening reports?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.years_working = 3 AND event.date = '13 October 2008' AND event.venue = 'Marathon' AND event.event_attendance >= 6650 AND news_report.work_type = 'Screening'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.years_working",
+    "event.date",
+    "event.venue",
+    "event.event_attendance",
+    "news_report.work_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "13 October 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Marathon",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 6650,
+     "column_type": "numeric"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Screening",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.years_working": 3,
+    "event.date": "13 October 2008",
+    "event.venue": "Marathon",
+    "event.event_attendance": 6650,
+    "news_report.work_type": "Screening"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '13 October 2008' and venue equal to 'Marathon' and event attendance at least '6650', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Screening', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with years working equal to '3'?"
+  },
+  {
+   "uid": "621873fd-6e1c-47f6-9dc2-f090faf216c6",
+   "question": "Which events on 13 October 2008 had at least 6650 attendees and were hosted by journalists from England with at least 21 years of experience?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.years_working >= 21 AND journalist.nationality = 'England' AND news_report.work_type = 'Host' AND event.date = '13 October 2008' AND event.event_attendance >= 6650",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.years_working",
+    "journalist.nationality",
+    "news_report.work_type",
+    "event.date",
+    "event.event_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": ">=",
+     "value": 21,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "news_report",
+     "column": "work_type",
+     "operator": "=",
+     "value": "Host",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "13 October 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 6650,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "journalist.years_working": 21,
+    "journalist.nationality": "England",
+    "news_report.work_type": "Host",
+    "event.date": "13 October 2008",
+    "event.event_attendance": 6650
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '13 October 2008' and event attendance at least '6650', having at least one related news report record (linked on event.event_id = news_report.event_id) with work type equal to 'Host', whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with years working at least '21' and nationality equal to 'England'?"
+  },
+  {
+   "uid": "eedea773-0037-443b-a718-9e261b3b7eea",
+   "question": "What events named Public Debating held at Motagua had exactly 1675 attendees and were reported by journalists whose nationality is England?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.nationality = 'England' AND event.event_attendance = 1675 AND event.name = 'Public Debating' AND event.venue = 'Motagua'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.nationality",
+    "event.event_attendance",
+    "event.name",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": "=",
+     "value": 1675,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Public Debating",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Motagua",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.nationality": "England",
+    "event.event_attendance": 1675,
+    "event.name": "Public Debating",
+    "event.venue": "Motagua"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with event attendance equal to '1675' and name equal to 'Public Debating' and venue equal to 'Motagua', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with nationality equal to 'England'?"
+  },
+  {
+   "uid": "214b4a2d-8d26-4b2b-8abe-f902652c4d7c",
+   "question": "Which Government Hearing events held at Victoria had an attendance of at least 369 and were covered by journalists whose nationality is England?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE journalist.nationality = 'England' AND event.name = 'Government Hearing' AND event.event_attendance >= 369 AND event.venue = 'Victoria'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "journalist.nationality",
+    "event.name",
+    "event.event_attendance",
+    "event.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "journalist",
+     "column": "nationality",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "name",
+     "operator": "=",
+     "value": "Government Hearing",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 369,
+     "column_type": "numeric"
+    },
+    {
+     "table": "event",
+     "column": "venue",
+     "operator": "=",
+     "value": "Victoria",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "journalist.nationality": "England",
+    "event.name": "Government Hearing",
+    "event.event_attendance": 369,
+    "event.venue": "Victoria"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with name equal to 'Government Hearing' and event attendance at least '369' and venue equal to 'Victoria', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with nationality equal to 'England'?"
+  },
+  {
+   "uid": "ce817f9f-5ab3-47f1-9812-120d49bdde6f",
+   "question": "Which events on 13 October 2008 had an attendance of at least 6650 and were covered by journalist Jackie Waring, who is exactly 43 years old and has worked for at most 21 years?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT event.event_id FROM event\nJOIN news_report ON event.event_id = news_report.event_id\nJOIN journalist ON news_report.journalist_id = journalist.journalist_id\nWHERE event.date = '13 October 2008' AND journalist.name = 'Jackie Waring' AND event.event_attendance >= 6650 AND journalist.age = '43' AND journalist.years_working <= 21",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "news_report",
+    "journalist",
+    "event"
+   ],
+   "involved_columns": [
+    "event.date",
+    "journalist.name",
+    "event.event_attendance",
+    "journalist.age",
+    "journalist.years_working"
+   ],
+   "involved_filters": [
+    {
+     "table": "event",
+     "column": "date",
+     "operator": "=",
+     "value": "13 October 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jackie Waring",
+     "column_type": "enum"
+    },
+    {
+     "table": "event",
+     "column": "event_attendance",
+     "operator": ">=",
+     "value": 6650,
+     "column_type": "numeric"
+    },
+    {
+     "table": "journalist",
+     "column": "age",
+     "operator": "=",
+     "value": "43",
+     "column_type": "enum"
+    },
+    {
+     "table": "journalist",
+     "column": "years_working",
+     "operator": "<=",
+     "value": 21,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "event.date": "13 October 2008",
+    "journalist.name": "Jackie Waring",
+    "event.event_attendance": 6650,
+    "journalist.age": "43",
+    "journalist.years_working": 21
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "event"
+   },
+   "answer_table": "event",
+   "answer_id_column": "event_id",
+   "canonical_question": "Which event entities with date equal to '13 October 2008' and event attendance at least '6650', having at least one related news report record (linked on event.event_id = news_report.event_id), whose news report record itself has at least one related journalist record (linked on news_report.journalist_id = journalist.journalist_id) with name equal to 'Jackie Waring' and age equal to '43' and years working at most '21'?"
+  }
+ ]
+}

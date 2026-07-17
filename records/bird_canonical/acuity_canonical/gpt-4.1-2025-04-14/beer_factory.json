@@ -1,0 +1,124 @@
+{
+  "db_id": "beer_factory",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:07:42.883031+00:00",
+  "records": [
+    {
+      "uid": "394f3ba7-c23a-4c24-b29e-5695e6f05a01",
+      "question": "Which locations in Sacramento, CA at 6000 J St have rootbeer sold in Bottle containers and longitude exactly -121.42243?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nJOIN rootbeer ON location.locationid = rootbeer.locationid\nWHERE location.city = 'Sacramento' AND rootbeer.containertype = 'Bottle' AND geolocation.longitude = -121.42243 AND location.state = 'CA' AND location.streetaddress = '6000 J St'",
+      "pred_sql": "SELECT location.locationid\nFROM location\nWHERE city = 'Sacramento'\n  AND state = 'CA'\n  AND streetaddress = '6000 J St'\n  AND EXISTS (\n      SELECT 1 FROM geolocation\n      WHERE geolocation.locationid = location.locationid\n        AND geolocation.longitude = -121.42243\n  )\n  AND EXISTS (\n      SELECT 1 FROM rootbeer\n      WHERE rootbeer.locationid = location.locationid\n        AND rootbeer.containertype = 'Bottle'\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.27
+    },
+    {
+      "uid": "41540872-4e8a-4a7e-acbc-ae839709ba03",
+      "question": "Which locations named Sac State Union in California have a zipcode of at least 95819?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.zipcode >= 95819.0 AND location.state = 'CA' AND location.locationname = 'Sac State Union'",
+      "pred_sql": "SELECT location.locationid\nFROM location\nWHERE ZipCode >= 95819.0\n  AND State = 'CA'\n  AND LocationName = 'Sac State Union'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.97
+    },
+    {
+      "uid": "4de30006-4fd0-4c03-bc26-43ef163b647d",
+      "question": "Where is the Sac State Union located at 6000 J St in Sacramento, CA with latitude 38.559615 and longitude -121.42243 that has rootbeer in a Bottle purchased on 2015-09-16?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nJOIN rootbeer ON location.locationid = rootbeer.locationid\nWHERE location.streetaddress = '6000 J St' AND location.locationname = 'Sac State Union' AND location.city = 'Sacramento' AND rootbeer.purchasedate = '2015-09-16' AND geolocation.latitude = 38.559615 AND rootbeer.containertype = 'Bottle' AND location.state = 'CA' AND geolocation.longitude = -121.42243",
+      "pred_sql": "SELECT location.locationid\nFROM location\nWHERE location.StreetAddress = '6000 J St'\n  AND location.LocationName = 'Sac State Union'\n  AND location.City = 'Sacramento'\n  AND location.State = 'CA'\n  AND EXISTS (\n      SELECT 1 FROM geolocation\n      WHERE geolocation.LocationID = location.LocationID\n        AND geolocation.Latitude = 38.559615\n        AND geolocation.Longitude = -121.42243\n  )\n  AND EXISTS (\n      SELECT 1 FROM rootbeer\n      WHERE rootbeer.LocationID = location.LocationID\n        AND rootbeer.PurchaseDate = '2015-09-16'\n        AND rootbeer.ContainerType = 'Bottle'\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.54
+    },
+    {
+      "uid": "61fa2647-8dec-4b65-9698-a4e941620c73",
+      "question": "Which locations are exactly at 6000 J St and have associated geolocation and rootbeer information?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nJOIN rootbeer ON location.locationid = rootbeer.locationid\nWHERE location.streetaddress = '6000 J St'",
+      "pred_sql": "SELECT location.locationid\nFROM location\nWHERE location.StreetAddress = '6000 J St'\n  AND EXISTS (\n      SELECT 1 FROM geolocation\n      WHERE geolocation.LocationID = location.LocationID\n  )\n  AND EXISTS (\n      SELECT 1 FROM rootbeer\n      WHERE rootbeer.LocationID = location.LocationID\n  )",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    },
+    {
+      "uid": "ba041312-b192-45bf-bca4-b99933357fc5",
+      "question": "What locations are in Sacramento, CA with the zipcode exactly 95819?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.city = 'Sacramento' AND location.state = 'CA' AND location.zipcode = 95819.0",
+      "pred_sql": "SELECT location.locationid\nFROM location\nWHERE City = 'Sacramento' AND State = 'CA' AND ZipCode = 95819.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    },
+    {
+      "uid": "c077fc74-6854-4393-8f7e-9e040f431095",
+      "question": "Which locations named Sac State American River Courtyard are situated in the city of Sacramento?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nWHERE location.locationname = 'Sac State American River Courtyard' AND location.city = 'Sacramento'",
+      "pred_sql": "SELECT location.locationid\nFROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nWHERE location.locationname = 'Sac State American River Courtyard'\n  AND location.city = 'Sacramento'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.99
+    },
+    {
+      "uid": "e49ee5de-aaee-4bc4-bb03-9f1247b65a38",
+      "question": "Which locations named Sac State Union in Sacramento have the street address 6000 J St and are located exactly at latitude 38.559615 and longitude -121.42243?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nWHERE geolocation.longitude = -121.42243 AND geolocation.latitude = 38.559615 AND location.streetaddress = '6000 J St' AND location.locationname = 'Sac State Union' AND location.city = 'Sacramento'",
+      "pred_sql": "SELECT location.locationid\nFROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nWHERE location.StreetAddress = '6000 J St'\n  AND location.LocationName = 'Sac State Union'\n  AND location.City = 'Sacramento'\n  AND geolocation.Longitude = -121.42243\n  AND geolocation.Latitude = 38.559615",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.09
+    },
+    {
+      "uid": "e4c9db6f-abc8-42a5-989b-0712108449b2",
+      "question": "Where are the locations in California with a zipcode at most 95819?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.state = 'CA' AND location.zipcode <= 95819.0",
+      "pred_sql": "SELECT location.locationid\nFROM location\nWHERE location.state = 'CA' AND location.zipcode <= 95819.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.86
+    },
+    {
+      "uid": "fb9cef28-2a35-4f34-80e4-65f4486e593a",
+      "question": "Where are the locations that are in the state of CA?",
+      "gold_sql": "SELECT location.locationid FROM location\nWHERE location.state = 'CA'",
+      "pred_sql": "SELECT location.locationid FROM location WHERE state = 'CA'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.71
+    },
+    {
+      "uid": "feff5e51-29dd-405a-bde0-eb6fd2cb4899",
+      "question": "Which locations named Sac State Union are at 6000 J St in Sacramento, CA with latitude 38.559615, longitude -121.42243, and a zipcode of at least 95819?",
+      "gold_sql": "SELECT location.locationid FROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nWHERE geolocation.latitude = 38.559615 AND geolocation.longitude = -121.42243 AND location.state = 'CA' AND location.city = 'Sacramento' AND location.zipcode >= 95819.0 AND location.streetaddress = '6000 J St' AND location.locationname = 'Sac State Union'",
+      "pred_sql": "SELECT location.locationid\nFROM location\nJOIN geolocation ON location.locationid = geolocation.locationid\nWHERE location.State = 'CA'\n  AND location.City = 'Sacramento'\n  AND location.ZipCode >= 95819.0\n  AND location.StreetAddress = '6000 J St'\n  AND location.LocationName = 'Sac State Union'\n  AND geolocation.Latitude = 38.559615\n  AND geolocation.Longitude = -121.42243",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    }
+  ]
+}

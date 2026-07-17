@@ -1,0 +1,124 @@
+{
+  "db_id": "cars",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T09:58:54.811588+00:00",
+  "records": [
+    {
+      "uid": "05a5d2f2-3d7c-408e-a3ca-a26c399102b9",
+      "question": "Which prices are exactly 24260.62236?",
+      "gold_sql": "SELECT price.id FROM price\nWHERE price.price = 24260.62236",
+      "pred_sql": "SELECT ID FROM price WHERE price = 24260.62236",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    },
+    {
+      "uid": "5825895a-15eb-46ab-9d9f-93d5c30d154d",
+      "question": "Which prices exactly equal 24166.91123 are associated with the car named dodge omni?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN data ON price.id = data.id\nWHERE price.price = 24166.91123 AND data.car_name = 'dodge omni'",
+      "pred_sql": "SELECT T1.ID FROM price AS T1 INNER JOIN data AS T2 ON T1.ID = T2.ID WHERE T1.price = 24166.91123 AND T2.car_name = 'dodge omni'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.75
+    },
+    {
+      "uid": "75925ca7-9212-4aa6-be6a-084fd740f6d2",
+      "question": "What prices are exactly $40000 for the Chrysler New Yorker Brougham with 13.0 mpg, 440.0 displacement, 11.0 acceleration, at least 215 horsepower and 8 cylinders, from model year 1973 or later?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN data ON price.id = data.id\nJOIN production ON price.id = production.id\nWHERE data.horsepower >= 215 AND price.price = 40000.0 AND data.car_name = 'chrysler new yorker brougham' AND data.mpg = 13.0 AND production.model_year >= 1973 AND data.displacement = 440.0 AND data.acceleration = 11.0 AND data.cylinders >= 8",
+      "pred_sql": "SELECT DISTINCT T1.ID\nFROM price AS T1\nINNER JOIN data AS T2\n  ON T1.ID = T2.ID\nINNER JOIN production AS T3\n  ON T1.ID = T3.ID\nWHERE\n  T1.price = 40000.0 AND T2.horsepower >= 215 AND T2.car_name = 'chrysler new yorker brougham' AND T2.mpg = 13.0 AND T2.displacement = 440.0 AND T2.acceleration = 11.0 AND T2.cylinders >= 8 AND T3.model_year >= 1973",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.54
+    },
+    {
+      "uid": "7b43f49d-7868-4ecc-89af-ab230897bf14",
+      "question": "Which prices correspond to vehicles with exactly 20.8 mpg and a displacement of exactly 200.0?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN production ON price.id = production.id\nJOIN data ON production.id = data.id\nWHERE data.mpg = 20.8 AND data.displacement = 200.0",
+      "pred_sql": "SELECT DISTINCT\n  T1.ID\nFROM price AS T1\nINNER JOIN production AS T2\n  ON T1.ID = T2.ID\nINNER JOIN data AS T3\n  ON T2.ID = T3.ID\nWHERE\n  T3.mpg = 20.8 AND T3.displacement = 200.0",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.55
+    },
+    {
+      "uid": "7e87f405-9f1b-4fc4-a428-d98022459991",
+      "question": "Which prices are exactly $40000.0 for vehicles with a weight of 2945, 4 cylinders, 22.0 mpg, at least 98 horsepower, and a displacement of 121.0?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN data ON price.id = data.id\nWHERE price.price = 40000.0 AND data.weight = 2945 AND data.cylinders = 4 AND data.mpg = 22.0 AND data.horsepower >= 98 AND data.displacement = 121.0",
+      "pred_sql": "SELECT T1.ID FROM price AS T1 INNER JOIN data AS T2 ON T1.ID = T2.ID WHERE T1.price = 40000.0 AND T2.weight = 2945 AND T2.cylinders = 4 AND T2.mpg = 22.0 AND T2.horsepower >= 98 AND T2.displacement = 121.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.18
+    },
+    {
+      "uid": "98eeb956-14b7-4bb3-b001-9493384ac761",
+      "question": "What prices correspond to the Volkswagen Rabbit L with exactly 36.0 mpg, an acceleration of 15.3, and a weight of at least 1980?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN data ON price.id = data.id\nJOIN production ON price.id = production.id\nWHERE data.mpg = 36.0 AND data.acceleration = 15.3 AND data.weight >= 1980 AND data.car_name = 'volkswagen rabbit l'",
+      "pred_sql": "SELECT DISTINCT T1.ID FROM price AS T1 INNER JOIN data AS T2 ON T1.ID = T2.ID INNER JOIN production AS T3 ON T1.ID = T3.ID WHERE T2.mpg = 36.0 AND T2.acceleration = 15.3 AND T2.weight >= 1980 AND T2.car_name = 'volkswagen rabbit l'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.95
+    },
+    {
+      "uid": "be291b39-43f5-4963-93a1-2cad250b2b41",
+      "question": "What price entries exactly cost 40000.0 and correspond to vehicles weighing 2511 with at most 4 cylinders and exactly 22.0 mpg?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN data ON price.id = data.id\nWHERE data.cylinders <= 4 AND data.mpg = 22.0 AND price.price = 40000.0 AND data.weight = 2511",
+      "pred_sql": "SELECT T1.ID FROM price AS T1 INNER JOIN data AS T2 ON T1.ID = T2.ID WHERE T1.price = 40000.0 AND T2.cylinders <= 4 AND T2.mpg = 22.0 AND T2.weight = 2511",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.99
+    },
+    {
+      "uid": "cb990d8d-e554-4e4e-a7a1-627eee09a606",
+      "question": "Which prices exactly equal 24749.73654 are from vehicles made in the USA with a model year of 1980 or earlier?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN production ON price.id = production.id\nJOIN country ON production.country = country.origin\nWHERE price.price = 24749.73654 AND country.country = 'USA' AND production.model_year <= 1980",
+      "pred_sql": "SELECT T1.ID FROM price AS T1 INNER JOIN production AS T2 ON T1.ID = T2.ID INNER JOIN country AS T3 ON T2.country = T3.origin WHERE T1.price = 24749.73654 AND T2.model_year <= 1980 AND T3.country = 'USA'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.12
+    },
+    {
+      "uid": "e0d861de-813b-437e-8d5a-2999abc344ba",
+      "question": "Which prices correspond to models with at most 73 and an mpg exactly equal to 12.0?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN data ON price.id = data.id\nJOIN production ON price.id = production.id\nWHERE data.model <= 73 AND data.mpg = 12.0",
+      "pred_sql": "SELECT DISTINCT\n  T1.ID\nFROM price AS T1\nINNER JOIN data AS T2\n  ON T1.ID = T2.ID\nINNER JOIN production AS T3\n  ON T1.ID = T3.ID\nWHERE\n  T2.model <= 73 AND T2.mpg = 12.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.92
+    },
+    {
+      "uid": "f9999206-4cfa-4c2e-8573-d1c8f0ab61b7",
+      "question": "What prices exactly equal to 14501.04894 are associated with a Toyota Mark II that has 19.0 mpg, at least model 76, displacement exactly 156.0, acceleration exactly 15.5, and six or fewer cylinders?",
+      "gold_sql": "SELECT price.id FROM price\nJOIN production ON price.id = production.id\nJOIN data ON production.id = data.id\nWHERE price.price = 14501.04894 AND data.model >= 76 AND data.mpg = 19.0 AND data.car_name = 'toyota mark ii' AND data.displacement = 156.0 AND data.cylinders <= 6 AND data.acceleration = 15.5",
+      "pred_sql": "SELECT T1.ID FROM price AS T1 INNER JOIN production AS T2 ON T1.ID = T2.ID INNER JOIN data AS T3 ON T2.ID = T3.ID WHERE T1.price = 14501.04894 AND T3.model >= 76 AND T3.mpg = 19.0 AND T3.car_name = 'toyota mark ii' AND T3.displacement = 156.0 AND T3.cylinders <= 6 AND T3.acceleration = 15.5",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.06
+    }
+  ]
+}

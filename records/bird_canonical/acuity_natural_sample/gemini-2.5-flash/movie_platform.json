@@ -1,0 +1,124 @@
+{
+  "db_id": "movie_platform",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:18:11.424917+00:00",
+  "records": [
+    {
+      "uid": "271a45ce-5a8b-4aaf-88d7-701b52e0b864",
+      "question": "Which lists with the URL http://mubi.com/lists/sexualities have been updated since 2019-09-23 03:59:09?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/sexualities' AND lists.list_update_timestamp_utc >= '2019-09-23 03:59:09'",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_url = 'http://mubi.com/lists/sexualities' AND list_update_timestamp_utc > '2019-09-23 03:59:09'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.45
+    },
+    {
+      "uid": "2802f13e-3887-4dca-8c74-3e10291f72e1",
+      "question": "Which lists updated on 2020-02-08 05:51:19 have exactly 12 movies and the URL http://mubi.com/lists/top-jean-claude-brisseau?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_url = 'http://mubi.com/lists/top-jean-claude-brisseau' AND lists.list_update_timestamp_utc = '2020-02-08 05:51:19' AND lists.list_movie_number = 12",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_update_timestamp_utc = '2020-02-08 05:51:19' AND list_movie_number = 12 AND list_url = 'http://mubi.com/lists/top-jean-claude-brisseau'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "uid": "2d44e4e1-a1fa-453e-98af-5e79e8536705",
+      "question": "Which lists created on or before 2019-03-01 00:11:49 have the URL http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2, have no comments or followers, and belong to users who are not eligible for a trial but do have a payment method?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists_users.user_eligible_for_trial = '0' AND lists.list_creation_timestamp_utc <= '2019-03-01 00:11:49' AND lists.list_url = 'http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2' AND lists_users.user_has_payment_method = '1' AND lists.list_comments = 0 AND lists.list_followers <= 0",
+      "pred_sql": "SELECT T1.list_id FROM lists AS T1 INNER JOIN lists_users AS T2 ON T1.user_id = T2.user_id AND T1.list_id = T2.list_id WHERE T1.list_creation_timestamp_utc <= '2019-03-01 00:11:49' AND T1.list_url = 'http://mubi.com/lists/films-i-want-to-watch-69f49997-31a2-4358-b647-f00fae10e3f2' AND T1.list_comments = 0 AND T1.list_followers = 0 AND T2.user_eligible_for_trial = 0 AND T2.user_has_payment_method = 1",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.3
+    },
+    {
+      "uid": "5a67bcec-0d93-4668-8d74-7b28506e599e",
+      "question": "What lists exactly match the URL http://mubi.com/lists/cry-me-an-ocean, were updated on 2019-11-01 21:39:56, created on or before 2019-04-22 19:43:19, have 10 movies, and have at least zero comments and followers?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_comments >= 0 AND lists.list_update_timestamp_utc = '2019-11-01 21:39:56' AND lists.list_creation_timestamp_utc <= '2019-04-22 19:43:19' AND lists.list_url = 'http://mubi.com/lists/cry-me-an-ocean' AND lists.list_followers >= 0 AND lists.list_movie_number = 10",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_url = 'http://mubi.com/lists/cry-me-an-ocean' AND list_update_timestamp_utc = '2019-11-01 21:39:56' AND list_creation_timestamp_utc <= '2019-04-22 19:43:19' AND list_movie_number = 10 AND list_comments >= 0 AND list_followers >= 0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.41
+    },
+    {
+      "uid": "62de5312-5cc9-4f35-82ab-a7a9eebe5b43",
+      "question": "Which lists were updated exactly on 2018-02-28 14:56:15 and belong to users that are confirmed to have a payment method?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_update_timestamp_utc = '2018-02-28 14:56:15' AND lists_users.user_has_payment_method = '1'",
+      "pred_sql": "SELECT T1.list_id FROM lists AS T1 INNER JOIN lists_users AS T2 ON T1.user_id = T2.user_id AND T1.list_id = T2.list_id WHERE T1.list_update_timestamp_utc = '2018-02-28 14:56:15' AND T2.user_has_payment_method = '1'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.27
+    },
+    {
+      "uid": "6c42a393-0cc6-447b-9ac5-d0ca9b5e1ca9",
+      "question": "What lists have no comments, belong to users who are not subscribers, were updated on or before 2015-02-18 02:28:38, and have the URL exactly http://mubi.com/lists/2008--76?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_comments = 0 AND lists_users.user_subscriber = 0 AND lists.list_update_timestamp_utc <= '2015-02-18 02:28:38' AND lists.list_url = 'http://mubi.com/lists/2008--76'",
+      "pred_sql": "SELECT T1.list_id FROM lists AS T1 INNER JOIN lists_users AS T2 ON T1.user_id = T2.user_id AND T1.list_id = T2.list_id WHERE T1.list_comments = 0 AND T2.user_subscriber = 0 AND T1.list_update_timestamp_utc <= '2015-02-18 02:28:38' AND T1.list_url = 'http://mubi.com/lists/2008--76'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.68
+    },
+    {
+      "uid": "a746b045-2c87-4c4b-a164-fffeea9793f4",
+      "question": "Which lists have exactly 8 followers, 34 movies, and 6 comments, use the URL http://mubi.com/lists/films-with-cows, were created on or after 2012-07-02 04:12:30, and updated on or before 2020-04-21 05:55:34?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_followers = 8 AND lists.list_movie_number = 34 AND lists.list_comments = 6 AND lists.list_url = 'http://mubi.com/lists/films-with-cows' AND lists.list_update_timestamp_utc <= '2020-04-21 05:55:34' AND lists.list_creation_timestamp_utc >= '2012-07-02 04:12:30'",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_followers = 8 AND list_movie_number = 34 AND list_comments = 6 AND list_url = 'http://mubi.com/lists/films-with-cows' AND list_creation_timestamp_utc >= '2012-07-02 04:12:30' AND list_update_timestamp_utc <= '2020-04-21 05:55:34'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.21
+    },
+    {
+      "uid": "c1abe5da-74ac-424b-be25-871f0e79ed2f",
+      "question": "Which lists were created exactly on 2011-07-03 12:05:11 and have a movie number exactly 138?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_creation_timestamp_utc = '2011-07-03 12:05:11' AND lists.list_movie_number = 138",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_creation_timestamp_utc = '2011-07-03 12:05:11' AND list_movie_number = 138",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.72
+    },
+    {
+      "uid": "ce05740a-d087-425c-ac45-4683b3c9913b",
+      "question": "Which lists were created exactly on 2018-10-01 02:59:10 and have exactly 0 comments?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nJOIN lists_users ON lists.list_id = lists_users.list_id AND lists.user_id = lists_users.user_id\nWHERE lists.list_creation_timestamp_utc = '2018-10-01 02:59:10' AND lists.list_comments = 0",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_creation_timestamp_utc = '2018-10-01 02:59:10' AND list_comments = 0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "df209927-44a7-404a-8c6f-44e475ac81f3",
+      "question": "Which lists have exactly 13 movies, were created on 2013-11-30 03:48:46, and have the URL http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi?",
+      "gold_sql": "SELECT lists.list_id FROM lists\nWHERE lists.list_movie_number = 13 AND lists.list_url = 'http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi' AND lists.list_creation_timestamp_utc = '2013-11-30 03:48:46'",
+      "pred_sql": "SELECT list_id FROM lists WHERE list_movie_number = 13 AND list_creation_timestamp_utc = '2013-11-30 03:48:46' AND list_url = 'http://mubi.com/lists/my-list-of-bjork-music-videos-on-mubi'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.52
+    }
+  ]
+}

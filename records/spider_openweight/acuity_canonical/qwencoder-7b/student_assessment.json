@@ -1,0 +1,124 @@
+{
+  "db_id": "student_assessment",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:58:36.207054+00:00",
+  "records": [
+    {
+      "uid": "0be8fefc-c660-482b-b8b2-41aac0438ca0",
+      "question": "Which people have the last name Hartmann, a password of ecae473cb54601e01457078ac0cdf4a1ced837bb, and candidate details listed as Leo?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN candidates ON people.person_id = candidates.candidate_id\nWHERE people.last_name = 'Hartmann' AND candidates.candidate_details = 'Leo' AND people.password = 'ecae473cb54601e01457078ac0cdf4a1ced837bb'",
+      "pred_sql": "SELECT people.person_id\nFROM people\nJOIN candidates ON people.person_id = candidates.candidate_id\nWHERE people.last_name = 'Hartmann'\n  AND people.password = 'ecae473cb54601e01457078ac0cdf4a1ced837bb'\n  AND candidates.candidate_details = 'Leo'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.71
+    },
+    {
+      "uid": "1068e85f-b2a2-4ae7-b1e9-7dd49d3d63d9",
+      "question": "Who is Dariana Hayley Bednar with the login name zops and password b20b6a9f24aadeda70d54e410c3219f61fb063fb?",
+      "gold_sql": "SELECT people.person_id FROM people\nWHERE people.password = 'b20b6a9f24aadeda70d54e410c3219f61fb063fb' AND people.last_name = 'Bednar' AND people.middle_name = 'Hayley' AND people.first_name = 'Dariana' AND people.login_name = 'zops'",
+      "pred_sql": "SELECT people.person_id\nFROM people\nWHERE people.password = 'b20b6a9f24aadeda70d54e410c3219f61fb063fb'\n  AND people.last_name = 'Bednar'\n  AND people.middle_name = 'Hayley'\n  AND people.first_name = 'Dariana'\n  AND people.login_name = 'zops'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.38
+    },
+    {
+      "uid": "3b18febe-d621-4ad8-80db-cf54c5a1387b",
+      "question": "What people have the first name Lizeth, last name Bartoletti, login name mkou, email celestine11@example.net, password 76a93d1d3b7becc932d203beac61d064bd54e947, cell number 812.228.0645x91481, and are students with details exactly Joe?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN students ON people.person_id = students.student_id\nWHERE people.password = '76a93d1d3b7becc932d203beac61d064bd54e947' AND people.email_address = 'celestine11@example.net' AND people.first_name = 'Lizeth' AND people.last_name = 'Bartoletti' AND people.login_name = 'mkou' AND students.student_details = 'Joe' AND people.cell_mobile_number = '812.228.0645x91481'",
+      "pred_sql": "SELECT p.person_id\nFROM People p\nJOIN Students s ON p.person_id = s.student_id\nWHERE p.password = '76a93d1d3b7becc932d203beac61d064bd54e947'\n  AND p.email_address = 'celestine11@example.net'\n  AND p.first_name = 'Lizeth'\n  AND p.last_name = 'Bartoletti'\n  AND p.login_name = 'mkou'\n  AND p.cell_mobile_number = '812.228.0645x91481'\n  AND s.student_details = 'Joe'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.82
+    },
+    {
+      "uid": "68f0ebb9-36d1-4517-8e84-49aee299ac0b",
+      "question": "Which people have the login name exactly equal to zops and are linked to both addresses and candidate profiles?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN people_addresses ON people.person_id = people_addresses.person_id\nJOIN candidates ON people.person_id = candidates.candidate_id\nWHERE people.login_name = 'zops'",
+      "pred_sql": "SELECT people.person_id\nFROM people\nJOIN people_addresses ON people.person_id = people_addresses.person_id\nJOIN candidates ON people.person_id = candidates.candidate_id\nWHERE people.login_name = 'zops'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.44
+    },
+    {
+      "uid": "85a89328-e37e-4ea1-99b7-b5b0fa684e6d",
+      "question": "Which people have the login name exactly bkkv and have an associated address?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN people_addresses ON people.person_id = people_addresses.person_id\nJOIN addresses ON people_addresses.address_id = addresses.address_id\nWHERE people.login_name = 'bkkv'",
+      "pred_sql": "SELECT p.person_id\nFROM People p\nJOIN People_Addresses pa ON p.person_id = pa.person_id\nJOIN Addresses a ON pa.address_id = a.address_id\nWHERE p.login_name = 'bkkv'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.49
+    },
+    {
+      "uid": "a60f08b7-a0b0-4ac3-bbef-60bef417061d",
+      "question": "Who has the password exactly equal to 5e4ff49a61b3544da3ad7dc7e2cf28847564c64c?",
+      "gold_sql": "SELECT people.person_id FROM people\nWHERE people.password = '5e4ff49a61b3544da3ad7dc7e2cf28847564c64c'",
+      "pred_sql": "SELECT people.person_id\nFROM people\nWHERE people.password = '5e4ff49a61b3544da3ad7dc7e2cf28847564c64c'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.85
+    },
+    {
+      "uid": "cbdec573-04b6-455f-b162-581dccd6e11a",
+      "question": "Who has the login name uuol, middle name Arielle, email adele.gibson@example.net, and password 7be9c03d5467d563555c51ebb3eb78e7f90832ec, with cell number 1-372-548-7538x314, candidate details Tao, and addresses lasting at least from 2014-05-10 00:32:31 to 2018-03-08 06:16:47?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN people_addresses ON people.person_id = people_addresses.person_id\nJOIN candidates ON people.person_id = candidates.candidate_id\nWHERE people.password = '7be9c03d5467d563555c51ebb3eb78e7f90832ec' AND people.cell_mobile_number = '1-372-548-7538x314' AND people_addresses.date_from >= '2014-05-10 00:32:31' AND people.middle_name = 'Arielle' AND candidates.candidate_details = 'Tao' AND people.email_address = 'adele.gibson@example.net' AND people_addresses.date_to >= '2018-03-08 06:16:47' AND people.login_name = 'uuol'",
+      "pred_sql": "SELECT p.person_id\nFROM People p\nJOIN People_Addresses pa ON p.person_id = pa.person_id\nJOIN Candidates c ON p.person_id = c.candidate_id\nWHERE p.password = '7be9c03d5467d563555c51ebb3eb78e7f90832ec'\n  AND p.cell_mobile_number = '1-372-548-7538x314'\n  AND p.middle_name = 'Arielle'\n  AND p.email_address = 'adele.gibson@example.net'\n  AND p.login_name = 'uuol'\n  AND pa.date_from >= '2014-05-10 00:32:31'\n  AND pa.date_to >= '2018-03-08 06:16:47'\n  AND c.candidate_details = 'Tao'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 15.32
+    },
+    {
+      "uid": "cd4f3c67-a569-426f-8114-acb5ae4d4ea0",
+      "question": "What people who are students have the cell mobile number (508)319-2970x043?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN students ON people.person_id = students.student_id\nWHERE people.cell_mobile_number = '(508)319-2970x043'",
+      "pred_sql": "SELECT people.person_id\nFROM people\nJOIN students ON people.person_id = students.student_id\nWHERE people.cell_mobile_number = '(508)319-2970x043'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.5
+    },
+    {
+      "uid": "e2fd8ebd-8f42-4047-b4c3-e0a7eb438099",
+      "question": "Who is Nova Amiya Feest with the login name qrwl, email oreynolds@example.com, cell number 766-272-9964, and password 7dce9b688636ee212294c257dd2f6b85c7f65f2e?",
+      "gold_sql": "SELECT people.person_id FROM people\nWHERE people.password = '7dce9b688636ee212294c257dd2f6b85c7f65f2e' AND people.email_address = 'oreynolds@example.com' AND people.middle_name = 'Amiya' AND people.last_name = 'Feest' AND people.login_name = 'qrwl' AND people.first_name = 'Nova' AND people.cell_mobile_number = '766-272-9964'",
+      "pred_sql": "SELECT people.person_id\nFROM people\nWHERE people.password = '7dce9b688636ee212294c257dd2f6b85c7f65f2e'\n  AND people.email_address = 'oreynolds@example.com'\n  AND people.middle_name = 'Amiya'\n  AND people.last_name = 'Feest'\n  AND people.login_name = 'qrwl'\n  AND people.first_name = 'Nova'\n  AND people.cell_mobile_number = '766-272-9964'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 10.5
+    },
+    {
+      "uid": "fe38259d-578f-4baf-b103-8d2e46054ae1",
+      "question": "What people have the last name Bartoletti, login name mkou, cell mobile number 812.228.0645x91481, and had an address valid on or before 2015-05-24 16:14:12 that ended exactly on 2018-02-23 22:44:18?",
+      "gold_sql": "SELECT people.person_id FROM people\nJOIN people_addresses ON people.person_id = people_addresses.person_id\nJOIN candidates ON people.person_id = candidates.candidate_id\nWHERE people.last_name = 'Bartoletti' AND people.login_name = 'mkou' AND people_addresses.date_to = '2018-02-23 22:44:18' AND people.cell_mobile_number = '812.228.0645x91481' AND people_addresses.date_from <= '2015-05-24 16:14:12'",
+      "pred_sql": "SELECT p.person_id\nFROM People p\nJOIN People_Addresses pa ON p.person_id = pa.person_id\nJOIN Candidates c ON p.person_id = c.candidate_id\nWHERE p.last_name = 'Bartoletti'\n  AND p.login_name = 'mkou'\n  AND p.cell_mobile_number = '812.228.0645x91481'\n  AND pa.date_to = '2018-02-23 22:44:18'\n  AND pa.date_from <= '2015-05-24 16:14:12'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.01
+    }
+  ]
+}

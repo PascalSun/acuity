@@ -1,0 +1,3397 @@
+{
+ "db_id": "protein_institute",
+ "target_table": "building",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 47316426,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/protein_institute/protein_institute.sqlite",
+  "generated_at": "2026-07-02T17:01:01.394551+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "building",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 32,
+    "inner_attempts": 32,
+    "failed_rounds": 22,
+    "invalid_pairs_filtered": 22,
+    "failure_events": {
+     "qa_validation_failed": 22
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 17,
+    "inner_attempts": 17,
+    "failed_rounds": 7,
+    "invalid_pairs_filtered": 7,
+    "failure_events": {
+     "qa_validation_failed": 7
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "81effe7f-f633-4c91-8239-f0b68c0a9e9c",
+   "question": "Which buildings have at least 22 floors but are no more than 280 feet tall?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.height_feet <= 280 AND building.floors >= 22",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "building.floors"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 280,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": ">=",
+     "value": 22,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 280,
+    "building.floors": 22
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at most '280' and floors at least '22'?"
+  },
+  {
+   "uid": "7816834a-bba7-404b-8422-2f888a6165f4",
+   "question": "Which buildings were the tallest exactly from 1915\u20131926?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.years_as_tallest = '1915\u20131926'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1915\u20131926",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.years_as_tallest": "1915\u20131926"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with years as tallest equal to '1915\u20131926'?"
+  },
+  {
+   "uid": "8529d9b5-5ba1-478a-9ce2-629d7c483a8b",
+   "question": "Which buildings have a height of exactly 280 feet?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.height_feet = 280",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 280,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 280
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet equal to '280'?"
+  },
+  {
+   "uid": "9e171c58-d7a5-404b-9938-15da7eaa106c",
+   "question": "Which buildings have exactly 17 floors and are located at 905 Franklin Street?",
+   "answer_row_ids": [
+    "2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.floors = 17 AND building.street_address = '905 Franklin Street'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "building.street_address"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 17,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "905 Franklin Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 17,
+    "building.street_address": "905 Franklin Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors equal to '17' and street address equal to '905 Franklin Street'?"
+  },
+  {
+   "uid": "0f3300df-677a-4b79-a98d-d403624d94f1",
+   "question": "Which building named Franklin Exchange Building was the tallest exactly during the years 1966\u20131972?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.years_as_tallest = '1966\u20131972' AND building.name = 'Franklin Exchange Building'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.years_as_tallest",
+    "building.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1966\u20131972",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Franklin Exchange Building",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.years_as_tallest": "1966\u20131972",
+    "building.name": "Franklin Exchange Building"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with years as tallest equal to '1966\u20131972' and name equal to 'Franklin Exchange Building'?"
+  },
+  {
+   "uid": "3cad5658-8f57-49ef-a747-6f8e1e17b8d4",
+   "question": "Which buildings are located at 655 North Franklin Street and were the tallest from 1966\u20131972?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.street_address = '655 North Franklin Street' AND building.years_as_tallest = '1966\u20131972'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.street_address",
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "655 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1966\u20131972",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.street_address": "655 North Franklin Street",
+    "building.years_as_tallest": "1966\u20131972"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with street address equal to '655 North Franklin Street' and years as tallest equal to '1966\u20131972'?"
+  },
+  {
+   "uid": "e4fb7552-36be-49ce-9451-70be64a17485",
+   "question": "Which buildings that were the tallest exactly during 1966\u20131972 have a height of at most 280 feet?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.height_feet <= 280 AND building.years_as_tallest = '1966\u20131972'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 280,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1966\u20131972",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 280,
+    "building.years_as_tallest": "1966\u20131972"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at most '280' and years as tallest equal to '1966\u20131972'?"
+  },
+  {
+   "uid": "8ce69d5e-fc7a-43cb-ae0e-7b1fc5a8bffa",
+   "question": "Which buildings named Franklin Exchange Building have exactly 22 floors?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.floors = 22 AND building.name = 'Franklin Exchange Building'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "building.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Franklin Exchange Building",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 22,
+    "building.name": "Franklin Exchange Building"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors equal to '22' and name equal to 'Franklin Exchange Building'?"
+  },
+  {
+   "uid": "e9171af2-9cc0-463e-90eb-9f621b1cf772",
+   "question": "Which buildings are located at 655 North Franklin Street?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.street_address = '655 North Franklin Street'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.street_address"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "655 North Franklin Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.street_address": "655 North Franklin Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with street address equal to '655 North Franklin Street'?"
+  },
+  {
+   "uid": "0b86dcec-8b00-4358-9326-5ce53188e1b4",
+   "question": "Which buildings on 315 John F. Kennedy Boulevard are at least 160 feet tall?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.height_feet >= 160 AND building.street_address = '315 John F. Kennedy Boulevard'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "building.street_address"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 160,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "315 John F. Kennedy Boulevard",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 160,
+    "building.street_address": "315 John F. Kennedy Boulevard"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at least '160' and street address equal to '315 John F. Kennedy Boulevard'?"
+  },
+  {
+   "uid": "66eec478-e85b-4591-9c3c-6b982a412ad0",
+   "question": "Which building named One Tampa City Center located at 201 North Franklin Street is at most 537 feet tall and was the tallest from 1981\u20131986?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.name = 'One Tampa City Center' AND building.street_address = '201 North Franklin Street' AND building.height_feet <= 537 AND building.years_as_tallest = '1981\u20131986'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.name",
+    "building.street_address",
+    "building.height_feet",
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "201 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1981\u20131986",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.name": "One Tampa City Center",
+    "building.street_address": "201 North Franklin Street",
+    "building.height_feet": 537,
+    "building.years_as_tallest": "1981\u20131986"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'One Tampa City Center' and street address equal to '201 North Franklin Street' and height feet at most '537' and years as tallest equal to '1981\u20131986'?"
+  },
+  {
+   "uid": "e6556530-04b1-433a-96a1-b8792b13d75c",
+   "question": "Which building named 100 North Tampa located at 100 North Tampa Street is 579 feet tall, has at most 42 floors, and has been the tallest since 1992\u2013present?",
+   "answer_row_ids": [
+    "7"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.years_as_tallest = '1992\u2013present' AND building.height_feet = 579 AND building.name = '100 North Tampa' AND building.floors <= 42 AND building.street_address = '100 North Tampa Street'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.years_as_tallest",
+    "building.height_feet",
+    "building.name",
+    "building.floors",
+    "building.street_address"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1992\u2013present",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 579,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "100 North Tampa",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 42,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "100 North Tampa Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.years_as_tallest": "1992\u2013present",
+    "building.height_feet": 579,
+    "building.name": "100 North Tampa",
+    "building.floors": 42,
+    "building.street_address": "100 North Tampa Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with years as tallest equal to '1992\u2013present' and height feet equal to '579' and name equal to '100 North Tampa' and floors at most '42' and street address equal to '100 North Tampa Street'?"
+  },
+  {
+   "uid": "90f996bc-3788-44a8-bcd8-302f5fb53a91",
+   "question": "Which buildings located at 655 North Franklin Street have exactly 22 floors, stand 280 feet tall, and were the tallest from 1966\u20131972?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.years_as_tallest = '1966\u20131972' AND building.floors = 22 AND building.street_address = '655 North Franklin Street' AND building.height_feet = 280",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.years_as_tallest",
+    "building.floors",
+    "building.street_address",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1966\u20131972",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "655 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 280,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.years_as_tallest": "1966\u20131972",
+    "building.floors": 22,
+    "building.street_address": "655 North Franklin Street",
+    "building.height_feet": 280
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with years as tallest equal to '1966\u20131972' and floors equal to '22' and street address equal to '655 North Franklin Street' and height feet equal to '280'?"
+  },
+  {
+   "uid": "08dfcf71-c7ee-4f8b-8bc7-d05c02562f57",
+   "question": "Which buildings named Floridan Hotel at 905 Franklin Street have exactly 17 floors, were tallest from 1926\u20131966, and are at least 204 feet tall?",
+   "answer_row_ids": [
+    "2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.floors = 17 AND building.name = 'Floridan Hotel' AND building.street_address = '905 Franklin Street' AND building.years_as_tallest = '1926\u20131966' AND building.height_feet >= 204",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "building.name",
+    "building.street_address",
+    "building.years_as_tallest",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 17,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Floridan Hotel",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "905 Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1926\u20131966",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 204,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 17,
+    "building.name": "Floridan Hotel",
+    "building.street_address": "905 Franklin Street",
+    "building.years_as_tallest": "1926\u20131966",
+    "building.height_feet": 204
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors equal to '17' and name equal to 'Floridan Hotel' and street address equal to '905 Franklin Street' and years as tallest equal to '1926\u20131966' and height feet at least '204'?"
+  },
+  {
+   "uid": "2e7e1660-ccd2-48d7-b134-7e11e0523ab2",
+   "question": "Which buildings named One Tampa City Center at 201 North Franklin Street have 39 floors, are at least 537 feet tall, and were tallest from 1981\u20131986?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.years_as_tallest = '1981\u20131986' AND building.name = 'One Tampa City Center' AND building.height_feet >= 537 AND building.street_address = '201 North Franklin Street' AND building.floors = 39",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.years_as_tallest",
+    "building.name",
+    "building.height_feet",
+    "building.street_address",
+    "building.floors"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1981\u20131986",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "201 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 39,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.years_as_tallest": "1981\u20131986",
+    "building.name": "One Tampa City Center",
+    "building.height_feet": 537,
+    "building.street_address": "201 North Franklin Street",
+    "building.floors": 39
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with years as tallest equal to '1981\u20131986' and name equal to 'One Tampa City Center' and height feet at least '537' and street address equal to '201 North Franklin Street' and floors equal to '39'?"
+  },
+  {
+   "uid": "a6e5f273-4137-47c8-94df-121bbe973f84",
+   "question": "Which buildings named Park Tower have exactly 36 floors, are at most 458 feet tall, are located at 400 North Tampa Street, and were tallest from 1972\u20131981?",
+   "answer_row_ids": [
+    "4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.street_address = '400 North Tampa Street' AND building.height_feet <= 458 AND building.floors = 36 AND building.name = 'Park Tower' AND building.years_as_tallest = '1972\u20131981'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.street_address",
+    "building.height_feet",
+    "building.floors",
+    "building.name",
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "400 North Tampa Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 458,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 36,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Park Tower",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1972\u20131981",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.street_address": "400 North Tampa Street",
+    "building.height_feet": 458,
+    "building.floors": 36,
+    "building.name": "Park Tower",
+    "building.years_as_tallest": "1972\u20131981"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with street address equal to '400 North Tampa Street' and height feet at most '458' and floors equal to '36' and name equal to 'Park Tower' and years as tallest equal to '1972\u20131981'?"
+  },
+  {
+   "uid": "956d82ef-da1b-495d-b228-7352b27871b2",
+   "question": "Which buildings named Park Tower are located at 400 North Tampa Street, have at least 36 floors, stand exactly 458 feet tall, and were the tallest from 1972\u20131981?",
+   "answer_row_ids": [
+    "4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.street_address = '400 North Tampa Street' AND building.name = 'Park Tower' AND building.floors >= 36 AND building.years_as_tallest = '1972\u20131981' AND building.height_feet = 458",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.street_address",
+    "building.name",
+    "building.floors",
+    "building.years_as_tallest",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "400 North Tampa Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Park Tower",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": ">=",
+     "value": 36,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1972\u20131981",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 458,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.street_address": "400 North Tampa Street",
+    "building.name": "Park Tower",
+    "building.floors": 36,
+    "building.years_as_tallest": "1972\u20131981",
+    "building.height_feet": 458
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with street address equal to '400 North Tampa Street' and name equal to 'Park Tower' and floors at least '36' and years as tallest equal to '1972\u20131981' and height feet equal to '458'?"
+  },
+  {
+   "uid": "e03eac4f-552e-4472-ac7a-482531a4f617",
+   "question": "What building is named 100 North Tampa, located at 100 North Tampa Street, exactly 579 feet tall, and has been the tallest from 1992\u2013present?",
+   "answer_row_ids": [
+    "7"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.name = '100 North Tampa' AND building.street_address = '100 North Tampa Street' AND building.height_feet = 579 AND building.years_as_tallest = '1992\u2013present'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.name",
+    "building.street_address",
+    "building.height_feet",
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "100 North Tampa",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "100 North Tampa Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 579,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1992\u2013present",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.name": "100 North Tampa",
+    "building.street_address": "100 North Tampa Street",
+    "building.height_feet": 579,
+    "building.years_as_tallest": "1992\u2013present"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to '100 North Tampa' and street address equal to '100 North Tampa Street' and height feet equal to '579' and years as tallest equal to '1992\u2013present'?"
+  },
+  {
+   "uid": "2be81746-4b95-46bd-aecf-0dc72d56569e",
+   "question": "Which buildings located at 400 North Tampa Street have a height of exactly 458 feet and at most 36 floors?",
+   "answer_row_ids": [
+    "4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.street_address = '400 North Tampa Street' AND building.floors <= 36 AND building.height_feet = 458",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.street_address",
+    "building.floors",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "400 North Tampa Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 36,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 458,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.street_address": "400 North Tampa Street",
+    "building.floors": 36,
+    "building.height_feet": 458
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with street address equal to '400 North Tampa Street' and floors at most '36' and height feet equal to '458'?"
+  },
+  {
+   "uid": "bd16309d-732e-4c56-859f-df053c625679",
+   "question": "What building named Citizens Bank Building has exactly 12 floors, is located at 701 North Franklin Street, and was tallest from 1913\u20131915?",
+   "answer_row_ids": [
+    "0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nWHERE building.floors = 12 AND building.street_address = '701 North Franklin Street' AND building.years_as_tallest = '1913\u20131915' AND building.name = 'Citizens Bank Building'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "building"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "building.street_address",
+    "building.years_as_tallest",
+    "building.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "701 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1913\u20131915",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Citizens Bank Building",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 12,
+    "building.street_address": "701 North Franklin Street",
+    "building.years_as_tallest": "1913\u20131915",
+    "building.name": "Citizens Bank Building"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors equal to '12' and street address equal to '701 North Franklin Street' and years as tallest equal to '1913\u20131915' and name equal to 'Citizens Bank Building'?"
+  },
+  {
+   "uid": "afc833eb-34a2-45b6-a81f-585575800f8d",
+   "question": "Which buildings that are exactly 160 feet tall belong to Dakota State University?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.height_feet = 160 AND institution.institution = 'Dakota State University'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "institution.institution"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 160,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Dakota State University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 160,
+    "institution.institution": "Dakota State University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet equal to '160', having at least one related institution record (linked on building.building_id = institution.building_id) with institution equal to 'Dakota State University'?"
+  },
+  {
+   "uid": "bfa7cb78-c19c-44f6-978a-3aaba51f8874",
+   "question": "Which buildings have at least 12 floors and are associated with an institution?",
+   "answer_row_ids": [
+    "0",
+    "2",
+    "3",
+    "4",
+    "5",
+    "7"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.floors >= 12",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.floors"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": ">=",
+     "value": 12,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 12
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors at least '12', having at least one related institution record (linked on building.building_id = institution.building_id)?"
+  },
+  {
+   "uid": "b383bba6-3f3d-4a37-8520-000fa1587fd5",
+   "question": "Where are the buildings associated with institutions founded at most in 1890 that have exactly 1340 students enrolled?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.founded <= 1890.0 AND institution.enrollment = 1340",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.founded",
+    "institution.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1890.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 1340,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "institution.founded": 1890.0,
+    "institution.enrollment": 1340
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities having at least one related institution record (linked on building.building_id = institution.building_id) with founded at most '1890.0' and enrollment equal to '1340'?"
+  },
+  {
+   "uid": "d04c8de5-7b51-445d-9cb7-877e0de9da8b",
+   "question": "Which buildings are at least 280 feet tall and are associated with an institution?",
+   "answer_row_ids": [
+    "3",
+    "4",
+    "5",
+    "7"
+   ],
+   "answer_count": 4,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.height_feet >= 280",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 280,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 280
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at least '280', having at least one related institution record (linked on building.building_id = institution.building_id)?"
+  },
+  {
+   "uid": "3a2bc906-baa9-4f15-8ebd-416ca02c8fe3",
+   "question": "Which buildings named One Tampa City Center are at least 537 feet tall?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.name = 'One Tampa City Center' AND building.height_feet >= 537",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.name",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 537,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.name": "One Tampa City Center",
+    "building.height_feet": 537
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'One Tampa City Center' and height feet at least '537', having at least one related institution record (linked on building.building_id = institution.building_id)?"
+  },
+  {
+   "uid": "59452a23-bee4-4a99-a0cc-c4760fbda2ae",
+   "question": "Which buildings have exactly 10 floors and are located where the street_address is 315 John F. Kennedy Boulevard?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.floors = 10 AND building.street_address = '315 John F. Kennedy Boulevard'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "building.street_address"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "315 John F. Kennedy Boulevard",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 10,
+    "building.street_address": "315 John F. Kennedy Boulevard"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors equal to '10' and street address equal to '315 John F. Kennedy Boulevard', having at least one related institution record (linked on building.building_id = institution.building_id)?"
+  },
+  {
+   "uid": "d089af32-dbf2-4564-af6b-5237574320b8",
+   "question": "Which buildings are associated with institutions where the team is Tigers?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.team = 'Tigers'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.team"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Tigers",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.team": "Tigers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities having at least one related institution record (linked on building.building_id = institution.building_id) with team equal to 'Tigers'?"
+  },
+  {
+   "uid": "55063ae4-0b78-4a40-951d-1ca2dd4972fa",
+   "question": "Which buildings are associated with institutions where the type is Tribal and enrollment is at most 1000?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.type = 'Tribal' AND institution.enrollment <= 1000",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.type",
+    "institution.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Tribal",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 1000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "institution.type": "Tribal",
+    "institution.enrollment": 1000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Tribal' and enrollment at most '1000'?"
+  },
+  {
+   "uid": "0b81313d-ba18-4b92-9292-3e7e8f8afd72",
+   "question": "Which buildings are associated with Valley City State University where enrollment is at least 1340?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.institution = 'Valley City State University' AND institution.enrollment >= 1340",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.institution",
+    "institution.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Valley City State University",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 1340,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "institution.institution": "Valley City State University",
+    "institution.enrollment": 1340
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities having at least one related institution record (linked on building.building_id = institution.building_id) with institution equal to 'Valley City State University' and enrollment at least '1340'?"
+  },
+  {
+   "uid": "e08fee9b-68a7-4e6b-8ed4-7fd6ca3bc9d6",
+   "question": "Which buildings belong to institutions where the team is Fighting Indians?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.team = 'Fighting Indians'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.team"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Fighting Indians",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.team": "Fighting Indians"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities having at least one related institution record (linked on building.building_id = institution.building_id) with team equal to 'Fighting Indians'?"
+  },
+  {
+   "uid": "abf30708-00e0-4f02-9d6a-85597cfad814",
+   "question": "Which buildings at 315 John F. Kennedy Boulevard have at least 10 floors, were tallest from 1915\u20131926, and belong to Dakota State University where the team is Trojans and the primary conference is none?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.floors >= 10 AND institution.primary_conference = 'none' AND institution.team = 'Trojans' AND institution.institution = 'Dakota State University' AND building.years_as_tallest = '1915\u20131926' AND building.street_address = '315 John F. Kennedy Boulevard'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "institution.primary_conference",
+    "institution.team",
+    "institution.institution",
+    "building.years_as_tallest",
+    "building.street_address"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": ">=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Trojans",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Dakota State University",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1915\u20131926",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "315 John F. Kennedy Boulevard",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 10,
+    "institution.primary_conference": "none",
+    "institution.team": "Trojans",
+    "institution.institution": "Dakota State University",
+    "building.years_as_tallest": "1915\u20131926",
+    "building.street_address": "315 John F. Kennedy Boulevard"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors at least '10' and years as tallest equal to '1915\u20131926' and street address equal to '315 John F. Kennedy Boulevard', having at least one related institution record (linked on building.building_id = institution.building_id) with primary conference equal to 'none' and team equal to 'Trojans' and institution equal to 'Dakota State University'?"
+  },
+  {
+   "uid": "2a2c6829-c652-4a0c-b9f8-f936417caf40",
+   "question": "Which buildings named One Tampa City Center have at most 39 floors, are at least 537 feet tall, and are associated with institutions founded no later than 1927 that have at most 616 students and whose team is exactly Warriors?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.floors <= 39 AND institution.enrollment <= 616 AND building.name = 'One Tampa City Center' AND institution.founded <= 1927.0 AND institution.team = 'Warriors' AND building.height_feet >= 537",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "institution.enrollment",
+    "building.name",
+    "institution.founded",
+    "institution.team",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 39,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 616,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1927.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Warriors",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 537,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 39,
+    "institution.enrollment": 616,
+    "building.name": "One Tampa City Center",
+    "institution.founded": 1927.0,
+    "institution.team": "Warriors",
+    "building.height_feet": 537
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors at most '39' and name equal to 'One Tampa City Center' and height feet at least '537', having at least one related institution record (linked on building.building_id = institution.building_id) with enrollment at most '616' and founded at most '1927.0' and team equal to 'Warriors'?"
+  },
+  {
+   "uid": "81eeb666-9157-4ddd-a142-7e52daa8b3e4",
+   "question": "Which buildings at 201 North Franklin Street are 537 feet tall with at most 39 floors and belong to Tribal institutions founded in 1884, having 1000 enrollment and a primary conference of MCAC?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.floors <= 39 AND building.street_address = '201 North Franklin Street' AND institution.primary_conference = 'MCAC' AND institution.founded = 1884.0 AND institution.type = 'Tribal' AND institution.enrollment = 1000 AND building.height_feet = 537",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.floors",
+    "building.street_address",
+    "institution.primary_conference",
+    "institution.founded",
+    "institution.type",
+    "institution.enrollment",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 39,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "201 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "MCAC",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": "=",
+     "value": 1884.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Tribal",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 1000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 537,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.floors": 39,
+    "building.street_address": "201 North Franklin Street",
+    "institution.primary_conference": "MCAC",
+    "institution.founded": 1884.0,
+    "institution.type": "Tribal",
+    "institution.enrollment": 1000,
+    "building.height_feet": 537
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors at most '39' and street address equal to '201 North Franklin Street' and height feet equal to '537', having at least one related institution record (linked on building.building_id = institution.building_id) with primary conference equal to 'MCAC' and founded equal to '1884.0' and type equal to 'Tribal' and enrollment equal to '1000'?"
+  },
+  {
+   "uid": "239f005c-81da-4a05-98d1-812abd21c30b",
+   "question": "Which buildings named Franklin Exchange Building were the tallest from 1966\u20131972, have at least 22 floors and a height of at most 280 feet, and are associated with Edward Waters College, a private institution whose team is the Tigers in the Gulf Coast (GCAC) conference?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.years_as_tallest = '1966\u20131972' AND institution.type = 'Private' AND building.name = 'Franklin Exchange Building' AND institution.team = 'Tigers' AND institution.primary_conference = 'Gulf Coast (GCAC)' AND institution.institution = 'Edward Waters College' AND building.floors >= 22 AND building.height_feet <= 280",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.years_as_tallest",
+    "institution.type",
+    "building.name",
+    "institution.team",
+    "institution.primary_conference",
+    "institution.institution",
+    "building.floors",
+    "building.height_feet"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1966\u20131972",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Franklin Exchange Building",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Tigers",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Gulf Coast (GCAC)",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Edward Waters College",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": ">=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 280,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.years_as_tallest": "1966\u20131972",
+    "institution.type": "Private",
+    "building.name": "Franklin Exchange Building",
+    "institution.team": "Tigers",
+    "institution.primary_conference": "Gulf Coast (GCAC)",
+    "institution.institution": "Edward Waters College",
+    "building.floors": 22,
+    "building.height_feet": 280
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with years as tallest equal to '1966\u20131972' and name equal to 'Franklin Exchange Building' and floors at least '22' and height feet at most '280', having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Private' and team equal to 'Tigers' and primary conference equal to 'Gulf Coast (GCAC)' and institution equal to 'Edward Waters College'?"
+  },
+  {
+   "uid": "b790a0c6-31e4-4d54-a753-9489d0b84016",
+   "question": "Which buildings named Park Tower are located at 400 North Tampa Street and belong to private institutions in the CalPac conference founded in 1927 or later with enrollment of at most 650?",
+   "answer_row_ids": [
+    "4"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.street_address = '400 North Tampa Street' AND institution.type = 'Private' AND institution.enrollment <= 650 AND building.name = 'Park Tower' AND institution.primary_conference = 'CalPac' AND institution.founded >= 1927.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.street_address",
+    "institution.type",
+    "institution.enrollment",
+    "building.name",
+    "institution.primary_conference",
+    "institution.founded"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "400 North Tampa Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 650,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Park Tower",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "CalPac",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1927.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.street_address": "400 North Tampa Street",
+    "institution.type": "Private",
+    "institution.enrollment": 650,
+    "building.name": "Park Tower",
+    "institution.primary_conference": "CalPac",
+    "institution.founded": 1927.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with street address equal to '400 North Tampa Street' and name equal to 'Park Tower', having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Private' and enrollment at most '650' and primary conference equal to 'CalPac' and founded at least '1927.0'?"
+  },
+  {
+   "uid": "a484939a-969f-47ff-bfbf-160149248c6b",
+   "question": "Which buildings named Franklin Exchange Building have exactly 22 floors, were tallest from 1966\u20131972, are located at 655 North Franklin Street, and are associated with institutions having enrollment of at least 1340 and no primary conference?",
+   "answer_row_ids": [
+    "3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.name = 'Franklin Exchange Building' AND institution.enrollment >= 1340 AND building.floors = 22 AND building.years_as_tallest = '1966\u20131972' AND building.street_address = '655 North Franklin Street' AND institution.primary_conference = 'none'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.name",
+    "institution.enrollment",
+    "building.floors",
+    "building.years_as_tallest",
+    "building.street_address",
+    "institution.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Franklin Exchange Building",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 1340,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1966\u20131972",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "655 North Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.name": "Franklin Exchange Building",
+    "institution.enrollment": 1340,
+    "building.floors": 22,
+    "building.years_as_tallest": "1966\u20131972",
+    "building.street_address": "655 North Franklin Street",
+    "institution.primary_conference": "none"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'Franklin Exchange Building' and floors equal to '22' and years as tallest equal to '1966\u20131972' and street address equal to '655 North Franklin Street', having at least one related institution record (linked on building.building_id = institution.building_id) with enrollment at least '1340' and primary conference equal to 'none'?"
+  },
+  {
+   "uid": "c3d1dc56-4b01-4eaa-87aa-c1d15224654d",
+   "question": "Which buildings located at 315 John F. Kennedy Boulevard are at most 160 feet tall, were the tallest from 1915\u20131926, and belong to institutions founded in 1998 or later with at least 1200 students and the team Gyrenes?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.founded >= 1998.0 AND institution.enrollment >= 1200 AND building.height_feet <= 160 AND building.years_as_tallest = '1915\u20131926' AND building.street_address = '315 John F. Kennedy Boulevard' AND institution.team = 'Gyrenes'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.founded",
+    "institution.enrollment",
+    "building.height_feet",
+    "building.years_as_tallest",
+    "building.street_address",
+    "institution.team"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1998.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 1200,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 160,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1915\u20131926",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "315 John F. Kennedy Boulevard",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Gyrenes",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.founded": 1998.0,
+    "institution.enrollment": 1200,
+    "building.height_feet": 160,
+    "building.years_as_tallest": "1915\u20131926",
+    "building.street_address": "315 John F. Kennedy Boulevard",
+    "institution.team": "Gyrenes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at most '160' and years as tallest equal to '1915\u20131926' and street address equal to '315 John F. Kennedy Boulevard', having at least one related institution record (linked on building.building_id = institution.building_id) with founded at least '1998.0' and enrollment at least '1200' and team equal to 'Gyrenes'?"
+  },
+  {
+   "uid": "397dbd6d-4951-43de-8e6d-7cbab2ed66d9",
+   "question": "What buildings named 100 North Tampa have at most 579 feet in height, no more than 42 floors, years as tallest exactly 1992\u2013present, and belong to private institutions where the primary conference is AAC and the team is Skyhawks?",
+   "answer_row_ids": [
+    "7"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.height_feet <= 579 AND institution.primary_conference = 'AAC' AND institution.team = 'Skyhawks' AND institution.type = 'Private' AND building.floors <= 42 AND building.name = '100 North Tampa' AND building.years_as_tallest = '1992\u2013present'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "institution.primary_conference",
+    "institution.team",
+    "institution.type",
+    "building.floors",
+    "building.name",
+    "building.years_as_tallest"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 579,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "AAC",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Skyhawks",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 42,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "100 North Tampa",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1992\u2013present",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 579,
+    "institution.primary_conference": "AAC",
+    "institution.team": "Skyhawks",
+    "institution.type": "Private",
+    "building.floors": 42,
+    "building.name": "100 North Tampa",
+    "building.years_as_tallest": "1992\u2013present"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at most '579' and floors at most '42' and name equal to '100 North Tampa' and years as tallest equal to '1992\u2013present', having at least one related institution record (linked on building.building_id = institution.building_id) with primary conference equal to 'AAC' and team equal to 'Skyhawks' and type equal to 'Private'?"
+  },
+  {
+   "uid": "1bfdefc4-b6fa-4e89-8a3d-c8dc5243fc89",
+   "question": "Which buildings named Tampa City Hall have exactly 10 floors, are at least 160 feet tall, were the tallest from 1915\u20131926, and are associated with Dakota State University where enrollment is at most 3102 and the team is Trojans?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.name = 'Tampa City Hall' AND building.floors = 10 AND institution.enrollment <= 3102 AND building.height_feet >= 160 AND institution.team = 'Trojans' AND building.years_as_tallest = '1915\u20131926' AND institution.institution = 'Dakota State University'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.name",
+    "building.floors",
+    "institution.enrollment",
+    "building.height_feet",
+    "institution.team",
+    "building.years_as_tallest",
+    "institution.institution"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Tampa City Hall",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 3102,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 160,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Trojans",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "years_as_tallest",
+     "operator": "=",
+     "value": "1915\u20131926",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Dakota State University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.name": "Tampa City Hall",
+    "building.floors": 10,
+    "institution.enrollment": 3102,
+    "building.height_feet": 160,
+    "institution.team": "Trojans",
+    "building.years_as_tallest": "1915\u20131926",
+    "institution.institution": "Dakota State University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'Tampa City Hall' and floors equal to '10' and height feet at least '160' and years as tallest equal to '1915\u20131926', having at least one related institution record (linked on building.building_id = institution.building_id) with enrollment at most '3102' and team equal to 'Trojans' and institution equal to 'Dakota State University'?"
+  },
+  {
+   "uid": "2b8c585a-b041-4d26-bd1d-b4a6ce067779",
+   "question": "What buildings named Floridan Hotel at 905 Franklin Street are exactly 204 feet tall with at most 17 floors, where the institution is Jamestown College, a Private school founded in 1883 with the team Jimmies?",
+   "answer_row_ids": [
+    "2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.height_feet = 204 AND institution.institution = 'Jamestown College' AND institution.team = 'Jimmies' AND building.floors <= 17 AND institution.founded = 1883.0 AND building.street_address = '905 Franklin Street' AND institution.type = 'Private' AND building.name = 'Floridan Hotel'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "institution.institution",
+    "institution.team",
+    "building.floors",
+    "institution.founded",
+    "building.street_address",
+    "institution.type",
+    "building.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 204,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Jamestown College",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Jimmies",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 17,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": "=",
+     "value": 1883.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "905 Franklin Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Floridan Hotel",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 204,
+    "institution.institution": "Jamestown College",
+    "institution.team": "Jimmies",
+    "building.floors": 17,
+    "institution.founded": 1883.0,
+    "building.street_address": "905 Franklin Street",
+    "institution.type": "Private",
+    "building.name": "Floridan Hotel"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet equal to '204' and floors at most '17' and street address equal to '905 Franklin Street' and name equal to 'Floridan Hotel', having at least one related institution record (linked on building.building_id = institution.building_id) with institution equal to 'Jamestown College' and team equal to 'Jimmies' and founded equal to '1883.0' and type equal to 'Private'?"
+  },
+  {
+   "uid": "d1f05d20-695d-462f-88eb-1e9b91e6e061",
+   "question": "What buildings named 100 North Tampa have at most 42 floors, are no taller than 579 feet, and belong to institutions in the AAC conference with enrollment no more than 1035?",
+   "answer_row_ids": [
+    "7"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.name = '100 North Tampa' AND building.floors <= 42 AND institution.primary_conference = 'AAC' AND building.height_feet <= 579 AND institution.enrollment <= 1035",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.name",
+    "building.floors",
+    "institution.primary_conference",
+    "building.height_feet",
+    "institution.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "100 North Tampa",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 42,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "AAC",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 579,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 1035,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "building.name": "100 North Tampa",
+    "building.floors": 42,
+    "institution.primary_conference": "AAC",
+    "building.height_feet": 579,
+    "institution.enrollment": 1035
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to '100 North Tampa' and floors at most '42' and height feet at most '579', having at least one related institution record (linked on building.building_id = institution.building_id) with primary conference equal to 'AAC' and enrollment at most '1035'?"
+  },
+  {
+   "uid": "a7f5e6e4-9151-4304-a091-58d9fc7ed373",
+   "question": "What buildings exactly 145 feet tall are part of Mayville State University where the institution type is Public?",
+   "answer_row_ids": [
+    "0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.institution = 'Mayville State University' AND building.height_feet = 145 AND institution.type = 'Public'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.institution",
+    "building.height_feet",
+    "institution.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Mayville State University",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "=",
+     "value": 145,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.institution": "Mayville State University",
+    "building.height_feet": 145,
+    "institution.type": "Public"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet equal to '145', having at least one related institution record (linked on building.building_id = institution.building_id) with institution equal to 'Mayville State University' and type equal to 'Public'?"
+  },
+  {
+   "uid": "93075599-6bb5-47fb-be0b-c30a3fe7f7c6",
+   "question": "Which buildings named One Tampa City Center are associated with institutions whose team is Fighting Indians, primary conference is MCAC, founded in 1884 or earlier, and have at least 1000 students?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.team = 'Fighting Indians' AND institution.primary_conference = 'MCAC' AND building.name = 'One Tampa City Center' AND institution.founded <= 1884.0 AND institution.enrollment >= 1000",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.team",
+    "institution.primary_conference",
+    "building.name",
+    "institution.founded",
+    "institution.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Fighting Indians",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "MCAC",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1884.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 1000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "institution.team": "Fighting Indians",
+    "institution.primary_conference": "MCAC",
+    "building.name": "One Tampa City Center",
+    "institution.founded": 1884.0,
+    "institution.enrollment": 1000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'One Tampa City Center', having at least one related institution record (linked on building.building_id = institution.building_id) with team equal to 'Fighting Indians' and primary conference equal to 'MCAC' and founded at most '1884.0' and enrollment at least '1000'?"
+  },
+  {
+   "uid": "9847c293-7b0f-44d3-b903-516400a398fc",
+   "question": "Which buildings named One Tampa City Center are at most 537 feet tall and belong to tribal institutions with no more than 1000 enrolled?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.type = 'Tribal' AND building.height_feet <= 537 AND building.name = 'One Tampa City Center' AND institution.enrollment <= 1000",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.type",
+    "building.height_feet",
+    "building.name",
+    "institution.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Tribal",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": "<=",
+     "value": 537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 1000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "institution.type": "Tribal",
+    "building.height_feet": 537,
+    "building.name": "One Tampa City Center",
+    "institution.enrollment": 1000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at most '537' and name equal to 'One Tampa City Center', having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Tribal' and enrollment at most '1000'?"
+  },
+  {
+   "uid": "1577ee6d-b2a4-4e1a-87d6-c79dff49c48b",
+   "question": "Which buildings at least 204 feet tall are associated with Private institutions where the team is Jimmies?",
+   "answer_row_ids": [
+    "2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.type = 'Private' AND building.height_feet >= 204 AND institution.team = 'Jimmies'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.type",
+    "building.height_feet",
+    "institution.team"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 204,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Jimmies",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.type": "Private",
+    "building.height_feet": 204,
+    "institution.team": "Jimmies"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at least '204', having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Private' and team equal to 'Jimmies'?"
+  },
+  {
+   "uid": "8d138c1e-7cdd-4661-9693-85674bd63151",
+   "question": "Which buildings that belong to institutions in The Sun conference are at least 537 feet tall, have no more than 39 floors, and have enrollment of at most 616?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.height_feet >= 537 AND building.floors <= 39 AND institution.enrollment <= 616 AND institution.primary_conference = 'The Sun'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "building.floors",
+    "institution.enrollment",
+    "institution.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 537,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 39,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 616,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "The Sun",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 537,
+    "building.floors": 39,
+    "institution.enrollment": 616,
+    "institution.primary_conference": "The Sun"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at least '537' and floors at most '39', having at least one related institution record (linked on building.building_id = institution.building_id) with enrollment at most '616' and primary conference equal to 'The Sun'?"
+  },
+  {
+   "uid": "9db4c33b-55ef-4d8e-8490-a1e9ca0a757c",
+   "question": "What buildings named One Tampa City Center are associated with private institutions whose team is Warriors?",
+   "answer_row_ids": [
+    "5"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.name = 'One Tampa City Center' AND institution.type = 'Private' AND institution.team = 'Warriors'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.name",
+    "institution.type",
+    "institution.team"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "One Tampa City Center",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Warriors",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.name": "One Tampa City Center",
+    "institution.type": "Private",
+    "institution.team": "Warriors"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'One Tampa City Center', having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Private' and team equal to 'Warriors'?"
+  },
+  {
+   "uid": "0bf1b365-9759-4578-99ac-d8838aafc642",
+   "question": "Which buildings named Citizens Bank Building have at most 12 floors and are associated with the Comets institution founded in 1889 or later?",
+   "answer_row_ids": [
+    "0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.founded >= 1889.0 AND building.name = 'Citizens Bank Building' AND building.floors <= 12 AND institution.team = 'Comets'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.founded",
+    "building.name",
+    "building.floors",
+    "institution.team"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1889.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Citizens Bank Building",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": "<=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Comets",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.founded": 1889.0,
+    "building.name": "Citizens Bank Building",
+    "building.floors": 12,
+    "institution.team": "Comets"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with name equal to 'Citizens Bank Building' and floors at most '12', having at least one related institution record (linked on building.building_id = institution.building_id) with founded at least '1889.0' and team equal to 'Comets'?"
+  },
+  {
+   "uid": "79bfeca2-d14b-4db2-9ed3-66053ade2851",
+   "question": "Which buildings named 100 North Tampa at 100 North Tampa Street are at least 579 feet tall and belong to Point University where the institution type is Private?",
+   "answer_row_ids": [
+    "7"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE building.height_feet >= 579 AND institution.type = 'Private' AND building.name = '100 North Tampa' AND building.street_address = '100 North Tampa Street' AND institution.institution = 'Point University'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "building.height_feet",
+    "institution.type",
+    "building.name",
+    "building.street_address",
+    "institution.institution"
+   ],
+   "involved_filters": [
+    {
+     "table": "building",
+     "column": "height_feet",
+     "operator": ">=",
+     "value": 579,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "type",
+     "operator": "=",
+     "value": "Private",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "100 North Tampa",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "street_address",
+     "operator": "=",
+     "value": "100 North Tampa Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "institution",
+     "operator": "=",
+     "value": "Point University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "building.height_feet": 579,
+    "institution.type": "Private",
+    "building.name": "100 North Tampa",
+    "building.street_address": "100 North Tampa Street",
+    "institution.institution": "Point University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with height feet at least '579' and name equal to '100 North Tampa' and street address equal to '100 North Tampa Street', having at least one related institution record (linked on building.building_id = institution.building_id) with type equal to 'Private' and institution equal to 'Point University'?"
+  },
+  {
+   "uid": "159f2826-b8a4-49d0-adf3-cb1fd06de633",
+   "question": "Which buildings named Tampa City Hall have at least 10 floors and are associated with institutions founded in 1881 or earlier where the team is Trojans and the primary conference is none?",
+   "answer_row_ids": [
+    "1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT building.building_id FROM building\nJOIN institution ON building.building_id = institution.building_id\nWHERE institution.founded <= 1881.0 AND institution.team = 'Trojans' AND building.floors >= 10 AND building.name = 'Tampa City Hall' AND institution.primary_conference = 'none'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "building",
+    "institution"
+   ],
+   "involved_columns": [
+    "institution.founded",
+    "institution.team",
+    "building.floors",
+    "building.name",
+    "institution.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "institution",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1881.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "institution",
+     "column": "team",
+     "operator": "=",
+     "value": "Trojans",
+     "column_type": "enum"
+    },
+    {
+     "table": "building",
+     "column": "floors",
+     "operator": ">=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "building",
+     "column": "name",
+     "operator": "=",
+     "value": "Tampa City Hall",
+     "column_type": "enum"
+    },
+    {
+     "table": "institution",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "institution.founded": 1881.0,
+    "institution.team": "Trojans",
+    "building.floors": 10,
+    "building.name": "Tampa City Hall",
+    "institution.primary_conference": "none"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "building"
+   },
+   "answer_table": "building",
+   "answer_id_column": "building_id",
+   "canonical_question": "Which building entities with floors at least '10' and name equal to 'Tampa City Hall', having at least one related institution record (linked on building.building_id = institution.building_id) with founded at most '1881.0' and team equal to 'Trojans' and primary conference equal to 'none'?"
+  }
+ ]
+}

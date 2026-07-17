@@ -1,0 +1,124 @@
+{
+  "db_id": "election_representative",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:40:14.424961+00:00",
+  "records": [
+    {
+      "uid": "25364ce6-3b0c-4a63-9016-4e5182fe4b19",
+      "question": "Which representatives named Jimmy Quillen, with a lifespan of 1916\u20132003 and party Republican, ran in the 1949 election where they received exactly 14,077 votes, placed at least 2nd, had vote percent at most 19.5, and competed for no more than 9 seats?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.vote_percent <= 19.5 AND election.date = '1949' AND election.place >= 2.0 AND representative.name = 'Jimmy Quillen' AND representative.party = 'Republican' AND election.votes = 14077.0 AND representative.lifespan = '1916\u20132003' AND election.seats <= 9.0",
+      "pred_sql": "SELECT DISTINCT r.representative_id\nFROM representative r\nINNER JOIN election e ON r.representative_id = e.representative_id\nWHERE r.name = 'Jimmy Quillen'\n  AND r.party = 'Republican'\n  AND r.lifespan = '1916\u20132003'\n  AND e.vote_percent <= 19.5\n  AND e.date = '1949'\n  AND e.place >= 2.0\n  AND e.votes = 14077.0\n  AND e.seats <= 9.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 66.08
+    },
+    {
+      "uid": "27b726d3-fc1a-401f-b1bd-1b8bc775d6d8",
+      "question": "Who was the representative named James M. Quigley in the 1946 election where he received exactly 13049 votes and no more than 19.5 percent of the vote?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.date = '1946' AND election.votes = 13049.0 AND election.vote_percent <= 19.5 AND representative.name = 'James M. Quigley'",
+      "pred_sql": "SELECT \n    representative.Representative_ID\nFROM \n    representative\nINNER JOIN \n    election\nON \n    representative.Representative_ID = election.Representative_ID\nWHERE \n    representative.Name = 'James M. Quigley'\n    AND election.Date = '1946'\n    AND election.Votes = 13049.0\n    AND election.Vote_Percent <= 19.5",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 52.53
+    },
+    {
+      "uid": "2ab3e7df-7537-4f0d-87c9-e278e2df6df0",
+      "question": "Who are the representatives from Pennsylvania whose lifespan is exactly 1875\u20131960?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'Pennsylvania' AND representative.lifespan = '1875\u20131960'",
+      "pred_sql": "SELECT Representative_ID \nFROM representative \nWHERE State = 'Pennsylvania' AND Lifespan = '1875\u20131960'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 18.64
+    },
+    {
+      "uid": "6c1d9f28-fa62-4e46-acda-bcefe99a2ee1",
+      "question": "Who is the Republican representative named Jack Quinn from New York with a lifespan of 1951\u2013?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nWHERE representative.lifespan = '1951\u2013' AND representative.name = 'Jack Quinn' AND representative.state = 'New York' AND representative.party = 'Republican'",
+      "pred_sql": "SELECT Representative_ID \nFROM representative \nWHERE Lifespan = '1951\u2013' \n  AND Name = 'Jack Quinn' \n  AND State = 'New York' \n  AND Party = 'Republican'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 24.13
+    },
+    {
+      "uid": "6cee8b7c-dd00-4d8d-b25a-7ec2474709b2",
+      "question": "Which representatives are from New York with a lifespan of 1868\u20131930?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'New York' AND representative.lifespan = '1868\u20131930'",
+      "pred_sql": "SELECT Representative_ID \nFROM representative \nWHERE State = 'New York' AND Lifespan = '1868\u20131930'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 18.57
+    },
+    {
+      "uid": "ac4eb2b2-3b82-4c29-b2d4-d6eb9c29db7a",
+      "question": "Which representatives with a lifespan of 1947\u2013 received exactly 9423.0 votes in an election?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.votes = 9423.0 AND representative.lifespan = '1947\u2013'",
+      "pred_sql": "SELECT DISTINCT T1.Representative_ID\nFROM representative AS T1\nINNER JOIN election AS T2\nON T1.Representative_ID = T2.Representative_ID\nWHERE T1.Lifespan = '1947\u2013' AND T2.Votes = 9423.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.46
+    },
+    {
+      "uid": "b6638aa2-8cab-4db3-b705-229b367bf725",
+      "question": "Who was the Democratic representative from Pennsylvania named James L. Quinn in 1953 whose vote percent was at most 16.0 and whose election had at least 7 seats?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.date = '1953' AND representative.party = 'Democratic' AND representative.state = 'Pennsylvania' AND representative.name = 'James L. Quinn' AND election.vote_percent <= 16.0 AND election.seats >= 7.0",
+      "pred_sql": "SELECT DISTINCT r.Representative_ID\nFROM representative AS r\nINNER JOIN election AS e\nON r.Representative_ID = e.Representative_ID\nWHERE r.Party = 'Democratic'\n  AND r.State = 'Pennsylvania'\n  AND r.Name = 'James L. Quinn'\n  AND e.Date = '1953'\n  AND e.Vote_Percent <= 16.0\n  AND e.Seats >= 7.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 59.22
+    },
+    {
+      "uid": "b7707815-3366-4e77-b6b9-39e2c4441929",
+      "question": "What representatives from Indiana have a lifespan that is exactly 1947\u2013?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.state = 'Indiana' AND representative.lifespan = '1947\u2013'",
+      "pred_sql": "SELECT DISTINCT representative.Representative_ID\nFROM representative\nINNER JOIN election\nON representative.Representative_ID = election.Representative_ID\nWHERE representative.State = 'Indiana'\n  AND representative.Lifespan = '1947\u2013'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 42.53
+    },
+    {
+      "uid": "bc1efc3b-d0ba-47f3-bac5-fafa857e2253",
+      "question": "Who is the Republican representative from New York named Jack Quinn with a lifespan starting in 1951\u2013?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nWHERE representative.party = 'Republican' AND representative.state = 'New York' AND representative.lifespan = '1951\u2013' AND representative.name = 'Jack Quinn'",
+      "pred_sql": "SELECT Representative_ID\nFROM representative\nWHERE Party = 'Republican'\n  AND State = 'New York'\n  AND Lifespan = '1951\u2013'\n  AND Name = 'Jack Quinn'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 31.29
+    },
+    {
+      "uid": "ec288323-0c61-4b4c-b712-478019701a83",
+      "question": "Which representatives named James L. Quinn with a lifespan of 1875\u20131960 participated in elections held in 1953?",
+      "gold_sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.lifespan = '1875\u20131960' AND representative.name = 'James L. Quinn' AND election.date = '1953'",
+      "pred_sql": "SELECT DISTINCT r.Representative_ID\nFROM representative r\nINNER JOIN election e ON r.Representative_ID = e.Representative_ID\nWHERE r.Lifespan = '1875\u20131960'\n  AND r.Name = 'James L. Quinn'\n  AND e.Date = '1953'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 49.1
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "works_cycles",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 8,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:39:55.160505+00:00",
+  "records": [
+    {
+      "uid": "0615cdce-0358-4d42-a51d-67fb763f0f07",
+      "question": "Which products have a standard cost of 9.3463, a safety stock level of 500, no days to manufacture, and a document modified on 2013-12-29 13:51:58?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productdocument ON product.productid = productdocument.productid\nWHERE product.standardcost = 9.3463 AND product.safetystocklevel = 500 AND product.daystomanufacture = 0 AND productdocument.modifieddate = '2013-12-29 13:51:58.0'",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nJOIN ProductDocument pd ON p.ProductID = pd.ProductID\nJOIN Document d ON pd.DocumentNode = d.DocumentNode\nWHERE p.StandardCost = 9.3463\n  AND p.SafetyStockLevel = 500\n  AND p.DaysToManufacture = 0\n  AND d.ModifiedDate = '2013-12-29 13:51:58'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.6
+    },
+    {
+      "uid": "06b67ea6-96b0-4e36-aacf-1d97ab94569f",
+      "question": "Which products have a safety stock level of at least 500, belong to productline R, have a makeflag of exactly 0, and have a related document modified on 2013-12-29 13:51:58?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productcosthistory ON product.productid = productcosthistory.productid\nJOIN productdocument ON product.productid = productdocument.productid\nWHERE product.safetystocklevel >= 500 AND product.productline = 'R' AND product.makeflag = 0 AND productdocument.modifieddate = '2013-12-29 13:51:58.0'",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nINNER JOIN ProductDocument pd ON p.ProductID = pd.ProductID\nINNER JOIN Document d ON pd.DocumentNode = d.DocumentNode\nWHERE p.SafetyStockLevel >= 500\n  AND p.ProductLine = 'R'\n  AND p.MakeFlag = 0\n  AND d.ModifiedDate = '2013-12-29 13:51:58'",
+      "strategy": "2iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.2
+    },
+    {
+      "uid": "1cbc8d11-3151-4a27-a798-8b0591ecca0a",
+      "question": "Which products have a finished goods flag of at most 0 and an inventory quantity exactly equal to 641?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productinventory ON product.productid = productinventory.productid\nWHERE product.finishedgoodsflag <= 0 AND productinventory.quantity = 641",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nJOIN ProductInventory pi ON p.ProductID = pi.ProductID\nWHERE p.FinishedGoodsFlag <= 0 AND pi.Quantity = 641",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.16
+    },
+    {
+      "uid": "30f26a4d-887d-417e-b21d-1431b353a4ec",
+      "question": "Which products have the product number HT-8019 and a finished goods flag of at most 0?",
+      "gold_sql": "SELECT product.productid FROM product\nWHERE product.productnumber = 'HT-8019' AND product.finishedgoodsflag <= 0",
+      "pred_sql": "SELECT ProductID\nFROM Product\nWHERE ProductNumber = 'HT-8019' AND FinishedGoodsFlag <= 0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "37ac5985-b0e5-4a61-a6f0-6c71e1d4f387",
+      "question": "Which products in productline M have a standard cost and cost history exactly 19.7758, a list price exactly 44.54, makeflag exactly 1, safety stock level exactly 500, and inventory quantity at most 316?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productcosthistory ON product.productid = productcosthistory.productid\nJOIN productinventory ON product.productid = productinventory.productid\nWHERE product.productline = 'M' AND productinventory.quantity <= 316 AND product.standardcost = 19.7758 AND productcosthistory.standardcost = 19.7758 AND product.makeflag = 1 AND product.listprice = 44.54 AND product.safetystocklevel = 500",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nLEFT JOIN ProductCostHistory pch ON p.ProductID = pch.ProductID\nWHERE p.ProductLine = 'M'\n  AND p.StandardCost = 19.7758\n  AND pch.StandardCost = 19.7758\n  AND p.ListPrice = 44.54\n  AND p.MakeFlag = 1\n  AND p.SafetyStockLevel = 500\n  AND p.ProductID IN (\n    SELECT ProductID \n    FROM ProductInventory \n    WHERE Quantity <= 316\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.98
+    },
+    {
+      "uid": "446df02e-627e-49bf-a9ee-a4a1139f8276",
+      "question": "Which products have a product number exactly LI-8000, a standard cost of 0.0, a safety stock level of at least 1000, a finished goods flag of at least 0, and a reorder point of at most 750?",
+      "gold_sql": "SELECT product.productid FROM product\nWHERE product.standardcost = 0.0 AND product.safetystocklevel >= 1000 AND product.productnumber = 'LI-8000' AND product.finishedgoodsflag >= 0 AND product.reorderpoint <= 750",
+      "pred_sql": "SELECT ProductID\nFROM Product\nWHERE ProductNumber = 'LI-8000'\n  AND StandardCost = 0.0\n  AND SafetyStockLevel >= 1000\n  AND FinishedGoodsFlag >= 0\n  AND ReorderPoint <= 750",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "69aebd30-c78f-441f-9b1a-7b9c4aadfb96",
+      "question": "Which products are linked to documents with a status of at most 1?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productdocument ON product.productid = productdocument.productid\nJOIN document ON productdocument.documentnode = document.documentnode\nWHERE document.status <= 1",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nJOIN ProductDocument pd ON p.ProductID = pd.ProductID\nJOIN Document d ON pd.DocumentNode = d.DocumentNode\nWHERE d.Status <= 1",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.22
+    },
+    {
+      "uid": "97c7b314-7e8b-4e6d-8fe6-85a3931d5b8b",
+      "question": "What products have a product number of FR-M94B-42, weigh exactly 2.72, have a safety stock level of 500, a make flag of 1, a standard cost of 739.041, size unit measure code CM, and a product subcategory ID at most 12?",
+      "gold_sql": "SELECT product.productid FROM product\nWHERE product.safetystocklevel = 500 AND product.productsubcategoryid <= 12.0 AND product.weight = 2.72 AND product.makeflag = 1 AND product.productnumber = 'FR-M94B-42' AND product.standardcost = 739.041 AND product.sizeunitmeasurecode = 'CM'",
+      "pred_sql": "SELECT ProductID\nFROM Product\nWHERE ProductNumber = 'FR-M94B-42'\n  AND Weight = 2.72\n  AND SafetyStockLevel = 500\n  AND MakeFlag = 1\n  AND StandardCost = 739.041\n  AND SizeUnitMeasureCode = 'CM'\n  AND ProductSubcategoryID <= 12",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.73
+    },
+    {
+      "uid": "ab54dc9d-1d7d-4dac-aadd-6dba70842cda",
+      "question": "Which products have a list price exactly 1079.99 and also have related records in productcosthistory and productinventory?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productcosthistory ON product.productid = productcosthistory.productid\nJOIN productinventory ON product.productid = productinventory.productid\nWHERE product.listprice = 1079.99",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nINNER JOIN ProductCostHistory pch ON p.ProductID = pch.ProductID\nINNER JOIN ProductInventory pi ON p.ProductID = pi.ProductID\nWHERE p.ListPrice = 1079.99",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.35
+    },
+    {
+      "uid": "cecc62dc-ad08-4a0f-a788-b27ffab0f7da",
+      "question": "Which HL Mountain Pedal products with rowguid A05464E8-6B4D-42B3-A4D6-8683136F4B66 have a Silver/Black color, productsubcategoryid at most 13, makeflag at least 0, and product reviews rated at most 4?",
+      "gold_sql": "SELECT product.productid FROM product\nJOIN productreview ON product.productid = productreview.productid\nWHERE product.color = 'Silver/Black' AND productreview.rating <= 4 AND product.rowguid = 'A05464E8-6B4D-42B3-A4D6-8683136F4B66' AND product.name = 'HL Mountain Pedal' AND product.productsubcategoryid <= 13.0 AND product.makeflag >= 0",
+      "pred_sql": "SELECT DISTINCT p.ProductID\nFROM Product p\nLEFT JOIN ProductReview pr ON p.ProductID = pr.ProductID\nWHERE p.Name = 'HL Mountain Pedal'\nAND p.rowguid = 'A05464E8-6B4D-42B3-A4D6-8683136F4B66'\nAND p.Color = 'Silver/Black'\nAND p.ProductSubcategoryID <= 13\nAND p.MakeFlag >= 0\nAND (pr.Rating <= 4 OR pr.Rating IS NULL)",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.04
+    }
+  ]
+}

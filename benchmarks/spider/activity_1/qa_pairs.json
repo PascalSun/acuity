@@ -1,0 +1,2982 @@
+{
+ "db_id": "activity_1",
+ "target_table": "Activity",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 222683166,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/activity_1/activity_1.sqlite",
+  "generated_at": "2026-07-02T16:40:56.178537+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "activity",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "2iE",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "2iE",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "1pE": 9,
+   "2pE": 8,
+   "2pM": 8,
+   "2pH": 8,
+   "2iE": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "1pE": 9,
+   "2iE": 8,
+   "2pE": 8,
+   "2pH": 8,
+   "2pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 13,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 15,
+    "inner_attempts": 15,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3,
+     "duplicate_pair": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "2iE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "2pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "006c1268-1dfc-4776-b26f-5c7f3b3e98d9",
+   "question": "Which activities are exactly named Bungee Jumping?",
+   "answer_row_ids": [
+    799
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Bungee Jumping'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Bungee Jumping",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Bungee Jumping"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Bungee Jumping'?"
+  },
+  {
+   "uid": "66c0f18d-7390-4ef3-beb3-602667ee02ad",
+   "question": "Which activities are exactly named Chess?",
+   "answer_row_ids": [
+    785
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Chess'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Chess",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Chess"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Chess'?"
+  },
+  {
+   "uid": "725bc6ea-d8d3-4446-973c-bff4b50a5e42",
+   "question": "Which activities are exactly Canoeing?",
+   "answer_row_ids": [
+    771
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Canoeing'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Canoeing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Canoeing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Canoeing'?"
+  },
+  {
+   "uid": "599aca21-e011-4f70-b3ea-6a7f0cf28e64",
+   "question": "What activities are exactly named Accordion Ensemble?",
+   "answer_row_ids": [
+    779
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Accordion Ensemble'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Accordion Ensemble",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Accordion Ensemble"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Accordion Ensemble'?"
+  },
+  {
+   "uid": "fbc5d873-650b-4254-9655-3db0036439e7",
+   "question": "Which activities are exactly Mountain Climbing?",
+   "answer_row_ids": [
+    770
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Mountain Climbing'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Mountain Climbing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Mountain Climbing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Mountain Climbing'?"
+  },
+  {
+   "uid": "16cddafd-87f9-4689-95fa-8fabb8502f69",
+   "question": "What activities are exactly Kayaking?",
+   "answer_row_ids": [
+    772
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Kayaking'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Kayaking",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Kayaking"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Kayaking'?"
+  },
+  {
+   "uid": "0ffeab2a-03be-40b6-960a-d340e069aa99",
+   "question": "What activities are exactly named Extreme Canasta?",
+   "answer_row_ids": [
+    776
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Extreme Canasta'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Extreme Canasta",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Extreme Canasta"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Extreme Canasta'?"
+  },
+  {
+   "uid": "73a4ea28-bd97-470f-9f83-b1b3d74b8383",
+   "question": "Which activities have the activity name exactly Football?",
+   "answer_row_ids": [
+    780
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Football'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Football",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Football"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Football'?"
+  },
+  {
+   "uid": "4cf73747-2a2e-48c7-bb4b-1ffb146d7d56",
+   "question": "Which activities are exactly named Crossword Puzzles?",
+   "answer_row_ids": [
+    790
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nWHERE activity.activity_name = 'Crossword Puzzles'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "activity"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Crossword Puzzles",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Crossword Puzzles"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Crossword Puzzles'?"
+  },
+  {
+   "uid": "7e89f604-1b46-4f1b-8621-3d940d4f648b",
+   "question": "Which activities are exactly named Proselytizing?",
+   "answer_row_ids": [
+    791
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nWHERE activity.activity_name = 'Proselytizing'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Proselytizing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Proselytizing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Proselytizing', having at least one related participates in record (linked on activity.actid = participates_in.actid)?"
+  },
+  {
+   "uid": "b03e4b84-1e58-4b46-be4a-a7a7d9c9f9e9",
+   "question": "Which activities named Volleyball have faculty participating in them?",
+   "answer_row_ids": [
+    782
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Volleyball'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Volleyball",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Volleyball"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Volleyball', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "df5cee06-e5a3-4e87-8133-56302d87b324",
+   "question": "Which activities involve faculty members and have the activity name exactly Soccer?",
+   "answer_row_ids": [
+    777
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Soccer'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Soccer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Soccer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Soccer', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "dbe0f31c-a147-41d1-81fe-34f4668e1a2e",
+   "question": "Which activities involve faculty participation and have the activity name exactly Canoeing?",
+   "answer_row_ids": [
+    771
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Canoeing'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Canoeing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Canoeing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Canoeing', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "371fd6c2-ec9c-4de7-a5b5-fcff80044823",
+   "question": "What activities named exactly Extreme Canasta have faculty participating in them?",
+   "answer_row_ids": [
+    776
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Extreme Canasta'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Extreme Canasta",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Extreme Canasta"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Extreme Canasta', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "1b7065b0-7ba4-441f-870b-050d396bb497",
+   "question": "What activities are exactly named Football that have participant involvement?",
+   "answer_row_ids": [
+    780
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nWHERE activity.activity_name = 'Football'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Football",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Football"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Football', having at least one related participates in record (linked on activity.actid = participates_in.actid)?"
+  },
+  {
+   "uid": "b4a7e22d-f5b0-4d43-8bda-812ffb234317",
+   "question": "Which activities involve faculty participation where the activity name is exactly Mountain Climbing?",
+   "answer_row_ids": [
+    770
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Mountain Climbing'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Mountain Climbing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Mountain Climbing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Mountain Climbing', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "951fc5b7-f918-4092-ac4e-0d6572fda752",
+   "question": "Which activities involve faculty participating in Football?",
+   "answer_row_ids": [
+    780
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Football'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Football",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Football"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Football', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "2418d97b-0252-4e6b-a0de-5216b4b2fc83",
+   "question": "Which activities are exactly named Mountain Climbing?",
+   "answer_row_ids": [
+    770
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nWHERE activity.activity_name = 'Mountain Climbing'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "activity",
+    "participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Mountain Climbing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Mountain Climbing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Mountain Climbing', having at least one related participates in record (linked on activity.actid = participates_in.actid)?"
+  },
+  {
+   "uid": "ef42567a-6dae-42a8-a226-deafef47bb88",
+   "question": "Which activities named 'Canoeing' have recorded participates_in entries and also have recorded faculty_participates_in entries?",
+   "answer_row_ids": [
+    771
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Canoeing'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Canoeing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Canoeing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "What Canoeing activities involve both participants and faculty members?",
+   "canonical_question": "Which activity entities with activity name equal to 'Canoeing', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "6ee67161-866b-48db-9f08-aa32268737eb",
+   "question": "Which activities named exactly 'Football' have associated records in both participates_in and faculty_participates_in?",
+   "answer_row_ids": [
+    780
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Football'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Football",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Football"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "Which Football activities have both participants and faculty involved?",
+   "canonical_question": "Which activity entities with activity name equal to 'Football', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "60d82d0b-0694-4fec-903d-971bd74a0212",
+   "question": "Which activities named exactly 'Volleyball' have associated records in both participates_in and faculty_participates_in?",
+   "answer_row_ids": [
+    782
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Volleyball'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Volleyball",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Volleyball"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "Which Volleyball activities involve both participants and faculty members?",
+   "canonical_question": "Which activity entities with activity name equal to 'Volleyball', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "49565b36-98c4-4c5b-95a8-a32c92f6b8da",
+   "question": "Which activities have the activity name exactly 'Mountain Climbing' and also have related participates_in and faculty_participates_in records?",
+   "answer_row_ids": [
+    770
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Mountain Climbing'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Mountain Climbing",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Mountain Climbing"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "What activities named Mountain Climbing involve both participants and faculty members?",
+   "canonical_question": "Which activity entities with activity name equal to 'Mountain Climbing', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "b8ec81bb-a714-4f30-a562-f6346582c3fb",
+   "question": "Which activities have the activity name exactly equal to 'Chess' and also have related records in both participates_in and faculty_participates_in?",
+   "answer_row_ids": [
+    785
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Chess'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Chess",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Chess"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "Which Chess activities have both participants and faculty involved?",
+   "canonical_question": "Which activity entities with activity name equal to 'Chess', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "9683bfba-6469-43e9-9413-d2adcd4b0584",
+   "question": "Which activities have the activity_name exactly equal to 'Soccer' and also have related records in both participates_in and faculty_participates_in?",
+   "answer_row_ids": [
+    777
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Soccer'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Soccer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Soccer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "What Soccer activities involve both participants and faculty members?",
+   "canonical_question": "Which activity entities with activity name equal to 'Soccer', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "9bd5929c-9303-4e9f-963f-d88a41f18735",
+   "question": "Which activities have the exact activity name 'Crossword Puzzles' and also have related records in both participates_in and faculty_participates_in?",
+   "answer_row_ids": [
+    790
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Crossword Puzzles'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Crossword Puzzles",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Crossword Puzzles"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "Which activities named Crossword Puzzles have both participants and faculty involved?",
+   "canonical_question": "Which activity entities with activity name equal to 'Crossword Puzzles', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "984e8669-66bd-42ad-a29c-edd9426c47fe",
+   "question": "Which activities named 'Canasta' have associated records in both participates_in and faculty_participates_in?",
+   "answer_row_ids": [
+    784
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nWHERE activity.activity_name = 'Canasta'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Canasta",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Canasta"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "question_pre_fix": "Which activities named Canasta have participation from both students and faculty members?",
+   "canonical_question": "Which activity entities with activity name equal to 'Canasta', having at least one related participates in record (linked on activity.actid = participates_in.actid), having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid)?"
+  },
+  {
+   "uid": "23827f24-58ba-4cf3-bc82-4274df80351b",
+   "question": "What activities involve students from PHL whose advisor number is at least 1148?",
+   "answer_row_ids": [
+    780,
+    782,
+    790
+   ],
+   "answer_count": 3,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.advisor >= 1148 AND student.city_code = 'PHL'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.advisor",
+    "student.city_code"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": ">=",
+     "value": 1148,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "city_code",
+     "operator": "=",
+     "value": "PHL",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "student.advisor": 1148,
+    "student.city_code": "PHL"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with advisor at least '1148' and city code equal to 'PHL'?"
+  },
+  {
+   "uid": "b7fca92a-8756-40cc-9eed-8d9f1acf4176",
+   "question": "Which activities named Canoeing involve faculty members whose first name is Luigi?",
+   "answer_row_ids": [
+    771
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE activity.activity_name = 'Canoeing' AND faculty.fname = 'Luigi'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name",
+    "faculty.fname"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Canoeing",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Luigi",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Canoeing",
+    "faculty.fname": "Luigi"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Canoeing', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with fname equal to 'Luigi'?"
+  },
+  {
+   "uid": "74fbcd3f-0a10-4bd8-9831-9b1ecc6bf8fd",
+   "question": "What activities involve students from the city with city_code DAL who have an advisor number of at least 8741?",
+   "answer_row_ids": [
+    770,
+    772,
+    777,
+    778,
+    780,
+    782
+   ],
+   "answer_count": 6,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.city_code = 'DAL' AND student.advisor >= 8741",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.city_code",
+    "student.advisor"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "city_code",
+     "operator": "=",
+     "value": "DAL",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": ">=",
+     "value": 8741,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "student.city_code": "DAL",
+    "student.advisor": 8741
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with city code equal to 'DAL' and advisor at least '8741'?"
+  },
+  {
+   "uid": "0f676090-d409-4c8d-8ab2-0c4aa3c0c692",
+   "question": "Which activities involve faculty members whose first name is exactly Daniel?",
+   "answer_row_ids": [
+    770,
+    790
+   ],
+   "answer_count": 2,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.fname = 'Daniel'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.fname"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Daniel",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "faculty.fname": "Daniel"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with fname equal to 'Daniel'?"
+  },
+  {
+   "uid": "4e20dc4a-326c-4e6f-bb4f-55cffe7c363f",
+   "question": "Which activities involve students advised by 1121 who are from the city where city_code is PIT?",
+   "answer_row_ids": [
+    770,
+    772,
+    777,
+    784,
+    785,
+    790
+   ],
+   "answer_count": 6,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.advisor = 1121 AND student.city_code = 'PIT'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.advisor",
+    "student.city_code"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": "=",
+     "value": 1121,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "city_code",
+     "operator": "=",
+     "value": "PIT",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "student.advisor": 1121,
+    "student.city_code": "PIT"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with advisor equal to '1121' and city code equal to 'PIT'?"
+  },
+  {
+   "uid": "c70eb930-24bf-436f-aea2-0b1b81c6b1bc",
+   "question": "Which activities involve faculty members whose building is NEB?",
+   "answer_row_ids": [
+    770,
+    771,
+    772,
+    773,
+    776,
+    777,
+    778,
+    780,
+    782,
+    784,
+    785,
+    790,
+    796
+   ],
+   "answer_count": 13,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.building = 'NEB'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.building"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "NEB",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "faculty.building": "NEB"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with building equal to 'NEB'?"
+  },
+  {
+   "uid": "e3ade7bf-e245-4e5d-98d8-d331789926ef",
+   "question": "Which activities involve students with a major of at least 520?",
+   "answer_row_ids": [
+    770,
+    771,
+    772,
+    773,
+    776,
+    777,
+    778,
+    780,
+    782,
+    784,
+    785,
+    790,
+    791
+   ],
+   "answer_count": 13,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.major >= 520",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.major"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "major",
+     "operator": ">=",
+     "value": 520,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "student.major": 520
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with major at least '520'?"
+  },
+  {
+   "uid": "8deb84a6-a792-4519-9a96-81d735bd6347",
+   "question": "Which activities involve faculty members whose last name is Goldman and whose building is Krieger?",
+   "answer_row_ids": [
+    784,
+    790
+   ],
+   "answer_count": 2,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.building = 'Krieger' AND faculty.lname = 'Goldman'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.building",
+    "faculty.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "Krieger",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Goldman",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "faculty.building": "Krieger",
+    "faculty.lname": "Goldman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with building equal to 'Krieger' and lname equal to 'Goldman'?"
+  },
+  {
+   "uid": "f3ea66e9-ab95-461f-b22c-6556655a17e1",
+   "question": "Which activities involve the male student Mark Schwartz from DET who is at most 17 years old, has an advisor number no more than 2192, and a major number at most 600?",
+   "answer_row_ids": [
+    772,
+    791
+   ],
+   "answer_count": 2,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.fname = 'Mark' AND student.lname = 'Schwartz' AND student.sex = 'M' AND student.city_code = 'DET' AND student.advisor <= 2192 AND student.age <= 17 AND student.major <= 600",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.fname",
+    "student.lname",
+    "student.sex",
+    "student.city_code",
+    "student.advisor",
+    "student.age",
+    "student.major"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "fname",
+     "operator": "=",
+     "value": "Mark",
+     "column_type": "label"
+    },
+    {
+     "table": "student",
+     "column": "lname",
+     "operator": "=",
+     "value": "Schwartz",
+     "column_type": "label"
+    },
+    {
+     "table": "student",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "city_code",
+     "operator": "=",
+     "value": "DET",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": "<=",
+     "value": 2192,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "age",
+     "operator": "<=",
+     "value": 17,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "major",
+     "operator": "<=",
+     "value": 600,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "student.fname": "Mark",
+    "student.lname": "Schwartz",
+    "student.sex": "M",
+    "student.city_code": "DET",
+    "student.advisor": 2192,
+    "student.age": 17,
+    "student.major": 600
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with fname equal to 'Mark' and lname equal to 'Schwartz' and sex equal to 'M' and city code equal to 'DET' and advisor at most '2192' and age at most '17' and major at most '600'?"
+  },
+  {
+   "uid": "50f28819-d46b-4655-9a17-987e4aced7d6",
+   "question": "What activities involve the male faculty member Lawrence Wolff who works in room 316 of building NEB and has a phone number at most 2342?",
+   "answer_row_ids": [
+    770,
+    780
+   ],
+   "answer_count": 2,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.fname = 'Lawrence' AND faculty.sex = 'M' AND faculty.lname = 'Wolff' AND faculty.phone <= 2342 AND faculty.building = 'NEB' AND faculty.room = '316'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.fname",
+    "faculty.sex",
+    "faculty.lname",
+    "faculty.phone",
+    "faculty.building",
+    "faculty.room"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Lawrence",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Wolff",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": "<=",
+     "value": 2342,
+     "column_type": "numeric"
+    },
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "NEB",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "316",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "faculty.fname": "Lawrence",
+    "faculty.sex": "M",
+    "faculty.lname": "Wolff",
+    "faculty.phone": 2342,
+    "faculty.building": "NEB",
+    "faculty.room": "316"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with fname equal to 'Lawrence' and sex equal to 'M' and lname equal to 'Wolff' and phone at most '2342' and building equal to 'NEB' and room equal to '316'?"
+  },
+  {
+   "uid": "1d264b9f-1063-4152-9927-52aae45b269e",
+   "question": "Which activities named Extreme Canasta involve a male student named David Shieber from NYC who is at most 20 years old and has an advisor number no more than 8722?",
+   "answer_row_ids": [
+    776
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.advisor <= 8722 AND student.lname = 'Shieber' AND student.city_code = 'NYC' AND student.sex = 'M' AND student.fname = 'David' AND activity.activity_name = 'Extreme Canasta' AND student.age <= 20",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.advisor",
+    "student.lname",
+    "student.city_code",
+    "student.sex",
+    "student.fname",
+    "activity.activity_name",
+    "student.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": "<=",
+     "value": 8722,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "lname",
+     "operator": "=",
+     "value": "Shieber",
+     "column_type": "label"
+    },
+    {
+     "table": "student",
+     "column": "city_code",
+     "operator": "=",
+     "value": "NYC",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "fname",
+     "operator": "=",
+     "value": "David",
+     "column_type": "label"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Extreme Canasta",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "age",
+     "operator": "<=",
+     "value": 20,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "student.advisor": 8722,
+    "student.lname": "Shieber",
+    "student.city_code": "NYC",
+    "student.sex": "M",
+    "student.fname": "David",
+    "activity.activity_name": "Extreme Canasta",
+    "student.age": 20
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Extreme Canasta', having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with advisor at most '8722' and lname equal to 'Shieber' and city code equal to 'NYC' and sex equal to 'M' and fname equal to 'David' and age at most '20'?"
+  },
+  {
+   "uid": "15dc6b8a-2f11-4807-86fe-8bf7cb79eb42",
+   "question": "Which activities named Canasta involve Mark Giuliano, a male Instructor in room 224 of the NEB building with a phone number of at least 2424?",
+   "answer_row_ids": [
+    784
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE activity.activity_name = 'Canasta' AND faculty.building = 'NEB' AND faculty.fname = 'Mark' AND faculty.sex = 'M' AND faculty.room = '224' AND faculty.phone >= 2424 AND faculty.rank = 'Instructor' AND faculty.lname = 'Giuliano'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name",
+    "faculty.building",
+    "faculty.fname",
+    "faculty.sex",
+    "faculty.room",
+    "faculty.phone",
+    "faculty.rank",
+    "faculty.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Canasta",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "NEB",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Mark",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "224",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": ">=",
+     "value": 2424,
+     "column_type": "numeric"
+    },
+    {
+     "table": "faculty",
+     "column": "rank",
+     "operator": "=",
+     "value": "Instructor",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Giuliano",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Canasta",
+    "faculty.building": "NEB",
+    "faculty.fname": "Mark",
+    "faculty.sex": "M",
+    "faculty.room": "224",
+    "faculty.phone": 2424,
+    "faculty.rank": "Instructor",
+    "faculty.lname": "Giuliano"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Canasta', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with building equal to 'NEB' and fname equal to 'Mark' and sex equal to 'M' and room equal to '224' and phone at least '2424' and rank equal to 'Instructor' and lname equal to 'Giuliano'?"
+  },
+  {
+   "uid": "355d2ce8-738c-4b4d-9afd-0e02fa363f54",
+   "question": "Which activities named Square Dancing involve female assistant professors named Leslie Hall who work in room 288 of the Krieger building and have phone numbers at least 7332?",
+   "answer_row_ids": [
+    796
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.room = '288' AND faculty.building = 'Krieger' AND activity.activity_name = 'Square Dancing' AND faculty.fname = 'Leslie' AND faculty.rank = 'AsstProf' AND faculty.phone >= 7332 AND faculty.sex = 'F' AND faculty.lname = 'Hall'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.room",
+    "faculty.building",
+    "activity.activity_name",
+    "faculty.fname",
+    "faculty.rank",
+    "faculty.phone",
+    "faculty.sex",
+    "faculty.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "288",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "Krieger",
+     "column_type": "enum"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Square Dancing",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Leslie",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "rank",
+     "operator": "=",
+     "value": "AsstProf",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": ">=",
+     "value": 7332,
+     "column_type": "numeric"
+    },
+    {
+     "table": "faculty",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Hall",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "faculty.room": "288",
+    "faculty.building": "Krieger",
+    "activity.activity_name": "Square Dancing",
+    "faculty.fname": "Leslie",
+    "faculty.rank": "AsstProf",
+    "faculty.phone": 7332,
+    "faculty.sex": "F",
+    "faculty.lname": "Hall"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Square Dancing', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with room equal to '288' and building equal to 'Krieger' and fname equal to 'Leslie' and rank equal to 'AsstProf' and phone at least '7332' and sex equal to 'F' and lname equal to 'Hall'?"
+  },
+  {
+   "uid": "6f3b695b-f6a2-40e0-b670-95757d1e85e1",
+   "question": "Which Chess activities involve an Instructor named Mark whose office is room 224 in the NEB building and whose phone number is at most 2424?",
+   "answer_row_ids": [
+    785
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE activity.activity_name = 'Chess' AND faculty.phone <= 2424 AND faculty.room = '224' AND faculty.fname = 'Mark' AND faculty.building = 'NEB' AND faculty.rank = 'Instructor'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name",
+    "faculty.phone",
+    "faculty.room",
+    "faculty.fname",
+    "faculty.building",
+    "faculty.rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Chess",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": "<=",
+     "value": 2424,
+     "column_type": "numeric"
+    },
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "224",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Mark",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "NEB",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "rank",
+     "operator": "=",
+     "value": "Instructor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Chess",
+    "faculty.phone": 2424,
+    "faculty.room": "224",
+    "faculty.fname": "Mark",
+    "faculty.building": "NEB",
+    "faculty.rank": "Instructor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Chess', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with phone at most '2424' and room equal to '224' and fname equal to 'Mark' and building equal to 'NEB' and rank equal to 'Instructor'?"
+  },
+  {
+   "uid": "7fd8d40e-d366-4e2f-abe0-746057c2bd8e",
+   "question": "What activities named Mountain Climbing involve male students named Leighton from PIT who are at least 20 years old and have an advisor number no more than 1121?",
+   "answer_row_ids": [
+    770
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.age >= 20 AND student.city_code = 'PIT' AND activity.activity_name = 'Mountain Climbing' AND student.advisor <= 1121 AND student.sex = 'M' AND student.lname = 'Leighton'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.age",
+    "student.city_code",
+    "activity.activity_name",
+    "student.advisor",
+    "student.sex",
+    "student.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "age",
+     "operator": ">=",
+     "value": 20,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "city_code",
+     "operator": "=",
+     "value": "PIT",
+     "column_type": "enum"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Mountain Climbing",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": "<=",
+     "value": 1121,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "lname",
+     "operator": "=",
+     "value": "Leighton",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "student.age": 20,
+    "student.city_code": "PIT",
+    "activity.activity_name": "Mountain Climbing",
+    "student.advisor": 1121,
+    "student.sex": "M",
+    "student.lname": "Leighton"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Mountain Climbing', having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with age at least '20' and city code equal to 'PIT' and advisor at most '1121' and sex equal to 'M' and lname equal to 'Leighton'?"
+  },
+  {
+   "uid": "3c9e75b9-30e4-4feb-9294-82dbcd9ce3e0",
+   "question": "Which Square Dancing activities involve female assistant professors named Leslie Hall who have a phone number of at least 7332 and whose office is room 288 in the Krieger building?",
+   "answer_row_ids": [
+    796
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.rank = 'AsstProf' AND activity.activity_name = 'Square Dancing' AND faculty.phone >= 7332 AND faculty.sex = 'F' AND faculty.fname = 'Leslie' AND faculty.room = '288' AND faculty.lname = 'Hall' AND faculty.building = 'Krieger'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.rank",
+    "activity.activity_name",
+    "faculty.phone",
+    "faculty.sex",
+    "faculty.fname",
+    "faculty.room",
+    "faculty.lname",
+    "faculty.building"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "rank",
+     "operator": "=",
+     "value": "AsstProf",
+     "column_type": "enum"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Square Dancing",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": ">=",
+     "value": 7332,
+     "column_type": "numeric"
+    },
+    {
+     "table": "faculty",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "Leslie",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "288",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Hall",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "Krieger",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "faculty.rank": "AsstProf",
+    "activity.activity_name": "Square Dancing",
+    "faculty.phone": 7332,
+    "faculty.sex": "F",
+    "faculty.fname": "Leslie",
+    "faculty.room": "288",
+    "faculty.lname": "Hall",
+    "faculty.building": "Krieger"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Square Dancing', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with rank equal to 'AsstProf' and phone at least '7332' and sex equal to 'F' and fname equal to 'Leslie' and room equal to '288' and lname equal to 'Hall' and building equal to 'Krieger'?"
+  },
+  {
+   "uid": "828fbee9-62f5-402b-986c-f91ad38f1cc8",
+   "question": "Which activities named Soccer involve female students named Sarah Schmidt who have a major of at least 50?",
+   "answer_row_ids": [
+    777
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.sex = 'F' AND student.fname = 'Sarah' AND activity.activity_name = 'Soccer' AND student.major >= 50 AND student.lname = 'Schmidt'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.sex",
+    "student.fname",
+    "activity.activity_name",
+    "student.major",
+    "student.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "fname",
+     "operator": "=",
+     "value": "Sarah",
+     "column_type": "label"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Soccer",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "major",
+     "operator": ">=",
+     "value": 50,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "lname",
+     "operator": "=",
+     "value": "Schmidt",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "student.sex": "F",
+    "student.fname": "Sarah",
+    "activity.activity_name": "Soccer",
+    "student.major": 50,
+    "student.lname": "Schmidt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Soccer', having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with sex equal to 'F' and fname equal to 'Sarah' and major at least '50' and lname equal to 'Schmidt'?"
+  },
+  {
+   "uid": "d52f370d-cb36-4d6d-a2cb-5f951af381c1",
+   "question": "Which activities named Spelunking involve David Yarowsky who is an AsstProf?",
+   "answer_row_ids": [
+    773
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE activity.activity_name = 'Spelunking' AND faculty.lname = 'Yarowsky' AND faculty.rank = 'AsstProf' AND faculty.fname = 'David'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "activity.activity_name",
+    "faculty.lname",
+    "faculty.rank",
+    "faculty.fname"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Spelunking",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Yarowsky",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "rank",
+     "operator": "=",
+     "value": "AsstProf",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "fname",
+     "operator": "=",
+     "value": "David",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Spelunking",
+    "faculty.lname": "Yarowsky",
+    "faculty.rank": "AsstProf",
+    "faculty.fname": "David"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Spelunking', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with lname equal to 'Yarowsky' and rank equal to 'AsstProf' and fname equal to 'David'?"
+  },
+  {
+   "uid": "a3815d26-263d-4ad7-9c2b-d23449fa9cb0",
+   "question": "Which Football activities involve male students named Ian?",
+   "answer_row_ids": [
+    780
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE activity.activity_name = 'Football' AND student.sex = 'M' AND student.fname = 'Ian'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "activity.activity_name",
+    "student.sex",
+    "student.fname"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Football",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "fname",
+     "operator": "=",
+     "value": "Ian",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Football",
+    "student.sex": "M",
+    "student.fname": "Ian"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Football', having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with sex equal to 'M' and fname equal to 'Ian'?"
+  },
+  {
+   "uid": "2e9b2e99-92a6-415b-b000-7eafb0edccc4",
+   "question": "Which activities involve faculty members named Goodrich who are in room 219 and have a phone number at most 3593?",
+   "answer_row_ids": [
+    770,
+    771,
+    777
+   ],
+   "answer_count": 3,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.lname = 'Goodrich' AND faculty.room = '219' AND faculty.phone <= 3593",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.lname",
+    "faculty.room",
+    "faculty.phone"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Goodrich",
+     "column_type": "label"
+    },
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "219",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": "<=",
+     "value": 3593,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "faculty.lname": "Goodrich",
+    "faculty.room": "219",
+    "faculty.phone": 3593
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with lname equal to 'Goodrich' and room equal to '219' and phone at most '3593'?"
+  },
+  {
+   "uid": "d9187f90-984e-4773-b146-d70f01f3fe46",
+   "question": "Which Soccer activities involve students with the last name Kumar who are at least 600 in major and at most 20 years old?",
+   "answer_row_ids": [
+    777
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE activity.activity_name = 'Soccer' AND student.lname = 'Kumar' AND student.major >= 600 AND student.age <= 20",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "activity.activity_name",
+    "student.lname",
+    "student.major",
+    "student.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Soccer",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "lname",
+     "operator": "=",
+     "value": "Kumar",
+     "column_type": "label"
+    },
+    {
+     "table": "student",
+     "column": "major",
+     "operator": ">=",
+     "value": 600,
+     "column_type": "numeric"
+    },
+    {
+     "table": "student",
+     "column": "age",
+     "operator": "<=",
+     "value": 20,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "activity.activity_name": "Soccer",
+    "student.lname": "Kumar",
+    "student.major": 600,
+    "student.age": 20
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Soccer', having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with lname equal to 'Kumar' and major at least '600' and age at most '20'?"
+  },
+  {
+   "uid": "77d80f25-cd4c-4de1-8887-15f1981ebb4d",
+   "question": "Which Soccer activities involve male faculty named Goodrich who are in room 219?",
+   "answer_row_ids": [
+    777
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.sex = 'M' AND activity.activity_name = 'Soccer' AND faculty.room = '219' AND faculty.lname = 'Goodrich'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.sex",
+    "activity.activity_name",
+    "faculty.room",
+    "faculty.lname"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "sex",
+     "operator": "=",
+     "value": "M",
+     "column_type": "enum"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Soccer",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "room",
+     "operator": "=",
+     "value": "219",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "lname",
+     "operator": "=",
+     "value": "Goodrich",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "faculty.sex": "M",
+    "activity.activity_name": "Soccer",
+    "faculty.room": "219",
+    "faculty.lname": "Goodrich"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Soccer', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with sex equal to 'M' and room equal to '219' and lname equal to 'Goodrich'?"
+  },
+  {
+   "uid": "1dbb483d-e062-4595-93a2-0f6681bd109a",
+   "question": "Which activities named Soccer involve Stacy as a student whose major is at most 540 and advisor is at most 7271?",
+   "answer_row_ids": [
+    777
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN participates_in ON activity.actid = participates_in.actid\nJOIN student ON participates_in.stuid = student.stuid\nWHERE student.fname = 'Stacy' AND student.major <= 540 AND activity.activity_name = 'Soccer' AND student.advisor <= 7271",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "activity",
+    "participates_in",
+    "student"
+   ],
+   "involved_columns": [
+    "student.fname",
+    "student.major",
+    "activity.activity_name",
+    "student.advisor"
+   ],
+   "involved_filters": [
+    {
+     "table": "student",
+     "column": "fname",
+     "operator": "=",
+     "value": "Stacy",
+     "column_type": "label"
+    },
+    {
+     "table": "student",
+     "column": "major",
+     "operator": "<=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Soccer",
+     "column_type": "enum"
+    },
+    {
+     "table": "student",
+     "column": "advisor",
+     "operator": "<=",
+     "value": 7271,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "student.fname": "Stacy",
+    "student.major": 540,
+    "activity.activity_name": "Soccer",
+    "student.advisor": 7271
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Soccer', having at least one related participates in record (linked on activity.actid = participates_in.actid), whose participates in record itself has at least one related student record (linked on participates_in.stuid = student.stuid) with fname equal to 'Stacy' and major at most '540' and advisor at most '7271'?"
+  },
+  {
+   "uid": "69ce69a0-f66a-4e48-a4bb-7a553be8e40d",
+   "question": "Which activities named Extreme Canasta involve female instructors from the NEB building with phone numbers at least 2152?",
+   "answer_row_ids": [
+    776
+   ],
+   "answer_count": 1,
+   "sql": "SELECT activity.actid FROM activity\nJOIN faculty_participates_in ON activity.actid = faculty_participates_in.actid\nJOIN faculty ON faculty_participates_in.facid = faculty.facid\nWHERE faculty.sex = 'F' AND activity.activity_name = 'Extreme Canasta' AND faculty.rank = 'Instructor' AND faculty.phone >= 2152 AND faculty.building = 'NEB'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "faculty",
+    "activity",
+    "faculty_participates_in"
+   ],
+   "involved_columns": [
+    "faculty.sex",
+    "activity.activity_name",
+    "faculty.rank",
+    "faculty.phone",
+    "faculty.building"
+   ],
+   "involved_filters": [
+    {
+     "table": "faculty",
+     "column": "sex",
+     "operator": "=",
+     "value": "F",
+     "column_type": "enum"
+    },
+    {
+     "table": "activity",
+     "column": "activity_name",
+     "operator": "=",
+     "value": "Extreme Canasta",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "rank",
+     "operator": "=",
+     "value": "Instructor",
+     "column_type": "enum"
+    },
+    {
+     "table": "faculty",
+     "column": "phone",
+     "operator": ">=",
+     "value": 2152,
+     "column_type": "numeric"
+    },
+    {
+     "table": "faculty",
+     "column": "building",
+     "operator": "=",
+     "value": "NEB",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "faculty.sex": "F",
+    "activity.activity_name": "Extreme Canasta",
+    "faculty.rank": "Instructor",
+    "faculty.phone": 2152,
+    "faculty.building": "NEB"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "activity"
+   },
+   "answer_table": "activity",
+   "answer_id_column": "actid",
+   "canonical_question": "Which activity entities with activity name equal to 'Extreme Canasta', having at least one related faculty participates in record (linked on activity.actid = faculty_participates_in.actid), whose faculty participates in record itself has at least one related faculty record (linked on faculty_participates_in.facid = faculty.facid) with sex equal to 'F' and rank equal to 'Instructor' and phone at least '2152' and building equal to 'NEB'?"
+  }
+ ]
+}

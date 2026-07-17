@@ -1,0 +1,3282 @@
+{
+ "db_id": "theme_gallery",
+ "target_table": "artist",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1164900293,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/theme_gallery/theme_gallery.sqlite",
+  "generated_at": "2026-07-02T14:09:45.516351+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "artist",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "a4f6a75f-90ba-4bea-b993-7619163f88e2",
+   "question": "What artists are from the United States and are at least 46 years old?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    5,
+    7
+   ],
+   "answer_count": 5,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.country = 'United States' AND artist.age >= 46",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 46,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "United States",
+    "artist.age": 46
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'United States' and age at least '46'?"
+  },
+  {
+   "uid": "8a5f6c49-6d48-44e5-9c69-7cbf7152702a",
+   "question": "Which artists joined in 1998 or earlier?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "answer_count": 7,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.year_join <= 1998",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1998,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1998
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at most '1998'?"
+  },
+  {
+   "uid": "53f542e4-ecc7-432f-8c3a-bd6e3a263ed1",
+   "question": "Which artists joined in 1996 and are from the United States?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.country = 'United States' AND artist.year_join = 1996",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1996,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "United States",
+    "artist.year_join": 1996
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'United States' and year join equal to '1996'?"
+  },
+  {
+   "uid": "80426e12-fb20-467d-b5f1-7a55d849090c",
+   "question": "Which artists named Vijay Singh joined in 1998 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'Vijay Singh' AND artist.year_join <= 1998",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1998,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Vijay Singh",
+    "artist.year_join": 1998
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh' and year join at most '1998'?"
+  },
+  {
+   "uid": "4684bd88-7581-4e9b-8f36-c8b267f62627",
+   "question": "Who is the artist whose name is exactly Jeff Sluman?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'Jeff Sluman'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Jeff Sluman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Jeff Sluman'?"
+  },
+  {
+   "uid": "fdb6b3b2-cb49-4586-83fd-69fc57a0750a",
+   "question": "Which artists are from Zimbabwe?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.country = 'Zimbabwe'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Zimbabwe",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "Zimbabwe"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'Zimbabwe'?"
+  },
+  {
+   "uid": "a39570ac-ffbd-42fc-a682-fa40a9c48266",
+   "question": "Which artists joined in 1988 or later?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "answer_count": 6,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.year_join >= 1988",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1988,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1988
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at least '1988'?"
+  },
+  {
+   "uid": "740bc07b-e37e-4fb3-accc-cf78386294a3",
+   "question": "Which artists named Larry Nelson joined in 1981 or earlier?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.year_join <= 1981 AND artist.name = 'Larry Nelson'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1981,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Larry Nelson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1981,
+    "artist.name": "Larry Nelson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at most '1981' and name equal to 'Larry Nelson'?"
+  },
+  {
+   "uid": "89b2ecbb-294e-49e8-b80e-c2bde0ebafc6",
+   "question": "Which artists named Vijay Singh joined in 1998 or later?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.year_join >= 1998 AND artist.name = 'Vijay Singh'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1998,
+    "artist.name": "Vijay Singh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at least '1998' and name equal to 'Vijay Singh'?"
+  },
+  {
+   "uid": "02fd435e-2a37-4a44-88a6-a441223cce5f",
+   "question": "Which artists are at most 50 years old?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "answer_count": 6,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 50",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 50,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 50
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '50'?"
+  },
+  {
+   "uid": "d7e2141e-ead3-4dc7-8678-c538913ef603",
+   "question": "Which artists named Paul Azinger from the United States joined in 1993 or later and are at most 47 years old?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 47 AND artist.name = 'Paul Azinger' AND artist.year_join >= 1993 AND artist.country = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.name",
+    "artist.year_join",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 47,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Azinger",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1993,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 47,
+    "artist.name": "Paul Azinger",
+    "artist.year_join": 1993,
+    "artist.country": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '47' and name equal to 'Paul Azinger' and year join at least '1993' and country equal to 'United States'?"
+  },
+  {
+   "uid": "3508aa3e-f2c6-4aaf-9cda-cfffaeeb35b6",
+   "question": "Which artists named Paul Azinger from the United States joined in 1993 and are at least 47 years old?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 47 AND artist.year_join = 1993 AND artist.name = 'Paul Azinger' AND artist.country = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.year_join",
+    "artist.name",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 47,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1993,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Azinger",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 47,
+    "artist.year_join": 1993,
+    "artist.name": "Paul Azinger",
+    "artist.country": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '47' and year join equal to '1993' and name equal to 'Paul Azinger' and country equal to 'United States'?"
+  },
+  {
+   "uid": "451e0d69-0faf-4626-9eb6-f5d85ec37740",
+   "question": "Who are the artists named Larry Nelson from the United States who joined in 1981 and are at most 50 years old?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.country = 'United States' AND artist.age <= 50 AND artist.year_join = 1981 AND artist.name = 'Larry Nelson'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.age",
+    "artist.year_join",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 50,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1981,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Larry Nelson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "United States",
+    "artist.age": 50,
+    "artist.year_join": 1981,
+    "artist.name": "Larry Nelson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'United States' and age at most '50' and year join equal to '1981' and name equal to 'Larry Nelson'?"
+  },
+  {
+   "uid": "227edc38-ee85-4939-97be-9197991e6e1c",
+   "question": "Which artists named Jeff Sluman from the United States joined in 1988 or later and are at most 57 years old?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'Jeff Sluman' AND artist.year_join >= 1988 AND artist.country = 'United States' AND artist.age <= 57",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.year_join",
+    "artist.country",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1988,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 57,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Jeff Sluman",
+    "artist.year_join": 1988,
+    "artist.country": "United States",
+    "artist.age": 57
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Jeff Sluman' and year join at least '1988' and country equal to 'United States' and age at most '57'?"
+  },
+  {
+   "uid": "df4ffec4-116f-49bb-afce-27d67d4a737a",
+   "question": "What artists named Jeff Sluman are from the United States, joined in 1988, and are at least 57 years old?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'Jeff Sluman' AND artist.age >= 57 AND artist.year_join = 1988 AND artist.country = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.age",
+    "artist.year_join",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 57,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1988,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Jeff Sluman",
+    "artist.age": 57,
+    "artist.year_join": 1988,
+    "artist.country": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Jeff Sluman' and age at least '57' and year join equal to '1988' and country equal to 'United States'?"
+  },
+  {
+   "uid": "1d4a043d-19ce-4420-8c98-8dcee530479b",
+   "question": "Which artists named Larry Nelson are from the United States, joined no later than 1981, and are at most 50 years old?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'Larry Nelson' AND artist.age <= 50 AND artist.country = 'United States' AND artist.year_join <= 1981",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.age",
+    "artist.country",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Larry Nelson",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 50,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1981,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Larry Nelson",
+    "artist.age": 50,
+    "artist.country": "United States",
+    "artist.year_join": 1981
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Larry Nelson' and age at most '50' and country equal to 'United States' and year join at most '1981'?"
+  },
+  {
+   "uid": "cbc8c263-db54-431b-8e3a-2bad8429f8df",
+   "question": "Which artists named Vijay Singh joined in 1998 and are from Fiji?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'Vijay Singh' AND artist.country = 'Fiji' AND artist.year_join = 1998",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.country",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Fiji",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1998,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Vijay Singh",
+    "artist.country": "Fiji",
+    "artist.year_join": 1998
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh' and country equal to 'Fiji' and year join equal to '1998'?"
+  },
+  {
+   "uid": "cab9f3f3-0c30-438a-97c5-02beefe010ba",
+   "question": "Who are the artists named John Daly who joined in 1991 or later and are at most 46 years old?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.name = 'John Daly' AND artist.year_join >= 1991 AND artist.age <= 46",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.year_join",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Daly",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1991,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 46,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "John Daly",
+    "artist.year_join": 1991,
+    "artist.age": 46
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'John Daly' and year join at least '1991' and age at most '46'?"
+  },
+  {
+   "uid": "9a45a6cb-5e0d-4491-8cce-c9731ef231f6",
+   "question": "Who is Jeff Sluman from the United States that joined in 1988 or later and is at most 57 years old?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age <= 57 AND artist.country = 'United States' AND artist.name = 'Jeff Sluman' AND artist.year_join >= 1988",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "artist.country",
+    "artist.name",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 57,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1988,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 57,
+    "artist.country": "United States",
+    "artist.name": "Jeff Sluman",
+    "artist.year_join": 1988
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '57' and country equal to 'United States' and name equal to 'Jeff Sluman' and year join at least '1988'?"
+  },
+  {
+   "uid": "adb7ae86-f773-4f7b-92a6-5ddbef8b822a",
+   "question": "Which artists named Jeff Sluman are from the United States, are exactly 57 years old, and joined in 1988 or later?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nWHERE artist.country = 'United States' AND artist.name = 'Jeff Sluman' AND artist.age = 57 AND artist.year_join >= 1988",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.name",
+    "artist.age",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 57,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1988,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "United States",
+    "artist.name": "Jeff Sluman",
+    "artist.age": 57,
+    "artist.year_join": 1988
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'United States' and name equal to 'Jeff Sluman' and age equal to '57' and year join at least '1988'?"
+  },
+  {
+   "uid": "a0833e22-3302-438f-8a58-a906579cf72f",
+   "question": "Which artists from Zimbabwe joined in 1994 and have participated in exhibitions?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.country = 'Zimbabwe' AND artist.year_join = 1994",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Zimbabwe",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1994,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "Zimbabwe",
+    "artist.year_join": 1994
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'Zimbabwe' and year join equal to '1994', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id)?"
+  },
+  {
+   "uid": "fe9c03de-0bd7-4183-8e5c-7dfa8cbf623c",
+   "question": "Which artists who are exactly 48 years old have exhibitions with ticket prices at most 29.95?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.ticket_price <= 29.95 AND artist.age = 48",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.ticket_price",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "<=",
+     "value": 29.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 48,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.ticket_price": 29.95,
+    "artist.age": 48
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age equal to '48', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with ticket price at most '29.95'?"
+  },
+  {
+   "uid": "b965731c-3515-42ac-9b3f-b47513801f18",
+   "question": "Who are the artists from Fiji who have participated in exhibitions and are at most 45 years old?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.country = 'Fiji' AND artist.age <= 45",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Fiji",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 45,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "Fiji",
+    "artist.age": 45
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'Fiji' and age at most '45', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id)?"
+  },
+  {
+   "uid": "426c1696-dad9-4b52-a854-b506f385dde4",
+   "question": "What artists aged at least 46 have participated in exhibitions?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    6
+   ],
+   "answer_count": 4,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.age >= 46",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 46,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 46
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '46', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id)?"
+  },
+  {
+   "uid": "f519766f-5e11-4577-a695-78853ab6dec6",
+   "question": "Which artists from the United States have joined in 1993 or later and have participated in exhibitions?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.year_join >= 1993 AND artist.country = 'United States'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1993,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1993,
+    "artist.country": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at least '1993' and country equal to 'United States', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id)?"
+  },
+  {
+   "uid": "61996fab-ed0d-443d-84de-786125923107",
+   "question": "Who are the artists named Vijay Singh who joined in 1998 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.year_join <= 1998 AND artist.name = 'Vijay Singh'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1998,
+    "artist.name": "Vijay Singh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at most '1998' and name equal to 'Vijay Singh', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id)?"
+  },
+  {
+   "uid": "7eeb0d8b-5367-4dfd-8ca3-29db3a20643b",
+   "question": "Who are the artists that have participated in exhibitions from 2009 or later?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year >= 2009",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.year": 2009
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at least '2009'?"
+  },
+  {
+   "uid": "3ad75f78-cad5-4676-87bb-099ef69ac8b4",
+   "question": "Who are the artists aged 46 whose exhibitions have the theme Christmas stocking?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Christmas stocking' AND artist.age = 46",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.theme",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Christmas stocking",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 46,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.theme": "Christmas stocking",
+    "artist.age": 46
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age equal to '46', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Christmas stocking'?"
+  },
+  {
+   "uid": "022a8a35-502c-4512-b757-5022c5188bf4",
+   "question": "Which artists named Vijay Singh have exhibitions with ticket prices of at least 16.95?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.ticket_price >= 16.95 AND artist.name = 'Vijay Singh'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.ticket_price",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": ">=",
+     "value": 16.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "exhibition.ticket_price": 16.95,
+    "artist.name": "Vijay Singh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with ticket price at least '16.95'?"
+  },
+  {
+   "uid": "0e1ceb51-4ff3-4444-9860-54a3416cc65d",
+   "question": "Which artists have exhibitions with ticket prices of at least 19.95?",
+   "answer_row_ids": [
+    1,
+    2,
+    6
+   ],
+   "answer_count": 3,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.ticket_price >= 19.95",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.ticket_price"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": ">=",
+     "value": 19.95,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.ticket_price": 19.95
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with ticket price at least '19.95'?"
+  },
+  {
+   "uid": "b7a1acf6-5232-4c50-9a70-ac216561852d",
+   "question": "Which artists named Vijay Singh from Fiji, aged at least 45 and who joined in 1998 or later, have exhibitions where the theme is Christmas Tree and the ticket price is at least 16.95?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.age >= 45 AND exhibition.theme = 'Christmas Tree' AND artist.year_join >= 1998 AND artist.name = 'Vijay Singh' AND exhibition.ticket_price >= 16.95 AND artist.country = 'Fiji'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "exhibition.theme",
+    "artist.year_join",
+    "artist.name",
+    "exhibition.ticket_price",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 45,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Christmas Tree",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": ">=",
+     "value": 16.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Fiji",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 45,
+    "exhibition.theme": "Christmas Tree",
+    "artist.year_join": 1998,
+    "artist.name": "Vijay Singh",
+    "exhibition.ticket_price": 16.95,
+    "artist.country": "Fiji"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at least '45' and year join at least '1998' and name equal to 'Vijay Singh' and country equal to 'Fiji', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Christmas Tree' and ticket price at least '16.95'?"
+  },
+  {
+   "uid": "f09a9843-df84-4220-89e9-1facca406352",
+   "question": "Who is John Daly, age 46, from the United States who joined in 1991 or later and has exhibitions themed Christmas stocking since 2005 with ticket prices at most 19.95?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.year_join >= 1991 AND artist.country = 'United States' AND exhibition.year >= 2005 AND exhibition.ticket_price <= 19.95 AND exhibition.theme = 'Christmas stocking' AND artist.age = 46 AND artist.name = 'John Daly'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "artist.country",
+    "exhibition.year",
+    "exhibition.ticket_price",
+    "exhibition.theme",
+    "artist.age",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1991,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2005,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "<=",
+     "value": 19.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Christmas stocking",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 46,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Daly",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1991,
+    "artist.country": "United States",
+    "exhibition.year": 2005,
+    "exhibition.ticket_price": 19.95,
+    "exhibition.theme": "Christmas stocking",
+    "artist.age": 46,
+    "artist.name": "John Daly"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at least '1991' and country equal to 'United States' and age equal to '46' and name equal to 'John Daly', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at least '2005' and ticket price at most '19.95' and theme equal to 'Christmas stocking'?"
+  },
+  {
+   "uid": "32c7f60a-3c87-4bcf-9844-ea314f1a1323",
+   "question": "Which artists named Vijay Singh, aged at least 45 and who joined no later than 1998, exhibited Christmas Tree themed shows with a ticket price of 16.95 in 2007 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year <= 2007 AND artist.name = 'Vijay Singh' AND exhibition.theme = 'Christmas Tree' AND exhibition.ticket_price = 16.95 AND artist.year_join <= 1998 AND artist.age >= 45",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.year",
+    "artist.name",
+    "exhibition.theme",
+    "exhibition.ticket_price",
+    "artist.year_join",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Christmas Tree",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "=",
+     "value": 16.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 45,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.year": 2007,
+    "artist.name": "Vijay Singh",
+    "exhibition.theme": "Christmas Tree",
+    "exhibition.ticket_price": 16.95,
+    "artist.year_join": 1998,
+    "artist.age": 45
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh' and year join at most '1998' and age at least '45', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at most '2007' and theme equal to 'Christmas Tree' and ticket price equal to '16.95'?"
+  },
+  {
+   "uid": "b43e1bcc-c644-4fe5-be71-410a86feed3b",
+   "question": "Which artists named Paul Azinger, aged 47 and who joined in 1993 or earlier, had exhibitions with the Summer theme in 2009 that charged ticket prices at most 9.95?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Summer' AND exhibition.ticket_price <= 9.95 AND exhibition.year = 2009 AND artist.name = 'Paul Azinger' AND artist.year_join <= 1993 AND artist.age = 47",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.theme",
+    "exhibition.ticket_price",
+    "exhibition.year",
+    "artist.name",
+    "artist.year_join",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Summer",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "<=",
+     "value": 9.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Azinger",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1993,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 47,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.theme": "Summer",
+    "exhibition.ticket_price": 9.95,
+    "exhibition.year": 2009,
+    "artist.name": "Paul Azinger",
+    "artist.year_join": 1993,
+    "artist.age": 47
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Paul Azinger' and year join at most '1993' and age equal to '47', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Summer' and ticket price at most '9.95' and year equal to '2009'?"
+  },
+  {
+   "uid": "a5d0a9e2-51c9-4c4a-9441-ae880bb88972",
+   "question": "Which artists named John Daly from the United States, aged at least 46 and who joined in 1991 or later, participated in Christmas stocking exhibitions held in 2005 or earlier?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.year_join >= 1991 AND artist.country = 'United States' AND exhibition.theme = 'Christmas stocking' AND artist.name = 'John Daly' AND artist.age >= 46 AND exhibition.year <= 2005",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "artist.country",
+    "exhibition.theme",
+    "artist.name",
+    "artist.age",
+    "exhibition.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1991,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Christmas stocking",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Daly",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": ">=",
+     "value": 46,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2005,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1991,
+    "artist.country": "United States",
+    "exhibition.theme": "Christmas stocking",
+    "artist.name": "John Daly",
+    "artist.age": 46,
+    "exhibition.year": 2005
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at least '1991' and country equal to 'United States' and name equal to 'John Daly' and age at least '46', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Christmas stocking' and year at most '2005'?"
+  },
+  {
+   "uid": "4ab92d11-7b57-417d-b6ce-bafbd802d13f",
+   "question": "Which artists named Jeff Sluman from the United States, aged exactly 57 and who joined in 1988 or later, participated in exhibitions since 2006 with the theme Santa Claus and Rudolph the Red-Nosed Reindeer where the ticket price is exactly 14.95?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year >= 2006 AND artist.age = 57 AND exhibition.ticket_price = 14.95 AND artist.year_join >= 1988 AND artist.name = 'Jeff Sluman' AND exhibition.theme = 'Santa Claus and Rudolph the Red-Nosed Reindeer' AND artist.country = 'United States'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.year",
+    "artist.age",
+    "exhibition.ticket_price",
+    "artist.year_join",
+    "artist.name",
+    "exhibition.theme",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2006,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 57,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "=",
+     "value": 14.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1988,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Santa Claus and Rudolph the Red-Nosed Reindeer",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "exhibition.year": 2006,
+    "artist.age": 57,
+    "exhibition.ticket_price": 14.95,
+    "artist.year_join": 1988,
+    "artist.name": "Jeff Sluman",
+    "exhibition.theme": "Santa Claus and Rudolph the Red-Nosed Reindeer",
+    "artist.country": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age equal to '57' and year join at least '1988' and name equal to 'Jeff Sluman' and country equal to 'United States', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at least '2006' and ticket price equal to '14.95' and theme equal to 'Santa Claus and Rudolph the Red-Nosed Reindeer'?"
+  },
+  {
+   "uid": "156ff6a1-61eb-48fe-967b-ce0c088943eb",
+   "question": "Which artists named Nick Price from Zimbabwe, aged at most 48 and who joined in 1994 or later, have exhibitions since 2008 with ticket prices at least 29.95?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.age <= 48 AND exhibition.year >= 2008 AND exhibition.ticket_price >= 29.95 AND artist.name = 'Nick Price' AND artist.country = 'Zimbabwe' AND artist.year_join >= 1994",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.age",
+    "exhibition.year",
+    "exhibition.ticket_price",
+    "artist.name",
+    "artist.country",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 48,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2008,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": ">=",
+     "value": 29.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Nick Price",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Zimbabwe",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1994,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.age": 48,
+    "exhibition.year": 2008,
+    "exhibition.ticket_price": 29.95,
+    "artist.name": "Nick Price",
+    "artist.country": "Zimbabwe",
+    "artist.year_join": 1994
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '48' and name equal to 'Nick Price' and country equal to 'Zimbabwe' and year join at least '1994', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at least '2008' and ticket price at least '29.95'?"
+  },
+  {
+   "uid": "3d07e3a3-c073-4395-8e8f-0efef4f5f370",
+   "question": "Who are the artists from the United States named Paul Azinger who joined in 1993 or later and have exhibitions since 2009 with a Summer theme and a ticket price exactly 9.95?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.country = 'United States' AND artist.name = 'Paul Azinger' AND artist.year_join >= 1993 AND exhibition.year >= 2009 AND exhibition.ticket_price = 9.95 AND exhibition.theme = 'Summer'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.name",
+    "artist.year_join",
+    "exhibition.year",
+    "exhibition.ticket_price",
+    "exhibition.theme"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Paul Azinger",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1993,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "=",
+     "value": 9.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Summer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "United States",
+    "artist.name": "Paul Azinger",
+    "artist.year_join": 1993,
+    "exhibition.year": 2009,
+    "exhibition.ticket_price": 9.95,
+    "exhibition.theme": "Summer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'United States' and name equal to 'Paul Azinger' and year join at least '1993', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at least '2009' and ticket price equal to '9.95' and theme equal to 'Summer'?"
+  },
+  {
+   "uid": "59b60a28-3ebb-4a67-a0a3-670c9ff884f8",
+   "question": "Which artists named Jeff Sluman, aged at most 57 and who joined in 1988 or earlier, participated in exhibitions from 2006 or later where the theme is Santa Claus and Rudolph the Red-Nosed Reindeer and the ticket price is at least 14.95?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.year_join <= 1988 AND exhibition.theme = 'Santa Claus and Rudolph the Red-Nosed Reindeer' AND exhibition.ticket_price >= 14.95 AND artist.age <= 57 AND artist.name = 'Jeff Sluman' AND exhibition.year >= 2006",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.year_join",
+    "exhibition.theme",
+    "exhibition.ticket_price",
+    "artist.age",
+    "artist.name",
+    "exhibition.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1988,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Santa Claus and Rudolph the Red-Nosed Reindeer",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": ">=",
+     "value": 14.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 57,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2006,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.year_join": 1988,
+    "exhibition.theme": "Santa Claus and Rudolph the Red-Nosed Reindeer",
+    "exhibition.ticket_price": 14.95,
+    "artist.age": 57,
+    "artist.name": "Jeff Sluman",
+    "exhibition.year": 2006
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at most '1988' and age at most '57' and name equal to 'Jeff Sluman', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Santa Claus and Rudolph the Red-Nosed Reindeer' and ticket price at least '14.95' and year at least '2006'?"
+  },
+  {
+   "uid": "ff4fb987-30f5-4756-996e-d5a904865078",
+   "question": "What artists named John Daly who are 46 years old, joined in 1991, and from the United States have exhibitions with the Christmas stocking theme priced at 19.95 that took place in 2005 or earlier?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.country = 'United States' AND exhibition.theme = 'Christmas stocking' AND artist.year_join = 1991 AND exhibition.ticket_price = 19.95 AND artist.name = 'John Daly' AND exhibition.year <= 2005 AND artist.age = 46",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "exhibition.theme",
+    "artist.year_join",
+    "exhibition.ticket_price",
+    "artist.name",
+    "exhibition.year",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Christmas stocking",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1991,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "=",
+     "value": 19.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Daly",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2005,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 46,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "United States",
+    "exhibition.theme": "Christmas stocking",
+    "artist.year_join": 1991,
+    "exhibition.ticket_price": 19.95,
+    "artist.name": "John Daly",
+    "exhibition.year": 2005,
+    "artist.age": 46
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'United States' and year join equal to '1991' and name equal to 'John Daly' and age equal to '46', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Christmas stocking' and ticket price equal to '19.95' and year at most '2005'?"
+  },
+  {
+   "uid": "ebb48531-9011-4d7f-ad17-fe2607f60227",
+   "question": "Which artists named Vijay Singh from Fiji have exhibitions no later than 2004?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.name = 'Vijay Singh' AND exhibition.year <= 2004 AND artist.country = 'Fiji'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "exhibition.year",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2004,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Fiji",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Vijay Singh",
+    "exhibition.year": 2004,
+    "artist.country": "Fiji"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh' and country equal to 'Fiji', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at most '2004'?"
+  },
+  {
+   "uid": "5d2272c5-7967-4a3d-8538-50a337093dcc",
+   "question": "Which artists named Vijay Singh are at most 45 years old and have participated in exhibitions where the theme is Santa Claus?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Santa Claus' AND artist.age <= 45 AND artist.name = 'Vijay Singh'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.theme",
+    "artist.age",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Santa Claus",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 45,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "exhibition.theme": "Santa Claus",
+    "artist.age": 45,
+    "artist.name": "Vijay Singh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '45' and name equal to 'Vijay Singh', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Santa Claus'?"
+  },
+  {
+   "uid": "0c154b8c-5afb-41bf-9e66-57b828ac0233",
+   "question": "Which artists named Jeff Sluman from the United States exhibited work in 2006?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.name = 'Jeff Sluman' AND exhibition.year = 2006 AND artist.country = 'United States'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "exhibition.year",
+    "artist.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Jeff Sluman",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "=",
+     "value": 2006,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "Jeff Sluman",
+    "exhibition.year": 2006,
+    "artist.country": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Jeff Sluman' and country equal to 'United States', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year equal to '2006'?"
+  },
+  {
+   "uid": "caaa4a44-90cc-4bb4-8fc3-8f924f680221",
+   "question": "Which artists named Vijay Singh from Fiji, aged 45, had exhibitions in 2007 with ticket prices at most 16.95?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.country = 'Fiji' AND artist.age = 45 AND exhibition.year = 2007 AND exhibition.ticket_price <= 16.95 AND artist.name = 'Vijay Singh'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.country",
+    "artist.age",
+    "exhibition.year",
+    "exhibition.ticket_price",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Fiji",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 45,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "<=",
+     "value": 16.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "artist.country": "Fiji",
+    "artist.age": 45,
+    "exhibition.year": 2007,
+    "exhibition.ticket_price": 16.95,
+    "artist.name": "Vijay Singh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with country equal to 'Fiji' and age equal to '45' and name equal to 'Vijay Singh', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year equal to '2007' and ticket price at most '16.95'?"
+  },
+  {
+   "uid": "d889acd6-36fc-4679-81e9-218eb631fa22",
+   "question": "Which artists named Vijay Singh participated in exhibitions with the theme Santa Claus held in 2004 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year <= 2004 AND exhibition.theme = 'Santa Claus' AND artist.name = 'Vijay Singh'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.year",
+    "exhibition.theme",
+    "artist.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2004,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Santa Claus",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "exhibition.year": 2004,
+    "exhibition.theme": "Santa Claus",
+    "artist.name": "Vijay Singh"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at most '2004' and theme equal to 'Santa Claus'?"
+  },
+  {
+   "uid": "29f13a7f-cbd9-4995-99d4-abe0494861dd",
+   "question": "Which artists who joined in 1994 or later have participated in exhibitions with the theme Spring held in 2008 or earlier?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.theme = 'Spring' AND artist.year_join >= 1994 AND exhibition.year <= 2008",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.theme",
+    "artist.year_join",
+    "exhibition.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Spring",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1994,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2008,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.theme": "Spring",
+    "artist.year_join": 1994,
+    "exhibition.year": 2008
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with year join at least '1994', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with theme equal to 'Spring' and year at most '2008'?"
+  },
+  {
+   "uid": "101b123f-de8a-44c0-a3d3-f080520f4de0",
+   "question": "Which artists aged at most 48 have exhibitions themed Spring from 2008 or later with ticket prices of at least 29.95?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.ticket_price >= 29.95 AND exhibition.theme = 'Spring' AND exhibition.year >= 2008 AND artist.age <= 48",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.ticket_price",
+    "exhibition.theme",
+    "exhibition.year",
+    "artist.age"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": ">=",
+     "value": 29.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Spring",
+     "column_type": "enum"
+    },
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2008,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "<=",
+     "value": 48,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.ticket_price": 29.95,
+    "exhibition.theme": "Spring",
+    "exhibition.year": 2008,
+    "artist.age": 48
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with age at most '48', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with ticket price at least '29.95' and theme equal to 'Spring' and year at least '2008'?"
+  },
+  {
+   "uid": "64a978a2-007b-469c-bc99-3b37a4110a0c",
+   "question": "Which artists named Vijay Singh who joined in 1998 or later have exhibitions with the theme Santa Claus held in 2004 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year <= 2004 AND exhibition.theme = 'Santa Claus' AND artist.name = 'Vijay Singh' AND artist.year_join >= 1998",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.year",
+    "exhibition.theme",
+    "artist.name",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": "<=",
+     "value": 2004,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "theme",
+     "operator": "=",
+     "value": "Santa Claus",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": ">=",
+     "value": 1998,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.year": 2004,
+    "exhibition.theme": "Santa Claus",
+    "artist.name": "Vijay Singh",
+    "artist.year_join": 1998
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh' and year join at least '1998', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at most '2004' and theme equal to 'Santa Claus'?"
+  },
+  {
+   "uid": "771523a6-4cb4-4b6c-a77a-bb758a2b7695",
+   "question": "Who are the artists named Vijay Singh from Fiji who joined in 1998 or earlier and have exhibitions from 2004 or later with a ticket price exactly 19.95?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE exhibition.year >= 2004 AND exhibition.ticket_price = 19.95 AND artist.name = 'Vijay Singh' AND artist.country = 'Fiji' AND artist.year_join <= 1998",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "exhibition.year",
+    "exhibition.ticket_price",
+    "artist.name",
+    "artist.country",
+    "artist.year_join"
+   ],
+   "involved_filters": [
+    {
+     "table": "exhibition",
+     "column": "year",
+     "operator": ">=",
+     "value": 2004,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "=",
+     "value": 19.95,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "Vijay Singh",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "Fiji",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "<=",
+     "value": 1998,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "exhibition.year": 2004,
+    "exhibition.ticket_price": 19.95,
+    "artist.name": "Vijay Singh",
+    "artist.country": "Fiji",
+    "artist.year_join": 1998
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'Vijay Singh' and country equal to 'Fiji' and year join at most '1998', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with year at least '2004' and ticket price equal to '19.95'?"
+  },
+  {
+   "uid": "9aa8f832-1231-4d79-b91f-19cb998c3722",
+   "question": "Who is the artist named John Daly from the United States who is 46 years old, joined in 1991, and has exhibitions with a ticket price of 19.95?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT artist.artist_id FROM artist\nJOIN exhibition ON artist.artist_id = exhibition.artist_id\nWHERE artist.name = 'John Daly' AND artist.country = 'United States' AND artist.age = 46 AND artist.year_join = 1991 AND exhibition.ticket_price = 19.95",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "exhibition",
+    "artist"
+   ],
+   "involved_columns": [
+    "artist.name",
+    "artist.country",
+    "artist.age",
+    "artist.year_join",
+    "exhibition.ticket_price"
+   ],
+   "involved_filters": [
+    {
+     "table": "artist",
+     "column": "name",
+     "operator": "=",
+     "value": "John Daly",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "country",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "artist",
+     "column": "age",
+     "operator": "=",
+     "value": 46,
+     "column_type": "numeric"
+    },
+    {
+     "table": "artist",
+     "column": "year_join",
+     "operator": "=",
+     "value": 1991,
+     "column_type": "numeric"
+    },
+    {
+     "table": "exhibition",
+     "column": "ticket_price",
+     "operator": "=",
+     "value": 19.95,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "artist.name": "John Daly",
+    "artist.country": "United States",
+    "artist.age": 46,
+    "artist.year_join": 1991,
+    "exhibition.ticket_price": 19.95
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "artist"
+   },
+   "answer_table": "artist",
+   "answer_id_column": "artist_id",
+   "canonical_question": "Which artist entities with name equal to 'John Daly' and country equal to 'United States' and age equal to '46' and year join equal to '1991', having at least one related exhibition record (linked on artist.artist_id = exhibition.artist_id) with ticket price equal to '19.95'?"
+  }
+ ]
+}

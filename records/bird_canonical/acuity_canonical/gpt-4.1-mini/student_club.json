@@ -1,0 +1,124 @@
+{
+  "db_id": "student_club",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T09:57:35.877435+00:00",
+  "records": [
+    {
+      "uid": "2a9e0801-9d77-485b-8e35-69ec1e3f37b5",
+      "question": "Which members have the last name exactly Mclean?",
+      "gold_sql": "SELECT member.member_id FROM member\nWHERE member.last_name = 'Mclean'",
+      "pred_sql": "SELECT member_id FROM member WHERE last_name = 'Mclean'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.74
+    },
+    {
+      "uid": "32915587-b8a3-4704-807e-0005856956cd",
+      "question": "Which members have the first name Trent with the email trent.smith@lpu.edu and phone number 397-555-3444?",
+      "gold_sql": "SELECT member.member_id FROM member\nWHERE member.email = 'trent.smith@lpu.edu' AND member.phone = '397-555-3444' AND member.first_name = 'Trent'",
+      "pred_sql": "SELECT member_id FROM member WHERE email = 'trent.smith@lpu.edu' AND phone = '397-555-3444' AND first_name = 'Trent'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    },
+    {
+      "uid": "5f2e77ff-2bce-46a5-9414-be2587039311",
+      "question": "What members are Presidents with last name Harrison, email sacha.harrison@lpu.edu, phone 840-555-4781, and Large t-shirt size who study Liberal Arts in the Liberal Arts Program at the College of Humanities and Social Sciences?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.position = 'President' AND major.college = 'College of Humanities and Social Sciences' AND member.phone = '840-555-4781' AND major.department = 'Liberal Arts Program' AND member.t_shirt_size = 'Large' AND major.major_name = 'Liberal Arts' AND member.email = 'sacha.harrison@lpu.edu' AND member.last_name = 'Harrison'",
+      "pred_sql": "SELECT member.member_id\nFROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.position = 'President'\n  AND member.phone = '840-555-4781'\n  AND member.t_shirt_size = 'Large'\n  AND member.email = 'sacha.harrison@lpu.edu'\n  AND member.last_name = 'Harrison'\n  AND major.college = 'College of Humanities and Social Sciences'\n  AND major.department = 'Liberal Arts Program'\n  AND major.major_name = 'Liberal Arts'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.94
+    },
+    {
+      "uid": "6286eff6-81e8-4799-9fe6-0b2d8b4f7ff8",
+      "question": "Which members have income received on or after 2019-09-16 and also have attendance and expenses recorded?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN attendance ON member.member_id = attendance.link_to_member\nJOIN expense ON member.member_id = expense.link_to_member\nJOIN income ON member.member_id = income.link_to_member\nWHERE income.date_received >= '2019-09-16'",
+      "pred_sql": "SELECT DISTINCT member.member_id\nFROM member\nJOIN attendance ON member.member_id = attendance.link_to_member\nJOIN expense ON member.member_id = expense.link_to_member\nJOIN income ON member.member_id = income.link_to_member\nWHERE income.date_received >= '2019-09-16'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.97
+    },
+    {
+      "uid": "92982e11-eec1-4f4a-8ab7-ea899feb49b5",
+      "question": "Which members have the first name exactly 'Keaton', have the position exactly 'Inactive', belong to the major whose department is exactly 'Political Science Department', and also have related attendance and major records?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN attendance ON member.member_id = attendance.link_to_member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.first_name = 'Keaton' AND member.position = 'Inactive' AND major.department = 'Political Science Department'",
+      "pred_sql": "SELECT DISTINCT member.member_id\nFROM member\nJOIN attendance ON member.member_id = attendance.link_to_member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.first_name = 'Keaton'\n  AND member.position = 'Inactive'\n  AND major.department = 'Political Science Department'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "a7ec20e8-83f7-4f3d-a1f9-86eff529878e",
+      "question": "Who is the member with the email connor.hilton@lpu.edu, first name Connor, last name Hilton, phone 454-555-7970, position Member, and t-shirt size X-Large?",
+      "gold_sql": "SELECT member.member_id FROM member\nWHERE member.email = 'connor.hilton@lpu.edu' AND member.t_shirt_size = 'X-Large' AND member.first_name = 'Connor' AND member.position = 'Member' AND member.phone = '454-555-7970' AND member.last_name = 'Hilton'",
+      "pred_sql": "SELECT member_id FROM member WHERE email = 'connor.hilton@lpu.edu' AND t_shirt_size = 'X-Large' AND first_name = 'Connor' AND position = 'Member' AND phone = '454-555-7970' AND last_name = 'Hilton'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "uid": "bb4b880e-7d5d-44f7-bb29-280ee57d916d",
+      "question": "Which members who have recorded attendance and have a major in the Political Science Department are included?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN attendance ON member.member_id = attendance.link_to_member\nJOIN major ON member.link_to_major = major.major_id\nWHERE major.department = 'Political Science Department'",
+      "pred_sql": "SELECT DISTINCT member.member_id\nFROM member\nJOIN attendance ON member.member_id = attendance.link_to_member\nJOIN major ON member.link_to_major = major.major_id\nWHERE major.department = 'Political Science Department'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.92
+    },
+    {
+      "uid": "c42f374a-bc38-4891-b986-2e68cbf82b90",
+      "question": "Which members have the last name exactly equal to 'Harrison', have a phone number exactly equal to '840-555-4781', have a t-shirt size exactly equal to 'Large', have related expense records with an expense description exactly equal to 'Posters', with approved status exactly equal to 'true' and an expense date at most '2019-09-04', and also have related income records?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN expense ON member.member_id = expense.link_to_member\nJOIN income ON member.member_id = income.link_to_member\nWHERE member.last_name = 'Harrison' AND expense.approved = 'true' AND expense.expense_date <= '2019-09-04' AND member.phone = '840-555-4781' AND member.t_shirt_size = 'Large' AND expense.expense_description = 'Posters'",
+      "pred_sql": "SELECT DISTINCT member.member_id\nFROM member\nJOIN expense ON member.member_id = expense.link_to_member\nJOIN income ON member.member_id = income.link_to_member\nWHERE member.last_name = 'Harrison'\n  AND member.phone = '840-555-4781'\n  AND member.t_shirt_size = 'Large'\n  AND expense.approved = 'true'\n  AND expense.expense_date <= '2019-09-04'\n  AND expense.expense_description = 'Posters'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "da9b0ecc-d034-4036-b64d-3939ff5192bf",
+      "question": "Who are the members with the phone number 724-555-5721 enrolled in the School of Teacher Education and Leadership?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.phone = '724-555-5721' AND major.department = 'School of Teacher Education and Leadership'",
+      "pred_sql": "SELECT member.member_id\nFROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.phone = '724-555-5721'\n  AND major.department = 'School of Teacher Education and Leadership'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    },
+    {
+      "uid": "e550ffab-2211-4346-acad-cdd454b9d09e",
+      "question": "Which members with the last name Cullen and email phillip.cullen@lpu.edu belong to the Languages, Philosophy and Communication Studies Department?",
+      "gold_sql": "SELECT member.member_id FROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.last_name = 'Cullen' AND member.email = 'phillip.cullen@lpu.edu' AND major.department = 'Languages, Philosophy and Communication Studies Department'",
+      "pred_sql": "SELECT member.member_id\nFROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.last_name = 'Cullen'\n  AND member.email = 'phillip.cullen@lpu.edu'\n  AND major.department = 'Languages, Philosophy and Communication Studies Department'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.98
+    }
+  ]
+}

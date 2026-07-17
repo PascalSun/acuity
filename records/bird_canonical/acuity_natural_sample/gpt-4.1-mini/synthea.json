@@ -1,0 +1,124 @@
+{
+  "db_id": "synthea",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "tag": "gpt-4.1-mini",
+  "n": 10,
+  "n_correct": 6,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:14:07.295418+00:00",
+  "records": [
+    {
+      "uid": "061e38e5-5e52-4546-bd08-1c4e4b86542f",
+      "question": "Which individuals with the last name Herzog and maiden name Kunde, suffix JD, and SSN 999-63-4552, holding passport X24000430X, born on or after 1978-05-25, have central_american ethnicity?",
+      "gold_sql": "SELECT patients.patient FROM patients\nWHERE patients.suffix = 'JD' AND patients.ssn = '999-63-4552' AND patients.last = 'Herzog' AND patients.passport = 'X24000430X' AND patients.birthdate >= '1978-05-25' AND patients.ethnicity = 'central_american' AND patients.maiden = 'Kunde'",
+      "pred_sql": "SELECT patient\nFROM patients\nWHERE last = 'Herzog'\n  AND maiden = 'Kunde'\n  AND suffix = 'JD'\n  AND ssn = '999-63-4552'\n  AND passport = 'X24000430X'\n  AND birthdate >= '1978-05-25'\n  AND ethnicity = 'central_american'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.28
+    },
+    {
+      "uid": "1e093758-26dc-4ddc-878c-af9d5d964727",
+      "question": "Which individuals are white women with the prefix Mrs., maiden name Carroll, last name Pouros, driver\u2019s license S99935903, no passport, ethnicity English, and who died on or before 2009-02-23?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN medications ON patients.patient = medications.patient\nJOIN encounters ON medications.encounter = encounters.id\nWHERE patients.race = 'white' AND patients.prefix = 'Mrs.' AND patients.maiden = 'Carroll' AND patients.drivers = 'S99935903' AND patients.passport = 'FALSE' AND patients.deathdate <= '2009-02-23' AND patients.last = 'Pouros' AND patients.ethnicity = 'english'",
+      "pred_sql": "SELECT patient\nFROM patients\nWHERE race = 'white'\n  AND gender = 'female'\n  AND prefix = 'Mrs.'\n  AND maiden = 'Carroll'\n  AND last = 'Pouros'\n  AND drivers = 'S99935903'\n  AND (passport IS NULL OR passport = '')\n  AND ethnicity = 'English'\n  AND deathdate <= '2009-02-23'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.02
+    },
+    {
+      "uid": "21911d7b-a339-438c-90a3-b827e3c68dc2",
+      "question": "Which individuals named Dusty, who are white Polish men with the prefix Mr., were born in Somerville MA US and live at 3224 Christop Roads Somerville MA 02143 US?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN conditions ON patients.patient = conditions.patient\nWHERE patients.birthplace = 'Somerville MA US' AND patients.first = 'Dusty' AND patients.prefix = 'Mr.' AND patients.address = '3224 Christop Roads Somerville MA 02143 US' AND patients.race = 'white' AND patients.ethnicity = 'polish' AND patients.gender = 'M'",
+      "pred_sql": "SELECT patient\nFROM patients\nWHERE first = 'Dusty'\n  AND race = 'white'\n  AND ethnicity = 'Polish'\n  AND gender = 'male'\n  AND prefix = 'Mr.'\n  AND birthplace = 'Somerville MA US'\n  AND address = '3224 Christop Roads Somerville MA 02143 US'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.21
+    },
+    {
+      "uid": "5e75cc58-68f7-4781-9652-7838f9ecd49d",
+      "question": "Which individuals who are white and born in Norton MA US have German ethnicity, an SSN of 999-89-8740, childhood asthma with a reason code at most 233678006.0, and a house dust mite allergy?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN encounters ON patients.patient = encounters.patient\nJOIN allergies ON patients.patient = allergies.patient\nWHERE patients.ethnicity = 'german' AND encounters.reasondescription = 'Childhood asthma' AND allergies.description = 'House dust mite allergy' AND encounters.reasoncode <= 233678006.0 AND patients.ssn = '999-89-8740' AND patients.race = 'white' AND patients.birthplace = 'Norton MA US'",
+      "pred_sql": "SELECT DISTINCT p.patient\nFROM patients p\nJOIN conditions c ON p.patient = c.PATIENT\nJOIN allergies a ON p.patient = a.PATIENT\nWHERE p.race = 'white'\n  AND p.birthplace = 'Norton MA US'\n  AND p.ethnicity = 'German'\n  AND p.ssn = '999-89-8740'\n  AND c.DESCRIPTION = 'childhood asthma'\n  AND c.REASONCODE <= 233678006.0\n  AND a.DESCRIPTION = 'house dust mite allergy'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 1.63
+    },
+    {
+      "uid": "66f09d26-2320-4792-8d8d-dac70d81a725",
+      "question": "Who has the maiden name Wehner and lives at 1188 Gage Tunnel Suite 586 Hingham MA 02043 US with both encounters and medications recorded?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN encounters ON patients.patient = encounters.patient\nJOIN medications ON patients.patient = medications.patient\nWHERE patients.maiden = 'Wehner' AND patients.address = '1188 Gage Tunnel Suite 586 Hingham MA 02043 US'",
+      "pred_sql": "SELECT p.patient\nFROM patients p\nJOIN encounters e ON p.patient = e.PATIENT\nJOIN medications m ON p.patient = m.PATIENT\nWHERE p.maiden = 'Wehner'\n  AND p.address = '1188 Gage Tunnel Suite 586 Hingham MA 02043 US'\nGROUP BY p.patient",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.08
+    },
+    {
+      "uid": "a4a833d9-7977-4ed5-8b89-29616256a0c5",
+      "question": "Who are the white individuals with last name Senger, born on or after 2002-11-18 in Longmeadow MA US, who have an allergy to tree pollen?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN allergies ON patients.patient = allergies.patient\nWHERE patients.last = 'Senger' AND patients.birthdate >= '2002-11-18' AND allergies.description = 'Allergy to tree pollen' AND patients.race = 'white' AND patients.birthplace = 'Longmeadow MA US'",
+      "pred_sql": "SELECT DISTINCT p.patient\nFROM patients p\nJOIN allergies a ON p.patient = a.PATIENT\nWHERE p.last = 'Senger'\n  AND p.race = 'White'\n  AND p.birthdate >= '2002-11-18'\n  AND p.address LIKE '%Longmeadow%'\n  AND p.address LIKE '%MA%'\n  AND p.address LIKE '%US%'\n  AND a.DESCRIPTION LIKE '%tree pollen%'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.36
+    },
+    {
+      "uid": "ba1a3883-2b24-4012-9120-ce62225bffd8",
+      "question": "Which individuals with the SSN exactly 999-55-1956 and passport exactly X10571629X have received immunizations?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN immunizations ON patients.patient = immunizations.patient\nWHERE patients.ssn = '999-55-1956' AND patients.passport = 'X10571629X'",
+      "pred_sql": "SELECT DISTINCT patients.patient\nFROM patients\nJOIN immunizations ON patients.patient = immunizations.PATIENT\nWHERE patients.ssn = '999-55-1956' AND patients.passport = 'X10571629X'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "ba94bacc-04a5-4164-803b-ccaf91768160",
+      "question": "Which entries have a passport exactly equal to X21056513X and a deathdate exactly on 1984-04-24?",
+      "gold_sql": "SELECT patients.patient FROM patients\nWHERE patients.passport = 'X21056513X' AND patients.deathdate = '1984-04-24'",
+      "pred_sql": "SELECT patient FROM patients WHERE passport = 'X21056513X' AND deathdate = '1984-04-24'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.89
+    },
+    {
+      "uid": "f6abbafd-1ebe-45cf-bb2e-3001fc9a6ee9",
+      "question": "Who has the last name Kovacek and has any of the conditions listed in all_prevalences?",
+      "gold_sql": "SELECT patients.patient FROM patients\nJOIN conditions ON patients.patient = conditions.patient\nJOIN all_prevalences ON conditions.description = all_prevalences.item\nWHERE patients.last = 'Kovacek'",
+      "pred_sql": "SELECT DISTINCT patients.patient\nFROM patients\nJOIN conditions ON patients.patient = conditions.PATIENT\nWHERE patients.last = 'Kovacek'\n  AND conditions.DESCRIPTION IN (SELECT ITEM FROM all_prevalences)",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.95
+    },
+    {
+      "uid": "ffd09c90-86b4-4d94-9b45-b370356e4d5c",
+      "question": "Who has the prefix Mr., lives at 5129 Barton Rapids Suite 716 Tyngsborough MA 01879 US, was born on 1991-12-28, and was born in Wareham MA US?",
+      "gold_sql": "SELECT patients.patient FROM patients\nWHERE patients.prefix = 'Mr.' AND patients.address = '5129 Barton Rapids Suite 716 Tyngsborough MA 01879 US' AND patients.birthdate = '1991-12-28' AND patients.birthplace = 'Wareham MA US'",
+      "pred_sql": "SELECT patient FROM patients WHERE prefix = 'Mr.' AND address = '5129 Barton Rapids Suite 716 Tyngsborough MA 01879 US' AND birthdate = '1991-12-28' AND birthplace = 'Wareham MA US'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    }
+  ]
+}

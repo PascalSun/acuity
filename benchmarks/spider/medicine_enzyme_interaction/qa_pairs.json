@@ -1,0 +1,3172 @@
+{
+ "db_id": "medicine_enzyme_interaction",
+ "target_table": "medicine",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 527944867,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/medicine_enzyme_interaction/medicine_enzyme_interaction.sqlite",
+  "generated_at": "2026-07-02T10:52:32.826049+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "medicine",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 8,
+   "0M": 7,
+   "1pE": 7,
+   "1pM": 7,
+   "2pE": 7,
+   "2pM": 7,
+   "2pH": 7
+  },
+  "realized_counts": {
+   "0E": 8,
+   "0M": 7,
+   "1pE": 7,
+   "1pM": 7,
+   "2pE": 7,
+   "2pH": 7,
+   "2pM": 7
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pE": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pH": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pM": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "fb03f4dd-6406-4851-955a-2f418d497655",
+   "question": "Which medicines have the trade name Clozaril?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.trade_name = 'Clozaril'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Clozaril",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Clozaril"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Clozaril'?"
+  },
+  {
+   "uid": "9ea92092-0af0-4470-9779-c8b8d0ac55e0",
+   "question": "Which medicines have the trade name Zyprexa and the name Olanzapine?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.trade_name = 'Zyprexa' AND medicine.name = 'Olanzapine'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.trade_name",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Zyprexa",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Olanzapine",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Zyprexa",
+    "medicine.name": "Olanzapine"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Zyprexa' and name equal to 'Olanzapine'?"
+  },
+  {
+   "uid": "23e5afc3-24b4-4d83-8109-4248e0b5b84d",
+   "question": "Which medicines are exactly FDA approved?",
+   "answer_row_ids": [
+    2,
+    3,
+    7,
+    8,
+    9,
+    12,
+    13,
+    15,
+    17,
+    20
+   ],
+   "answer_count": 10,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.fda_approved = 'Yes'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes'?"
+  },
+  {
+   "uid": "50cc6926-4d09-4762-b634-58a442525801",
+   "question": "What medicine entries have the trade name Sulpirid and the name exactly Sulpiride?",
+   "answer_row_ids": [
+    19
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.trade_name = 'Sulpirid' AND medicine.name = 'Sulpiride'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.trade_name",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Sulpirid",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Sulpiride",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Sulpirid",
+    "medicine.name": "Sulpiride"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Sulpirid' and name equal to 'Sulpiride'?"
+  },
+  {
+   "uid": "1481ecf1-412c-4115-8b13-6800be432724",
+   "question": "Which medicines have the name Remoxipride and the trade name Roxiam?",
+   "answer_row_ids": [
+    16
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.name = 'Remoxipride' AND medicine.trade_name = 'Roxiam'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Remoxipride",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Roxiam",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Remoxipride",
+    "medicine.trade_name": "Roxiam"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Remoxipride' and trade name equal to 'Roxiam'?"
+  },
+  {
+   "uid": "77892cf1-5378-4160-bc80-b3f45409d7ae",
+   "question": "Which medicines named Lurasidone are exactly FDA approved?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.fda_approved = 'Yes' AND medicine.name = 'Lurasidone'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Lurasidone",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes",
+    "medicine.name": "Lurasidone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes' and name equal to 'Lurasidone'?"
+  },
+  {
+   "uid": "155c4fd3-81a9-47de-a759-ede9eda65073",
+   "question": "What medicine has the name Perospirone and the trade name Lullan?",
+   "answer_row_ids": [
+    14
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.name = 'Perospirone' AND medicine.trade_name = 'Lullan'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Perospirone",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Lullan",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Perospirone",
+    "medicine.trade_name": "Lullan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Perospirone' and trade name equal to 'Lullan'?"
+  },
+  {
+   "uid": "7ff809b7-31f6-4663-8740-77fa527da3c2",
+   "question": "Which medicines have the name Clozapine?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.name = 'Clozapine'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Clozapine",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Clozapine"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Clozapine'?"
+  },
+  {
+   "uid": "727a3f61-9dba-44ae-b9ab-13271a1a9c00",
+   "question": "Which medicines named Amisulpride have the trade name Solian but are not FDA approved?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.name = 'Amisulpride' AND medicine.trade_name = 'Solian' AND medicine.fda_approved = 'No'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.trade_name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Amisulpride",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Solian",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Amisulpride",
+    "medicine.trade_name": "Solian",
+    "medicine.fda_approved": "No"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Amisulpride' and trade name equal to 'Solian' and fda approved equal to 'No'?"
+  },
+  {
+   "uid": "f8ced2a7-bc10-4e73-ba39-289da017d770",
+   "question": "Which medicines named Clozapine with the trade name Clozaril are FDA approved?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.trade_name = 'Clozaril' AND medicine.name = 'Clozapine' AND medicine.fda_approved = 'Yes'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.trade_name",
+    "medicine.name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Clozaril",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Clozapine",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Clozaril",
+    "medicine.name": "Clozapine",
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Clozaril' and name equal to 'Clozapine' and fda approved equal to 'Yes'?"
+  },
+  {
+   "uid": "30bdcd6c-f165-4555-b639-b0594be94776",
+   "question": "Which medicines named Paliperidone have the trade name Invega and are FDA approved?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.trade_name = 'Invega' AND medicine.fda_approved = 'Yes' AND medicine.name = 'Paliperidone'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.trade_name",
+    "medicine.fda_approved",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Invega",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Paliperidone",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Invega",
+    "medicine.fda_approved": "Yes",
+    "medicine.name": "Paliperidone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Invega' and fda approved equal to 'Yes' and name equal to 'Paliperidone'?"
+  },
+  {
+   "uid": "82a46424-eb99-417c-8455-9067d4f599be",
+   "question": "Which medicines are FDA approved that have the trade name Zyprexa and the generic name Olanzapine?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.trade_name = 'Zyprexa' AND medicine.name = 'Olanzapine' AND medicine.fda_approved = 'Yes'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.trade_name",
+    "medicine.name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Zyprexa",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Olanzapine",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Zyprexa",
+    "medicine.name": "Olanzapine",
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Zyprexa' and name equal to 'Olanzapine' and fda approved equal to 'Yes'?"
+  },
+  {
+   "uid": "1fe44465-ee5b-4882-ae86-ebc403efc475",
+   "question": "Which medicines named Paliperidone that have the trade name Invega are FDA approved?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.name = 'Paliperidone' AND medicine.trade_name = 'Invega' AND medicine.fda_approved = 'Yes'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.trade_name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Paliperidone",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Invega",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Paliperidone",
+    "medicine.trade_name": "Invega",
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Paliperidone' and trade name equal to 'Invega' and fda approved equal to 'Yes'?"
+  },
+  {
+   "uid": "34c00682-9cbd-4fba-934b-71e9b1ae996e",
+   "question": "Which medicines named Blonanserin have the trade name Lonasen and are not FDA approved?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.name = 'Blonanserin' AND medicine.fda_approved = 'No' AND medicine.trade_name = 'Lonasen'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.fda_approved",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Blonanserin",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Lonasen",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Blonanserin",
+    "medicine.fda_approved": "No",
+    "medicine.trade_name": "Lonasen"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Blonanserin' and fda approved equal to 'No' and trade name equal to 'Lonasen'?"
+  },
+  {
+   "uid": "6d2d3568-6b9f-4400-829a-551ecab0d991",
+   "question": "Which medicines named Melperone with the trade name Buronil are not FDA approved?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nWHERE medicine.fda_approved = 'No' AND medicine.trade_name = 'Buronil' AND medicine.name = 'Melperone'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "medicine"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "medicine.trade_name",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Buronil",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Melperone",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "No",
+    "medicine.trade_name": "Buronil",
+    "medicine.name": "Melperone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'No' and trade name equal to 'Buronil' and name equal to 'Melperone'?"
+  },
+  {
+   "uid": "8437acf5-3873-499a-8cbe-4665d9124ab1",
+   "question": "Which medicines that interact with enzymes are exactly FDA approved?",
+   "answer_row_ids": [
+    2,
+    3,
+    7,
+    8,
+    9,
+    13,
+    20
+   ],
+   "answer_count": 7,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.fda_approved = 'Yes'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id)?"
+  },
+  {
+   "uid": "43f1e8a2-0f91-420a-836f-74fc16998df0",
+   "question": "Which medicines with the trade name Clofekton have enzyme interactions?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.trade_name = 'Clofekton'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Clofekton",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Clofekton"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Clofekton', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id)?"
+  },
+  {
+   "uid": "4c0eae21-fb76-4876-bef3-84bfc1a71140",
+   "question": "Which medicines that interact with enzymes are not FDA approved?",
+   "answer_row_ids": [
+    1,
+    4,
+    5,
+    6,
+    10,
+    19
+   ],
+   "answer_count": 6,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.fda_approved = 'No'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "No"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'No', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id)?"
+  },
+  {
+   "uid": "7f4ac851-0414-4f95-b041-e0a9c7f91539",
+   "question": "Which medicines with the trade name Solian act as inhibitors in enzyme interactions?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine_enzyme_interaction.interaction_type = 'inhibitor' AND medicine.trade_name = 'Solian'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Solian",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "medicine.trade_name": "Solian"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Solian', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor'?"
+  },
+  {
+   "uid": "f14bbda9-9dd6-457e-95ef-be5a1a9e0de0",
+   "question": "Which medicines with the trade name Fanapt act as activitors?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine_enzyme_interaction.interaction_type = 'activitor' AND medicine.trade_name = 'Fanapt'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "activitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Fanapt",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine_enzyme_interaction.interaction_type": "activitor",
+    "medicine.trade_name": "Fanapt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Fanapt', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'activitor'?"
+  },
+  {
+   "uid": "1e96680a-155b-4aa2-8c46-3a8fac76e0a5",
+   "question": "Which medicines have the trade name exactly Geodon and interact with enzymes?",
+   "answer_row_ids": [
+    20
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.trade_name = 'Geodon'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Geodon",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Geodon"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Geodon', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id)?"
+  },
+  {
+   "uid": "43e22396-b2d7-4e94-b504-18f24fb1d8ad",
+   "question": "Which medicines have the trade name exactly Fanapt and interact with enzymes?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.trade_name = 'Fanapt'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Fanapt",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Fanapt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Fanapt', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id)?"
+  },
+  {
+   "uid": "30c3c3bf-b6d8-4466-aede-e2f8ac567f79",
+   "question": "Which medicines named Asenapine with the trade name Saphris are FDA approved and act as enzyme inhibitors?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.name = 'Asenapine' AND medicine.trade_name = 'Saphris' AND medicine.fda_approved = 'Yes' AND medicine_enzyme_interaction.interaction_type = 'inhibitor'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.trade_name",
+    "medicine.fda_approved",
+    "medicine_enzyme_interaction.interaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Asenapine",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Saphris",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Asenapine",
+    "medicine.trade_name": "Saphris",
+    "medicine.fda_approved": "Yes",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Asenapine' and trade name equal to 'Saphris' and fda approved equal to 'Yes', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor'?"
+  },
+  {
+   "uid": "4eb8c9db-b055-444f-97b2-96e90f21a2ca",
+   "question": "Which FDA-approved medicines with the trade name Saphris act as enzyme inhibitors?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.fda_approved = 'Yes' AND medicine_enzyme_interaction.interaction_type = 'inhibitor' AND medicine.trade_name = 'Saphris'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Saphris",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "medicine.trade_name": "Saphris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes' and trade name equal to 'Saphris', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor'?"
+  },
+  {
+   "uid": "6c7518ac-73be-4c16-9efc-baa03b13b001",
+   "question": "Which medicines named Asenapine that are FDA approved and have the trade name Saphris interact as inhibitors?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.name = 'Asenapine' AND medicine.fda_approved = 'Yes' AND medicine_enzyme_interaction.interaction_type = 'inhibitor' AND medicine.trade_name = 'Saphris'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.fda_approved",
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Asenapine",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Saphris",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Asenapine",
+    "medicine.fda_approved": "Yes",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "medicine.trade_name": "Saphris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Asenapine' and fda approved equal to 'Yes' and trade name equal to 'Saphris', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor'?"
+  },
+  {
+   "uid": "78afa6d2-6dee-4fcb-a599-76fa47523a3d",
+   "question": "Which medicines that are FDA approved and have the trade name Latuda interact as activitors?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.fda_approved = 'Yes' AND medicine_enzyme_interaction.interaction_type = 'activitor' AND medicine.trade_name = 'Latuda'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "activitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Latuda",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes",
+    "medicine_enzyme_interaction.interaction_type": "activitor",
+    "medicine.trade_name": "Latuda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes' and trade name equal to 'Latuda', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'activitor'?"
+  },
+  {
+   "uid": "206b09f1-ebee-425e-bf4b-55bedae17760",
+   "question": "What medicines named Amisulpride with the trade name Solian act as inhibitors in enzyme interactions?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine.trade_name = 'Solian' AND medicine.name = 'Amisulpride' AND medicine_enzyme_interaction.interaction_type = 'inhibitor'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine.trade_name",
+    "medicine.name",
+    "medicine_enzyme_interaction.interaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Solian",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Amisulpride",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "medicine.trade_name": "Solian",
+    "medicine.name": "Amisulpride",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Solian' and name equal to 'Amisulpride', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor'?"
+  },
+  {
+   "uid": "e2a5a234-a24d-41ae-9cd2-8540195ca0f5",
+   "question": "Which FDA-approved medicines named Latuda act as activitors in enzyme interactions?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine_enzyme_interaction.interaction_type = 'activitor' AND medicine.fda_approved = 'Yes' AND medicine.trade_name = 'Latuda'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.fda_approved",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "activitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Latuda",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine_enzyme_interaction.interaction_type": "activitor",
+    "medicine.fda_approved": "Yes",
+    "medicine.trade_name": "Latuda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes' and trade name equal to 'Latuda', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'activitor'?"
+  },
+  {
+   "uid": "cc6b040e-0330-4495-a2fa-9c12e81c10b4",
+   "question": "Which medicines named Prazinil that are not FDA approved act as enzyme inhibitors?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nWHERE medicine_enzyme_interaction.interaction_type = 'inhibitor' AND medicine.trade_name = 'Prazinil' AND medicine.fda_approved = 'No'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction"
+   ],
+   "involved_columns": [
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Prazinil",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "medicine.trade_name": "Prazinil",
+    "medicine.fda_approved": "No"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Prazinil' and fda approved equal to 'No', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor'?"
+  },
+  {
+   "uid": "cfab7fb3-accd-47e2-90ff-6c78f44e73c3",
+   "question": "Which medicines that are FDA approved have the name exactly Paliperidone?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.name = 'Paliperidone' AND medicine.fda_approved = 'Yes'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Paliperidone",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Paliperidone",
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Paliperidone' and fda approved equal to 'Yes', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id)?"
+  },
+  {
+   "uid": "8722f3d0-03d1-49b1-be46-50ed273c71f3",
+   "question": "Which medicines interact with enzymes where porphyria is congenital erythropoietic porphyria?",
+   "answer_row_ids": [
+    3,
+    10,
+    13
+   ],
+   "answer_count": 3,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.porphyria = 'congenital erythropoietic porphyria'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.porphyria"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "congenital erythropoietic porphyria",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.porphyria": "congenital erythropoietic porphyria"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with porphyria equal to 'congenital erythropoietic porphyria'?"
+  },
+  {
+   "uid": "b4b93c2a-5312-419c-9f0f-434650797790",
+   "question": "Which medicines are associated with the enzyme interactions for Blonanserin?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.name = 'Blonanserin'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Blonanserin",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Blonanserin"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Blonanserin', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id)?"
+  },
+  {
+   "uid": "404ff45c-59b2-4978-bc59-08028f6b9489",
+   "question": "What medicines named Melperone interact with the enzyme Uroporphyrinogen III synthase?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.name = 'Uroporphyrinogen III synthase' AND medicine.name = 'Melperone'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.name",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "Uroporphyrinogen III synthase",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Melperone",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "enzyme.name": "Uroporphyrinogen III synthase",
+    "medicine.name": "Melperone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Melperone', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with name equal to 'Uroporphyrinogen III synthase'?"
+  },
+  {
+   "uid": "12adfd87-af76-4e8f-9a91-3a6d72781472",
+   "question": "Which medicines named Asenapine interact with enzymes whose product is exactly Porphobilinogen?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.product = 'Porphobilinogen' AND medicine.name = 'Asenapine'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.product",
+    "medicine.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "Porphobilinogen",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Asenapine",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "enzyme.product": "Porphobilinogen",
+    "medicine.name": "Asenapine"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Asenapine', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with product equal to 'Porphobilinogen'?"
+  },
+  {
+   "uid": "6b399042-bc2d-483a-ab7a-2b05176991e5",
+   "question": "What medicines interact with enzymes that produce Porphobilinogen?",
+   "answer_row_ids": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 6,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.product = 'Porphobilinogen'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.product"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "Porphobilinogen",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.product": "Porphobilinogen"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with product equal to 'Porphobilinogen'?"
+  },
+  {
+   "uid": "09cfcd8f-7e28-486c-8bfd-7166f0916486",
+   "question": "Which medicines interact with the enzyme Uroporphyrinogen III decarboxylase when its OMIM number is at least 176100?",
+   "answer_row_ids": [
+    19,
+    20
+   ],
+   "answer_count": 2,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.name = 'Uroporphyrinogen III decarboxylase' AND enzyme.omim >= 176100",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.name",
+    "enzyme.omim"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "Uroporphyrinogen III decarboxylase",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "omim",
+     "operator": ">=",
+     "value": 176100,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "enzyme.name": "Uroporphyrinogen III decarboxylase",
+    "enzyme.omim": 176100
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with name equal to 'Uroporphyrinogen III decarboxylase' and omim at least '176100'?"
+  },
+  {
+   "uid": "98f63ece-7d24-4578-b84f-fdeca0686774",
+   "question": "Which medicines named Prazinil are not FDA approved and act as inhibitors on the ALA dehydratase enzyme located in the Cytosol associated with ALA-Dehydratase deficiency?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.porphyria = 'ALA-Dehydratase deficiency' AND medicine_enzyme_interaction.interaction_type = 'inhibitor' AND enzyme.location = 'Cytosol' AND enzyme.name = 'ALA dehydratase' AND medicine.trade_name = 'Prazinil' AND medicine.fda_approved = 'No'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.porphyria",
+    "medicine_enzyme_interaction.interaction_type",
+    "enzyme.location",
+    "enzyme.name",
+    "medicine.trade_name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "ALA-Dehydratase deficiency",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Cytosol",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA dehydratase",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Prazinil",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "enzyme.porphyria": "ALA-Dehydratase deficiency",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "enzyme.location": "Cytosol",
+    "enzyme.name": "ALA dehydratase",
+    "medicine.trade_name": "Prazinil",
+    "medicine.fda_approved": "No"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Prazinil' and fda approved equal to 'No', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with porphyria equal to 'ALA-Dehydratase deficiency' and location equal to 'Cytosol' and name equal to 'ALA dehydratase'?"
+  },
+  {
+   "uid": "152c84d0-274e-4c7a-ac7f-07ceea91ac2f",
+   "question": "Which medicines named Aripiprazole with the trade name Abilify are FDA approved and act as inhibitors on enzymes located in the Mitochondrion where the product is \u03b4-Aminolevulinic acid?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.name = 'Aripiprazole' AND enzyme.location = 'Mitochondrion' AND enzyme.product = '\u03b4-Aminolevulinic acid' AND medicine_enzyme_interaction.interaction_type = 'inhibitor' AND medicine.trade_name = 'Abilify' AND medicine.fda_approved = 'Yes'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "enzyme.location",
+    "enzyme.product",
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name",
+    "medicine.fda_approved"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Aripiprazole",
+     "column_type": "label"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Mitochondrion",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "\u03b4-Aminolevulinic acid",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Abilify",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Aripiprazole",
+    "enzyme.location": "Mitochondrion",
+    "enzyme.product": "\u03b4-Aminolevulinic acid",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "medicine.trade_name": "Abilify",
+    "medicine.fda_approved": "Yes"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Aripiprazole' and trade name equal to 'Abilify' and fda approved equal to 'Yes', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with location equal to 'Mitochondrion' and product equal to '\u03b4-Aminolevulinic acid'?"
+  },
+  {
+   "uid": "6ffc6f07-73f6-4c80-96ef-0b5bab4b9313",
+   "question": "What medicines named Carpipramine that are not FDA approved act as inhibitors of the enzyme ALA dehydratase where the enzyme\u2019s product is Porphobilinogen and its chromosome is 9q34?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.product = 'Porphobilinogen' AND enzyme.name = 'ALA dehydratase' AND medicine.fda_approved = 'No' AND enzyme.chromosome = '9q34' AND medicine.name = 'Carpipramine' AND medicine_enzyme_interaction.interaction_type = 'inhibitor'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.product",
+    "enzyme.name",
+    "medicine.fda_approved",
+    "enzyme.chromosome",
+    "medicine.name",
+    "medicine_enzyme_interaction.interaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "Porphobilinogen",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA dehydratase",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    },
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "9q34",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Carpipramine",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.product": "Porphobilinogen",
+    "enzyme.name": "ALA dehydratase",
+    "medicine.fda_approved": "No",
+    "enzyme.chromosome": "9q34",
+    "medicine.name": "Carpipramine",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'No' and name equal to 'Carpipramine', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with product equal to 'Porphobilinogen' and name equal to 'ALA dehydratase' and chromosome equal to '9q34'?"
+  },
+  {
+   "uid": "77ac9355-5a5d-4c1e-9882-fd8dbdd17f46",
+   "question": "Which medicines named Amisulpride with the trade name Solian are not FDA approved and act as inhibitors of the enzyme ALA synthase where its chromosome is 3p21.1 and location is Mitochondrion?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.fda_approved = 'No' AND enzyme.chromosome = '3p21.1' AND enzyme.location = 'Mitochondrion' AND enzyme.name = 'ALA synthase' AND medicine.trade_name = 'Solian' AND medicine.name = 'Amisulpride' AND medicine_enzyme_interaction.interaction_type = 'inhibitor'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "enzyme.chromosome",
+    "enzyme.location",
+    "enzyme.name",
+    "medicine.trade_name",
+    "medicine.name",
+    "medicine_enzyme_interaction.interaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    },
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "3p21.1",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Mitochondrion",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA synthase",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Solian",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Amisulpride",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "No",
+    "enzyme.chromosome": "3p21.1",
+    "enzyme.location": "Mitochondrion",
+    "enzyme.name": "ALA synthase",
+    "medicine.trade_name": "Solian",
+    "medicine.name": "Amisulpride",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'No' and trade name equal to 'Solian' and name equal to 'Amisulpride', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with chromosome equal to '3p21.1' and location equal to 'Mitochondrion' and name equal to 'ALA synthase'?"
+  },
+  {
+   "uid": "2c71cf27-3b36-422a-8f74-d9a8435e315c",
+   "question": "Which medicines named Aripiprazole with the trade name Abilify interact with the enzyme ALA synthase located in the Mitochondrion on chromosome 3p21.1 that produces \u03b4-Aminolevulinic acid?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.name = 'ALA synthase' AND enzyme.location = 'Mitochondrion' AND enzyme.chromosome = '3p21.1' AND enzyme.product = '\u03b4-Aminolevulinic acid' AND medicine.name = 'Aripiprazole' AND medicine.trade_name = 'Abilify'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.name",
+    "enzyme.location",
+    "enzyme.chromosome",
+    "enzyme.product",
+    "medicine.name",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA synthase",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Mitochondrion",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "3p21.1",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "\u03b4-Aminolevulinic acid",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Aripiprazole",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Abilify",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "enzyme.name": "ALA synthase",
+    "enzyme.location": "Mitochondrion",
+    "enzyme.chromosome": "3p21.1",
+    "enzyme.product": "\u03b4-Aminolevulinic acid",
+    "medicine.name": "Aripiprazole",
+    "medicine.trade_name": "Abilify"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Aripiprazole' and trade name equal to 'Abilify', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with name equal to 'ALA synthase' and location equal to 'Mitochondrion' and chromosome equal to '3p21.1' and product equal to '\u03b4-Aminolevulinic acid'?"
+  },
+  {
+   "uid": "54838ad0-21f8-4fc1-8ff4-826ac1e19657",
+   "question": "Which medicines that are not FDA approved act as inhibitors of the enzyme ALA synthase located in the Mitochondrion on chromosome 3p21.1 with an OMIM number of at least 125290, where porphyria is none and the product is \u03b4-Aminolevulinic acid?",
+   "answer_row_ids": [
+    1,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.chromosome = '3p21.1' AND medicine.fda_approved = 'No' AND enzyme.omim >= 125290 AND medicine_enzyme_interaction.interaction_type = 'inhibitor' AND enzyme.location = 'Mitochondrion' AND enzyme.name = 'ALA synthase' AND enzyme.porphyria = 'none' AND enzyme.product = '\u03b4-Aminolevulinic acid'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.chromosome",
+    "medicine.fda_approved",
+    "enzyme.omim",
+    "medicine_enzyme_interaction.interaction_type",
+    "enzyme.location",
+    "enzyme.name",
+    "enzyme.porphyria",
+    "enzyme.product"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "3p21.1",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    },
+    {
+     "table": "enzyme",
+     "column": "omim",
+     "operator": ">=",
+     "value": 125290,
+     "column_type": "numeric"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Mitochondrion",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA synthase",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "\u03b4-Aminolevulinic acid",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.chromosome": "3p21.1",
+    "medicine.fda_approved": "No",
+    "enzyme.omim": 125290,
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "enzyme.location": "Mitochondrion",
+    "enzyme.name": "ALA synthase",
+    "enzyme.porphyria": "none",
+    "enzyme.product": "\u03b4-Aminolevulinic acid"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'No', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with chromosome equal to '3p21.1' and omim at least '125290' and location equal to 'Mitochondrion' and name equal to 'ALA synthase' and porphyria equal to 'none' and product equal to '\u03b4-Aminolevulinic acid'?"
+  },
+  {
+   "uid": "1c405b01-d8b8-425c-b7ef-481acf5fb355",
+   "question": "Which medicines named Clozapine with the trade name Clozaril act as inhibitors of the enzyme ALA dehydratase located in the Cytosol, where porphyria is ALA-Dehydratase deficiency, omim is at most 125270, and the enzyme\u2019s product is Porphobilinogen?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.porphyria = 'ALA-Dehydratase deficiency' AND enzyme.location = 'Cytosol' AND enzyme.omim <= 125270 AND medicine.name = 'Clozapine' AND enzyme.product = 'Porphobilinogen' AND medicine_enzyme_interaction.interaction_type = 'inhibitor' AND medicine.trade_name = 'Clozaril' AND enzyme.name = 'ALA dehydratase'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.porphyria",
+    "enzyme.location",
+    "enzyme.omim",
+    "medicine.name",
+    "enzyme.product",
+    "medicine_enzyme_interaction.interaction_type",
+    "medicine.trade_name",
+    "enzyme.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "ALA-Dehydratase deficiency",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Cytosol",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "omim",
+     "operator": "<=",
+     "value": 125270,
+     "column_type": "numeric"
+    },
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Clozapine",
+     "column_type": "label"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "Porphobilinogen",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Clozaril",
+     "column_type": "label"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA dehydratase",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.porphyria": "ALA-Dehydratase deficiency",
+    "enzyme.location": "Cytosol",
+    "enzyme.omim": 125270,
+    "medicine.name": "Clozapine",
+    "enzyme.product": "Porphobilinogen",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor",
+    "medicine.trade_name": "Clozaril",
+    "enzyme.name": "ALA dehydratase"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Clozapine' and trade name equal to 'Clozaril', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with porphyria equal to 'ALA-Dehydratase deficiency' and location equal to 'Cytosol' and omim at most '125270' and product equal to 'Porphobilinogen' and name equal to 'ALA dehydratase'?"
+  },
+  {
+   "uid": "1988cb00-b55e-4788-b6bb-9d21b9c490c7",
+   "question": "What medicines interact as activitors with enzymes located in the Cytosol on chromosome 10q25.2-q26.3 that produce Uroporphyrinogen III?",
+   "answer_row_ids": [
+    3,
+    10,
+    13
+   ],
+   "answer_count": 3,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.chromosome = '10q25.2-q26.3' AND enzyme.location = 'Cytosol' AND enzyme.product = 'Uroporphyrinogen III' AND medicine_enzyme_interaction.interaction_type = 'activitor'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.chromosome",
+    "enzyme.location",
+    "enzyme.product",
+    "medicine_enzyme_interaction.interaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "10q25.2-q26.3",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Cytosol",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "Uroporphyrinogen III",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "activitor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.chromosome": "10q25.2-q26.3",
+    "enzyme.location": "Cytosol",
+    "enzyme.product": "Uroporphyrinogen III",
+    "medicine_enzyme_interaction.interaction_type": "activitor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'activitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with chromosome equal to '10q25.2-q26.3' and location equal to 'Cytosol' and product equal to 'Uroporphyrinogen III'?"
+  },
+  {
+   "uid": "0e06f6a0-cee0-4a1c-a09e-144b24fe1f7b",
+   "question": "What medicines with the trade name Saphris are FDA approved and interact with the enzyme whose product is \u03b4-Aminolevulinic acid?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.product = '\u03b4-Aminolevulinic acid' AND medicine.fda_approved = 'Yes' AND medicine.trade_name = 'Saphris'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.product",
+    "medicine.fda_approved",
+    "medicine.trade_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "\u03b4-Aminolevulinic acid",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Saphris",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "enzyme.product": "\u03b4-Aminolevulinic acid",
+    "medicine.fda_approved": "Yes",
+    "medicine.trade_name": "Saphris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes' and trade name equal to 'Saphris', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with product equal to '\u03b4-Aminolevulinic acid'?"
+  },
+  {
+   "uid": "7ccdcfb7-4e72-472a-ac8f-90347b73d11e",
+   "question": "What medicines named Blonanserin with the trade name Lonasen, that are not FDA approved, interact with enzymes where porphyria is none and the product is \u03b4-Aminolevulinic acid?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.name = 'Blonanserin' AND enzyme.porphyria = 'none' AND medicine.fda_approved = 'No' AND medicine.trade_name = 'Lonasen' AND enzyme.product = '\u03b4-Aminolevulinic acid'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.name",
+    "enzyme.porphyria",
+    "medicine.fda_approved",
+    "medicine.trade_name",
+    "enzyme.product"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "name",
+     "operator": "=",
+     "value": "Blonanserin",
+     "column_type": "label"
+    },
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "none",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "No",
+     "column_type": "boolean"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Lonasen",
+     "column_type": "label"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "\u03b4-Aminolevulinic acid",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "medicine.name": "Blonanserin",
+    "enzyme.porphyria": "none",
+    "medicine.fda_approved": "No",
+    "medicine.trade_name": "Lonasen",
+    "enzyme.product": "\u03b4-Aminolevulinic acid"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with name equal to 'Blonanserin' and fda approved equal to 'No' and trade name equal to 'Lonasen', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with porphyria equal to 'none' and product equal to '\u03b4-Aminolevulinic acid'?"
+  },
+  {
+   "uid": "31fafe43-1dd5-4136-86f6-bc5140cec1a6",
+   "question": "What medicines are FDA approved and interact with the enzyme Uroporphyrinogen III decarboxylase where porphyria is porphyria cutanea tarda?",
+   "answer_row_ids": [
+    20
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.fda_approved = 'Yes' AND enzyme.name = 'Uroporphyrinogen III decarboxylase' AND enzyme.porphyria = 'porphyria cutanea tarda'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "enzyme.name",
+    "enzyme.porphyria"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "Uroporphyrinogen III decarboxylase",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "porphyria cutanea tarda",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes",
+    "enzyme.name": "Uroporphyrinogen III decarboxylase",
+    "enzyme.porphyria": "porphyria cutanea tarda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with name equal to 'Uroporphyrinogen III decarboxylase' and porphyria equal to 'porphyria cutanea tarda'?"
+  },
+  {
+   "uid": "4f9a38b3-3a91-44ea-8ced-ee874f0c3e93",
+   "question": "Which medicines named Abilify act as inhibitors for enzymes located on chromosome 3p21.1?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.chromosome = '3p21.1' AND medicine.trade_name = 'Abilify' AND medicine_enzyme_interaction.interaction_type = 'inhibitor'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.chromosome",
+    "medicine.trade_name",
+    "medicine_enzyme_interaction.interaction_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "3p21.1",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Abilify",
+     "column_type": "label"
+    },
+    {
+     "table": "medicine_enzyme_interaction",
+     "column": "interaction_type",
+     "operator": "=",
+     "value": "inhibitor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.chromosome": "3p21.1",
+    "medicine.trade_name": "Abilify",
+    "medicine_enzyme_interaction.interaction_type": "inhibitor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Abilify', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id) with interaction type equal to 'inhibitor', whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with chromosome equal to '3p21.1'?"
+  },
+  {
+   "uid": "9a80c11c-3ac8-4381-b44a-68a76da1f9bc",
+   "question": "Which medicines that are FDA approved interact with the enzyme ALA synthase where the enzyme\u2019s OMIM number is at most 125290?",
+   "answer_row_ids": [
+    2,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE medicine.fda_approved = 'Yes' AND enzyme.omim <= 125290 AND enzyme.name = 'ALA synthase'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "medicine.fda_approved",
+    "enzyme.omim",
+    "enzyme.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "medicine",
+     "column": "fda_approved",
+     "operator": "=",
+     "value": "Yes",
+     "column_type": "boolean"
+    },
+    {
+     "table": "enzyme",
+     "column": "omim",
+     "operator": "<=",
+     "value": 125290,
+     "column_type": "numeric"
+    },
+    {
+     "table": "enzyme",
+     "column": "name",
+     "operator": "=",
+     "value": "ALA synthase",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "medicine.fda_approved": "Yes",
+    "enzyme.omim": 125290,
+    "enzyme.name": "ALA synthase"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with fda approved equal to 'Yes', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with omim at most '125290' and name equal to 'ALA synthase'?"
+  },
+  {
+   "uid": "f0287689-a43c-49aa-ac9b-ec970e494794",
+   "question": "Which medicines named Saphris interact with enzymes located in the Cytosol that produce Porphobilinogen, have chromosome 9q34, and are linked to ALA-Dehydratase deficiency?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT medicine.id FROM medicine\nJOIN medicine_enzyme_interaction ON medicine.id = medicine_enzyme_interaction.medicine_id\nJOIN enzyme ON medicine_enzyme_interaction.enzyme_id = enzyme.id\nWHERE enzyme.location = 'Cytosol' AND medicine.trade_name = 'Saphris' AND enzyme.product = 'Porphobilinogen' AND enzyme.chromosome = '9q34' AND enzyme.porphyria = 'ALA-Dehydratase deficiency'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "medicine",
+    "medicine_enzyme_interaction",
+    "enzyme"
+   ],
+   "involved_columns": [
+    "enzyme.location",
+    "medicine.trade_name",
+    "enzyme.product",
+    "enzyme.chromosome",
+    "enzyme.porphyria"
+   ],
+   "involved_filters": [
+    {
+     "table": "enzyme",
+     "column": "location",
+     "operator": "=",
+     "value": "Cytosol",
+     "column_type": "enum"
+    },
+    {
+     "table": "medicine",
+     "column": "trade_name",
+     "operator": "=",
+     "value": "Saphris",
+     "column_type": "label"
+    },
+    {
+     "table": "enzyme",
+     "column": "product",
+     "operator": "=",
+     "value": "Porphobilinogen",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "chromosome",
+     "operator": "=",
+     "value": "9q34",
+     "column_type": "enum"
+    },
+    {
+     "table": "enzyme",
+     "column": "porphyria",
+     "operator": "=",
+     "value": "ALA-Dehydratase deficiency",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "enzyme.location": "Cytosol",
+    "medicine.trade_name": "Saphris",
+    "enzyme.product": "Porphobilinogen",
+    "enzyme.chromosome": "9q34",
+    "enzyme.porphyria": "ALA-Dehydratase deficiency"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "medicine"
+   },
+   "answer_table": "medicine",
+   "answer_id_column": "id",
+   "canonical_question": "Which medicine entities with trade name equal to 'Saphris', having at least one related medicine enzyme interaction record (linked on medicine.id = medicine_enzyme_interaction.medicine_id), whose medicine enzyme interaction record itself has at least one related enzyme record (linked on medicine_enzyme_interaction.enzyme_id = enzyme.id) with location equal to 'Cytosol' and product equal to 'Porphobilinogen' and chromosome equal to '9q34' and porphyria equal to 'ALA-Dehydratase deficiency'?"
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "music_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 6,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:51:45.541774+00:00",
+  "records": [
+    {
+      "uid": "05c33579-dfda-4811-9abb-e88ba31fdf20",
+      "question": "Which genres have a rating of 8, are most popular in Bangladesh, and include songs rated at least 10 from artists and songs both based in India?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN artist ON genre.g_name = artist.preferred_genre\nJOIN song ON genre.g_name = song.genre_is\nWHERE song.rating >= 10 AND genre.rating = '8' AND artist.country = 'India' AND song.country = 'India' AND genre.most_popular_in = 'Bangladesh'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE rating = '8' \n  AND most_popular_in = 'Bangladesh' \n  AND EXISTS (\n    SELECT 1 \n    FROM artist \n    WHERE artist.preferred_genre = genre.g_name \n      AND artist.country = 'India'\n  ) \n  AND EXISTS (\n    SELECT 1 \n    FROM song \n    WHERE song.genre_is = genre.g_name \n      AND song.rating >= 10 \n      AND song.country = 'India'\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.62
+    },
+    {
+      "uid": "1c9c6c4f-0bec-421a-b996-7159b7031378",
+      "question": "Which genres with a rating of 7 are most popular in Canada?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN song ON genre.g_name = song.genre_is\nWHERE genre.rating = '7' AND genre.most_popular_in = 'Canada'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE rating = '7' AND most_popular_in = 'Canada' \nAND g_name IN (SELECT genre_is FROM song)",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.41
+    },
+    {
+      "uid": "3c98e371-947d-4acd-8ff8-515af34169bc",
+      "question": "Which genres with a rating of 7 are most popular in Canada and have an English song called My love released on 24-JAN-2007 that\u2019s rated 6, from the USA, and has a resolution of at most 1080?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN song ON genre.g_name = song.genre_is\nWHERE genre.rating = '7' AND song.song_name = 'My love' AND genre.most_popular_in = 'Canada' AND song.rating = 6 AND song.country = 'USA' AND song.resolution <= 1080 AND song.languages = 'english' AND song.releasedate = '24-JAN-2007'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE rating = '7' \n  AND most_popular_in = 'Canada' \n  AND EXISTS (\n    SELECT 1 \n    FROM song \n    WHERE song_name = 'My love' \n      AND rating = 6 \n      AND country = 'USA' \n      AND resolution <= 1080 \n      AND languages = 'english' \n      AND releasedate = '2007-01-24' \n      AND genre_is = genre.g_name\n  )",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.04
+    },
+    {
+      "uid": "3cfb34dd-c719-4299-94a4-4204e1bdb22a",
+      "question": "What genres are associated with the song Tumi robe nirobe that was released on 28-AUG-2011 with a rating of 8 and a resolution of 1080?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN song ON genre.g_name = song.genre_is\nWHERE song.song_name = 'Tumi robe nirobe' AND song.releasedate = '28-AUG-2011' AND song.rating = 8 AND song.resolution = 1080",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE g_name IN (\n    SELECT genre_is \n    FROM song \n    WHERE song_name = 'Tumi robe nirobe' \n      AND releasedate = '2011-08-28' \n      AND rating = 8 \n      AND resolution = 1080\n)",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.68
+    },
+    {
+      "uid": "4df2ae1d-ae54-444f-839c-452877989ecb",
+      "question": "Which genres rated 7 are most popular in Canada and have songs named My love released on 24-JAN-2007 in the USA with a rating of at least 6, performed by artists from the USA?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN artist ON genre.g_name = artist.preferred_genre\nJOIN song ON genre.g_name = song.genre_is\nWHERE genre.most_popular_in = 'Canada' AND song.song_name = 'My love' AND artist.country = 'USA' AND genre.rating = '7' AND song.rating >= 6 AND song.releasedate = '24-JAN-2007' AND song.country = 'USA'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE most_popular_in = 'Canada' \n  AND rating = '7' \n  AND EXISTS (\n    SELECT 1 \n    FROM artist \n    WHERE preferred_genre = genre.g_name \n      AND country = 'USA'\n  ) \n  AND EXISTS (\n    SELECT 1 \n    FROM song \n    WHERE genre_is = genre.g_name \n      AND song_name = 'My love' \n      AND rating >= 6 \n      AND releasedate = '2007-01-24' \n      AND country = 'USA'\n  )",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.81
+    },
+    {
+      "uid": "5803175a-358f-4546-8804-d6bc7ed550cf",
+      "question": "Which genres have songs with files that have a duration of exactly 4:30?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN song ON genre.g_name = song.genre_is\nJOIN files ON song.f_id = files.f_id\nWHERE files.duration = '4:30'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE g_name IN (\n    SELECT genre_is \n    FROM song \n    WHERE f_id IN (\n        SELECT f_id \n        FROM files \n        WHERE duration = '4:30'\n    )\n)",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.34
+    },
+    {
+      "uid": "6852e583-d5a5-4cb0-ab64-d23745e3433d",
+      "question": "What genres have a rating that is exactly 8?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nWHERE genre.rating = '8'",
+      "pred_sql": "SELECT g_name FROM genre WHERE rating = '8'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.91
+    },
+    {
+      "uid": "7bb36280-3a44-484a-bcb0-9ba874746b23",
+      "question": "Which genres have songs rated at least 10 released exactly on 27-MAR-2004 by female artists from India?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN song ON genre.g_name = song.genre_is\nJOIN artist ON song.artist_name = artist.artist_name\nWHERE song.rating >= 10 AND artist.gender = 'Female' AND song.releasedate = '27-MAR-2004' AND artist.country = 'India'",
+      "pred_sql": "SELECT g_name\nFROM genre\nWHERE g_name IN (\n    SELECT genre_is\n    FROM song\n    WHERE rating = 10 AND TO_CHAR(releasedate, 'DD-MON-YYYY') = '27-MAR-2004'\n    AND f_id IN (\n        SELECT f_id\n        FROM files\n        WHERE artist_name IN (\n            SELECT artist_name\n            FROM artist\n            WHERE gender = 'Female' AND country = 'India'\n        )\n    )\n)",
+      "strategy": "2pM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 6.75
+    },
+    {
+      "uid": "b31b52e4-7be8-49c4-94f4-69df1b4b9908",
+      "question": "Which genres rated 9 are most popular in America and feature English songs from the UK named Just beat it that have a duration of 4:34?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN song ON genre.g_name = song.genre_is\nJOIN files ON song.f_id = files.f_id\nWHERE song.song_name = 'Just beat it' AND files.duration = '4:34' AND song.languages = 'english' AND genre.most_popular_in = 'America' AND song.country = 'UK' AND genre.rating = '9'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE most_popular_in = 'America' AND rating = '9' \nAND EXISTS (\n    SELECT 1 \n    FROM song \n    JOIN files ON song.f_id = files.f_id \n    WHERE song.song_name = 'Just beat it' \n    AND song.languages = 'english' \n    AND song.country = 'UK' \n    AND files.duration = '4:34'\n)",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.07
+    },
+    {
+      "uid": "e92e09ca-5cfc-4a09-9d54-e277c36b243d",
+      "question": "Which genres with a rating of 9 include the song exactly named Ami opar hoye?",
+      "gold_sql": "SELECT genre.g_name FROM genre\nJOIN artist ON genre.g_name = artist.preferred_genre\nJOIN song ON genre.g_name = song.genre_is\nWHERE song.song_name = 'Ami opar hoye' AND genre.rating = '9'",
+      "pred_sql": "SELECT g_name \nFROM genre \nWHERE rating = '9' \n  AND g_name IN (SELECT preferred_genre FROM artist) \n  AND g_name IN (SELECT genre_is FROM song WHERE song_name = 'Ami opar hoye')",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.41
+    }
+  ]
+}

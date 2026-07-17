@@ -1,0 +1,3475 @@
+{
+ "db_id": "university_basketball",
+ "target_table": "university",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 75447047,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/university_basketball/university_basketball.sqlite",
+  "generated_at": "2026-07-02T16:37:13.562822+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "university",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "0M": 9,
+   "0H": 8,
+   "1pE": 8,
+   "1pM": 8,
+   "1pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "0H": 8,
+   "0M": 9,
+   "1pE": 8,
+   "1pH": 8,
+   "1pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0H": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 42,
+    "inner_attempts": 42,
+    "failed_rounds": 34,
+    "invalid_pairs_filtered": 34,
+    "failure_events": {
+     "qa_validation_failed": 34
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 18,
+    "inner_attempts": 18,
+    "failed_rounds": 9,
+    "invalid_pairs_filtered": 9,
+    "failure_events": {
+     "qa_validation_failed": 9
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 20,
+    "inner_attempts": 20,
+    "failed_rounds": 12,
+    "invalid_pairs_filtered": 12,
+    "failure_events": {
+     "qa_validation_failed": 12
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "1a5ad9fc-e1d9-4985-9c02-eed11e1b6e12",
+   "question": "Which universities have the nickname Fightin' Blue Hens?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.nickname = 'Fightin'' Blue Hens'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Fightin' Blue Hens",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.nickname": "Fightin' Blue Hens"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with nickname equal to 'Fightin'?"
+  },
+  {
+   "uid": "06864386-2b07-4c18-aad1-b082060e372f",
+   "question": "Which universities are in the America East Conference ( D-I)?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'America East Conference ( D-I )'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "America East Conference ( D-I )"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'America East Conference ( D-I )'?"
+  },
+  {
+   "uid": "ef2e5727-dcff-4fc3-9312-e99f142d70d8",
+   "question": "Which universities have the school name University of Delaware and are affiliated as Public institutions?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.school = 'University of Delaware' AND university.affiliation = 'Public'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.school",
+    "university.affiliation"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Delaware",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.school": "University of Delaware",
+    "university.affiliation": "Public"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'University of Delaware' and affiliation equal to 'Public'?"
+  },
+  {
+   "uid": "06a20481-69a1-4f69-bd0f-81021bf2dbf5",
+   "question": "Which universities were founded in 1866 or earlier?",
+   "answer_row_ids": [
+    1,
+    2,
+    4
+   ],
+   "answer_count": 3,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.founded <= 1866.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.founded"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1866.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.founded": 1866.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded at most '1866.0'?"
+  },
+  {
+   "uid": "99933c73-08c7-4a1c-9bf5-848ce74b47fd",
+   "question": "Which universities were founded in 1866 exactly?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.founded = 1866.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.founded"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "=",
+     "value": 1866.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.founded": 1866.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded equal to '1866.0'?"
+  },
+  {
+   "uid": "e375a233-e9f7-48a6-84d6-a8bb3b588cab",
+   "question": "Which universities named Rutgers University were founded in 1766 or later?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.founded >= 1766.0 AND university.school = 'Rutgers University'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.founded",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1766.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.founded": 1766.0,
+    "university.school": "Rutgers University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded at least '1766.0' and school equal to 'Rutgers University'?"
+  },
+  {
+   "uid": "4209e867-96f1-4a63-aee3-c570a5acd186",
+   "question": "Which universities belong to the American Athletic Conference ( D-I )?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'American Athletic Conference ( D-I )'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "American Athletic Conference ( D-I )",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "American Athletic Conference ( D-I )"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'American Athletic Conference ( D-I )'?"
+  },
+  {
+   "uid": "5aa1d6a0-88e8-4ada-8668-7e555a1d7401",
+   "question": "Which universities have an enrollment of at least 23997 students?",
+   "answer_row_ids": [
+    4,
+    5
+   ],
+   "answer_count": 2,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.enrollment >= 23997.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.enrollment": 23997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment at least '23997.0'?"
+  },
+  {
+   "uid": "4470790b-d8f2-4f49-bb2e-77598fc97ad2",
+   "question": "Which universities are exactly named Rutgers University?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.school = 'Rutgers University'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.school": "Rutgers University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'Rutgers University'?"
+  },
+  {
+   "uid": "49dca1bf-59cd-4d3d-97b0-6062f8aa344d",
+   "question": "Which universities named Lebanon Valley College, founded in 1866 or earlier, are part of the MAC Commonwealth Conference ( D-III ), located in Annville, affiliated as Private/Methodist, and have the nickname Flying Dutchmen?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.school = 'Lebanon Valley College' AND university.founded <= 1866.0 AND university.primary_conference = 'MAC Commonwealth Conference ( D-III )' AND university.location LIKE '%Annville%' AND university.affiliation = 'Private/Methodist' AND university.nickname = 'Flying Dutchmen'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.school",
+    "university.founded",
+    "university.primary_conference",
+    "university.location",
+    "university.affiliation",
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Lebanon Valley College",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1866.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "MAC Commonwealth Conference ( D-III )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Annville",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Private/Methodist",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Flying Dutchmen",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.school": "Lebanon Valley College",
+    "university.founded": 1866.0,
+    "university.primary_conference": "MAC Commonwealth Conference ( D-III )",
+    "university.location": "Annville",
+    "university.affiliation": "Private/Methodist",
+    "university.nickname": "Flying Dutchmen"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'Lebanon Valley College' and founded at most '1866.0' and primary conference equal to 'MAC Commonwealth Conference ( D-III )' and location matching '%Annville%' and affiliation equal to 'Private/Methodist' and nickname equal to 'Flying Dutchmen'?"
+  },
+  {
+   "uid": "f8822ac6-5284-4690-bf8d-a59a444d4129",
+   "question": "Which public universities located in Stony Brook, founded in 1957 or later, with the nickname Seawolves, an enrollment of at least 23997, and where the primary conference is America East Conference ( D-I )?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.location LIKE '%Stony Brook%' AND university.founded >= 1957.0 AND university.primary_conference = 'America East Conference ( D-I )' AND university.affiliation = 'Public' AND university.nickname = 'Seawolves' AND university.enrollment >= 23997.0",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.location",
+    "university.founded",
+    "university.primary_conference",
+    "university.affiliation",
+    "university.nickname",
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Stony Brook",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1957.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Seawolves",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.location": "Stony Brook",
+    "university.founded": 1957.0,
+    "university.primary_conference": "America East Conference ( D-I )",
+    "university.affiliation": "Public",
+    "university.nickname": "Seawolves",
+    "university.enrollment": 23997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with location matching '%Stony Brook%' and founded at least '1957.0' and primary conference equal to 'America East Conference ( D-I )' and affiliation equal to 'Public' and nickname equal to 'Seawolves' and enrollment at least '23997.0'?"
+  },
+  {
+   "uid": "499d6236-c5ad-4691-b6ca-658950fd3061",
+   "question": "Which public universities located in DE, with the nickname Fightin' Blue Hens, exactly 19067 enrollment, part of the Colonial Athletic Association ( D-I ), founded in 1743 or earlier, and named University of Delaware fit all these criteria?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.founded <= 1743.0 AND university.nickname = 'Fightin'' Blue Hens' AND university.school = 'University of Delaware' AND university.affiliation = 'Public' AND university.primary_conference = 'Colonial Athletic Association ( D-I )' AND university.enrollment = 19067.0 AND university.location LIKE '%DE%'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.founded",
+    "university.nickname",
+    "university.school",
+    "university.affiliation",
+    "university.primary_conference",
+    "university.enrollment",
+    "university.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1743.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Fightin' Blue Hens",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Delaware",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Colonial Athletic Association ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 19067.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "DE",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "university.founded": 1743.0,
+    "university.nickname": "Fightin' Blue Hens",
+    "university.school": "University of Delaware",
+    "university.affiliation": "Public",
+    "university.primary_conference": "Colonial Athletic Association ( D-I )",
+    "university.enrollment": 19067.0,
+    "university.location": "DE"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded at most '1743.0' and nickname equal to 'Fightin' and school equal to 'University of Delaware' and affiliation equal to 'Public' and primary conference equal to 'Colonial Athletic Association ( D-I )' and enrollment equal to '19067.0' and location matching '%DE%'?"
+  },
+  {
+   "uid": "0f7848e1-1714-449d-9fa6-ca10b8b01156",
+   "question": "Which public universities named University of Rhode Island, located in Kingston, have exactly 19095 enrollment, are nicknamed Rams, founded in 1892 or earlier, and compete in the Atlantic 10 Conference ( D-I)?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.enrollment = 19095.0 AND university.primary_conference = 'Atlantic 10 Conference ( D-I )' AND university.nickname = 'Rams' AND university.affiliation = 'Public' AND university.school = 'University of Rhode Island' AND university.founded <= 1892.0 AND university.location LIKE '%Kingston%'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.enrollment",
+    "university.primary_conference",
+    "university.nickname",
+    "university.affiliation",
+    "university.school",
+    "university.founded",
+    "university.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 19095.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Atlantic 10 Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Rams",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Rhode Island",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1892.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Kingston",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "university.enrollment": 19095.0,
+    "university.primary_conference": "Atlantic 10 Conference ( D-I )",
+    "university.nickname": "Rams",
+    "university.affiliation": "Public",
+    "university.school": "University of Rhode Island",
+    "university.founded": 1892.0,
+    "university.location": "Kingston"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment equal to '19095.0' and primary conference equal to 'Atlantic 10 Conference ( D-I )' and nickname equal to 'Rams' and affiliation equal to 'Public' and school equal to 'University of Rhode Island' and founded at most '1892.0' and location matching '%Kingston%'?"
+  },
+  {
+   "uid": "ee2f1e7a-661b-49ef-8a23-77e327530b21",
+   "question": "What universities named University of Rhode Island, founded in 1892, with a nickname Rams, located in Kingston, part of the Atlantic 10 Conference ( D-I ), have a public affiliation and at least 19095 enrollment?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'Atlantic 10 Conference ( D-I )' AND university.location LIKE '%Kingston%' AND university.enrollment >= 19095.0 AND university.nickname = 'Rams' AND university.school = 'University of Rhode Island' AND university.founded = 1892.0 AND university.affiliation = 'Public'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.location",
+    "university.enrollment",
+    "university.nickname",
+    "university.school",
+    "university.founded",
+    "university.affiliation"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Atlantic 10 Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Kingston",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 19095.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Rams",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Rhode Island",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "=",
+     "value": 1892.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "Atlantic 10 Conference ( D-I )",
+    "university.location": "Kingston",
+    "university.enrollment": 19095.0,
+    "university.nickname": "Rams",
+    "university.school": "University of Rhode Island",
+    "university.founded": 1892.0,
+    "university.affiliation": "Public"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'Atlantic 10 Conference ( D-I )' and location matching '%Kingston%' and enrollment at least '19095.0' and nickname equal to 'Rams' and school equal to 'University of Rhode Island' and founded equal to '1892.0' and affiliation equal to 'Public'?"
+  },
+  {
+   "uid": "2e3d1e31-7e75-41d8-91f3-0f028b1c7d82",
+   "question": "What universities named University of Delaware, affiliated as Public, with the nickname Fightin' Blue Hens, located in areas containing DE, founded in 1743 or earlier, and in the Colonial Athletic Association ( D-I ) conference have at most 19067 students enrolled?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'Colonial Athletic Association ( D-I )' AND university.location LIKE '%DE%' AND university.founded <= 1743.0 AND university.school = 'University of Delaware' AND university.affiliation = 'Public' AND university.enrollment <= 19067.0 AND university.nickname = 'Fightin'' Blue Hens'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.location",
+    "university.founded",
+    "university.school",
+    "university.affiliation",
+    "university.enrollment",
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Colonial Athletic Association ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "DE",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1743.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Delaware",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 19067.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Fightin' Blue Hens",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "Colonial Athletic Association ( D-I )",
+    "university.location": "DE",
+    "university.founded": 1743.0,
+    "university.school": "University of Delaware",
+    "university.affiliation": "Public",
+    "university.enrollment": 19067.0,
+    "university.nickname": "Fightin' Blue Hens"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'Colonial Athletic Association ( D-I )' and location matching '%DE%' and founded at most '1743.0' and school equal to 'University of Delaware' and affiliation equal to 'Public' and enrollment at most '19067.0' and nickname equal to 'Fightin'?"
+  },
+  {
+   "uid": "75859827-128b-4c91-a496-ee0ce4adb2b0",
+   "question": "Which university is exactly the University of Delaware, with the nickname Fightin' Blue Hens, located in a place containing DE, affiliated as Public, enrolled 19067 students, and part of the Colonial Athletic Association ( D-I)?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.nickname = 'Fightin'' Blue Hens' AND university.location LIKE '%DE%' AND university.primary_conference = 'Colonial Athletic Association ( D-I )' AND university.enrollment = 19067.0 AND university.affiliation = 'Public' AND university.school = 'University of Delaware'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.nickname",
+    "university.location",
+    "university.primary_conference",
+    "university.enrollment",
+    "university.affiliation",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Fightin' Blue Hens",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "DE",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Colonial Athletic Association ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 19067.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Delaware",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.nickname": "Fightin' Blue Hens",
+    "university.location": "DE",
+    "university.primary_conference": "Colonial Athletic Association ( D-I )",
+    "university.enrollment": 19067.0,
+    "university.affiliation": "Public",
+    "university.school": "University of Delaware"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with nickname equal to 'Fightin' and location matching '%DE%' and primary conference equal to 'Colonial Athletic Association ( D-I )' and enrollment equal to '19067.0' and affiliation equal to 'Public' and school equal to 'University of Delaware'?"
+  },
+  {
+   "uid": "4e8fd52d-6a9e-4036-8c91-5d85e6d3cef6",
+   "question": "Which universities called Seawolves, affiliated as Public, founded in 1957 or later, with enrollment at most 23997, and competing in the America East Conference ( D-I ) are Stony Brook University?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'America East Conference ( D-I )' AND university.nickname = 'Seawolves' AND university.school = 'Stony Brook University' AND university.founded >= 1957.0 AND university.enrollment <= 23997.0 AND university.affiliation = 'Public'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.nickname",
+    "university.school",
+    "university.founded",
+    "university.enrollment",
+    "university.affiliation"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Seawolves",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Stony Brook University",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1957.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "America East Conference ( D-I )",
+    "university.nickname": "Seawolves",
+    "university.school": "Stony Brook University",
+    "university.founded": 1957.0,
+    "university.enrollment": 23997.0,
+    "university.affiliation": "Public"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'America East Conference ( D-I )' and nickname equal to 'Seawolves' and school equal to 'Stony Brook University' and founded at least '1957.0' and enrollment at most '23997.0' and affiliation equal to 'Public'?"
+  },
+  {
+   "uid": "15777f89-586a-4d22-bb1b-cafebb658d63",
+   "question": "Which public universities founded in 1766 or later are part of the American Athletic Conference ( D-I)?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.affiliation = 'Public' AND university.founded >= 1766.0 AND university.primary_conference = 'American Athletic Conference ( D-I )'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.affiliation",
+    "university.founded",
+    "university.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1766.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "American Athletic Conference ( D-I )",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.affiliation": "Public",
+    "university.founded": 1766.0,
+    "university.primary_conference": "American Athletic Conference ( D-I )"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with affiliation equal to 'Public' and founded at least '1766.0' and primary conference equal to 'American Athletic Conference ( D-I )'?"
+  },
+  {
+   "uid": "646b5f7f-92b0-4a3a-a6d1-e0ad8de382bb",
+   "question": "Which public universities named Rams belong to the University of Rhode Island and have enrollment of at most 19095?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.affiliation = 'Public' AND university.nickname = 'Rams' AND university.school = 'University of Rhode Island' AND university.enrollment <= 19095.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.affiliation",
+    "university.nickname",
+    "university.school",
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Rams",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Rhode Island",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 19095.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.affiliation": "Public",
+    "university.nickname": "Rams",
+    "university.school": "University of Rhode Island",
+    "university.enrollment": 19095.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with affiliation equal to 'Public' and nickname equal to 'Rams' and school equal to 'University of Rhode Island' and enrollment at most '19095.0'?"
+  },
+  {
+   "uid": "5cb65fda-7f30-4c29-8045-911036b6a0fc",
+   "question": "Which universities named Stony Brook University have at most 23997 students, were founded in 1957, belong to the America East Conference ( D-I ), and have the nickname Seawolves?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.school = 'Stony Brook University' AND university.enrollment <= 23997.0 AND university.primary_conference = 'America East Conference ( D-I )' AND university.founded = 1957.0 AND university.nickname = 'Seawolves'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.school",
+    "university.enrollment",
+    "university.primary_conference",
+    "university.founded",
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Stony Brook University",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "=",
+     "value": 1957.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Seawolves",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.school": "Stony Brook University",
+    "university.enrollment": 23997.0,
+    "university.primary_conference": "America East Conference ( D-I )",
+    "university.founded": 1957.0,
+    "university.nickname": "Seawolves"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'Stony Brook University' and enrollment at most '23997.0' and primary conference equal to 'America East Conference ( D-I )' and founded equal to '1957.0' and nickname equal to 'Seawolves'?"
+  },
+  {
+   "uid": "403ffb0e-5425-4436-8e08-cc76ff13f9b6",
+   "question": "Which universities named Lebanon Valley College have been founded in 1866 or later and belong to the MAC Commonwealth Conference ( D-III )?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'MAC Commonwealth Conference ( D-III )' AND university.founded >= 1866.0 AND university.school = 'Lebanon Valley College'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.founded",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "MAC Commonwealth Conference ( D-III )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1866.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Lebanon Valley College",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "MAC Commonwealth Conference ( D-III )",
+    "university.founded": 1866.0,
+    "university.school": "Lebanon Valley College"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'MAC Commonwealth Conference ( D-III )' and founded at least '1866.0' and school equal to 'Lebanon Valley College'?"
+  },
+  {
+   "uid": "6aff9f3b-a5c2-4899-9d70-ba0d8efe9635",
+   "question": "Which universities named Rutgers University have at least 56868 students, are in the American Athletic Conference ( D-I ), were founded in 1766 or earlier, and have the nickname Scarlet Knights?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.school = 'Rutgers University' AND university.enrollment >= 56868.0 AND university.primary_conference = 'American Athletic Conference ( D-I )' AND university.founded <= 1766.0 AND university.nickname = 'Scarlet Knights'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.school",
+    "university.enrollment",
+    "university.primary_conference",
+    "university.founded",
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 56868.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "American Athletic Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1766.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Scarlet Knights",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.school": "Rutgers University",
+    "university.enrollment": 56868.0,
+    "university.primary_conference": "American Athletic Conference ( D-I )",
+    "university.founded": 1766.0,
+    "university.nickname": "Scarlet Knights"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'Rutgers University' and enrollment at least '56868.0' and primary conference equal to 'American Athletic Conference ( D-I )' and founded at most '1766.0' and nickname equal to 'Scarlet Knights'?"
+  },
+  {
+   "uid": "3cdb477b-d9ba-4b0b-968b-a389d1c0c4d3",
+   "question": "What university is Rutgers University where the affiliation is Public, the nickname is Scarlet Knights, the enrollment is exactly 56868, and it was founded in 1766 or earlier?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.founded <= 1766.0 AND university.affiliation = 'Public' AND university.nickname = 'Scarlet Knights' AND university.enrollment = 56868.0 AND university.school = 'Rutgers University'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.founded",
+    "university.affiliation",
+    "university.nickname",
+    "university.enrollment",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1766.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Scarlet Knights",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 56868.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.founded": 1766.0,
+    "university.affiliation": "Public",
+    "university.nickname": "Scarlet Knights",
+    "university.enrollment": 56868.0,
+    "university.school": "Rutgers University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded at most '1766.0' and affiliation equal to 'Public' and nickname equal to 'Scarlet Knights' and enrollment equal to '56868.0' and school equal to 'Rutgers University'?"
+  },
+  {
+   "uid": "22e68abf-244e-4566-9f03-3aad71e788bb",
+   "question": "Which university is the University of Delaware that is public, nicknamed Fightin' Blue Hens, and part of the Colonial Athletic Association ( D-I)?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'Colonial Athletic Association ( D-I )' AND university.affiliation = 'Public' AND university.nickname = 'Fightin'' Blue Hens' AND university.school = 'University of Delaware'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.affiliation",
+    "university.nickname",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Colonial Athletic Association ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Fightin' Blue Hens",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Delaware",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "Colonial Athletic Association ( D-I )",
+    "university.affiliation": "Public",
+    "university.nickname": "Fightin' Blue Hens",
+    "university.school": "University of Delaware"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'Colonial Athletic Association ( D-I )' and affiliation equal to 'Public' and nickname equal to 'Fightin' and school equal to 'University of Delaware'?"
+  },
+  {
+   "uid": "2ec66eb4-2955-4e6c-920c-0be324ddc2f9",
+   "question": "Which universities named University of Rhode Island are part of the Atlantic 10 Conference ( D-I ) and were founded in 1892 or later?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.primary_conference = 'Atlantic 10 Conference ( D-I )' AND university.school = 'University of Rhode Island' AND university.founded >= 1892.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.school",
+    "university.founded"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Atlantic 10 Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Rhode Island",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1892.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "Atlantic 10 Conference ( D-I )",
+    "university.school": "University of Rhode Island",
+    "university.founded": 1892.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'Atlantic 10 Conference ( D-I )' and school equal to 'University of Rhode Island' and founded at least '1892.0'?"
+  },
+  {
+   "uid": "5240920e-f9ef-4c7c-85f5-69d8339fb595",
+   "question": "Which public universities founded in 1892 have the nickname Rams?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nWHERE university.founded = 1892.0 AND university.nickname = 'Rams' AND university.affiliation = 'Public'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "university"
+   ],
+   "involved_columns": [
+    "university.founded",
+    "university.nickname",
+    "university.affiliation"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "=",
+     "value": 1892.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Rams",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.founded": 1892.0,
+    "university.nickname": "Rams",
+    "university.affiliation": "Public"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded equal to '1892.0' and nickname equal to 'Rams' and affiliation equal to 'Public'?"
+  },
+  {
+   "uid": "7667c951-c650-4baa-8a41-52076405db21",
+   "question": "Which universities have an enrollment of at least 23997 and have participated in basketball matches?",
+   "answer_row_ids": [
+    4,
+    5
+   ],
+   "answer_count": 2,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE university.enrollment >= 23997.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.enrollment": 23997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment at least '23997.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id)?"
+  },
+  {
+   "uid": "2304d6a2-ee0d-4a24-a06f-de0ca027cebc",
+   "question": "Which universities with an enrollment of exactly 2100 have participated in basketball matches?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE university.enrollment = 2100.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 2100.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.enrollment": 2100.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment equal to '2100.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id)?"
+  },
+  {
+   "uid": "f7abf124-95e9-4c19-9a35-7b6c30055506",
+   "question": "Which universities have a basketball team where the team_name is Clemson?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.team_name = 'Clemson'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.team_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "Clemson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.team_name": "Clemson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with team name equal to 'Clemson'?"
+  },
+  {
+   "uid": "605dfa70-37f7-41cb-a856-d3479f6d23ff",
+   "question": "Which universities named University of Delaware have basketball matches with an all_games record exactly 35\u20132?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_games = '35\u20132' AND university.school = 'University of Delaware'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_games",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_games",
+     "operator": "=",
+     "value": "35\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "University of Delaware",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_games": "35\u20132",
+    "university.school": "University of Delaware"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'University of Delaware', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all games equal to '35\u20132'?"
+  },
+  {
+   "uid": "376cec9c-e6d1-4c9c-ab82-3c17f4c1910e",
+   "question": "Which universities have an enrollment of at least 23997 and have basketball matches where the home record is exactly 6\u20132?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_home = '6\u20132' AND university.enrollment >= 23997.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_home",
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_home",
+     "operator": "=",
+     "value": "6\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_home": "6\u20132",
+    "university.enrollment": 23997.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment at least '23997.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc home equal to '6\u20132'?"
+  },
+  {
+   "uid": "c403a6f4-2455-414b-92d6-5146a88decd9",
+   "question": "Which universities have basketball matches where the team name is North Carolina?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.team_name = 'North Carolina'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.team_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "North Carolina",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.team_name": "North Carolina"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with team name equal to 'North Carolina'?"
+  },
+  {
+   "uid": "fe938bf6-e81d-429f-8ac4-a8887418cbcb",
+   "question": "Which universities founded in 1957 or earlier have basketball teams with a win percentage of at most 0.6?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_games_percent <= 0.6 AND university.founded <= 1957.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_games_percent",
+    "university.founded"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": "<=",
+     "value": 0.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": "<=",
+     "value": 1957.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_games_percent": 0.6,
+    "university.founded": 1957.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded at most '1957.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all games percent at most '0.6'?"
+  },
+  {
+   "uid": "f5ccbb0c-c6b4-43b8-bfb9-d70d57bbc970",
+   "question": "Which universities have a basketball match record with exactly 0.946 in all games percent?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_games_percent = 0.946",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_games_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": "=",
+     "value": 0.946,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_games_percent": 0.946
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all games percent equal to '0.946'?"
+  },
+  {
+   "uid": "1d36c6a3-25ed-476c-a069-0ab04cfb8611",
+   "question": "Which universities have basketball matches where Virginia Tech\u2019s team_name is Virginia Tech, with an all_road record exactly 4\u20138, acc_road exactly 3\u20135, acc_home exactly 6\u20132, acc_regular_season exactly 9\u20137, all_games exactly 21\u201314, and an all_games_percent of at least 0.6?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_road = '4\u20138' AND basketball_match.acc_regular_season = '9\u20137' AND basketball_match.acc_home = '6\u20132' AND basketball_match.all_games = '21\u201314' AND basketball_match.team_name = 'Virginia Tech' AND basketball_match.all_games_percent >= 0.6 AND basketball_match.acc_road = '3\u20135'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_road",
+    "basketball_match.acc_regular_season",
+    "basketball_match.acc_home",
+    "basketball_match.all_games",
+    "basketball_match.team_name",
+    "basketball_match.all_games_percent",
+    "basketball_match.acc_road"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_road",
+     "operator": "=",
+     "value": "4\u20138",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_regular_season",
+     "operator": "=",
+     "value": "9\u20137",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_home",
+     "operator": "=",
+     "value": "6\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games",
+     "operator": "=",
+     "value": "21\u201314",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "Virginia Tech",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": ">=",
+     "value": 0.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "3\u20135",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_road": "4\u20138",
+    "basketball_match.acc_regular_season": "9\u20137",
+    "basketball_match.acc_home": "6\u20132",
+    "basketball_match.all_games": "21\u201314",
+    "basketball_match.team_name": "Virginia Tech",
+    "basketball_match.all_games_percent": 0.6,
+    "basketball_match.acc_road": "3\u20135"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all road equal to '4\u20138' and acc regular season equal to '9\u20137' and acc home equal to '6\u20132' and all games equal to '21\u201314' and team name equal to 'Virginia Tech' and all games percent at least '0.6' and acc road equal to '3\u20135'?"
+  },
+  {
+   "uid": "9e719255-ce13-42ae-bf6c-69b1c71cd7da",
+   "question": "Which university in the American Athletic Conference ( D-I ) is Rutgers University with at most 56868 enrollment and a basketball home record of 7\u20131, a regular season record of 10\u20136, and an all games win percentage of at least 0.706?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE university.primary_conference = 'American Athletic Conference ( D-I )' AND university.school = 'Rutgers University' AND university.enrollment <= 56868.0 AND basketball_match.acc_home = '7\u20131' AND basketball_match.acc_regular_season = '10\u20136' AND basketball_match.all_games_percent >= 0.706",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.school",
+    "university.enrollment",
+    "basketball_match.acc_home",
+    "basketball_match.acc_regular_season",
+    "basketball_match.all_games_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "American Athletic Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 56868.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_home",
+     "operator": "=",
+     "value": "7\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_regular_season",
+     "operator": "=",
+     "value": "10\u20136",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": ">=",
+     "value": 0.706,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "American Athletic Conference ( D-I )",
+    "university.school": "Rutgers University",
+    "university.enrollment": 56868.0,
+    "basketball_match.acc_home": "7\u20131",
+    "basketball_match.acc_regular_season": "10\u20136",
+    "basketball_match.all_games_percent": 0.706
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'American Athletic Conference ( D-I )' and school equal to 'Rutgers University' and enrollment at most '56868.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc home equal to '7\u20131' and acc regular season equal to '10\u20136' and all games percent at least '0.706'?"
+  },
+  {
+   "uid": "3fae6cb4-2d69-472a-b3dc-8d6967f9aad6",
+   "question": "Which public universities in the American Athletic Conference ( D-I ) founded in 1766 or later have at most 56868 students and basketball records with a home accuracy of 7\u20131, road accuracy of 3\u20135, and an all-games winning percentage of at least 0.706?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_home = '7\u20131' AND university.founded >= 1766.0 AND university.enrollment <= 56868.0 AND basketball_match.all_games_percent >= 0.706 AND basketball_match.acc_road = '3\u20135' AND university.primary_conference = 'American Athletic Conference ( D-I )' AND university.affiliation = 'Public'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_home",
+    "university.founded",
+    "university.enrollment",
+    "basketball_match.all_games_percent",
+    "basketball_match.acc_road",
+    "university.primary_conference",
+    "university.affiliation"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_home",
+     "operator": "=",
+     "value": "7\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1766.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 56868.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": ">=",
+     "value": 0.706,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "3\u20135",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "American Athletic Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_home": "7\u20131",
+    "university.founded": 1766.0,
+    "university.enrollment": 56868.0,
+    "basketball_match.all_games_percent": 0.706,
+    "basketball_match.acc_road": "3\u20135",
+    "university.primary_conference": "American Athletic Conference ( D-I )",
+    "university.affiliation": "Public"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with founded at least '1766.0' and enrollment at most '56868.0' and primary conference equal to 'American Athletic Conference ( D-I )' and affiliation equal to 'Public', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc home equal to '7\u20131' and all games percent at least '0.706' and acc road equal to '3\u20135'?"
+  },
+  {
+   "uid": "b676171f-f761-46f7-80ee-cb195927ca8c",
+   "question": "What universities in the Colonial Athletic Association ( D-I ) have enrollment of at most 19067 and basketball records exactly 8\u20130 on the road, 14\u20132 in the regular season, 14\u20132 at home, 9\u20131 at neutral sites, with an acc_percent exactly .875?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_road = '8\u20130' AND basketball_match.acc_regular_season = '14\u20132' AND university.primary_conference = 'Colonial Athletic Association ( D-I )' AND basketball_match.all_home = '14\u20132' AND basketball_match.all_neutral = '9\u20131' AND university.enrollment <= 19067.0 AND basketball_match.acc_percent = '.875'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_road",
+    "basketball_match.acc_regular_season",
+    "university.primary_conference",
+    "basketball_match.all_home",
+    "basketball_match.all_neutral",
+    "university.enrollment",
+    "basketball_match.acc_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "8\u20130",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_regular_season",
+     "operator": "=",
+     "value": "14\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "Colonial Athletic Association ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_home",
+     "operator": "=",
+     "value": "14\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_neutral",
+     "operator": "=",
+     "value": "9\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 19067.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_percent",
+     "operator": "=",
+     "value": ".875",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_road": "8\u20130",
+    "basketball_match.acc_regular_season": "14\u20132",
+    "university.primary_conference": "Colonial Athletic Association ( D-I )",
+    "basketball_match.all_home": "14\u20132",
+    "basketball_match.all_neutral": "9\u20131",
+    "university.enrollment": 19067.0,
+    "basketball_match.acc_percent": ".875"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'Colonial Athletic Association ( D-I )' and enrollment at most '19067.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc road equal to '8\u20130' and acc regular season equal to '14\u20132' and all home equal to '14\u20132' and all neutral equal to '9\u20131' and acc percent equal to '.875'?"
+  },
+  {
+   "uid": "0ab6ad5d-bb70-4c9c-84aa-25f21fca5061",
+   "question": "Which public university with the nickname Fightin' Blue Hens has an enrollment of exactly 19067 and basketball records showing acc_home is 6\u20132, acc_percent is .875, and all_road is 13\u20130?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_home = '6\u20132' AND university.enrollment = 19067.0 AND basketball_match.acc_percent = '.875' AND basketball_match.all_road = '13\u20130' AND university.affiliation = 'Public' AND university.nickname = 'Fightin'' Blue Hens'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_home",
+    "university.enrollment",
+    "basketball_match.acc_percent",
+    "basketball_match.all_road",
+    "university.affiliation",
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_home",
+     "operator": "=",
+     "value": "6\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "=",
+     "value": 19067.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_percent",
+     "operator": "=",
+     "value": ".875",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_road",
+     "operator": "=",
+     "value": "13\u20130",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Fightin' Blue Hens",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_home": "6\u20132",
+    "university.enrollment": 19067.0,
+    "basketball_match.acc_percent": ".875",
+    "basketball_match.all_road": "13\u20130",
+    "university.affiliation": "Public",
+    "university.nickname": "Fightin' Blue Hens"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment equal to '19067.0' and affiliation equal to 'Public' and nickname equal to 'Fightin', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc home equal to '6\u20132' and acc percent equal to '.875' and all road equal to '13\u20130'?"
+  },
+  {
+   "uid": "2fd71e77-8248-4520-b3b1-bc6d92d47227",
+   "question": "Which universities nicknamed Scarlet Knights have a Clemson basketball team with a 24\u201310 overall record, at least a 0.706 winning percentage, a 14\u20132 home record, and a 4\u20133 neutral record?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.team_name = 'Clemson' AND basketball_match.all_games = '24\u201310' AND basketball_match.all_games_percent >= 0.706 AND basketball_match.all_home = '14\u20132' AND basketball_match.all_neutral = '4\u20133' AND university.nickname = 'Scarlet Knights'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.team_name",
+    "basketball_match.all_games",
+    "basketball_match.all_games_percent",
+    "basketball_match.all_home",
+    "basketball_match.all_neutral",
+    "university.nickname"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "Clemson",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games",
+     "operator": "=",
+     "value": "24\u201310",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": ">=",
+     "value": 0.706,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_home",
+     "operator": "=",
+     "value": "14\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_neutral",
+     "operator": "=",
+     "value": "4\u20133",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Scarlet Knights",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.team_name": "Clemson",
+    "basketball_match.all_games": "24\u201310",
+    "basketball_match.all_games_percent": 0.706,
+    "basketball_match.all_home": "14\u20132",
+    "basketball_match.all_neutral": "4\u20133",
+    "university.nickname": "Scarlet Knights"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with nickname equal to 'Scarlet Knights', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with team name equal to 'Clemson' and all games equal to '24\u201310' and all games percent at least '0.706' and all home equal to '14\u20132' and all neutral equal to '4\u20133'?"
+  },
+  {
+   "uid": "e66f0da9-c111-430d-9abc-3e2dfcc6a7a0",
+   "question": "What universities named Stony Brook University with the nickname Seawolves, an enrollment of at least 23997, and in the America East Conference ( D-I ) have basketball matches where the team name is Virginia Tech and the all games percent is exactly 0.6?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE university.nickname = 'Seawolves' AND university.enrollment >= 23997.0 AND basketball_match.team_name = 'Virginia Tech' AND university.school = 'Stony Brook University' AND basketball_match.all_games_percent = 0.6 AND university.primary_conference = 'America East Conference ( D-I )'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "university.nickname",
+    "university.enrollment",
+    "basketball_match.team_name",
+    "university.school",
+    "basketball_match.all_games_percent",
+    "university.primary_conference"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Seawolves",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 23997.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "Virginia Tech",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Stony Brook University",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": "=",
+     "value": 0.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.nickname": "Seawolves",
+    "university.enrollment": 23997.0,
+    "basketball_match.team_name": "Virginia Tech",
+    "university.school": "Stony Brook University",
+    "basketball_match.all_games_percent": 0.6,
+    "university.primary_conference": "America East Conference ( D-I )"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with nickname equal to 'Seawolves' and enrollment at least '23997.0' and school equal to 'Stony Brook University' and primary conference equal to 'America East Conference ( D-I )', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with team name equal to 'Virginia Tech' and all games percent equal to '0.6'?"
+  },
+  {
+   "uid": "3d99360a-d50d-49df-95ee-4afc1eca53f1",
+   "question": "Which public university named Stony Brook University has basketball matches with an accuracy percent of .563, a road record of 3\u20135, an overall record of 21\u201314, and a neutral site record of 3\u20133?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_percent = '.563' AND basketball_match.acc_road = '3\u20135' AND university.affiliation = 'Public' AND university.school = 'Stony Brook University' AND basketball_match.all_games = '21\u201314' AND basketball_match.all_neutral = '3\u20133'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_percent",
+    "basketball_match.acc_road",
+    "university.affiliation",
+    "university.school",
+    "basketball_match.all_games",
+    "basketball_match.all_neutral"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_percent",
+     "operator": "=",
+     "value": ".563",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "3\u20135",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Stony Brook University",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games",
+     "operator": "=",
+     "value": "21\u201314",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_neutral",
+     "operator": "=",
+     "value": "3\u20133",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_percent": ".563",
+    "basketball_match.acc_road": "3\u20135",
+    "university.affiliation": "Public",
+    "university.school": "Stony Brook University",
+    "basketball_match.all_games": "21\u201314",
+    "basketball_match.all_neutral": "3\u20133"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with affiliation equal to 'Public' and school equal to 'Stony Brook University', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc percent equal to '.563' and acc road equal to '3\u20135' and all games equal to '21\u201314' and all neutral equal to '3\u20133'?"
+  },
+  {
+   "uid": "1c0d05a2-ba38-4843-9fd6-829789778fce",
+   "question": "Which university is Stony Brook University with the nickname Seawolves, part of the America East Conference ( D-I ), that has basketball matches where acc_road is 3\u20135 and acc_percent is .563?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_road = '3\u20135' AND university.primary_conference = 'America East Conference ( D-I )' AND basketball_match.acc_percent = '.563' AND university.nickname = 'Seawolves' AND university.school = 'Stony Brook University'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_road",
+    "university.primary_conference",
+    "basketball_match.acc_percent",
+    "university.nickname",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "3\u20135",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_percent",
+     "operator": "=",
+     "value": ".563",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Seawolves",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Stony Brook University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_road": "3\u20135",
+    "university.primary_conference": "America East Conference ( D-I )",
+    "basketball_match.acc_percent": ".563",
+    "university.nickname": "Seawolves",
+    "university.school": "Stony Brook University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'America East Conference ( D-I )' and nickname equal to 'Seawolves' and school equal to 'Stony Brook University', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc road equal to '3\u20135' and acc percent equal to '.563'?"
+  },
+  {
+   "uid": "1cb9eefe-690d-4e01-b955-cc4c6bf1256a",
+   "question": "Which universities have the school Rutgers University with the nickname Scarlet Knights, enrollment at most 56868, and basketball records showing all_neutral is 4\u20133 with all_games_percent at least 0.706?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE university.school = 'Rutgers University' AND university.nickname = 'Scarlet Knights' AND university.enrollment <= 56868.0 AND basketball_match.all_neutral = '4\u20133' AND basketball_match.all_games_percent >= 0.706",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "university.school",
+    "university.nickname",
+    "university.enrollment",
+    "basketball_match.all_neutral",
+    "basketball_match.all_games_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Scarlet Knights",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": "<=",
+     "value": 56868.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_neutral",
+     "operator": "=",
+     "value": "4\u20133",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games_percent",
+     "operator": ">=",
+     "value": 0.706,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "university.school": "Rutgers University",
+    "university.nickname": "Scarlet Knights",
+    "university.enrollment": 56868.0,
+    "basketball_match.all_neutral": "4\u20133",
+    "basketball_match.all_games_percent": 0.706
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with school equal to 'Rutgers University' and nickname equal to 'Scarlet Knights' and enrollment at most '56868.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all neutral equal to '4\u20133' and all games percent at least '0.706'?"
+  },
+  {
+   "uid": "8db55710-5587-4130-828a-d34eb960722a",
+   "question": "Which universities have a basketball record of 35\u20132 overall, an undefeated 13\u20130 road record, and an accuracy percentage of .875?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_road = '13\u20130' AND basketball_match.acc_percent = '.875' AND basketball_match.all_games = '35\u20132'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_road",
+    "basketball_match.acc_percent",
+    "basketball_match.all_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_road",
+     "operator": "=",
+     "value": "13\u20130",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_percent",
+     "operator": "=",
+     "value": ".875",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_games",
+     "operator": "=",
+     "value": "35\u20132",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_road": "13\u20130",
+    "basketball_match.acc_percent": ".875",
+    "basketball_match.all_games": "35\u20132"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all road equal to '13\u20130' and acc percent equal to '.875' and all games equal to '35\u20132'?"
+  },
+  {
+   "uid": "2a148585-0402-44a8-b111-c6ab62a5102d",
+   "question": "Which universities in the MAC Commonwealth Conference ( D-III ) have basketball matches where the team name is Duke with an accuracy percent of .813, a home record of 15\u20131, and a neutral record of 5\u20133?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.team_name = 'Duke' AND basketball_match.acc_percent = '.813' AND basketball_match.all_home = '15\u20131' AND university.primary_conference = 'MAC Commonwealth Conference ( D-III )' AND basketball_match.all_neutral = '5\u20133'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.team_name",
+    "basketball_match.acc_percent",
+    "basketball_match.all_home",
+    "university.primary_conference",
+    "basketball_match.all_neutral"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "Duke",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_percent",
+     "operator": "=",
+     "value": ".813",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_home",
+     "operator": "=",
+     "value": "15\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "MAC Commonwealth Conference ( D-III )",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_neutral",
+     "operator": "=",
+     "value": "5\u20133",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.team_name": "Duke",
+    "basketball_match.acc_percent": ".813",
+    "basketball_match.all_home": "15\u20131",
+    "university.primary_conference": "MAC Commonwealth Conference ( D-III )",
+    "basketball_match.all_neutral": "5\u20133"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'MAC Commonwealth Conference ( D-III )', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with team name equal to 'Duke' and acc percent equal to '.813' and all home equal to '15\u20131' and all neutral equal to '5\u20133'?"
+  },
+  {
+   "uid": "00583cb9-d01a-4584-9e10-12992df445e5",
+   "question": "Which universities have an enrollment of at least 2100 and basketball teams named Duke with an all_home record of exactly 15\u20131?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_home = '15\u20131' AND basketball_match.team_name = 'Duke' AND university.enrollment >= 2100.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_home",
+    "basketball_match.team_name",
+    "university.enrollment"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_home",
+     "operator": "=",
+     "value": "15\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "team_name",
+     "operator": "=",
+     "value": "Duke",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "enrollment",
+     "operator": ">=",
+     "value": 2100.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_home": "15\u20131",
+    "basketball_match.team_name": "Duke",
+    "university.enrollment": 2100.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with enrollment at least '2100.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all home equal to '15\u20131' and team name equal to 'Duke'?"
+  },
+  {
+   "uid": "6b6b90e2-43a2-47b3-ba26-fdbe69a84fab",
+   "question": "Which public universities founded in 1766 or later have the school name Rutgers University and basketball records with exactly 14\u20132 at home and exactly 3\u20135 on the road?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.all_home = '14\u20132' AND university.affiliation = 'Public' AND university.school = 'Rutgers University' AND basketball_match.acc_road = '3\u20135' AND university.founded >= 1766.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.all_home",
+    "university.affiliation",
+    "university.school",
+    "basketball_match.acc_road",
+    "university.founded"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "all_home",
+     "operator": "=",
+     "value": "14\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "affiliation",
+     "operator": "=",
+     "value": "Public",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Rutgers University",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "3\u20135",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "founded",
+     "operator": ">=",
+     "value": 1766.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.all_home": "14\u20132",
+    "university.affiliation": "Public",
+    "university.school": "Rutgers University",
+    "basketball_match.acc_road": "3\u20135",
+    "university.founded": 1766.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with affiliation equal to 'Public' and school equal to 'Rutgers University' and founded at least '1766.0', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with all home equal to '14\u20132' and acc road equal to '3\u20135'?"
+  },
+  {
+   "uid": "5d526d15-4448-4a38-a2e5-4183cf9fbea9",
+   "question": "Which universities with the nickname Scarlet Knights have basketball matches where acc_road is 3\u20135 and all_home is 14\u20132?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE basketball_match.acc_road = '3\u20135' AND university.nickname = 'Scarlet Knights' AND basketball_match.all_home = '14\u20132'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "basketball_match.acc_road",
+    "university.nickname",
+    "basketball_match.all_home"
+   ],
+   "involved_filters": [
+    {
+     "table": "basketball_match",
+     "column": "acc_road",
+     "operator": "=",
+     "value": "3\u20135",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Scarlet Knights",
+     "column_type": "enum"
+    },
+    {
+     "table": "basketball_match",
+     "column": "all_home",
+     "operator": "=",
+     "value": "14\u20132",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "basketball_match.acc_road": "3\u20135",
+    "university.nickname": "Scarlet Knights",
+    "basketball_match.all_home": "14\u20132"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with nickname equal to 'Scarlet Knights', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id) with acc road equal to '3\u20135' and all home equal to '14\u20132'?"
+  },
+  {
+   "uid": "67dcafe3-0d32-4eea-a58b-94b3048dae0f",
+   "question": "What universities named Stony Brook University with the nickname Seawolves belong to the America East Conference ( D-I)?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT university.school_id FROM university\nJOIN basketball_match ON university.school_id = basketball_match.school_id\nWHERE university.primary_conference = 'America East Conference ( D-I )' AND university.nickname = 'Seawolves' AND university.school = 'Stony Brook University'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "basketball_match",
+    "university"
+   ],
+   "involved_columns": [
+    "university.primary_conference",
+    "university.nickname",
+    "university.school"
+   ],
+   "involved_filters": [
+    {
+     "table": "university",
+     "column": "primary_conference",
+     "operator": "=",
+     "value": "America East Conference ( D-I )",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "nickname",
+     "operator": "=",
+     "value": "Seawolves",
+     "column_type": "enum"
+    },
+    {
+     "table": "university",
+     "column": "school",
+     "operator": "=",
+     "value": "Stony Brook University",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "university.primary_conference": "America East Conference ( D-I )",
+    "university.nickname": "Seawolves",
+    "university.school": "Stony Brook University"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "university"
+   },
+   "answer_table": "university",
+   "answer_id_column": "school_id",
+   "canonical_question": "Which university entities with primary conference equal to 'America East Conference ( D-I )' and nickname equal to 'Seawolves' and school equal to 'Stony Brook University', having at least one related basketball match record (linked on university.school_id = basketball_match.school_id)?"
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "university",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:12:10.059154+00:00",
+  "records": [
+    {
+      "uid": "1bad3186-8d86-4a66-9189-5a7caf8d34d1",
+      "question": "Which universities named Imperial College London are located in the United Kingdom?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nWHERE university.university_name = 'Imperial College London' AND country.country_name = 'United Kingdom'",
+      "pred_sql": "SELECT university.id\nFROM university\nJOIN country ON university.country_id = country.id\nWHERE university.university_name = 'Imperial College London'\n  AND country.country_name = 'United Kingdom'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.02
+    },
+    {
+      "uid": "2227773b-327d-42ce-83c2-980234b18aad",
+      "question": "Which universities named University of New Orleans are located in the United States of America?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nWHERE country.country_name = 'United States of America' AND university.university_name = 'University of New Orleans'",
+      "pred_sql": "SELECT university.id\nFROM university\nJOIN country ON university.country_id = country.id\nWHERE university.university_name = 'University of New Orleans'\n  AND country.country_name = 'United States of America'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.12
+    },
+    {
+      "uid": "2dd7347b-6ab0-491d-9b33-c43472f49690",
+      "question": "Which university is exactly named University of California, Merced?",
+      "gold_sql": "SELECT university.id FROM university\nWHERE university.university_name = 'University of California, Merced'",
+      "pred_sql": "SELECT id FROM university WHERE university_name = 'University of California, Merced'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.8
+    },
+    {
+      "uid": "4ec3b48a-ad00-4522-a04b-dde4f541cd35",
+      "question": "Which university is named exactly Trinity College Dublin and has related country, ranking, and year information?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nJOIN university_ranking_year ON university.id = university_ranking_year.university_id\nJOIN university_year ON university.id = university_year.university_id\nWHERE university.university_name = 'Trinity College Dublin'",
+      "pred_sql": "SELECT university.id\nFROM university\nJOIN country ON university.country_id = country.id\nJOIN university_ranking_year ON university.id = university_ranking_year.university_id\nJOIN university_year ON university.id = university_year.university_id\nWHERE university.university_name = 'Trinity College Dublin'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    },
+    {
+      "uid": "59e6bcb1-c228-4a55-87df-326fc765d284",
+      "question": "Which universities named University of Victoria had exactly a 21.5 student-staff ratio, no more than 56.0% female students, no more than 11% international students, and at least 17581 students in years no later than 2012, with rankings from 2013 or earlier?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN university_ranking_year ON university.id = university_ranking_year.university_id\nJOIN university_year ON university.id = university_year.university_id\nWHERE university_year.student_staff_ratio = 21.5 AND university_year.pct_female_students <= 56.0 AND university_year.pct_international_students <= 11 AND university_ranking_year.year <= 2013 AND university_year.year <= 2012 AND university_year.num_students >= 17581 AND university.university_name = 'University of Victoria'",
+      "pred_sql": "SELECT u.id\nFROM university u\nWHERE u.university_name = 'University of Victoria'\n  AND EXISTS (\n    SELECT 1\n    FROM university_ranking_year ury\n    WHERE ury.university_id = u.id\n      AND ury.year <= 2013\n  )\n  AND EXISTS (\n    SELECT 1\n    FROM university_year uy\n    WHERE uy.university_id = u.id\n      AND uy.student_staff_ratio = 21.5\n      AND uy.pct_female_students <= 56.0\n      AND uy.pct_international_students <= 11\n      AND uy.year <= 2012\n      AND uy.num_students >= 17581\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    },
+    {
+      "uid": "6319e01b-46e5-41ad-91cd-b488fa09cfe7",
+      "question": "Which universities named Wake Forest University are located in the United States of America and have rankings from 2011 or earlier?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nJOIN university_ranking_year ON university.id = university_ranking_year.university_id\nWHERE university_ranking_year.year <= 2011 AND country.country_name = 'United States of America' AND university.university_name = 'Wake Forest University'",
+      "pred_sql": "SELECT university.id\nFROM university\nJOIN country ON university.country_id = country.id\nWHERE university.university_name = 'Wake Forest University'\n  AND country.country_name = 'United States of America'\n  AND EXISTS (\n    SELECT 1\n    FROM university_ranking_year\n    WHERE university_ranking_year.university_id = university.id\n      AND university_ranking_year.year <= 2011\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "94f35666-2bb7-4e32-859b-c064837fb2bb",
+      "question": "Which universities have the exact name Bayreuth University?",
+      "gold_sql": "SELECT university.id FROM university\nWHERE university.university_name = 'Bayreuth University'",
+      "pred_sql": "SELECT university.id FROM university WHERE university_name = 'Bayreuth University'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.85
+    },
+    {
+      "uid": "b614c1bb-c79c-4130-a8cc-f4477ae8c587",
+      "question": "Which universities in the United States of America had a ranking score of at most 22.0 in 2015, with at least 26% international students and no more than 44% female students?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nJOIN university_ranking_year ON university.id = university_ranking_year.university_id\nJOIN university_year ON university.id = university_year.university_id\nWHERE university_ranking_year.score <= 22.0 AND university_year.pct_international_students >= 26 AND country.country_name = 'United States of America' AND university_year.year = 2015 AND university_year.pct_female_students <= 44.0",
+      "pred_sql": "SELECT university.id\nFROM university\nJOIN country ON university.country_id = country.id\nWHERE country.country_name = 'United States of America'\nAND EXISTS (\n    SELECT 1\n    FROM university_ranking_year\n    WHERE university_ranking_year.university_id = university.id\n      AND university_ranking_year.score <= 22.0\n)\nAND EXISTS (\n    SELECT 1\n    FROM university_year\n    WHERE university_year.university_id = university.id\n      AND university_year.pct_international_students >= 26\n      AND university_year.year = 2015\n      AND university_year.pct_female_students <= 44.0\n)",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.86
+    },
+    {
+      "uid": "cfb52ada-ac7e-4a82-92e4-94e4863a1019",
+      "question": "Which universities named University of Pittsburgh in the United States have at least 26485 students, exactly 10% international students, at least 51% female students, and a ranking score of at most 32.0?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nJOIN university_ranking_year ON university.id = university_ranking_year.university_id\nJOIN university_year ON university.id = university_year.university_id\nWHERE university.university_name = 'University of Pittsburgh' AND university_year.num_students >= 26485 AND university_year.pct_international_students = 10 AND country.country_name = 'United States of America' AND university_ranking_year.score <= 32.0 AND university_year.pct_female_students >= 51.0",
+      "pred_sql": "SELECT u.id\nFROM university u\nJOIN country c ON u.country_id = c.id\nWHERE u.university_name = 'University of Pittsburgh'\n  AND c.country_name = 'United States of America'\n  AND EXISTS (\n      SELECT 1\n      FROM university_ranking_year ury\n      WHERE ury.university_id = u.id\n        AND ury.score <= 32.0\n  )\n  AND EXISTS (\n      SELECT 1\n      FROM university_year uy\n      WHERE uy.university_id = u.id\n        AND uy.num_students >= 26485\n        AND uy.pct_international_students = 10\n        AND uy.pct_female_students >= 51.0\n  )",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.83
+    },
+    {
+      "uid": "f85d11bc-12d9-4d62-b26e-132828e8a945",
+      "question": "Which universities in the United States of America have a student staff ratio exactly equal to 13.0?",
+      "gold_sql": "SELECT university.id FROM university\nJOIN country ON university.country_id = country.id\nJOIN university_year ON university.id = university_year.university_id\nWHERE university_year.student_staff_ratio = 13.0 AND country.country_name = 'United States of America'",
+      "pred_sql": "SELECT university.id\nFROM university\nJOIN country ON university.country_id = country.id\nJOIN university_year ON university.id = university_year.university_id\nWHERE country.country_name = 'United States of America'\n  AND university_year.student_staff_ratio = 13.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.03
+    }
+  ]
+}

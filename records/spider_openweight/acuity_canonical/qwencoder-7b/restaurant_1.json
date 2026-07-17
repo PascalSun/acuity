@@ -1,0 +1,124 @@
+{
+  "db_id": "restaurant_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:55:12.507318+00:00",
+  "records": [
+    {
+      "uid": "0a7b2974-be0c-4a36-9711-721c53bfbac0",
+      "question": "Which restaurants have a rating that is exactly 3?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nWHERE restaurant.rating = 3",
+      "pred_sql": "SELECT ResID FROM Restaurant WHERE Rating = 3",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "1031474f-6b3b-4223-a7f0-b2853c000fcc",
+      "question": "Which restaurants have a rating of at least 4 and were visited on or after 2017-10-08 13:00:30 where exactly 13.2 was spent?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN type_of_restaurant ON restaurant.resid = type_of_restaurant.resid\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nWHERE visits_restaurant.spent = 13.2 AND visits_restaurant.time >= '2017-10-08 13:00:30' AND restaurant.rating >= 4",
+      "pred_sql": "SELECT r.ResID\nFROM Restaurant r\nJOIN Type_Of_Restaurant tor ON r.ResID = tor.ResID\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nWHERE r.Rating >= 4\n  AND vr.Spent = 13.2\n  AND vr.Time >= '2017-10-08 13:00:30'\nGROUP BY r.ResID\nHAVING COUNT(tor.ResTypeID) > 0\n  AND COUNT(vr.StuID) > 0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.27
+    },
+    {
+      "uid": "33827d34-9c87-455d-a27c-6eb82544eb0b",
+      "question": "Which Honeygrow restaurants have addresses containing MD 21218 and ratings at most 4?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nWHERE restaurant.address LIKE '%MD 21218%' AND restaurant.rating <= 4 AND restaurant.resname = 'Honeygrow'",
+      "pred_sql": "SELECT restaurant.resid\nFROM restaurant\nWHERE restaurant.address LIKE '%MD 21218%'\n  AND restaurant.rating <= 4\n  AND restaurant.resname = 'Honeygrow'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.57
+    },
+    {
+      "uid": "3de2e012-d0f4-4e1c-bfed-dfa6edf1c50e",
+      "question": "Which restaurants have visits where customers spent at least 13.2?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN type_of_restaurant ON restaurant.resid = type_of_restaurant.resid\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nWHERE visits_restaurant.spent >= 13.2",
+      "pred_sql": "SELECT r.ResID\nFROM Restaurant r\nJOIN Type_Of_Restaurant tor ON r.ResID = tor.ResID\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nWHERE vr.Spent >= 13.2\nGROUP BY r.ResID\nHAVING COUNT(tor.ResTypeID) > 0 AND COUNT(vr.StuID) > 0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.06
+    },
+    {
+      "uid": "417fe249-7f84-46e3-a778-c3bd00e6be78",
+      "question": "Which restaurants named Subway have a rating that is exactly 3?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nWHERE restaurant.resname = 'Subway' AND restaurant.rating = 3",
+      "pred_sql": "SELECT ResID FROM Restaurant WHERE ResName = 'Subway' AND Rating = 3",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.2
+    },
+    {
+      "uid": "42b2c8ec-5e9d-4035-8590-a860c5fc6a7b",
+      "question": "Which Subway restaurants have female students who spent exactly 6.53?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nJOIN student ON visits_restaurant.stuid = student.stuid\nWHERE student.sex = 'F' AND restaurant.resname = 'Subway' AND visits_restaurant.spent = 6.53",
+      "pred_sql": "SELECT r.ResID\nFROM Restaurant r\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nJOIN Student s ON vr.StuID = s.StuID\nWHERE r.ResName = 'Subway' AND vr.Spent = 6.53 AND s.Sex = 'F'\nGROUP BY r.ResID\nHAVING COUNT(vr.StuID) > 0",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.77
+    },
+    {
+      "uid": "99ea8115-195f-4e97-829f-7a6c94b4e9ed",
+      "question": "Which restaurants named Honeygrow were visited on 2017-10-08 at 13:00:30 by Eric from city_code ATL, aged at most 20, advised by 8772, who spent at least 13.2?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nJOIN student ON visits_restaurant.stuid = student.stuid\nWHERE visits_restaurant.spent >= 13.2 AND visits_restaurant.time = '2017-10-08 13:00:30' AND student.city_code = 'ATL' AND student.age <= 20 AND student.advisor = 8772 AND restaurant.resname = 'Honeygrow' AND student.fname = 'Eric'",
+      "pred_sql": "SELECT r.ResID\nFROM Restaurant r\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nJOIN Student s ON vr.StuID = s.StuID\nWHERE r.ResName = 'Honeygrow'\n  AND vr.Spent >= 13.2\n  AND vr.Time = '2017-10-08 13:00:30'\n  AND s.city_code = 'ATL'\n  AND s.age <= 20\n  AND s.advisor = 8772\n  AND s.fname = 'Eric'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.73
+    },
+    {
+      "uid": "9a1f6f95-472e-40f6-9695-26d85f246b2b",
+      "question": "Which Honeygrow restaurants with a rating of at least 4 have an address containing MD 21218?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN type_of_restaurant ON restaurant.resid = type_of_restaurant.resid\nWHERE restaurant.resname = 'Honeygrow' AND restaurant.rating >= 4 AND restaurant.address LIKE '%MD 21218%'",
+      "pred_sql": "SELECT r.ResID\nFROM Restaurant r\nJOIN Type_Of_Restaurant tor ON r.ResID = tor.ResID\nWHERE r.ResName = 'Honeygrow' AND r.Rating >= 4 AND r.Address LIKE '%MD 21218%'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.49
+    },
+    {
+      "uid": "9cb6f831-414b-4ce2-930a-0836d0ccf5cb",
+      "question": "Which restaurants named Subway have a rating of at most 3?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN type_of_restaurant ON restaurant.resid = type_of_restaurant.resid\nWHERE restaurant.rating <= 3 AND restaurant.resname = 'Subway'",
+      "pred_sql": "SELECT r.ResID\nFROM Restaurant r\nJOIN Type_Of_Restaurant tor ON r.ResID = tor.ResID\nWHERE r.Rating <= 3 AND r.ResName = 'Subway'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.63
+    },
+    {
+      "uid": "c8edfee4-19a0-4816-aa55-bb98efe76a02",
+      "question": "Which restaurants have been visited by students with an advisor number of at least 1121 and a major number of at least 600?",
+      "gold_sql": "SELECT restaurant.resid FROM restaurant\nJOIN visits_restaurant ON restaurant.resid = visits_restaurant.resid\nJOIN student ON visits_restaurant.stuid = student.stuid\nWHERE student.advisor >= 1121 AND student.major >= 600",
+      "pred_sql": "SELECT DISTINCT r.ResID\nFROM Restaurant r\nJOIN Visits_Restaurant vr ON r.ResID = vr.ResID\nJOIN Student s ON vr.StuID = s.StuID\nWHERE s.advisor >= 1121 AND s.major >= 600",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.73
+    }
+  ]
+}

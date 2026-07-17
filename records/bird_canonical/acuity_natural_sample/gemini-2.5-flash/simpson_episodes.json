@@ -1,0 +1,124 @@
+{
+  "db_id": "simpson_episodes",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:19:17.265331+00:00",
+  "records": [
+    {
+      "uid": "436de46b-1a25-4dee-b6ef-aef1b07be390",
+      "question": "Which episodes titled \"Eeny Teeny Maya Moe\" have an episode number of 16, a rating of exactly 7.1, at least 436 in the series, no more than 948 votes, won an award in 2009, and are associated with the keyword \"little person\"?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nJOIN keyword ON episode.episode_id = keyword.episode_id\nWHERE episode.rating = 7.1 AND episode.number_in_series >= 436 AND episode.title = 'Eeny Teeny Maya Moe' AND episode.episode = 16 AND award.year = 2009 AND episode.votes <= 948 AND keyword.keyword = 'little person'",
+      "pred_sql": "SELECT DISTINCT T1.episode_id FROM Episode AS T1 INNER JOIN Award AS T2 ON T1.episode_id = T2.episode_id INNER JOIN Keyword AS T3 ON T1.episode_id = T3.episode_id WHERE T1.title = 'Eeny Teeny Maya Moe' AND T1.episode = 16 AND T1.rating = 7.1 AND T1.number_in_series >= 436 AND T1.votes <= 948 AND T2.year = 2009 AND T2.result = 'Won' AND T3.keyword = 'little person'",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.34
+    },
+    {
+      "uid": "50487a4c-7501-4a6f-97ea-4a08e29a6e45",
+      "question": "Which episodes have an episode number at least 13, a season number at most 20, the title exactly \"Gone Maggie Gone\", have received an award with the award name exactly \"Outstanding Animated Program (For Programming Less Than One Hour)\" from the organization exactly \"Primetime Emmy Awards\", and also have related keyword records?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nJOIN keyword ON episode.episode_id = keyword.episode_id\nWHERE episode.episode >= 13 AND award.award = 'Outstanding Animated Program (For Programming Less Than One Hour)' AND episode.season <= 20 AND episode.title = 'Gone Maggie Gone' AND award.organization = 'Primetime Emmy Awards'",
+      "pred_sql": "SELECT DISTINCT T1.episode_id FROM Episode AS T1 INNER JOIN Award AS T2 ON T1.episode_id = T2.episode_id INNER JOIN Keyword AS T3 ON T1.episode_id = T3.episode_id WHERE T1.episode >= 13 AND T1.season <= 20 AND T1.title = 'Gone Maggie Gone' AND T2.award = 'Outstanding Animated Program (For Programming Less Than One Hour)' AND T2.organization = 'Primetime Emmy Awards'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.67
+    },
+    {
+      "uid": "8f6f6522-6e9b-40a8-acdc-ff5cc77e7a65",
+      "question": "Which episodes titled Father Knows Worst have an episode number of 18, a rating exactly 7.0, aired on or before 2009-04-26, and belong to season 20 or earlier?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nWHERE episode.rating = 7.0 AND episode.season <= 20 AND episode.title = 'Father Knows Worst' AND episode.episode = 18 AND episode.air_date <= '2009-04-26'",
+      "pred_sql": "SELECT episode_id FROM Episode WHERE title = 'Father Knows Worst' AND episode = 18 AND rating = 7.0 AND air_date <= '2009-04-26' AND season <= 20",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "a38c7abf-0566-481c-921f-43b81c42d1f0",
+      "question": "Which episodes have a rating of exactly 6.6 and aired on or before 2008-12-07?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nWHERE episode.rating = 6.6 AND episode.air_date <= '2008-12-07'",
+      "pred_sql": "SELECT episode_id FROM Episode WHERE rating = 6.6 AND air_date <= '2008-12-07'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.5
+    },
+    {
+      "uid": "abc8fcb6-7031-464a-a928-290a4c5886b1",
+      "question": "What episodes titled Sex, Pies and Idiot Scrapes have a rating of 7.2, exactly 1192 votes, are first episodes from seasons at most 20, aired on or before 2008-09-28, and include '224' in their episode image?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nWHERE episode.episode_image LIKE '%224%' AND episode.season <= 20 AND episode.rating = 7.2 AND episode.episode = 1 AND episode.air_date <= '2008-09-28' AND episode.title = 'Sex, Pies and Idiot Scrapes' AND episode.votes = 1192",
+      "pred_sql": "SELECT\n  episode_id\nFROM Episode\nWHERE\n  title = 'Sex, Pies and Idiot Scrapes' AND rating = 7.2 AND votes = 1192 AND episode = 1 AND season <= 20 AND air_date <= '2008-09-28' AND episode_image LIKE '%224%'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.07
+    },
+    {
+      "uid": "b9f5de5a-64be-4e00-a34d-d13cb30f8db2",
+      "question": "Which episodes have the exact title No Loan Again, Naturally and include credits?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN credit ON episode.episode_id = credit.episode_id\nWHERE episode.title = 'No Loan Again, Naturally'",
+      "pred_sql": "SELECT T1.episode_id FROM Episode AS T1 INNER JOIN Credit AS T2 ON T1.episode_id = T2.episode_id WHERE T1.title = 'No Loan Again, Naturally'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "d20fc8fb-0cdb-423f-b7ea-a6b3672c3f4d",
+      "question": "Which episodes titled Four Great Women and a Manicure aired on or before 2009-05-10, are from season 20 or earlier with episode number at least 20, have exactly 927 votes, and feature a credited Mr. Burns role?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN credit ON episode.episode_id = credit.episode_id\nWHERE episode.air_date <= '2009-05-10' AND episode.title = 'Four Great Women and a Manicure' AND credit.role = 'Mr. Burns' AND credit.credited = 'true' AND episode.season <= 20 AND episode.episode >= 20 AND episode.votes = 927",
+      "pred_sql": "SELECT DISTINCT T1.episode_id FROM Episode AS T1 INNER JOIN Credit AS T2 ON T1.episode_id = T2.episode_id WHERE T1.title = 'Four Great Women and a Manicure' AND T1.air_date <= '2009-05-10' AND T1.season <= 20 AND T1.episode >= 20 AND T1.votes = 927 AND T2.role = 'Mr. Burns'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.14
+    },
+    {
+      "uid": "e5d6af7d-b71b-4481-9379-a5ac90cd4a8c",
+      "question": "Which episodes aired on or after 2009-03-15 with at least 1049 votes won a Primetime Emmy where the role was exactly animation timer?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nWHERE award.award_category = 'Primetime Emmy' AND award.role = 'animation timer' AND episode.air_date >= '2009-03-15' AND episode.votes >= 1049",
+      "pred_sql": "SELECT T1.episode_id FROM Episode AS T1 INNER JOIN Award AS T2 ON T1.episode_id = T2.episode_id WHERE T1.air_date >= '2009-03-15' AND T1.votes >= 1049 AND T2.organization = 'Primetime Emmy' AND T2.result = 'Winner' AND T2.role = 'animation timer'",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.84
+    },
+    {
+      "uid": "ef3d6f50-5ba8-4967-9e49-a59d31a5fe54",
+      "question": "Which episodes have an award with the role exactly equal to 'animation timer' and also have at least one associated keyword?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nJOIN keyword ON episode.episode_id = keyword.episode_id\nWHERE award.role = 'animation timer'",
+      "pred_sql": "SELECT DISTINCT T1.episode_id FROM Episode AS T1 JOIN Award AS T2 ON T1.episode_id = T2.episode_id JOIN Keyword AS T3 ON T1.episode_id = T3.episode_id WHERE T2.role = 'animation timer'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.62
+    },
+    {
+      "uid": "f94c303a-e903-4eea-9ae1-7f577d89c9de",
+      "question": "What episodes are associated with the person whose birth name is exactly Marc Edward Wilmore?",
+      "gold_sql": "SELECT episode.episode_id FROM episode\nJOIN award ON episode.episode_id = award.episode_id\nJOIN person ON award.person = person.name\nWHERE person.birth_name = 'Marc Edward Wilmore'",
+      "pred_sql": "SELECT T1.episode_id FROM Episode AS T1 INNER JOIN Credit AS T2 ON T1.episode_id = T2.episode_id INNER JOIN Person AS T3 ON T2.person = T3.name WHERE T3.birth_name = 'Marc Edward Wilmore'",
+      "strategy": "2pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.64
+    }
+  ]
+}

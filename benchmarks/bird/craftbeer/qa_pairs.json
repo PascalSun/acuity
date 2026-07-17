@@ -1,0 +1,2968 @@
+{
+ "db_id": "craftbeer",
+ "target_table": "beers",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1849316380,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/craftbeer/craftbeer.sqlite",
+  "generated_at": "2026-07-02T17:59:55.784103+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "beers",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 25,
+   "0M": 25
+  },
+  "realized_counts": {
+   "0E": 25,
+   "0M": 25
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 26,
+    "inner_attempts": 50,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 26,
+    "inner_attempts": 27,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "76c75874-1cc9-4e5b-9cf4-cb16e744b7ba",
+   "question": "Which beers named Side Kick K\u00f6lsch have the style K\u00f6lsch?",
+   "answer_row_ids": [
+    1087
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'K\u00f6lsch' AND beers.name = 'Side Kick K\u00f6lsch'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "K\u00f6lsch",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Side Kick K\u00f6lsch",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "K\u00f6lsch",
+    "beers.name": "Side Kick K\u00f6lsch"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'K\u00f6lsch' and name equal to 'Side Kick K\u00f6lsch'?"
+  },
+  {
+   "uid": "bf023149-e2a0-449d-afda-3d003480a3c7",
+   "question": "Which beers named 420 Extra Pale Ale have the style American Pale Ale (APA)?",
+   "answer_row_ids": [
+    1709
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'American Pale Ale (APA)' AND beers.name = '420 Extra Pale Ale'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "420 Extra Pale Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "American Pale Ale (APA)",
+    "beers.name": "420 Extra Pale Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'American Pale Ale (APA)' and name equal to '420 Extra Pale Ale'?"
+  },
+  {
+   "uid": "4a7300b1-46e6-48ea-af64-c504a75a7071",
+   "question": "Which beers named Blood of the Unicorn come in exactly 16.0 ounces?",
+   "answer_row_ids": [
+    2559
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 16.0 AND beers.name = 'Blood of the Unicorn'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Blood of the Unicorn",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 16.0,
+    "beers.name": "Blood of the Unicorn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '16.0' and name equal to 'Blood of the Unicorn'?"
+  },
+  {
+   "uid": "89f846a2-17aa-46df-a565-78d9bbc6bdfa",
+   "question": "Which beers are named Trebuchet Double IPA (2012) and have the style Belgian IPA?",
+   "answer_row_ids": [
+    669
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'Belgian IPA' AND beers.name = 'Trebuchet Double IPA (2012)'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Belgian IPA",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Trebuchet Double IPA (2012)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "Belgian IPA",
+    "beers.name": "Trebuchet Double IPA (2012)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'Belgian IPA' and name equal to 'Trebuchet Double IPA (2012)'?"
+  },
+  {
+   "uid": "be5cf769-27a8-4054-8109-8f2e73aba3b8",
+   "question": "Which beers named Station 33 Firehouse Red are of the Irish Red Ale style?",
+   "answer_row_ids": [
+    1305
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'Irish Red Ale' AND beers.name = 'Station 33 Firehouse Red'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Irish Red Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Station 33 Firehouse Red",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "Irish Red Ale",
+    "beers.name": "Station 33 Firehouse Red"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'Irish Red Ale' and name equal to 'Station 33 Firehouse Red'?"
+  },
+  {
+   "uid": "a72b8b87-93d3-43c1-aa3b-fcadca1b15fa",
+   "question": "Which beers are named Narragansett Bock and have an IBU of exactly 32.0?",
+   "answer_row_ids": [
+    315
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Narragansett Bock' AND beers.ibu = 32.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ibu"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Narragansett Bock",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 32.0,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Narragansett Bock",
+    "beers.ibu": 32.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Narragansett Bock' and ibu equal to '32.0'?"
+  },
+  {
+   "uid": "24b32b37-3cea-4e42-99d8-da3caed98ddf",
+   "question": "Which beers named Onyx Black Ale come in exactly 12.0 ounces?",
+   "answer_row_ids": [
+    2151
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Onyx Black Ale' AND beers.ounces = 12.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Onyx Black Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Onyx Black Ale",
+    "beers.ounces": 12.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Onyx Black Ale' and ounces equal to '12.0'?"
+  },
+  {
+   "uid": "153296b6-f9e2-4bb2-b8ab-e18428f48b80",
+   "question": "Which beers have an ABV of exactly 0.056 and an IBU of exactly 33.0?",
+   "answer_row_ids": [
+    441,
+    1269,
+    1702
+   ],
+   "answer_count": 3,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.056 AND beers.ibu = 33.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.ibu"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.056,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 33.0,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.056,
+    "beers.ibu": 33.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.056' and ibu equal to '33.0'?"
+  },
+  {
+   "uid": "c863a3ff-2d61-46c1-8e73-2c9a9025608f",
+   "question": "What beers are exactly 24.0 ounces and have the style Rye Beer?",
+   "answer_row_ids": [
+    2057
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 24.0 AND beers.style = 'Rye Beer'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 24.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Rye Beer",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 24.0,
+    "beers.style": "Rye Beer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '24.0' and style equal to 'Rye Beer'?"
+  },
+  {
+   "uid": "b1386562-1035-4ebc-9354-83121b0f1c96",
+   "question": "What beers have a style of American Amber / Red Ale with an ABV that is exactly 0.056?",
+   "answer_row_ids": [
+    174,
+    882,
+    1432,
+    1479,
+    1998,
+    2660
+   ],
+   "answer_count": 6,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'American Amber / Red Ale' AND beers.abv = 0.056",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.abv"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Amber / Red Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.056,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "American Amber / Red Ale",
+    "beers.abv": 0.056
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'American Amber / Red Ale' and abv equal to '0.056'?"
+  },
+  {
+   "uid": "02e6da90-159e-4702-abcf-0f96971da384",
+   "question": "Which beers have the style exactly equal to Gose?",
+   "answer_row_ids": [
+    1172,
+    1312,
+    1738,
+    2021,
+    2291,
+    2370,
+    2479,
+    2506,
+    2580,
+    2584
+   ],
+   "answer_count": 10,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'Gose'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Gose",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "Gose"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'Gose'?"
+  },
+  {
+   "uid": "d6cb3308-73fe-4c2b-80a1-67f5fb66c19a",
+   "question": "Which beers have an IBU of exactly 85.0 and a style that is American IPA?",
+   "answer_row_ids": [
+    317,
+    730,
+    1071,
+    1509,
+    1603,
+    1648,
+    2159,
+    2420,
+    2667
+   ],
+   "answer_count": 9,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 85.0 AND beers.style = 'American IPA'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 85.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American IPA",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 85.0,
+    "beers.style": "American IPA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '85.0' and style equal to 'American IPA'?"
+  },
+  {
+   "uid": "6cd66236-8064-455f-ab9a-b8f213fe09df",
+   "question": "Which beers have the style exactly equal to American Wild Ale?",
+   "answer_row_ids": [
+    909,
+    1785,
+    1853,
+    1916,
+    2563,
+    2676
+   ],
+   "answer_count": 6,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'American Wild Ale'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Wild Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "American Wild Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'American Wild Ale'?"
+  },
+  {
+   "uid": "a4941673-73cb-44e8-9628-301bdf2420bf",
+   "question": "Which beers are named Tent Pole Vanilla Porter and come in 16.0 ounces?",
+   "answer_row_ids": [
+    998
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Tent Pole Vanilla Porter' AND beers.ounces = 16.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Tent Pole Vanilla Porter",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Tent Pole Vanilla Porter",
+    "beers.ounces": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Tent Pole Vanilla Porter' and ounces equal to '16.0'?"
+  },
+  {
+   "uid": "4d39400b-54c0-41a3-a6a3-6b02a7e62348",
+   "question": "Which beers have the name Northern Lights Amber Ale?",
+   "answer_row_ids": [
+    921
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Northern Lights Amber Ale'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Northern Lights Amber Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Northern Lights Amber Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Northern Lights Amber Ale'?"
+  },
+  {
+   "uid": "5794db3c-e25f-45f1-b42a-5067fe6e91bb",
+   "question": "Which beers have an abv of exactly 0.047 and come in 16.0 ounces?",
+   "answer_row_ids": [
+    350,
+    409,
+    1276,
+    1494,
+    2115,
+    2192,
+    2367,
+    2473,
+    2510,
+    2513
+   ],
+   "answer_count": 10,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.047 AND beers.ounces = 16.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.047,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.047,
+    "beers.ounces": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.047' and ounces equal to '16.0'?"
+  },
+  {
+   "uid": "e768dda0-f032-44c0-b3a5-55efd83144ed",
+   "question": "Which beers named El Chingon IPA have an IBU of exactly 73.0?",
+   "answer_row_ids": [
+    1874
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 73.0 AND beers.name = 'El Chingon IPA'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 73.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "El Chingon IPA",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 73.0,
+    "beers.name": "El Chingon IPA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '73.0' and name equal to 'El Chingon IPA'?"
+  },
+  {
+   "uid": "8785b845-f9d9-4af3-af77-d198d9f62a78",
+   "question": "Which beers are Belgian Pale Ales with the name 668 Neighbor of the Beast (16 oz.) (2010)?",
+   "answer_row_ids": [
+    43
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'Belgian Pale Ale' AND beers.name = '668 Neighbor of the Beast (16 oz.) (2010)'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Belgian Pale Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "668 Neighbor of the Beast (16 oz.) (2010)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "Belgian Pale Ale",
+    "beers.name": "668 Neighbor of the Beast (16 oz.) (2010)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'Belgian Pale Ale' and name equal to '668 Neighbor of the Beast (16 oz.) (2010)'?"
+  },
+  {
+   "uid": "190033a3-591c-4e54-8430-36807d89c1b1",
+   "question": "Which beers have the name exactly equal to True Blonde Ale?",
+   "answer_row_ids": [
+    70
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'True Blonde Ale'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "True Blonde Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "True Blonde Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'True Blonde Ale'?"
+  },
+  {
+   "uid": "0533a655-628d-4431-97ca-800f1a2989cb",
+   "question": "Which beers have the name exactly Nomader Weiss?",
+   "answer_row_ids": [
+    2283
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Nomader Weiss'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Nomader Weiss",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Nomader Weiss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Nomader Weiss'?"
+  },
+  {
+   "uid": "453cb6a4-1785-4b3f-9ef0-fa1147cc1515",
+   "question": "Which beers have the exact name SurlyFest?",
+   "answer_row_ids": [
+    18
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'SurlyFest'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "SurlyFest",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "SurlyFest"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'SurlyFest'?"
+  },
+  {
+   "uid": "e935cfd7-dada-4dfc-a0c5-97a6f668803e",
+   "question": "What beers have the exact name Blue Paddle?",
+   "answer_row_ids": [
+    1975
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Blue Paddle'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Blue Paddle",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Blue Paddle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Blue Paddle'?"
+  },
+  {
+   "uid": "f624df5e-558f-4f1c-b8b3-18dd8be25576",
+   "question": "Which beers have an IBU of exactly 32.0 and an ABV of exactly 0.065?",
+   "answer_row_ids": [
+    315
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 32.0 AND beers.abv = 0.065",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.abv"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 32.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.065,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 32.0,
+    "beers.abv": 0.065
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '32.0' and abv equal to '0.065'?"
+  },
+  {
+   "uid": "8e743a8b-15dd-4ecc-b471-89cd2abd9590",
+   "question": "Which beers named Uncle John's Apple Cherry Cider come in 16.0 ounces?",
+   "answer_row_ids": [
+    1704
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Uncle John''s Apple Cherry Cider' AND beers.ounces = 16.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Uncle John's Apple Cherry Cider",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Uncle John's Apple Cherry Cider",
+    "beers.ounces": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Uncle John' and ounces equal to '16.0'?"
+  },
+  {
+   "uid": "9728f589-1a77-41e6-872f-25da4c4f2821",
+   "question": "Which beers named Fremont Organic Pale Ale have the style American Pale Ale (APA)?",
+   "answer_row_ids": [
+    1116
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Fremont Organic Pale Ale' AND beers.style = 'American Pale Ale (APA)'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Fremont Organic Pale Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Fremont Organic Pale Ale",
+    "beers.style": "American Pale Ale (APA)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Fremont Organic Pale Ale' and style equal to 'American Pale Ale (APA)'?"
+  },
+  {
+   "uid": "9aac2d19-29ac-482a-9856-23e4c4f41d4b",
+   "question": "Which beers named Tour de Nez Belgian IPA (Current) have an ABV of 0.08, come in 16.0 ounces, and are styled as Belgian IPA?",
+   "answer_row_ids": [
+    538
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Tour de Nez Belgian IPA (Current)' AND beers.abv = 0.08 AND beers.ounces = 16.0 AND beers.style = 'Belgian IPA'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.abv",
+    "beers.ounces",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Tour de Nez Belgian IPA (Current)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.08,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Belgian IPA",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Tour de Nez Belgian IPA (Current)",
+    "beers.abv": 0.08,
+    "beers.ounces": 16.0,
+    "beers.style": "Belgian IPA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Tour de Nez Belgian IPA (Current)' and abv equal to '0.08' and ounces equal to '16.0' and style equal to 'Belgian IPA'?"
+  },
+  {
+   "uid": "b1ab8b4a-d82e-45f5-a9b0-71a7b75bb67f",
+   "question": "Which American Pale Ale (APA) beers have an IBU of 35.0, an ABV of 0.05, and come in 16.0-ounce servings?",
+   "answer_row_ids": [
+    1162,
+    2138
+   ],
+   "answer_count": 2,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 35.0 AND beers.ounces = 16.0 AND beers.abv = 0.05 AND beers.style = 'American Pale Ale (APA)'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.ounces",
+    "beers.abv",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 35.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.05,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 35.0,
+    "beers.ounces": 16.0,
+    "beers.abv": 0.05,
+    "beers.style": "American Pale Ale (APA)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '35.0' and ounces equal to '16.0' and abv equal to '0.05' and style equal to 'American Pale Ale (APA)'?"
+  },
+  {
+   "uid": "5e42f4ea-704f-4d9c-bf85-e573c0fe0ae0",
+   "question": "Which beers named Captain's Daughter have an ABV of 0.085, style American Double / Imperial IPA, ounces of 12.0, and an IBU of 69.0?",
+   "answer_row_ids": [
+    2044
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Captain''s Daughter' AND beers.abv = 0.085 AND beers.style = 'American Double / Imperial IPA' AND beers.ounces = 12.0 AND beers.ibu = 69.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.abv",
+    "beers.style",
+    "beers.ounces",
+    "beers.ibu"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Captain's Daughter",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.085,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Double / Imperial IPA",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 69.0,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Captain's Daughter",
+    "beers.abv": 0.085,
+    "beers.style": "American Double / Imperial IPA",
+    "beers.ounces": 12.0,
+    "beers.ibu": 69.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Captain' and abv equal to '0.085' and style equal to 'American Double / Imperial IPA' and ounces equal to '12.0' and ibu equal to '69.0'?"
+  },
+  {
+   "uid": "3e5e4956-7bb7-446c-927f-64e9f078e23e",
+   "question": "What beers named Clem's Gold have an ABV exactly 0.053, a style of American Pale Lager, and ounces exactly 16.0?",
+   "answer_row_ids": [
+    1530
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.053 AND beers.style = 'American Pale Lager' AND beers.ounces = 16.0 AND beers.name = 'Clem''s Gold'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.style",
+    "beers.ounces",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.053,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Lager",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Clem's Gold",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.053,
+    "beers.style": "American Pale Lager",
+    "beers.ounces": 16.0,
+    "beers.name": "Clem's Gold"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.053' and style equal to 'American Pale Lager' and ounces equal to '16.0' and name equal to 'Clem'?"
+  },
+  {
+   "uid": "b53474ac-a1e0-43c4-819d-a8a5ec709f0e",
+   "question": "What beers named Helles Golden Lager have an ABV of 0.049, are styled as Munich Helles Lager, come in 12.0 ounces, and have an IBU of 18.0?",
+   "answer_row_ids": [
+    1123
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Helles Golden Lager' AND beers.abv = 0.049 AND beers.style = 'Munich Helles Lager' AND beers.ounces = 12.0 AND beers.ibu = 18.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.abv",
+    "beers.style",
+    "beers.ounces",
+    "beers.ibu"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Helles Golden Lager",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.049,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Munich Helles Lager",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 18.0,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Helles Golden Lager",
+    "beers.abv": 0.049,
+    "beers.style": "Munich Helles Lager",
+    "beers.ounces": 12.0,
+    "beers.ibu": 18.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Helles Golden Lager' and abv equal to '0.049' and style equal to 'Munich Helles Lager' and ounces equal to '12.0' and ibu equal to '18.0'?"
+  },
+  {
+   "uid": "486b7a58-4d35-4ab8-afb6-a7a888902032",
+   "question": "What beers named Popcorn Pilsner have a 16.0-ounce size, an ABV of 0.054, and are styled as German Pilsener?",
+   "answer_row_ids": [
+    1314
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Popcorn Pilsner' AND beers.ounces = 16.0 AND beers.abv = 0.054 AND beers.style = 'German Pilsener'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ounces",
+    "beers.abv",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Popcorn Pilsner",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.054,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "German Pilsener",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Popcorn Pilsner",
+    "beers.ounces": 16.0,
+    "beers.abv": 0.054,
+    "beers.style": "German Pilsener"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Popcorn Pilsner' and ounces equal to '16.0' and abv equal to '0.054' and style equal to 'German Pilsener'?"
+  },
+  {
+   "uid": "d26a7ad6-5dba-435c-a2f2-cb5ced44773d",
+   "question": "What beers named Leroy (2005) have an alcohol content exactly 0.052 and come in 12.0 ounces?",
+   "answer_row_ids": [
+    734
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 12.0 AND beers.abv = 0.052 AND beers.name = 'Leroy (2005)'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.abv",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.052,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Leroy (2005)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 12.0,
+    "beers.abv": 0.052,
+    "beers.name": "Leroy (2005)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '12.0' and abv equal to '0.052' and name equal to 'Leroy (2005)'?"
+  },
+  {
+   "uid": "c031fbe4-d9e1-4082-aaab-0105c7962694",
+   "question": "Which beers named Bombshell Blonde have an IBU of exactly 20.0, an ABV of exactly 0.05, and ounces exactly 16.0?",
+   "answer_row_ids": [
+    856
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 20.0 AND beers.ounces = 16.0 AND beers.name = 'Bombshell Blonde' AND beers.abv = 0.05",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.ounces",
+    "beers.name",
+    "beers.abv"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 20.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Bombshell Blonde",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.05,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 20.0,
+    "beers.ounces": 16.0,
+    "beers.name": "Bombshell Blonde",
+    "beers.abv": 0.05
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '20.0' and ounces equal to '16.0' and name equal to 'Bombshell Blonde' and abv equal to '0.05'?"
+  },
+  {
+   "uid": "bb71dfe5-e47d-419b-bacd-38ba854edc34",
+   "question": "Which beers named Brooklyn Lager (16 oz.) have an ABV of 0.052, come in 16.0 ounces, and are styled as American Amber / Red Lager?",
+   "answer_row_ids": [
+    66
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.052 AND beers.name = 'Brooklyn Lager (16 oz.)' AND beers.ounces = 16.0 AND beers.style = 'American Amber / Red Lager'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.name",
+    "beers.ounces",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.052,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Brooklyn Lager (16 oz.)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Amber / Red Lager",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.052,
+    "beers.name": "Brooklyn Lager (16 oz.)",
+    "beers.ounces": 16.0,
+    "beers.style": "American Amber / Red Lager"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.052' and name equal to 'Brooklyn Lager (16 oz.)' and ounces equal to '16.0' and style equal to 'American Amber / Red Lager'?"
+  },
+  {
+   "uid": "4e2c0d3e-8a2e-418a-b589-deeff5db6c44",
+   "question": "What beers have an ABV of 0.042 with a style of Witbier and an IBU of exactly 10.0?",
+   "answer_row_ids": [
+    2522
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.042 AND beers.style = 'Witbier' AND beers.ibu = 10.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.style",
+    "beers.ibu"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.042,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Witbier",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 10.0,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.042,
+    "beers.style": "Witbier",
+    "beers.ibu": 10.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.042' and style equal to 'Witbier' and ibu equal to '10.0'?"
+  },
+  {
+   "uid": "1fa647cf-b065-4519-90d3-132eea484c9f",
+   "question": "Which beers are American IPA with exactly 16.0 ounces and an ABV of 0.072?",
+   "answer_row_ids": [
+    426,
+    664,
+    1621,
+    1623,
+    1648,
+    1783,
+    2158,
+    2543
+   ],
+   "answer_count": 8,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 16.0 AND beers.abv = 0.072 AND beers.style = 'American IPA'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.abv",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.072,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American IPA",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 16.0,
+    "beers.abv": 0.072,
+    "beers.style": "American IPA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '16.0' and abv equal to '0.072' and style equal to 'American IPA'?"
+  },
+  {
+   "uid": "dcff34a1-a6c2-405e-ae3c-294c8627863c",
+   "question": "Which beers named Caldera Pale Ale (2007) are American Pale Ales (APA) with an IBU of 55.0, an ABV of 0.056, and ounces equal to 12.0?",
+   "answer_row_ids": [
+    788
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 55.0 AND beers.name = 'Caldera Pale Ale (2007)' AND beers.style = 'American Pale Ale (APA)' AND beers.abv = 0.056 AND beers.ounces = 12.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.name",
+    "beers.style",
+    "beers.abv",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 55.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Caldera Pale Ale (2007)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.056,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 55.0,
+    "beers.name": "Caldera Pale Ale (2007)",
+    "beers.style": "American Pale Ale (APA)",
+    "beers.abv": 0.056,
+    "beers.ounces": 12.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '55.0' and name equal to 'Caldera Pale Ale (2007)' and style equal to 'American Pale Ale (APA)' and abv equal to '0.056' and ounces equal to '12.0'?"
+  },
+  {
+   "uid": "4f066526-13a0-4ae0-8268-c453ae0a1e00",
+   "question": "Which beers named Arcus IPA come in 12.0 ounces and have an IBU of exactly 81.0?",
+   "answer_row_ids": [
+    2096
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'Arcus IPA' AND beers.ounces = 12.0 AND beers.ibu = 81.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ounces",
+    "beers.ibu"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Arcus IPA",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 81.0,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "Arcus IPA",
+    "beers.ounces": 12.0,
+    "beers.ibu": 81.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'Arcus IPA' and ounces equal to '12.0' and ibu equal to '81.0'?"
+  },
+  {
+   "uid": "d5868da5-6c46-42f5-9694-6548d8c814b7",
+   "question": "Which beers named Alphadelic IPA (2011) have a 12.0-ounce size, 0.065 ABV, 90.0 IBU, and the style American IPA?",
+   "answer_row_ids": [
+    499
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 12.0 AND beers.abv = 0.065 AND beers.name = 'Alphadelic IPA (2011)' AND beers.ibu = 90.0 AND beers.style = 'American IPA'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.abv",
+    "beers.name",
+    "beers.ibu",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.065,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Alphadelic IPA (2011)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 90.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American IPA",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 12.0,
+    "beers.abv": 0.065,
+    "beers.name": "Alphadelic IPA (2011)",
+    "beers.ibu": 90.0,
+    "beers.style": "American IPA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '12.0' and abv equal to '0.065' and name equal to 'Alphadelic IPA (2011)' and ibu equal to '90.0' and style equal to 'American IPA'?"
+  },
+  {
+   "uid": "bf96e411-63d9-43c5-a171-fd12d156b0c5",
+   "question": "Which American Double / Imperial IPA beers have an IBU of exactly 103.0 and an ABV of exactly 0.082?",
+   "answer_row_ids": [
+    2401
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'American Double / Imperial IPA' AND beers.ibu = 103.0 AND beers.abv = 0.082",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.ibu",
+    "beers.abv"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Double / Imperial IPA",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 103.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.082,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "American Double / Imperial IPA",
+    "beers.ibu": 103.0,
+    "beers.abv": 0.082
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'American Double / Imperial IPA' and ibu equal to '103.0' and abv equal to '0.082'?"
+  },
+  {
+   "uid": "3323754f-c8da-4b9e-a1ca-e08dc7002d3a",
+   "question": "Which beers named Fox Tail Gluten Free Ale are American Pale Ale (APA) style with an ABV of 0.05 and an IBU of 50.0?",
+   "answer_row_ids": [
+    469
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'American Pale Ale (APA)' AND beers.abv = 0.05 AND beers.ibu = 50.0 AND beers.name = 'Fox Tail Gluten Free Ale'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.abv",
+    "beers.ibu",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.05,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 50.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Fox Tail Gluten Free Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "American Pale Ale (APA)",
+    "beers.abv": 0.05,
+    "beers.ibu": 50.0,
+    "beers.name": "Fox Tail Gluten Free Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'American Pale Ale (APA)' and abv equal to '0.05' and ibu equal to '50.0' and name equal to 'Fox Tail Gluten Free Ale'?"
+  },
+  {
+   "uid": "abee96a8-3bce-43d7-b9eb-fa3c3dadcfde",
+   "question": "What beers named Wyoming Pale Ale are American Pale Ale (APA) style with exactly 16.0 ounces and an ABV of 0.072?",
+   "answer_row_ids": [
+    324
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 16.0 AND beers.abv = 0.072 AND beers.name = 'Wyoming Pale Ale' AND beers.style = 'American Pale Ale (APA)'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.abv",
+    "beers.name",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.072,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Wyoming Pale Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 16.0,
+    "beers.abv": 0.072,
+    "beers.name": "Wyoming Pale Ale",
+    "beers.style": "American Pale Ale (APA)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '16.0' and abv equal to '0.072' and name equal to 'Wyoming Pale Ale' and style equal to 'American Pale Ale (APA)'?"
+  },
+  {
+   "uid": "21d78860-e13a-4c43-a3b6-f1a463d5e022",
+   "question": "Which American Pale Ale (APA) named Polar Pale Ale has an IBU of exactly 17.0, an ABV of exactly 0.052, and comes in 12.0 ounces?",
+   "answer_row_ids": [
+    920
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 17.0 AND beers.style = 'American Pale Ale (APA)' AND beers.ounces = 12.0 AND beers.name = 'Polar Pale Ale' AND beers.abv = 0.052",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.style",
+    "beers.ounces",
+    "beers.name",
+    "beers.abv"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 17.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Polar Pale Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.052,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 17.0,
+    "beers.style": "American Pale Ale (APA)",
+    "beers.ounces": 12.0,
+    "beers.name": "Polar Pale Ale",
+    "beers.abv": 0.052
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '17.0' and style equal to 'American Pale Ale (APA)' and ounces equal to '12.0' and name equal to 'Polar Pale Ale' and abv equal to '0.052'?"
+  },
+  {
+   "uid": "25f2ef24-324f-4fa9-818a-1dab49ee656e",
+   "question": "Which beers named Night Cat (2014) have an IBU of 43.0, are 12.0 ounces, and are styled as American Dark Wheat Ale?",
+   "answer_row_ids": [
+    1630
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 43.0 AND beers.name = 'Night Cat (2014)' AND beers.ounces = 12.0 AND beers.style = 'American Dark Wheat Ale'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.name",
+    "beers.ounces",
+    "beers.style"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 43.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Night Cat (2014)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Dark Wheat Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 43.0,
+    "beers.name": "Night Cat (2014)",
+    "beers.ounces": 12.0,
+    "beers.style": "American Dark Wheat Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '43.0' and name equal to 'Night Cat (2014)' and ounces equal to '12.0' and style equal to 'American Dark Wheat Ale'?"
+  },
+  {
+   "uid": "d190fefd-706c-42d4-9c54-989208176537",
+   "question": "Which beers named Rail Yard Ale (2009) have an ABV exactly 0.052, are American Amber / Red Ale style, and come in 12.0 ounces?",
+   "answer_row_ids": [
+    84
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.052 AND beers.style = 'American Amber / Red Ale' AND beers.name = 'Rail Yard Ale (2009)' AND beers.ounces = 12.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.style",
+    "beers.name",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.052,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Amber / Red Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Rail Yard Ale (2009)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.052,
+    "beers.style": "American Amber / Red Ale",
+    "beers.name": "Rail Yard Ale (2009)",
+    "beers.ounces": 12.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.052' and style equal to 'American Amber / Red Ale' and name equal to 'Rail Yard Ale (2009)' and ounces equal to '12.0'?"
+  },
+  {
+   "uid": "db518487-a0a4-459c-b0ee-f9e01898e04b",
+   "question": "Which beers named Quakertown Stout have an IBU of 50.0, an ABV of 0.092, and ounces is 12.0?",
+   "answer_row_ids": [
+    1333
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ibu = 50.0 AND beers.abv = 0.092 AND beers.name = 'Quakertown Stout' AND beers.ounces = 12.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ibu",
+    "beers.abv",
+    "beers.name",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 50.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.092,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Quakertown Stout",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.ibu": 50.0,
+    "beers.abv": 0.092,
+    "beers.name": "Quakertown Stout",
+    "beers.ounces": 12.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ibu equal to '50.0' and abv equal to '0.092' and name equal to 'Quakertown Stout' and ounces equal to '12.0'?"
+  },
+  {
+   "uid": "bbb78904-b745-4005-92cd-63ab7899bd98",
+   "question": "Which beers named Hibernation Ale have the style Old Ale, an ABV of exactly 0.087, and ounces is 12.0?",
+   "answer_row_ids": [
+    2649
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.style = 'Old Ale' AND beers.abv = 0.087 AND beers.ounces = 12.0 AND beers.name = 'Hibernation Ale'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.style",
+    "beers.abv",
+    "beers.ounces",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "Old Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.087,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Hibernation Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.style": "Old Ale",
+    "beers.abv": 0.087,
+    "beers.ounces": 12.0,
+    "beers.name": "Hibernation Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with style equal to 'Old Ale' and abv equal to '0.087' and ounces equal to '12.0' and name equal to 'Hibernation Ale'?"
+  },
+  {
+   "uid": "a47de567-5f68-4973-a41a-ce4b27a2993b",
+   "question": "What beers named Rochester Red Ale have an ABV of 0.059 and are American Amber / Red Ale style served in 16.0-ounce bottles?",
+   "answer_row_ids": [
+    899
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.abv = 0.059 AND beers.style = 'American Amber / Red Ale' AND beers.name = 'Rochester Red Ale' AND beers.ounces = 16.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.abv",
+    "beers.style",
+    "beers.name",
+    "beers.ounces"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.059,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Amber / Red Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Rochester Red Ale",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "beers.abv": 0.059,
+    "beers.style": "American Amber / Red Ale",
+    "beers.name": "Rochester Red Ale",
+    "beers.ounces": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with abv equal to '0.059' and style equal to 'American Amber / Red Ale' and name equal to 'Rochester Red Ale' and ounces equal to '16.0'?"
+  },
+  {
+   "uid": "159478a2-eb22-4506-9fb6-00245e8cd16f",
+   "question": "Which American Pale Ale (APA) beers named Keebarlin' Pale Ale come in exactly 12.0 ounces with an ABV of exactly 0.042?",
+   "answer_row_ids": [
+    1818
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.ounces = 12.0 AND beers.abv = 0.042 AND beers.style = 'American Pale Ale (APA)' AND beers.name = 'Keebarlin'' Pale Ale'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.ounces",
+    "beers.abv",
+    "beers.style",
+    "beers.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.042,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "style",
+     "operator": "=",
+     "value": "American Pale Ale (APA)",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "Keebarlin' Pale Ale",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.ounces": 12.0,
+    "beers.abv": 0.042,
+    "beers.style": "American Pale Ale (APA)",
+    "beers.name": "Keebarlin' Pale Ale"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with ounces equal to '12.0' and abv equal to '0.042' and style equal to 'American Pale Ale (APA)' and name equal to 'Keebarlin'?"
+  },
+  {
+   "uid": "afe3f254-672c-4884-a3f5-36db4db14718",
+   "question": "Which beers named American Amber have 12.0 ounces, an IBU of 8.0, and an ABV of 0.041?",
+   "answer_row_ids": [
+    2232
+   ],
+   "answer_count": 1,
+   "sql": "SELECT beers.id FROM beers\nWHERE beers.name = 'American Amber' AND beers.ounces = 12.0 AND beers.ibu = 8.0 AND beers.abv = 0.041",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "beers"
+   ],
+   "involved_columns": [
+    "beers.name",
+    "beers.ounces",
+    "beers.ibu",
+    "beers.abv"
+   ],
+   "involved_filters": [
+    {
+     "table": "beers",
+     "column": "name",
+     "operator": "=",
+     "value": "American Amber",
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "ounces",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "enum"
+    },
+    {
+     "table": "beers",
+     "column": "ibu",
+     "operator": "=",
+     "value": 8.0,
+     "column_type": "label"
+    },
+    {
+     "table": "beers",
+     "column": "abv",
+     "operator": "=",
+     "value": 0.041,
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "beers.name": "American Amber",
+    "beers.ounces": 12.0,
+    "beers.ibu": 8.0,
+    "beers.abv": 0.041
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "beers"
+   },
+   "answer_table": "beers",
+   "answer_id_column": "id",
+   "canonical_question": "Which beers entities with name equal to 'American Amber' and ounces equal to '12.0' and ibu equal to '8.0' and abv equal to '0.041'?"
+  }
+ ]
+}

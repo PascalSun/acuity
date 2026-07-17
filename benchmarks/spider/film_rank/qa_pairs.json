@@ -1,0 +1,3412 @@
+{
+ "db_id": "film_rank",
+ "target_table": "market",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1760705904,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/film_rank/film_rank.sqlite",
+  "generated_at": "2026-07-02T14:11:59.831901+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "market",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 8,
+   "1pE": 7,
+   "1pM": 7,
+   "1pH": 7,
+   "2pE": 7,
+   "2pM": 7,
+   "2pH": 7
+  },
+  "realized_counts": {
+   "0E": 8,
+   "1pE": 7,
+   "1pH": 7,
+   "1pM": 7,
+   "2pE": 7,
+   "2pH": 7,
+   "2pM": 7
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pE": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 7,
+    "inner_attempts": 7,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pH": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pM": {
+    "target_quota": 7,
+    "accepted_count": 7,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "6dc4cd8a-5106-4bc1-a930-3ae044632723",
+   "question": "Which markets in Russia have at most 231 cities?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.number_cities <= 231 AND market.country = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 231,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 231,
+    "market.country": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '231' and country equal to 'Russia'?"
+  },
+  {
+   "uid": "0dccf1aa-080d-4a2c-99e1-564af3878054",
+   "question": "Which markets have at most 209 cities?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.number_cities <= 209",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 209,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 209
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '209'?"
+  },
+  {
+   "uid": "63c34aec-ec84-43bc-8e69-ef15bded907c",
+   "question": "Which markets have at most 231 cities?",
+   "answer_row_ids": [
+    1,
+    4,
+    5
+   ],
+   "answer_count": 3,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.number_cities <= 231",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 231,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 231
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '231'?"
+  },
+  {
+   "uid": "507d3697-4329-4709-a427-42279b1fd430",
+   "question": "Which markets are located in Japan with exactly 209 cities?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.country = 'Japan' AND market.number_cities = 209",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.country",
+    "market.number_cities"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "=",
+     "value": 209,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "Japan",
+    "market.number_cities": 209
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Japan' and number cities equal to '209'?"
+  },
+  {
+   "uid": "e997243f-d283-428d-9a15-053b4e55f43a",
+   "question": "Where are the markets located that are exactly in Poland?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.country = 'Poland'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Poland",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.country": "Poland"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Poland'?"
+  },
+  {
+   "uid": "5397fed0-2436-4467-9324-54db6f4b21d1",
+   "question": "Which markets are located in the USA?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.country = 'USA'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "USA",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.country": "USA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'USA'?"
+  },
+  {
+   "uid": "f0b793fc-3e94-4749-b4ea-fa19c1d6574e",
+   "question": "Which markets in China have at least 540 cities?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.number_cities >= 540 AND market.country = 'China'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 540,
+    "market.country": "China"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '540' and country equal to 'China'?"
+  },
+  {
+   "uid": "795fc09d-2538-44aa-b15e-1358cf029810",
+   "question": "Which markets are located in Poland and have at most 453 cities?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nWHERE market.country = 'Poland' AND market.number_cities <= 453",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "market"
+   ],
+   "involved_columns": [
+    "market.country",
+    "market.number_cities"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Poland",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 453,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "Poland",
+    "market.number_cities": 453
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Poland' and number cities at most '453'?"
+  },
+  {
+   "uid": "839bccc3-96af-4a92-94ad-b3e7fa5a0b38",
+   "question": "Which markets have film estimations from the year 1997 or later?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.year >= 1997",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1997,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1997
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at least '1997'?"
+  },
+  {
+   "uid": "c5fe4d54-4369-4790-a9fd-7c6cf2ab8e46",
+   "question": "Which markets are associated with film estimations where the country is USA?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.country = 'USA'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "USA",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.country": "USA"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'USA', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id)?"
+  },
+  {
+   "uid": "3247a3c6-8e23-4ba4-b9b4-6de8e39d987f",
+   "question": "What markets have a high estimate of at most 960.0?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.high_estimate <= 960.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 960.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.high_estimate": 960.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate at most '960.0'?"
+  },
+  {
+   "uid": "d2678f23-2563-4343-92b9-c5bccfe746c7",
+   "question": "Which markets have film market estimations where type is exactly Mass suicide?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.type = 'Mass suicide'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.type": "Mass suicide"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide'?"
+  },
+  {
+   "uid": "450c7609-82de-4946-8de8-c69a0c1dddd3",
+   "question": "Which markets have a high estimate of exactly 39.0 in their film market estimation?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.high_estimate = 39.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 39.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.high_estimate": 39.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate equal to '39.0'?"
+  },
+  {
+   "uid": "bd365ba8-0335-4d9b-a39a-372f512d792c",
+   "question": "Which markets have a mass human sacrifice type with a high estimate that is exactly 80400.0?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.type = 'Mass human sacrifice' AND film_market_estimation.high_estimate = 80400.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.type",
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass human sacrifice",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 80400.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.type": "Mass human sacrifice",
+    "film_market_estimation.high_estimate": 80400.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass human sacrifice' and high estimate equal to '80400.0'?"
+  },
+  {
+   "uid": "549bbc98-c209-4fde-8772-6a151683772b",
+   "question": "Which markets cover at least 540 cities and have film market high estimates of at most 960.0?",
+   "answer_row_ids": [
+    2,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.number_cities >= 540 AND film_market_estimation.high_estimate <= 960.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 960.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 540,
+    "film_market_estimation.high_estimate": 960.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate at most '960.0'?"
+  },
+  {
+   "uid": "3cd84308-1f11-4974-93cc-9cb68ba6c951",
+   "question": "What markets in Japan have at least 209 cities and a 1945 Mass suicide murder type with a high estimate of 80400.0 and a low estimate of at most 80000.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.number_cities >= 209 AND film_market_estimation.type = 'Mass suicide murder' AND film_market_estimation.year = 1945 AND film_market_estimation.high_estimate = 80400.0 AND film_market_estimation.low_estimate <= 80000.0 AND market.country = 'Japan'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "film_market_estimation.type",
+    "film_market_estimation.year",
+    "film_market_estimation.high_estimate",
+    "film_market_estimation.low_estimate",
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide murder",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1945,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 80400.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 80000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 209,
+    "film_market_estimation.type": "Mass suicide murder",
+    "film_market_estimation.year": 1945,
+    "film_market_estimation.high_estimate": 80400.0,
+    "film_market_estimation.low_estimate": 80000.0,
+    "market.country": "Japan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '209' and country equal to 'Japan', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide murder' and year equal to '1945' and high estimate equal to '80400.0' and low estimate at most '80000.0'?"
+  },
+  {
+   "uid": "f0521679-d053-4742-a773-0ba51468a812",
+   "question": "What markets in China have at least 540 cities and film market estimations from 1944 or later where the type is Mass suicide, the low estimate is at least 8000.0, and the high estimate is exactly 8000.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.type = 'Mass suicide' AND market.number_cities >= 540 AND film_market_estimation.low_estimate >= 8000.0 AND film_market_estimation.year >= 1944 AND market.country = 'China' AND film_market_estimation.high_estimate = 8000.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.type",
+    "market.number_cities",
+    "film_market_estimation.low_estimate",
+    "film_market_estimation.year",
+    "market.country",
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1944,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.type": "Mass suicide",
+    "market.number_cities": 540,
+    "film_market_estimation.low_estimate": 8000.0,
+    "film_market_estimation.year": 1944,
+    "market.country": "China",
+    "film_market_estimation.high_estimate": 8000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '540' and country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide' and low estimate at least '8000.0' and year at least '1944' and high estimate equal to '8000.0'?"
+  },
+  {
+   "uid": "9e42e9bd-0eb8-41a7-af03-3d0e0e2cef36",
+   "question": "Which markets in China have at least 540 cities and include film estimates of type Mass suicide from year 1944 or later with a high estimate exactly 8000.0 and a low estimate at most 8000.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.type = 'Mass suicide' AND market.country = 'China' AND film_market_estimation.high_estimate = 8000.0 AND film_market_estimation.low_estimate <= 8000.0 AND market.number_cities >= 540 AND film_market_estimation.year >= 1944",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.type",
+    "market.country",
+    "film_market_estimation.high_estimate",
+    "film_market_estimation.low_estimate",
+    "market.number_cities",
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1944,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.type": "Mass suicide",
+    "market.country": "China",
+    "film_market_estimation.high_estimate": 8000.0,
+    "film_market_estimation.low_estimate": 8000.0,
+    "market.number_cities": 540,
+    "film_market_estimation.year": 1944
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China' and number cities at least '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide' and high estimate equal to '8000.0' and low estimate at most '8000.0' and year at least '1944'?"
+  },
+  {
+   "uid": "cc04df50-af73-4d45-b3bc-53d3fac0a98e",
+   "question": "Which markets in the USA have at least 700 cities and film market estimations of type Mass suicide from 1995 or earlier with both low and high estimates of at least 16.0?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.low_estimate >= 16.0 AND market.country = 'USA' AND market.number_cities >= 700 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.year <= 1995 AND film_market_estimation.high_estimate >= 16.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.low_estimate",
+    "market.country",
+    "market.number_cities",
+    "film_market_estimation.type",
+    "film_market_estimation.year",
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 16.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "USA",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 700,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "<=",
+     "value": 1995,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": ">=",
+     "value": 16.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.low_estimate": 16.0,
+    "market.country": "USA",
+    "market.number_cities": 700,
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.year": 1995,
+    "film_market_estimation.high_estimate": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'USA' and number cities at least '700', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at least '16.0' and type equal to 'Mass suicide' and year at most '1995' and high estimate at least '16.0'?"
+  },
+  {
+   "uid": "3935f8e4-8fc1-4ec3-a87c-245dab7fe76e",
+   "question": "Which markets in China with at least 540 cities had a Mass suicide film market estimation in 1944 where the low estimate was at least 8000.0 and the high estimate was at most 8000.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.country = 'China' AND market.number_cities >= 540 AND film_market_estimation.high_estimate <= 8000.0 AND film_market_estimation.low_estimate >= 8000.0 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.year = 1944",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.country",
+    "market.number_cities",
+    "film_market_estimation.high_estimate",
+    "film_market_estimation.low_estimate",
+    "film_market_estimation.type",
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1944,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "China",
+    "market.number_cities": 540,
+    "film_market_estimation.high_estimate": 8000.0,
+    "film_market_estimation.low_estimate": 8000.0,
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.year": 1944
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China' and number cities at least '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate at most '8000.0' and low estimate at least '8000.0' and type equal to 'Mass suicide' and year equal to '1944'?"
+  },
+  {
+   "uid": "bf9be454-466d-4a8a-ba5e-92783775358d",
+   "question": "Which markets in China with at least 540 cities had Mass suicide film estimates in 1944 where both low and high estimates were at most 8000?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.high_estimate <= 8000.0 AND market.number_cities >= 540 AND market.country = 'China' AND film_market_estimation.year = 1944 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.low_estimate <= 8000.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.high_estimate",
+    "market.number_cities",
+    "market.country",
+    "film_market_estimation.year",
+    "film_market_estimation.type",
+    "film_market_estimation.low_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1944,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.high_estimate": 8000.0,
+    "market.number_cities": 540,
+    "market.country": "China",
+    "film_market_estimation.year": 1944,
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.low_estimate": 8000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '540' and country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate at most '8000.0' and year equal to '1944' and type equal to 'Mass suicide' and low estimate at most '8000.0'?"
+  },
+  {
+   "uid": "f1731aca-25f1-41f4-aae8-f857fe1f94c8",
+   "question": "Which markets in China with at least 540 cities had film market estimations in 1997 where the type is Mass suicide, the low estimate is exactly 39.0, and the high estimate is at least 39.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.low_estimate = 39.0 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.high_estimate >= 39.0 AND market.number_cities >= 540 AND market.country = 'China' AND film_market_estimation.year = 1997",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.low_estimate",
+    "film_market_estimation.type",
+    "film_market_estimation.high_estimate",
+    "market.number_cities",
+    "market.country",
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "=",
+     "value": 39.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": ">=",
+     "value": 39.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1997,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.low_estimate": 39.0,
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.high_estimate": 39.0,
+    "market.number_cities": 540,
+    "market.country": "China",
+    "film_market_estimation.year": 1997
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '540' and country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate equal to '39.0' and type equal to 'Mass suicide' and high estimate at least '39.0' and year equal to '1997'?"
+  },
+  {
+   "uid": "b32173ab-c900-4929-a816-46d850f1072f",
+   "question": "What markets in Japan are related to Mass suicide estimates where the high estimate is exactly 53.0, the low estimate is at least 53.0, and the year is at most 1994?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.high_estimate = 53.0 AND film_market_estimation.low_estimate >= 53.0 AND film_market_estimation.year <= 1994 AND film_market_estimation.type = 'Mass suicide' AND market.country = 'Japan'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.high_estimate",
+    "film_market_estimation.low_estimate",
+    "film_market_estimation.year",
+    "film_market_estimation.type",
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 53.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 53.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "<=",
+     "value": 1994,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.high_estimate": 53.0,
+    "film_market_estimation.low_estimate": 53.0,
+    "film_market_estimation.year": 1994,
+    "film_market_estimation.type": "Mass suicide",
+    "market.country": "Japan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Japan', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate equal to '53.0' and low estimate at least '53.0' and year at most '1994' and type equal to 'Mass suicide'?"
+  },
+  {
+   "uid": "e7b5f110-cf4d-4c0b-8b93-638b905c0570",
+   "question": "Which markets have exactly 209 cities and film market estimations of type Mass suicide where both the high estimate and low estimate are at most 53.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.high_estimate <= 53.0 AND film_market_estimation.low_estimate <= 53.0 AND market.number_cities = 209 AND film_market_estimation.type = 'Mass suicide'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.high_estimate",
+    "film_market_estimation.low_estimate",
+    "market.number_cities",
+    "film_market_estimation.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 53.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 53.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.high_estimate": 53.0,
+    "film_market_estimation.low_estimate": 53.0,
+    "market.number_cities": 209,
+    "film_market_estimation.type": "Mass suicide"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities equal to '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate at most '53.0' and low estimate at most '53.0' and type equal to 'Mass suicide'?"
+  },
+  {
+   "uid": "4615fa8f-35b0-4892-b42d-df65a10572a5",
+   "question": "What markets in China cover at least 540 cities and had a 1944 high estimate of at most 8000.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.country = 'China' AND market.number_cities >= 540 AND film_market_estimation.year = 1944 AND film_market_estimation.high_estimate <= 8000.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.country",
+    "market.number_cities",
+    "film_market_estimation.year",
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1944,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "China",
+    "market.number_cities": 540,
+    "film_market_estimation.year": 1944,
+    "film_market_estimation.high_estimate": 8000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China' and number cities at least '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year equal to '1944' and high estimate at most '8000.0'?"
+  },
+  {
+   "uid": "38c59f84-0293-4d39-935f-8fc6f1ea66d6",
+   "question": "Which markets in Japan are associated with mass suicide murder events from 1945 or later?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.year >= 1945 AND film_market_estimation.type = 'Mass suicide murder' AND market.country = 'Japan'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year",
+    "film_market_estimation.type",
+    "market.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1945,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide murder",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1945,
+    "film_market_estimation.type": "Mass suicide murder",
+    "market.country": "Japan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Japan', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at least '1945' and type equal to 'Mass suicide murder'?"
+  },
+  {
+   "uid": "dcc3d616-a1d7-4e82-8334-d1f7d437d1d6",
+   "question": "Which markets in China include at least 540 cities and have both high and low film market estimates of at most 8000.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.number_cities >= 540 AND market.country = 'China' AND film_market_estimation.high_estimate <= 8000.0 AND film_market_estimation.low_estimate <= 8000.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "market.country",
+    "film_market_estimation.high_estimate",
+    "film_market_estimation.low_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 8000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 540,
+    "market.country": "China",
+    "film_market_estimation.high_estimate": 8000.0,
+    "film_market_estimation.low_estimate": 8000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '540' and country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with high estimate at most '8000.0' and low estimate at most '8000.0'?"
+  },
+  {
+   "uid": "c9164100-9954-46fe-a4fb-25ea3e96106d",
+   "question": "Which markets in China with at most 540 cities had a Mass suicide type film estimation in 1973 where the low estimate is exactly 960.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE film_market_estimation.year = 1973 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.low_estimate = 960.0 AND market.country = 'China' AND market.number_cities <= 540",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year",
+    "film_market_estimation.type",
+    "film_market_estimation.low_estimate",
+    "market.country",
+    "market.number_cities"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1973,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "=",
+     "value": 960.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 540,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1973,
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.low_estimate": 960.0,
+    "market.country": "China",
+    "market.number_cities": 540
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China' and number cities at most '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year equal to '1973' and type equal to 'Mass suicide' and low estimate equal to '960.0'?"
+  },
+  {
+   "uid": "7f7efe15-2733-4d95-a03c-4053398df10c",
+   "question": "Which markets in Japan with at most 209 cities have mass suicide film estimates from 1994 or later where the low estimate is at most 53.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nWHERE market.country = 'Japan' AND film_market_estimation.year >= 1994 AND market.number_cities <= 209 AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.low_estimate <= 53.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "film_market_estimation",
+    "market"
+   ],
+   "involved_columns": [
+    "market.country",
+    "film_market_estimation.year",
+    "market.number_cities",
+    "film_market_estimation.type",
+    "film_market_estimation.low_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1994,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 53.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "Japan",
+    "film_market_estimation.year": 1994,
+    "market.number_cities": 209,
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.low_estimate": 53.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Japan' and number cities at most '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at least '1994' and type equal to 'Mass suicide' and low estimate at most '53.0'?"
+  },
+  {
+   "uid": "6b2d9ffe-2298-4366-8f20-3128463f0305",
+   "question": "Which markets have exactly 209 cities and are associated with films where the type is Mass suicide murder?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.number_cities = 209 AND film_market_estimation.type = 'Mass suicide murder'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "film_market_estimation.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide murder",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 209,
+    "film_market_estimation.type": "Mass suicide murder"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities equal to '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide murder', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id)?"
+  },
+  {
+   "uid": "abf4b0df-7dee-4752-91b0-92891afc7656",
+   "question": "Which markets have film estimations from the year 1973 or earlier?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.year <= 1973",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "<=",
+     "value": 1973,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1973
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at most '1973', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id)?"
+  },
+  {
+   "uid": "cd815c7f-e1c2-4029-8165-7e5965a35dfa",
+   "question": "Which markets have a low estimate of at least 80000.0 for the film where the title is ET the Extra-Terrestrial?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.low_estimate >= 80000.0 AND film.title = 'ET the Extra-Terrestrial'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.low_estimate",
+    "film.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 80000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "ET the Extra-Terrestrial",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.low_estimate": 80000.0,
+    "film.title": "ET the Extra-Terrestrial"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at least '80000.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'ET the Extra-Terrestrial'?"
+  },
+  {
+   "uid": "32376ccf-c0ce-4ea1-86e6-c0063beaaa1f",
+   "question": "What markets have film estimates and include at most 540 cities?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.number_cities <= 540",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.number_cities"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 540,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 540
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id), whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id)?"
+  },
+  {
+   "uid": "187dd1be-4e4c-4a2c-ab2b-7eda92f9d0b6",
+   "question": "Which markets have films directed by Sylvester Stallone with a low estimate of at most 53.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film.director = 'Sylvester Stallone' AND film_market_estimation.low_estimate <= 53.0",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film.director",
+    "film_market_estimation.low_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Sylvester Stallone",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 53.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film.director": "Sylvester Stallone",
+    "film_market_estimation.low_estimate": 53.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at most '53.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with director equal to 'Sylvester Stallone'?"
+  },
+  {
+   "uid": "78acec01-c6fd-49a4-ace1-35c0d3234bb4",
+   "question": "Which markets have film estimates from the year 1995 or later?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.year >= 1995",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1995,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1995
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at least '1995', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id)?"
+  },
+  {
+   "uid": "76985b37-7cd7-4629-bf99-a07b5bac1b8c",
+   "question": "Which markets have a low estimate of at most 960.0 for the film where the title is Rocky III?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.low_estimate <= 960.0 AND film.title = 'Rocky III'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.low_estimate",
+    "film.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 960.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "Rocky III",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.low_estimate": 960.0,
+    "film.title": "Rocky III"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at most '960.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'Rocky III'?"
+  },
+  {
+   "uid": "99209d6d-46dd-430d-beec-731f3c12e42d",
+   "question": "Which markets in Japan have at least 209 cities and feature the film ET the Extra-Terrestrial by Universal, with a Mass suicide murder type estimated at least 80000 since 1945?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.type = 'Mass suicide murder' AND film.studio = 'Universal' AND market.number_cities >= 209 AND market.country = 'Japan' AND film_market_estimation.year >= 1945 AND film_market_estimation.low_estimate >= 80000.0 AND film.title = 'ET the Extra-Terrestrial'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.type",
+    "film.studio",
+    "market.number_cities",
+    "market.country",
+    "film_market_estimation.year",
+    "film_market_estimation.low_estimate",
+    "film.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide murder",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "studio",
+     "operator": "=",
+     "value": "Universal",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1945,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 80000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "ET the Extra-Terrestrial",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.type": "Mass suicide murder",
+    "film.studio": "Universal",
+    "market.number_cities": 209,
+    "market.country": "Japan",
+    "film_market_estimation.year": 1945,
+    "film_market_estimation.low_estimate": 80000.0,
+    "film.title": "ET the Extra-Terrestrial"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at least '209' and country equal to 'Japan', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide murder' and year at least '1945' and low estimate at least '80000.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with studio equal to 'Universal' and title equal to 'ET the Extra-Terrestrial'?"
+  },
+  {
+   "uid": "6dae6ff9-f022-45b5-be12-f632c8914479",
+   "question": "Which markets in China are associated with the film Rocky III by Sylvester Stallone from United Artists, where the film grossed at most 125049125 dollars and the mass suicide estimate from 1973 or earlier is at least 960?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.year <= 1973 AND film_market_estimation.low_estimate >= 960.0 AND market.country = 'China' AND film.title = 'Rocky III' AND film.director = 'Sylvester Stallone' AND film.studio = 'United Artists' AND film.gross_in_dollar <= 125049125 AND film_market_estimation.type = 'Mass suicide'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year",
+    "film_market_estimation.low_estimate",
+    "market.country",
+    "film.title",
+    "film.director",
+    "film.studio",
+    "film.gross_in_dollar",
+    "film_market_estimation.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "<=",
+     "value": 1973,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 960.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "Rocky III",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Sylvester Stallone",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "studio",
+     "operator": "=",
+     "value": "United Artists",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": "<=",
+     "value": 125049125,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1973,
+    "film_market_estimation.low_estimate": 960.0,
+    "market.country": "China",
+    "film.title": "Rocky III",
+    "film.director": "Sylvester Stallone",
+    "film.studio": "United Artists",
+    "film.gross_in_dollar": 125049125,
+    "film_market_estimation.type": "Mass suicide"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at most '1973' and low estimate at least '960.0' and type equal to 'Mass suicide', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'Rocky III' and director equal to 'Sylvester Stallone' and studio equal to 'United Artists' and gross in dollar at most '125049125'?"
+  },
+  {
+   "uid": "d4209a33-e7e9-463f-9e26-30d4d05b352f",
+   "question": "Where are the markets with no more than 209 cities that have film estimates for ET the Extra-Terrestrial by Steven Spielberg, produced by Universal, where the type is Mass suicide murder and the low estimate is exactly 80000.0 with a high estimate at most 80400.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.type = 'Mass suicide murder' AND film.director = 'Steven Spielberg' AND film_market_estimation.low_estimate = 80000.0 AND film.title = 'ET the Extra-Terrestrial' AND film.studio = 'Universal' AND market.number_cities <= 209 AND film_market_estimation.high_estimate <= 80400.0",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.type",
+    "film.director",
+    "film_market_estimation.low_estimate",
+    "film.title",
+    "film.studio",
+    "market.number_cities",
+    "film_market_estimation.high_estimate"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide murder",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "=",
+     "value": 80000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "ET the Extra-Terrestrial",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "studio",
+     "operator": "=",
+     "value": "Universal",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "<=",
+     "value": 80400.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.type": "Mass suicide murder",
+    "film.director": "Steven Spielberg",
+    "film_market_estimation.low_estimate": 80000.0,
+    "film.title": "ET the Extra-Terrestrial",
+    "film.studio": "Universal",
+    "market.number_cities": 209,
+    "film_market_estimation.high_estimate": 80400.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide murder' and low estimate equal to '80000.0' and high estimate at most '80400.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with director equal to 'Steven Spielberg' and title equal to 'ET the Extra-Terrestrial' and studio equal to 'Universal'?"
+  },
+  {
+   "uid": "ac690793-852f-4b0d-a5d5-c0d0fa792955",
+   "question": "Which markets with at most 540 cities have a 1997 Mass suicide estimate of exactly 39.0 for the film ET the Extra-Terrestrial directed by Steven Spielberg, whose gross is at most 435110554?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.number_cities <= 540 AND film_market_estimation.year = 1997 AND film_market_estimation.type = 'Mass suicide' AND film.title = 'ET the Extra-Terrestrial' AND film_market_estimation.high_estimate = 39.0 AND film.gross_in_dollar <= 435110554 AND film.director = 'Steven Spielberg'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "film_market_estimation.year",
+    "film_market_estimation.type",
+    "film.title",
+    "film_market_estimation.high_estimate",
+    "film.gross_in_dollar",
+    "film.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": "=",
+     "value": 1997,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "ET the Extra-Terrestrial",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 39.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": "<=",
+     "value": 435110554,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 540,
+    "film_market_estimation.year": 1997,
+    "film_market_estimation.type": "Mass suicide",
+    "film.title": "ET the Extra-Terrestrial",
+    "film_market_estimation.high_estimate": 39.0,
+    "film.gross_in_dollar": 435110554,
+    "film.director": "Steven Spielberg"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year equal to '1997' and type equal to 'Mass suicide' and high estimate equal to '39.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'ET the Extra-Terrestrial' and gross in dollar at most '435110554' and director equal to 'Steven Spielberg'?"
+  },
+  {
+   "uid": "71e12944-4045-4671-b46c-0d0329f3eb20",
+   "question": "Which markets in Japan with at most 209 cities have films directed by Steven Spielberg released in 1945 or later, where the low estimate is at least 80000.0 and the gross in dollars is at most 435110554?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.country = 'Japan' AND film.director = 'Steven Spielberg' AND market.number_cities <= 209 AND film_market_estimation.year >= 1945 AND film_market_estimation.low_estimate >= 80000.0 AND film.gross_in_dollar <= 435110554",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.country",
+    "film.director",
+    "market.number_cities",
+    "film_market_estimation.year",
+    "film_market_estimation.low_estimate",
+    "film.gross_in_dollar"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1945,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 80000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": "<=",
+     "value": 435110554,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "Japan",
+    "film.director": "Steven Spielberg",
+    "market.number_cities": 209,
+    "film_market_estimation.year": 1945,
+    "film_market_estimation.low_estimate": 80000.0,
+    "film.gross_in_dollar": 435110554
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Japan' and number cities at most '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at least '1945' and low estimate at least '80000.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with director equal to 'Steven Spielberg' and gross in dollar at most '435110554'?"
+  },
+  {
+   "uid": "b7aba6e9-9301-4610-84db-2fb00e6d423f",
+   "question": "What markets in Japan have at least 209 cities and feature the film ET the Extra-Terrestrial directed by Steven Spielberg, produced by Universal, with a gross of at least 435110554 dollars?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.country = 'Japan' AND market.number_cities >= 209 AND film.director = 'Steven Spielberg' AND film.studio = 'Universal' AND film.gross_in_dollar >= 435110554 AND film.title = 'ET the Extra-Terrestrial'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.country",
+    "market.number_cities",
+    "film.director",
+    "film.studio",
+    "film.gross_in_dollar",
+    "film.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "Japan",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": ">=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "studio",
+     "operator": "=",
+     "value": "Universal",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": ">=",
+     "value": 435110554,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "ET the Extra-Terrestrial",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.country": "Japan",
+    "market.number_cities": 209,
+    "film.director": "Steven Spielberg",
+    "film.studio": "Universal",
+    "film.gross_in_dollar": 435110554,
+    "film.title": "ET the Extra-Terrestrial"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'Japan' and number cities at least '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id), whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with director equal to 'Steven Spielberg' and studio equal to 'Universal' and gross in dollar at least '435110554' and title equal to 'ET the Extra-Terrestrial'?"
+  },
+  {
+   "uid": "0adb39d8-50f9-47e2-8113-5c3e8ad86cad",
+   "question": "Which markets in China involve the film Rocky III directed by Sylvester Stallone, produced by United Artists, with a gross of at most 125049125 dollars, and have a Mass suicide type estimate where the low estimate is exactly 960.0 and the high estimate is at least 960.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.country = 'China' AND film.title = 'Rocky III' AND film_market_estimation.low_estimate = 960.0 AND film.director = 'Sylvester Stallone' AND film_market_estimation.type = 'Mass suicide' AND film_market_estimation.high_estimate >= 960.0 AND film.gross_in_dollar <= 125049125 AND film.studio = 'United Artists'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.country",
+    "film.title",
+    "film_market_estimation.low_estimate",
+    "film.director",
+    "film_market_estimation.type",
+    "film_market_estimation.high_estimate",
+    "film.gross_in_dollar",
+    "film.studio"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "Rocky III",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "=",
+     "value": 960.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Sylvester Stallone",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": ">=",
+     "value": 960.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": "<=",
+     "value": 125049125,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "studio",
+     "operator": "=",
+     "value": "United Artists",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.country": "China",
+    "film.title": "Rocky III",
+    "film_market_estimation.low_estimate": 960.0,
+    "film.director": "Sylvester Stallone",
+    "film_market_estimation.type": "Mass suicide",
+    "film_market_estimation.high_estimate": 960.0,
+    "film.gross_in_dollar": 125049125,
+    "film.studio": "United Artists"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate equal to '960.0' and type equal to 'Mass suicide' and high estimate at least '960.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'Rocky III' and director equal to 'Sylvester Stallone' and gross in dollar at most '125049125' and studio equal to 'United Artists'?"
+  },
+  {
+   "uid": "2b2b9257-4044-4a2c-93b4-c7b9bfc2400a",
+   "question": "Which markets have films directed by Sylvester Stallone with a mass suicide type and a low estimate of at most 53.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.low_estimate <= 53.0 AND film.director = 'Sylvester Stallone' AND film_market_estimation.type = 'Mass suicide'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.low_estimate",
+    "film.director",
+    "film_market_estimation.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 53.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Sylvester Stallone",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.low_estimate": 53.0,
+    "film.director": "Sylvester Stallone",
+    "film_market_estimation.type": "Mass suicide"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at most '53.0' and type equal to 'Mass suicide', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with director equal to 'Sylvester Stallone'?"
+  },
+  {
+   "uid": "71d07d54-0ee1-4ee8-b42e-10ca1785598e",
+   "question": "Which markets with at most 540 cities have a Mass suicide estimation type for the film where the title is Rocky III?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film.title = 'Rocky III' AND market.number_cities <= 540 AND film_market_estimation.type = 'Mass suicide'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film.title",
+    "market.number_cities",
+    "film_market_estimation.type"
+   ],
+   "involved_filters": [
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "Rocky III",
+     "column_type": "enum"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 540,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film.title": "Rocky III",
+    "market.number_cities": 540,
+    "film_market_estimation.type": "Mass suicide"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '540', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'Rocky III'?"
+  },
+  {
+   "uid": "1f7f0c80-a5f8-4064-bfd3-201bd1e965c3",
+   "question": "Which markets have estimates from year 1487 or later for the film titled An Officer and a Gentleman that earned at least 129795554 dollars in gross revenue?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.year >= 1487 AND film.title = 'An Officer and a Gentleman' AND film.gross_in_dollar >= 129795554",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.year",
+    "film.title",
+    "film.gross_in_dollar"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1487,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "An Officer and a Gentleman",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": ">=",
+     "value": 129795554,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.year": 1487,
+    "film.title": "An Officer and a Gentleman",
+    "film.gross_in_dollar": 129795554
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with year at least '1487', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'An Officer and a Gentleman' and gross in dollar at least '129795554'?"
+  },
+  {
+   "uid": "290bee64-0547-4893-bfc2-f11a106b83a9",
+   "question": "What markets with at most 209 cities feature the film ET the Extra-Terrestrial directed by Steven Spielberg?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.number_cities <= 209 AND film.title = 'ET the Extra-Terrestrial' AND film.director = 'Steven Spielberg'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.number_cities",
+    "film.title",
+    "film.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "ET the Extra-Terrestrial",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "market.number_cities": 209,
+    "film.title": "ET the Extra-Terrestrial",
+    "film.director": "Steven Spielberg"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id), whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'ET the Extra-Terrestrial' and director equal to 'Steven Spielberg'?"
+  },
+  {
+   "uid": "9926b17e-a8d1-49d4-8886-6ad7e3097597",
+   "question": "Which markets have no more than 209 cities and feature films directed by Sylvester Stallone where the film gross is at most 125049125, the low estimate is at most 913.0, and the high estimate is exactly 913.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film.gross_in_dollar <= 125049125 AND film_market_estimation.low_estimate <= 913.0 AND market.number_cities <= 209 AND film_market_estimation.high_estimate = 913.0 AND film.director = 'Sylvester Stallone'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film.gross_in_dollar",
+    "film_market_estimation.low_estimate",
+    "market.number_cities",
+    "film_market_estimation.high_estimate",
+    "film.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": "<=",
+     "value": 125049125,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": "<=",
+     "value": 913.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "market",
+     "column": "number_cities",
+     "operator": "<=",
+     "value": 209,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "high_estimate",
+     "operator": "=",
+     "value": 913.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "director",
+     "operator": "=",
+     "value": "Sylvester Stallone",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "film.gross_in_dollar": 125049125,
+    "film_market_estimation.low_estimate": 913.0,
+    "market.number_cities": 209,
+    "film_market_estimation.high_estimate": 913.0,
+    "film.director": "Sylvester Stallone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with number cities at most '209', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at most '913.0' and high estimate equal to '913.0', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with gross in dollar at most '125049125' and director equal to 'Sylvester Stallone'?"
+  },
+  {
+   "uid": "bd62d6d2-f638-427b-8fd9-c494df168e80",
+   "question": "Which markets in China are associated with Mass suicide films that have grossed at least 435110554 dollars?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE market.country = 'China' AND film_market_estimation.type = 'Mass suicide' AND film.gross_in_dollar >= 435110554",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "market.country",
+    "film_market_estimation.type",
+    "film.gross_in_dollar"
+   ],
+   "involved_filters": [
+    {
+     "table": "market",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "gross_in_dollar",
+     "operator": ">=",
+     "value": 435110554,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "market.country": "China",
+    "film_market_estimation.type": "Mass suicide",
+    "film.gross_in_dollar": 435110554
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities with country equal to 'China', having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with type equal to 'Mass suicide', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with gross in dollar at least '435110554'?"
+  },
+  {
+   "uid": "50bb5f73-5147-4d47-ae31-1aaf823e0ae8",
+   "question": "Which markets are associated with the film Rocky III by United Artists, where the estimation type is Mass suicide murder, the year is at least 1978, and the low estimate is at least 913.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT market.market_id FROM market\nJOIN film_market_estimation ON market.market_id = film_market_estimation.market_id\nJOIN film ON film_market_estimation.film_id = film.film_id\nWHERE film_market_estimation.low_estimate >= 913.0 AND film.title = 'Rocky III' AND film_market_estimation.type = 'Mass suicide murder' AND film.studio = 'United Artists' AND film_market_estimation.year >= 1978",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "film_market_estimation",
+    "market",
+    "film"
+   ],
+   "involved_columns": [
+    "film_market_estimation.low_estimate",
+    "film.title",
+    "film_market_estimation.type",
+    "film.studio",
+    "film_market_estimation.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "film_market_estimation",
+     "column": "low_estimate",
+     "operator": ">=",
+     "value": 913.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "film",
+     "column": "title",
+     "operator": "=",
+     "value": "Rocky III",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "type",
+     "operator": "=",
+     "value": "Mass suicide murder",
+     "column_type": "enum"
+    },
+    {
+     "table": "film",
+     "column": "studio",
+     "operator": "=",
+     "value": "United Artists",
+     "column_type": "enum"
+    },
+    {
+     "table": "film_market_estimation",
+     "column": "year",
+     "operator": ">=",
+     "value": 1978,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "film_market_estimation.low_estimate": 913.0,
+    "film.title": "Rocky III",
+    "film_market_estimation.type": "Mass suicide murder",
+    "film.studio": "United Artists",
+    "film_market_estimation.year": 1978
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "market"
+   },
+   "answer_table": "market",
+   "answer_id_column": "market_id",
+   "canonical_question": "Which market entities having at least one related film market estimation record (linked on market.market_id = film_market_estimation.market_id) with low estimate at least '913.0' and type equal to 'Mass suicide murder' and year at least '1978', whose film market estimation record itself has at least one related film record (linked on film_market_estimation.film_id = film.film_id) with title equal to 'Rocky III' and studio equal to 'United Artists'?"
+  }
+ ]
+}

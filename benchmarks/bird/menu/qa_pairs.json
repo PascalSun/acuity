@@ -1,0 +1,3664 @@
+{
+ "db_id": "menu",
+ "target_table": "Menu",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1059241265,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/menu/menu.sqlite",
+  "generated_at": "2026-07-02T17:28:00.348735+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "menu",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "0M": 9,
+   "0H": 8,
+   "1pE": 8,
+   "1pM": 8,
+   "1pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "0H": 8,
+   "0M": 9,
+   "1pE": 8,
+   "1pH": 8,
+   "1pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 21,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0H": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 14,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 15,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "b833c55a-3969-40f9-a874-9bac07e32a23",
+   "question": "Which menu items are available at the Commercial venue in Liverpool, [ENGLAND]?",
+   "answer_row_ids": [
+    22241
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.place = 'LIVERPOOL, [ENGLAND]' AND menu.venue = 'COMMERCIAL'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.place",
+    "menu.venue"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "place",
+     "operator": "=",
+     "value": "LIVERPOOL, [ENGLAND]",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "venue",
+     "operator": "=",
+     "value": "COMMERCIAL",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.place": "LIVERPOOL, [ENGLAND]",
+    "menu.venue": "COMMERCIAL"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with place equal to 'LIVERPOOL, [ENGLAND]' and venue equal to 'COMMERCIAL'?"
+  },
+  {
+   "uid": "815a52cf-11d4-4218-9caf-9898a64ec3ba",
+   "question": "What menu items have the call number Zander 580 and come as a booklet sized 9 x 13.5 inches with laminated covers?",
+   "answer_row_ids": [
+    26619
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.call_number = 'Zander 580' AND menu.physical_description = 'Booklet; 9 x 13.5 inches; laminated covers'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.call_number",
+    "menu.physical_description"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "Zander 580",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "Booklet; 9 x 13.5 inches; laminated covers",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.call_number": "Zander 580",
+    "menu.physical_description": "Booklet; 9 x 13.5 inches; laminated covers"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with call number equal to 'Zander 580' and physical description equal to 'Booklet; 9 x 13.5 inches; laminated covers'?"
+  },
+  {
+   "uid": "b77e6ece-dd25-4960-85cf-4c7ffeac2ca5",
+   "question": "Which menu items have the call number exactly 1933-0217_wotm?",
+   "answer_row_ids": [
+    31142
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.call_number = '1933-0217_wotm'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1933-0217_wotm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.call_number": "1933-0217_wotm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with call number equal to '1933-0217_wotm'?"
+  },
+  {
+   "uid": "6b8c1ff5-da53-4a7f-9206-407551513f22",
+   "question": "Which menus with exactly the call number 1900-4911 have at most 16 dishes?",
+   "answer_row_ids": [
+    13519
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.dish_count <= 16 AND menu.call_number = '1900-4911'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.dish_count",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1900-4911",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.dish_count": 16,
+    "menu.call_number": "1900-4911"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with dish count at most '16' and call number equal to '1900-4911'?"
+  },
+  {
+   "uid": "669cf10f-c5ba-45b4-a855-7180d95354f2",
+   "question": "Which menus have a status of complete and a call number exactly equal to 1933-0260_wotm?",
+   "answer_row_ids": [
+    31352
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.status = 'complete' AND menu.call_number = '1933-0260_wotm'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.status",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1933-0260_wotm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.status": "complete",
+    "menu.call_number": "1933-0260_wotm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with status equal to 'complete' and call number equal to '1933-0260_wotm'?"
+  },
+  {
+   "uid": "ec35b68b-3552-4186-93e1-04d11a6bd0c5",
+   "question": "Which menu items have the call number exactly 1914-0917_wotm?",
+   "answer_row_ids": [
+    34215
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.call_number = '1914-0917_wotm'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1914-0917_wotm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.call_number": "1914-0917_wotm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with call number equal to '1914-0917_wotm'?"
+  },
+  {
+   "uid": "bfa127eb-4af1-426e-a6c7-cbcc9b5834fa",
+   "question": "Which menus have exactly 225 dishes and a call number of 1906-1036?",
+   "answer_row_ids": [
+    14159
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.dish_count = 225 AND menu.call_number = '1906-1036'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.dish_count",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "=",
+     "value": 225,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1906-1036",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.dish_count": 225,
+    "menu.call_number": "1906-1036"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with dish count equal to '225' and call number equal to '1906-1036'?"
+  },
+  {
+   "uid": "5668ddf8-d627-40fc-95da-2c29969173e4",
+   "question": "Which menu entries are available on January 12, 1900?",
+   "answer_row_ids": [
+    12782,
+    17345,
+    21407,
+    22631,
+    22721,
+    23421,
+    24308,
+    24647,
+    24689,
+    24734,
+    25104,
+    25318,
+    26077,
+    26305
+   ],
+   "answer_count": 14,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.date = '1900-01-12'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1900-01-12",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "menu.date": "1900-01-12"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with date equal to '1900-01-12'?"
+  },
+  {
+   "uid": "84066841-06b0-4ed3-ae44-ccbfb0d68260",
+   "question": "Which menus are from the S.S. United States on 1954-03-04?",
+   "answer_row_ids": [
+    29378
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.location = 'S.S. United States' AND menu.date = '1954-03-04'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.location",
+    "menu.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "S.S. United States",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1954-03-04",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "menu.location": "S.S. United States",
+    "menu.date": "1954-03-04"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with location equal to 'S.S. United States' and date equal to '1954-03-04'?"
+  },
+  {
+   "uid": "e03f9885-180a-4bf2-924c-dbebef17a0a6",
+   "question": "Which Christmas Dinner menus at the San Juan Hotel\u2019s Commercial venue in Orlando, Florida have been completed since December 25, 1900, with call number 1900-5097 and no more than 34 dishes?",
+   "answer_row_ids": [
+    14005
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.date >= '1900-12-25' AND menu.event = 'CHRISTMAS DINNER' AND menu.call_number = '1900-5097' AND menu.sponsor = 'SAN JUAN HOTEL' AND menu.venue = 'COMMERCIAL' AND menu.dish_count <= 34 AND menu.place = 'ORLANDO, FLORIDA' AND menu.status = 'complete'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.date",
+    "menu.event",
+    "menu.call_number",
+    "menu.sponsor",
+    "menu.venue",
+    "menu.dish_count",
+    "menu.place",
+    "menu.status"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1900-12-25",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "CHRISTMAS DINNER",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1900-5097",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "SAN JUAN HOTEL",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "venue",
+     "operator": "=",
+     "value": "COMMERCIAL",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "place",
+     "operator": "=",
+     "value": "ORLANDO, FLORIDA",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "menu.date": "1900-12-25",
+    "menu.event": "CHRISTMAS DINNER",
+    "menu.call_number": "1900-5097",
+    "menu.sponsor": "SAN JUAN HOTEL",
+    "menu.venue": "COMMERCIAL",
+    "menu.dish_count": 34,
+    "menu.place": "ORLANDO, FLORIDA",
+    "menu.status": "complete"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with date at least '1900-12-25' and event equal to 'CHRISTMAS DINNER' and call number equal to '1900-5097' and sponsor equal to 'SAN JUAN HOTEL' and venue equal to 'COMMERCIAL' and dish count at most '34' and place equal to 'ORLANDO, FLORIDA' and status equal to 'complete'?"
+  },
+  {
+   "uid": "f242ede7-313d-4a54-bcf3-89a37cebcfde",
+   "question": "Which menus from Publick House dated on or after 1953-11-20 have exactly 7 pages, a call number of 1953-0047_wotm, a dish count of 71, and a status of complete?",
+   "answer_row_ids": [
+    29450
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.date >= '1953-11-20' AND menu.location = 'Publick House' AND menu.call_number = '1953-0047_wotm' AND menu.page_count = 7 AND menu.status = 'complete' AND menu.dish_count = 71",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.date",
+    "menu.location",
+    "menu.call_number",
+    "menu.page_count",
+    "menu.status",
+    "menu.dish_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1953-11-20",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "Publick House",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1953-0047_wotm",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "=",
+     "value": 71,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.date": "1953-11-20",
+    "menu.location": "Publick House",
+    "menu.call_number": "1953-0047_wotm",
+    "menu.page_count": 7,
+    "menu.status": "complete",
+    "menu.dish_count": 71
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with date at least '1953-11-20' and location equal to 'Publick House' and call number equal to '1953-0047_wotm' and page count equal to '7' and status equal to 'complete' and dish count equal to '71'?"
+  },
+  {
+   "uid": "4aa7a8f7-cf86-4fff-a5e0-c9a586031fc8",
+   "question": "What menus dated on 1906-12-31 have a status of complete, use Dollars with the $ symbol, contain no more than 266 dishes, and have exactly 4 pages?",
+   "answer_row_ids": [
+    14158,
+    14159,
+    14161,
+    16112,
+    16113,
+    16115
+   ],
+   "answer_count": 6,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.status = 'complete' AND menu.currency = 'Dollars' AND menu.dish_count <= 266 AND menu.page_count = 4 AND menu.currency_symbol = '$' AND menu.date = '1906-12-31'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.status",
+    "menu.currency",
+    "menu.dish_count",
+    "menu.page_count",
+    "menu.currency_symbol",
+    "menu.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 266,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "currency_symbol",
+     "operator": "=",
+     "value": "$",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1906-12-31",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "menu.status": "complete",
+    "menu.currency": "Dollars",
+    "menu.dish_count": 266,
+    "menu.page_count": 4,
+    "menu.currency_symbol": "$",
+    "menu.date": "1906-12-31"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with status equal to 'complete' and currency equal to 'Dollars' and dish count at most '266' and page count equal to '4' and currency symbol equal to '$' and date equal to '1906-12-31'?"
+  },
+  {
+   "uid": "2d490d6c-60f3-451f-bc85-69105ce69325",
+   "question": "Which menus have a status of complete, no more than 2 pages, date on or after 1963-07-24, call number exactly 1963-0043_wotm, physical description exactly 26x20.5cm folded; 26x41cm open, notes exactly English is secondary language, and dish count exactly 85?",
+   "answer_row_ids": [
+    28961
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.status = 'complete' AND menu.page_count <= 2 AND menu.date >= '1963-07-24' AND menu.call_number = '1963-0043_wotm' AND menu.physical_description = '26x20.5cm folded; 26x41cm open' AND menu.notes = 'English is secondary language' AND menu.dish_count = 85",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.status",
+    "menu.page_count",
+    "menu.date",
+    "menu.call_number",
+    "menu.physical_description",
+    "menu.notes",
+    "menu.dish_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1963-07-24",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1963-0043_wotm",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "26x20.5cm folded; 26x41cm open",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "English is secondary language",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "=",
+     "value": 85,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.status": "complete",
+    "menu.page_count": 2,
+    "menu.date": "1963-07-24",
+    "menu.call_number": "1963-0043_wotm",
+    "menu.physical_description": "26x20.5cm folded; 26x41cm open",
+    "menu.notes": "English is secondary language",
+    "menu.dish_count": 85
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with status equal to 'complete' and page count at most '2' and date at least '1963-07-24' and call number equal to '1963-0043_wotm' and physical description equal to '26x20.5cm folded; 26x41cm open' and notes equal to 'English is secondary language' and dish count equal to '85'?"
+  },
+  {
+   "uid": "49efeee9-f9a3-4f0b-8c16-5e7a91a19fea",
+   "question": "Which lunch menus with the call number 1896-237 have a physical description of CARD;ILL;COL;6.5X4.25;, no more than 22 dishes, at most 2 pages, notes exactly FRENCH MENU;WINES;, status complete, and occasion OTHER (DAILY);?",
+   "answer_row_ids": [
+    23211
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.notes = 'FRENCH MENU;WINES;' AND menu.dish_count <= 22 AND menu.physical_description = 'CARD;ILL;COL;6.5X4.25;' AND menu.event = 'LUNCH' AND menu.page_count <= 2 AND menu.call_number = '1896-237' AND menu.status = 'complete' AND menu.occasion = 'OTHER (DAILY);'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.notes",
+    "menu.dish_count",
+    "menu.physical_description",
+    "menu.event",
+    "menu.page_count",
+    "menu.call_number",
+    "menu.status",
+    "menu.occasion"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "FRENCH MENU;WINES;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "CARD;ILL;COL;6.5X4.25;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "LUNCH",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1896-237",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "occasion",
+     "operator": "=",
+     "value": "OTHER (DAILY);",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.notes": "FRENCH MENU;WINES;",
+    "menu.dish_count": 22,
+    "menu.physical_description": "CARD;ILL;COL;6.5X4.25;",
+    "menu.event": "LUNCH",
+    "menu.page_count": 2,
+    "menu.call_number": "1896-237",
+    "menu.status": "complete",
+    "menu.occasion": "OTHER (DAILY);"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with notes equal to 'FRENCH MENU;WINES;' and dish count at most '22' and physical description equal to 'CARD;ILL;COL;6.5X4.25;' and event equal to 'LUNCH' and page count at most '2' and call number equal to '1896-237' and status equal to 'complete' and occasion equal to 'OTHER (DAILY);'?"
+  },
+  {
+   "uid": "2994eb61-65b8-4d7d-bb8c-d144c7afc4ce",
+   "question": "Which menus dated exactly 1909-01-01 feature the event Complimentary Dinner and Presentation to Matthew A. Henson, are sponsored by Colored Citizens of New York and Vicinity, have call number 1909-1939, page counts of at most 8, and dish counts of no more than 21?",
+   "answer_row_ids": [
+    24536
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.date = '1909-01-01' AND menu.call_number = '1909-1939' AND menu.page_count <= 8 AND menu.event = 'Complimentary Dinner and Presentation to Matthew A. Henson' AND menu.sponsor = 'Colored Citizens of New York and Vicinity' AND menu.dish_count <= 21",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.date",
+    "menu.call_number",
+    "menu.page_count",
+    "menu.event",
+    "menu.sponsor",
+    "menu.dish_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1909-01-01",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1909-1939",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "Complimentary Dinner and Presentation to Matthew A. Henson",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "Colored Citizens of New York and Vicinity",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 21,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.date": "1909-01-01",
+    "menu.call_number": "1909-1939",
+    "menu.page_count": 8,
+    "menu.event": "Complimentary Dinner and Presentation to Matthew A. Henson",
+    "menu.sponsor": "Colored Citizens of New York and Vicinity",
+    "menu.dish_count": 21
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with date equal to '1909-01-01' and call number equal to '1909-1939' and page count at most '8' and event equal to 'Complimentary Dinner and Presentation to Matthew A. Henson' and sponsor equal to 'Colored Citizens of New York and Vicinity' and dish count at most '21'?"
+  },
+  {
+   "uid": "e63f902b-9751-459e-9189-cc7ddafa1993",
+   "question": "What menus sponsored by Waldorf-Astoria: South Gate, dated on or after 1912-11-28, have the status complete, use Dollars as currency, carry the call number 1912-0792_wotm, and include the note Dinner given to the President of the United States his Cabinet and the officers of the Atlantic fleet?",
+   "answer_row_ids": [
+    34608
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.sponsor = 'Waldorf-Astoria: South Gate' AND menu.notes = 'Dinner given to the President of the United States his Cabinet and the officers of the Atlantic fleet' AND menu.currency = 'Dollars' AND menu.call_number = '1912-0792_wotm' AND menu.date >= '1912-11-28' AND menu.status = 'complete'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.sponsor",
+    "menu.notes",
+    "menu.currency",
+    "menu.call_number",
+    "menu.date",
+    "menu.status"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "Waldorf-Astoria: South Gate",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "Dinner given to the President of the United States his Cabinet and the officers of the Atlantic fleet",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1912-0792_wotm",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1912-11-28",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "menu.sponsor": "Waldorf-Astoria: South Gate",
+    "menu.notes": "Dinner given to the President of the United States his Cabinet and the officers of the Atlantic fleet",
+    "menu.currency": "Dollars",
+    "menu.call_number": "1912-0792_wotm",
+    "menu.date": "1912-11-28",
+    "menu.status": "complete"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'Waldorf-Astoria: South Gate' and notes equal to 'Dinner given to the President of the United States his Cabinet and the officers of the Atlantic fleet' and currency equal to 'Dollars' and call number equal to '1912-0792_wotm' and date at least '1912-11-28' and status equal to 'complete'?"
+  },
+  {
+   "uid": "8f966435-17bd-4420-82e1-feb87d0f717b",
+   "question": "Which menus named '[Restaurant name and/or location not given]' located at '[Restaurant name and/or location not given]' have exactly 6 pages, a physical description of '18.5x13cm folded; 18.5x26cm open', were created on or after 1914-02-06, have the call number '1914-0198_wotm', include at most 43 dishes, and are sponsored by '[Restaurant name and/or location not given]'?",
+   "answer_row_ids": [
+    33742
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.name = '[Restaurant name and/or location not given]' AND menu.page_count = 6 AND menu.location = '[Restaurant name and/or location not given]' AND menu.physical_description = '18.5x13cm folded; 18.5x26cm open' AND menu.date >= '1914-02-06' AND menu.call_number = '1914-0198_wotm' AND menu.dish_count <= 43 AND menu.sponsor = '[Restaurant name and/or location not given]'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.name",
+    "menu.page_count",
+    "menu.location",
+    "menu.physical_description",
+    "menu.date",
+    "menu.call_number",
+    "menu.dish_count",
+    "menu.sponsor"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "name",
+     "operator": "=",
+     "value": "[Restaurant name and/or location not given]",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "=",
+     "value": 6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "[Restaurant name and/or location not given]",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "18.5x13cm folded; 18.5x26cm open",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1914-02-06",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1914-0198_wotm",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 43,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "[Restaurant name and/or location not given]",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.name": "[Restaurant name and/or location not given]",
+    "menu.page_count": 6,
+    "menu.location": "[Restaurant name and/or location not given]",
+    "menu.physical_description": "18.5x13cm folded; 18.5x26cm open",
+    "menu.date": "1914-02-06",
+    "menu.call_number": "1914-0198_wotm",
+    "menu.dish_count": 43,
+    "menu.sponsor": "[Restaurant name and/or location not given]"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with name equal to '[Restaurant name and/or location not given]' and page count equal to '6' and location equal to '[Restaurant name and/or location not given]' and physical description equal to '18.5x13cm folded; 18.5x26cm open' and date at least '1914-02-06' and call number equal to '1914-0198_wotm' and dish count at most '43' and sponsor equal to '[Restaurant name and/or location not given]'?"
+  },
+  {
+   "uid": "b6d870e0-239e-4640-ba2b-3ba5e5d207b7",
+   "question": "Which menus from The New Broadway Restaurant and Lunch Room have at least 1 page and 55 or more dishes?",
+   "answer_row_ids": [
+    33723,
+    33904,
+    33992
+   ],
+   "answer_count": 3,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.page_count >= 1 AND menu.dish_count >= 55 AND menu.name = 'The New Broadway Restaurant and Lunch Room'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.page_count",
+    "menu.dish_count",
+    "menu.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": ">=",
+     "value": 55,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "name",
+     "operator": "=",
+     "value": "The New Broadway Restaurant and Lunch Room",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.page_count": 1,
+    "menu.dish_count": 55,
+    "menu.name": "The New Broadway Restaurant and Lunch Room"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with page count at least '1' and dish count at least '55' and name equal to 'The New Broadway Restaurant and Lunch Room'?"
+  },
+  {
+   "uid": "6fa187d1-5c6b-4577-be51-d6b17bd03c8f",
+   "question": "Which menus have the call number 1901-2629, a physical description of BROADSIDE; ILLUS; COL; 5.5.X 8;, and are located at Red Star Line   Antwerpen  Ny?",
+   "answer_row_ids": [
+    20505
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.call_number = '1901-2629' AND menu.physical_description = 'BROADSIDE; ILLUS; COL; 5.5.X 8;' AND menu.location = 'Red Star Line   Antwerpen  Ny'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.call_number",
+    "menu.physical_description",
+    "menu.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1901-2629",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "BROADSIDE; ILLUS; COL; 5.5.X 8;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "Red Star Line   Antwerpen  Ny",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.call_number": "1901-2629",
+    "menu.physical_description": "BROADSIDE; ILLUS; COL; 5.5.X 8;",
+    "menu.location": "Red Star Line   Antwerpen  Ny"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with call number equal to '1901-2629' and physical description equal to 'BROADSIDE; ILLUS; COL; 5.5.X 8;' and location equal to 'Red Star Line Antwerpen Ny'?"
+  },
+  {
+   "uid": "14a778e0-9f92-4ae2-8174-57c944583cd5",
+   "question": "What menus from the LEWIS & CLARK CENTENNIAL EXPOSITION on 1905-07-12 are complete and given as a COMPLIMENTARY/TESTIMONIAL dinner to GOV.MYRON T.HERRICK OF OHIO & GOV.B.B.BROOK OF WYOMING?",
+   "answer_row_ids": [
+    22470
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.sponsor = 'LEWIS & CLARK CENTENNIAL EXPOSITION' AND menu.date = '1905-07-12' AND menu.occasion = 'COMPLIMENTARY/TESTIMONIAL' AND menu.event = 'DINNER TO GOV.MYRON T.HERRICK OF OHIO & GOV.B.B.BROOK OF WYOMING' AND menu.status = 'complete'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.sponsor",
+    "menu.date",
+    "menu.occasion",
+    "menu.event",
+    "menu.status"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "LEWIS & CLARK CENTENNIAL EXPOSITION",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1905-07-12",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "occasion",
+     "operator": "=",
+     "value": "COMPLIMENTARY/TESTIMONIAL",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "DINNER TO GOV.MYRON T.HERRICK OF OHIO & GOV.B.B.BROOK OF WYOMING",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "menu.sponsor": "LEWIS & CLARK CENTENNIAL EXPOSITION",
+    "menu.date": "1905-07-12",
+    "menu.occasion": "COMPLIMENTARY/TESTIMONIAL",
+    "menu.event": "DINNER TO GOV.MYRON T.HERRICK OF OHIO & GOV.B.B.BROOK OF WYOMING",
+    "menu.status": "complete"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'LEWIS & CLARK CENTENNIAL EXPOSITION' and date equal to '1905-07-12' and occasion equal to 'COMPLIMENTARY/TESTIMONIAL' and event equal to 'DINNER TO GOV.MYRON T.HERRICK OF OHIO & GOV.B.B.BROOK OF WYOMING' and status equal to 'complete'?"
+  },
+  {
+   "uid": "540d997c-729e-4f32-818a-806dc4979b17",
+   "question": "Which menus with the call number 1887-031 include at least 24 dishes, use Dollars as currency, have notes stating WINE LIST WITH PRICES ON BACK, and are dated on or before 1887-10-26?",
+   "answer_row_ids": [
+    22350
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.currency = 'Dollars' AND menu.date <= '1887-10-26' AND menu.dish_count >= 24 AND menu.call_number = '1887-031' AND menu.notes = 'WINE LIST WITH PRICES ON BACK'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.currency",
+    "menu.date",
+    "menu.dish_count",
+    "menu.call_number",
+    "menu.notes"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "<=",
+     "value": "1887-10-26",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": ">=",
+     "value": 24,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1887-031",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "WINE LIST WITH PRICES ON BACK",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.currency": "Dollars",
+    "menu.date": "1887-10-26",
+    "menu.dish_count": 24,
+    "menu.call_number": "1887-031",
+    "menu.notes": "WINE LIST WITH PRICES ON BACK"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with currency equal to 'Dollars' and date at most '1887-10-26' and dish count at least '24' and call number equal to '1887-031' and notes equal to 'WINE LIST WITH PRICES ON BACK'?"
+  },
+  {
+   "uid": "1c995843-7e9f-43ae-aff4-6c584e92ae7a",
+   "question": "What menus sponsored by The Terrace Room have a complete status, a physical description of 28.5x23cm folded; 28.5x44.5cm open, a call number of 1944-0010_wotm, and at least 158 dishes?",
+   "answer_row_ids": [
+    29690
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.sponsor = 'The Terrace Room' AND menu.status = 'complete' AND menu.physical_description = '28.5x23cm folded; 28.5x44.5cm open' AND menu.call_number = '1944-0010_wotm' AND menu.dish_count >= 158",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.sponsor",
+    "menu.status",
+    "menu.physical_description",
+    "menu.call_number",
+    "menu.dish_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "The Terrace Room",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "28.5x23cm folded; 28.5x44.5cm open",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1944-0010_wotm",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": ">=",
+     "value": 158,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.sponsor": "The Terrace Room",
+    "menu.status": "complete",
+    "menu.physical_description": "28.5x23cm folded; 28.5x44.5cm open",
+    "menu.call_number": "1944-0010_wotm",
+    "menu.dish_count": 158
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'The Terrace Room' and status equal to 'complete' and physical description equal to '28.5x23cm folded; 28.5x44.5cm open' and call number equal to '1944-0010_wotm' and dish count at least '158'?"
+  },
+  {
+   "uid": "d3bfd71a-4c9b-4ec3-b001-5e53de630f95",
+   "question": "Which menus sponsored by TAMPA BAY HOTEL at the Tampa Bay Hotel have the call number 1898-187?",
+   "answer_row_ids": [
+    22125
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.sponsor = 'TAMPA BAY HOTEL' AND menu.location = 'Tampa Bay Hotel' AND menu.call_number = '1898-187'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.sponsor",
+    "menu.location",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "TAMPA BAY HOTEL",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "Tampa Bay Hotel",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1898-187",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.sponsor": "TAMPA BAY HOTEL",
+    "menu.location": "Tampa Bay Hotel",
+    "menu.call_number": "1898-187"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'TAMPA BAY HOTEL' and location equal to 'Tampa Bay Hotel' and call number equal to '1898-187'?"
+  },
+  {
+   "uid": "026aaff6-0125-4afa-b539-5975250225b3",
+   "question": "Which menus sponsored by Wolpin's Restaurant have at least 1 page, use Dollars as currency, and have a status of complete?",
+   "answer_row_ids": [
+    32909
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.page_count >= 1 AND menu.currency = 'Dollars' AND menu.sponsor = 'Wolpin''s Restaurant' AND menu.status = 'complete'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.page_count",
+    "menu.currency",
+    "menu.sponsor",
+    "menu.status"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "Wolpin's Restaurant",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "menu.page_count": 1,
+    "menu.currency": "Dollars",
+    "menu.sponsor": "Wolpin's Restaurant",
+    "menu.status": "complete"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with page count at least '1' and currency equal to 'Dollars' and sponsor equal to 'Wolpin' and status equal to 'complete'?"
+  },
+  {
+   "uid": "c7e1f9ed-afa0-4160-ad83-7e5cbf4e6c21",
+   "question": "Which menus priced in Dollars have no more than 2 pages and come from the U.S.M.S. St. Louis, Luncheon location?",
+   "answer_row_ids": [
+    27578
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.currency = 'Dollars' AND menu.page_count <= 2 AND menu.location = 'U.S.M.S. St. Louis, Luncheon.'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.currency",
+    "menu.page_count",
+    "menu.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "U.S.M.S. St. Louis, Luncheon.",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.currency": "Dollars",
+    "menu.page_count": 2,
+    "menu.location": "U.S.M.S. St. Louis, Luncheon."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with currency equal to 'Dollars' and page count at most '2' and location equal to 'U.S.M.S. St. Louis, Luncheon.'?"
+  },
+  {
+   "uid": "ddacd143-8d84-440f-9343-94206e46cfd0",
+   "question": "Which menus have a physical description of BOOKLET; ILLUS; COL; 8X11;, were held at the PROF; venue, sponsored by STANDARD STEEL CAR COMPANY, have a status of complete, and include at most 25 dishes?",
+   "answer_row_ids": [
+    21919
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nWHERE menu.physical_description = 'BOOKLET; ILLUS; COL; 8X11;' AND menu.venue = 'PROF;' AND menu.sponsor = 'STANDARD STEEL CAR COMPANY' AND menu.status = 'complete' AND menu.dish_count <= 25",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "menu"
+   ],
+   "involved_columns": [
+    "menu.physical_description",
+    "menu.venue",
+    "menu.sponsor",
+    "menu.status",
+    "menu.dish_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "BOOKLET; ILLUS; COL; 8X11;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "venue",
+     "operator": "=",
+     "value": "PROF;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "STANDARD STEEL CAR COMPANY",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 25,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.physical_description": "BOOKLET; ILLUS; COL; 8X11;",
+    "menu.venue": "PROF;",
+    "menu.sponsor": "STANDARD STEEL CAR COMPANY",
+    "menu.status": "complete",
+    "menu.dish_count": 25
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with physical description equal to 'BOOKLET; ILLUS; COL; 8X11;' and venue equal to 'PROF;' and sponsor equal to 'STANDARD STEEL CAR COMPANY' and status equal to 'complete' and dish count at most '25'?"
+  },
+  {
+   "uid": "8c558c33-d4ba-4568-b46a-46a774c403c6",
+   "question": "Which menus sponsored by the AMERICAN ASSOCIATION FOR THE ADVANCEMENT OF OSTEOPATHY are from the R.M.S.Majestic location?",
+   "answer_row_ids": [
+    22458
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.location = 'R.M.S.Majestic' AND menu.sponsor = 'AMERICAN ASSOCIATION FOR THE ADVANCEMENT OF OSTEOPATHY'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.location",
+    "menu.sponsor"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "R.M.S.Majestic",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "AMERICAN ASSOCIATION FOR THE ADVANCEMENT OF OSTEOPATHY",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.location": "R.M.S.Majestic",
+    "menu.sponsor": "AMERICAN ASSOCIATION FOR THE ADVANCEMENT OF OSTEOPATHY"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with location equal to 'R.M.S.Majestic' and sponsor equal to 'AMERICAN ASSOCIATION FOR THE ADVANCEMENT OF OSTEOPATHY', having at least one related menupage record (linked on menu.id = menupage.menu_id)?"
+  },
+  {
+   "uid": "fc4c2ae5-3296-44b9-8540-6137629a304d",
+   "question": "Which menus priced in Dollars have a menupage with a full width exactly equal to 3384.0?",
+   "answer_row_ids": [
+    27756,
+    32128,
+    35206
+   ],
+   "answer_count": 3,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.currency = 'Dollars' AND menupage.full_width = 3384.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.currency",
+    "menupage.full_width"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "=",
+     "value": 3384.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.currency": "Dollars",
+    "menupage.full_width": 3384.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with currency equal to 'Dollars', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full width equal to '3384.0'?"
+  },
+  {
+   "uid": "8089e327-5b02-4f48-b73b-7699619eb02a",
+   "question": "Which menus are sponsored exactly by JOHN HART?",
+   "answer_row_ids": [
+    21205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.sponsor = 'JOHN HART'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.sponsor"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "JOHN HART",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.sponsor": "JOHN HART"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'JOHN HART', having at least one related menupage record (linked on menu.id = menupage.menu_id)?"
+  },
+  {
+   "uid": "196648b1-1a54-4c56-820a-136334b120a2",
+   "question": "Which menus have no more than 3 pages and belong exactly to the menupage with UUID bcb65c15-b947-210d-e040-e00a18061803?",
+   "answer_row_ids": [
+    31228
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.page_count <= 3 AND menupage.uuid = 'bcb65c15-b947-210d-e040-e00a18061803'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.page_count",
+    "menupage.uuid"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "bcb65c15-b947-210d-e040-e00a18061803",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.page_count": 3,
+    "menupage.uuid": "bcb65c15-b947-210d-e040-e00a18061803"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with page count at most '3', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to 'bcb65c15-b947-210d-e040-e00a18061803'?"
+  },
+  {
+   "uid": "0fffc1c6-56cf-4170-8023-a90c893f0163",
+   "question": "Which menus with the call number 1907-874 have a full height of at least 3250.0?",
+   "answer_row_ids": [
+    21940
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.call_number = '1907-874' AND menupage.full_height >= 3250.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.call_number",
+    "menupage.full_height"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1907-874",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_height",
+     "operator": ">=",
+     "value": 3250.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.call_number": "1907-874",
+    "menupage.full_height": 3250.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with call number equal to '1907-874', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full height at least '3250.0'?"
+  },
+  {
+   "uid": "9240218d-5742-47c2-8090-685c882b8b77",
+   "question": "Which menus have exactly 10 dishes and a call number of 1916-0047_wotm?",
+   "answer_row_ids": [
+    32132
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.dish_count = 10 AND menu.call_number = '1916-0047_wotm'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.dish_count",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1916-0047_wotm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.dish_count": 10,
+    "menu.call_number": "1916-0047_wotm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with dish count equal to '10' and call number equal to '1916-0047_wotm', having at least one related menupage record (linked on menu.id = menupage.menu_id)?"
+  },
+  {
+   "uid": "1bf48b6a-6891-4eda-bac1-e4b48149d39c",
+   "question": "Which menus at the COMMERCIAL venue are linked to the menupage with UUID 510d47db-7550-a3d9-e040-e00a18064a99?",
+   "answer_row_ids": [
+    24347
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.venue = 'COMMERCIAL' AND menupage.uuid = '510d47db-7550-a3d9-e040-e00a18064a99'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.venue",
+    "menupage.uuid"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "venue",
+     "operator": "=",
+     "value": "COMMERCIAL",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "510d47db-7550-a3d9-e040-e00a18064a99",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.venue": "COMMERCIAL",
+    "menupage.uuid": "510d47db-7550-a3d9-e040-e00a18064a99"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with venue equal to 'COMMERCIAL', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to '510d47db-7550-a3d9-e040-e00a18064a99'?"
+  },
+  {
+   "uid": "bde7b4b0-83ef-485f-b99e-03b19ab94fca",
+   "question": "Which menus have notes exactly stating General Society of the Cincinnati?",
+   "answer_row_ids": [
+    31654
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.notes = 'General Society of the Cincinnati'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.notes"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "General Society of the Cincinnati",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.notes": "General Society of the Cincinnati"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with notes equal to 'General Society of the Cincinnati', having at least one related menupage record (linked on menu.id = menupage.menu_id)?"
+  },
+  {
+   "uid": "b8d7393a-2887-4312-a565-605fbf7005a8",
+   "question": "What menus sponsored by BANKERS' CLUB OF CHICAGO at AUDITORIUM ANNEX have status complete, call number 1908-157, date on or after 1908-02-15, page count at most 8, and include pages numbered 4 or higher with full height at most 3288.0?",
+   "answer_row_ids": [
+    22226
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.status = 'complete' AND menupage.full_height <= 3288.0 AND menu.sponsor = 'BANKERS'' CLUB OF CHICAGO' AND menu.place = 'AUDITORIUM ANNEX' AND menupage.page_number >= 4.0 AND menu.call_number = '1908-157' AND menu.date >= '1908-02-15' AND menu.page_count <= 8",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.status",
+    "menupage.full_height",
+    "menu.sponsor",
+    "menu.place",
+    "menupage.page_number",
+    "menu.call_number",
+    "menu.date",
+    "menu.page_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menupage",
+     "column": "full_height",
+     "operator": "<=",
+     "value": 3288.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "BANKERS' CLUB OF CHICAGO",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "place",
+     "operator": "=",
+     "value": "AUDITORIUM ANNEX",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "page_number",
+     "operator": ">=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1908-157",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1908-02-15",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.status": "complete",
+    "menupage.full_height": 3288.0,
+    "menu.sponsor": "BANKERS' CLUB OF CHICAGO",
+    "menu.place": "AUDITORIUM ANNEX",
+    "menupage.page_number": 4.0,
+    "menu.call_number": "1908-157",
+    "menu.date": "1908-02-15",
+    "menu.page_count": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with status equal to 'complete' and sponsor equal to 'BANKERS' and place equal to 'AUDITORIUM ANNEX' and call number equal to '1908-157' and date at least '1908-02-15' and page count at most '8', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full height at most '3288.0' and page number at least '4.0'?"
+  },
+  {
+   "uid": "318aca89-7a27-4b08-8857-b33dd00a45bf",
+   "question": "What menus dated 1935-01-24 with a physical description of 15.5x11cm have a status of complete, at least 7 dishes, and are on pages with UUID bbeaa130-a626-ec5c-e040-e00a18060519 that are at least 2016.0 wide and 2755.0 tall?",
+   "answer_row_ids": [
+    30799
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menupage.uuid = 'bbeaa130-a626-ec5c-e040-e00a18060519' AND menu.date = '1935-01-24' AND menu.physical_description = '15.5x11cm' AND menupage.full_width >= 2016.0 AND menu.status = 'complete' AND menu.dish_count >= 7 AND menupage.full_height >= 2755.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menupage.uuid",
+    "menu.date",
+    "menu.physical_description",
+    "menupage.full_width",
+    "menu.status",
+    "menu.dish_count",
+    "menupage.full_height"
+   ],
+   "involved_filters": [
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "bbeaa130-a626-ec5c-e040-e00a18060519",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1935-01-24",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "15.5x11cm",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": ">=",
+     "value": 2016.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": ">=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "full_height",
+     "operator": ">=",
+     "value": 2755.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menupage.uuid": "bbeaa130-a626-ec5c-e040-e00a18060519",
+    "menu.date": "1935-01-24",
+    "menu.physical_description": "15.5x11cm",
+    "menupage.full_width": 2016.0,
+    "menu.status": "complete",
+    "menu.dish_count": 7,
+    "menupage.full_height": 2755.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with date equal to '1935-01-24' and physical description equal to '15.5x11cm' and status equal to 'complete' and dish count at least '7', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to 'bbeaa130-a626-ec5c-e040-e00a18060519' and full width at least '2016.0' and full height at least '2755.0'?"
+  },
+  {
+   "uid": "82d3dc4f-5215-4c59-a435-ace6ceb2fc34",
+   "question": "Which menus dated on or after 1933-05-26 have a physical description of 19.5x14cm, no more than 26 dishes, notes exactly reading grill room luncheon, call number 1933-0283_wotm, and menupages with a full width of at most 2497.0?",
+   "answer_row_ids": [
+    31375
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.physical_description = '19.5x14cm' AND menupage.full_width <= 2497.0 AND menu.date >= '1933-05-26' AND menu.dish_count <= 26 AND menu.notes = 'grill room luncheon' AND menu.call_number = '1933-0283_wotm'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.physical_description",
+    "menupage.full_width",
+    "menu.date",
+    "menu.dish_count",
+    "menu.notes",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "19.5x14cm",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "<=",
+     "value": 2497.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1933-05-26",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 26,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "grill room luncheon",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1933-0283_wotm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.physical_description": "19.5x14cm",
+    "menupage.full_width": 2497.0,
+    "menu.date": "1933-05-26",
+    "menu.dish_count": 26,
+    "menu.notes": "grill room luncheon",
+    "menu.call_number": "1933-0283_wotm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with physical description equal to '19.5x14cm' and date at least '1933-05-26' and dish count at most '26' and notes equal to 'grill room luncheon' and call number equal to '1933-0283_wotm', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full width at most '2497.0'?"
+  },
+  {
+   "uid": "6b7f06ae-763d-4d97-a5f9-06515816cf3f",
+   "question": "Which menus for the event TIFFIN have a status of complete, a physical description of BROADSIDE;5.25X7.75;, dish count of at most 18, place exactly SS KASUGA, occasion DAILY;, and menupages with full width 2226.0 and full height at least 3211.0?",
+   "answer_row_ids": [
+    19988
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.event = 'TIFFIN' AND menu.status = 'complete' AND menupage.full_height >= 3211.0 AND menu.physical_description = 'BROADSIDE;5.25X7.75;' AND menu.dish_count <= 18 AND menu.place = 'SS KASUGA' AND menupage.full_width = 2226.0 AND menu.occasion = 'DAILY;'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.event",
+    "menu.status",
+    "menupage.full_height",
+    "menu.physical_description",
+    "menu.dish_count",
+    "menu.place",
+    "menupage.full_width",
+    "menu.occasion"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "TIFFIN",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menupage",
+     "column": "full_height",
+     "operator": ">=",
+     "value": 3211.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "BROADSIDE;5.25X7.75;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 18,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "place",
+     "operator": "=",
+     "value": "SS KASUGA",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "=",
+     "value": 2226.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "occasion",
+     "operator": "=",
+     "value": "DAILY;",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.event": "TIFFIN",
+    "menu.status": "complete",
+    "menupage.full_height": 3211.0,
+    "menu.physical_description": "BROADSIDE;5.25X7.75;",
+    "menu.dish_count": 18,
+    "menu.place": "SS KASUGA",
+    "menupage.full_width": 2226.0,
+    "menu.occasion": "DAILY;"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with event equal to 'TIFFIN' and status equal to 'complete' and physical description equal to 'BROADSIDE;5.25X7.75;' and dish count at most '18' and place equal to 'SS KASUGA' and occasion equal to 'DAILY;', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full height at least '3211.0' and full width equal to '2226.0'?"
+  },
+  {
+   "uid": "8d23fb1b-2e69-41bb-8c86-71a7ab72b563",
+   "question": "Which menus with call number 1906-093 have exactly 21 dishes, at least 12 pages, and are from SAVOY, NEW YORK, NY for a COMPLIMENTARY/TESTIMONIAL occasion, where the pages are at least 2414.0 wide but no more than 3713.0 high, and notes say MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;?",
+   "answer_row_ids": [
+    24854
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.call_number = '1906-093' AND menu.dish_count = 21 AND menu.page_count >= 12 AND menu.place = 'SAVOY, NEW YORK, NY' AND menu.occasion = 'COMPLIMENTARY/TESTIMONIAL' AND menupage.full_width >= 2414.0 AND menupage.full_height <= 3713.0 AND menu.notes = 'MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.call_number",
+    "menu.dish_count",
+    "menu.page_count",
+    "menu.place",
+    "menu.occasion",
+    "menupage.full_width",
+    "menupage.full_height",
+    "menu.notes"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1906-093",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "=",
+     "value": 21,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": ">=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "place",
+     "operator": "=",
+     "value": "SAVOY, NEW YORK, NY",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "occasion",
+     "operator": "=",
+     "value": "COMPLIMENTARY/TESTIMONIAL",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": ">=",
+     "value": 2414.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "full_height",
+     "operator": "<=",
+     "value": 3713.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "notes",
+     "operator": "=",
+     "value": "MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.call_number": "1906-093",
+    "menu.dish_count": 21,
+    "menu.page_count": 12,
+    "menu.place": "SAVOY, NEW YORK, NY",
+    "menu.occasion": "COMPLIMENTARY/TESTIMONIAL",
+    "menupage.full_width": 2414.0,
+    "menupage.full_height": 3713.0,
+    "menu.notes": "MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with call number equal to '1906-093' and dish count equal to '21' and page count at least '12' and place equal to 'SAVOY, NEW YORK, NY' and occasion equal to 'COMPLIMENTARY/TESTIMONIAL' and notes equal to 'MENU IN FRENCH; LISTS WINES SERVED WITH INDIVIDUAL COURSES; GUESTS OF HONOR LISTED; TOASTS; SONGS; COVER INCLUDES PHOTOGRAPH OF MR. TOWNSEND AND SKETCHES RELATING TO LAW AND COURT; RIBBON ATTACHMENT;', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full width at least '2414.0' and full height at most '3713.0'?"
+  },
+  {
+   "uid": "862baf5b-bf0b-41e0-ad75-fabf5e0aa06c",
+   "question": "What menus for Healy's Forty-second Street restaurant have exactly 2 pages, use Dollars with the $ symbol, measure 33x18cm, and include a page with number at most 1 that is exactly 3879.0 wide?",
+   "answer_row_ids": [
+    32629,
+    32643,
+    32650,
+    32660
+   ],
+   "answer_count": 4,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menupage.page_number <= 1.0 AND menupage.full_width = 3879.0 AND menu.currency_symbol = '$' AND menu.name = 'Healy''s Forty-second Street restaurant' AND menu.currency = 'Dollars' AND menu.page_count = 2 AND menu.physical_description = '33x18cm'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menupage.page_number",
+    "menupage.full_width",
+    "menu.currency_symbol",
+    "menu.name",
+    "menu.currency",
+    "menu.page_count",
+    "menu.physical_description"
+   ],
+   "involved_filters": [
+    {
+     "table": "menupage",
+     "column": "page_number",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "=",
+     "value": 3879.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "currency_symbol",
+     "operator": "=",
+     "value": "$",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "name",
+     "operator": "=",
+     "value": "Healy's Forty-second Street restaurant",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "33x18cm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menupage.page_number": 1.0,
+    "menupage.full_width": 3879.0,
+    "menu.currency_symbol": "$",
+    "menu.name": "Healy's Forty-second Street restaurant",
+    "menu.currency": "Dollars",
+    "menu.page_count": 2,
+    "menu.physical_description": "33x18cm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with currency symbol equal to '$' and name equal to 'Healy' and currency equal to 'Dollars' and page count equal to '2' and physical description equal to '33x18cm', having at least one related menupage record (linked on menu.id = menupage.menu_id) with page number at most '1.0' and full width equal to '3879.0'?"
+  },
+  {
+   "uid": "f6155e31-1e0d-4a27-b617-ec1de3060390",
+   "question": "Which menus with no more than 51 dishes and at most 2 pages have a status of complete, use the $ currency, and include a menupage with UUID 510d47db-4c9b-a3d9-e040-e00a18064a99 where full width is exactly 2195.0 and page number is at most 1.0?",
+   "answer_row_ids": [
+    13430,
+    15384
+   ],
+   "answer_count": 2,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.dish_count <= 51 AND menu.currency_symbol = '$' AND menu.status = 'complete' AND menupage.full_width = 2195.0 AND menu.page_count <= 2 AND menupage.uuid = '510d47db-4c9b-a3d9-e040-e00a18064a99' AND menupage.page_number <= 1.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.dish_count",
+    "menu.currency_symbol",
+    "menu.status",
+    "menupage.full_width",
+    "menu.page_count",
+    "menupage.uuid",
+    "menupage.page_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 51,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "currency_symbol",
+     "operator": "=",
+     "value": "$",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "=",
+     "value": 2195.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "510d47db-4c9b-a3d9-e040-e00a18064a99",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "page_number",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.dish_count": 51,
+    "menu.currency_symbol": "$",
+    "menu.status": "complete",
+    "menupage.full_width": 2195.0,
+    "menu.page_count": 2,
+    "menupage.uuid": "510d47db-4c9b-a3d9-e040-e00a18064a99",
+    "menupage.page_number": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with dish count at most '51' and currency symbol equal to '$' and status equal to 'complete' and page count at most '2', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full width equal to '2195.0' and uuid equal to '510d47db-4c9b-a3d9-e040-e00a18064a99' and page number at most '1.0'?"
+  },
+  {
+   "uid": "d9d6f34b-c7e3-45c1-9b1a-277dba235367",
+   "question": "Which menus sponsored by Hotel Astor have no more than 33 pages and 22 dishes, are complete, and include a menupage exactly matching UUID bd6d5bd1-6eb0-5919-e040-e00a18067913 with full width 3831.0 on page number 14.0?",
+   "answer_row_ids": [
+    31445
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.sponsor = 'Hotel Astor' AND menu.page_count <= 33 AND menupage.uuid = 'bd6d5bd1-6eb0-5919-e040-e00a18067913' AND menupage.full_width = 3831.0 AND menu.status = 'complete' AND menu.dish_count <= 22 AND menupage.page_number = 14.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.sponsor",
+    "menu.page_count",
+    "menupage.uuid",
+    "menupage.full_width",
+    "menu.status",
+    "menu.dish_count",
+    "menupage.page_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "Hotel Astor",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "<=",
+     "value": 33,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "bd6d5bd1-6eb0-5919-e040-e00a18067913",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "=",
+     "value": 3831.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "page_number",
+     "operator": "=",
+     "value": 14.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.sponsor": "Hotel Astor",
+    "menu.page_count": 33,
+    "menupage.uuid": "bd6d5bd1-6eb0-5919-e040-e00a18067913",
+    "menupage.full_width": 3831.0,
+    "menu.status": "complete",
+    "menu.dish_count": 22,
+    "menupage.page_number": 14.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'Hotel Astor' and page count at most '33' and status equal to 'complete' and dish count at most '22', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to 'bd6d5bd1-6eb0-5919-e040-e00a18067913' and full width equal to '3831.0' and page number equal to '14.0'?"
+  },
+  {
+   "uid": "022c64b2-ebcd-470a-8f01-21426e4ac379",
+   "question": "Which menus dated on 1900-05-15 have at least 76 dishes and come from menupages with a full width of at least 2290.0?",
+   "answer_row_ids": [
+    19117
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menupage.full_width >= 2290.0 AND menu.dish_count >= 76 AND menu.date = '1900-05-15'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menupage.full_width",
+    "menu.dish_count",
+    "menu.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": ">=",
+     "value": 2290.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": ">=",
+     "value": 76,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1900-05-15",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "menupage.full_width": 2290.0,
+    "menu.dish_count": 76,
+    "menu.date": "1900-05-15"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with dish count at least '76' and date equal to '1900-05-15', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full width at least '2290.0'?"
+  },
+  {
+   "uid": "6f6d0970-2679-4484-9165-0f03e4396555",
+   "question": "Which menus with status complete have a date on or after 1938-03-20 and include pages numbered at least 4 from menupage with uuid bc3bede1-ab5c-cebb-e040-e00a18064596?",
+   "answer_row_ids": [
+    30868
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menupage.uuid = 'bc3bede1-ab5c-cebb-e040-e00a18064596' AND menu.date >= '1938-03-20' AND menupage.page_number >= 4.0 AND menu.status = 'complete'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menupage.uuid",
+    "menu.date",
+    "menupage.page_number",
+    "menu.status"
+   ],
+   "involved_filters": [
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "bc3bede1-ab5c-cebb-e040-e00a18064596",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": ">=",
+     "value": "1938-03-20",
+     "column_type": "date"
+    },
+    {
+     "table": "menupage",
+     "column": "page_number",
+     "operator": ">=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "status",
+     "operator": "=",
+     "value": "complete",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "menupage.uuid": "bc3bede1-ab5c-cebb-e040-e00a18064596",
+    "menu.date": "1938-03-20",
+    "menupage.page_number": 4.0,
+    "menu.status": "complete"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with date at least '1938-03-20' and status equal to 'complete', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to 'bc3bede1-ab5c-cebb-e040-e00a18064596' and page number at least '4.0'?"
+  },
+  {
+   "uid": "ce44c620-fc52-4e81-acfd-e069204d0593",
+   "question": "Which menus at Chickatawbut Club for the ANNUAL MEETING & DINNER event have a call number of 1895-018, page counts of at least 4, and include pages with a full width of exactly 2713.0?",
+   "answer_row_ids": [
+    21849
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.location = 'Chickatawbut Club' AND menupage.full_width = 2713.0 AND menu.call_number = '1895-018' AND menu.event = 'ANNUAL MEETING & DINNER' AND menu.page_count >= 4",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.location",
+    "menupage.full_width",
+    "menu.call_number",
+    "menu.event",
+    "menu.page_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "Chickatawbut Club",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "full_width",
+     "operator": "=",
+     "value": 2713.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1895-018",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "ANNUAL MEETING & DINNER",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "menu.location": "Chickatawbut Club",
+    "menupage.full_width": 2713.0,
+    "menu.call_number": "1895-018",
+    "menu.event": "ANNUAL MEETING & DINNER",
+    "menu.page_count": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with location equal to 'Chickatawbut Club' and call number equal to '1895-018' and event equal to 'ANNUAL MEETING & DINNER' and page count at least '4', having at least one related menupage record (linked on menu.id = menupage.menu_id) with full width equal to '2713.0'?"
+  },
+  {
+   "uid": "c6ceb157-8a98-40ec-8261-0e693928ee1b",
+   "question": "Which menus dated on 1933-11-21 with call number 1933-0343_wotm have a physical description of 21.5x14cm folded; 21.5x28cm open and contain at most 13 dishes?",
+   "answer_row_ids": [
+    31157
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.physical_description = '21.5x14cm folded; 21.5x28cm open' AND menu.dish_count <= 13 AND menu.date = '1933-11-21' AND menu.call_number = '1933-0343_wotm'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.physical_description",
+    "menu.dish_count",
+    "menu.date",
+    "menu.call_number"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "21.5x14cm folded; 21.5x28cm open",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "dish_count",
+     "operator": "<=",
+     "value": 13,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1933-11-21",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "call_number",
+     "operator": "=",
+     "value": "1933-0343_wotm",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.physical_description": "21.5x14cm folded; 21.5x28cm open",
+    "menu.dish_count": 13,
+    "menu.date": "1933-11-21",
+    "menu.call_number": "1933-0343_wotm"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with physical description equal to '21.5x14cm folded; 21.5x28cm open' and dish count at most '13' and date equal to '1933-11-21' and call number equal to '1933-0343_wotm', having at least one related menupage record (linked on menu.id = menupage.menu_id)?"
+  },
+  {
+   "uid": "3e0ab615-8bda-4b50-bd12-cfb17834e6be",
+   "question": "Which menus for the FIRST ANNUAL DINNER event at The Rensselaer County Society In The City Of New York venue POLIT; are physical booklets with color illustrations sized 6.5 X 9 and dated on or before 1907-02-14?",
+   "answer_row_ids": [
+    22372
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.venue = 'POLIT;' AND menu.date <= '1907-02-14' AND menu.location = 'The Rensselaer County Society In The City Of New York' AND menu.physical_description = 'BOOKLET; COL; ILLUS; 6.5 X 9;' AND menu.event = 'FIRST ANNUAL DINNER'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.venue",
+    "menu.date",
+    "menu.location",
+    "menu.physical_description",
+    "menu.event"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "venue",
+     "operator": "=",
+     "value": "POLIT;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "<=",
+     "value": "1907-02-14",
+     "column_type": "date"
+    },
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "The Rensselaer County Society In The City Of New York",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "BOOKLET; COL; ILLUS; 6.5 X 9;",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "event",
+     "operator": "=",
+     "value": "FIRST ANNUAL DINNER",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.venue": "POLIT;",
+    "menu.date": "1907-02-14",
+    "menu.location": "The Rensselaer County Society In The City Of New York",
+    "menu.physical_description": "BOOKLET; COL; ILLUS; 6.5 X 9;",
+    "menu.event": "FIRST ANNUAL DINNER"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with venue equal to 'POLIT;' and date at most '1907-02-14' and location equal to 'The Rensselaer County Society In The City Of New York' and physical description equal to 'BOOKLET; COL; ILLUS; 6.5 X 9;' and event equal to 'FIRST ANNUAL DINNER', having at least one related menupage record (linked on menu.id = menupage.menu_id)?"
+  },
+  {
+   "uid": "bc6a6241-2e94-4100-af9b-495c7bd98313",
+   "question": "Which menus from NEW YORK, NY priced in Dollars have the physical description FOLDER; ILLUS; 8.25X12; and are linked to the menupage with uuid 510d47db-40f5-a3d9-e040-e00a18064a99?",
+   "answer_row_ids": [
+    25241
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.place = 'NEW YORK, NY' AND menu.currency = 'Dollars' AND menupage.uuid = '510d47db-40f5-a3d9-e040-e00a18064a99' AND menu.physical_description = 'FOLDER; ILLUS; 8.25X12;'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.place",
+    "menu.currency",
+    "menupage.uuid",
+    "menu.physical_description"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "place",
+     "operator": "=",
+     "value": "NEW YORK, NY",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "currency",
+     "operator": "=",
+     "value": "Dollars",
+     "column_type": "label"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "510d47db-40f5-a3d9-e040-e00a18064a99",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "physical_description",
+     "operator": "=",
+     "value": "FOLDER; ILLUS; 8.25X12;",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.place": "NEW YORK, NY",
+    "menu.currency": "Dollars",
+    "menupage.uuid": "510d47db-40f5-a3d9-e040-e00a18064a99",
+    "menu.physical_description": "FOLDER; ILLUS; 8.25X12;"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with place equal to 'NEW YORK, NY' and currency equal to 'Dollars' and physical description equal to 'FOLDER; ILLUS; 8.25X12;', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to '510d47db-40f5-a3d9-e040-e00a18064a99'?"
+  },
+  {
+   "uid": "d27747fe-08a0-4192-9ef6-1afe5c903c63",
+   "question": "What menus sponsored by Maison De France have exactly one page and include the menupage with UUID b1b72a60-95ad-52d5-e040-e00a1806497a at the Maison De France location?",
+   "answer_row_ids": [
+    29330
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menu.location = 'Maison De France' AND menu.page_count = 1 AND menupage.uuid = 'b1b72a60-95ad-52d5-e040-e00a1806497a' AND menu.sponsor = 'Maison De France'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menu.location",
+    "menu.page_count",
+    "menupage.uuid",
+    "menu.sponsor"
+   ],
+   "involved_filters": [
+    {
+     "table": "menu",
+     "column": "location",
+     "operator": "=",
+     "value": "Maison De France",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "page_count",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "b1b72a60-95ad-52d5-e040-e00a1806497a",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "Maison De France",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "menu.location": "Maison De France",
+    "menu.page_count": 1,
+    "menupage.uuid": "b1b72a60-95ad-52d5-e040-e00a1806497a",
+    "menu.sponsor": "Maison De France"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with location equal to 'Maison De France' and page count equal to '1' and sponsor equal to 'Maison De France', having at least one related menupage record (linked on menu.id = menupage.menu_id) with uuid equal to 'b1b72a60-95ad-52d5-e040-e00a1806497a'?"
+  },
+  {
+   "uid": "abf2bf39-4523-49b7-a61a-1d1e54557b80",
+   "question": "What menus sponsored by Chinesisches Restaurant on 1958-01-01 appear on page 15 or earlier of the menupage with UUID afbf98ff-48be-7e08-e040-e00a18064829?",
+   "answer_row_ids": [
+    28470
+   ],
+   "answer_count": 1,
+   "sql": "SELECT menu.id FROM menu\nJOIN menupage ON menu.id = menupage.menu_id\nWHERE menupage.page_number <= 15.0 AND menupage.uuid = 'afbf98ff-48be-7e08-e040-e00a18064829' AND menu.sponsor = 'Chinesisches Restaurant' AND menu.date = '1958-01-01'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "menu",
+    "menupage"
+   ],
+   "involved_columns": [
+    "menupage.page_number",
+    "menupage.uuid",
+    "menu.sponsor",
+    "menu.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "menupage",
+     "column": "page_number",
+     "operator": "<=",
+     "value": 15.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "menupage",
+     "column": "uuid",
+     "operator": "=",
+     "value": "afbf98ff-48be-7e08-e040-e00a18064829",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "sponsor",
+     "operator": "=",
+     "value": "Chinesisches Restaurant",
+     "column_type": "label"
+    },
+    {
+     "table": "menu",
+     "column": "date",
+     "operator": "=",
+     "value": "1958-01-01",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "menupage.page_number": 15.0,
+    "menupage.uuid": "afbf98ff-48be-7e08-e040-e00a18064829",
+    "menu.sponsor": "Chinesisches Restaurant",
+    "menu.date": "1958-01-01"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "menu"
+   },
+   "answer_table": "menu",
+   "answer_id_column": "id",
+   "canonical_question": "Which menu entities with sponsor equal to 'Chinesisches Restaurant' and date equal to '1958-01-01', having at least one related menupage record (linked on menu.id = menupage.menu_id) with page number at most '15.0' and uuid equal to 'afbf98ff-48be-7e08-e040-e00a18064829'?"
+  }
+ ]
+}

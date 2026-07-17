@@ -1,0 +1,3212 @@
+{
+ "db_id": "european_football_1",
+ "target_table": "divisions",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 999544899,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/european_football_1/european_football_1.sqlite",
+  "generated_at": "2026-07-02T11:19:02.071137+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "divisions",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 13,
+   "1pE": 13,
+   "1pM": 12,
+   "1pH": 12
+  },
+  "realized_counts": {
+   "0E": 13,
+   "1pE": 13,
+   "1pH": 12,
+   "1pM": 12
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 84,
+    "inner_attempts": 84,
+    "failed_rounds": 71,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "generation_exception": 64,
+     "qa_validation_failed": 1,
+     "duplicate_pair": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "Question failed literal-fidelity check after retry: [\"question asks for the identifier column 'division' instead of the divisions entities themselves\"]"
+   },
+   "1pE": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 25,
+    "inner_attempts": 33,
+    "failed_rounds": 12,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "generation_exception": 12
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "Question failed literal-fidelity check after retry: [\"question asks for the identifier column 'division' instead of the divisions entities themselves\"]"
+   },
+   "1pH": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 37,
+    "inner_attempts": 37,
+    "failed_rounds": 25,
+    "invalid_pairs_filtered": 10,
+    "failure_events": {
+     "generation_exception": 15,
+     "qa_validation_failed": 10
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "Question failed literal-fidelity check after retry: [\"question asks for the identifier column 'division' instead of the divisions entities themselves\"]"
+   },
+   "1pM": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 19,
+    "inner_attempts": 20,
+    "failed_rounds": 7,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "generation_exception": 6,
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "Question failed literal-fidelity check after retry: [\"question asks for the identifier column 'division' instead of the divisions entities themselves\"]"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "74672aa2-18e7-43fc-bfbb-ce8eb972f4e0",
+   "question": "Which entries have the name exactly EFL League One?",
+   "answer_row_ids": [
+    "E2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'EFL League One'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "EFL League One",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "EFL League One"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'EFL League One'?"
+  },
+  {
+   "uid": "15446408-c62c-4759-bed6-205157f07f88",
+   "question": "Which entries have the name exactly equal to Eredivisie?",
+   "answer_row_ids": [
+    "N1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Eredivisie'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Eredivisie",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Eredivisie"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Eredivisie'?"
+  },
+  {
+   "uid": "1f7d365b-db36-402d-aa44-577ef32311cc",
+   "question": "Which entries have the name exactly Scottish League One?",
+   "answer_row_ids": [
+    "SC2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Scottish League One'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Scottish League One",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Scottish League One"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Scottish League One'?"
+  },
+  {
+   "uid": "38125375-427a-41bf-ba0e-537f92e3fd86",
+   "question": "Which entries are named exactly EFL League Two?",
+   "answer_row_ids": [
+    "E3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'EFL League Two'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "EFL League Two",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "EFL League Two"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'EFL League Two'?"
+  },
+  {
+   "uid": "d991d569-1351-4655-86ad-2cc6e6caa017",
+   "question": "Which entities are named EFL League Two and are based in England?",
+   "answer_row_ids": [
+    "E3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.country = 'England' AND divisions.name = 'EFL League Two'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "EFL League Two",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "England",
+    "divisions.name": "EFL League Two"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England' and name equal to 'EFL League Two'?"
+  },
+  {
+   "uid": "8d66da0a-144b-482f-8f82-b3adf42a51e8",
+   "question": "Which competitions named Eredivisie take place in the Netherlands?",
+   "answer_row_ids": [
+    "N1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Eredivisie' AND divisions.country = 'Netherlands'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name",
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Eredivisie",
+     "column_type": "label"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Netherlands",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Eredivisie",
+    "divisions.country": "Netherlands"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Eredivisie' and country equal to 'Netherlands'?"
+  },
+  {
+   "uid": "14c23e3f-5c16-4810-9a18-ed179a47105e",
+   "question": "Which entries have the name Seria B?",
+   "answer_row_ids": [
+    "I2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Seria B'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Seria B",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Seria B"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Seria B'?"
+  },
+  {
+   "uid": "7ef1e1d6-8f1c-4bdc-83f0-30be035347e3",
+   "question": "Which entries have the name exactly equal to S\u00fcper Lig?",
+   "answer_row_ids": [
+    "T1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'S\u00fcper Lig'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "S\u00fcper Lig",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "S\u00fcper Lig"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'S\u00fcper Lig'?"
+  },
+  {
+   "uid": "987cc4f3-dce5-4018-b3d7-e14473afadd6",
+   "question": "Which entries are associated with the country Turkey?",
+   "answer_row_ids": [
+    "T1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.country = 'Turkey'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Turkey",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Turkey"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Turkey'?"
+  },
+  {
+   "uid": "876473ea-8504-405d-b2aa-8de207d39316",
+   "question": "Which entries have the name exactly equal to Bundesliga?",
+   "answer_row_ids": [
+    "D1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Bundesliga'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Bundesliga",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Bundesliga"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Bundesliga'?"
+  },
+  {
+   "uid": "42789782-3443-40cd-b118-e675deaf037e",
+   "question": "Which entries are from Italy where the name is exactly Seria A?",
+   "answer_row_ids": [
+    "I1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.country = 'Italy' AND divisions.name = 'Seria A'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Italy",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Seria A",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Italy",
+    "divisions.name": "Seria A"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Italy' and name equal to 'Seria A'?"
+  },
+  {
+   "uid": "06a27e11-2cb6-49de-8d47-27aa90fa836b",
+   "question": "Which entries are named exactly Scottish Premiership?",
+   "answer_row_ids": [
+    "SC0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.name = 'Scottish Premiership'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Scottish Premiership",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Scottish Premiership"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Scottish Premiership'?"
+  },
+  {
+   "uid": "261defed-8d27-46b2-bc33-ad0a8eaaaaaa",
+   "question": "Which competitions take place in England and are named Premier League?",
+   "answer_row_ids": [
+    "E0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nWHERE divisions.country = 'England' AND divisions.name = 'Premier League'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "divisions"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Premier League",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "England",
+    "divisions.name": "Premier League"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England' and name equal to 'Premier League'?"
+  },
+  {
+   "uid": "e93350a3-d6b6-4c58-ab7b-5678f90acc94",
+   "question": "Which competitions include matches where Reading is the home team?",
+   "answer_row_ids": [
+    "E0",
+    "E1"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.hometeam = 'Reading'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Reading",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.hometeam": "Reading"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with hometeam equal to 'Reading'?"
+  },
+  {
+   "uid": "ab68b71e-4714-46d3-b7a5-5572e70ea7d7",
+   "question": "Which competitions have matches played in Italy?",
+   "answer_row_ids": [
+    "I1",
+    "I2"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Italy'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Italy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Italy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Italy', having at least one related matchs record (linked on divisions.division = matchs.div)?"
+  },
+  {
+   "uid": "5cc41b0b-d652-4534-8dc9-a0132e589bf5",
+   "question": "Which competitions in Portugal had matches where the final result was exactly an away win?",
+   "answer_row_ids": [
+    "P1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftr = 'A' AND divisions.country = 'Portugal'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.ftr",
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Portugal",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "matchs.ftr": "A",
+    "divisions.country": "Portugal"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Portugal', having at least one related matchs record (linked on divisions.division = matchs.div) with ftr equal to 'A'?"
+  },
+  {
+   "uid": "5994c520-4aa7-46d7-a072-8c2ba9a043a7",
+   "question": "Which competitions have matches played in Deutschland?",
+   "answer_row_ids": [
+    "D1",
+    "D2"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Deutschland'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Deutschland",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Deutschland"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Deutschland', having at least one related matchs record (linked on divisions.division = matchs.div)?"
+  },
+  {
+   "uid": "341838dc-3064-4f9d-977c-d173a1fc9089",
+   "question": "Which competitions are held in Spain with matches played on or after 2011-01-15?",
+   "answer_row_ids": [
+    "SP1",
+    "SP2"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Spain' AND matchs.date >= '2011-01-15'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "matchs.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Spain",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2011-01-15",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Spain",
+    "matchs.date": "2011-01-15"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Spain', having at least one related matchs record (linked on divisions.division = matchs.div) with date at least '2011-01-15'?"
+  },
+  {
+   "uid": "7230a2ba-f7a2-434d-b554-02a68ee1fe8a",
+   "question": "Which groups had matches on 2021-05-08?",
+   "answer_row_ids": [
+    "D1",
+    "D2",
+    "E0",
+    "E1",
+    "E3",
+    "EC",
+    "F1",
+    "F2",
+    "G1",
+    "I1",
+    "N1",
+    "SP1",
+    "SP2",
+    "T1"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.date = '2021-05-08'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "=",
+     "value": "2021-05-08",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "matchs.date": "2021-05-08"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with date equal to '2021-05-08'?"
+  },
+  {
+   "uid": "86e7e7a9-2297-4966-87b0-24e611413353",
+   "question": "What competitions are held in Portugal where the away team scored at least 0 goals?",
+   "answer_row_ids": [
+    "P1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Portugal' AND matchs.ftag >= 0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "matchs.ftag"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Portugal",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Portugal",
+    "matchs.ftag": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Portugal', having at least one related matchs record (linked on divisions.division = matchs.div) with ftag at least '0'?"
+  },
+  {
+   "uid": "f4c7877e-82f5-4bf3-ba2c-4dccbb0d4f75",
+   "question": "Which competitions include matches where Metz is the home team?",
+   "answer_row_ids": [
+    "F1",
+    "F2"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.hometeam = 'Metz'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Metz",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.hometeam": "Metz"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with hometeam equal to 'Metz'?"
+  },
+  {
+   "uid": "0174ef62-2c6b-4c71-94c5-648ae8943f43",
+   "question": "Which competitions are associated with matches played in Scotland?",
+   "answer_row_ids": [
+    "SC0",
+    "SC1",
+    "SC2"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Scotland'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Scotland",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Scotland"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Scotland', having at least one related matchs record (linked on divisions.division = matchs.div)?"
+  },
+  {
+   "uid": "fb2612db-a5bf-4162-9fa5-45d0c8f98303",
+   "question": "Which competitions in England have matches where the home team scored exactly 3 goals?",
+   "answer_row_ids": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "EC"
+   ],
+   "answer_count": 5,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.fthg = 3 AND divisions.country = 'England'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.fthg",
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "matchs.fthg": 3,
+    "divisions.country": "England"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England', having at least one related matchs record (linked on divisions.division = matchs.div) with fthg equal to '3'?"
+  },
+  {
+   "uid": "d9d07227-3b4a-462c-9af5-c066b1516dc3",
+   "question": "What competitions featured matches where Westerlo was the away team and the home team scored exactly 0 goals?",
+   "answer_row_ids": [
+    "B1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.fthg = 0 AND matchs.awayteam = 'Westerlo'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.fthg",
+    "matchs.awayteam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Westerlo",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.fthg": 0,
+    "matchs.awayteam": "Westerlo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with fthg equal to '0' and awayteam equal to 'Westerlo'?"
+  },
+  {
+   "uid": "0e771020-9a93-46df-b9b0-3a2bafdd42f3",
+   "question": "What competitions include matches where West Ham was the home team and the final result is a home win?",
+   "answer_row_ids": [
+    "E0",
+    "E1"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftr = 'H' AND matchs.hometeam = 'West Ham'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.ftr",
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "H",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "West Ham",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.ftr": "H",
+    "matchs.hometeam": "West Ham"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with ftr equal to 'H' and hometeam equal to 'West Ham'?"
+  },
+  {
+   "uid": "6037b0f4-9c1a-40b9-8e36-ea3d7c0a6400",
+   "question": "Which competitions in Greece have matches where the away team scored at most 0 goals?",
+   "answer_row_ids": [
+    "G1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Greece' AND matchs.ftag <= 0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "matchs.ftag"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Greece",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Greece",
+    "matchs.ftag": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Greece', having at least one related matchs record (linked on divisions.division = matchs.div) with ftag at most '0'?"
+  },
+  {
+   "uid": "e3feb15d-303a-4353-85a9-e922c7851cc0",
+   "question": "Which Scottish Premiership entities in Scotland had a home win on 2013-10-05 when Celtic played Motherwell?",
+   "answer_row_ids": [
+    "SC0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.name = 'Scottish Premiership' AND matchs.date = '2013-10-05' AND matchs.hometeam = 'Celtic' AND matchs.awayteam = 'Motherwell' AND divisions.country = 'Scotland' AND matchs.ftr = 'H'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.name",
+    "matchs.date",
+    "matchs.hometeam",
+    "matchs.awayteam",
+    "divisions.country",
+    "matchs.ftr"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Scottish Premiership",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "=",
+     "value": "2013-10-05",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Celtic",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Motherwell",
+     "column_type": "label"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Scotland",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "H",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Scottish Premiership",
+    "matchs.date": "2013-10-05",
+    "matchs.hometeam": "Celtic",
+    "matchs.awayteam": "Motherwell",
+    "divisions.country": "Scotland",
+    "matchs.ftr": "H"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Scottish Premiership' and country equal to 'Scotland', having at least one related matchs record (linked on divisions.division = matchs.div) with date equal to '2013-10-05' and hometeam equal to 'Celtic' and awayteam equal to 'Motherwell' and ftr equal to 'H'?"
+  },
+  {
+   "uid": "12da5361-dff0-4dea-a161-532820782a29",
+   "question": "Where are matches played in England before or on 2010-01-20 where Macclesfield is the home team, Northampton is the away team, the season is at most 2010, the full-time result is A, the away team scored exactly 2 goals, and the home team scored at least 0 goals?",
+   "answer_row_ids": [
+    "E3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.season <= 2010 AND matchs.hometeam = 'Macclesfield' AND matchs.awayteam = 'Northampton' AND matchs.date <= '2010-01-20' AND matchs.ftr = 'A' AND matchs.ftag = 2 AND divisions.country = 'England' AND matchs.fthg >= 0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.season",
+    "matchs.hometeam",
+    "matchs.awayteam",
+    "matchs.date",
+    "matchs.ftr",
+    "matchs.ftag",
+    "divisions.country",
+    "matchs.fthg"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "<=",
+     "value": 2010,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Macclesfield",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Northampton",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "<=",
+     "value": "2010-01-20",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.season": 2010,
+    "matchs.hometeam": "Macclesfield",
+    "matchs.awayteam": "Northampton",
+    "matchs.date": "2010-01-20",
+    "matchs.ftr": "A",
+    "matchs.ftag": 2,
+    "divisions.country": "England",
+    "matchs.fthg": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England', having at least one related matchs record (linked on divisions.division = matchs.div) with season at most '2010' and hometeam equal to 'Macclesfield' and awayteam equal to 'Northampton' and date at most '2010-01-20' and ftr equal to 'A' and ftag equal to '2' and fthg at least '0'?"
+  },
+  {
+   "uid": "5fb42d0e-5754-4e53-8778-e9f97a258217",
+   "question": "Which competitions in Italy featured matches from 2007 onward where Modena was the home team, Mantova the away team, the final result was a draw, and Mantova scored exactly 2 goals?",
+   "answer_row_ids": [
+    "I2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.awayteam = 'Mantova' AND matchs.ftr = 'D' AND divisions.country = 'Italy' AND matchs.season >= 2007 AND matchs.hometeam = 'Modena' AND matchs.ftag = 2",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.awayteam",
+    "matchs.ftr",
+    "divisions.country",
+    "matchs.season",
+    "matchs.hometeam",
+    "matchs.ftag"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Mantova",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "D",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Italy",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": ">=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Modena",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.awayteam": "Mantova",
+    "matchs.ftr": "D",
+    "divisions.country": "Italy",
+    "matchs.season": 2007,
+    "matchs.hometeam": "Modena",
+    "matchs.ftag": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Italy', having at least one related matchs record (linked on divisions.division = matchs.div) with awayteam equal to 'Mantova' and ftr equal to 'D' and season at least '2007' and hometeam equal to 'Modena' and ftag equal to '2'?"
+  },
+  {
+   "uid": "2c4975e3-c8ae-4b6d-a730-592e3cfa2a13",
+   "question": "Which competitions in France named Ligue 1 feature Lyon as the home team winning matches by conceding at most 1 goal since the 2010 season?",
+   "answer_row_ids": [
+    "F1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'France' AND divisions.name = 'Ligue 1' AND matchs.season >= 2010 AND matchs.ftr = 'H' AND matchs.ftag <= 1 AND matchs.hometeam = 'Lyon'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "divisions.name",
+    "matchs.season",
+    "matchs.ftr",
+    "matchs.ftag",
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "France",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Ligue 1",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": ">=",
+     "value": 2010,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "H",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Lyon",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "France",
+    "divisions.name": "Ligue 1",
+    "matchs.season": 2010,
+    "matchs.ftr": "H",
+    "matchs.ftag": 1,
+    "matchs.hometeam": "Lyon"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'France' and name equal to 'Ligue 1', having at least one related matchs record (linked on divisions.division = matchs.div) with season at least '2010' and ftr equal to 'H' and ftag at most '1' and hometeam equal to 'Lyon'?"
+  },
+  {
+   "uid": "7c254350-d24b-4ec4-80c4-f91fc2aa808e",
+   "question": "Which competitions in England named EFL Championship had matches in the 2009 season where QPR was the home team, Norwich was the away team, QPR lost, the home goals were at least 0, and the match date was on or before 2009-03-03?",
+   "answer_row_ids": [
+    "E1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.fthg >= 0 AND matchs.season = 2009 AND matchs.hometeam = 'QPR' AND matchs.ftr = 'A' AND divisions.country = 'England' AND divisions.name = 'EFL Championship' AND matchs.awayteam = 'Norwich' AND matchs.date <= '2009-03-03'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.fthg",
+    "matchs.season",
+    "matchs.hometeam",
+    "matchs.ftr",
+    "divisions.country",
+    "divisions.name",
+    "matchs.awayteam",
+    "matchs.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "QPR",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "EFL Championship",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Norwich",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "<=",
+     "value": "2009-03-03",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "matchs.fthg": 0,
+    "matchs.season": 2009,
+    "matchs.hometeam": "QPR",
+    "matchs.ftr": "A",
+    "divisions.country": "England",
+    "divisions.name": "EFL Championship",
+    "matchs.awayteam": "Norwich",
+    "matchs.date": "2009-03-03"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England' and name equal to 'EFL Championship', having at least one related matchs record (linked on divisions.division = matchs.div) with fthg at least '0' and season equal to '2009' and hometeam equal to 'QPR' and ftr equal to 'A' and awayteam equal to 'Norwich' and date at most '2009-03-03'?"
+  },
+  {
+   "uid": "5923ca71-0278-4462-aaf2-1d88416ffe88",
+   "question": "Where can I find competitions in Belgium that include a 2018 season match where St Truiden beat Gent at home with at least 3 goals scored?",
+   "answer_row_ids": [
+    "B1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Belgium' AND matchs.season = 2018 AND matchs.ftr = 'H' AND matchs.hometeam = 'St Truiden' AND matchs.awayteam = 'Gent' AND matchs.fthg >= 3",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "matchs.season",
+    "matchs.ftr",
+    "matchs.hometeam",
+    "matchs.awayteam",
+    "matchs.fthg"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Belgium",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2018,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "H",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "St Truiden",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Gent",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Belgium",
+    "matchs.season": 2018,
+    "matchs.ftr": "H",
+    "matchs.hometeam": "St Truiden",
+    "matchs.awayteam": "Gent",
+    "matchs.fthg": 3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Belgium', having at least one related matchs record (linked on divisions.division = matchs.div) with season equal to '2018' and ftr equal to 'H' and hometeam equal to 'St Truiden' and awayteam equal to 'Gent' and fthg at least '3'?"
+  },
+  {
+   "uid": "054b3faf-b8b4-416b-8171-f2e03f8d15df",
+   "question": "Which competitions in England featured Mansfield as the home team in matches on or after 2006-08-08 during seasons 2007 or earlier, where Mansfield scored at least 2 goals and the away team scored at least 1 goal?",
+   "answer_row_ids": [
+    "E3"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'England' AND matchs.season <= 2007 AND matchs.ftag >= 1 AND matchs.fthg >= 2 AND matchs.hometeam = 'Mansfield' AND matchs.date >= '2006-08-08'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "matchs.season",
+    "matchs.ftag",
+    "matchs.fthg",
+    "matchs.hometeam",
+    "matchs.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "<=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Mansfield",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2006-08-08",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "England",
+    "matchs.season": 2007,
+    "matchs.ftag": 1,
+    "matchs.fthg": 2,
+    "matchs.hometeam": "Mansfield",
+    "matchs.date": "2006-08-08"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England', having at least one related matchs record (linked on divisions.division = matchs.div) with season at most '2007' and ftag at least '1' and fthg at least '2' and hometeam equal to 'Mansfield' and date at least '2006-08-08'?"
+  },
+  {
+   "uid": "963b1295-da3e-48b3-87fe-9a8c94407c0f",
+   "question": "Which competitions in Belgium featured a 2013 season match where Lierse hosted Waasland-Beveren, the full-time result was a draw, the home team scored at least 0 goals, and the match date was on or before 2013-01-19?",
+   "answer_row_ids": [
+    "B1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.date <= '2013-01-19' AND matchs.fthg >= 0 AND divisions.country = 'Belgium' AND matchs.season = 2013 AND matchs.hometeam = 'Lierse' AND matchs.ftr = 'D' AND matchs.awayteam = 'Waasland-Beveren'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.date",
+    "matchs.fthg",
+    "divisions.country",
+    "matchs.season",
+    "matchs.hometeam",
+    "matchs.ftr",
+    "matchs.awayteam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "<=",
+     "value": "2013-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Belgium",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2013,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Lierse",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "D",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Waasland-Beveren",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.date": "2013-01-19",
+    "matchs.fthg": 0,
+    "divisions.country": "Belgium",
+    "matchs.season": 2013,
+    "matchs.hometeam": "Lierse",
+    "matchs.ftr": "D",
+    "matchs.awayteam": "Waasland-Beveren"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Belgium', having at least one related matchs record (linked on divisions.division = matchs.div) with date at most '2013-01-19' and fthg at least '0' and season equal to '2013' and hometeam equal to 'Lierse' and ftr equal to 'D' and awayteam equal to 'Waasland-Beveren'?"
+  },
+  {
+   "uid": "92250233-298b-4296-843f-0febfe31a196",
+   "question": "What competitions in England had matches in the 2007 season since 2006-12-30 where Fulham was the away team, the full-time result was a draw, and both teams scored at least 2 goals?",
+   "answer_row_ids": [
+    "E0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftr = 'D' AND divisions.country = 'England' AND matchs.fthg >= 2 AND matchs.season = 2007 AND matchs.awayteam = 'Fulham' AND matchs.date >= '2006-12-30' AND matchs.ftag >= 2",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.ftr",
+    "divisions.country",
+    "matchs.fthg",
+    "matchs.season",
+    "matchs.awayteam",
+    "matchs.date",
+    "matchs.ftag"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "D",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Fulham",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2006-12-30",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.ftr": "D",
+    "divisions.country": "England",
+    "matchs.fthg": 2,
+    "matchs.season": 2007,
+    "matchs.awayteam": "Fulham",
+    "matchs.date": "2006-12-30",
+    "matchs.ftag": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England', having at least one related matchs record (linked on divisions.division = matchs.div) with ftr equal to 'D' and fthg at least '2' and season equal to '2007' and awayteam equal to 'Fulham' and date at least '2006-12-30' and ftag at least '2'?"
+  },
+  {
+   "uid": "4fffcfff-14e2-4033-a08a-629cd960b66e",
+   "question": "Which competitions included a match on 2019-09-28 where Peterboro was the home team that won 3-0 against AFC Wimbledon in a season at most 2020?",
+   "answer_row_ids": [
+    "E2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.awayteam = 'AFC Wimbledon' AND matchs.season <= 2020 AND matchs.hometeam = 'Peterboro' AND matchs.date = '2019-09-28' AND matchs.fthg = 3 AND matchs.ftr = 'H'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.awayteam",
+    "matchs.season",
+    "matchs.hometeam",
+    "matchs.date",
+    "matchs.fthg",
+    "matchs.ftr"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "AFC Wimbledon",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "<=",
+     "value": 2020,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Peterboro",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "=",
+     "value": "2019-09-28",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "H",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "matchs.awayteam": "AFC Wimbledon",
+    "matchs.season": 2020,
+    "matchs.hometeam": "Peterboro",
+    "matchs.date": "2019-09-28",
+    "matchs.fthg": 3,
+    "matchs.ftr": "H"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with awayteam equal to 'AFC Wimbledon' and season at most '2020' and hometeam equal to 'Peterboro' and date equal to '2019-09-28' and fthg equal to '3' and ftr equal to 'H'?"
+  },
+  {
+   "uid": "34cbac91-93cf-42d1-bbf8-03bcfb5f2286",
+   "question": "Where do matches from the 2006 season feature Cercle Brugge hosting Waregem on or before 2005-08-27, with Waregem winning, and Cercle Brugge scoring at least 2 goals?",
+   "answer_row_ids": [
+    "B1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.fthg >= 2 AND matchs.awayteam = 'Waregem' AND matchs.season = 2006 AND matchs.hometeam = 'Cercle Brugge' AND matchs.date <= '2005-08-27' AND matchs.ftr = 'A'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.fthg",
+    "matchs.awayteam",
+    "matchs.season",
+    "matchs.hometeam",
+    "matchs.date",
+    "matchs.ftr"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Waregem",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2006,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Cercle Brugge",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "<=",
+     "value": "2005-08-27",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "matchs.fthg": 2,
+    "matchs.awayteam": "Waregem",
+    "matchs.season": 2006,
+    "matchs.hometeam": "Cercle Brugge",
+    "matchs.date": "2005-08-27",
+    "matchs.ftr": "A"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with fthg at least '2' and awayteam equal to 'Waregem' and season equal to '2006' and hometeam equal to 'Cercle Brugge' and date at most '2005-08-27' and ftr equal to 'A'?"
+  },
+  {
+   "uid": "9f597e39-2f9c-46c2-85df-cd2f4b7d291c",
+   "question": "Which competitions named Scottish Premiership had home wins in the 2015 season where the home team scored at least 2 goals, the away team scored at least 1, and the matches took place on or after 2014-12-27?",
+   "answer_row_ids": [
+    "SC0"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.fthg >= 2 AND matchs.date >= '2014-12-27' AND matchs.ftag >= 1 AND matchs.ftr = 'H' AND matchs.season = 2015 AND divisions.name = 'Scottish Premiership'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.fthg",
+    "matchs.date",
+    "matchs.ftag",
+    "matchs.ftr",
+    "matchs.season",
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2014-12-27",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": ">=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "H",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Scottish Premiership",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.fthg": 2,
+    "matchs.date": "2014-12-27",
+    "matchs.ftag": 1,
+    "matchs.ftr": "H",
+    "matchs.season": 2015,
+    "divisions.name": "Scottish Premiership"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Scottish Premiership', having at least one related matchs record (linked on divisions.division = matchs.div) with fthg at least '2' and date at least '2014-12-27' and ftag at least '1' and ftr equal to 'H' and season equal to '2015'?"
+  },
+  {
+   "uid": "f81c9472-1e59-4ad9-a4c9-676f5bbc79f9",
+   "question": "Which competitions featured matches from 2007 or later where Port Vale was the home team scoring no more than 0 goals and Scunthorpe was the away team also scoring no more than 0 goals?",
+   "answer_row_ids": [
+    "E2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftag <= 0 AND matchs.hometeam = 'Port Vale' AND matchs.fthg <= 0 AND matchs.awayteam = 'Scunthorpe' AND matchs.season >= 2007",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.ftag",
+    "matchs.hometeam",
+    "matchs.fthg",
+    "matchs.awayteam",
+    "matchs.season"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Port Vale",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Scunthorpe",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": ">=",
+     "value": 2007,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.ftag": 0,
+    "matchs.hometeam": "Port Vale",
+    "matchs.fthg": 0,
+    "matchs.awayteam": "Scunthorpe",
+    "matchs.season": 2007
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with ftag at most '0' and hometeam equal to 'Port Vale' and fthg at most '0' and awayteam equal to 'Scunthorpe' and season at least '2007'?"
+  },
+  {
+   "uid": "f7a271a5-1354-4c69-a611-e63710205a4a",
+   "question": "Which competitions included matches where Woking was the away team on or after 2013-03-09 and the away team scored exactly 0 goals?",
+   "answer_row_ids": [
+    "EC"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.awayteam = 'Woking' AND matchs.date >= '2013-03-09' AND matchs.ftag = 0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.awayteam",
+    "matchs.date",
+    "matchs.ftag"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Woking",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2013-03-09",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.awayteam": "Woking",
+    "matchs.date": "2013-03-09",
+    "matchs.ftag": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with awayteam equal to 'Woking' and date at least '2013-03-09' and ftag equal to '0'?"
+  },
+  {
+   "uid": "0b65c787-0a18-49a1-bdad-8f8502f8a07c",
+   "question": "Which competitions in Italy had Genoa as the home team conceding exactly 2 goals?",
+   "answer_row_ids": [
+    "I1",
+    "I2"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.country = 'Italy' AND matchs.ftag = 2 AND matchs.hometeam = 'Genoa'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.country",
+    "matchs.ftag",
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Italy",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Genoa",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "divisions.country": "Italy",
+    "matchs.ftag": 2,
+    "matchs.hometeam": "Genoa"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Italy', having at least one related matchs record (linked on divisions.division = matchs.div) with ftag equal to '2' and hometeam equal to 'Genoa'?"
+  },
+  {
+   "uid": "3be0cf04-54df-4517-9146-dcc4cc32d03a",
+   "question": "Where can I find Ligue 2 competitions in France with matches since 2015-10-16 where Auxerre was the away team and the home team scored at most 2 goals?",
+   "answer_row_ids": [
+    "F2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE divisions.name = 'Ligue 2' AND matchs.fthg <= 2 AND matchs.awayteam = 'Auxerre' AND matchs.date >= '2015-10-16' AND divisions.country = 'France'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "divisions.name",
+    "matchs.fthg",
+    "matchs.awayteam",
+    "matchs.date",
+    "divisions.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "Ligue 2",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Auxerre",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2015-10-16",
+     "column_type": "date"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "France",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "divisions.name": "Ligue 2",
+    "matchs.fthg": 2,
+    "matchs.awayteam": "Auxerre",
+    "matchs.date": "2015-10-16",
+    "divisions.country": "France"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'Ligue 2' and country equal to 'France', having at least one related matchs record (linked on divisions.division = matchs.div) with fthg at most '2' and awayteam equal to 'Auxerre' and date at least '2015-10-16'?"
+  },
+  {
+   "uid": "21c9fa85-90a7-4a10-aace-dd23adb7e735",
+   "question": "Which competitions had matches on 2018-05-06 in the 2018 season where the home team scored at most 0 goals?",
+   "answer_row_ids": [
+    "D2",
+    "E0",
+    "E1",
+    "F1",
+    "G1",
+    "I1",
+    "N1",
+    "P1",
+    "SP1",
+    "SP2",
+    "T1"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.date = '2018-05-06' AND matchs.season = 2018 AND matchs.fthg <= 0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.date",
+    "matchs.season",
+    "matchs.fthg"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": "=",
+     "value": "2018-05-06",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2018,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "<=",
+     "value": 0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.date": "2018-05-06",
+    "matchs.season": 2018,
+    "matchs.fthg": 0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with date equal to '2018-05-06' and season equal to '2018' and fthg at most '0'?"
+  },
+  {
+   "uid": "d6ef1fae-1366-4d66-9cdb-d496638286d6",
+   "question": "Where can I find EFL Championship matches from 2019 or later where Bristol City was the away team, the full-time home goals were at least 0, and the full-time result was an away win?",
+   "answer_row_ids": [
+    "E1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.fthg >= 0 AND matchs.awayteam = 'Bristol City' AND matchs.ftr = 'A' AND matchs.season >= 2019 AND divisions.name = 'EFL Championship'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.fthg",
+    "matchs.awayteam",
+    "matchs.ftr",
+    "matchs.season",
+    "divisions.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Bristol City",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "ftr",
+     "operator": "=",
+     "value": "A",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": ">=",
+     "value": 2019,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "EFL Championship",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.fthg": 0,
+    "matchs.awayteam": "Bristol City",
+    "matchs.ftr": "A",
+    "matchs.season": 2019,
+    "divisions.name": "EFL Championship"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with name equal to 'EFL Championship', having at least one related matchs record (linked on divisions.division = matchs.div) with fthg at least '0' and awayteam equal to 'Bristol City' and ftr equal to 'A' and season at least '2019'?"
+  },
+  {
+   "uid": "c5569431-afe9-42d6-9105-ceed05ff146c",
+   "question": "Where do matches from 2017 or later feature St Pauli playing at home against Munich 1860 with the home team scoring at most 2 goals and the away team scoring at least 2 goals?",
+   "answer_row_ids": [
+    "D2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.hometeam = 'St Pauli' AND matchs.season >= 2017 AND matchs.ftag >= 2 AND matchs.fthg <= 2 AND matchs.awayteam = 'Munich 1860'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.hometeam",
+    "matchs.season",
+    "matchs.ftag",
+    "matchs.fthg",
+    "matchs.awayteam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "St Pauli",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": ">=",
+     "value": 2017,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "fthg",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Munich 1860",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.hometeam": "St Pauli",
+    "matchs.season": 2017,
+    "matchs.ftag": 2,
+    "matchs.fthg": 2,
+    "matchs.awayteam": "Munich 1860"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with hometeam equal to 'St Pauli' and season at least '2017' and ftag at least '2' and fthg at most '2' and awayteam equal to 'Munich 1860'?"
+  },
+  {
+   "uid": "aaf642ed-fa80-44d1-b2d5-4db12e828e4e",
+   "question": "Which competitions in Spain have featured Real Madrid hosting Getafe in seasons from 2015 or later?",
+   "answer_row_ids": [
+    "SP1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.awayteam = 'Getafe' AND divisions.country = 'Spain' AND matchs.hometeam = 'Real Madrid' AND matchs.season >= 2015",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.awayteam",
+    "divisions.country",
+    "matchs.hometeam",
+    "matchs.season"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Getafe",
+     "column_type": "label"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Spain",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Real Madrid",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": ">=",
+     "value": 2015,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "matchs.awayteam": "Getafe",
+    "divisions.country": "Spain",
+    "matchs.hometeam": "Real Madrid",
+    "matchs.season": 2015
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Spain', having at least one related matchs record (linked on divisions.division = matchs.div) with awayteam equal to 'Getafe' and hometeam equal to 'Real Madrid' and season at least '2015'?"
+  },
+  {
+   "uid": "a8fae1d5-32a7-4b26-955a-922e22ce634a",
+   "question": "Where in the Netherlands were matches played in the 2019 season where Vitesse was the home team and Feyenoord was the away team?",
+   "answer_row_ids": [
+    "N1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.season = 2019 AND divisions.country = 'Netherlands' AND matchs.hometeam = 'Vitesse' AND matchs.awayteam = 'Feyenoord'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.season",
+    "divisions.country",
+    "matchs.hometeam",
+    "matchs.awayteam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "season",
+     "operator": "=",
+     "value": 2019,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Netherlands",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Vitesse",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Feyenoord",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.season": 2019,
+    "divisions.country": "Netherlands",
+    "matchs.hometeam": "Vitesse",
+    "matchs.awayteam": "Feyenoord"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Netherlands', having at least one related matchs record (linked on divisions.division = matchs.div) with season equal to '2019' and hometeam equal to 'Vitesse' and awayteam equal to 'Feyenoord'?"
+  },
+  {
+   "uid": "45b73dce-10ae-4a1e-a132-2a8b3f8838a6",
+   "question": "Which competitions in Spain feature matches where Valencia is the home team and Vallecano is the away team?",
+   "answer_row_ids": [
+    "SP1"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.hometeam = 'Valencia' AND divisions.country = 'Spain' AND matchs.awayteam = 'Vallecano'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.hometeam",
+    "divisions.country",
+    "matchs.awayteam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Valencia",
+     "column_type": "label"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "Spain",
+     "column_type": "enum"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Vallecano",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.hometeam": "Valencia",
+    "divisions.country": "Spain",
+    "matchs.awayteam": "Vallecano"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'Spain', having at least one related matchs record (linked on divisions.division = matchs.div) with hometeam equal to 'Valencia' and awayteam equal to 'Vallecano'?"
+  },
+  {
+   "uid": "c7fe940a-c570-44e5-9b1f-24cd84cad734",
+   "question": "Which competitions included matches on or after 2005-10-22 where Arezzo was the home team and Catanzaro was the away team?",
+   "answer_row_ids": [
+    "I2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.date >= '2005-10-22' AND matchs.awayteam = 'Catanzaro' AND matchs.hometeam = 'Arezzo'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.date",
+    "matchs.awayteam",
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "date",
+     "operator": ">=",
+     "value": "2005-10-22",
+     "column_type": "date"
+    },
+    {
+     "table": "matchs",
+     "column": "awayteam",
+     "operator": "=",
+     "value": "Catanzaro",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Arezzo",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.date": "2005-10-22",
+    "matchs.awayteam": "Catanzaro",
+    "matchs.hometeam": "Arezzo"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities having at least one related matchs record (linked on divisions.division = matchs.div) with date at least '2005-10-22' and awayteam equal to 'Catanzaro' and hometeam equal to 'Arezzo'?"
+  },
+  {
+   "uid": "126b34e2-5bb7-4d95-85c0-2e2be484d2fe",
+   "question": "Which competitions in England\u2019s EFL League One have matches where Crawley Town was the home team and the away team scored at least 2 goals?",
+   "answer_row_ids": [
+    "E2"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT divisions.division FROM divisions\nJOIN matchs ON divisions.division = matchs.div\nWHERE matchs.ftag >= 2 AND divisions.country = 'England' AND divisions.name = 'EFL League One' AND matchs.hometeam = 'Crawley Town'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "divisions",
+    "matchs"
+   ],
+   "involved_columns": [
+    "matchs.ftag",
+    "divisions.country",
+    "divisions.name",
+    "matchs.hometeam"
+   ],
+   "involved_filters": [
+    {
+     "table": "matchs",
+     "column": "ftag",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "divisions",
+     "column": "country",
+     "operator": "=",
+     "value": "England",
+     "column_type": "enum"
+    },
+    {
+     "table": "divisions",
+     "column": "name",
+     "operator": "=",
+     "value": "EFL League One",
+     "column_type": "label"
+    },
+    {
+     "table": "matchs",
+     "column": "hometeam",
+     "operator": "=",
+     "value": "Crawley Town",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "matchs.ftag": 2,
+    "divisions.country": "England",
+    "divisions.name": "EFL League One",
+    "matchs.hometeam": "Crawley Town"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "divisions"
+   },
+   "answer_table": "divisions",
+   "answer_id_column": "division",
+   "canonical_question": "Which divisions entities with country equal to 'England' and name equal to 'EFL League One', having at least one related matchs record (linked on divisions.division = matchs.div) with ftag at least '2' and hometeam equal to 'Crawley Town'?"
+  }
+ ]
+}

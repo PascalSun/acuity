@@ -1,0 +1,1262 @@
+{
+ "db_id": "wrestler",
+ "target_table": "wrestler",
+ "mode": "flexbench",
+ "total_qa_pairs": 20,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 471156283,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/wrestler/wrestler.sqlite",
+  "generated_at": "2026-07-02T17:09:24.903118+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "wrestler",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 20,
+  "shortfall_total": 30,
+  "overall_fulfillment_rate": 0.4,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10
+  },
+  "shortfalls": {
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfall_reason_counts": {
+   "sparse_combinations": 30
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 26,
+    "inner_attempts": 26,
+    "failed_rounds": 16,
+    "invalid_pairs_filtered": 10,
+    "failure_events": {
+     "qa_validation_failed": 10,
+     "duplicate_pair": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 66,
+    "inner_attempts": 66,
+    "failed_rounds": 56,
+    "invalid_pairs_filtered": 56,
+    "failure_events": {
+     "qa_validation_failed": 56
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 0,
+    "shortfall": 10,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 120,
+    "inner_attempts": 1200,
+    "failed_rounds": 120,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 120
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 10
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 0,
+    "shortfall": 10,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 120,
+    "inner_attempts": 1200,
+    "failed_rounds": 120,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 120
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 10
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 0,
+    "shortfall": 10,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 120,
+    "inner_attempts": 1200,
+    "failed_rounds": 120,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "sparse_combinations": 120
+    },
+    "shortfall_reason_counts": {
+     "sparse_combinations": 10
+    },
+    "primary_shortfall_reason": "sparse_combinations",
+    "last_failure_summary": "random filter/join choices produced empty results (all 10 attempts returned empty result sets)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "0a7fc2bc-46c1-407f-b1ee-60713cebc9d1",
+   "question": "Which wrestlers have exactly 1 reign?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+   ],
+   "answer_count": 9,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.reign = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.reign"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.reign": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with reign equal to '1'?"
+  },
+  {
+   "uid": "96069713-20ee-4a09-9547-b743eded937c",
+   "question": "Who is Gran Hamada with exactly 960 days held?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '960' AND wrestler.name = 'Gran Hamada'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held",
+    "wrestler.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "960",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "Gran Hamada",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "960",
+    "wrestler.name": "Gran Hamada"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '960' and name equal to 'Gran Hamada'?"
+  },
+  {
+   "uid": "e1be9dbb-cd82-43c5-878b-b74eb926679f",
+   "question": "Which wrestlers are participating in a Live event?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+   ],
+   "answer_count": 9,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.event = 'Live event'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.event"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.event": "Live event"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with event equal to 'Live event'?"
+  },
+  {
+   "uid": "6c67a758-dc03-4781-b28a-3a8a5baef28a",
+   "question": "Which wrestlers have held their title for exactly 1285 days?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '1285'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "1285",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "1285"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '1285'?"
+  },
+  {
+   "uid": "8aa14f5e-3449-4721-8bad-bc07b9450510",
+   "question": "Which wrestlers have exactly 1 reign where the days held is exactly 99?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.reign = '1' AND wrestler.days_held = '99'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.reign",
+    "wrestler.days_held"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "99",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.reign": "1",
+    "wrestler.days_held": "99"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with reign equal to '1' and days held equal to '99'?"
+  },
+  {
+   "uid": "68d4ec4a-334d-40cd-8e36-ace47a6d4347",
+   "question": "Which wrestlers participated in a Live event where the days held is exactly 54?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.event = 'Live event' AND wrestler.days_held = '54'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.event",
+    "wrestler.days_held"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "54",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.event": "Live event",
+    "wrestler.days_held": "54"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with event equal to 'Live event' and days held equal to '54'?"
+  },
+  {
+   "uid": "0c9edf14-c97a-4a9e-85c4-0f5053db81db",
+   "question": "Who is the wrestler named El Samurai with exactly 1 reign?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.reign = '1' AND wrestler.name = 'El Samurai'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.reign",
+    "wrestler.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "El Samurai",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.reign": "1",
+    "wrestler.name": "El Samurai"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with reign equal to '1' and name equal to 'El Samurai'?"
+  },
+  {
+   "uid": "f5bbcf35-148c-4245-b562-e965e233608b",
+   "question": "Which wrestlers have held the title for exactly 1 day?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '1'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '1'?"
+  },
+  {
+   "uid": "6d935e4d-4380-44b7-882c-69ab9fefae4d",
+   "question": "Which wrestlers held a title for exactly 56 days at a Live event?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '56' AND wrestler.event = 'Live event'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held",
+    "wrestler.event"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "56",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "56",
+    "wrestler.event": "Live event"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '56' and event equal to 'Live event'?"
+  },
+  {
+   "uid": "b785e53f-969a-43e6-ae05-dc133eba0c09",
+   "question": "Which wrestlers have held their title for exactly 56 days?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '56'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "56",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "56"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '56'?"
+  },
+  {
+   "uid": "9cb70bab-44f7-42a6-abdd-d4c930ee123f",
+   "question": "Which wrestlers named Gran Hamada have a reign of 1 and locations containing Tokyo?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.location LIKE '%Tokyo%' AND wrestler.reign = '1' AND wrestler.name = 'Gran Hamada'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.location",
+    "wrestler.reign",
+    "wrestler.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Tokyo",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "Gran Hamada",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.location": "Tokyo",
+    "wrestler.reign": "1",
+    "wrestler.name": "Gran Hamada"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with location matching '%Tokyo%' and reign equal to '1' and name equal to 'Gran Hamada'?"
+  },
+  {
+   "uid": "902c1023-7294-4b2a-8bbf-15fba58258f4",
+   "question": "Which wrestlers named El Samurai \u00a7 have exactly 2 reigns and are located in places containing Sapporo?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.location LIKE '%Sapporo%' AND wrestler.name = 'El Samurai \u00a7' AND wrestler.reign = '2'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.location",
+    "wrestler.name",
+    "wrestler.reign"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Sapporo",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "El Samurai \u00a7",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.location": "Sapporo",
+    "wrestler.name": "El Samurai \u00a7",
+    "wrestler.reign": "2"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with location matching '%Sapporo%' and name equal to 'El Samurai \u00a7' and reign equal to '2'?"
+  },
+  {
+   "uid": "1e6141cb-2d7a-4792-864c-c0110830b3e2",
+   "question": "Which wrestlers named Rey Misterio Sr. had their first reign lasting exactly 344 days at a live event held in locations containing Tijuana?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '344' AND wrestler.event = 'Live event' AND wrestler.name = 'Rey Misterio Sr.' AND wrestler.reign = '1' AND wrestler.location LIKE '%Tijuana%'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held",
+    "wrestler.event",
+    "wrestler.name",
+    "wrestler.reign",
+    "wrestler.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "344",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "Rey Misterio Sr.",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Tijuana",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "344",
+    "wrestler.event": "Live event",
+    "wrestler.name": "Rey Misterio Sr.",
+    "wrestler.reign": "1",
+    "wrestler.location": "Tijuana"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '344' and event equal to 'Live event' and name equal to 'Rey Misterio Sr.' and reign equal to '1' and location matching '%Tijuana%'?"
+  },
+  {
+   "uid": "e52f0583-6eee-4a34-86a3-e74125f903f7",
+   "question": "Which wrestlers named Fishman, with a reign of 1, have locations containing Tijuana and participated in Live events?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.location LIKE '%Tijuana%' AND wrestler.reign = '1' AND wrestler.name = 'Fishman' AND wrestler.event = 'Live event'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.location",
+    "wrestler.reign",
+    "wrestler.name",
+    "wrestler.event"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Tijuana",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "Fishman",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.location": "Tijuana",
+    "wrestler.reign": "1",
+    "wrestler.name": "Fishman",
+    "wrestler.event": "Live event"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with location matching '%Tijuana%' and reign equal to '1' and name equal to 'Fishman' and event equal to 'Live event'?"
+  },
+  {
+   "uid": "e516296a-0ab0-4be5-88ff-93ca0e434c20",
+   "question": "Which wrestlers named El Samurai held their first reign for exactly 1 day during a Live event?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '1' AND wrestler.event = 'Live event' AND wrestler.name = 'El Samurai' AND wrestler.reign = '1'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held",
+    "wrestler.event",
+    "wrestler.name",
+    "wrestler.reign"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "El Samurai",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "1",
+    "wrestler.event": "Live event",
+    "wrestler.name": "El Samurai",
+    "wrestler.reign": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '1' and event equal to 'Live event' and name equal to 'El Samurai' and reign equal to '1'?"
+  },
+  {
+   "uid": "038357f2-96f7-4e5c-ad28-eda47eb74f8f",
+   "question": "Which wrestlers named El Samurai had exactly 1 reign lasting exactly 1 day at a Live event?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.reign = '1' AND wrestler.days_held = '1' AND wrestler.name = 'El Samurai' AND wrestler.event = 'Live event'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.reign",
+    "wrestler.days_held",
+    "wrestler.name",
+    "wrestler.event"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "El Samurai",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.reign": "1",
+    "wrestler.days_held": "1",
+    "wrestler.name": "El Samurai",
+    "wrestler.event": "Live event"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with reign equal to '1' and days held equal to '1' and name equal to 'El Samurai' and event equal to 'Live event'?"
+  },
+  {
+   "uid": "b3c89d69-717e-4774-b81e-9b73eb116273",
+   "question": "Which wrestlers named El Samurai have exactly one reign at a Live event?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.event = 'Live event' AND wrestler.name = 'El Samurai' AND wrestler.reign = '1'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.event",
+    "wrestler.name",
+    "wrestler.reign"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "El Samurai",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.event": "Live event",
+    "wrestler.name": "El Samurai",
+    "wrestler.reign": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with event equal to 'Live event' and name equal to 'El Samurai' and reign equal to '1'?"
+  },
+  {
+   "uid": "ea0bbcbb-6d4f-4284-8cc6-76254634141a",
+   "question": "Which wrestlers named Rey Misterio Sr. held their first reign for exactly 344 days at a live event in locations containing Mexico?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.location LIKE '%Mexico%' AND wrestler.event = 'Live event' AND wrestler.days_held = '344' AND wrestler.name = 'Rey Misterio Sr.' AND wrestler.reign = '1'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.location",
+    "wrestler.event",
+    "wrestler.days_held",
+    "wrestler.name",
+    "wrestler.reign"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "location",
+     "operator": "LIKE",
+     "value": "Mexico",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "344",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "Rey Misterio Sr.",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.location": "Mexico",
+    "wrestler.event": "Live event",
+    "wrestler.days_held": "344",
+    "wrestler.name": "Rey Misterio Sr.",
+    "wrestler.reign": "1"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with location matching '%Mexico%' and event equal to 'Live event' and days held equal to '344' and name equal to 'Rey Misterio Sr.' and reign equal to '1'?"
+  },
+  {
+   "uid": "570a5abd-3c58-4a12-9b6f-fa1c6e757f96",
+   "question": "Who is El Samurai \u00a7 with a second reign that lasted exactly 35 days?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.days_held = '35' AND wrestler.reign = '2' AND wrestler.name = 'El Samurai \u00a7'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.days_held",
+    "wrestler.reign",
+    "wrestler.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "35",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "2",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "name",
+     "operator": "=",
+     "value": "El Samurai \u00a7",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.days_held": "35",
+    "wrestler.reign": "2",
+    "wrestler.name": "El Samurai \u00a7"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with days held equal to '35' and reign equal to '2' and name equal to 'El Samurai \u00a7'?"
+  },
+  {
+   "uid": "a481428d-1555-47e0-a225-452999eedd5a",
+   "question": "Which wrestlers had exactly 1 reign lasting 960 days at a Live event?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT wrestler.wrestler_id FROM wrestler\nWHERE wrestler.event = 'Live event' AND wrestler.reign = '1' AND wrestler.days_held = '960'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "wrestler"
+   ],
+   "involved_columns": [
+    "wrestler.event",
+    "wrestler.reign",
+    "wrestler.days_held"
+   ],
+   "involved_filters": [
+    {
+     "table": "wrestler",
+     "column": "event",
+     "operator": "=",
+     "value": "Live event",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "reign",
+     "operator": "=",
+     "value": "1",
+     "column_type": "enum"
+    },
+    {
+     "table": "wrestler",
+     "column": "days_held",
+     "operator": "=",
+     "value": "960",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "wrestler.event": "Live event",
+    "wrestler.reign": "1",
+    "wrestler.days_held": "960"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "wrestler"
+   },
+   "answer_table": "wrestler",
+   "answer_id_column": "wrestler_id",
+   "canonical_question": "Which wrestler entities with event equal to 'Live event' and reign equal to '1' and days held equal to '960'?"
+  }
+ ]
+}

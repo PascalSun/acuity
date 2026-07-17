@@ -1,0 +1,124 @@
+{
+  "db_id": "company_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:14:07.651259+00:00",
+  "records": [
+    {
+      "uid": "0d2da3ca-51d8-45a8-a5a0-d2fd2506b43f",
+      "question": "Which employees have a middle initial that is exactly J?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'J'",
+      "pred_sql": "SELECT fname \nFROM employee \nWHERE minit = 'J'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 21.86
+    },
+    {
+      "uid": "26f73a6e-6eb9-4b0d-8881-d7bb280e4924",
+      "question": "What male employees with the last name Narayan have a middle initial exactly K?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'K' AND employee.lname = 'Narayan' AND employee.sex = 'M'",
+      "pred_sql": "SELECT fname \nFROM employee \nWHERE minit = 'K' \n  AND lname = 'Narayan' \n  AND sex = 'M'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 32.38
+    },
+    {
+      "uid": "37da230d-1173-4dd2-a795-ab1a00f41d89",
+      "question": "Which female employees with last name English and middle initial A, born on or after 1972-07-31, have at most 453453453 as their SSN, a supervisor SSN no more than 333445555.0, and a salary at most 25000?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.lname = 'English' AND employee.minit = 'A' AND employee.ssn <= 453453453 AND employee.sex = 'F' AND employee.super_ssn <= 333445555.0 AND employee.salary <= 25000 AND employee.bdate >= '1972-07-31'",
+      "pred_sql": "SELECT Fname\nFROM employee\nWHERE Lname = 'English'\n  AND Minit = 'A'\n  AND Ssn <= 453453453\n  AND Sex = 'F'\n  AND Super_ssn <= 333445555.0\n  AND Salary <= 25000\n  AND Bdate >= '1972-07-31'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.24
+    },
+    {
+      "uid": "3e0cb096-c2fe-482e-85e5-e9dcbb5243ff",
+      "question": "Which employees work in department number 5?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.dno = 5",
+      "pred_sql": "SELECT fname \nFROM employee \nWHERE dno = 5",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 23.35
+    },
+    {
+      "uid": "402a837d-a6f7-40fc-bea6-824dd4e66a95",
+      "question": "Which male employees work in departments numbered at most 4?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.dno <= 4 AND employee.sex = 'M'",
+      "pred_sql": "SELECT fname \nFROM employee \nWHERE dno <= 4 AND sex = 'M'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 30.38
+    },
+    {
+      "uid": "4f75acb9-9801-4edb-bf64-4f53d6bd1e89",
+      "question": "Who are the male employees with last name Narayan in department 5 whose salary is at most 38000, super_ssn is at least 333445555, and ssn is at most 666884444?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.salary <= 38000 AND employee.sex = 'M' AND employee.super_ssn >= 333445555.0 AND employee.ssn <= 666884444 AND employee.dno = 5 AND employee.lname = 'Narayan'",
+      "pred_sql": "SELECT fname\nFROM employee\nWHERE salary <= 38000\n  AND sex = 'M'\n  AND super_ssn >= 333445555.0\n  AND ssn <= 666884444\n  AND dno = 5\n  AND lname = 'Narayan'",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.87
+    },
+    {
+      "uid": "748a4db3-b042-4750-831c-9a35f9a4a128",
+      "question": "Who are the male employees with middle initial E, born on or before 1937-11-10, and earning a salary of at most 55000?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.minit = 'E' AND employee.bdate <= '1937-11-10' AND employee.salary <= 55000 AND employee.sex = 'M'",
+      "pred_sql": "SELECT Fname\nFROM employee\nWHERE Minit = 'E'\n  AND Bdate <= '1937-11-10'\n  AND Salary <= 55000\n  AND Sex = 'M'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 37.22
+    },
+    {
+      "uid": "84f46e79-2ea6-4f89-bc23-b823e5e4768c",
+      "question": "Which female employees with middle initial S have a social security number at most 987654321?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn <= 987654321 AND employee.minit = 'S' AND employee.sex = 'F'",
+      "pred_sql": "SELECT fname\nFROM employee\nWHERE ssn <= '987654321'\n  AND minit = 'S'\n  AND sex = 'F'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 39.91
+    },
+    {
+      "uid": "9b26de2f-9f2e-451b-be24-946aef523bc7",
+      "question": "Which employees have a supervisor with the exact SSN 888665555?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.super_ssn = 888665555.0",
+      "pred_sql": "SELECT fname \nFROM employee \nWHERE super_ssn = '888665555.0'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 27.62
+    },
+    {
+      "uid": "cb4630be-4fe7-461a-b067-7ede7f5879c8",
+      "question": "Which female employees with last name Zelaya, middle initial J, born on or after 1968-01-19, have an SSN at most 999887777 and a supervisor SSN no more than 987654321?",
+      "gold_sql": "SELECT employee.fname FROM employee\nWHERE employee.ssn <= 999887777 AND employee.minit = 'J' AND employee.sex = 'F' AND employee.bdate >= '1968-01-19' AND employee.lname = 'Zelaya' AND employee.super_ssn <= 987654321.0",
+      "pred_sql": "SELECT fname\nFROM employee\nWHERE ssn <= 999887777\n  AND minit = 'J'\n  AND sex = 'F'\n  AND bdate >= '1968-01-19'\n  AND lname = 'Zelaya'\n  AND super_ssn <= 987654321.0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 34.09
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "formula_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 5,
+  "accuracy": 0.5,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:17:10.697311+00:00",
+  "records": [
+    {
+      "uid": "2018de3d-d13a-41b0-b560-614f07f698f4",
+      "question": "Which races took place on 1979-04-29 that were named Spanish Grand Prix and had a round number of at most 5?",
+      "gold_sql": "SELECT races.raceid FROM races\nWHERE races.date = '1979-04-29' AND races.name = 'Spanish Grand Prix' AND races.round <= 5",
+      "pred_sql": "SELECT raceId FROM races WHERE date = '1979-04-29' AND name = 'Spanish Grand Prix' AND round <= 5",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.7
+    },
+    {
+      "uid": "4c8c4edb-95a7-4dd9-9527-19f98da20e1f",
+      "question": "Which races took place on 1984-06-03 at the Circuit de Monaco in Monaco, located at latitude 43.7347 and longitude 7.42056 with the URL http://en.wikipedia.org/wiki/Circuit_de_Monaco?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nWHERE circuits.name = 'Circuit de Monaco' AND circuits.country = 'Monaco' AND races.date = '1984-06-03' AND circuits.lng = 7.42056 AND circuits.url = 'http://en.wikipedia.org/wiki/Circuit_de_Monaco' AND circuits.lat = 43.7347",
+      "pred_sql": "SELECT\n  T1.raceId\nFROM races AS T1\nINNER JOIN circuits AS T2\n  ON T1.circuitId = T2.circuitId\nWHERE\n  T1.date = '1984-06-03' AND T2.name = 'Circuit de Monaco' AND T2.location = 'Monaco' AND T2.lat = 43.7347 AND T2.lng = 7.42056 AND T2.url = 'http://en.wikipedia.org/wiki/Circuit_de_Monaco'",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.89
+    },
+    {
+      "uid": "5b2a6551-5835-403c-8bb9-03e9ee7e8739",
+      "question": "Which races named Brazilian Grand Prix took place on 1995-03-26 in round 1 or earlier where constructor results show exactly 0.0 points?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN seasons ON races.year = seasons.year\nJOIN constructorresults ON races.raceid = constructorresults.raceid\nWHERE races.date = '1995-03-26' AND races.round <= 1 AND constructorresults.points = 0.0 AND races.name = 'Brazilian Grand Prix'",
+      "pred_sql": "SELECT DISTINCT T1.raceId FROM races AS T1 INNER JOIN constructorResults AS T2 ON T1.raceId = T2.raceId WHERE T1.name = 'Brazilian Grand Prix' AND T1.date = '1995-03-26' AND T1.round <= 1 AND T2.points = 0.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.95
+    },
+    {
+      "uid": "62162b8b-1f7b-4abd-b2af-4b3c72a69d9e",
+      "question": "Which races took place exactly on 1999-03-07?",
+      "gold_sql": "SELECT races.raceid FROM races\nWHERE races.date = '1999-03-07'",
+      "pred_sql": "SELECT T1.raceId FROM races AS T1 WHERE T1.date = '1999-03-07'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    },
+    {
+      "uid": "ad441770-8000-4b87-97e3-95aea9d4ab75",
+      "question": "Which races took place at Autodromo Nazionale Monza on or before 1957-09-08?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN circuits ON races.circuitid = circuits.circuitid\nWHERE circuits.url = 'http://en.wikipedia.org/wiki/Autodromo_Nazionale_Monza' AND races.date <= '1957-09-08'",
+      "pred_sql": "SELECT T1.raceId FROM races AS T1 INNER JOIN circuits AS T2 ON T1.circuitId = T2.circuitId WHERE T2.name = 'Autodromo Nazionale Monza' AND T1.date <= '1957-09-08'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "b1db6678-ad3b-49f3-9b88-e3a4356ecbf8",
+      "question": "Which races have a time exactly equal to '07:00:00' and also have related records in both the seasons and constructorstandings tables?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN seasons ON races.year = seasons.year\nJOIN constructorstandings ON races.raceid = constructorstandings.raceid\nWHERE races.time = '07:00:00'",
+      "pred_sql": "SELECT T1.raceId FROM races AS T1 INNER JOIN seasons AS T2 ON T1.year = T2.year INNER JOIN constructorStandings AS T3 ON T1.raceId = T3.raceId WHERE T1.time = '07:00:00'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.99
+    },
+    {
+      "uid": "c59081e6-2924-438b-83c8-aab69d898082",
+      "question": "Which races named United States Grand Prix that took place on 1959-12-12 and had rounds at most 9 featured drivers with exactly 0.0 points, no more than 0 wins, and positions of at least 34 with position text 34?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN seasons ON races.year = seasons.year\nJOIN driverstandings ON races.raceid = driverstandings.raceid\nWHERE driverstandings.points = 0.0 AND driverstandings.wins <= 0 AND races.date = '1959-12-12' AND races.name = 'United States Grand Prix' AND driverstandings.position >= 34 AND driverstandings.positiontext = '34' AND races.round <= 9",
+      "pred_sql": "SELECT DISTINCT T1.raceId FROM races AS T1 INNER JOIN results AS T2 ON T1.raceId = T2.raceId INNER JOIN driverStandings AS T3 ON T1.raceId = T3.raceId AND T2.driverId = T3.driverId WHERE T1.name = 'United States Grand Prix' AND T1.date = '1959-12-12' AND T1.round <= 9 AND T2.points = 0.0 AND T2.position >= 34 AND T2.positionText = '34' AND T3.wins <= 0",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.19
+    },
+    {
+      "uid": "d5d0b181-3134-4c43-978a-653dc3b3aac0",
+      "question": "Which races named \"French Grand Prix\" that have related seasons with the same year, circuits with circuitref equal to \"magny_cours\", and recorded laptimes are these?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN seasons ON races.year = seasons.year\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN laptimes ON races.raceid = laptimes.raceid\nWHERE races.name = 'French Grand Prix' AND circuits.circuitref = 'magny_cours'",
+      "pred_sql": "SELECT DISTINCT T1.raceId FROM races AS T1 INNER JOIN circuits AS T2 ON T1.circuitId = T2.circuitId INNER JOIN lapTimes AS T3 ON T1.raceId = T3.raceId WHERE T1.name = 'French Grand Prix' AND T2.circuitRef = 'magny_cours'",
+      "strategy": "3iE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.95
+    },
+    {
+      "uid": "f85c6376-0c34-4579-bee4-c1b5156696bb",
+      "question": "What German Grand Prix races held at Hockenheim since 1994-07-31 have the circuit located at 49.3278 latitude with the URL http://en.wikipedia.org/wiki/Hockenheimring and qualifying Q1 time exactly 1:47.102?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN seasons ON races.year = seasons.year\nJOIN circuits ON races.circuitid = circuits.circuitid\nJOIN qualifying ON races.raceid = qualifying.raceid\nWHERE circuits.location = 'Hockenheim' AND races.date >= '1994-07-31' AND circuits.url = 'http://en.wikipedia.org/wiki/Hockenheimring' AND circuits.lat = 49.3278 AND races.name = 'German Grand Prix' AND qualifying.q1 = '1:47.102'",
+      "pred_sql": "SELECT T1.raceId FROM races AS T1 INNER JOIN circuits AS T2 ON T1.circuitId = T2.circuitId INNER JOIN qualifying AS T3 ON T1.raceId = T3.raceId WHERE T1.name LIKE '%German Grand Prix%' AND T2.name = 'Hockenheimring' AND T1.date > '1994-07-31' AND T2.lat = 49.3278 AND T2.url = 'http://en.wikipedia.org/wiki/Hockenheimring' AND T3.q1 = '1:47.102'",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.25
+    },
+    {
+      "uid": "fa8b395f-07f8-4f10-a72d-8a4cdb8a1e7c",
+      "question": "What races named Chinese Grand Prix took place on 2005-10-16 at exactly 14:00:00 and had a round number of at most 19?",
+      "gold_sql": "SELECT races.raceid FROM races\nJOIN seasons ON races.year = seasons.year\nWHERE races.round <= 19 AND races.time = '14:00:00' AND races.date = '2005-10-16' AND races.name = 'Chinese Grand Prix'",
+      "pred_sql": "SELECT raceId FROM races WHERE name = 'Chinese Grand Prix' AND date = '2005-10-16' AND time = '14:00:00' AND round <= 19",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.38
+    }
+  ]
+}

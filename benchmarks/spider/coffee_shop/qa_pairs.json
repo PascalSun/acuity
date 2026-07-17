@@ -1,0 +1,3214 @@
+{
+ "db_id": "coffee_shop",
+ "target_table": "shop",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 470285488,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/coffee_shop/coffee_shop.sqlite",
+  "generated_at": "2026-07-02T14:58:26.122975+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "shop",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 412,
+    "inner_attempts": 412,
+    "failed_rounds": 402,
+    "invalid_pairs_filtered": 402,
+    "failure_events": {
+     "qa_validation_failed": 402
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 22,
+    "inner_attempts": 22,
+    "failed_rounds": 12,
+    "invalid_pairs_filtered": 12,
+    "failure_events": {
+     "qa_validation_failed": 12
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "a9a9c661-03ce-45ab-805f-3b83d0b7d48e",
+   "question": "Which shops have a score that is exactly 30.0?",
+   "answer_row_ids": [
+    5,
+    6,
+    8,
+    9
+   ],
+   "answer_count": 4,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.score = 30.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 30.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 30.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score equal to '30.0'?"
+  },
+  {
+   "uid": "498c10aa-ffc2-491b-a820-3c8a0afd8584",
+   "question": "Which shops opened in 2008 and have a score of at most 40.0?",
+   "answer_row_ids": [
+    2,
+    7,
+    10
+   ],
+   "answer_count": 3,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.open_year = '2008' AND shop.score <= 40.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 40.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2008",
+    "shop.score": 40.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2008' and score at most '40.0'?"
+  },
+  {
+   "uid": "334f7bc0-995b-4293-a210-58e6a1ecdabb",
+   "question": "Which shops have a score of at least 30.0?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "answer_count": 9,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.score >= 30.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 30.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 30.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at least '30.0'?"
+  },
+  {
+   "uid": "d092eb4e-f682-4782-a25f-61c412d4f896",
+   "question": "What shops have a score of exactly 30.0 and are located at 1201 Walnut Street?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.score = 30.0 AND shop.address = '1201 Walnut Street'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1201 Walnut Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 30.0,
+    "shop.address": "1201 Walnut Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score equal to '30.0' and address equal to '1201 Walnut Street'?"
+  },
+  {
+   "uid": "42eaa58a-ef82-48bf-b6db-8b8e22a5e5b3",
+   "question": "Which shops have exactly 425 staff members?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '425'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "425",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "425"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '425'?"
+  },
+  {
+   "uid": "832e4544-3a8d-4e02-8a91-7805f98f3ffc",
+   "question": "Which shops have exactly 24 staff members?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '24'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "24",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "24"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '24'?"
+  },
+  {
+   "uid": "120c0cea-10fb-4ea6-b338-73e7148c1ea0",
+   "question": "Which shops are located at 909 Main Street and have a score of at most 30.0?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.address = '909 Main Street' AND shop.score <= 30.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "909 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 30.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "909 Main Street",
+    "shop.score": 30.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '909 Main Street' and score at most '30.0'?"
+  },
+  {
+   "uid": "e51228d5-e4f0-489a-84c6-8e269a3658ee",
+   "question": "Which shops are located exactly at 1201 Walnut Street?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.address = '1201 Walnut Street'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1201 Walnut Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "1201 Walnut Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '1201 Walnut Street'?"
+  },
+  {
+   "uid": "fc5db231-234f-4a59-bed6-7daef38a3ed0",
+   "question": "Which shops opened in 2011?",
+   "answer_row_ids": [
+    5,
+    8
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.open_year = '2011'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2011",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2011"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2011'?"
+  },
+  {
+   "uid": "effd59b9-0797-44d1-87a1-53efafcb07e8",
+   "question": "Which shops have a score of at most 30.0?",
+   "answer_row_ids": [
+    5,
+    6,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 5,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.score <= 30.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 30.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 30.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at most '30.0'?"
+  },
+  {
+   "uid": "939d22f5-d268-42f1-b52a-52006ed13749",
+   "question": "Which shops located at 909 Main Street have a score of exactly 30.0, opened in 2011, and have exactly 28 staff members?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.score = 30.0 AND shop.open_year = '2011' AND shop.num_of_staff = '28' AND shop.address = '909 Main Street'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score",
+    "shop.open_year",
+    "shop.num_of_staff",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2011",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "28",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "909 Main Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 30.0,
+    "shop.open_year": "2011",
+    "shop.num_of_staff": "28",
+    "shop.address": "909 Main Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score equal to '30.0' and open year equal to '2011' and num of staff equal to '28' and address equal to '909 Main Street'?"
+  },
+  {
+   "uid": "0b509e70-8c96-4c81-9c26-db896e4b044b",
+   "question": "Which shops located at 1111 Main Street opened in 2008, have exactly 19 staff members, and a score of at most 38.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '19' AND shop.score <= 38.0 AND shop.open_year = '2008' AND shop.address = '1111 Main Street'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff",
+    "shop.score",
+    "shop.open_year",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 38.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "19",
+    "shop.score": 38.0,
+    "shop.open_year": "2008",
+    "shop.address": "1111 Main Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '19' and score at most '38.0' and open year equal to '2008' and address equal to '1111 Main Street'?"
+  },
+  {
+   "uid": "0a1d6947-1bca-4034-9efe-de560ae08c1a",
+   "question": "Which shops are located at 909 Walnut Street with exactly 27 staff members and have a score of at least 32.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.address = '909 Walnut Street' AND shop.num_of_staff = '27' AND shop.score >= 32.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address",
+    "shop.num_of_staff",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "909 Walnut Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "27",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 32.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "909 Walnut Street",
+    "shop.num_of_staff": "27",
+    "shop.score": 32.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '909 Walnut Street' and num of staff equal to '27' and score at least '32.0'?"
+  },
+  {
+   "uid": "9dec440f-3375-45ff-b77d-c115d4e69faf",
+   "question": "Which shops opened in 2008 at 324 E. 11th Street have a score of 28.0 and exactly 16 staff members?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.address = '324 E. 11th Street' AND shop.open_year = '2008' AND shop.score = 28.0 AND shop.num_of_staff = '16'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address",
+    "shop.open_year",
+    "shop.score",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "324 E. 11th Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 28.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "16",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "324 E. 11th Street",
+    "shop.open_year": "2008",
+    "shop.score": 28.0,
+    "shop.num_of_staff": "16"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '324 E. 11th Street' and open year equal to '2008' and score equal to '28.0' and num of staff equal to '16'?"
+  },
+  {
+   "uid": "bd7ac2d4-1f66-4e0b-97bd-8bb4611584d6",
+   "question": "Which shops located at 909 Walnut Street opened in 2010 and have exactly 27 staff members?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '27' AND shop.open_year = '2010' AND shop.address = '909 Walnut Street'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff",
+    "shop.open_year",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "27",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "909 Walnut Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "27",
+    "shop.open_year": "2010",
+    "shop.address": "909 Walnut Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '27' and open year equal to '2010' and address equal to '909 Walnut Street'?"
+  },
+  {
+   "uid": "6b49681a-7f2a-4861-b718-24142a1b949e",
+   "question": "Which shops opened in 2006 at 1100 Main Street with exactly 23 staff and a score of at most 30.0?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.address = '1100 Main Street' AND shop.num_of_staff = '23' AND shop.open_year = '2006' AND shop.score <= 30.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address",
+    "shop.num_of_staff",
+    "shop.open_year",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1100 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "23",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2006",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 30.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "1100 Main Street",
+    "shop.num_of_staff": "23",
+    "shop.open_year": "2006",
+    "shop.score": 30.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '1100 Main Street' and num of staff equal to '23' and open year equal to '2006' and score at most '30.0'?"
+  },
+  {
+   "uid": "6d779ec9-f99f-4196-b897-d5570afb2bf6",
+   "question": "Which shops opened in 2008 at 1111 Main Street have exactly 19 staff and a score of at least 38.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.address = '1111 Main Street' AND shop.num_of_staff = '19' AND shop.score >= 38.0 AND shop.open_year = '2008'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address",
+    "shop.num_of_staff",
+    "shop.score",
+    "shop.open_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 38.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "1111 Main Street",
+    "shop.num_of_staff": "19",
+    "shop.score": 38.0,
+    "shop.open_year": "2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '1111 Main Street' and num of staff equal to '19' and score at least '38.0' and open year equal to '2008'?"
+  },
+  {
+   "uid": "90b84f9f-d7f2-4e7d-a16c-d2e24bc404a8",
+   "question": "Which shops located at 909 Walnut Street opened in 2010, have exactly 27 staff members, and a score of 32.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '27' AND shop.score = 32.0 AND shop.open_year = '2010' AND shop.address = '909 Walnut Street'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff",
+    "shop.score",
+    "shop.open_year",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "27",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 32.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "909 Walnut Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "27",
+    "shop.score": 32.0,
+    "shop.open_year": "2010",
+    "shop.address": "909 Walnut Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '27' and score equal to '32.0' and open year equal to '2010' and address equal to '909 Walnut Street'?"
+  },
+  {
+   "uid": "f793d232-97ce-4005-b5fd-15733633725e",
+   "question": "Which shops opened in 2008 at 324 E. 11th Street have exactly 16 staff members and a score of at most 28.0?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.num_of_staff = '16' AND shop.score <= 28.0 AND shop.address = '324 E. 11th Street' AND shop.open_year = '2008'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff",
+    "shop.score",
+    "shop.address",
+    "shop.open_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "16",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 28.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "324 E. 11th Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "16",
+    "shop.score": 28.0,
+    "shop.address": "324 E. 11th Street",
+    "shop.open_year": "2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '16' and score at most '28.0' and address equal to '324 E. 11th Street' and open year equal to '2008'?"
+  },
+  {
+   "uid": "236a8ea9-6903-462f-9c22-6148416525de",
+   "question": "Which shops opened in 2011 at 909 Main Street have a score of at least 30.0 and exactly 28 staff members?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nWHERE shop.open_year = '2011' AND shop.address = '909 Main Street' AND shop.score >= 30.0 AND shop.num_of_staff = '28'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "shop.address",
+    "shop.score",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2011",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "909 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "28",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2011",
+    "shop.address": "909 Main Street",
+    "shop.score": 30.0,
+    "shop.num_of_staff": "28"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2011' and address equal to '909 Main Street' and score at least '30.0' and num of staff equal to '28'?"
+  },
+  {
+   "uid": "7235d5ec-7cea-4994-8958-ed6e55192f2e",
+   "question": "Which shops that opened in 2010 have happy hour offerings?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id)?"
+  },
+  {
+   "uid": "ce7160c7-54d9-47f6-a2d6-6af394341546",
+   "question": "Which shops that have exactly 19 staff members also offer happy hour?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.num_of_staff = '19'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "19"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '19', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id)?"
+  },
+  {
+   "uid": "0488693a-69be-4154-820a-3a7d82295f12",
+   "question": "What shops have a score of at least 28.0 and offer happy hour where the month is June?",
+   "answer_row_ids": [
+    2,
+    10
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score >= 28.0 AND happy_hour.month = 'June'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score",
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 28.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 28.0,
+    "happy_hour.month": "June"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at least '28.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'June'?"
+  },
+  {
+   "uid": "efe294db-6bd2-4720-83df-a217885afc47",
+   "question": "Which shops that offer happy hour have a score of at most 42.0?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    5,
+    10
+   ],
+   "answer_count": 5,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score <= 42.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 42.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 42.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at most '42.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id)?"
+  },
+  {
+   "uid": "431c1884-cf13-47f2-9193-ffd02e8f2714",
+   "question": "Which shops that opened in 2010 have exactly 42 staff members and offer happy hour?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010' AND shop.num_of_staff = '42'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "42",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010",
+    "shop.num_of_staff": "42"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010' and num of staff equal to '42', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id)?"
+  },
+  {
+   "uid": "47fbd55a-2201-47a9-9930-2221ba86f220",
+   "question": "Which shops have a score of at least 42.0 and offer happy hour?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score >= 42.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 42.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 42.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at least '42.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id)?"
+  },
+  {
+   "uid": "735b8080-b3c0-4a37-b053-c6078340bafe",
+   "question": "Which shops have a happy hour where the month is May?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.month = 'May'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "May",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.month": "May"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'May'?"
+  },
+  {
+   "uid": "bd3010db-36e0-4089-b026-9b2664d2bc08",
+   "question": "Which shops have happy hour events where the month is June?",
+   "answer_row_ids": [
+    2,
+    10
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.month = 'June'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.month": "June"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'June'?"
+  },
+  {
+   "uid": "c7487fe8-b073-4dc4-ab69-ebf4f4a51ac8",
+   "question": "Which shops opened in 2010 have happy hour events in April?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010' AND happy_hour.month = 'April'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "April",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010",
+    "happy_hour.month": "April"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'April'?"
+  },
+  {
+   "uid": "efbb898b-fa13-4624-8863-68f092d5e450",
+   "question": "What shops have a score of at least 28.0 and have happy hours with at least 15 staff in charge?",
+   "answer_row_ids": [
+    3,
+    10
+   ],
+   "answer_count": 2,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge >= 15 AND shop.score >= 28.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": ">=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 28.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 15,
+    "shop.score": 28.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at least '28.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at least '15'?"
+  },
+  {
+   "uid": "8f7386fc-2931-4be8-883b-8e73aff89b87",
+   "question": "Where can I find shops located at 1111 Main Street that opened in 2008, have exactly 19 staff with a score of 38.0, and have happy hour in June with at most 5 staff in charge?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge <= 5 AND shop.open_year = '2008' AND shop.score = 38.0 AND shop.num_of_staff = '19' AND happy_hour.month = 'June' AND shop.address = '1111 Main Street'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.open_year",
+    "shop.score",
+    "shop.num_of_staff",
+    "happy_hour.month",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 38.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 5,
+    "shop.open_year": "2008",
+    "shop.score": 38.0,
+    "shop.num_of_staff": "19",
+    "happy_hour.month": "June",
+    "shop.address": "1111 Main Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2008' and score equal to '38.0' and num of staff equal to '19' and address equal to '1111 Main Street', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at most '5' and month equal to 'June'?"
+  },
+  {
+   "uid": "d75e3268-6f8a-4a74-9175-6c9605a29255",
+   "question": "Which shops located at 1200 Main Street opened in 2010, have 13 staff members, a score of at least 42.0, and had 10 staff in charge during happy hour in May?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010' AND happy_hour.num_of_shaff_in_charge = 10 AND shop.address = '1200 Main Street' AND shop.num_of_staff = '13' AND happy_hour.month = 'May' AND shop.score >= 42.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.address",
+    "shop.num_of_staff",
+    "happy_hour.month",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1200 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "13",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "May",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 42.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010",
+    "happy_hour.num_of_shaff_in_charge": 10,
+    "shop.address": "1200 Main Street",
+    "shop.num_of_staff": "13",
+    "happy_hour.month": "May",
+    "shop.score": 42.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010' and address equal to '1200 Main Street' and num of staff equal to '13' and score at least '42.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge equal to '10' and month equal to 'May'?"
+  },
+  {
+   "uid": "e286dcd3-db5a-4e40-977f-58fc166ef919",
+   "question": "Which shops located at 1330 Baltimore Street, opened in 2010 with exactly 42 staff, have a score of at least 36.0 and a happy hour in July where the number of staff in charge is at most 15?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score >= 36.0 AND happy_hour.num_of_shaff_in_charge <= 15 AND shop.num_of_staff = '42' AND shop.address = '1330 Baltimore Street' AND shop.open_year = '2010' AND happy_hour.month = 'July'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.num_of_staff",
+    "shop.address",
+    "shop.open_year",
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 36.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "42",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1330 Baltimore Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "July",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 36.0,
+    "happy_hour.num_of_shaff_in_charge": 15,
+    "shop.num_of_staff": "42",
+    "shop.address": "1330 Baltimore Street",
+    "shop.open_year": "2010",
+    "happy_hour.month": "July"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at least '36.0' and num of staff equal to '42' and address equal to '1330 Baltimore Street' and open year equal to '2010', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at most '15' and month equal to 'July'?"
+  },
+  {
+   "uid": "f260506e-a36a-4c2c-b09b-d0d6d460bd90",
+   "question": "Which shops opened in 2008, located at 1111 Main Street with 19 staff, have a score of at least 38.0 and a happy hour in June where the number of shaff in charge is 5?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2008' AND happy_hour.num_of_shaff_in_charge = 5 AND happy_hour.month = 'June' AND shop.address = '1111 Main Street' AND shop.num_of_staff = '19' AND shop.score >= 38.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.num_of_shaff_in_charge",
+    "happy_hour.month",
+    "shop.address",
+    "shop.num_of_staff",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 38.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2008",
+    "happy_hour.num_of_shaff_in_charge": 5,
+    "happy_hour.month": "June",
+    "shop.address": "1111 Main Street",
+    "shop.num_of_staff": "19",
+    "shop.score": 38.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2008' and address equal to '1111 Main Street' and num of staff equal to '19' and score at least '38.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge equal to '5' and month equal to 'June'?"
+  },
+  {
+   "uid": "0f4859d1-fd6d-475e-8d93-2f71c10cea0a",
+   "question": "Which shops located at 1111 Main Street that opened in 2008 have 19 staff, a score of at most 38.0, and have happy hour in June with no more than 5 staff in charge?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge <= 5 AND happy_hour.month = 'June' AND shop.address = '1111 Main Street' AND shop.open_year = '2008' AND shop.score <= 38.0 AND shop.num_of_staff = '19'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "happy_hour.month",
+    "shop.address",
+    "shop.open_year",
+    "shop.score",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 38.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 5,
+    "happy_hour.month": "June",
+    "shop.address": "1111 Main Street",
+    "shop.open_year": "2008",
+    "shop.score": 38.0,
+    "shop.num_of_staff": "19"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '1111 Main Street' and open year equal to '2008' and score at most '38.0' and num of staff equal to '19', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at most '5' and month equal to 'June'?"
+  },
+  {
+   "uid": "a90a7eb2-062c-4c52-a538-8b2a44659676",
+   "question": "Which shops opened in 2010 with exactly 42 staff and a score of at least 36.0 are located at 1330 Baltimore Street and have a happy hour in July where the number of shaff in charge is exactly 15?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.address = '1330 Baltimore Street' AND happy_hour.num_of_shaff_in_charge = 15 AND shop.num_of_staff = '42' AND shop.open_year = '2010' AND happy_hour.month = 'July' AND shop.score >= 36.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.address",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.num_of_staff",
+    "shop.open_year",
+    "happy_hour.month",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1330 Baltimore Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "42",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "July",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 36.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.address": "1330 Baltimore Street",
+    "happy_hour.num_of_shaff_in_charge": 15,
+    "shop.num_of_staff": "42",
+    "shop.open_year": "2010",
+    "happy_hour.month": "July",
+    "shop.score": 36.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with address equal to '1330 Baltimore Street' and num of staff equal to '42' and open year equal to '2010' and score at least '36.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge equal to '15' and month equal to 'July'?"
+  },
+  {
+   "uid": "07142067-150b-4104-81a8-18576fd496e3",
+   "question": "Which shops opened in 2010 with 13 staff, located at 1200 Main Street, have a score of at most 42 and a happy hour in April where the number of shaff in charge is exactly 12?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score <= 42.0 AND shop.address = '1200 Main Street' AND happy_hour.month = 'April' AND happy_hour.num_of_shaff_in_charge = 12 AND shop.num_of_staff = '13' AND shop.open_year = '2010'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score",
+    "shop.address",
+    "happy_hour.month",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.num_of_staff",
+    "shop.open_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1200 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "April",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "13",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 42.0,
+    "shop.address": "1200 Main Street",
+    "happy_hour.month": "April",
+    "happy_hour.num_of_shaff_in_charge": 12,
+    "shop.num_of_staff": "13",
+    "shop.open_year": "2010"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at most '42.0' and address equal to '1200 Main Street' and num of staff equal to '13' and open year equal to '2010', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'April' and num of shaff in charge equal to '12'?"
+  },
+  {
+   "uid": "977ea144-6bd3-4be5-9849-76d15b1d5c2e",
+   "question": "Where can I find shops at 1111 Main Street that opened in 2008, have exactly 19 staff with a score of at most 38.0, and offer a happy hour in June with at least 5 staff in charge?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge >= 5 AND shop.open_year = '2008' AND happy_hour.month = 'June' AND shop.num_of_staff = '19' AND shop.score <= 38.0 AND shop.address = '1111 Main Street'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.open_year",
+    "happy_hour.month",
+    "shop.num_of_staff",
+    "shop.score",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 38.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 5,
+    "shop.open_year": "2008",
+    "happy_hour.month": "June",
+    "shop.num_of_staff": "19",
+    "shop.score": 38.0,
+    "shop.address": "1111 Main Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2008' and num of staff equal to '19' and score at most '38.0' and address equal to '1111 Main Street', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at least '5' and month equal to 'June'?"
+  },
+  {
+   "uid": "44a67179-60dc-4f91-bcf9-88b28a684408",
+   "question": "Which shops located at 1200 Main Street opened in 2010, have exactly 13 staff, a score of at least 42.0, and had at least 12 staff in charge during happy hour in April?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge >= 12 AND shop.score >= 42.0 AND happy_hour.month = 'April' AND shop.open_year = '2010' AND shop.num_of_staff = '13' AND shop.address = '1200 Main Street'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.score",
+    "happy_hour.month",
+    "shop.open_year",
+    "shop.num_of_staff",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": ">=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "April",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "13",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1200 Main Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 12,
+    "shop.score": 42.0,
+    "happy_hour.month": "April",
+    "shop.open_year": "2010",
+    "shop.num_of_staff": "13",
+    "shop.address": "1200 Main Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at least '42.0' and open year equal to '2010' and num of staff equal to '13' and address equal to '1200 Main Street', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at least '12' and month equal to 'April'?"
+  },
+  {
+   "uid": "d88c26b6-392d-40e4-ae6b-1927336451b8",
+   "question": "What shops opened in 2010 at 1330 Baltimore Street with exactly 42 staff and a score of 36.0, where in April the happy hour has at least 4 shaff in charge?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010' AND happy_hour.num_of_shaff_in_charge >= 4 AND happy_hour.month = 'April' AND shop.num_of_staff = '42' AND shop.address = '1330 Baltimore Street' AND shop.score = 36.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.num_of_shaff_in_charge",
+    "happy_hour.month",
+    "shop.num_of_staff",
+    "shop.address",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "April",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "42",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1330 Baltimore Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 36.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010",
+    "happy_hour.num_of_shaff_in_charge": 4,
+    "happy_hour.month": "April",
+    "shop.num_of_staff": "42",
+    "shop.address": "1330 Baltimore Street",
+    "shop.score": 36.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010' and num of staff equal to '42' and address equal to '1330 Baltimore Street' and score equal to '36.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at least '4' and month equal to 'April'?"
+  },
+  {
+   "uid": "2f19b1a2-cec4-4e20-a656-b00e2332b8ce",
+   "question": "Which shops located at 1330 Baltimore Street that opened in 2010 have a score of at most 36.0 and have at least 4 staff in charge during April happy hour?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge >= 4 AND shop.open_year = '2010' AND shop.score <= 36.0 AND shop.address = '1330 Baltimore Street' AND happy_hour.month = 'April'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.open_year",
+    "shop.score",
+    "shop.address",
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 36.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1330 Baltimore Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "April",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 4,
+    "shop.open_year": "2010",
+    "shop.score": 36.0,
+    "shop.address": "1330 Baltimore Street",
+    "happy_hour.month": "April"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010' and score at most '36.0' and address equal to '1330 Baltimore Street', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at least '4' and month equal to 'April'?"
+  },
+  {
+   "uid": "b54c91f6-b4de-494e-a4f1-6bacbb3c5b74",
+   "question": "Which shops that opened in 2008 have a score of 38.0 and offer happy hour in June?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2008' AND happy_hour.month = 'June' AND shop.score = 38.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.month",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "=",
+     "value": 38.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2008",
+    "happy_hour.month": "June",
+    "shop.score": 38.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2008' and score equal to '38.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'June'?"
+  },
+  {
+   "uid": "27f53c3b-f7a1-4de8-ab90-2e5f6dd3dcf7",
+   "question": "Which shops have exactly 42 staff and had a happy hour in July where the number of shaff in charge is exactly 15?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.month = 'July' AND happy_hour.num_of_shaff_in_charge = 15 AND shop.num_of_staff = '42'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.month",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "July",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "42",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.month": "July",
+    "happy_hour.num_of_shaff_in_charge": 15,
+    "shop.num_of_staff": "42"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '42', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'July' and num of shaff in charge equal to '15'?"
+  },
+  {
+   "uid": "5f1e7b2b-7ca5-4e10-8968-74a70af2b981",
+   "question": "Which shops located at 1111 Main Street, opened in 2008 with exactly 19 staff, have a score of at least 38.0 and offer happy hour in June?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.num_of_staff = '19' AND shop.open_year = '2008' AND shop.address = '1111 Main Street' AND happy_hour.month = 'June' AND shop.score >= 38.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff",
+    "shop.open_year",
+    "shop.address",
+    "happy_hour.month",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "19",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1111 Main Street",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 38.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "19",
+    "shop.open_year": "2008",
+    "shop.address": "1111 Main Street",
+    "happy_hour.month": "June",
+    "shop.score": 38.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '19' and open year equal to '2008' and address equal to '1111 Main Street' and score at least '38.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'June'?"
+  },
+  {
+   "uid": "2f4fd9d3-c207-4791-99fb-f36426d6f93e",
+   "question": "Which shops opened in 2008 have exactly 16 staff members and offer happy hour in June?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2008' AND happy_hour.month = 'June' AND shop.num_of_staff = '16'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.month",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "June",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "16",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2008",
+    "happy_hour.month": "June",
+    "shop.num_of_staff": "16"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2008' and num of staff equal to '16', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'June'?"
+  },
+  {
+   "uid": "8deb3780-9cef-4639-98cb-45e504647de6",
+   "question": "Which shops opened in 2008 have a score of at most 28.0, exactly 16 staff members, and happy hour managers with no more than 15 staff in charge?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.score <= 28.0 AND shop.open_year = '2008' AND happy_hour.num_of_shaff_in_charge <= 15 AND shop.num_of_staff = '16'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.score",
+    "shop.open_year",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.num_of_staff"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 28.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "16",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.score": 28.0,
+    "shop.open_year": "2008",
+    "happy_hour.num_of_shaff_in_charge": 15,
+    "shop.num_of_staff": "16"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with score at most '28.0' and open year equal to '2008' and num of staff equal to '16', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at most '15'?"
+  },
+  {
+   "uid": "5ef6d3fb-eb25-45e1-b3a2-3758cb538ffb",
+   "question": "What shops have exactly 24 staff, a score of at least 30.0, and a happy hour with exactly 5 staff in charge?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE happy_hour.num_of_shaff_in_charge = 5 AND shop.num_of_staff = '24' AND shop.score >= 30.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.num_of_staff",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "24",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 30.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "happy_hour.num_of_shaff_in_charge": 5,
+    "shop.num_of_staff": "24",
+    "shop.score": 30.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '24' and score at least '30.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge equal to '5'?"
+  },
+  {
+   "uid": "f3e40bf2-dc72-42bb-9439-0223cf821db9",
+   "question": "Which shops located at 1200 Main Street have exactly 13 staff members, a score of at least 42.0, and offer happy hour specials in May?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.num_of_staff = '13' AND happy_hour.month = 'May' AND shop.score >= 42.0 AND shop.address = '1200 Main Street'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.num_of_staff",
+    "happy_hour.month",
+    "shop.score",
+    "shop.address"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "num_of_staff",
+     "operator": "=",
+     "value": "13",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "May",
+     "column_type": "enum"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "address",
+     "operator": "=",
+     "value": "1200 Main Street",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.num_of_staff": "13",
+    "happy_hour.month": "May",
+    "shop.score": 42.0,
+    "shop.address": "1200 Main Street"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with num of staff equal to '13' and score at least '42.0' and address equal to '1200 Main Street', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with month equal to 'May'?"
+  },
+  {
+   "uid": "6a5d21ce-3997-4a75-a7a5-e2a21b1109c8",
+   "question": "What shops opened in 2010 have a score of at least 36.0 and have no more than 4 staff members in charge during happy hour?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010' AND happy_hour.num_of_shaff_in_charge <= 4 AND shop.score >= 36.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": ">=",
+     "value": 36.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010",
+    "happy_hour.num_of_shaff_in_charge": 4,
+    "shop.score": 36.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010' and score at least '36.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at most '4'?"
+  },
+  {
+   "uid": "8ac21032-657d-4755-a9df-53b30f3466cb",
+   "question": "Which shops opened in 2010 have a score of at most 42.0 and have at least 10 staff in charge during May happy hour?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT shop.shop_id FROM shop\nJOIN happy_hour ON shop.shop_id = happy_hour.shop_id\nWHERE shop.open_year = '2010' AND happy_hour.num_of_shaff_in_charge >= 10 AND shop.score <= 42.0 AND happy_hour.month = 'May'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "happy_hour",
+    "shop"
+   ],
+   "involved_columns": [
+    "shop.open_year",
+    "happy_hour.num_of_shaff_in_charge",
+    "shop.score",
+    "happy_hour.month"
+   ],
+   "involved_filters": [
+    {
+     "table": "shop",
+     "column": "open_year",
+     "operator": "=",
+     "value": "2010",
+     "column_type": "enum"
+    },
+    {
+     "table": "happy_hour",
+     "column": "num_of_shaff_in_charge",
+     "operator": ">=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "shop",
+     "column": "score",
+     "operator": "<=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "happy_hour",
+     "column": "month",
+     "operator": "=",
+     "value": "May",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "shop.open_year": "2010",
+    "happy_hour.num_of_shaff_in_charge": 10,
+    "shop.score": 42.0,
+    "happy_hour.month": "May"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "shop"
+   },
+   "answer_table": "shop",
+   "answer_id_column": "shop_id",
+   "canonical_question": "Which shop entities with open year equal to '2010' and score at most '42.0', having at least one related happy hour record (linked on shop.shop_id = happy_hour.shop_id) with num of shaff in charge at least '10' and month equal to 'May'?"
+  }
+ ]
+}

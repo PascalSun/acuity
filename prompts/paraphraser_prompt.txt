@@ -1,0 +1,9 @@
+Question generator for converting SQL queries to natural language questions.
+
+Uses LLM to rewrite SQL queries into human-like natural language questions.
+
+Faithfulness contract: the question must express every predicate of the SQL
+with literals copied VERBATIM and operator strictness preserved. A deterministic
+post-check enforces numeric-literal fidelity (the dominant failure mode was the
+paraphraser rounding numbers, e.g. ``distance > 1502`` → "more than 1,500 miles",
+which silently changes the gold answer set).

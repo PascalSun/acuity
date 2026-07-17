@@ -1,0 +1,3378 @@
+{
+ "db_id": "soccer_1",
+ "target_table": "Player",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 479113603,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/soccer_1/soccer_1.sqlite",
+  "generated_at": "2026-07-02T15:30:59.958706+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "player",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 21,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 30,
+    "inner_attempts": 246,
+    "failed_rounds": 20,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "result_size_out_of_range": 18,
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 24,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "24b4cb64-d412-4b53-98da-52cbdf6bda1b",
+   "question": "Who is the player with the name exactly Juergen Gjasula?",
+   "answer_row_ids": [
+    5483
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Juergen Gjasula'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Juergen Gjasula",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Juergen Gjasula"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Juergen Gjasula'?"
+  },
+  {
+   "uid": "7b0dd708-48ba-407f-b0b7-51cfecc46f92",
+   "question": "Which players have the exact name Frederic Nimani?",
+   "answer_row_ids": [
+    3581
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Frederic Nimani'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Frederic Nimani",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Frederic Nimani"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Frederic Nimani'?"
+  },
+  {
+   "uid": "ea085c68-7970-45ea-9f5c-f5ea71c26e28",
+   "question": "Which players have the exact name Oscar Ustari?",
+   "answer_row_ids": [
+    8200
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Oscar Ustari'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Oscar Ustari",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Oscar Ustari"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Oscar Ustari'?"
+  },
+  {
+   "uid": "45438b8d-2152-4209-b80c-a59bbaaaed35",
+   "question": "Which players named Sammir weigh at least 170 pounds?",
+   "answer_row_ids": [
+    9432
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Sammir' AND player.weight >= 170",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Sammir",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": ">=",
+     "value": 170,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Sammir",
+    "player.weight": 170
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Sammir' and weight at least '170'?"
+  },
+  {
+   "uid": "be2e1738-12a9-42ad-b3d4-456578e83f4b",
+   "question": "Which players have the name exactly Javier Martinez?",
+   "answer_row_ids": [
+    4736
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Javier Martinez'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Javier Martinez",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Javier Martinez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Javier Martinez'?"
+  },
+  {
+   "uid": "13e89241-9654-475f-965a-e32b6629c722",
+   "question": "Which players weigh at least 150 and were born exactly on 1986-03-20?",
+   "answer_row_ids": [
+    5172
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.weight >= 150 AND player.birthday = '1986-03-20 00:00:00'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.weight",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": ">=",
+     "value": 150,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1986-03-20 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.weight": 150,
+    "player.birthday": "1986-03-20 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with weight at least '150' and birthday equal to '1986-03-20 00:00:00'?"
+  },
+  {
+   "uid": "32e511f3-069e-4e69-b493-83742f753ea4",
+   "question": "Which players are exactly 203.2 tall and were born on or before 1984-07-30?",
+   "answer_row_ids": [
+    5568,
+    5804,
+    8016,
+    8285,
+    9916,
+    11043
+   ],
+   "answer_count": 6,
+   "sql": "SELECT player.id FROM player\nWHERE player.birthday <= '1984-07-30 00:00:00' AND player.height = 203.2",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.birthday",
+    "player.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "<=",
+     "value": "1984-07-30 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "=",
+     "value": 203.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.birthday": "1984-07-30 00:00:00",
+    "player.height": 203.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday at most '1984-07-30 00:00:00' and height equal to '203.2'?"
+  },
+  {
+   "uid": "18c9fd18-8444-42cf-af93-1a65d9870690",
+   "question": "Who is the player named Joshua McEachran born on or before March 1, 1993?",
+   "answer_row_ids": [
+    5400
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Joshua McEachran' AND player.birthday <= '1993-03-01 00:00:00'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Joshua McEachran",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "<=",
+     "value": "1993-03-01 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Joshua McEachran",
+    "player.birthday": "1993-03-01 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Joshua McEachran' and birthday at most '1993-03-01 00:00:00'?"
+  },
+  {
+   "uid": "1cedbbc2-924f-4fa8-b713-b3266d5e95f4",
+   "question": "Which players named Santiago Morero were born on 1982-02-01?",
+   "answer_row_ids": [
+    9502
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Santiago Morero' AND player.birthday = '1982-02-01 00:00:00'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Santiago Morero",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1982-02-01 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Santiago Morero",
+    "player.birthday": "1982-02-01 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Santiago Morero' and birthday equal to '1982-02-01 00:00:00'?"
+  },
+  {
+   "uid": "e91ed15d-eabb-4f13-980b-d57037faa3eb",
+   "question": "Which players have a birthday exactly on 1987-03-30?",
+   "answer_row_ids": [
+    1501,
+    5451,
+    7587,
+    10403
+   ],
+   "answer_count": 4,
+   "sql": "SELECT player.id FROM player\nWHERE player.birthday = '1987-03-30 00:00:00'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1987-03-30 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.birthday": "1987-03-30 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday equal to '1987-03-30 00:00:00'?"
+  },
+  {
+   "uid": "d857b7e5-0947-49d3-ae35-bb26f2ded9e9",
+   "question": "Which players named Elinton Andrade are at least 190 pounds, no less than 190.5 cm tall, and were born on or before March 30, 1979?",
+   "answer_row_ids": [
+    2924
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.weight >= 190 AND player.birthday <= '1979-03-30 00:00:00' AND player.height >= 190.5 AND player.player_name = 'Elinton Andrade'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.weight",
+    "player.birthday",
+    "player.height",
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": ">=",
+     "value": 190,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "<=",
+     "value": "1979-03-30 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": ">=",
+     "value": 190.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Elinton Andrade",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.weight": 190,
+    "player.birthday": "1979-03-30 00:00:00",
+    "player.height": 190.5,
+    "player.player_name": "Elinton Andrade"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with weight at least '190' and birthday at most '1979-03-30 00:00:00' and height at least '190.5' and player name equal to 'Elinton Andrade'?"
+  },
+  {
+   "uid": "d2b66962-8341-4929-9332-1576fc47e01f",
+   "question": "What players named Thilo Leugers weigh exactly 161 and were born on or after January 9, 1991?",
+   "answer_row_ids": [
+    10207
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Thilo Leugers' AND player.weight = 161 AND player.birthday >= '1991-01-09 00:00:00'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.weight",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Thilo Leugers",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "=",
+     "value": 161,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": ">=",
+     "value": "1991-01-09 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Thilo Leugers",
+    "player.weight": 161,
+    "player.birthday": "1991-01-09 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Thilo Leugers' and weight equal to '161' and birthday at least '1991-01-09 00:00:00'?"
+  },
+  {
+   "uid": "4800c638-cfbe-4d96-b951-1bce03a85e04",
+   "question": "What players named Hector Hernandez weigh exactly 157 pounds, are exactly 172.72 cm tall, and were born on or after May 23, 1991?",
+   "answer_row_ids": [
+    4159
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.weight = 157 AND player.player_name = 'Hector Hernandez' AND player.height = 172.72 AND player.birthday >= '1991-05-23 00:00:00'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.weight",
+    "player.player_name",
+    "player.height",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "=",
+     "value": 157,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Hector Hernandez",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "=",
+     "value": 172.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": ">=",
+     "value": "1991-05-23 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.weight": 157,
+    "player.player_name": "Hector Hernandez",
+    "player.height": 172.72,
+    "player.birthday": "1991-05-23 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with weight equal to '157' and player name equal to 'Hector Hernandez' and height equal to '172.72' and birthday at least '1991-05-23 00:00:00'?"
+  },
+  {
+   "uid": "b4f244b1-f563-486b-a563-33f075478231",
+   "question": "Which players named Chu-Young Park have a height of exactly 182.88, weigh at least 165, and were born on or after July 10, 1985?",
+   "answer_row_ids": [
+    1828
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.height = 182.88 AND player.player_name = 'Chu-Young Park' AND player.weight >= 165 AND player.birthday >= '1985-07-10 00:00:00'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.height",
+    "player.player_name",
+    "player.weight",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "=",
+     "value": 182.88,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Chu-Young Park",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": ">=",
+     "value": 165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": ">=",
+     "value": "1985-07-10 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.height": 182.88,
+    "player.player_name": "Chu-Young Park",
+    "player.weight": 165,
+    "player.birthday": "1985-07-10 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height equal to '182.88' and player name equal to 'Chu-Young Park' and weight at least '165' and birthday at least '1985-07-10 00:00:00'?"
+  },
+  {
+   "uid": "22d67a98-8d1f-4c2f-bbcd-ba487d49f169",
+   "question": "Which players named Diego Gomez were born on or before January 5, 1984, weigh exactly 150, and are at least 165.1 cm tall?",
+   "answer_row_ids": [
+    2628
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Diego Gomez' AND player.birthday <= '1984-01-05 00:00:00' AND player.weight = 150 AND player.height >= 165.1",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.birthday",
+    "player.weight",
+    "player.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Diego Gomez",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "<=",
+     "value": "1984-01-05 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "=",
+     "value": 150,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": ">=",
+     "value": 165.1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Diego Gomez",
+    "player.birthday": "1984-01-05 00:00:00",
+    "player.weight": 150,
+    "player.height": 165.1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Diego Gomez' and birthday at most '1984-01-05 00:00:00' and weight equal to '150' and height at least '165.1'?"
+  },
+  {
+   "uid": "2b00e723-405d-4a73-a529-e413513bb0f5",
+   "question": "Which players named Marco Estrada born on or after May 28, 1983, are at least 177.8 cm tall and weigh exactly 161 pounds?",
+   "answer_row_ids": [
+    6701
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.height >= 177.8 AND player.weight = 161 AND player.player_name = 'Marco Estrada' AND player.birthday >= '1983-05-28 00:00:00'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.height",
+    "player.weight",
+    "player.player_name",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "height",
+     "operator": ">=",
+     "value": 177.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "=",
+     "value": 161,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Marco Estrada",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": ">=",
+     "value": "1983-05-28 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player.height": 177.8,
+    "player.weight": 161,
+    "player.player_name": "Marco Estrada",
+    "player.birthday": "1983-05-28 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height at least '177.8' and weight equal to '161' and player name equal to 'Marco Estrada' and birthday at least '1983-05-28 00:00:00'?"
+  },
+  {
+   "uid": "b8ed5ca5-6bcb-44bc-afab-0b2b0293940a",
+   "question": "Which players named Mariusz Kukielka,24 are at most 182.88 cm tall and weigh no more than 179, born on or after 1976-11-07?",
+   "answer_row_ids": [
+    6848
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.player_name = 'Mariusz Kukielka,24' AND player.height <= 182.88 AND player.birthday >= '1976-11-07 00:00:00' AND player.weight <= 179",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.height",
+    "player.birthday",
+    "player.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Mariusz Kukielka,24",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.88,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": ">=",
+     "value": "1976-11-07 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "<=",
+     "value": 179,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Mariusz Kukielka,24",
+    "player.height": 182.88,
+    "player.birthday": "1976-11-07 00:00:00",
+    "player.weight": 179
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Mariusz Kukielka,24' and height at most '182.88' and birthday at least '1976-11-07 00:00:00' and weight at most '179'?"
+  },
+  {
+   "uid": "f928163f-64b5-479a-bddb-907378e397ce",
+   "question": "Which players named Kenny Miller are at most 177.8 tall and weigh at least 150?",
+   "answer_row_ids": [
+    5717
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.height <= 177.8 AND player.weight >= 150 AND player.player_name = 'Kenny Miller'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.height",
+    "player.weight",
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "<=",
+     "value": 177.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": ">=",
+     "value": 150,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Kenny Miller",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.height": 177.8,
+    "player.weight": 150,
+    "player.player_name": "Kenny Miller"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height at most '177.8' and weight at least '150' and player name equal to 'Kenny Miller'?"
+  },
+  {
+   "uid": "c45de828-3b6a-48f7-b17e-c5642bfa0e4d",
+   "question": "Which players named Steven Boyd weigh exactly 141 and are at most 175.26 tall with a birthday on or before 1997-04-12?",
+   "answer_row_ids": [
+    10018
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.height <= 175.26 AND player.player_name = 'Steven Boyd' AND player.birthday <= '1997-04-12 00:00:00' AND player.weight = 141",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.height",
+    "player.player_name",
+    "player.birthday",
+    "player.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "<=",
+     "value": 175.26,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Steven Boyd",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "<=",
+     "value": "1997-04-12 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "=",
+     "value": 141,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.height": 175.26,
+    "player.player_name": "Steven Boyd",
+    "player.birthday": "1997-04-12 00:00:00",
+    "player.weight": 141
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height at most '175.26' and player name equal to 'Steven Boyd' and birthday at most '1997-04-12 00:00:00' and weight equal to '141'?"
+  },
+  {
+   "uid": "8d48e9fa-a00c-4327-baaa-e0b9b829ea01",
+   "question": "Who is the player named Gianluca Grava born on 1977-03-07 with a weight of at most 150 and a height of at least 172.72?",
+   "answer_row_ids": [
+    3819
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nWHERE player.birthday = '1977-03-07 00:00:00' AND player.weight <= 150 AND player.height >= 172.72 AND player.player_name = 'Gianluca Grava'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "player"
+   ],
+   "involved_columns": [
+    "player.birthday",
+    "player.weight",
+    "player.height",
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1977-03-07 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "<=",
+     "value": 150,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": ">=",
+     "value": 172.72,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Gianluca Grava",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.birthday": "1977-03-07 00:00:00",
+    "player.weight": 150,
+    "player.height": 172.72,
+    "player.player_name": "Gianluca Grava"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday equal to '1977-03-07 00:00:00' and weight at most '150' and height at least '172.72' and player name equal to 'Gianluca Grava'?"
+  },
+  {
+   "uid": "6d6b2616-8de5-4ce7-8185-84db002cb1f9",
+   "question": "Which players named Aleksandar Cavric have a short passing rating of at most 64.0?",
+   "answer_row_ids": [
+    337
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.short_passing <= 64.0 AND player.player_name = 'Aleksandar Cavric'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.short_passing",
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "short_passing",
+     "operator": "<=",
+     "value": 64.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Aleksandar Cavric",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.short_passing": 64.0,
+    "player.player_name": "Aleksandar Cavric"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Aleksandar Cavric', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with short passing at most '64.0'?"
+  },
+  {
+   "uid": "cd311125-ce8f-48b1-8921-62462c750619",
+   "question": "Which players named Suk-Young Yun have a marking rating of exactly 71.0?",
+   "answer_row_ids": [
+    10096
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Suk-Young Yun' AND player_attributes.marking = 71.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player_attributes.marking"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Suk-Young Yun",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": "=",
+     "value": 71.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Suk-Young Yun",
+    "player_attributes.marking": 71.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Suk-Young Yun', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with marking equal to '71.0'?"
+  },
+  {
+   "uid": "654c3ee2-9ac0-4bdb-8300-0df53446967b",
+   "question": "Which players have the exact name Jonathan Tuffey?",
+   "answer_row_ids": [
+    5203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Jonathan Tuffey'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Jonathan Tuffey",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Jonathan Tuffey"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Jonathan Tuffey', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id)?"
+  },
+  {
+   "uid": "2b612d03-31af-49eb-b683-1b0f84eed833",
+   "question": "Which players named Yuri Rose have a marking skill rating of at least 49.0?",
+   "answer_row_ids": [
+    10995
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Yuri Rose' AND player_attributes.marking >= 49.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player_attributes.marking"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Yuri Rose",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": ">=",
+     "value": 49.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Yuri Rose",
+    "player_attributes.marking": 49.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Yuri Rose', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with marking at least '49.0'?"
+  },
+  {
+   "uid": "140e07f8-6f8e-4306-a9ba-22094710c92a",
+   "question": "Which player has the name exactly Kelvin Etuhu?",
+   "answer_row_ids": [
+    5691
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Kelvin Etuhu'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Kelvin Etuhu",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Kelvin Etuhu"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Kelvin Etuhu', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id)?"
+  },
+  {
+   "uid": "1f4aabc1-3922-470e-8818-d7bb2b8a77f6",
+   "question": "Which players born on 1986-07-15 prefer to use their right foot?",
+   "answer_row_ids": [
+    2315
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.preferred_foot = 'right' AND player.birthday = '1986-07-15 00:00:00'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.preferred_foot",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "preferred_foot",
+     "operator": "=",
+     "value": "right",
+     "column_type": "enum"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1986-07-15 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.preferred_foot": "right",
+    "player.birthday": "1986-07-15 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday equal to '1986-07-15 00:00:00', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with preferred foot equal to 'right'?"
+  },
+  {
+   "uid": "9a37fcc2-e5d0-4661-80d6-46c203fe97b1",
+   "question": "What players have exactly 44.0 reactions and a shot power of exactly 41.0?",
+   "answer_row_ids": [
+    1309,
+    7397,
+    9652
+   ],
+   "answer_count": 3,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.reactions = 44.0 AND player_attributes.shot_power = 41.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.reactions",
+    "player_attributes.shot_power"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "reactions",
+     "operator": "=",
+     "value": 44.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "shot_power",
+     "operator": "=",
+     "value": 41.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.reactions": 44.0,
+    "player_attributes.shot_power": 41.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with reactions equal to '44.0' and shot power equal to '41.0'?"
+  },
+  {
+   "uid": "65f0750a-8f3f-4661-8bfe-377eab43f677",
+   "question": "What player has the exact name Romain Saiss?",
+   "answer_row_ids": [
+    9180
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Romain Saiss'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Romain Saiss",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Romain Saiss"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Romain Saiss', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id)?"
+  },
+  {
+   "uid": "486c6207-8c9f-4cad-a189-70884bc00146",
+   "question": "What players named Heiko Westermann have an acceleration of at most 67.0?",
+   "answer_row_ids": [
+    4170
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.acceleration <= 67.0 AND player.player_name = 'Heiko Westermann'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.acceleration",
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "acceleration",
+     "operator": "<=",
+     "value": 67.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Heiko Westermann",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.acceleration": 67.0,
+    "player.player_name": "Heiko Westermann"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Heiko Westermann', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with acceleration at most '67.0'?"
+  },
+  {
+   "uid": "67f02f7b-c002-4219-a948-aa8e289138f5",
+   "question": "Who is Greg Stewart with stamina at most 57.0?",
+   "answer_row_ids": [
+    3980
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.stamina <= 57.0 AND player.player_name = 'Greg Stewart'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.stamina",
+    "player.player_name"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "stamina",
+     "operator": "<=",
+     "value": 57.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Greg Stewart",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.stamina": 57.0,
+    "player.player_name": "Greg Stewart"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Greg Stewart', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with stamina at most '57.0'?"
+  },
+  {
+   "uid": "83566694-c83d-45dd-8637-9af5d4f63770",
+   "question": "Which players named Jordan Spence have a jumping ability of exactly 64, sliding tackle of at least 66, and goalkeeping diving of exactly 5, with standing tackle, ball control, and short passing all at most 70, 60, and 57 respectively?",
+   "answer_row_ids": [
+    5249
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.standing_tackle <= 70.0 AND player.player_name = 'Jordan Spence' AND player_attributes.jumping = 64.0 AND player_attributes.ball_control <= 60.0 AND player_attributes.sliding_tackle >= 66.0 AND player_attributes.short_passing <= 57.0 AND player_attributes.gk_diving = 5.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.standing_tackle",
+    "player.player_name",
+    "player_attributes.jumping",
+    "player_attributes.ball_control",
+    "player_attributes.sliding_tackle",
+    "player_attributes.short_passing",
+    "player_attributes.gk_diving"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "standing_tackle",
+     "operator": "<=",
+     "value": 70.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Jordan Spence",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "jumping",
+     "operator": "=",
+     "value": 64.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "ball_control",
+     "operator": "<=",
+     "value": 60.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "sliding_tackle",
+     "operator": ">=",
+     "value": 66.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "short_passing",
+     "operator": "<=",
+     "value": 57.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_diving",
+     "operator": "=",
+     "value": 5.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.standing_tackle": 70.0,
+    "player.player_name": "Jordan Spence",
+    "player_attributes.jumping": 64.0,
+    "player_attributes.ball_control": 60.0,
+    "player_attributes.sliding_tackle": 66.0,
+    "player_attributes.short_passing": 57.0,
+    "player_attributes.gk_diving": 5.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Jordan Spence', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with standing tackle at most '70.0' and jumping equal to '64.0' and ball control at most '60.0' and sliding tackle at least '66.0' and short passing at most '57.0' and gk diving equal to '5.0'?"
+  },
+  {
+   "uid": "ebdbd98d-67d2-49e6-94a5-ee30a8e8a3df",
+   "question": "Which players have an agility of exactly 70.0, preferred foot is right, gk_diving is exactly 5.0, marking is at least 24.0, vision is exactly 64.0, and attributes dated on or before 2012-08-31?",
+   "answer_row_ids": [
+    2341,
+    7606,
+    7775
+   ],
+   "answer_count": 3,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.agility = 70.0 AND player_attributes.preferred_foot = 'right' AND player_attributes.gk_diving = 5.0 AND player_attributes.marking >= 24.0 AND player_attributes.date <= '2012-08-31 00:00:00' AND player_attributes.vision = 64.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.agility",
+    "player_attributes.preferred_foot",
+    "player_attributes.gk_diving",
+    "player_attributes.marking",
+    "player_attributes.date",
+    "player_attributes.vision"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "agility",
+     "operator": "=",
+     "value": 70.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "preferred_foot",
+     "operator": "=",
+     "value": "right",
+     "column_type": "enum"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_diving",
+     "operator": "=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": ">=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "date",
+     "operator": "<=",
+     "value": "2012-08-31 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player_attributes",
+     "column": "vision",
+     "operator": "=",
+     "value": 64.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.agility": 70.0,
+    "player_attributes.preferred_foot": "right",
+    "player_attributes.gk_diving": 5.0,
+    "player_attributes.marking": 24.0,
+    "player_attributes.date": "2012-08-31 00:00:00",
+    "player_attributes.vision": 64.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with agility equal to '70.0' and preferred foot equal to 'right' and gk diving equal to '5.0' and marking at least '24.0' and date at most '2012-08-31 00:00:00' and vision equal to '64.0'?"
+  },
+  {
+   "uid": "40d9ce6f-8d9e-4c58-9e4e-38f4d21b05a7",
+   "question": "What players have exactly 34.0 marking, 76.0 dribbling, and 30.0 standing tackle, with curve at most 68.0, agility at least 83.0, gk_diving at least 14.0, and attributes dated on or before 2015-03-20?",
+   "answer_row_ids": [
+    2997
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.marking = 34.0 AND player_attributes.dribbling = 76.0 AND player_attributes.standing_tackle = 30.0 AND player_attributes.curve <= 68.0 AND player_attributes.date <= '2015-03-20 00:00:00' AND player_attributes.gk_diving >= 14.0 AND player_attributes.agility >= 83.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.marking",
+    "player_attributes.dribbling",
+    "player_attributes.standing_tackle",
+    "player_attributes.curve",
+    "player_attributes.date",
+    "player_attributes.gk_diving",
+    "player_attributes.agility"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": "=",
+     "value": 34.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "dribbling",
+     "operator": "=",
+     "value": 76.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "standing_tackle",
+     "operator": "=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "curve",
+     "operator": "<=",
+     "value": 68.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "date",
+     "operator": "<=",
+     "value": "2015-03-20 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_diving",
+     "operator": ">=",
+     "value": 14.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "agility",
+     "operator": ">=",
+     "value": 83.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.marking": 34.0,
+    "player_attributes.dribbling": 76.0,
+    "player_attributes.standing_tackle": 30.0,
+    "player_attributes.curve": 68.0,
+    "player_attributes.date": "2015-03-20 00:00:00",
+    "player_attributes.gk_diving": 14.0,
+    "player_attributes.agility": 83.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with marking equal to '34.0' and dribbling equal to '76.0' and standing tackle equal to '30.0' and curve at most '68.0' and date at most '2015-03-20 00:00:00' and gk diving at least '14.0' and agility at least '83.0'?"
+  },
+  {
+   "uid": "5a378edf-6466-4d76-85fd-36a4c5b19a1b",
+   "question": "Who are the players with a balance of exactly 41.0, crossing exactly 25.0, ball control exactly 25.0, finishing exactly 25.0, marking exactly 25.0, long passing exactly 23.0, and short passing of at least 24.0?",
+   "answer_row_ids": [
+    3241
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.balance = 41.0 AND player_attributes.crossing = 25.0 AND player_attributes.short_passing >= 24.0 AND player_attributes.ball_control = 25.0 AND player_attributes.finishing = 25.0 AND player_attributes.marking = 25.0 AND player_attributes.long_passing = 23.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.balance",
+    "player_attributes.crossing",
+    "player_attributes.short_passing",
+    "player_attributes.ball_control",
+    "player_attributes.finishing",
+    "player_attributes.marking",
+    "player_attributes.long_passing"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "balance",
+     "operator": "=",
+     "value": 41.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "crossing",
+     "operator": "=",
+     "value": 25.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "short_passing",
+     "operator": ">=",
+     "value": 24.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "ball_control",
+     "operator": "=",
+     "value": 25.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "finishing",
+     "operator": "=",
+     "value": 25.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": "=",
+     "value": 25.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "long_passing",
+     "operator": "=",
+     "value": 23.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.balance": 41.0,
+    "player_attributes.crossing": 25.0,
+    "player_attributes.short_passing": 24.0,
+    "player_attributes.ball_control": 25.0,
+    "player_attributes.finishing": 25.0,
+    "player_attributes.marking": 25.0,
+    "player_attributes.long_passing": 23.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with balance equal to '41.0' and crossing equal to '25.0' and short passing at least '24.0' and ball control equal to '25.0' and finishing equal to '25.0' and marking equal to '25.0' and long passing equal to '23.0'?"
+  },
+  {
+   "uid": "38cb7e01-a03b-448c-b89c-3f490b39e499",
+   "question": "Which player named Francesco Renzetti has a standing tackle exactly 62, sliding tackle at most 62, shot power at most 68, agility at most 72, aggression at least 72, and heading accuracy at least 52?",
+   "answer_row_ids": [
+    3477
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Francesco Renzetti' AND player_attributes.sliding_tackle <= 62.0 AND player_attributes.shot_power <= 68.0 AND player_attributes.agility <= 72.0 AND player_attributes.aggression >= 72.0 AND player_attributes.heading_accuracy >= 52.0 AND player_attributes.standing_tackle = 62.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player_attributes.sliding_tackle",
+    "player_attributes.shot_power",
+    "player_attributes.agility",
+    "player_attributes.aggression",
+    "player_attributes.heading_accuracy",
+    "player_attributes.standing_tackle"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Francesco Renzetti",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "sliding_tackle",
+     "operator": "<=",
+     "value": 62.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "shot_power",
+     "operator": "<=",
+     "value": 68.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "agility",
+     "operator": "<=",
+     "value": 72.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "aggression",
+     "operator": ">=",
+     "value": 72.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "heading_accuracy",
+     "operator": ">=",
+     "value": 52.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "standing_tackle",
+     "operator": "=",
+     "value": 62.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Francesco Renzetti",
+    "player_attributes.sliding_tackle": 62.0,
+    "player_attributes.shot_power": 68.0,
+    "player_attributes.agility": 72.0,
+    "player_attributes.aggression": 72.0,
+    "player_attributes.heading_accuracy": 52.0,
+    "player_attributes.standing_tackle": 62.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Francesco Renzetti', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with sliding tackle at most '62.0' and shot power at most '68.0' and agility at most '72.0' and aggression at least '72.0' and heading accuracy at least '52.0' and standing tackle equal to '62.0'?"
+  },
+  {
+   "uid": "b09f6623-d63f-43ca-a778-586ae3208441",
+   "question": "Who are the players no taller than 167.64 cm with at most 38 aggression, short passing no more than 76, free kick accuracy at most 66, and ball control no higher than 81, but with at least 62 long passing and 43 marking?",
+   "answer_row_ids": [
+    10049,
+    10764
+   ],
+   "answer_count": 2,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.aggression <= 38.0 AND player_attributes.short_passing <= 76.0 AND player_attributes.long_passing >= 62.0 AND player_attributes.free_kick_accuracy <= 66.0 AND player.height <= 167.64 AND player_attributes.marking >= 43.0 AND player_attributes.ball_control <= 81.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.aggression",
+    "player_attributes.short_passing",
+    "player_attributes.long_passing",
+    "player_attributes.free_kick_accuracy",
+    "player.height",
+    "player_attributes.marking",
+    "player_attributes.ball_control"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "aggression",
+     "operator": "<=",
+     "value": 38.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "short_passing",
+     "operator": "<=",
+     "value": 76.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "long_passing",
+     "operator": ">=",
+     "value": 62.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "free_kick_accuracy",
+     "operator": "<=",
+     "value": 66.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "<=",
+     "value": 167.64,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": ">=",
+     "value": 43.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "ball_control",
+     "operator": "<=",
+     "value": 81.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.aggression": 38.0,
+    "player_attributes.short_passing": 76.0,
+    "player_attributes.long_passing": 62.0,
+    "player_attributes.free_kick_accuracy": 66.0,
+    "player.height": 167.64,
+    "player_attributes.marking": 43.0,
+    "player_attributes.ball_control": 81.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height at most '167.64', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with aggression at most '38.0' and short passing at most '76.0' and long passing at least '62.0' and free kick accuracy at most '66.0' and marking at least '43.0' and ball control at most '81.0'?"
+  },
+  {
+   "uid": "29ca93cb-35db-4241-b269-f9069683fbc4",
+   "question": "Which players weigh exactly 172 and have a balance of 58.0, with acceleration, strength, and stamina of at least 74, 74, and 78 respectively, plus goalkeeping reflexes and kicking at least 8.0?",
+   "answer_row_ids": [
+    1661,
+    3431
+   ],
+   "answer_count": 2,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.acceleration >= 74.0 AND player_attributes.gk_reflexes >= 8.0 AND player_attributes.strength >= 74.0 AND player.weight = 172 AND player_attributes.balance = 58.0 AND player_attributes.gk_kicking >= 8.0 AND player_attributes.stamina >= 78.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.acceleration",
+    "player_attributes.gk_reflexes",
+    "player_attributes.strength",
+    "player.weight",
+    "player_attributes.balance",
+    "player_attributes.gk_kicking",
+    "player_attributes.stamina"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "acceleration",
+     "operator": ">=",
+     "value": 74.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_reflexes",
+     "operator": ">=",
+     "value": 8.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "strength",
+     "operator": ">=",
+     "value": 74.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "weight",
+     "operator": "=",
+     "value": 172,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "balance",
+     "operator": "=",
+     "value": 58.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_kicking",
+     "operator": ">=",
+     "value": 8.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "stamina",
+     "operator": ">=",
+     "value": 78.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.acceleration": 74.0,
+    "player_attributes.gk_reflexes": 8.0,
+    "player_attributes.strength": 74.0,
+    "player.weight": 172,
+    "player_attributes.balance": 58.0,
+    "player_attributes.gk_kicking": 8.0,
+    "player_attributes.stamina": 78.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with weight equal to '172', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with acceleration at least '74.0' and gk reflexes at least '8.0' and strength at least '74.0' and balance equal to '58.0' and gk kicking at least '8.0' and stamina at least '78.0'?"
+  },
+  {
+   "uid": "96e6a815-29a4-4e53-9bff-297f103de1c0",
+   "question": "Which players exactly 182.88 cm tall have an overall rating of 83, dribbling at least 37, reactions at least 80, gk_kicking at least 8, balance at most 73, jumping at most 83, and where attacking_work_rate is low?",
+   "answer_row_ids": [
+    10737
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.dribbling >= 37.0 AND player_attributes.overall_rating = 83.0 AND player.height = 182.88 AND player_attributes.balance <= 73.0 AND player_attributes.reactions >= 80.0 AND player_attributes.gk_kicking >= 8.0 AND player_attributes.attacking_work_rate = 'low' AND player_attributes.jumping <= 83.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.dribbling",
+    "player_attributes.overall_rating",
+    "player.height",
+    "player_attributes.balance",
+    "player_attributes.reactions",
+    "player_attributes.gk_kicking",
+    "player_attributes.attacking_work_rate",
+    "player_attributes.jumping"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "dribbling",
+     "operator": ">=",
+     "value": 37.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "overall_rating",
+     "operator": "=",
+     "value": 83.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "=",
+     "value": 182.88,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "balance",
+     "operator": "<=",
+     "value": 73.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "reactions",
+     "operator": ">=",
+     "value": 80.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_kicking",
+     "operator": ">=",
+     "value": 8.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "attacking_work_rate",
+     "operator": "=",
+     "value": "low",
+     "column_type": "enum"
+    },
+    {
+     "table": "player_attributes",
+     "column": "jumping",
+     "operator": "<=",
+     "value": 83.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.dribbling": 37.0,
+    "player_attributes.overall_rating": 83.0,
+    "player.height": 182.88,
+    "player_attributes.balance": 73.0,
+    "player_attributes.reactions": 80.0,
+    "player_attributes.gk_kicking": 8.0,
+    "player_attributes.attacking_work_rate": "low",
+    "player_attributes.jumping": 83.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height equal to '182.88', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with dribbling at least '37.0' and overall rating equal to '83.0' and balance at most '73.0' and reactions at least '80.0' and gk kicking at least '8.0' and attacking work rate equal to 'low' and jumping at most '83.0'?"
+  },
+  {
+   "uid": "9592b79b-e8b5-4751-8342-2dfe925badf5",
+   "question": "Which players born on or after 1982-09-15 have dribbling at most 32, ball control at most 60, vision exactly 47, positioning exactly 39, gk reflexes at least 13, and gk diving at most 9?",
+   "answer_row_ids": [
+    8547
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.dribbling <= 32.0 AND player_attributes.gk_reflexes >= 13.0 AND player_attributes.vision = 47.0 AND player_attributes.positioning = 39.0 AND player.birthday >= '1982-09-15 00:00:00' AND player_attributes.ball_control <= 60.0 AND player_attributes.gk_diving <= 9.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.dribbling",
+    "player_attributes.gk_reflexes",
+    "player_attributes.vision",
+    "player_attributes.positioning",
+    "player.birthday",
+    "player_attributes.ball_control",
+    "player_attributes.gk_diving"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "dribbling",
+     "operator": "<=",
+     "value": 32.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_reflexes",
+     "operator": ">=",
+     "value": 13.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "vision",
+     "operator": "=",
+     "value": 47.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "positioning",
+     "operator": "=",
+     "value": 39.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": ">=",
+     "value": "1982-09-15 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player_attributes",
+     "column": "ball_control",
+     "operator": "<=",
+     "value": 60.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_diving",
+     "operator": "<=",
+     "value": 9.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.dribbling": 32.0,
+    "player_attributes.gk_reflexes": 13.0,
+    "player_attributes.vision": 47.0,
+    "player_attributes.positioning": 39.0,
+    "player.birthday": "1982-09-15 00:00:00",
+    "player_attributes.ball_control": 60.0,
+    "player_attributes.gk_diving": 9.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday at least '1982-09-15 00:00:00', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with dribbling at most '32.0' and gk reflexes at least '13.0' and vision equal to '47.0' and positioning equal to '39.0' and ball control at most '60.0' and gk diving at most '9.0'?"
+  },
+  {
+   "uid": "ccd7e5c8-749c-41f1-8ab8-6e2f3509bfa9",
+   "question": "Who are the players on 2010-08-30 with stamina exactly 70, potential exactly 86, finishing at most 13, aggression at least 76, and attacking work rate medium?",
+   "answer_row_ids": [
+    1181
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.finishing <= 13.0 AND player_attributes.stamina = 70.0 AND player_attributes.aggression >= 76.0 AND player_attributes.date = '2010-08-30 00:00:00' AND player_attributes.potential = 86.0 AND player_attributes.attacking_work_rate = 'medium'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.finishing",
+    "player_attributes.stamina",
+    "player_attributes.aggression",
+    "player_attributes.date",
+    "player_attributes.potential",
+    "player_attributes.attacking_work_rate"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "finishing",
+     "operator": "<=",
+     "value": 13.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "stamina",
+     "operator": "=",
+     "value": 70.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "aggression",
+     "operator": ">=",
+     "value": 76.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "date",
+     "operator": "=",
+     "value": "2010-08-30 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player_attributes",
+     "column": "potential",
+     "operator": "=",
+     "value": 86.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "attacking_work_rate",
+     "operator": "=",
+     "value": "medium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.finishing": 13.0,
+    "player_attributes.stamina": 70.0,
+    "player_attributes.aggression": 76.0,
+    "player_attributes.date": "2010-08-30 00:00:00",
+    "player_attributes.potential": 86.0,
+    "player_attributes.attacking_work_rate": "medium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with finishing at most '13.0' and stamina equal to '70.0' and aggression at least '76.0' and date equal to '2010-08-30 00:00:00' and potential equal to '86.0' and attacking work rate equal to 'medium'?"
+  },
+  {
+   "uid": "fb8c97f9-00bc-4dd4-a7a2-62ad802b067c",
+   "question": "Which players have a strength exactly 89, shot power at least 85, and both standing tackle and goalkeeper positioning at most 59 and 21 respectively?",
+   "answer_row_ids": [
+    56,
+    1678,
+    2459,
+    2485,
+    2523,
+    2602,
+    2701,
+    3473,
+    4521,
+    5365,
+    6265,
+    6805,
+    7700,
+    10749
+   ],
+   "answer_count": 14,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.standing_tackle <= 59.0 AND player_attributes.gk_positioning <= 21.0 AND player_attributes.shot_power >= 85.0 AND player_attributes.strength = 89.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.standing_tackle",
+    "player_attributes.gk_positioning",
+    "player_attributes.shot_power",
+    "player_attributes.strength"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "standing_tackle",
+     "operator": "<=",
+     "value": 59.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_positioning",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "shot_power",
+     "operator": ">=",
+     "value": 85.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "strength",
+     "operator": "=",
+     "value": 89.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.standing_tackle": 59.0,
+    "player_attributes.gk_positioning": 21.0,
+    "player_attributes.shot_power": 85.0,
+    "player_attributes.strength": 89.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with standing tackle at most '59.0' and gk positioning at most '21.0' and shot power at least '85.0' and strength equal to '89.0'?"
+  },
+  {
+   "uid": "959f5dee-a71e-4b94-945f-3b2b66afdb51",
+   "question": "What players born on 1987-06-20 have a right preferred foot, standing tackle of at least 8.0, interceptions of at most 21.0, and exactly 16.0 in dribbling?",
+   "answer_row_ids": [
+    1032
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.standing_tackle >= 8.0 AND player_attributes.interceptions <= 21.0 AND player_attributes.preferred_foot = 'right' AND player.birthday = '1987-06-20 00:00:00' AND player_attributes.dribbling = 16.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.standing_tackle",
+    "player_attributes.interceptions",
+    "player_attributes.preferred_foot",
+    "player.birthday",
+    "player_attributes.dribbling"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "standing_tackle",
+     "operator": ">=",
+     "value": 8.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "interceptions",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "preferred_foot",
+     "operator": "=",
+     "value": "right",
+     "column_type": "enum"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1987-06-20 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player_attributes",
+     "column": "dribbling",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.standing_tackle": 8.0,
+    "player_attributes.interceptions": 21.0,
+    "player_attributes.preferred_foot": "right",
+    "player.birthday": "1987-06-20 00:00:00",
+    "player_attributes.dribbling": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday equal to '1987-06-20 00:00:00', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with standing tackle at least '8.0' and interceptions at most '21.0' and preferred foot equal to 'right' and dribbling equal to '16.0'?"
+  },
+  {
+   "uid": "6b567035-6d6a-47e3-ace3-ea9093af65f2",
+   "question": "Who is Nicolas Lodeiro among players with long passing of at least 76.0 and goalkeeping positioning of at least 6.0?",
+   "answer_row_ids": [
+    7952
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Nicolas Lodeiro' AND player_attributes.long_passing >= 76.0 AND player_attributes.gk_positioning >= 6.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player_attributes.long_passing",
+    "player_attributes.gk_positioning"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Nicolas Lodeiro",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "long_passing",
+     "operator": ">=",
+     "value": 76.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_positioning",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Nicolas Lodeiro",
+    "player_attributes.long_passing": 76.0,
+    "player_attributes.gk_positioning": 6.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Nicolas Lodeiro', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with long passing at least '76.0' and gk positioning at least '6.0'?"
+  },
+  {
+   "uid": "fcdc2402-505c-4368-9783-70da75ff972f",
+   "question": "Which players named Alexander Corryn are no more than 177.8 cm tall and have acceleration of at least 73.0 as well as short passing of at least 65.0?",
+   "answer_row_ids": [
+    447
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Alexander Corryn' AND player.height <= 177.8 AND player_attributes.acceleration >= 73.0 AND player_attributes.short_passing >= 65.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player.height",
+    "player_attributes.acceleration",
+    "player_attributes.short_passing"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Alexander Corryn",
+     "column_type": "label"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "<=",
+     "value": 177.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "acceleration",
+     "operator": ">=",
+     "value": 73.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "short_passing",
+     "operator": ">=",
+     "value": 65.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Alexander Corryn",
+    "player.height": 177.8,
+    "player_attributes.acceleration": 73.0,
+    "player_attributes.short_passing": 65.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Alexander Corryn' and height at most '177.8', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with acceleration at least '73.0' and short passing at least '65.0'?"
+  },
+  {
+   "uid": "c5b9d75f-a8a1-4ac7-957d-1fa2a699c53e",
+   "question": "Which players born on 1982-10-07 have sprint speed of at least 79 and marking of at most 83 on 2009-08-30?",
+   "answer_row_ids": [
+    4871,
+    6465
+   ],
+   "answer_count": 2,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.marking <= 83.0 AND player_attributes.date = '2009-08-30 00:00:00' AND player_attributes.sprint_speed >= 79.0 AND player.birthday = '1982-10-07 00:00:00'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.marking",
+    "player_attributes.date",
+    "player_attributes.sprint_speed",
+    "player.birthday"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "marking",
+     "operator": "<=",
+     "value": 83.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "date",
+     "operator": "=",
+     "value": "2009-08-30 00:00:00",
+     "column_type": "date"
+    },
+    {
+     "table": "player_attributes",
+     "column": "sprint_speed",
+     "operator": ">=",
+     "value": 79.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "birthday",
+     "operator": "=",
+     "value": "1982-10-07 00:00:00",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.marking": 83.0,
+    "player_attributes.date": "2009-08-30 00:00:00",
+    "player_attributes.sprint_speed": 79.0,
+    "player.birthday": "1982-10-07 00:00:00"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with birthday equal to '1982-10-07 00:00:00', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with marking at most '83.0' and date equal to '2009-08-30 00:00:00' and sprint speed at least '79.0'?"
+  },
+  {
+   "uid": "a1b50f50-7d7b-4093-b2d7-2a08f84b43be",
+   "question": "Which player named Jerzy Dudek has a curve exactly 12.0, reactions exactly 75.0, long passing at most 56.0, and agility at most 42.0?",
+   "answer_row_ids": [
+    4904
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.curve = 12.0 AND player.player_name = 'Jerzy Dudek' AND player_attributes.long_passing <= 56.0 AND player_attributes.reactions = 75.0 AND player_attributes.agility <= 42.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.curve",
+    "player.player_name",
+    "player_attributes.long_passing",
+    "player_attributes.reactions",
+    "player_attributes.agility"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "curve",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Jerzy Dudek",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "long_passing",
+     "operator": "<=",
+     "value": 56.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "reactions",
+     "operator": "=",
+     "value": 75.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "agility",
+     "operator": "<=",
+     "value": 42.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.curve": 12.0,
+    "player.player_name": "Jerzy Dudek",
+    "player_attributes.long_passing": 56.0,
+    "player_attributes.reactions": 75.0,
+    "player_attributes.agility": 42.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Jerzy Dudek', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with curve equal to '12.0' and long passing at most '56.0' and reactions equal to '75.0' and agility at most '42.0'?"
+  },
+  {
+   "uid": "9f81304e-e168-4dd8-ad95-de0fbe0e4917",
+   "question": "Which players are exactly 177.8 cm tall with a dribbling of 50.0, stamina of 69.0, sliding tackle at most 40.0, and strength at most 64.0?",
+   "answer_row_ids": [
+    3523
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.dribbling = 50.0 AND player.height = 177.8 AND player_attributes.sliding_tackle <= 40.0 AND player_attributes.stamina = 69.0 AND player_attributes.strength <= 64.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.dribbling",
+    "player.height",
+    "player_attributes.sliding_tackle",
+    "player_attributes.stamina",
+    "player_attributes.strength"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "dribbling",
+     "operator": "=",
+     "value": 50.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player",
+     "column": "height",
+     "operator": "=",
+     "value": 177.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "sliding_tackle",
+     "operator": "<=",
+     "value": 40.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "stamina",
+     "operator": "=",
+     "value": 69.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "strength",
+     "operator": "<=",
+     "value": 64.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.dribbling": 50.0,
+    "player.height": 177.8,
+    "player_attributes.sliding_tackle": 40.0,
+    "player_attributes.stamina": 69.0,
+    "player_attributes.strength": 64.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with height equal to '177.8', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with dribbling equal to '50.0' and sliding tackle at most '40.0' and stamina equal to '69.0' and strength at most '64.0'?"
+  },
+  {
+   "uid": "3de045c3-2c81-4b7c-a4ad-611553adb7a6",
+   "question": "Which players named Loiik Landre have a standing tackle of at most 67.0 and a goalkeeper diving skill of at least 14.0?",
+   "answer_row_ids": [
+    6198
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player.player_name = 'Loiik Landre' AND player_attributes.standing_tackle <= 67.0 AND player_attributes.gk_diving >= 14.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player.player_name",
+    "player_attributes.standing_tackle",
+    "player_attributes.gk_diving"
+   ],
+   "involved_filters": [
+    {
+     "table": "player",
+     "column": "player_name",
+     "operator": "=",
+     "value": "Loiik Landre",
+     "column_type": "label"
+    },
+    {
+     "table": "player_attributes",
+     "column": "standing_tackle",
+     "operator": "<=",
+     "value": 67.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "gk_diving",
+     "operator": ">=",
+     "value": 14.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player.player_name": "Loiik Landre",
+    "player_attributes.standing_tackle": 67.0,
+    "player_attributes.gk_diving": 14.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities with player name equal to 'Loiik Landre', having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with standing tackle at most '67.0' and gk diving at least '14.0'?"
+  },
+  {
+   "uid": "77a56138-5381-4a25-a92e-9f4afe977091",
+   "question": "Which players have a curve of exactly 72.0, penalties exactly 56.0, and balance of at least 74.0?",
+   "answer_row_ids": [
+    207,
+    1697,
+    1875,
+    1984,
+    5024,
+    5287,
+    7931,
+    8198,
+    8263,
+    11014
+   ],
+   "answer_count": 10,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.curve = 72.0 AND player_attributes.penalties = 56.0 AND player_attributes.balance >= 74.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.curve",
+    "player_attributes.penalties",
+    "player_attributes.balance"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "curve",
+     "operator": "=",
+     "value": 72.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "penalties",
+     "operator": "=",
+     "value": 56.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "balance",
+     "operator": ">=",
+     "value": 74.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.curve": 72.0,
+    "player_attributes.penalties": 56.0,
+    "player_attributes.balance": 74.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with curve equal to '72.0' and penalties equal to '56.0' and balance at least '74.0'?"
+  },
+  {
+   "uid": "887d37f2-3f66-4955-9acb-46cf1fe4e2c9",
+   "question": "Who are the players with a strength of at least 50, acceleration exactly 70, volleys exactly 30, stamina exactly 61, and crossing at most 51?",
+   "answer_row_ids": [
+    595
+   ],
+   "answer_count": 1,
+   "sql": "SELECT player.id FROM player\nJOIN player_attributes ON player.player_api_id = player_attributes.player_api_id AND player.player_fifa_api_id = player_attributes.player_fifa_api_id\nWHERE player_attributes.strength >= 50.0 AND player_attributes.acceleration = 70.0 AND player_attributes.volleys = 30.0 AND player_attributes.crossing <= 51.0 AND player_attributes.stamina = 61.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "player_attributes",
+    "player"
+   ],
+   "involved_columns": [
+    "player_attributes.strength",
+    "player_attributes.acceleration",
+    "player_attributes.volleys",
+    "player_attributes.crossing",
+    "player_attributes.stamina"
+   ],
+   "involved_filters": [
+    {
+     "table": "player_attributes",
+     "column": "strength",
+     "operator": ">=",
+     "value": 50.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "acceleration",
+     "operator": "=",
+     "value": 70.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "volleys",
+     "operator": "=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "crossing",
+     "operator": "<=",
+     "value": 51.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "player_attributes",
+     "column": "stamina",
+     "operator": "=",
+     "value": 61.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "player_attributes.strength": 50.0,
+    "player_attributes.acceleration": 70.0,
+    "player_attributes.volleys": 30.0,
+    "player_attributes.crossing": 51.0,
+    "player_attributes.stamina": 61.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "player"
+   },
+   "answer_table": "player",
+   "answer_id_column": "id",
+   "canonical_question": "Which player entities having at least one related player attributes record (linked on player.player_api_id = player_attributes.player_api_id and player.player_fifa_api_id = player_attributes.player_fifa_api_id) with strength at least '50.0' and acceleration equal to '70.0' and volleys equal to '30.0' and crossing at most '51.0' and stamina equal to '61.0'?"
+  }
+ ]
+}

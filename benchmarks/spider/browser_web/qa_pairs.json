@@ -1,0 +1,3061 @@
+{
+ "db_id": "browser_web",
+ "target_table": "browser",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1526497678,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/browser_web/browser_web.sqlite",
+  "generated_at": "2026-07-02T14:14:11.047300+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "browser",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "1pE": 9,
+   "1pM": 8,
+   "2pE": 8,
+   "2pM": 8,
+   "2pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "1pE": 9,
+   "1pM": 8,
+   "2pE": 8,
+   "2pH": 8,
+   "2pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 16,
+    "inner_attempts": 16,
+    "failed_rounds": 7,
+    "invalid_pairs_filtered": 7,
+    "failure_events": {
+     "qa_validation_failed": 7
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2,
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "near-identical question already generated in this run"
+   },
+   "2pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 19,
+    "inner_attempts": 19,
+    "failed_rounds": 11,
+    "invalid_pairs_filtered": 8,
+    "failure_events": {
+     "qa_validation_failed": 8,
+     "duplicate_pair": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "2pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 240,
+    "inner_attempts": 240,
+    "failed_rounds": 232,
+    "invalid_pairs_filtered": 232,
+    "failure_events": {
+     "qa_validation_failed": 232
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "2pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 35,
+    "inner_attempts": 35,
+    "failed_rounds": 27,
+    "invalid_pairs_filtered": 27,
+    "failure_events": {
+     "qa_validation_failed": 27
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "af8fd659-4b80-4d86-9a72-1b2982128fb2",
+   "question": "Which browsers have a market share exactly equal to 1.2?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.market_share = 1.2",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 1.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 1.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '1.2'?"
+  },
+  {
+   "uid": "be545424-ef0a-4e44-b33a-c2b8a25cc99a",
+   "question": "Which browsers named Internet Explorer have a market share of at least 28.96?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.name = 'Internet Explorer' AND browser.market_share >= 28.96",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Internet Explorer",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 28.96,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Internet Explorer",
+    "browser.market_share": 28.96
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Internet Explorer' and market share at least '28.96'?"
+  },
+  {
+   "uid": "6856d9ba-18fc-4428-94fe-e5e9a36f10e2",
+   "question": "Which browsers have a market share of exactly 28.96?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.market_share = 28.96",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 28.96,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 28.96
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '28.96'?"
+  },
+  {
+   "uid": "91aefd33-2370-42ef-bb48-b557c2963ab9",
+   "question": "What browsers have the name Opera?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.name = 'Opera'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Opera"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera'?"
+  },
+  {
+   "uid": "90695a98-bb7e-4396-9261-46b293ac06b0",
+   "question": "Which browsers have the name Firefox?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.name = 'Firefox'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox'?"
+  },
+  {
+   "uid": "705f4f62-9358-41af-a906-9d73205ab61f",
+   "question": "Which browsers are named Firefox and have a market share exactly equal to 18.11?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.market_share = 18.11 AND browser.name = 'Firefox'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 18.11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 18.11,
+    "browser.name": "Firefox"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '18.11' and name equal to 'Firefox'?"
+  },
+  {
+   "uid": "c994beb8-7616-4422-9fcc-02120d1104aa",
+   "question": "Which browsers have a market share exactly equal to 28.96 and where the name is Internet Explorer?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.market_share = 28.96 AND browser.name = 'Internet Explorer'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 28.96,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Internet Explorer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 28.96,
+    "browser.name": "Internet Explorer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '28.96' and name equal to 'Internet Explorer'?"
+  },
+  {
+   "uid": "539f14fb-1b81-4fb0-869d-a8338d701183",
+   "question": "What browsers have a market share of at least 18.11?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.market_share >= 18.11",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 18.11,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 18.11
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '18.11'?"
+  },
+  {
+   "uid": "41aa0833-2d9c-43b7-b987-95c5d26d3969",
+   "question": "Which browsers named Safari have a market share of exactly 8.54?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nWHERE browser.market_share = 8.54 AND browser.name = 'Safari'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "browser.name": "Safari"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '8.54' and name equal to 'Safari'?"
+  },
+  {
+   "uid": "7c46ae46-2b30-445c-92f2-6fc9d8804ca3",
+   "question": "Which browsers named Firefox have a market share of at most 18.11 and are compatible with an accelerator?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.name = 'Firefox' AND browser.market_share <= 18.11",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 18.11,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox",
+    "browser.market_share": 18.11
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox' and market share at most '18.11', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id)?"
+  },
+  {
+   "uid": "3f9004d6-907a-4745-a991-9b348ff897eb",
+   "question": "Which browsers named Firefox are compatible with an accelerator?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.name = 'Firefox'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id)?"
+  },
+  {
+   "uid": "d5d8e642-eae1-4905-af69-8738e24f76df",
+   "question": "Which browsers with a market share of at least 8.54 are compatible with accelerators?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share >= 8.54",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 8.54,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '8.54', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id)?"
+  },
+  {
+   "uid": "db84d274-b5be-49d4-8fdd-c569874ce198",
+   "question": "Which browsers named Safari have a market share of exactly 8.54 and are compatible with an accelerator?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share = 8.54 AND browser.name = 'Safari'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "browser.name": "Safari"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id)?"
+  },
+  {
+   "uid": "c0ea757b-4c5f-4f15-8038-8ebe4e6f2008",
+   "question": "What browsers named Safari have a market share of at most 8.54 and are compatible with an accelerator?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share <= 8.54 AND browser.name = 'Safari'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "browser.name": "Safari"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id)?"
+  },
+  {
+   "uid": "b241c3e6-ba90-4704-9f11-1bd711a3c355",
+   "question": "Which browsers have been compatible with accelerators since 2009 or earlier?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "answer_count": 4,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE accelerator_compatible_browser.compatible_since_year <= 2009",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2009,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2009
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2009'?"
+  },
+  {
+   "uid": "d65e413e-5102-4fbb-933a-b34de5f87506",
+   "question": "Which browsers have a market share of at least 8.54 and have been compatible since exactly 2008?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE accelerator_compatible_browser.compatible_since_year = 2008 AND browser.market_share >= 8.54",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2008,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 8.54,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2008,
+    "browser.market_share": 8.54
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '8.54', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2008'?"
+  },
+  {
+   "uid": "1b196488-52c1-467b-af27-95b25b6f36b0",
+   "question": "Which browsers became compatible starting exactly in the year 2010?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE accelerator_compatible_browser.compatible_since_year = 2010",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2010,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2010
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2010'?"
+  },
+  {
+   "uid": "4aedb589-841f-4cb5-958d-d1752061a163",
+   "question": "What browsers are compatible with an accelerator and have the name Safari?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.name = 'Safari'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Safari"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id)?"
+  },
+  {
+   "uid": "a589e932-d088-44fb-9d41-243425875d0b",
+   "question": "Which browsers named Opera have a market share of exactly 1.2 and have been compatible since at most the year 2000?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE accelerator_compatible_browser.compatible_since_year <= 2000 AND browser.market_share = 1.2 AND browser.name = 'Opera'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 1.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2000,
+    "browser.market_share": 1.2,
+    "browser.name": "Opera"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '1.2' and name equal to 'Opera', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2000'?"
+  },
+  {
+   "uid": "a04ea0b4-bb29-4fbb-bc9e-81c98c97d8d8",
+   "question": "What browsers named Safari have a market share of at least 8.54 and have been compatible since exactly 1996?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share >= 8.54 AND browser.name = 'Safari' AND accelerator_compatible_browser.compatible_since_year = 1996",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 1996,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "browser.name": "Safari",
+    "accelerator_compatible_browser.compatible_since_year": 1996
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '1996'?"
+  },
+  {
+   "uid": "692d17a6-c902-4b7f-8452-1a68f5a2ce42",
+   "question": "Which Opera browsers with at least 1.2 market share have been compatible since exactly 2000?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.name = 'Opera' AND browser.market_share >= 1.2 AND accelerator_compatible_browser.compatible_since_year = 2000",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "browser.market_share",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 1.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Opera",
+    "browser.market_share": 1.2,
+    "accelerator_compatible_browser.compatible_since_year": 2000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera' and market share at least '1.2', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2000'?"
+  },
+  {
+   "uid": "4b7d5f0f-9674-40bc-a099-bf2f9c03bbfb",
+   "question": "Which Internet Explorer browsers have a market share of at most 28.96 and have been compatible since at most 1995?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.name = 'Internet Explorer' AND browser.market_share <= 28.96 AND accelerator_compatible_browser.compatible_since_year <= 1995",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "browser.market_share",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Internet Explorer",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 28.96,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 1995,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Internet Explorer",
+    "browser.market_share": 28.96,
+    "accelerator_compatible_browser.compatible_since_year": 1995
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Internet Explorer' and market share at most '28.96', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '1995'?"
+  },
+  {
+   "uid": "ba6cdfbd-ffdc-4589-abd9-8441456cad46",
+   "question": "Which browsers named Safari have a market share exactly 8.54 and have been compatible since at least 1996?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share = 8.54 AND browser.name = 'Safari' AND accelerator_compatible_browser.compatible_since_year >= 1996",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 1996,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "browser.name": "Safari",
+    "accelerator_compatible_browser.compatible_since_year": 1996
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '1996'?"
+  },
+  {
+   "uid": "e3899e60-9ebf-4dc3-b70c-bd5aa97058f3",
+   "question": "Which browsers named Firefox have a market share of at least 18.11 and have been compatible since exactly 2007?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE accelerator_compatible_browser.compatible_since_year = 2007 AND browser.name = 'Firefox' AND browser.market_share >= 18.11",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.name",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 18.11,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2007,
+    "browser.name": "Firefox",
+    "browser.market_share": 18.11
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox' and market share at least '18.11', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2007'?"
+  },
+  {
+   "uid": "221ba727-4ce6-497c-b60a-4a8ed8f8a75c",
+   "question": "Which browsers named Safari have a market share of at least 8.54 and became compatible in 2008?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share >= 8.54 AND accelerator_compatible_browser.compatible_since_year = 2008 AND browser.name = 'Safari'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2008,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "accelerator_compatible_browser.compatible_since_year": 2008,
+    "browser.name": "Safari"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2008'?"
+  },
+  {
+   "uid": "867e3ba3-463a-410e-8ef1-9cecab286552",
+   "question": "Which Internet Explorer browsers have a market share of at most 28.96 and have been compatible since 2005 or earlier?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nWHERE browser.market_share <= 28.96 AND browser.name = 'Internet Explorer' AND accelerator_compatible_browser.compatible_since_year <= 2005",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "browser.name",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 28.96,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Internet Explorer",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2005,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 28.96,
+    "browser.name": "Internet Explorer",
+    "accelerator_compatible_browser.compatible_since_year": 2005
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '28.96' and name equal to 'Internet Explorer', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2005'?"
+  },
+  {
+   "uid": "ae5e8143-162e-494c-81e9-c413540fa14c",
+   "question": "Which browsers are compatible with accelerators that have been supported since at most 2007?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "answer_count": 4,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE accelerator_compatible_browser.compatible_since_year <= 2007",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2007,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2007
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2007', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id)?"
+  },
+  {
+   "uid": "a76ab9e9-ee65-432d-af2d-3e742e5b1129",
+   "question": "Which browsers are compatible with accelerators where the connection type is exactly Dialup, Wireless, Broadband, DSL?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.connection = 'Dialup, Wireless, Broadband, DSL'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.connection"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "Dialup, Wireless, Broadband, DSL",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.connection": "Dialup, Wireless, Broadband, DSL"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with connection equal to 'Dialup, Wireless, Broadband, DSL'?"
+  },
+  {
+   "uid": "a0990ed8-ca47-4361-9935-b56d29efaf5f",
+   "question": "What browsers named Internet Explorer are compatible with any web client accelerator?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Internet Explorer'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Internet Explorer",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Internet Explorer"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Internet Explorer', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id)?"
+  },
+  {
+   "uid": "adf1a014-52ea-404a-89bd-2d20869d50c2",
+   "question": "Which browsers with a market share of at least 1.2 are compatible with accelerators where the client is user?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "answer_count": 4,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.client = 'user' AND browser.market_share >= 1.2",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.client",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 1.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.client": "user",
+    "browser.market_share": 1.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '1.2', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'user'?"
+  },
+  {
+   "uid": "61abdee3-f1b7-4a57-8b11-7b9d94336438",
+   "question": "Which browsers named Opera are compatible with a web client accelerator where the client is user?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Opera' AND web_client_accelerator.client = 'user'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "web_client_accelerator.client"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Opera",
+    "web_client_accelerator.client": "user"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'user'?"
+  },
+  {
+   "uid": "1266b810-1180-4235-9b0d-d5ed66df325d",
+   "question": "Which browsers are compatible with accelerators used by clients that are exactly End user, ISP?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.client = 'End user, ISP'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.client"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "End user, ISP",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.client": "End user, ISP"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'End user, ISP'?"
+  },
+  {
+   "uid": "ea1a8d12-b0f2-4ee6-a46f-7e1a77cb0435",
+   "question": "Which browsers have a market share of exactly 8.54 and are compatible with the accelerator named Fasterfox?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.market_share = 8.54 AND web_client_accelerator.name = 'Fasterfox'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "web_client_accelerator.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "Fasterfox",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 8.54,
+    "web_client_accelerator.name": "Fasterfox"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '8.54', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'Fasterfox'?"
+  },
+  {
+   "uid": "eb11809a-3709-492b-a0a2-2c43a1cb8b9a",
+   "question": "Which browsers named Firefox are compatible with any web client accelerator?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Firefox'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id)?"
+  },
+  {
+   "uid": "0c832194-3892-4ce0-8c13-2a16fed9d93e",
+   "question": "Which browsers named Opera with at least 1.2 market share have been compatible since 2000 with a CProxy accelerator that has a user client and a connection speed of up to 756kbit/s?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.name = 'CProxy' AND web_client_accelerator.connection = 'up to 756kbit/s' AND browser.name = 'Opera' AND browser.market_share >= 1.2 AND accelerator_compatible_browser.compatible_since_year = 2000 AND web_client_accelerator.client = 'user'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.name",
+    "web_client_accelerator.connection",
+    "browser.name",
+    "browser.market_share",
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.client"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CProxy",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "up to 756kbit/s",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 1.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.name": "CProxy",
+    "web_client_accelerator.connection": "up to 756kbit/s",
+    "browser.name": "Opera",
+    "browser.market_share": 1.2,
+    "accelerator_compatible_browser.compatible_since_year": 2000,
+    "web_client_accelerator.client": "user"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera' and market share at least '1.2', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2000', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'CProxy' and connection equal to 'up to 756kbit/s' and client equal to 'user'?"
+  },
+  {
+   "uid": "a2e4ae0e-9e04-40ff-9725-df4ad371bd61",
+   "question": "Which Safari browsers with at most 8.54% market share are compatible since 1996 or earlier with a CProxy client using a user connection of up to 756kbit/s?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE accelerator_compatible_browser.compatible_since_year <= 1996 AND web_client_accelerator.name = 'CProxy' AND browser.market_share <= 8.54 AND web_client_accelerator.connection = 'up to 756kbit/s' AND browser.name = 'Safari' AND web_client_accelerator.client = 'user'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.name",
+    "browser.market_share",
+    "web_client_accelerator.connection",
+    "browser.name",
+    "web_client_accelerator.client"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 1996,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CProxy",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "up to 756kbit/s",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 1996,
+    "web_client_accelerator.name": "CProxy",
+    "browser.market_share": 8.54,
+    "web_client_accelerator.connection": "up to 756kbit/s",
+    "browser.name": "Safari",
+    "web_client_accelerator.client": "user"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '1996', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'CProxy' and connection equal to 'up to 756kbit/s' and client equal to 'user'?"
+  },
+  {
+   "uid": "6e987146-3294-4aaf-8743-d80f5a8417e8",
+   "question": "What browsers named Opera with a market share of 1.2 are compatible since 2009 or later with the fasTun accelerator that has a client of All, connection is Any, and an operating system containing Any?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.operating_system LIKE '%Any%' AND web_client_accelerator.connection = 'Any' AND browser.name = 'Opera' AND browser.market_share = 1.2 AND web_client_accelerator.name = 'fasTun' AND accelerator_compatible_browser.compatible_since_year >= 2009 AND web_client_accelerator.client = 'All'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.operating_system",
+    "web_client_accelerator.connection",
+    "browser.name",
+    "browser.market_share",
+    "web_client_accelerator.name",
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.client"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "operating_system",
+     "operator": "LIKE",
+     "value": "Any",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "Any",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 1.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "fasTun",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "All",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.operating_system": "Any",
+    "web_client_accelerator.connection": "Any",
+    "browser.name": "Opera",
+    "browser.market_share": 1.2,
+    "web_client_accelerator.name": "fasTun",
+    "accelerator_compatible_browser.compatible_since_year": 2009,
+    "web_client_accelerator.client": "All"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera' and market share equal to '1.2', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '2009', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with operating system matching '%Any%' and connection equal to 'Any' and name equal to 'fasTun' and client equal to 'All'?"
+  },
+  {
+   "uid": "93ca7281-2c8a-446a-900d-140a3032c606",
+   "question": "What browsers named Opera have at least 1.2 market share and support fasTun as an accelerator compatible since 2009, where the client is All and the connection is Any?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE accelerator_compatible_browser.compatible_since_year >= 2009 AND web_client_accelerator.client = 'All' AND web_client_accelerator.name = 'fasTun' AND web_client_accelerator.connection = 'Any' AND browser.market_share >= 1.2 AND browser.name = 'Opera'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.client",
+    "web_client_accelerator.name",
+    "web_client_accelerator.connection",
+    "browser.market_share",
+    "browser.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "All",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "fasTun",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "Any",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 1.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2009,
+    "web_client_accelerator.client": "All",
+    "web_client_accelerator.name": "fasTun",
+    "web_client_accelerator.connection": "Any",
+    "browser.market_share": 1.2,
+    "browser.name": "Opera"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '1.2' and name equal to 'Opera', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '2009', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'All' and name equal to 'fasTun' and connection equal to 'Any'?"
+  },
+  {
+   "uid": "83d39cda-f250-43f8-a31e-5c28bc075a35",
+   "question": "Which browsers named Firefox with at least 18.11 market share are compatible since 2007 or later with the Fasterfox accelerator for users on Dialup, Wireless, Broadband, or DSL connections running Linux and Mobile devices?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Firefox' AND web_client_accelerator.operating_system LIKE '%Linux and Mobile devices%' AND accelerator_compatible_browser.compatible_since_year >= 2007 AND web_client_accelerator.name = 'Fasterfox' AND web_client_accelerator.client = 'user' AND web_client_accelerator.connection = 'Dialup, Wireless, Broadband, DSL' AND browser.market_share >= 18.11",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "web_client_accelerator.operating_system",
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.name",
+    "web_client_accelerator.client",
+    "web_client_accelerator.connection",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "operating_system",
+     "operator": "LIKE",
+     "value": "Linux and Mobile devices",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "Fasterfox",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "Dialup, Wireless, Broadband, DSL",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 18.11,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox",
+    "web_client_accelerator.operating_system": "Linux and Mobile devices",
+    "accelerator_compatible_browser.compatible_since_year": 2007,
+    "web_client_accelerator.name": "Fasterfox",
+    "web_client_accelerator.client": "user",
+    "web_client_accelerator.connection": "Dialup, Wireless, Broadband, DSL",
+    "browser.market_share": 18.11
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox' and market share at least '18.11', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '2007', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with operating system matching '%Linux and Mobile devices%' and name equal to 'Fasterfox' and client equal to 'user' and connection equal to 'Dialup, Wireless, Broadband, DSL'?"
+  },
+  {
+   "uid": "64ef666e-54e0-4234-93e1-d82bed105199",
+   "question": "Which browsers named Opera, with market share at most 1.2, have been compatible since 2000 or later with the user client named CProxy that runs on Windows?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.operating_system LIKE '%Windows%' AND browser.market_share <= 1.2 AND web_client_accelerator.name = 'CProxy' AND browser.name = 'Opera' AND web_client_accelerator.client = 'user' AND accelerator_compatible_browser.compatible_since_year >= 2000",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.operating_system",
+    "browser.market_share",
+    "web_client_accelerator.name",
+    "browser.name",
+    "web_client_accelerator.client",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "operating_system",
+     "operator": "LIKE",
+     "value": "Windows",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 1.2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CProxy",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 2000,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.operating_system": "Windows",
+    "browser.market_share": 1.2,
+    "web_client_accelerator.name": "CProxy",
+    "browser.name": "Opera",
+    "web_client_accelerator.client": "user",
+    "accelerator_compatible_browser.compatible_since_year": 2000
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '1.2' and name equal to 'Opera', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '2000', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with operating system matching '%Windows%' and name equal to 'CProxy' and client equal to 'user'?"
+  },
+  {
+   "uid": "e79ea5fd-64ab-4d33-8f18-d510eac99265",
+   "question": "Which browsers named Opera have a market share of at least 1.2, support CProxy clients with user access and connection up to 756kbit/s, and have been compatible since 2000 or earlier?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.client = 'user' AND web_client_accelerator.name = 'CProxy' AND browser.name = 'Opera' AND web_client_accelerator.connection = 'up to 756kbit/s' AND accelerator_compatible_browser.compatible_since_year <= 2000 AND browser.market_share >= 1.2",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.client",
+    "web_client_accelerator.name",
+    "browser.name",
+    "web_client_accelerator.connection",
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CProxy",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "up to 756kbit/s",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 1.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.client": "user",
+    "web_client_accelerator.name": "CProxy",
+    "browser.name": "Opera",
+    "web_client_accelerator.connection": "up to 756kbit/s",
+    "accelerator_compatible_browser.compatible_since_year": 2000,
+    "browser.market_share": 1.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera' and market share at least '1.2', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2000', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'user' and name equal to 'CProxy' and connection equal to 'up to 756kbit/s'?"
+  },
+  {
+   "uid": "c357ad33-99cf-45b0-acc8-d7858827f41f",
+   "question": "Which Safari browsers with at most 8.54% market share have been compatible since 1996 or later with CProxy accelerators that have user clients and a connection speed of up to 756kbit/s?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.name = 'CProxy' AND web_client_accelerator.client = 'user' AND accelerator_compatible_browser.compatible_since_year >= 1996 AND browser.market_share <= 8.54 AND browser.name = 'Safari' AND web_client_accelerator.connection = 'up to 756kbit/s'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.name",
+    "web_client_accelerator.client",
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.market_share",
+    "browser.name",
+    "web_client_accelerator.connection"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CProxy",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 1996,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 8.54,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Safari",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "up to 756kbit/s",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.name": "CProxy",
+    "web_client_accelerator.client": "user",
+    "accelerator_compatible_browser.compatible_since_year": 1996,
+    "browser.market_share": 8.54,
+    "browser.name": "Safari",
+    "web_client_accelerator.connection": "up to 756kbit/s"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '8.54' and name equal to 'Safari', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '1996', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'CProxy' and client equal to 'user' and connection equal to 'up to 756kbit/s'?"
+  },
+  {
+   "uid": "268982a8-3bf2-435e-af03-24db484601b3",
+   "question": "Which Firefox browsers with a market share of at most 18.11 have been compatible since 2007 or earlier with the Fasterfox accelerator where the connection is Dialup, Wireless, Broadband, or DSL?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.market_share <= 18.11 AND web_client_accelerator.connection = 'Dialup, Wireless, Broadband, DSL' AND browser.name = 'Firefox' AND accelerator_compatible_browser.compatible_since_year <= 2007 AND web_client_accelerator.name = 'Fasterfox'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "web_client_accelerator.connection",
+    "browser.name",
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 18.11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "Dialup, Wireless, Broadband, DSL",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "Fasterfox",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 18.11,
+    "web_client_accelerator.connection": "Dialup, Wireless, Broadband, DSL",
+    "browser.name": "Firefox",
+    "accelerator_compatible_browser.compatible_since_year": 2007,
+    "web_client_accelerator.name": "Fasterfox"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '18.11' and name equal to 'Firefox', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2007', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with connection equal to 'Dialup, Wireless, Broadband, DSL' and name equal to 'Fasterfox'?"
+  },
+  {
+   "uid": "8f92673f-98ff-43a3-959d-ff7b37d3b442",
+   "question": "Which browsers named Firefox have a market share of at most 18.11 and are compatible with the Fasterfox accelerator used by the user client?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Firefox' AND web_client_accelerator.name = 'Fasterfox' AND web_client_accelerator.client = 'user' AND browser.market_share <= 18.11",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "web_client_accelerator.name",
+    "web_client_accelerator.client",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "Fasterfox",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 18.11,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox",
+    "web_client_accelerator.name": "Fasterfox",
+    "web_client_accelerator.client": "user",
+    "browser.market_share": 18.11
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox' and market share at most '18.11', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'Fasterfox' and client equal to 'user'?"
+  },
+  {
+   "uid": "fc9fe2ed-92b6-40e1-8205-803f0546de20",
+   "question": "Which browsers compatible with fasTun since exactly 2009 have a market share of at most 1.2?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE accelerator_compatible_browser.compatible_since_year = 2009 AND web_client_accelerator.name = 'fasTun' AND browser.market_share <= 1.2",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "web_client_accelerator.name",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "fasTun",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "<=",
+     "value": 1.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2009,
+    "web_client_accelerator.name": "fasTun",
+    "browser.market_share": 1.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at most '1.2', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2009', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'fasTun'?"
+  },
+  {
+   "uid": "ac161023-d5c8-4308-8dca-59485e1583ab",
+   "question": "Which browsers named Firefox have a market share of at least 18.11 and have been compatible with accelerators since 2007 or later?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.name = 'Firefox' AND browser.market_share >= 18.11 AND accelerator_compatible_browser.compatible_since_year >= 2007",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.name",
+    "browser.market_share",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 18.11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 2007,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.name": "Firefox",
+    "browser.market_share": 18.11,
+    "accelerator_compatible_browser.compatible_since_year": 2007
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox' and market share at least '18.11', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '2007', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id)?"
+  },
+  {
+   "uid": "b41f3f16-e1be-4449-8411-104d9d00009f",
+   "question": "Which browsers named Firefox have been compatible since 1996 or later with the CACHEbox accelerator used by End user, ISP clients?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.name = 'CACHEbox' AND browser.name = 'Firefox' AND web_client_accelerator.client = 'End user, ISP' AND accelerator_compatible_browser.compatible_since_year >= 1996",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.name",
+    "browser.name",
+    "web_client_accelerator.client",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CACHEbox",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Firefox",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "End user, ISP",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": ">=",
+     "value": 1996,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.name": "CACHEbox",
+    "browser.name": "Firefox",
+    "web_client_accelerator.client": "End user, ISP",
+    "accelerator_compatible_browser.compatible_since_year": 1996
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Firefox', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at least '1996', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'CACHEbox' and client equal to 'End user, ISP'?"
+  },
+  {
+   "uid": "f4467c99-5f74-4f41-a8a7-83c959f3547a",
+   "question": "Which browsers named Opera have been compatible with user clients having a connection up to 756kbit/s since at most the year 2000?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE accelerator_compatible_browser.compatible_since_year <= 2000 AND browser.name = 'Opera' AND web_client_accelerator.client = 'user' AND web_client_accelerator.connection = 'up to 756kbit/s'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "accelerator_compatible_browser.compatible_since_year",
+    "browser.name",
+    "web_client_accelerator.client",
+    "web_client_accelerator.connection"
+   ],
+   "involved_filters": [
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "<=",
+     "value": 2000,
+     "column_type": "numeric"
+    },
+    {
+     "table": "browser",
+     "column": "name",
+     "operator": "=",
+     "value": "Opera",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "user",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "up to 756kbit/s",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "accelerator_compatible_browser.compatible_since_year": 2000,
+    "browser.name": "Opera",
+    "web_client_accelerator.client": "user",
+    "web_client_accelerator.connection": "up to 756kbit/s"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with name equal to 'Opera', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year at most '2000', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'user' and connection equal to 'up to 756kbit/s'?"
+  },
+  {
+   "uid": "93bf8e17-963a-4849-96c1-09fa5480fb9e",
+   "question": "Which browsers have a market share of at least 28.96 and have been compatible since 2010 with accelerators where the client is End User, ISP?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE browser.market_share >= 28.96 AND web_client_accelerator.client = 'End User, ISP' AND accelerator_compatible_browser.compatible_since_year = 2010",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "browser.market_share",
+    "web_client_accelerator.client",
+    "accelerator_compatible_browser.compatible_since_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": ">=",
+     "value": 28.96,
+     "column_type": "numeric"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "client",
+     "operator": "=",
+     "value": "End User, ISP",
+     "column_type": "enum"
+    },
+    {
+     "table": "accelerator_compatible_browser",
+     "column": "compatible_since_year",
+     "operator": "=",
+     "value": 2010,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "browser.market_share": 28.96,
+    "web_client_accelerator.client": "End User, ISP",
+    "accelerator_compatible_browser.compatible_since_year": 2010
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share at least '28.96', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id) with compatible since year equal to '2010', whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with client equal to 'End User, ISP'?"
+  },
+  {
+   "uid": "bbd296f8-69b8-48f0-9385-f0a861821622",
+   "question": "What browsers with a market share of 8.54 are compatible with the CProxy accelerator that has a connection of up to 756kbit/s?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT browser.id FROM browser\nJOIN accelerator_compatible_browser ON browser.id = accelerator_compatible_browser.browser_id\nJOIN web_client_accelerator ON accelerator_compatible_browser.accelerator_id = web_client_accelerator.id\nWHERE web_client_accelerator.name = 'CProxy' AND web_client_accelerator.connection = 'up to 756kbit/s' AND browser.market_share = 8.54",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "accelerator_compatible_browser",
+    "browser",
+    "web_client_accelerator"
+   ],
+   "involved_columns": [
+    "web_client_accelerator.name",
+    "web_client_accelerator.connection",
+    "browser.market_share"
+   ],
+   "involved_filters": [
+    {
+     "table": "web_client_accelerator",
+     "column": "name",
+     "operator": "=",
+     "value": "CProxy",
+     "column_type": "enum"
+    },
+    {
+     "table": "web_client_accelerator",
+     "column": "connection",
+     "operator": "=",
+     "value": "up to 756kbit/s",
+     "column_type": "enum"
+    },
+    {
+     "table": "browser",
+     "column": "market_share",
+     "operator": "=",
+     "value": 8.54,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "web_client_accelerator.name": "CProxy",
+    "web_client_accelerator.connection": "up to 756kbit/s",
+    "browser.market_share": 8.54
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "browser"
+   },
+   "answer_table": "browser",
+   "answer_id_column": "id",
+   "canonical_question": "Which browser entities with market share equal to '8.54', having at least one related accelerator compatible browser record (linked on browser.id = accelerator_compatible_browser.browser_id), whose accelerator compatible browser record itself has at least one related web client accelerator record (linked on accelerator_compatible_browser.accelerator_id = web_client_accelerator.id) with name equal to 'CProxy' and connection equal to 'up to 756kbit/s'?"
+  }
+ ]
+}

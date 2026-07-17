@@ -1,0 +1,124 @@
+{
+  "db_id": "codebase_community",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 6,
+  "accuracy": 0.6,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:17:36.597145+00:00",
+  "records": [
+    {
+      "uid": "0dc7e03a-cc2c-4f11-9d0a-5125776759d6",
+      "question": "Which users named Tal Galili, with accountid at most 93886 and no more than 5 downvotes, whose websiteurl is exactly http://www.r-statistics.com and last accessed on 2014-09-02 14:18:16, have votes created on or before 2010-10-08 and comments made since 2010-09-28 21:09:48?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN comments ON users.id = comments.userid\nJOIN votes ON users.id = votes.userid\nWHERE users.accountid <= 93886 AND users.downvotes <= 5 AND users.websiteurl = 'http://www.r-statistics.com' AND users.lastaccessdate = '2014-09-02 14:18:16.0' AND votes.creationdate <= '2010-10-08' AND users.displayname = 'Tal Galili' AND comments.creationdate >= '2010-09-28 21:09:48.0'",
+      "pred_sql": "SELECT users.Id\nFROM users\nWHERE users.DisplayName = 'Tal Galili'\n  AND users.AccountId <= 93886\n  AND users.DownVotes <= 5\n  AND users.WebsiteUrl = 'http://www.r-statistics.com'\n  AND users.LastAccessDate = '2014-09-02 14:18:16'\n  AND EXISTS (\n      SELECT 1 FROM votes\n      WHERE votes.UserId = users.Id\n        AND votes.CreationDate <= '2010-10-08'\n  )\n  AND EXISTS (\n      SELECT 1 FROM comments\n      WHERE comments.UserId = users.Id\n        AND comments.CreationDate >= '2010-09-28 21:09:48'\n  )",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.88
+    },
+    {
+      "uid": "2ec3fe3b-0c48-4f2d-83ef-1ce4538d91f2",
+      "question": "Who are the users with a website URL exactly http://www.mines-paristech.fr/Services/Annuaire/&?id=8828, created on 2010-07-20 12:52:54.0, last accessed on 2014-09-11 22:19:31.0, and whose posts have a score of exactly 3 and zero comments?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN posts ON users.id = posts.lasteditoruserid AND users.id = posts.owneruserid\nWHERE posts.score = 3 AND users.lastaccessdate = '2014-09-11 22:19:31.0' AND users.websiteurl = 'http://www.mines-paristech.fr/Services/Annuaire/&?id=8828' AND users.creationdate = '2010-07-20 12:52:54.0' AND posts.commentcount = 0",
+      "pred_sql": "SELECT users.Id\nFROM users\nWHERE WebsiteUrl = 'http://www.mines-paristech.fr/Services/Annuaire/&?id=8828'\n  AND CreationDate = '2010-07-20 12:52:54.0'\n  AND LastAccessDate = '2014-09-11 22:19:31.0'\n  AND EXISTS (\n    SELECT 1\n    FROM posts\n    WHERE posts.OwnerUserId = users.Id\n      AND posts.Score = 3\n      AND posts.CommentCount = 0\n  )",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.73
+    },
+    {
+      "uid": "31576780-0f5e-4f9c-a82f-3d71fed900a9",
+      "question": "Which users with an accountid exactly 449752 have related comments and have related votes with votetypeid exactly 5?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN comments ON users.id = comments.userid\nJOIN votes ON users.id = votes.userid\nWHERE users.accountid = 449752 AND votes.votetypeid = 5",
+      "pred_sql": "SELECT users.Id\nFROM users\nWHERE users.AccountId = 449752\nAND EXISTS (\n    SELECT 1 FROM comments WHERE comments.UserId = users.Id\n)\nAND EXISTS (\n    SELECT 1 FROM votes WHERE votes.UserId = users.Id AND votes.VoteTypeId = 5\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "35468cd2-8b86-4bef-bae9-a1ba6468eef1",
+      "question": "Which users have a post history with the revisionguid exactly 33f37785-3b56-4104-a73c-27faf5b459df?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN posthistory ON users.id = posthistory.userid\nWHERE posthistory.revisionguid = '33f37785-3b56-4104-a73c-27faf5b459df'",
+      "pred_sql": "SELECT users.Id\nFROM users\nJOIN postHistory ON users.Id = postHistory.UserId\nWHERE postHistory.RevisionGUID = '33f37785-3b56-4104-a73c-27faf5b459df'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.33
+    },
+    {
+      "uid": "3742c1f7-8723-4e95-8cde-9931791f36c3",
+      "question": "Which users named krio, with an account ID of at most 56158, created their accounts on or after 2011-04-12 14:05:29, have at least 101 reputation, at least 1 view, last accessed on 2011-04-17 13:16:41, and have votes of type exactly 5 created since 2011-04-12?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN votes ON users.id = votes.userid\nWHERE users.creationdate >= '2011-04-12 14:05:29.0' AND users.reputation >= 101 AND users.views >= 1 AND votes.votetypeid = 5 AND users.lastaccessdate = '2011-04-17 13:16:41.0' AND users.displayname = 'krio' AND users.accountid <= 56158 AND votes.creationdate >= '2011-04-12'",
+      "pred_sql": "SELECT users.Id\nFROM users\nWHERE users.DisplayName = 'krio'\n  AND users.AccountId <= 56158\n  AND users.CreationDate >= '2011-04-12 14:05:29'\n  AND users.Reputation >= 101\n  AND users.Views >= 1\n  AND users.LastAccessDate = '2011-04-17 13:16:41'\n  AND EXISTS (\n    SELECT 1\n    FROM votes\n    WHERE votes.UserId = users.Id\n      AND votes.VoteTypeId = 5\n      AND votes.CreationDate >= '2011-04-12'\n  )",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "uid": "4d9ecdde-7d1d-4c11-bc2c-0aabbb7ab543",
+      "question": "Who are the users with an accountid exactly 1680046?",
+      "gold_sql": "SELECT users.id FROM users\nWHERE users.accountid = 1680046",
+      "pred_sql": "SELECT users.id FROM users WHERE users.AccountId = 1680046",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "6064b95e-02b8-4dc9-a204-2f4b92d54029",
+      "question": "Who are the users named chl with no more than 214 downvotes who have earned badges and cast votes on or after August 21, 2010?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN badges ON users.id = badges.userid\nJOIN votes ON users.id = votes.userid\nWHERE votes.creationdate >= '2010-08-21' AND users.downvotes <= 214 AND users.displayname = 'chl'",
+      "pred_sql": "SELECT DISTINCT users.Id\nFROM users\nJOIN badges ON badges.UserId = users.Id\nJOIN votes ON votes.UserId = users.Id\nWHERE users.DisplayName = 'chl'\n  AND users.DownVotes <= 214\n  AND votes.CreationDate >= '2010-08-21'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.38
+    },
+    {
+      "uid": "7bd3cecb-2031-4497-8714-cd48f29f8081",
+      "question": "Which users have exactly 2 upvotes, at least 165 reputation, exactly 9 views, were created on or before 2011-11-09 01:34:35.0, and have an account ID no more than 412767?",
+      "gold_sql": "SELECT users.id FROM users\nWHERE users.upvotes = 2 AND users.reputation >= 165 AND users.creationdate <= '2011-11-09 01:34:35.0' AND users.views = 9 AND users.accountid <= 412767",
+      "pred_sql": "SELECT users.Id\nFROM users\nLEFT JOIN votes ON votes.UserId = users.Id AND votes.VoteTypeId = 2\nWHERE users.Reputation >= 165\n  AND users.Views = 9\n  AND users.CreationDate <= '2011-11-09 01:34:35.0'\n  AND users.AccountId <= 412767\nGROUP BY users.Id\nHAVING COUNT(votes.Id) = 2",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "89ae6eac-f2e9-4fcc-996c-1de9b5251ee0",
+      "question": "Which users have an account ID of at least 2607182, reputation of at least 13, no upvotes, no more than zero downvotes, and no more than one view, with creation date on or before 2013-04-08 14:47:21 and last access on or before 2013-04-10 13:28:13?",
+      "gold_sql": "SELECT users.id FROM users\nWHERE users.accountid >= 2607182 AND users.lastaccessdate <= '2013-04-10 13:28:13.0' AND users.downvotes <= 0 AND users.upvotes = 0 AND users.reputation >= 13 AND users.views <= 1 AND users.creationdate <= '2013-04-08 14:47:21.0'",
+      "pred_sql": "SELECT users.Id\nFROM users\nWHERE AccountId >= 2607182\n  AND Reputation >= 13\n  AND UpVotes = 0\n  AND DownVotes <= 0\n  AND Views <= 1\n  AND CreationDate <= '2013-04-08 14:47:21'\n  AND LastAccessDate <= '2013-04-10 13:28:13'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "c35a6f88-670b-4d49-acbd-6f89337d0e10",
+      "question": "Who are the users with the display name exactly Pr0no that have made posts?",
+      "gold_sql": "SELECT users.id FROM users\nJOIN posthistory ON users.id = posthistory.userid\nJOIN posts ON posthistory.postid = posts.id\nWHERE users.displayname = 'Pr0no'",
+      "pred_sql": "SELECT users.Id\nFROM users\nJOIN posts ON users.Id = posts.OwnerUserId\nWHERE users.DisplayName = 'Pr0no'\nGROUP BY users.Id",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.29
+    }
+  ]
+}

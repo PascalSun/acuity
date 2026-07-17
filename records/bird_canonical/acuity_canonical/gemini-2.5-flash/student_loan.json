@@ -1,0 +1,124 @@
+{
+  "db_id": "student_loan",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:03:07.884139+00:00",
+  "records": [
+    {
+      "uid": "0394a446-0495-435e-a9ea-bfeee35a4a3d",
+      "question": "Who has been enrolled at ucb for at least 6 months?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month >= 6 AND enrolled.school = 'ucb'",
+      "pred_sql": "SELECT DISTINCT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month >= 6 AND T2.school = 'ucb'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.19
+    },
+    {
+      "uid": "03e8955e-7d23-4b40-85e9-84a5af19c420",
+      "question": "Who enrolled at occ for at most 1 month?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month <= 1 AND enrolled.school = 'occ'",
+      "pred_sql": "SELECT DISTINCT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month <= 1 AND T2.school = 'occ'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.99
+    },
+    {
+      "uid": "8bf2e129-952e-448b-bda5-2d481a9b50cb",
+      "question": "Who has been enrolled at the school occ for at least 15 months?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'occ' AND enrolled.month >= 15",
+      "pred_sql": "SELECT DISTINCT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.school = 'occ' AND T2.month >= 15",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.18
+    },
+    {
+      "uid": "9629ba2a-b90a-432f-88d2-525b074d7277",
+      "question": "Which people were enrolled at uci during the month of 8?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.school = 'uci' AND enrolled.month = 8",
+      "pred_sql": "SELECT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.school = 'uci' AND T2.month = 8",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    },
+    {
+      "uid": "97ae1a7d-2618-4fd2-80bf-963830be160d",
+      "question": "Which people were enrolled at the school occ during month 1?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 1 AND enrolled.school = 'occ'",
+      "pred_sql": "SELECT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month = 1 AND T2.school = 'occ'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.8
+    },
+    {
+      "uid": "9a595963-c932-45d8-8fa5-61eaa527c292",
+      "question": "Who enrolled at UCLA exactly in month 7?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 7 AND enrolled.school = 'ucla'",
+      "pred_sql": "SELECT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month = 7 AND T2.school = 'ucla'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "b34747d1-b77c-4d44-b120-8d748801cfc5",
+      "question": "Which people were enrolled at the school where the month is exactly 6 and the school is ucb?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 6 AND enrolled.school = 'ucb'",
+      "pred_sql": "SELECT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month = 6 AND T2.school = 'ucb'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.78
+    },
+    {
+      "uid": "b5095c3a-626c-4507-806a-f1ca1d591e19",
+      "question": "Which people enrolled at school smc in month 14?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 14 AND enrolled.school = 'smc'",
+      "pred_sql": "SELECT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month = 14 AND T2.school = 'smc'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.56
+    },
+    {
+      "uid": "b7daf294-2974-4fd6-874d-d581f8339765",
+      "question": "Who enrolled in the school where the school is occ during month 6?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 6 AND enrolled.school = 'occ'",
+      "pred_sql": "SELECT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month = 6 AND T2.school = 'occ'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.57
+    },
+    {
+      "uid": "ffec2533-7eb1-4e6f-a4d1-eee81c9f24d3",
+      "question": "Who enrolled at uci exactly in month 2?",
+      "gold_sql": "SELECT person.name FROM person\nJOIN enrolled ON person.name = enrolled.name\nWHERE enrolled.month = 2 AND enrolled.school = 'uci'",
+      "pred_sql": "SELECT DISTINCT T1.name FROM person AS T1 INNER JOIN enrolled AS T2 ON T1.name = T2.name WHERE T2.month = 2 AND T2.school = 'uci'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.3
+    }
+  ]
+}

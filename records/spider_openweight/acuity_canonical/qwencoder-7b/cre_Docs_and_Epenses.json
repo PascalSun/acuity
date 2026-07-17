@@ -1,0 +1,124 @@
+{
+  "db_id": "cre_Docs_and_Epenses",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:41:32.607299+00:00",
+  "records": [
+    {
+      "uid": "20bdec07-a704-4a6e-8dba-c1167e4cfa8b",
+      "question": "Which documents named Review on French files dated on 1980-10-22 14:17:11 are related to the Population Research project, have a CV type with an excellent description, include government expense details, and belong to an Open Project statement?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN projects ON documents.project_id = projects.project_id\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN statements ON documents.document_id = statements.statement_id\nJOIN documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE ref_document_types.document_type_description = 'excellent' AND documents_with_expenses.document_details = 'government' AND ref_document_types.document_type_name = 'CV' AND projects.project_details = 'Population Research project' AND documents.document_date = '1980-10-22 14:17:11' AND documents.document_name = 'Review on French files' AND statements.statement_details = 'Open Project'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Projects projects ON documents.project_id = projects.project_id\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN Statements statements ON documents.document_id = statements.statement_id\nJOIN Documents_with_Expenses documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE documents.document_date = '1980-10-22 14:17:11'\n  AND documents.document_name = 'Review on French files'\n  AND projects.project_details = 'Population Research project'\n  AND ref_document_types.document_type_description = 'excellent'\n  AND ref_document_types.document_type_name = 'CV'\n  AND statements.statement_details = 'Open Project'\n  AND documents_with_expenses.document_details = 'government'",
+      "strategy": "4iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.08
+    },
+    {
+      "uid": "37accf66-a577-44e7-aea1-f86b9fa4bcaf",
+      "question": "What documents named Winona Book have a document date on or after 1971-06-09 19:03:41?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nWHERE documents.document_date >= '1971-06-09 19:03:41' AND documents.document_name = 'Winona Book'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents\nWHERE documents.document_date >= '1971-06-09 19:03:41' AND documents.document_name = 'Winona Book'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.14
+    },
+    {
+      "uid": "5c9f5bb8-5f8d-49f2-86b6-3d0f16c6cead",
+      "question": "Which documents named Review on USA files are books described as excellent and dated on or before 1981-11-29 10:23:01?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nWHERE documents.document_date <= '1981-11-29 10:23:01' AND ref_document_types.document_type_name = 'Book' AND documents.document_name = 'Review on USA files' AND ref_document_types.document_type_description = 'excellent'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents\nJOIN Ref_Document_Types ON Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code\nWHERE Documents.Document_Date <= '1981-11-29 10:23:01'\n  AND Documents.Document_Name = 'Review on USA files'\n  AND Ref_Document_Types.Document_Type_Name = 'Book'\n  AND Ref_Document_Types.Document_Type_Description = 'excellent'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 8.34
+    },
+    {
+      "uid": "6356dacb-af2e-4c51-879d-0a102f2ee774",
+      "question": "Which documents named Review on UK files are linked to projects and have associated expenses?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN projects ON documents.project_id = projects.project_id\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE documents.document_name = 'Review on UK files'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Projects projects ON documents.project_id = projects.project_id\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN Documents_with_Expenses documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE documents.document_name = 'Review on UK files'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 7.18
+    },
+    {
+      "uid": "6defdd10-8c84-474a-9e92-57f75536846a",
+      "question": "What documents named Chapter on private files are classified as Paper?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nWHERE documents.document_name = 'Chapter on private files' AND ref_document_types.document_type_name = 'Paper'",
+      "pred_sql": "SELECT documents.document_id\nFROM documents\nJOIN Ref_Document_Types ON documents.document_type_code = Ref_Document_Types.document_type_code\nWHERE documents.document_name = 'Chapter on private files'\nAND Ref_Document_Types.document_type_name = 'Paper'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.73
+    },
+    {
+      "uid": "7eef1dc0-de3b-4dbd-bd27-4b58012a4513",
+      "question": "Which documents named Jevon Paper, dated exactly on 1983-08-24 17:10:26, have a document type with name CV and description excellent, belong to the Human Resource project, and have document details that are safety?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN projects ON documents.project_id = projects.project_id\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE documents.document_date = '1983-08-24 17:10:26' AND documents_with_expenses.document_details = 'safety' AND ref_document_types.document_type_description = 'excellent' AND documents.document_name = 'Jevon Paper' AND ref_document_types.document_type_name = 'CV' AND projects.project_details = 'Human Resource project'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Projects projects ON documents.project_id = projects.project_id\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN Documents_with_Expenses documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE documents.document_date = '1983-08-24 17:10:26'\n  AND documents.document_name = 'Jevon Paper'\n  AND projects.project_details = 'Human Resource project'\n  AND ref_document_types.document_type_description = 'excellent'\n  AND ref_document_types.document_type_name = 'CV'\n  AND documents_with_expenses.document_details = 'safety'",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.78
+    },
+    {
+      "uid": "8408673b-1df9-4616-976d-b768a189627a",
+      "question": "Which Paper documents named Book on USA files, related to Private Project statements and government expenses, were created on or before 2013-01-26 15:15:25?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN statements ON documents.document_id = statements.statement_id\nJOIN documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE statements.statement_details = 'Private Project' AND documents.document_name = 'Book on USA files' AND documents_with_expenses.document_details = 'government' AND documents.document_date <= '2013-01-26 15:15:25' AND ref_document_types.document_type_name = 'Paper'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN Statements statements ON documents.document_id = statements.statement_id\nJOIN Documents_with_Expenses documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE documents.document_name = 'Book on USA files'\n  AND documents.document_date <= '2013-01-26 15:15:25'\n  AND ref_document_types.document_type_name = 'Paper'\n  AND statements.statement_details = 'Private Project'\n  AND documents_with_expenses.document_details = 'government'",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 11.0
+    },
+    {
+      "uid": "96ff0477-cc9b-434c-920a-ea9eba08b584",
+      "question": "Which documents named Review on Canadian files are books described as excellent and dated on or after 2012-12-27 19:09:18?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN projects ON documents.project_id = projects.project_id\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nWHERE documents.document_name = 'Review on Canadian files' AND ref_document_types.document_type_name = 'Book' AND ref_document_types.document_type_description = 'excellent' AND documents.document_date >= '2012-12-27 19:09:18'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Projects projects ON documents.project_id = projects.project_id\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nWHERE documents.document_name = 'Review on Canadian files'\n  AND documents.document_date >= '2012-12-27 19:09:18'\n  AND ref_document_types.document_type_name = 'Book'\n  AND ref_document_types.document_type_description = 'excellent'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.01
+    },
+    {
+      "uid": "a027f9a6-61d7-4946-b09b-50f9a80d289c",
+      "question": "Which documents have related projects, reference document types with document type description exactly 'good' and document type name exactly 'Paper', statements, and documents with expenses?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN projects ON documents.project_id = projects.project_id\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN statements ON documents.document_id = statements.statement_id\nJOIN documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE ref_document_types.document_type_description = 'good' AND ref_document_types.document_type_name = 'Paper'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN Projects projects ON documents.project_id = projects.project_id\nJOIN Statements statements ON documents.document_id = statements.statement_id\nJOIN Documents_with_Expenses documents_with_expenses ON documents.document_id = documents_with_expenses.document_id\nWHERE ref_document_types.document_type_description = 'good'\nAND ref_document_types.document_type_name = 'Paper'",
+      "strategy": "4iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.76
+    },
+    {
+      "uid": "bd07113b-b625-4d92-9347-a27323600c8f",
+      "question": "Which documents are Books with a document type description that is excellent?",
+      "gold_sql": "SELECT documents.document_id FROM documents\nJOIN projects ON documents.project_id = projects.project_id\nJOIN ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nWHERE ref_document_types.document_type_description = 'excellent' AND ref_document_types.document_type_name = 'Book'",
+      "pred_sql": "SELECT documents.document_id\nFROM Documents documents\nJOIN Ref_Document_Types ref_document_types ON documents.document_type_code = ref_document_types.document_type_code\nJOIN Projects projects ON documents.project_id = projects.project_id\nWHERE ref_document_types.document_type_description = 'excellent' AND ref_document_types.document_type_name = 'Book'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 6.57
+    }
+  ]
+}

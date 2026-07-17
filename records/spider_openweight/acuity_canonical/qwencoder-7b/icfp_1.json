@@ -1,0 +1,124 @@
+{
+  "db_id": "icfp_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:49:15.896574+00:00",
+  "records": [
+    {
+      "uid": "1c023796-d77b-40b5-8006-2515fb76cf6d",
+      "question": "Which papers include Aaron Turon as an author in position 2 or higher?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nJOIN authors ON authorship.authid = authors.authid\nWHERE authors.fname = 'Aaron' AND authors.lname = 'Turon' AND authorship.authorder >= 2",
+      "pred_sql": "SELECT DISTINCT p.paperid\nFROM Papers p\nJOIN Authorship a ON p.paperid = a.paperid\nJOIN Authors au ON a.authid = au.authid\nWHERE a.authorder >= 2\n  AND au.fname = 'Aaron' AND au.lname = 'Turon'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.6
+    },
+    {
+      "uid": "25d4712f-71f9-457e-8ede-8a8a650f6a8e",
+      "question": "What papers have Atsushi Ohori as an author with an authorship order of at most 1?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nJOIN authors ON authorship.authid = authors.authid\nWHERE authors.fname = 'Atsushi' AND authorship.authorder <= 1 AND authors.lname = 'Ohori'",
+      "pred_sql": "SELECT DISTINCT p.paperid\nFROM Papers p\nJOIN Authorship a ON p.paperid = a.paperid\nJOIN Authors au ON a.authid = au.authid\nWHERE a.authorder <= 1\n  AND au.fname = 'Atsushi'\n  AND au.lname = 'Ohori'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.78
+    },
+    {
+      "uid": "3758bd49-c35a-41c8-a680-8d16822188ab",
+      "question": "Which papers have an author listed exactly as number 2 in the author order?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder = 2",
+      "pred_sql": "SELECT DISTINCT papers.paperid\nFROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder = 2",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.56
+    },
+    {
+      "uid": "76f514dc-cbaa-4e41-98a8-320aa90d1ba4",
+      "question": "What papers were authored by Brent Yorgey?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nJOIN authors ON authorship.authid = authors.authid\nWHERE authors.fname = 'Brent' AND authors.lname = 'Yorgey'",
+      "pred_sql": "SELECT DISTINCT p.paperid\nFROM Papers p\nJOIN Authorship a ON p.paperid = a.paperid\nJOIN Authors auth ON a.authid = auth.authid\nWHERE auth.fname = 'Brent' AND auth.lname = 'Yorgey'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.18
+    },
+    {
+      "uid": "9d48a2e4-fe84-4de1-9fe6-697046da6415",
+      "question": "Which papers were authored by someone whose first name is Aaron?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nJOIN authors ON authorship.authid = authors.authid\nWHERE authors.fname = 'Aaron'",
+      "pred_sql": "SELECT DISTINCT p.paperid\nFROM Papers p\nJOIN Authorship a ON p.paperid = a.paperid\nJOIN Authors au ON a.authid = au.authid\nWHERE au.fname = 'Aaron'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.51
+    },
+    {
+      "uid": "b40440e1-db99-4474-9b26-bc87f7b82977",
+      "question": "Which papers have at least 1 author affiliated with the University of Oxford?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nJOIN inst ON authorship.instid = inst.instid\nWHERE inst.name = 'University of Oxford' AND authorship.authorder >= 1",
+      "pred_sql": "SELECT DISTINCT p.paperid\nFROM Papers p\nJOIN Authorship a ON p.paperid = a.paperid\nJOIN Inst i ON a.instid = i.instid\nWHERE a.authorder >= 1 AND i.name = 'University of Oxford'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.05
+    },
+    {
+      "uid": "d72e89c5-a631-4f7e-a1d8-3023d6d89798",
+      "question": "Which papers include Ralf Hinze as author number 1 or higher?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nJOIN authors ON authorship.authid = authors.authid\nWHERE authors.lname = 'Hinze' AND authors.fname = 'Ralf' AND authorship.authorder >= 1",
+      "pred_sql": "SELECT DISTINCT p.paperid\nFROM Papers p\nJOIN Authorship a ON p.paperid = a.paperid\nJOIN Authors au ON a.authid = au.authid\nWHERE a.authorder >= 1\n  AND au.lname = 'Hinze'\n  AND au.fname = 'Ralf'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.38
+    },
+    {
+      "uid": "f372900b-2a89-44bd-ae53-aa82e3737a20",
+      "question": "Which papers have authors listed with an author order of at least 1?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder >= 1",
+      "pred_sql": "SELECT DISTINCT papers.paperid\nFROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder >= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.75
+    },
+    {
+      "uid": "f9f62cb6-ba33-42a5-96eb-9c02da941275",
+      "question": "Which papers have an author listed exactly as number 3 in the author order?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder = 3",
+      "pred_sql": "SELECT DISTINCT papers.paperid\nFROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder = 3",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.81
+    },
+    {
+      "uid": "fd5b983d-6739-4972-9506-4ef863fb37e0",
+      "question": "Which papers have a first author listed exactly as author number 1?",
+      "gold_sql": "SELECT papers.paperid FROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder = 1",
+      "pred_sql": "SELECT DISTINCT papers.paperid\nFROM papers\nJOIN authorship ON papers.paperid = authorship.paperid\nWHERE authorship.authorder = 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.81
+    }
+  ]
+}

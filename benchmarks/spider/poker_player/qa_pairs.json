@@ -1,0 +1,3239 @@
+{
+ "db_id": "poker_player",
+ "target_table": "people",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 741392470,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/poker_player/poker_player.sqlite",
+  "generated_at": "2026-07-02T15:13:55.415084+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "people",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 19,
+    "inner_attempts": 19,
+    "failed_rounds": 9,
+    "invalid_pairs_filtered": 6,
+    "failure_events": {
+     "duplicate_pair": 3,
+     "qa_validation_failed": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 57,
+    "inner_attempts": 57,
+    "failed_rounds": 47,
+    "invalid_pairs_filtered": 47,
+    "failure_events": {
+     "qa_validation_failed": 47
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 50,
+    "inner_attempts": 50,
+    "failed_rounds": 40,
+    "invalid_pairs_filtered": 40,
+    "failure_events": {
+     "qa_validation_failed": 40
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 23,
+    "inner_attempts": 23,
+    "failed_rounds": 13,
+    "invalid_pairs_filtered": 13,
+    "failure_events": {
+     "qa_validation_failed": 13
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "38972188-17c4-425d-b4ab-66ecf0830a5a",
+   "question": "Who are the people with a height of at most 196.0?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "answer_count": 5,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height <= 196.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 196.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 196.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '196.0'?"
+  },
+  {
+   "uid": "d338eb01-2cf5-4de2-a878-bfad71871e81",
+   "question": "Which people have nationality exactly Russia?",
+   "answer_row_ids": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "answer_count": 6,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.nationality = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Russia'?"
+  },
+  {
+   "uid": "15d1be1f-0bdb-48a5-8b94-491dd2800fbe",
+   "question": "Which people have the name Maksim Botin and a height exactly 194.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height = 194.0 AND people.name = 'Maksim Botin'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 194.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Maksim Botin",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 194.0,
+    "people.name": "Maksim Botin"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '194.0' and name equal to 'Maksim Botin'?"
+  },
+  {
+   "uid": "92632750-c47f-4b36-9ce0-b67f41ad3b7b",
+   "question": "Who in the people database has the name exactly Teodor Salparov?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Teodor Salparov'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Teodor Salparov",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Teodor Salparov"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Teodor Salparov'?"
+  },
+  {
+   "uid": "263305e7-1f2d-4269-a4d0-da3435c9eabe",
+   "question": "Which people have the name Aleksey Ostapenko and nationality is Russia?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Aleksey Ostapenko' AND people.nationality = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Aleksey Ostapenko",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Aleksey Ostapenko",
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Aleksey Ostapenko' and nationality equal to 'Russia'?"
+  },
+  {
+   "uid": "2b8ac796-dbee-4a5c-ae06-ade193b20606",
+   "question": "Which people have nationality exactly Russia and are at most 193.0 in height?",
+   "answer_row_ids": [
+    3,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.nationality = 'Russia' AND people.height <= 193.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.nationality",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 193.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.nationality": "Russia",
+    "people.height": 193.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Russia' and height at most '193.0'?"
+  },
+  {
+   "uid": "0a173fc3-3be1-465c-9b07-3ff3fcb521b9",
+   "question": "Which people have the name Roman Bragin and are from Russia?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Roman Bragin' AND people.nationality = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Roman Bragin",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Roman Bragin",
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Roman Bragin' and nationality equal to 'Russia'?"
+  },
+  {
+   "uid": "fb6f7c7f-5dd1-489f-a3d6-7a9af772ba45",
+   "question": "Which people named Sergey Grankin have Russia as their nationality?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Sergey Grankin' AND people.nationality = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Sergey Grankin",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Sergey Grankin",
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Sergey Grankin' and nationality equal to 'Russia'?"
+  },
+  {
+   "uid": "22a8932a-d3a9-43b8-ade4-93c6e8a7366a",
+   "question": "What people from Russia are at least 196.0 centimeters tall?",
+   "answer_row_ids": [
+    1,
+    5,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height >= 196.0 AND people.nationality = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 196.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 196.0,
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '196.0' and nationality equal to 'Russia'?"
+  },
+  {
+   "uid": "3389390d-8549-4f36-b1fb-eac3cf490987",
+   "question": "Which people have a height that is exactly 193.0 and whose nationality is Russia?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height = 193.0 AND people.nationality = 'Russia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 193.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 193.0,
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '193.0' and nationality equal to 'Russia'?"
+  },
+  {
+   "uid": "7eb7c1fe-c111-4263-95b1-d38596b36cf2",
+   "question": "Who is Teodor Salparov from Bulgaria with a height of exactly 182.0 and a birth date containing August 16?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%August 16%' AND people.height = 182.0 AND people.nationality = 'Bulgaria' AND people.name = 'Teodor Salparov'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "people.height",
+    "people.nationality",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "August 16",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Teodor Salparov",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "August 16",
+    "people.height": 182.0,
+    "people.nationality": "Bulgaria",
+    "people.name": "Teodor Salparov"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%August 16%' and height equal to '182.0' and nationality equal to 'Bulgaria' and name equal to 'Teodor Salparov'?"
+  },
+  {
+   "uid": "098244ab-70ee-4b17-9f85-f2e72d87366e",
+   "question": "Who is Maksim Botin, born on a date containing July 14, with nationality Russia and a height of at least 194.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%July 14%' AND people.nationality = 'Russia' AND people.name = 'Maksim Botin' AND people.height >= 194.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "people.nationality",
+    "people.name",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "July 14",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Maksim Botin",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 194.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "July 14",
+    "people.nationality": "Russia",
+    "people.name": "Maksim Botin",
+    "people.height": 194.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%July 14%' and nationality equal to 'Russia' and name equal to 'Maksim Botin' and height at least '194.0'?"
+  },
+  {
+   "uid": "e9749674-5b14-42c2-9818-6c8e867c9a81",
+   "question": "Who has the name Teodor Salparov, was born on a date containing August 16, and is at most 182.0 cm tall?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%August 16%' AND people.height <= 182.0 AND people.name = 'Teodor Salparov'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "August 16",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Teodor Salparov",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "August 16",
+    "people.height": 182.0,
+    "people.name": "Teodor Salparov"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%August 16%' and height at most '182.0' and name equal to 'Teodor Salparov'?"
+  },
+  {
+   "uid": "970dc201-fec3-4e93-becc-43dd910461fb",
+   "question": "Which people named Sergey Grankin have Russian nationality and are at least 193.0 tall?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Sergey Grankin' AND people.nationality = 'Russia' AND people.height >= 193.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.nationality",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Sergey Grankin",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 193.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Sergey Grankin",
+    "people.nationality": "Russia",
+    "people.height": 193.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Sergey Grankin' and nationality equal to 'Russia' and height at least '193.0'?"
+  },
+  {
+   "uid": "239488df-8e9b-4998-9091-1bd33b23808b",
+   "question": "What people named Semen Poltavskiy from Russia are at least 205.0 tall and have a birth date containing February 8?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Semen Poltavskiy' AND people.nationality = 'Russia' AND people.height >= 205.0 AND people.birth_date LIKE '%February 8%'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.nationality",
+    "people.height",
+    "people.birth_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Semen Poltavskiy",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 205.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "February 8",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Semen Poltavskiy",
+    "people.nationality": "Russia",
+    "people.height": 205.0,
+    "people.birth_date": "February 8"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Semen Poltavskiy' and nationality equal to 'Russia' and height at least '205.0' and birth date matching '%February 8%'?"
+  },
+  {
+   "uid": "b32dc7cd-70f9-4045-a4fe-79f41e880d73",
+   "question": "Who are the people born in 1982 with a height of at least 182.0 and whose nationality is Bulgaria?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%1982%' AND people.height >= 182.0 AND people.nationality = 'Bulgaria'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "people.height",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "1982",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "1982",
+    "people.height": 182.0,
+    "people.nationality": "Bulgaria"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%1982%' and height at least '182.0' and nationality equal to 'Bulgaria'?"
+  },
+  {
+   "uid": "25a903cc-7a04-42de-8781-54e15dc8ce40",
+   "question": "Which people from Russia who were born on July 14 have a height of at most 194.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height <= 194.0 AND people.nationality = 'Russia' AND people.birth_date LIKE '%July 14%'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.nationality",
+    "people.birth_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 194.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "July 14",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "people.height": 194.0,
+    "people.nationality": "Russia",
+    "people.birth_date": "July 14"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '194.0' and nationality equal to 'Russia' and birth date matching '%July 14%'?"
+  },
+  {
+   "uid": "ef83c7cb-a56d-42b6-9c24-ab765a0fbf5d",
+   "question": "Who is the person named Yevgeni Sivozhelez from Russia with a height of exactly 196.0?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.nationality = 'Russia' AND people.name = 'Yevgeni Sivozhelez' AND people.height = 196.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.nationality",
+    "people.name",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Yevgeni Sivozhelez",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 196.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.nationality": "Russia",
+    "people.name": "Yevgeni Sivozhelez",
+    "people.height": 196.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Russia' and name equal to 'Yevgeni Sivozhelez' and height equal to '196.0'?"
+  },
+  {
+   "uid": "e614241c-0e0f-40fc-9982-958b578cdccc",
+   "question": "Who are the people named Teodor Salparov from Bulgaria, born in 1982, with a height of at most 182.0 centimeters?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%1982%' AND people.height <= 182.0 AND people.name = 'Teodor Salparov' AND people.nationality = 'Bulgaria'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "people.height",
+    "people.name",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "1982",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Teodor Salparov",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "1982",
+    "people.height": 182.0,
+    "people.name": "Teodor Salparov",
+    "people.nationality": "Bulgaria"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%1982%' and height at most '182.0' and name equal to 'Teodor Salparov' and nationality equal to 'Bulgaria'?"
+  },
+  {
+   "uid": "da8f584c-09b4-40b6-854e-4ec72471d9c5",
+   "question": "Which people born in 1983 and whose nationality is Russia have a height of at most 194.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.birth_date LIKE '%1983%' AND people.nationality = 'Russia' AND people.height <= 194.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "people.nationality",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "1983",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 194.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "1983",
+    "people.nationality": "Russia",
+    "people.height": 194.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%1983%' and nationality equal to 'Russia' and height at most '194.0'?"
+  },
+  {
+   "uid": "65ad647a-91d2-4037-90f2-d8e0802e2610",
+   "question": "Which people are exactly 182.0 tall and have poker earnings of at most 189233.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.height = 182.0 AND poker_player.earnings <= 189233.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.height",
+    "poker_player.earnings"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "<=",
+     "value": 189233.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 182.0,
+    "poker_player.earnings": 189233.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with earnings at most '189233.0'?"
+  },
+  {
+   "uid": "4ffef44e-6ef9-439a-9b8f-6135fdf54b69",
+   "question": "Who are the people whose best poker finish is at least 2 and whose money rank is at most 58?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.best_finish >= 2.0 AND poker_player.money_rank <= 58.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.best_finish",
+    "poker_player.money_rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 58.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.best_finish": 2.0,
+    "poker_player.money_rank": 58.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related poker player record (linked on people.people_id = poker_player.people_id) with best finish at least '2.0' and money rank at most '58.0'?"
+  },
+  {
+   "uid": "80031e61-dfad-4db5-b83a-3e3e1dd58ab5",
+   "question": "Which people are no more than 182.0 tall and have a money rank exactly equal to 141.0 as poker players?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.height <= 182.0 AND poker_player.money_rank = 141.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.height",
+    "poker_player.money_rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "=",
+     "value": 141.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 182.0,
+    "poker_player.money_rank": 141.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank equal to '141.0'?"
+  },
+  {
+   "uid": "edf7757a-0677-41df-bbff-f30e28637321",
+   "question": "Which people have a money rank that is exactly 141.0 in poker?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank = 141.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "=",
+     "value": 141.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 141.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank equal to '141.0'?"
+  },
+  {
+   "uid": "502ceef3-2e4a-4697-bafb-95118e3c4477",
+   "question": "Which people are exactly 182.0 cm tall and have a best poker finish of at least 2?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.height = 182.0 AND poker_player.best_finish >= 2.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.height",
+    "poker_player.best_finish"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 182.0,
+    "poker_player.best_finish": 2.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with best finish at least '2.0'?"
+  },
+  {
+   "uid": "b6d5bc77-e225-4f07-b0b4-6a3a42eb9079",
+   "question": "Which people are at most 182.0 cm tall and have made the final table at least 10 times in poker?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.final_table_made >= 10.0 AND people.height <= 182.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.final_table_made",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.final_table_made": 10.0,
+    "people.height": 182.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with final table made at least '10.0'?"
+  },
+  {
+   "uid": "46395031-972a-4030-a58c-2138cdbebb79",
+   "question": "Which people who are no more than 182.0 cm tall have made exactly 10.0 final tables in poker?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.final_table_made = 10.0 AND people.height <= 182.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.final_table_made",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.final_table_made": 10.0,
+    "people.height": 182.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with final table made equal to '10.0'?"
+  },
+  {
+   "uid": "cb64632a-fd47-45c2-9144-9789e60c244c",
+   "question": "Who are the people whose best finish is at most 1 and whose money rank is no more than 166?",
+   "answer_row_ids": [
+    1,
+    5
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.best_finish <= 1.0 AND poker_player.money_rank <= 166.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.best_finish",
+    "poker_player.money_rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 166.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.best_finish": 1.0,
+    "poker_player.money_rank": 166.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related poker player record (linked on people.people_id = poker_player.people_id) with best finish at most '1.0' and money rank at most '166.0'?"
+  },
+  {
+   "uid": "98e9ac55-eb1b-4f1f-b084-79e2c066b170",
+   "question": "Who are the people with poker earnings of at least 142800?",
+   "answer_row_ids": [
+    1,
+    2,
+    6,
+    7
+   ],
+   "answer_count": 4,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.earnings >= 142800.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.earnings"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": ">=",
+     "value": 142800.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.earnings": 142800.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related poker player record (linked on people.people_id = poker_player.people_id) with earnings at least '142800.0'?"
+  },
+  {
+   "uid": "7f64027e-253b-4577-885e-578feb8da8ea",
+   "question": "Which people from Russia have a height that is exactly 196.0?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.height = 196.0 AND people.nationality = 'Russia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 196.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 196.0,
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '196.0' and nationality equal to 'Russia', having at least one related poker player record (linked on people.people_id = poker_player.people_id)?"
+  },
+  {
+   "uid": "4d4f8add-7783-439d-82b1-be8b8134aff4",
+   "question": "Who is Semen Poltavskiy from Russia with a height of at least 205.0 cm, poker earnings of at least 142800.0, a money rank of at least 154.0, and a best finish of at most 3?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank >= 154.0 AND people.height >= 205.0 AND poker_player.best_finish <= 3.0 AND people.name = 'Semen Poltavskiy' AND poker_player.earnings >= 142800.0 AND people.nationality = 'Russia'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank",
+    "people.height",
+    "poker_player.best_finish",
+    "people.name",
+    "poker_player.earnings",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 154.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 205.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "<=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Semen Poltavskiy",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": ">=",
+     "value": 142800.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 154.0,
+    "people.height": 205.0,
+    "poker_player.best_finish": 3.0,
+    "people.name": "Semen Poltavskiy",
+    "poker_player.earnings": 142800.0,
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '205.0' and name equal to 'Semen Poltavskiy' and nationality equal to 'Russia', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at least '154.0' and best finish at most '3.0' and earnings at least '142800.0'?"
+  },
+  {
+   "uid": "c90cf130-e2e9-4cc9-974f-c9f2ddbcc517",
+   "question": "Which people named Aleksey Ostapenko from Russia are at least 207.0 cm tall and have poker earnings of at least 476090.0 with a best finish exactly 1 and a money rank of at least 68?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.earnings >= 476090.0 AND people.height >= 207.0 AND poker_player.best_finish = 1.0 AND people.name = 'Aleksey Ostapenko' AND poker_player.money_rank >= 68.0 AND people.nationality = 'Russia'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.earnings",
+    "people.height",
+    "poker_player.best_finish",
+    "people.name",
+    "poker_player.money_rank",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": ">=",
+     "value": 476090.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 207.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Aleksey Ostapenko",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 68.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "poker_player.earnings": 476090.0,
+    "people.height": 207.0,
+    "poker_player.best_finish": 1.0,
+    "people.name": "Aleksey Ostapenko",
+    "poker_player.money_rank": 68.0,
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '207.0' and name equal to 'Aleksey Ostapenko' and nationality equal to 'Russia', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with earnings at least '476090.0' and best finish equal to '1.0' and money rank at least '68.0'?"
+  },
+  {
+   "uid": "493509e9-4b22-4498-a4e5-f359a14f09f2",
+   "question": "Who is Teodor Salparov from Bulgaria, exactly 182 tall, with at least 2 as best finish, a money rank of at least 141, and at least 10 final tables made?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.best_finish >= 2.0 AND people.nationality = 'Bulgaria' AND people.name = 'Teodor Salparov' AND poker_player.money_rank >= 141.0 AND poker_player.final_table_made >= 10.0 AND people.height = 182.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.best_finish",
+    "people.nationality",
+    "people.name",
+    "poker_player.money_rank",
+    "poker_player.final_table_made",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Teodor Salparov",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 141.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 182.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.best_finish": 2.0,
+    "people.nationality": "Bulgaria",
+    "people.name": "Teodor Salparov",
+    "poker_player.money_rank": 141.0,
+    "poker_player.final_table_made": 10.0,
+    "people.height": 182.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Bulgaria' and name equal to 'Teodor Salparov' and height equal to '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with best finish at least '2.0' and money rank at least '141.0' and final table made at least '10.0'?"
+  },
+  {
+   "uid": "41ea955d-1ba5-431b-a956-860554345ead",
+   "question": "Which people named Yevgeni Sivozhelez from Russia are at least 196.0 cm tall and have poker rankings of at most 166.0, no more than 21 final tables made, and earnings no more than 104871.0?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank <= 166.0 AND people.height >= 196.0 AND people.nationality = 'Russia' AND people.name = 'Yevgeni Sivozhelez' AND poker_player.final_table_made <= 21.0 AND poker_player.earnings <= 104871.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank",
+    "people.height",
+    "people.nationality",
+    "people.name",
+    "poker_player.final_table_made",
+    "poker_player.earnings"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 166.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 196.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Yevgeni Sivozhelez",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "<=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "<=",
+     "value": 104871.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 166.0,
+    "people.height": 196.0,
+    "people.nationality": "Russia",
+    "people.name": "Yevgeni Sivozhelez",
+    "poker_player.final_table_made": 21.0,
+    "poker_player.earnings": 104871.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '196.0' and nationality equal to 'Russia' and name equal to 'Yevgeni Sivozhelez', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at most '166.0' and final table made at most '21.0' and earnings at most '104871.0'?"
+  },
+  {
+   "uid": "a9506fbe-bc65-4286-992c-7c88692b8649",
+   "question": "Who is Aleksey Ostapenko from Russia with a height of at most 207.0, earnings exactly 476090.0, a money rank of at most 68.0, and a best finish of at most 1.0 in poker?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank <= 68.0 AND people.height <= 207.0 AND people.nationality = 'Russia' AND poker_player.best_finish <= 1.0 AND people.name = 'Aleksey Ostapenko' AND poker_player.earnings = 476090.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank",
+    "people.height",
+    "people.nationality",
+    "poker_player.best_finish",
+    "people.name",
+    "poker_player.earnings"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 68.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 207.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Aleksey Ostapenko",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "=",
+     "value": 476090.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 68.0,
+    "people.height": 207.0,
+    "people.nationality": "Russia",
+    "poker_player.best_finish": 1.0,
+    "people.name": "Aleksey Ostapenko",
+    "poker_player.earnings": 476090.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '207.0' and nationality equal to 'Russia' and name equal to 'Aleksey Ostapenko', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at most '68.0' and best finish at most '1.0' and earnings equal to '476090.0'?"
+  },
+  {
+   "uid": "0f836a92-ba77-4a70-9d22-64f4a15c73e3",
+   "question": "Which people named Aleksey Ostapenko, with nationality Russia and height 207, have poker earnings of at most 476090, made at most 42 final tables, and achieved a best finish of at most 1?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.final_table_made <= 42.0 AND poker_player.best_finish <= 1.0 AND people.nationality = 'Russia' AND people.name = 'Aleksey Ostapenko' AND poker_player.earnings <= 476090.0 AND people.height = 207.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.final_table_made",
+    "poker_player.best_finish",
+    "people.nationality",
+    "people.name",
+    "poker_player.earnings",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "<=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Aleksey Ostapenko",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "<=",
+     "value": 476090.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 207.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.final_table_made": 42.0,
+    "poker_player.best_finish": 1.0,
+    "people.nationality": "Russia",
+    "people.name": "Aleksey Ostapenko",
+    "poker_player.earnings": 476090.0,
+    "people.height": 207.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Russia' and name equal to 'Aleksey Ostapenko' and height equal to '207.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with final table made at most '42.0' and best finish at most '1.0' and earnings at most '476090.0'?"
+  },
+  {
+   "uid": "c7f9585e-cee4-49ca-b8b1-da8e3c37277c",
+   "question": "Who are the people from Bulgaria who are exactly 182.0 cm tall and have poker earnings of 189233.0, with at least 10 final tables made, a best finish of at most 2, and a money rank of at least 141?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.earnings = 189233.0 AND people.nationality = 'Bulgaria' AND people.height = 182.0 AND poker_player.final_table_made >= 10.0 AND poker_player.best_finish <= 2.0 AND poker_player.money_rank >= 141.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.earnings",
+    "people.nationality",
+    "people.height",
+    "poker_player.final_table_made",
+    "poker_player.best_finish",
+    "poker_player.money_rank"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "=",
+     "value": 189233.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "<=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 141.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.earnings": 189233.0,
+    "people.nationality": "Bulgaria",
+    "people.height": 182.0,
+    "poker_player.final_table_made": 10.0,
+    "poker_player.best_finish": 2.0,
+    "poker_player.money_rank": 141.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Bulgaria' and height equal to '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with earnings equal to '189233.0' and final table made at least '10.0' and best finish at most '2.0' and money rank at least '141.0'?"
+  },
+  {
+   "uid": "47ff596b-fa8c-47bc-9312-3cee0cd225d5",
+   "question": "What people named Teodor Salparov, who are exactly 182.0 tall and have a birth date containing August 16, have at least 10 final tables made, a best finish of at least 2, a money rank of at least 141, and earnings of at most 189233?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.birth_date LIKE '%August 16%' AND poker_player.money_rank >= 141.0 AND people.name = 'Teodor Salparov' AND poker_player.best_finish >= 2.0 AND poker_player.earnings <= 189233.0 AND poker_player.final_table_made >= 10.0 AND people.height = 182.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "poker_player.money_rank",
+    "people.name",
+    "poker_player.best_finish",
+    "poker_player.earnings",
+    "poker_player.final_table_made",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "August 16",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 141.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Teodor Salparov",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "<=",
+     "value": 189233.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 182.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "August 16",
+    "poker_player.money_rank": 141.0,
+    "people.name": "Teodor Salparov",
+    "poker_player.best_finish": 2.0,
+    "poker_player.earnings": 189233.0,
+    "poker_player.final_table_made": 10.0,
+    "people.height": 182.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%August 16%' and name equal to 'Teodor Salparov' and height equal to '182.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at least '141.0' and best finish at least '2.0' and earnings at most '189233.0' and final table made at least '10.0'?"
+  },
+  {
+   "uid": "c7671086-fcbe-49d1-ad7b-e928d15e5983",
+   "question": "Which people named Aleksey Ostapenko from Russia with a height of 207 have a money rank of at least 68, earnings exactly 476090, and have made exactly 42 final tables?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank >= 68.0 AND poker_player.earnings = 476090.0 AND poker_player.final_table_made = 42.0 AND people.name = 'Aleksey Ostapenko' AND people.nationality = 'Russia' AND people.height = 207.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank",
+    "poker_player.earnings",
+    "poker_player.final_table_made",
+    "people.name",
+    "people.nationality",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 68.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "=",
+     "value": 476090.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Aleksey Ostapenko",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 207.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 68.0,
+    "poker_player.earnings": 476090.0,
+    "poker_player.final_table_made": 42.0,
+    "people.name": "Aleksey Ostapenko",
+    "people.nationality": "Russia",
+    "people.height": 207.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Aleksey Ostapenko' and nationality equal to 'Russia' and height equal to '207.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at least '68.0' and earnings equal to '476090.0' and final table made equal to '42.0'?"
+  },
+  {
+   "uid": "af591e0d-ba01-4f8e-921c-7b4d66ca5a02",
+   "question": "Which people from Bulgaria are at most 182.0 cm tall and have poker earnings exactly 189233.0, with a best finish of at most 2, money rank at least 141, and at least 10 final tables made?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.best_finish <= 2.0 AND people.height <= 182.0 AND poker_player.money_rank >= 141.0 AND people.nationality = 'Bulgaria' AND poker_player.earnings = 189233.0 AND poker_player.final_table_made >= 10.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.best_finish",
+    "people.height",
+    "poker_player.money_rank",
+    "people.nationality",
+    "poker_player.earnings",
+    "poker_player.final_table_made"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "<=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 182.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": ">=",
+     "value": 141.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "=",
+     "value": 189233.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.best_finish": 2.0,
+    "people.height": 182.0,
+    "poker_player.money_rank": 141.0,
+    "people.nationality": "Bulgaria",
+    "poker_player.earnings": 189233.0,
+    "poker_player.final_table_made": 10.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '182.0' and nationality equal to 'Bulgaria', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with best finish at most '2.0' and money rank at least '141.0' and earnings equal to '189233.0' and final table made at least '10.0'?"
+  },
+  {
+   "uid": "1f2816a9-f079-4e5b-a477-fb900dcca3b4",
+   "question": "What people born in 1983 have a money rank of at most 58, earnings of at least 596462, and exactly 19 final tables made in poker?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.birth_date LIKE '%1983%' AND poker_player.money_rank <= 58.0 AND poker_player.earnings >= 596462.0 AND poker_player.final_table_made = 19.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.birth_date",
+    "poker_player.money_rank",
+    "poker_player.earnings",
+    "poker_player.final_table_made"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "1983",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 58.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": ">=",
+     "value": 596462.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "=",
+     "value": 19.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.birth_date": "1983",
+    "poker_player.money_rank": 58.0,
+    "poker_player.earnings": 596462.0,
+    "poker_player.final_table_made": 19.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%1983%', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at most '58.0' and earnings at least '596462.0' and final table made equal to '19.0'?"
+  },
+  {
+   "uid": "2825a151-1eb2-4ada-935b-467e51735fd6",
+   "question": "Which people from Russia who are at least 207.0 cm tall have a best poker finish of at least 1.0 and have made at most 42 final tables?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.best_finish >= 1.0 AND people.height >= 207.0 AND poker_player.final_table_made <= 42.0 AND people.nationality = 'Russia'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.best_finish",
+    "people.height",
+    "poker_player.final_table_made",
+    "people.nationality"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 207.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "<=",
+     "value": 42.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "poker_player.best_finish": 1.0,
+    "people.height": 207.0,
+    "poker_player.final_table_made": 42.0,
+    "people.nationality": "Russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '207.0' and nationality equal to 'Russia', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with best finish at least '1.0' and final table made at most '42.0'?"
+  },
+  {
+   "uid": "210625fd-7306-4deb-b01a-463a48f72015",
+   "question": "Which people born on February 8 have earnings exactly 142800.0 and have made at most 26 final tables as poker players?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.final_table_made <= 26.0 AND people.birth_date LIKE '%February 8%' AND poker_player.earnings = 142800.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.final_table_made",
+    "people.birth_date",
+    "poker_player.earnings"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "<=",
+     "value": 26.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "February 8",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": "=",
+     "value": 142800.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.final_table_made": 26.0,
+    "people.birth_date": "February 8",
+    "poker_player.earnings": 142800.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with birth date matching '%February 8%', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with final table made at most '26.0' and earnings equal to '142800.0'?"
+  },
+  {
+   "uid": "31a0ad41-76e9-45f2-a0cd-8f18badde8c7",
+   "question": "Which people named Semen Poltavskiy have poker earnings of at least 142800 and have made at least 26 final tables?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.earnings >= 142800.0 AND poker_player.final_table_made >= 26.0 AND people.name = 'Semen Poltavskiy'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.earnings",
+    "poker_player.final_table_made",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": ">=",
+     "value": 142800.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 26.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Semen Poltavskiy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "poker_player.earnings": 142800.0,
+    "poker_player.final_table_made": 26.0,
+    "people.name": "Semen Poltavskiy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Semen Poltavskiy', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with earnings at least '142800.0' and final table made at least '26.0'?"
+  },
+  {
+   "uid": "8d995c12-f24c-474b-97a4-9550075b8ce2",
+   "question": "Which people named Maksim Botin from Russia were born in 1983 and are poker players?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.name = 'Maksim Botin' AND people.nationality = 'Russia' AND people.birth_date LIKE '%1983%'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.nationality",
+    "people.birth_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Maksim Botin",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "birth_date",
+     "operator": "LIKE",
+     "value": "1983",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Maksim Botin",
+    "people.nationality": "Russia",
+    "people.birth_date": "1983"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Maksim Botin' and nationality equal to 'Russia' and birth date matching '%1983%', having at least one related poker player record (linked on people.people_id = poker_player.people_id)?"
+  },
+  {
+   "uid": "36f9dfd3-dd82-4e43-9e1d-ec6df8f8314a",
+   "question": "Who are the people no taller than 196.0 cm with a poker money rank of at most 166, at least 1 best finish, and who have made the final table at least 21 times?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank <= 166.0 AND poker_player.best_finish >= 1.0 AND poker_player.final_table_made >= 21.0 AND people.height <= 196.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank",
+    "poker_player.best_finish",
+    "poker_player.final_table_made",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 166.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": ">=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 196.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 166.0,
+    "poker_player.best_finish": 1.0,
+    "poker_player.final_table_made": 21.0,
+    "people.height": 196.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '196.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at most '166.0' and best finish at least '1.0' and final table made at least '21.0'?"
+  },
+  {
+   "uid": "af0c0cca-b6c2-4fb0-83cb-96aa27b3502d",
+   "question": "Who are the people exactly 196.0 tall that have made exactly 21 final tables and have a best finish of exactly 1?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.height = 196.0 AND poker_player.final_table_made = 21.0 AND poker_player.best_finish = 1.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.height",
+    "poker_player.final_table_made",
+    "poker_player.best_finish"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 196.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "=",
+     "value": 21.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 196.0,
+    "poker_player.final_table_made": 21.0,
+    "poker_player.best_finish": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '196.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with final table made equal to '21.0' and best finish equal to '1.0'?"
+  },
+  {
+   "uid": "d0f2b57b-053e-4571-a253-75d94e847c1a",
+   "question": "Which people named Aleksey Ostapenko, who are at most 207.0 tall, have a poker player profile with a best finish of exactly 1.0, made exactly 42 final tables, and have a money rank of at most 68.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE poker_player.money_rank <= 68.0 AND people.name = 'Aleksey Ostapenko' AND people.height <= 207.0 AND poker_player.best_finish = 1.0 AND poker_player.final_table_made = 42.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "poker_player.money_rank",
+    "people.name",
+    "people.height",
+    "poker_player.best_finish",
+    "poker_player.final_table_made"
+   ],
+   "involved_filters": [
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 68.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Aleksey Ostapenko",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 207.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "=",
+     "value": 42.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "poker_player.money_rank": 68.0,
+    "people.name": "Aleksey Ostapenko",
+    "people.height": 207.0,
+    "poker_player.best_finish": 1.0,
+    "poker_player.final_table_made": 42.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Aleksey Ostapenko' and height at most '207.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at most '68.0' and best finish equal to '1.0' and final table made equal to '42.0'?"
+  },
+  {
+   "uid": "5b21d5ee-f18a-49a7-bda1-1260110ce8bb",
+   "question": "Which people from Russia who are exactly 194.0 tall have poker earnings of at least 596462.0 and a money rank of at most 58.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.nationality = 'Russia' AND poker_player.money_rank <= 58.0 AND people.height = 194.0 AND poker_player.earnings >= 596462.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.nationality",
+    "poker_player.money_rank",
+    "people.height",
+    "poker_player.earnings"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Russia",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "money_rank",
+     "operator": "<=",
+     "value": 58.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 194.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "earnings",
+     "operator": ">=",
+     "value": 596462.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.nationality": "Russia",
+    "poker_player.money_rank": 58.0,
+    "people.height": 194.0,
+    "poker_player.earnings": 596462.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Russia' and height equal to '194.0', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with money rank at most '58.0' and earnings at least '596462.0'?"
+  },
+  {
+   "uid": "73c1e4fd-bac5-4028-b580-e356775ebe7c",
+   "question": "Which people from Bulgaria have made exactly 10 final tables and have a best finish of exactly 2?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN poker_player ON people.people_id = poker_player.people_id\nWHERE people.nationality = 'Bulgaria' AND poker_player.final_table_made = 10.0 AND poker_player.best_finish = 2.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "poker_player"
+   ],
+   "involved_columns": [
+    "people.nationality",
+    "poker_player.final_table_made",
+    "poker_player.best_finish"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "nationality",
+     "operator": "=",
+     "value": "Bulgaria",
+     "column_type": "enum"
+    },
+    {
+     "table": "poker_player",
+     "column": "final_table_made",
+     "operator": "=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "poker_player",
+     "column": "best_finish",
+     "operator": "=",
+     "value": 2.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.nationality": "Bulgaria",
+    "poker_player.final_table_made": 10.0,
+    "poker_player.best_finish": 2.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with nationality equal to 'Bulgaria', having at least one related poker player record (linked on people.people_id = poker_player.people_id) with final table made equal to '10.0' and best finish equal to '2.0'?"
+  }
+ ]
+}

@@ -1,0 +1,3427 @@
+{
+ "db_id": "music_tracker",
+ "target_table": "torrents",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 867250696,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/music_tracker/music_tracker.sqlite",
+  "generated_at": "2026-07-02T11:11:59.453885+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "torrents",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 17,
+   "0M": 17,
+   "0H": 16
+  },
+  "realized_counts": {
+   "0E": 17,
+   "0H": 16,
+   "0M": 17
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 17,
+    "accepted_count": 17,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 19,
+    "inner_attempts": 41,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0H": {
+    "target_quota": 16,
+    "accepted_count": 16,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 25,
+    "inner_attempts": 25,
+    "failed_rounds": 9,
+    "invalid_pairs_filtered": 9,
+    "failure_events": {
+     "qa_validation_failed": 9
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 17,
+    "accepted_count": 17,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 23,
+    "inner_attempts": 26,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 6,
+    "failure_events": {
+     "qa_validation_failed": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "64a2eeef-245a-427a-80ef-49b630e57b10",
+   "question": "Which torrents have a releasetype of ep and have been snatched exactly 197 times?",
+   "answer_row_ids": [
+    33038,
+    45495,
+    51439,
+    56795
+   ],
+   "answer_count": 4,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched = 197 AND torrents.releasetype = 'ep'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.releasetype"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 197,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "ep",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 197,
+    "torrents.releasetype": "ep"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched equal to '197' and releasetype equal to 'ep'?"
+  },
+  {
+   "uid": "470dfbea-d593-41c8-b025-5978db608e9d",
+   "question": "Which torrents belong to the group een barkie and have the artist de jeugd van tegenwoordig?",
+   "answer_row_ids": [
+    52919
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'een barkie' AND torrents.artist = 'de jeugd van tegenwoordig'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "een barkie",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "de jeugd van tegenwoordig",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "een barkie",
+    "torrents.artist": "de jeugd van tegenwoordig"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'een barkie' and artist equal to 'de jeugd van tegenwoordig'?"
+  },
+  {
+   "uid": "79f2e089-ded8-4555-9918-20ec71599c57",
+   "question": "Which torrents belong to the group named exactly \"alles endet (aber nie die musik)\" and have a group ID of at least 72671578?",
+   "answer_row_ids": [
+    59142
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'alles endet (aber nie die musik)' AND torrents.groupid >= 72671578",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "alles endet (aber nie die musik)",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": ">=",
+     "value": 72671578,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "alles endet (aber nie die musik)",
+    "torrents.groupid": 72671578
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'alles endet (aber nie die musik)' and groupid at least '72671578'?"
+  },
+  {
+   "uid": "ee767060-2108-4555-97a5-cbbd0e9aaa69",
+   "question": "Which torrents belong exactly to the group named the best of dance 92?",
+   "answer_row_ids": [
+    2117
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'the best of dance 92'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "the best of dance 92",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "the best of dance 92"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'the best of dance 92'?"
+  },
+  {
+   "uid": "c19a9452-6834-4bdd-bffd-d5e543d4a40e",
+   "question": "What torrents belong exactly to the groupname rites of passage?",
+   "answer_row_ids": [
+    10160,
+    10297,
+    53163
+   ],
+   "answer_count": 3,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'rites of passage'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "rites of passage",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "rites of passage"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'rites of passage'?"
+  },
+  {
+   "uid": "3a1765a9-20ab-4df3-833f-72ad6382a326",
+   "question": "Which torrents are by ilovemakonnen with at most 47 total snatches?",
+   "answer_row_ids": [
+    42250,
+    42251,
+    42252,
+    48583,
+    49446,
+    55240,
+    71369,
+    75015
+   ],
+   "answer_count": 8,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'ilovemakonnen' AND torrents.totalsnatched <= 47",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "ilovemakonnen",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 47,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "ilovemakonnen",
+    "torrents.totalsnatched": 47
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'ilovemakonnen' and totalsnatched at most '47'?"
+  },
+  {
+   "uid": "d5303a3c-eef1-46ba-aa6e-78e3dee1d69c",
+   "question": "Which torrents are by the artist haamu and have been snatched 62 times or fewer?",
+   "answer_row_ids": [
+    46956
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'haamu' AND torrents.totalsnatched <= 62",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "haamu",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 62,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "haamu",
+    "torrents.totalsnatched": 62
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'haamu' and totalsnatched at most '62'?"
+  },
+  {
+   "uid": "013ddd75-136b-40be-a233-7a16feaf5674",
+   "question": "Which torrents belong to group 72813352 and have been snatched at most 14 times?",
+   "answer_row_ids": [
+    5364
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched <= 14 AND torrents.groupid = 72813352",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 14,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72813352,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 14,
+    "torrents.groupid": 72813352
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched at most '14' and groupid equal to '72813352'?"
+  },
+  {
+   "uid": "86745bd8-055a-497f-8601-84317eb17d16",
+   "question": "Which torrents are by audio bullys and belong to the group named gimme that punk?",
+   "answer_row_ids": [
+    27569
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'audio bullys' AND torrents.groupname = 'gimme that punk'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist",
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "audio bullys",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "gimme that punk",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "audio bullys",
+    "torrents.groupname": "gimme that punk"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'audio bullys' and groupname equal to 'gimme that punk'?"
+  },
+  {
+   "uid": "2ffd306f-6f7d-43c3-a4d9-af40f0698f6c",
+   "question": "Which torrents are by the artist five steez?",
+   "answer_row_ids": [
+    46574
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'five steez'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "five steez",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "five steez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'five steez'?"
+  },
+  {
+   "uid": "60c7149f-be07-433d-85da-8926b6a1ba0a",
+   "question": "Which torrents have the groupname exactly equal to underground jazz file : piano?",
+   "answer_row_ids": [
+    29921
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'underground jazz file : piano'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "underground jazz file : piano",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "underground jazz file : piano"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'underground jazz file : piano'?"
+  },
+  {
+   "uid": "6a987c33-2fa6-4c87-b6ef-5a566f0c63bd",
+   "question": "Which torrents have the groupname exactly cake and the groupid exactly 73014696?",
+   "answer_row_ids": [
+    68267
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'cake' AND torrents.groupid = 73014696",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "cake",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 73014696,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "cake",
+    "torrents.groupid": 73014696
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'cake' and groupid equal to '73014696'?"
+  },
+  {
+   "uid": "e2c6890b-c1fd-405c-ae4d-9dde15917753",
+   "question": "Which torrents by lynda were released in 2015 or earlier?",
+   "answer_row_ids": [
+    68539
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear <= 2015 AND torrents.artist = 'lynda'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupyear",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "lynda",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupyear": 2015,
+    "torrents.artist": "lynda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupyear at most '2015' and artist equal to 'lynda'?"
+  },
+  {
+   "uid": "52f9ef8f-da56-4a1a-a616-b6185e86cffa",
+   "question": "Which torrents belong to group 40397 and have been snatched at least 359 times?",
+   "answer_row_ids": [
+    23736
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched >= 359 AND torrents.groupid = 40397",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 359,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 40397,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 359,
+    "torrents.groupid": 40397
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched at least '359' and groupid equal to '40397'?"
+  },
+  {
+   "uid": "2e527357-9d10-479f-8e82-38481c881894",
+   "question": "Which torrents have the artist exactly equal to playdoe?",
+   "answer_row_ids": [
+    25989,
+    31508,
+    33492
+   ],
+   "answer_count": 3,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'playdoe'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "playdoe",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "playdoe"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'playdoe'?"
+  },
+  {
+   "uid": "d7d7fa14-2428-4e0d-b586-39d47a742546",
+   "question": "Which torrents by memphis bleek were released in exactly 2003?",
+   "answer_row_ids": [
+    16214
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear = 2003 AND torrents.artist = 'memphis bleek'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupyear",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2003,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "memphis bleek",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupyear": 2003,
+    "torrents.artist": "memphis bleek"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupyear equal to '2003' and artist equal to 'memphis bleek'?"
+  },
+  {
+   "uid": "fc8de171-558d-4a53-98fe-0b5a5b9c7eec",
+   "question": "Which torrents by ritarikunta have been snatched exactly 11 times?",
+   "answer_row_ids": [
+    12412,
+    17677
+   ],
+   "answer_count": 2,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched = 11 AND torrents.artist = 'ritarikunta'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "ritarikunta",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 11,
+    "torrents.artist": "ritarikunta"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched equal to '11' and artist equal to 'ritarikunta'?"
+  },
+  {
+   "uid": "55e7728a-2417-4dc4-93db-9ad502b809c4",
+   "question": "What torrents from 2015 have the group name hitler wears hermes 3, artist westside gunn, group ID 73058722, releasetype mixtape, and exactly 62 total snatches?",
+   "answer_row_ids": [
+    61199
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear = 2015 AND torrents.groupname = 'hitler wears hermes 3' AND torrents.totalsnatched = 62 AND torrents.artist = 'westside gunn' AND torrents.groupid = 73058722 AND torrents.releasetype = 'mixtape'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupyear",
+    "torrents.groupname",
+    "torrents.totalsnatched",
+    "torrents.artist",
+    "torrents.groupid",
+    "torrents.releasetype"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "hitler wears hermes 3",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 62,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "westside gunn",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 73058722,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "mixtape",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupyear": 2015,
+    "torrents.groupname": "hitler wears hermes 3",
+    "torrents.totalsnatched": 62,
+    "torrents.artist": "westside gunn",
+    "torrents.groupid": 73058722,
+    "torrents.releasetype": "mixtape"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupyear equal to '2015' and groupname equal to 'hitler wears hermes 3' and totalsnatched equal to '62' and artist equal to 'westside gunn' and groupid equal to '73058722' and releasetype equal to 'mixtape'?"
+  },
+  {
+   "uid": "e0b4f114-ece6-406c-a68b-6a6d9dcd7762",
+   "question": "Which albums by ras g released in 2014 belong to the group down 2 earth, vol. 2 (the standard bap edition) with groupid at most 72850928 and have been snatched no more than 229 times?",
+   "answer_row_ids": [
+    59887
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear = 2014 AND torrents.groupname = 'down 2 earth, vol. 2 (the standard bap edition)' AND torrents.groupid <= 72850928 AND torrents.artist = 'ras g' AND torrents.totalsnatched <= 229 AND torrents.releasetype = 'album'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupyear",
+    "torrents.groupname",
+    "torrents.groupid",
+    "torrents.artist",
+    "torrents.totalsnatched",
+    "torrents.releasetype"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "down 2 earth, vol. 2 (the standard bap edition)",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 72850928,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "ras g",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 229,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupyear": 2014,
+    "torrents.groupname": "down 2 earth, vol. 2 (the standard bap edition)",
+    "torrents.groupid": 72850928,
+    "torrents.artist": "ras g",
+    "torrents.totalsnatched": 229,
+    "torrents.releasetype": "album"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupyear equal to '2014' and groupname equal to 'down 2 earth, vol. 2 (the standard bap edition)' and groupid at most '72850928' and artist equal to 'ras g' and totalsnatched at most '229' and releasetype equal to 'album'?"
+  },
+  {
+   "uid": "79c7c42d-2d75-4e02-9ae7-c1f97f4b3dec",
+   "question": "Which mixtapes from 2011 by nyck caution titled exactly the pursuit v. 1 have been downloaded exactly 14 times and have a group ID of at most 72868429?",
+   "answer_row_ids": [
+    40662
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'the pursuit v. 1' AND torrents.artist = 'nyck caution' AND torrents.totalsnatched = 14 AND torrents.releasetype = 'mixtape' AND torrents.groupid <= 72868429 AND torrents.groupyear = 2011",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.artist",
+    "torrents.totalsnatched",
+    "torrents.releasetype",
+    "torrents.groupid",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "the pursuit v. 1",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "nyck caution",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 14,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "mixtape",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 72868429,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2011,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "the pursuit v. 1",
+    "torrents.artist": "nyck caution",
+    "torrents.totalsnatched": 14,
+    "torrents.releasetype": "mixtape",
+    "torrents.groupid": 72868429,
+    "torrents.groupyear": 2011
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'the pursuit v. 1' and artist equal to 'nyck caution' and totalsnatched equal to '14' and releasetype equal to 'mixtape' and groupid at most '72868429' and groupyear equal to '2011'?"
+  },
+  {
+   "uid": "0562b862-894a-46f2-ad1d-9bc99d30e080",
+   "question": "Which EPs by frogs flipping the fuck out have no offense as their group name, a group ID of 73243639, were released in 2016 or earlier, and have been snatched at most 8 times?",
+   "answer_row_ids": [
+    73070
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'ep' AND torrents.totalsnatched <= 8 AND torrents.groupid = 73243639 AND torrents.groupyear <= 2016 AND torrents.groupname = 'no offense' AND torrents.artist = 'frogs flipping the fuck out'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.totalsnatched",
+    "torrents.groupid",
+    "torrents.groupyear",
+    "torrents.groupname",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "ep",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 73243639,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "no offense",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "frogs flipping the fuck out",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "ep",
+    "torrents.totalsnatched": 8,
+    "torrents.groupid": 73243639,
+    "torrents.groupyear": 2016,
+    "torrents.groupname": "no offense",
+    "torrents.artist": "frogs flipping the fuck out"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'ep' and totalsnatched at most '8' and groupid equal to '73243639' and groupyear at most '2016' and groupname equal to 'no offense' and artist equal to 'frogs flipping the fuck out'?"
+  },
+  {
+   "uid": "be0bd6a3-add9-4073-a901-8a3283108ba7",
+   "question": "Which mixtapes titled \"coke wave\" by french montana & max b with group ID 414361 have at least 166 total snatches and were released in 2009 or earlier?",
+   "answer_row_ids": [
+    29447
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'mixtape' AND torrents.groupid = 414361 AND torrents.artist = 'french montana & max b' AND torrents.groupname = 'coke wave' AND torrents.totalsnatched >= 166 AND torrents.groupyear <= 2009",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.groupid",
+    "torrents.artist",
+    "torrents.groupname",
+    "torrents.totalsnatched",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "mixtape",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 414361,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "french montana & max b",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "coke wave",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 166,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2009,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "mixtape",
+    "torrents.groupid": 414361,
+    "torrents.artist": "french montana & max b",
+    "torrents.groupname": "coke wave",
+    "torrents.totalsnatched": 166,
+    "torrents.groupyear": 2009
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'mixtape' and groupid equal to '414361' and artist equal to 'french montana & max b' and groupname equal to 'coke wave' and totalsnatched at least '166' and groupyear at most '2009'?"
+  },
+  {
+   "uid": "43e025af-9be5-422d-8e61-67c7721e4d05",
+   "question": "Which mixtapes by b-real & berner have a group name of prohibition, group ID 72842646, were released in 2014 or later, and have been snatched at least 30 times?",
+   "answer_row_ids": [
+    59658
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'mixtape' AND torrents.groupid = 72842646 AND torrents.totalsnatched >= 30 AND torrents.groupname = 'prohibition' AND torrents.groupyear >= 2014 AND torrents.artist = 'b-real & berner'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.groupid",
+    "torrents.totalsnatched",
+    "torrents.groupname",
+    "torrents.groupyear",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "mixtape",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72842646,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 30,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "prohibition",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "b-real & berner",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "mixtape",
+    "torrents.groupid": 72842646,
+    "torrents.totalsnatched": 30,
+    "torrents.groupname": "prohibition",
+    "torrents.groupyear": 2014,
+    "torrents.artist": "b-real & berner"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'mixtape' and groupid equal to '72842646' and totalsnatched at least '30' and groupname equal to 'prohibition' and groupyear at least '2014' and artist equal to 'b-real & berner'?"
+  },
+  {
+   "uid": "8962ef82-f3e3-4856-b3c7-8c7359f9f6b3",
+   "question": "Which mixtapes by j. period where the artist is exactly j. period, groupname is exactly j. period presents: the best of muthaf#ckin nate dogg, groupid is exactly 72167502, groupyear is at most 2012, and totalsnatched is at most 68?",
+   "answer_row_ids": [
+    42993
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'j. period' AND torrents.totalsnatched <= 68 AND torrents.releasetype = 'mixtape' AND torrents.groupname = 'j. period presents: the best of muthaf#ckin nate dogg' AND torrents.groupyear <= 2012 AND torrents.groupid = 72167502",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist",
+    "torrents.totalsnatched",
+    "torrents.releasetype",
+    "torrents.groupname",
+    "torrents.groupyear",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "j. period",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 68,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "mixtape",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "j. period presents: the best of muthaf#ckin nate dogg",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2012,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72167502,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "j. period",
+    "torrents.totalsnatched": 68,
+    "torrents.releasetype": "mixtape",
+    "torrents.groupname": "j. period presents: the best of muthaf#ckin nate dogg",
+    "torrents.groupyear": 2012,
+    "torrents.groupid": 72167502
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'j. period' and totalsnatched at most '68' and releasetype equal to 'mixtape' and groupname equal to 'j. period presents: the best of muthaf#ckin nate dogg' and groupyear at most '2012' and groupid equal to '72167502'?"
+  },
+  {
+   "uid": "eacc01f2-4ff0-45cc-ab01-2695fbe1a4f0",
+   "question": "Which singles titled \"clip so long\" by the artist que. from group 72698220 were released in 2014 or earlier and have been snatched at most 18 times?",
+   "answer_row_ids": [
+    56291
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched <= 18 AND torrents.artist = 'que.' AND torrents.groupid = 72698220 AND torrents.releasetype = 'single' AND torrents.groupname = 'clip so long' AND torrents.groupyear <= 2014",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.artist",
+    "torrents.groupid",
+    "torrents.releasetype",
+    "torrents.groupname",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 18,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "que.",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72698220,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "single",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "clip so long",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2014,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 18,
+    "torrents.artist": "que.",
+    "torrents.groupid": 72698220,
+    "torrents.releasetype": "single",
+    "torrents.groupname": "clip so long",
+    "torrents.groupyear": 2014
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched at most '18' and artist equal to 'que.' and groupid equal to '72698220' and releasetype equal to 'single' and groupname equal to 'clip so long' and groupyear at most '2014'?"
+  },
+  {
+   "uid": "f0133a77-548a-4a40-a049-beb0113db1d8",
+   "question": "Which albums where the artist is suprah and the groupname is siempre hay alguien, released in 2015 or later, have groupid at most 73107670 and no more than 14 total snatches?",
+   "answer_row_ids": [
+    62853
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid <= 73107670 AND torrents.artist = 'suprah' AND torrents.groupname = 'siempre hay alguien' AND torrents.releasetype = 'album' AND torrents.groupyear >= 2015 AND torrents.totalsnatched <= 14",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.artist",
+    "torrents.groupname",
+    "torrents.releasetype",
+    "torrents.groupyear",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 73107670,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "suprah",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "siempre hay alguien",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 14,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 73107670,
+    "torrents.artist": "suprah",
+    "torrents.groupname": "siempre hay alguien",
+    "torrents.releasetype": "album",
+    "torrents.groupyear": 2015,
+    "torrents.totalsnatched": 14
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid at most '73107670' and artist equal to 'suprah' and groupname equal to 'siempre hay alguien' and releasetype equal to 'album' and groupyear at least '2015' and totalsnatched at most '14'?"
+  },
+  {
+   "uid": "1683bc5a-59d4-4cb0-98f3-0d09e3dbb9d3",
+   "question": "Which torrents released in 2015 as an album have the group name 7 train lungs, artist starvin b, a groupid of at least 73071174, and at least 19 total snatches?",
+   "answer_row_ids": [
+    61663
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid >= 73071174 AND torrents.artist = 'starvin b' AND torrents.groupyear = 2015 AND torrents.releasetype = 'album' AND torrents.groupname = '7 train lungs' AND torrents.totalsnatched >= 19",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.artist",
+    "torrents.groupyear",
+    "torrents.releasetype",
+    "torrents.groupname",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": ">=",
+     "value": 73071174,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "starvin b",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "7 train lungs",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 73071174,
+    "torrents.artist": "starvin b",
+    "torrents.groupyear": 2015,
+    "torrents.releasetype": "album",
+    "torrents.groupname": "7 train lungs",
+    "torrents.totalsnatched": 19
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid at least '73071174' and artist equal to 'starvin b' and groupyear equal to '2015' and releasetype equal to 'album' and groupname equal to '7 train lungs' and totalsnatched at least '19'?"
+  },
+  {
+   "uid": "a38d2270-8e31-4d3a-8735-49f4bc965407",
+   "question": "Which EPs by the artist gowe in the group summer breeze sonatas from 2012 or earlier, with group ID 73309842, have been snatched at most once?",
+   "answer_row_ids": [
+    42927
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'ep' AND torrents.groupyear <= 2012 AND torrents.artist = 'gowe' AND torrents.groupname = 'summer breeze sonatas' AND torrents.groupid = 73309842 AND torrents.totalsnatched <= 1",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.groupyear",
+    "torrents.artist",
+    "torrents.groupname",
+    "torrents.groupid",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "ep",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2012,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "gowe",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "summer breeze sonatas",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 73309842,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 1,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "ep",
+    "torrents.groupyear": 2012,
+    "torrents.artist": "gowe",
+    "torrents.groupname": "summer breeze sonatas",
+    "torrents.groupid": 73309842,
+    "torrents.totalsnatched": 1
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'ep' and groupyear at most '2012' and artist equal to 'gowe' and groupname equal to 'summer breeze sonatas' and groupid equal to '73309842' and totalsnatched at most '1'?"
+  },
+  {
+   "uid": "33dd93ed-a248-4035-b5ef-b2e4d81a3e7f",
+   "question": "Which albums by sky 7th from the group trouble on the way released in 2009 or earlier have group ID 780932 and have been snatched at most 15 times?",
+   "answer_row_ids": [
+    29548
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid = 780932 AND torrents.totalsnatched <= 15 AND torrents.groupname = 'trouble on the way' AND torrents.groupyear <= 2009 AND torrents.artist = 'sky 7th' AND torrents.releasetype = 'album'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.totalsnatched",
+    "torrents.groupname",
+    "torrents.groupyear",
+    "torrents.artist",
+    "torrents.releasetype"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 780932,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "trouble on the way",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "sky 7th",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 780932,
+    "torrents.totalsnatched": 15,
+    "torrents.groupname": "trouble on the way",
+    "torrents.groupyear": 2009,
+    "torrents.artist": "sky 7th",
+    "torrents.releasetype": "album"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid equal to '780932' and totalsnatched at most '15' and groupname equal to 'trouble on the way' and groupyear at most '2009' and artist equal to 'sky 7th' and releasetype equal to 'album'?"
+  },
+  {
+   "uid": "8c9adadf-8d32-418f-8181-7ab1f2d4946f",
+   "question": "Which torrents where the artist is common & nas and the groupname is uncommonly nasty have a groupyear of at least 2005, a groupid of exactly 72068497, a releasetype of remix, and exactly 15 totalsnatched?",
+   "answer_row_ids": [
+    19191
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched = 15 AND torrents.artist = 'common & nas' AND torrents.groupname = 'uncommonly nasty' AND torrents.groupyear >= 2005 AND torrents.groupid = 72068497 AND torrents.releasetype = 'remix'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.artist",
+    "torrents.groupname",
+    "torrents.groupyear",
+    "torrents.groupid",
+    "torrents.releasetype"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "common & nas",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "uncommonly nasty",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2005,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72068497,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "remix",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 15,
+    "torrents.artist": "common & nas",
+    "torrents.groupname": "uncommonly nasty",
+    "torrents.groupyear": 2005,
+    "torrents.groupid": 72068497,
+    "torrents.releasetype": "remix"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched equal to '15' and artist equal to 'common & nas' and groupname equal to 'uncommonly nasty' and groupyear at least '2005' and groupid equal to '72068497' and releasetype equal to 'remix'?"
+  },
+  {
+   "uid": "933f4270-d06e-49f1-8af6-bb9cc4381a1d",
+   "question": "Which bootleg torrents by eminem from unreleased vinyl chronicles vol 4 have a group year of 2004 or earlier, groupid no more than 72814357, and have been snatched at most 5 times?",
+   "answer_row_ids": [
+    17943
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear <= 2004 AND torrents.totalsnatched <= 5 AND torrents.artist = 'eminem' AND torrents.groupname = 'unreleased vinyl chronicles vol 4' AND torrents.releasetype = 'bootleg' AND torrents.groupid <= 72814357",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupyear",
+    "torrents.totalsnatched",
+    "torrents.artist",
+    "torrents.groupname",
+    "torrents.releasetype",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2004,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "eminem",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "unreleased vinyl chronicles vol 4",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "bootleg",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 72814357,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupyear": 2004,
+    "torrents.totalsnatched": 5,
+    "torrents.artist": "eminem",
+    "torrents.groupname": "unreleased vinyl chronicles vol 4",
+    "torrents.releasetype": "bootleg",
+    "torrents.groupid": 72814357
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupyear at most '2004' and totalsnatched at most '5' and artist equal to 'eminem' and groupname equal to 'unreleased vinyl chronicles vol 4' and releasetype equal to 'bootleg' and groupid at most '72814357'?"
+  },
+  {
+   "uid": "70154862-d15a-43d8-a99e-839301ee2639",
+   "question": "Which albums by philthy rich & yowda named american greed were released in 2016 or earlier, have group IDs at most 73287684, and have been snatched at least 3 times?",
+   "answer_row_ids": [
+    74890
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'album' AND torrents.artist = 'philthy rich & yowda' AND torrents.groupid <= 73287684 AND torrents.groupname = 'american greed' AND torrents.totalsnatched >= 3 AND torrents.groupyear <= 2016",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.artist",
+    "torrents.groupid",
+    "torrents.groupname",
+    "torrents.totalsnatched",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "philthy rich & yowda",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 73287684,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "american greed",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "album",
+    "torrents.artist": "philthy rich & yowda",
+    "torrents.groupid": 73287684,
+    "torrents.groupname": "american greed",
+    "torrents.totalsnatched": 3,
+    "torrents.groupyear": 2016
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'album' and artist equal to 'philthy rich & yowda' and groupid at most '73287684' and groupname equal to 'american greed' and totalsnatched at least '3' and groupyear at most '2016'?"
+  },
+  {
+   "uid": "06fcaa25-6510-4381-8824-718fe6fc1839",
+   "question": "Which albums by the artist zaburzenia have group IDs of at least 73134736, group name exactly ig&#322;y, were released in 2015 or earlier, and have exactly 13 total snatches?",
+   "answer_row_ids": [
+    63831
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid >= 73134736 AND torrents.releasetype = 'album' AND torrents.groupyear <= 2015 AND torrents.groupname = 'ig&#322;y' AND torrents.totalsnatched = 13 AND torrents.artist = 'zaburzenia'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.releasetype",
+    "torrents.groupyear",
+    "torrents.groupname",
+    "torrents.totalsnatched",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": ">=",
+     "value": 73134736,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "ig&#322;y",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 13,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "zaburzenia",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 73134736,
+    "torrents.releasetype": "album",
+    "torrents.groupyear": 2015,
+    "torrents.groupname": "ig&#322;y",
+    "torrents.totalsnatched": 13,
+    "torrents.artist": "zaburzenia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid at least '73134736' and releasetype equal to 'album' and groupyear at most '2015' and groupname equal to 'ig&#322;y' and totalsnatched equal to '13' and artist equal to 'zaburzenia'?"
+  },
+  {
+   "uid": "b4f01e06-cc11-48a1-97a6-c96351d870d9",
+   "question": "Which albums by balam ajpu from the group jun winaq&acute;rajawal q&iacute;j / tributo a los 20 nawales released in 2016 or earlier have been snatched at most 23 times?",
+   "answer_row_ids": [
+    72092
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'album' AND torrents.totalsnatched <= 23 AND torrents.groupname = 'jun winaq&acute;rajawal q&iacute;j / tributo a los 20 nawales' AND torrents.artist = 'balam ajpu' AND torrents.groupyear <= 2016",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.totalsnatched",
+    "torrents.groupname",
+    "torrents.artist",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "jun winaq&acute;rajawal q&iacute;j / tributo a los 20 nawales",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "balam ajpu",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "album",
+    "torrents.totalsnatched": 23,
+    "torrents.groupname": "jun winaq&acute;rajawal q&iacute;j / tributo a los 20 nawales",
+    "torrents.artist": "balam ajpu",
+    "torrents.groupyear": 2016
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'album' and totalsnatched at most '23' and groupname equal to 'jun winaq&acute;rajawal q&iacute;j / tributo a los 20 nawales' and artist equal to 'balam ajpu' and groupyear at most '2016'?"
+  },
+  {
+   "uid": "c2eed2fe-c812-4788-a52e-2e77d7e18e11",
+   "question": "Which albums by dandii sun released in 2015 have been snatched exactly 3 times and have a group ID of at least 73105831?",
+   "answer_row_ids": [
+    62781
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'album' AND torrents.totalsnatched = 3 AND torrents.groupid >= 73105831 AND torrents.artist = 'dandii sun' AND torrents.groupyear = 2015",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.totalsnatched",
+    "torrents.groupid",
+    "torrents.artist",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": ">=",
+     "value": 73105831,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "dandii sun",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2015,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "album",
+    "torrents.totalsnatched": 3,
+    "torrents.groupid": 73105831,
+    "torrents.artist": "dandii sun",
+    "torrents.groupyear": 2015
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'album' and totalsnatched equal to '3' and groupid at least '73105831' and artist equal to 'dandii sun' and groupyear equal to '2015'?"
+  },
+  {
+   "uid": "bcab06cf-1910-46b3-a267-1005985d9051",
+   "question": "Which torrents from the 2008 group feel no evil by rebels of art have exactly one total snatch and a group ID of 73218422?",
+   "answer_row_ids": [
+    27496
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid = 73218422 AND torrents.totalsnatched = 1 AND torrents.artist = 'rebels of art' AND torrents.groupyear = 2008 AND torrents.groupname = 'feel no evil'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.totalsnatched",
+    "torrents.artist",
+    "torrents.groupyear",
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 73218422,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "rebels of art",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2008,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "feel no evil",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 73218422,
+    "torrents.totalsnatched": 1,
+    "torrents.artist": "rebels of art",
+    "torrents.groupyear": 2008,
+    "torrents.groupname": "feel no evil"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid equal to '73218422' and totalsnatched equal to '1' and artist equal to 'rebels of art' and groupyear equal to '2008' and groupname equal to 'feel no evil'?"
+  },
+  {
+   "uid": "0137dd5f-3dfd-4ec8-8f2f-979a32ebf269",
+   "question": "Which albums by hippocampe fou were released in 2015 or later?",
+   "answer_row_ids": [
+    61487
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupyear >= 2015 AND torrents.releasetype = 'album' AND torrents.artist = 'hippocampe fou'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupyear",
+    "torrents.releasetype",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "hippocampe fou",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupyear": 2015,
+    "torrents.releasetype": "album",
+    "torrents.artist": "hippocampe fou"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupyear at least '2015' and releasetype equal to 'album' and artist equal to 'hippocampe fou'?"
+  },
+  {
+   "uid": "594e15d0-b414-434f-bb42-5dfe9c0f7001",
+   "question": "Which albums by pale blue dot with group ID 73222669 have exactly 1 total snatched?",
+   "answer_row_ids": [
+    64593
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched = 1 AND torrents.releasetype = 'album' AND torrents.groupname = 'pale blue dot' AND torrents.groupid = 73222669",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.releasetype",
+    "torrents.groupname",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "pale blue dot",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 73222669,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 1,
+    "torrents.releasetype": "album",
+    "torrents.groupname": "pale blue dot",
+    "torrents.groupid": 73222669
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched equal to '1' and releasetype equal to 'album' and groupname equal to 'pale blue dot' and groupid equal to '73222669'?"
+  },
+  {
+   "uid": "2d853871-718e-4a59-93ad-192f7f10b279",
+   "question": "Which albums by jelly roll released in 2016 or earlier with group IDs no more than 73285692 have been snatched at least 25 times?",
+   "answer_row_ids": [
+    41624,
+    74821
+   ],
+   "answer_count": 2,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'jelly roll' AND torrents.groupyear <= 2016 AND torrents.groupid <= 73285692 AND torrents.releasetype = 'album' AND torrents.totalsnatched >= 25",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist",
+    "torrents.groupyear",
+    "torrents.groupid",
+    "torrents.releasetype",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "jelly roll",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "<=",
+     "value": 2016,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 73285692,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 25,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "jelly roll",
+    "torrents.groupyear": 2016,
+    "torrents.groupid": 73285692,
+    "torrents.releasetype": "album",
+    "torrents.totalsnatched": 25
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'jelly roll' and groupyear at most '2016' and groupid at most '73285692' and releasetype equal to 'album' and totalsnatched at least '25'?"
+  },
+  {
+   "uid": "be7f07df-67bd-4a7c-b998-b19ed15a4d8d",
+   "question": "Which albums with group ID 72463413 were released in 2004 or later?",
+   "answer_row_ids": [
+    17481
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'album' AND torrents.groupid = 72463413 AND torrents.groupyear >= 2004",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.groupid",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72463413,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2004,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "album",
+    "torrents.groupid": 72463413,
+    "torrents.groupyear": 2004
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'album' and groupid equal to '72463413' and groupyear at least '2004'?"
+  },
+  {
+   "uid": "5f7a71f2-09ce-4ea3-b0c1-478b61589894",
+   "question": "Which mixtapes by do$e money released in 2013 or later have group IDs no more than 72602752 and were snatched at most 34 times?",
+   "answer_row_ids": [
+    53275
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched <= 34 AND torrents.groupyear >= 2013 AND torrents.releasetype = 'mixtape' AND torrents.groupid <= 72602752 AND torrents.artist = 'do$e money'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.groupyear",
+    "torrents.releasetype",
+    "torrents.groupid",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 34,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2013,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "mixtape",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 72602752,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "do$e money",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 34,
+    "torrents.groupyear": 2013,
+    "torrents.releasetype": "mixtape",
+    "torrents.groupid": 72602752,
+    "torrents.artist": "do$e money"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched at most '34' and groupyear at least '2013' and releasetype equal to 'mixtape' and groupid at most '72602752' and artist equal to 'do$e money'?"
+  },
+  {
+   "uid": "704799ba-b9ff-469b-ae55-976be1e58226",
+   "question": "What torrents from the group tomboy released in 2016 are singles that have been snatched at least 69 times?",
+   "answer_row_ids": [
+    73136
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched >= 69 AND torrents.releasetype = 'single' AND torrents.groupname = 'tomboy' AND torrents.groupyear = 2016",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.releasetype",
+    "torrents.groupname",
+    "torrents.groupyear"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 69,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "single",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "tomboy",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2016,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 69,
+    "torrents.releasetype": "single",
+    "torrents.groupname": "tomboy",
+    "torrents.groupyear": 2016
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched at least '69' and releasetype equal to 'single' and groupname equal to 'tomboy' and groupyear equal to '2016'?"
+  },
+  {
+   "uid": "38380bad-4c56-42fe-8d3f-c769088439ea",
+   "question": "Which albums by shut up and dance belong to the group dance before the police come! and have a group ID of at most 72439851?",
+   "answer_row_ids": [
+    1128
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.artist = 'shut up and dance' AND torrents.groupid <= 72439851 AND torrents.releasetype = 'album' AND torrents.groupname = 'dance before the police come!'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.artist",
+    "torrents.groupid",
+    "torrents.releasetype",
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "shut up and dance",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 72439851,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "dance before the police come!",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.artist": "shut up and dance",
+    "torrents.groupid": 72439851,
+    "torrents.releasetype": "album",
+    "torrents.groupname": "dance before the police come!"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with artist equal to 'shut up and dance' and groupid at most '72439851' and releasetype equal to 'album' and groupname equal to 'dance before the police come!'?"
+  },
+  {
+   "uid": "85957188-890e-432b-9421-82e58136c907",
+   "question": "Which torrents from the artist bigbang (\ube45\ubc45) were released in 2011 and have a groupid of at most 71920632?",
+   "answer_row_ids": [
+    39092
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid <= 71920632 AND torrents.groupyear = 2011 AND torrents.artist = 'bigbang (\ube45\ubc45)'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.groupyear",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 71920632,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2011,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "bigbang (\ube45\ubc45)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 71920632,
+    "torrents.groupyear": 2011,
+    "torrents.artist": "bigbang (\ube45\ubc45)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid at most '71920632' and groupyear equal to '2011' and artist equal to 'bigbang (\ube45\ubc45)'?"
+  },
+  {
+   "uid": "9c345a02-1c16-4190-aa14-ae2fb78f2d82",
+   "question": "Which torrents released as ep by bang your head have been snatched at most 69 times?",
+   "answer_row_ids": [
+    50948
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.releasetype = 'ep' AND torrents.totalsnatched <= 69 AND torrents.groupname = 'bang your head'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.releasetype",
+    "torrents.totalsnatched",
+    "torrents.groupname"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "ep",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "<=",
+     "value": 69,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "bang your head",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.releasetype": "ep",
+    "torrents.totalsnatched": 69,
+    "torrents.groupname": "bang your head"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with releasetype equal to 'ep' and totalsnatched at most '69' and groupname equal to 'bang your head'?"
+  },
+  {
+   "uid": "a178ba73-03f2-4001-807c-bdd837d704d0",
+   "question": "Which torrents by prayers for atheists have the group name new hymns for an old war, were released in 2011 or later, have no more than 72054757 as the group ID, and have exactly 78 total snatches?",
+   "answer_row_ids": [
+    38182
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupid <= 72054757 AND torrents.artist = 'prayers for atheists' AND torrents.groupname = 'new hymns for an old war' AND torrents.groupyear >= 2011 AND torrents.totalsnatched = 78",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupid",
+    "torrents.artist",
+    "torrents.groupname",
+    "torrents.groupyear",
+    "torrents.totalsnatched"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "<=",
+     "value": 72054757,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "prayers for atheists",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "new hymns for an old war",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2011,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 78,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupid": 72054757,
+    "torrents.artist": "prayers for atheists",
+    "torrents.groupname": "new hymns for an old war",
+    "torrents.groupyear": 2011,
+    "torrents.totalsnatched": 78
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupid at most '72054757' and artist equal to 'prayers for atheists' and groupname equal to 'new hymns for an old war' and groupyear at least '2011' and totalsnatched equal to '78'?"
+  },
+  {
+   "uid": "9a5e05ca-54ee-4af9-9a65-88364f720675",
+   "question": "Which albums from 2015 by killa tay & mac reese with the group name tunnel vision 2 have at least zero snatches?",
+   "answer_row_ids": [
+    65112
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.totalsnatched >= 0 AND torrents.groupyear = 2015 AND torrents.releasetype = 'album' AND torrents.groupname = 'tunnel vision 2' AND torrents.artist = 'killa tay & mac reese'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.totalsnatched",
+    "torrents.groupyear",
+    "torrents.releasetype",
+    "torrents.groupname",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": "=",
+     "value": 2015,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    },
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "tunnel vision 2",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "killa tay & mac reese",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.totalsnatched": 0,
+    "torrents.groupyear": 2015,
+    "torrents.releasetype": "album",
+    "torrents.groupname": "tunnel vision 2",
+    "torrents.artist": "killa tay & mac reese"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with totalsnatched at least '0' and groupyear equal to '2015' and releasetype equal to 'album' and groupname equal to 'tunnel vision 2' and artist equal to 'killa tay & mac reese'?"
+  },
+  {
+   "uid": "f1da8340-38c0-402d-bd4e-361662a8e183",
+   "question": "Which torrents belong exactly to the group moosetape #6, have the artist listed as various artists, and are from group ID 72829002?",
+   "answer_row_ids": [
+    59352
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'moosetape #6' AND torrents.artist = 'various artists' AND torrents.groupid = 72829002",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.artist",
+    "torrents.groupid"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "moosetape #6",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "various artists",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72829002,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "moosetape #6",
+    "torrents.artist": "various artists",
+    "torrents.groupid": 72829002
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'moosetape #6' and artist equal to 'various artists' and groupid equal to '72829002'?"
+  },
+  {
+   "uid": "3b67a893-c16e-4ffc-8e5c-529d2236a998",
+   "question": "Which torrents by haftbefehl have the group name lass die affen aus dem zoo (drunken masters remix), group year at least 2014, group ID exactly 72860334, and exactly 2 total snatches?",
+   "answer_row_ids": [
+    60095
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 'lass die affen aus dem zoo (drunken masters remix)' AND torrents.groupyear >= 2014 AND torrents.totalsnatched = 2 AND torrents.groupid = 72860334 AND torrents.artist = 'haftbefehl'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.groupyear",
+    "torrents.totalsnatched",
+    "torrents.groupid",
+    "torrents.artist"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "lass die affen aus dem zoo (drunken masters remix)",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "groupyear",
+     "operator": ">=",
+     "value": 2014,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "totalsnatched",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "groupid",
+     "operator": "=",
+     "value": 72860334,
+     "column_type": "numeric"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "haftbefehl",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "lass die affen aus dem zoo (drunken masters remix)",
+    "torrents.groupyear": 2014,
+    "torrents.totalsnatched": 2,
+    "torrents.groupid": 72860334,
+    "torrents.artist": "haftbefehl"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 'lass die affen aus dem zoo (drunken masters remix)' and groupyear at least '2014' and totalsnatched equal to '2' and groupid equal to '72860334' and artist equal to 'haftbefehl'?"
+  },
+  {
+   "uid": "1d6422d4-4310-47af-8706-55a21121243c",
+   "question": "Which albums by jonesmann belong to the group named s.j?",
+   "answer_row_ids": [
+    18949
+   ],
+   "answer_count": 1,
+   "sql": "SELECT torrents.id FROM torrents\nWHERE torrents.groupname = 's.j.' AND torrents.artist = 'jonesmann' AND torrents.releasetype = 'album'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "torrents"
+   ],
+   "involved_columns": [
+    "torrents.groupname",
+    "torrents.artist",
+    "torrents.releasetype"
+   ],
+   "involved_filters": [
+    {
+     "table": "torrents",
+     "column": "groupname",
+     "operator": "=",
+     "value": "s.j.",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "artist",
+     "operator": "=",
+     "value": "jonesmann",
+     "column_type": "label"
+    },
+    {
+     "table": "torrents",
+     "column": "releasetype",
+     "operator": "=",
+     "value": "album",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "torrents.groupname": "s.j.",
+    "torrents.artist": "jonesmann",
+    "torrents.releasetype": "album"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "torrents"
+   },
+   "answer_table": "torrents",
+   "answer_id_column": "id",
+   "canonical_question": "Which torrents entities with groupname equal to 's.j.' and artist equal to 'jonesmann' and releasetype equal to 'album'?"
+  }
+ ]
+}

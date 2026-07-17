@@ -1,0 +1,124 @@
+{
+  "db_id": "store_1",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:30:51.252749+00:00",
+  "records": [
+    {
+      "uid": "10631231-a49b-40ba-ad46-7d5bf66d1ff6",
+      "question": "Which tracks named Soldier Side - Intro composed by Dolmayan, John/Malakian, Daron/Odadjian, Shavo are MPEG audio files lasting at least 63764 milliseconds and priced at most 0.99?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nWHERE tracks.milliseconds >= 63764 AND media_types.name = 'MPEG audio file' AND tracks.unit_price <= 0.99 AND tracks.composer = 'Dolmayan, John/Malakian, Daron/Odadjian, Shavo' AND tracks.name = 'Soldier Side - Intro'",
+      "pred_sql": "SELECT\n  T1.id\nFROM tracks AS T1\nINNER JOIN media_types AS T2\n  ON T1.media_type_id = T2.id\nWHERE\n  T1.name = 'Soldier Side - Intro' AND T1.composer = 'Dolmayan, John/Malakian, Daron/Odadjian, Shavo' AND T2.name = 'MPEG audio file' AND T1.milliseconds >= 63764 AND T1.unit_price <= 0.99",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.38
+    },
+    {
+      "uid": "55d27033-4a23-44a8-aa7b-89db1e25b656",
+      "question": "Which tracks have the name exactly equal to 'Daughter', have the composer exactly equal to 'Dave Abbruzzese & Jeff Ament & Stone Gossard & Mike McCready & Eddie Vedder', and also have related genres and related playlist_tracks records?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN genres ON tracks.genre_id = genres.id\nJOIN playlist_tracks ON tracks.id = playlist_tracks.track_id\nWHERE tracks.name = 'Daughter' AND tracks.composer = 'Dave Abbruzzese & Jeff Ament & Stone Gossard & Mike McCready & Eddie Vedder'",
+      "pred_sql": "SELECT T1.id FROM tracks AS T1 INNER JOIN genres AS T2 ON T1.genre_id = T2.id INNER JOIN playlist_tracks AS T3 ON T1.id = T3.track_id WHERE T1.name = 'Daughter' AND T1.composer = 'Dave Abbruzzese & Jeff Ament & Stone Gossard & Mike McCready & Eddie Vedder'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.37
+    },
+    {
+      "uid": "6851b7ad-796f-48e0-be7f-372830915547",
+      "question": "Which tracks are on the album titled Black Sabbath Vol. 4 (Remaster)?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN albums ON tracks.album_id = albums.id\nJOIN artists ON albums.artist_id = artists.id\nWHERE albums.title = 'Black Sabbath Vol. 4 (Remaster)'",
+      "pred_sql": "SELECT\n  T1.id\nFROM tracks AS T1\nINNER JOIN albums AS T2\n  ON T1.album_id = T2.id\nWHERE\n  T2.title = 'Black Sabbath Vol. 4 (Remaster)'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "73b48051-6ed2-4f05-9f2a-e264a029f512",
+      "question": "Which tracks named Wave (Vou te Contar) composed by Antonio Carlos Jobim cost exactly 0.99, last at most 271647 milliseconds, have at least 9057557 bytes, and are in the MPEG audio file format?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nWHERE tracks.unit_price = 0.99 AND tracks.name = 'Wave (Vou te Contar)' AND tracks.milliseconds <= 271647 AND tracks.bytes >= 9057557 AND tracks.composer = 'Antonio Carlos Jobim' AND media_types.name = 'MPEG audio file'",
+      "pred_sql": "SELECT\n  T1.id\nFROM tracks AS T1\nINNER JOIN media_types AS T2\n  ON T1.media_type_id = T2.id\nWHERE\n  T1.name = 'Wave (Vou te Contar)' AND T1.composer = 'Antonio Carlos Jobim' AND T1.unit_price = 0.99 AND T1.milliseconds <= 271647 AND T1.bytes >= 9057557 AND T2.name = 'MPEG audio file'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.08
+    },
+    {
+      "uid": "7d5bcf7a-2ff2-4220-8694-25d8a9eea90c",
+      "question": "What tracks named Immigrant Song have a duration of exactly 144875 milliseconds?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nWHERE tracks.milliseconds = 144875 AND tracks.name = 'Immigrant Song'",
+      "pred_sql": "SELECT id FROM tracks WHERE name = 'Immigrant Song' AND milliseconds = 144875",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.58
+    },
+    {
+      "uid": "85503b75-9de7-43e8-acf7-087bcc7df232",
+      "question": "Which tracks named Do No Harm have a unit price of exactly 1.99 and a file size of at most 212039309 bytes?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nWHERE tracks.unit_price = 1.99 AND tracks.name = 'Do No Harm' AND tracks.bytes <= 212039309",
+      "pred_sql": "SELECT id FROM tracks WHERE name = 'Do No Harm' AND unit_price = 1.99 AND bytes <= 212039309",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.3
+    },
+    {
+      "uid": "9d31a7a8-3300-4096-bc19-96d25d733eaf",
+      "question": "Which tracks named Folhas Secas from the album Compositores by O Ter\u00e7o have a unit price of 0.99 and last at least 161253 milliseconds with a file size of at least 5284522 bytes?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN albums ON tracks.album_id = albums.id\nJOIN artists ON albums.artist_id = artists.id\nWHERE tracks.name = 'Folhas Secas' AND tracks.milliseconds >= 161253 AND tracks.bytes >= 5284522 AND artists.name = 'O Ter\u00e7o' AND tracks.unit_price = 0.99 AND albums.title = 'Compositores'",
+      "pred_sql": "SELECT T1.id FROM tracks AS T1 INNER JOIN albums AS T2 ON T1.album_id = T2.id INNER JOIN artists AS T3 ON T2.artist_id = T3.id WHERE T1.name = 'Folhas Secas' AND T2.title = 'Compositores' AND T3.name = 'O Ter\u00e7o' AND T1.unit_price = 0.99 AND T1.milliseconds >= 161253 AND T1.bytes >= 5284522",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.55
+    },
+    {
+      "uid": "abde8e27-87bb-4f5e-89e4-6982118e82df",
+      "question": "Which tracks named Koyaanisqatsi composed by Philip Glass are Soundtracks, have a Protected AAC audio file format, last exactly 206005 milliseconds, cost 0.99, and have at least 3305164 bytes?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nJOIN genres ON tracks.genre_id = genres.id\nWHERE media_types.name = 'Protected AAC audio file' AND tracks.milliseconds = 206005 AND tracks.composer = 'Philip Glass' AND genres.name = 'Soundtrack' AND tracks.bytes >= 3305164 AND tracks.unit_price = 0.99 AND tracks.name = 'Koyaanisqatsi'",
+      "pred_sql": "SELECT T1.id FROM tracks AS T1 INNER JOIN genres AS T2 ON T1.genre_id = T2.id INNER JOIN media_types AS T3 ON T1.media_type_id = T3.id WHERE T1.name = 'Koyaanisqatsi' AND T1.composer = 'Philip Glass' AND T2.name = 'Soundtracks' AND T3.name = 'Protected AAC audio file' AND T1.milliseconds = 206005 AND T1.unit_price = 0.99 AND T1.bytes >= 3305164",
+      "strategy": "2iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.48
+    },
+    {
+      "uid": "b947af72-0aad-470d-9e67-c92a3a45384e",
+      "question": "Which tracks composed by Willie Dixon are priced at most 0.99?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nWHERE tracks.unit_price <= 0.99 AND tracks.composer = 'Willie Dixon'",
+      "pred_sql": "SELECT id FROM tracks WHERE composer = 'Willie Dixon' AND unit_price <= 0.99",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.39
+    },
+    {
+      "uid": "d172aef8-7239-4310-b914-29bcd99cb097",
+      "question": "Which tracks named True Believers, composed by Billy Duffy/Ian Astbury, have a length of exactly 308009 milliseconds, a size of exactly 9981359 bytes, and a unit price of at least 0.99?",
+      "gold_sql": "SELECT tracks.id FROM tracks\nJOIN media_types ON tracks.media_type_id = media_types.id\nJOIN invoice_lines ON tracks.id = invoice_lines.track_id\nWHERE tracks.milliseconds = 308009 AND tracks.composer = 'Billy Duffy/Ian Astbury' AND tracks.name = 'True Believers' AND tracks.bytes = 9981359 AND invoice_lines.unit_price >= 0.99",
+      "pred_sql": "SELECT id FROM tracks WHERE name = 'True Believers' AND composer = 'Billy Duffy/Ian Astbury' AND milliseconds = 308009 AND bytes = 9981359 AND unit_price >= 0.99",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    }
+  ]
+}

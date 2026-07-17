@@ -1,0 +1,124 @@
+{
+  "db_id": "college_2",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:21:03.412306+00:00",
+  "records": [
+    {
+      "uid": "26fdc790-e053-4bf3-810e-c3b4945a8586",
+      "question": "Which departments are located in the Whitman building, have at least one course, have at least one instructor named Wieland with a salary of at least 124651.41, and have at least one student with at most 99 total credits?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN course ON department.dept_name = course.dept_name\nJOIN instructor ON department.dept_name = instructor.dept_name\nJOIN student ON department.dept_name = student.dept_name\nWHERE department.building = 'Whitman' AND instructor.salary >= 124651.41 AND instructor.name = 'Wieland' AND student.tot_cred <= 99",
+      "pred_sql": "SELECT T1.dept_name FROM department AS T1 WHERE T1.building = 'Whitman' AND EXISTS ( SELECT 1 FROM course AS T2 WHERE T2.dept_name = T1.dept_name ) AND EXISTS ( SELECT 1 FROM instructor AS T3 WHERE T3.dept_name = T1.dept_name AND T3.name = 'Wieland' AND T3.salary >= 124651.41 ) AND EXISTS ( SELECT 1 FROM student AS T4 WHERE T4.dept_name = T1.dept_name AND T4.tot_cred <= 99 )",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.73
+    },
+    {
+      "uid": "607bb721-5f06-45a4-b690-766bbb347fa4",
+      "question": "What departments with courses, instructors, and students have a budget of at most 406557.93?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN course ON department.dept_name = course.dept_name\nJOIN instructor ON department.dept_name = instructor.dept_name\nJOIN student ON department.dept_name = student.dept_name\nWHERE department.budget <= 406557.93",
+      "pred_sql": "SELECT T1.dept_name FROM department AS T1 JOIN course AS T2 ON T1.dept_name = T2.dept_name JOIN instructor AS T3 ON T1.dept_name = T3.dept_name JOIN student AS T4 ON T1.dept_name = T4.dept_name WHERE T1.budget <= 406557.93",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.97
+    },
+    {
+      "uid": "7dc34784-07cb-45eb-a5ef-9568ee931856",
+      "question": "Which departments are located in the Mercer building and have an instructor named Pimenta as well as enrolled students?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN instructor ON department.dept_name = instructor.dept_name\nJOIN student ON department.dept_name = student.dept_name\nWHERE instructor.name = 'Pimenta' AND department.building = 'Mercer'",
+      "pred_sql": "SELECT DISTINCT T1.dept_name\nFROM department AS T1\nINNER JOIN instructor AS T2\n  ON T1.dept_name = T2.dept_name\nINNER JOIN student AS T3\n  ON T1.dept_name = T3.dept_name\nWHERE\n  T1.building = 'Mercer' AND T2.name = 'Pimenta'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.47
+    },
+    {
+      "uid": "8395a147-fb96-46d2-b5c8-3526196d3ebd",
+      "question": "Which departments have a budget of 573745.09 and are located in Whitman, offering the Calculus course with 4 credits, and have a student named Szczerban with at most 97 total credits?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN course ON department.dept_name = course.dept_name\nJOIN student ON department.dept_name = student.dept_name\nWHERE student.name = 'Szczerban' AND course.credits = 4 AND department.budget = 573745.09 AND department.building = 'Whitman' AND course.title = 'Calculus' AND student.tot_cred <= 97",
+      "pred_sql": "SELECT T1.dept_name FROM department AS T1 WHERE T1.budget = 573745.09 AND T1.building = 'Whitman' AND EXISTS ( SELECT 1 FROM course AS T2 WHERE T2.dept_name = T1.dept_name AND T2.title = 'Calculus' AND T2.credits = 4 ) AND EXISTS ( SELECT 1 FROM student AS T3 WHERE T3.dept_name = T1.dept_name AND T3.name = 'Szczerban' AND T3.tot_cred <= 97 )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.81
+    },
+    {
+      "uid": "862f2a1b-4cc6-4187-966f-0da6aa6e7dc7",
+      "question": "Which departments are located in the Candlestick building and have instructors earning at least 45538.32?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN instructor ON department.dept_name = instructor.dept_name\nWHERE department.building = 'Candlestick' AND instructor.salary >= 45538.32",
+      "pred_sql": "SELECT T1.dept_name FROM department AS T1 INNER JOIN instructor AS T2 ON T1.dept_name = T2.dept_name WHERE T1.building = 'Candlestick' AND T2.salary >= 45538.32",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.55
+    },
+    {
+      "uid": "8b83aff6-7be4-4e0f-beab-e609b4a7bbed",
+      "question": "Which departments are located in the Taylor building and have an instructor named Pingr earning at most 59303.62, along with students who have at most 95 total credits?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN instructor ON department.dept_name = instructor.dept_name\nJOIN student ON department.dept_name = student.dept_name\nWHERE department.building = 'Taylor' AND instructor.name = 'Pingr' AND student.tot_cred <= 95 AND instructor.salary <= 59303.62",
+      "pred_sql": "SELECT T1.dept_name FROM department AS T1 WHERE T1.building = 'Taylor' AND EXISTS ( SELECT 1 FROM instructor AS T2 WHERE T2.dept_name = T1.dept_name AND T2.name = 'Pingr' AND T2.salary <= 59303.62 ) AND EXISTS ( SELECT 1 FROM student AS T3 WHERE T3.dept_name = T1.dept_name AND T3.tot_cred <= 95 )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.69
+    },
+    {
+      "uid": "a106fd54-c4d0-4e64-8427-f76f1c92626b",
+      "question": "Which departments are located in the Thompson building with a budget of at most 848175.04?",
+      "gold_sql": "SELECT department.dept_name FROM department\nWHERE department.building = 'Thompson' AND department.budget <= 848175.04",
+      "pred_sql": "SELECT dept_name FROM department WHERE building = 'Thompson' AND budget <= 848175.04",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    },
+    {
+      "uid": "b513c89e-25fb-4436-9df8-578dfa4fc763",
+      "question": "Which departments are located in the Thompson building with a budget exactly equal to 848175.04?",
+      "gold_sql": "SELECT department.dept_name FROM department\nWHERE department.building = 'Thompson' AND department.budget = 848175.04",
+      "pred_sql": "SELECT dept_name FROM department WHERE building = 'Thompson' AND budget = 848175.04",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    },
+    {
+      "uid": "ce7e2939-46b4-42ab-b3b4-aaf56b8e95ac",
+      "question": "Which departments located in Linderman have a budget of at least 601283.6 and include an instructor named Konstantinides earning at most 32570.5?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN instructor ON department.dept_name = instructor.dept_name\nWHERE instructor.name = 'Konstantinides' AND instructor.salary <= 32570.5 AND department.budget >= 601283.6 AND department.building = 'Linderman'",
+      "pred_sql": "SELECT T1.dept_name FROM department AS T1 INNER JOIN instructor AS T2 ON T1.dept_name = T2.dept_name WHERE T1.building = 'Linderman' AND T1.budget >= 601283.6 AND T2.name = 'Konstantinides' AND T2.salary <= 32570.5",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "uid": "d046b3cd-50f1-4d88-9707-96363d9257d3",
+      "question": "Which departments have a budget of at least 441840.92 and offer the 3-credit course titled Astronautics, where the instructor named Hau teaches and the student named Ashmi has at most 95 total credits?",
+      "gold_sql": "SELECT department.dept_name FROM department\nJOIN course ON department.dept_name = course.dept_name\nJOIN instructor ON department.dept_name = instructor.dept_name\nJOIN student ON department.dept_name = student.dept_name\nWHERE department.budget >= 441840.92 AND course.credits = 3 AND student.tot_cred <= 95 AND instructor.name = 'Hau' AND student.name = 'Ashmi' AND course.title = 'Astronautics'",
+      "pred_sql": "SELECT DISTINCT T1.dept_name\nFROM department AS T1\nINNER JOIN course AS T2\n  ON T1.dept_name = T2.dept_name\nINNER JOIN section AS T3\n  ON T2.course_id = T3.course_id\nINNER JOIN teaches AS T4\n  ON T3.course_id = T4.course_id\n  AND T3.sec_id = T4.sec_id\n  AND T3.semester = T4.semester\n  AND T3.year = T4.year\nINNER JOIN instructor AS T5\n  ON T4.ID = T5.ID\nINNER JOIN student AS T6\n  ON T1.dept_name = T6.dept_name\nWHERE\n  T1.budget >= 441840.92 AND T2.title = 'Astronautics' AND T2.credits = 3 AND T5.name = 'Hau' AND T6.name = 'Ashmi' AND T6.tot_cred <= 95",
+      "strategy": "3iH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 9.17
+    }
+  ]
+}

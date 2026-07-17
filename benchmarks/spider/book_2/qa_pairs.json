@@ -1,0 +1,3155 @@
+{
+ "db_id": "book_2",
+ "target_table": "book",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1380103726,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/book_2/book_2.sqlite",
+  "generated_at": "2026-07-02T15:26:26.246940+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "book",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 13,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "near-identical question already generated in this run"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "cb3dcb2c-58f9-4c2b-94f0-170d9cba8d92",
+   "question": "What books titled The Black Lamb have at least 6 issues?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.title = 'The Black Lamb' AND book.issues >= 6.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Black Lamb",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.title": "The Black Lamb",
+    "book.issues": 6.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'The Black Lamb' and issues at least '6.0'?"
+  },
+  {
+   "uid": "3f562bc8-6c39-4d4b-8f14-eef48b0ae79b",
+   "question": "Which books have exactly 12.0 issues?",
+   "answer_row_ids": [
+    5,
+    9
+   ],
+   "answer_count": 2,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues = 12.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 12.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues equal to '12.0'?"
+  },
+  {
+   "uid": "70e040e9-6f71-44ff-91f5-88e1ca18a3b6",
+   "question": "Which books are written by Garth Ennis and have at least 4 issues?",
+   "answer_row_ids": [
+    2,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Garth Ennis' AND book.issues >= 4.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Garth Ennis",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 4.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Garth Ennis",
+    "book.issues": 4.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Garth Ennis' and issues at least '4.0'?"
+  },
+  {
+   "uid": "6797f18a-d1b2-4245-b2dd-f1478bf6fcde",
+   "question": "Which books have exactly 6 issues and were written by Timothy Truman?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Timothy Truman' AND book.issues = 6.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Timothy Truman",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 6.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Timothy Truman",
+    "book.issues": 6.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Timothy Truman' and issues equal to '6.0'?"
+  },
+  {
+   "uid": "77e3a2f6-4d1f-405d-a202-dc44d5ee718d",
+   "question": "Which books are written by Howard Chaykin?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Howard Chaykin'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Howard Chaykin",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Howard Chaykin"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Howard Chaykin'?"
+  },
+  {
+   "uid": "20071060-7778-410a-a4a8-3af17eaaaab6",
+   "question": "Which books have the title exactly The Black Lamb?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.title = 'The Black Lamb'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Black Lamb",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "The Black Lamb"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'The Black Lamb'?"
+  },
+  {
+   "uid": "8bfbb0a5-bf55-4802-a21a-f2651d062cba",
+   "question": "Which books are written by Christopher Moeller?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Christopher Moeller'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Christopher Moeller"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Christopher Moeller'?"
+  },
+  {
+   "uid": "7b7e2b74-a77e-47c7-9012-3f7f1e8d1350",
+   "question": "Which books have the title exactly as Bloody Mary?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.title = 'Bloody Mary'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Bloody Mary",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Bloody Mary"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Bloody Mary'?"
+  },
+  {
+   "uid": "85be8a7f-a0c6-42e4-971c-47a817c04324",
+   "question": "What books written by Christopher Moeller have the title Sheva's War?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Christopher Moeller' AND book.title = 'Sheva''s War'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Christopher Moeller",
+    "book.title": "Sheva's War"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Christopher Moeller' and title equal to 'Sheva'?"
+  },
+  {
+   "uid": "a32208f3-cd8c-4c7a-96cf-7ef6360296a1",
+   "question": "Which books titled BrainBanx have no more than 6.0 issues?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues <= 6.0 AND book.title = 'BrainBanx'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "BrainBanx",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 6.0,
+    "book.title": "BrainBanx"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at most '6.0' and title equal to 'BrainBanx'?"
+  },
+  {
+   "uid": "6f9602c2-c1b1-474e-a9bd-977bfe2b8a44",
+   "question": "Which books titled The Black Lamb written by Timothy Truman have at most 6.0 issues?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues <= 6.0 AND book.title = 'The Black Lamb' AND book.writer = 'Timothy Truman'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.title",
+    "book.writer"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Black Lamb",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Timothy Truman",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 6.0,
+    "book.title": "The Black Lamb",
+    "book.writer": "Timothy Truman"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at most '6.0' and title equal to 'The Black Lamb' and writer equal to 'Timothy Truman'?"
+  },
+  {
+   "uid": "19ba36b4-7e29-49fc-9217-e7707df42fd5",
+   "question": "Which books titled Dead Corps written by Christopher Hinz have at most 4.0 issues?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.title = 'Dead Corps' AND book.issues <= 4.0 AND book.writer = 'Christopher Hinz'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.issues",
+    "book.writer"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Dead Corps",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Hinz",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Dead Corps",
+    "book.issues": 4.0,
+    "book.writer": "Christopher Hinz"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Dead Corps' and issues at most '4.0' and writer equal to 'Christopher Hinz'?"
+  },
+  {
+   "uid": "35113851-488b-4b19-a543-e61b262dfbb8",
+   "question": "Which books written by Dave Gibbons have the title The Dome: Ground Zero and contain at most 1 issue?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Dave Gibbons' AND book.title = 'The Dome: Ground Zero' AND book.issues <= 1.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.title",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Dave Gibbons",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Dome: Ground Zero",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Dave Gibbons",
+    "book.title": "The Dome: Ground Zero",
+    "book.issues": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Dave Gibbons' and title equal to 'The Dome: Ground Zero' and issues at most '1.0'?"
+  },
+  {
+   "uid": "27f5b7c7-4301-42b4-8974-10e66945c688",
+   "question": "Which books titled Sheva's War written by Christopher Moeller have at least 5.0 issues?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues >= 5.0 AND book.writer = 'Christopher Moeller' AND book.title = 'Sheva''s War'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.writer",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 5.0,
+    "book.writer": "Christopher Moeller",
+    "book.title": "Sheva's War"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at least '5.0' and writer equal to 'Christopher Moeller' and title equal to 'Sheva'?"
+  },
+  {
+   "uid": "b975fe48-0ac8-4fcd-8286-e9322bf86038",
+   "question": "Which books titled Dead Corps were written by Christopher Hinz and have at most 4.0 issues?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues <= 4.0 AND book.writer = 'Christopher Hinz' AND book.title = 'Dead Corps'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.writer",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Hinz",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Dead Corps",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 4.0,
+    "book.writer": "Christopher Hinz",
+    "book.title": "Dead Corps"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at most '4.0' and writer equal to 'Christopher Hinz' and title equal to 'Dead Corps'?"
+  },
+  {
+   "uid": "de216759-5705-431b-ba15-4299c3d89200",
+   "question": "What books titled Michael Moorcock's Multiverse have exactly 12.0 issues and where the writer is Michael Moorcock?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues = 12.0 AND book.writer = 'Michael Moorcock' AND book.title = 'Michael Moorcock''s Multiverse'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.writer",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Michael Moorcock",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Michael Moorcock's Multiverse",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 12.0,
+    "book.writer": "Michael Moorcock",
+    "book.title": "Michael Moorcock's Multiverse"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues equal to '12.0' and writer equal to 'Michael Moorcock' and title equal to 'Michael Moorcock'?"
+  },
+  {
+   "uid": "7f78eae8-b186-4b62-9554-81a74fb44b16",
+   "question": "Which books written by Dave Gibbons have the title The Dome: Ground Zero and exactly 1.0 issues?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.title = 'The Dome: Ground Zero' AND book.writer = 'Dave Gibbons' AND book.issues = 1.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.writer",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Dome: Ground Zero",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Dave Gibbons",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.title": "The Dome: Ground Zero",
+    "book.writer": "Dave Gibbons",
+    "book.issues": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'The Dome: Ground Zero' and writer equal to 'Dave Gibbons' and issues equal to '1.0'?"
+  },
+  {
+   "uid": "abc31ece-e3ef-4c31-9164-29fef32c879f",
+   "question": "What books titled The Dome: Ground Zero were written by Dave Gibbons and have at most 1.0 issues?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.writer = 'Dave Gibbons' AND book.issues <= 1.0 AND book.title = 'The Dome: Ground Zero'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Dave Gibbons",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Dome: Ground Zero",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Dave Gibbons",
+    "book.issues": 1.0,
+    "book.title": "The Dome: Ground Zero"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Dave Gibbons' and issues at most '1.0' and title equal to 'The Dome: Ground Zero'?"
+  },
+  {
+   "uid": "02e21b08-f4c5-4f8e-885d-4f0162d80168",
+   "question": "Which books titled Michael Moorcock's Multiverse are written by Michael Moorcock and have at least 12 issues?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.title = 'Michael Moorcock''s Multiverse' AND book.issues >= 12.0 AND book.writer = 'Michael Moorcock'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.issues",
+    "book.writer"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Michael Moorcock's Multiverse",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Michael Moorcock",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Michael Moorcock's Multiverse",
+    "book.issues": 12.0,
+    "book.writer": "Michael Moorcock"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Michael Moorcock' and issues at least '12.0' and writer equal to 'Michael Moorcock'?"
+  },
+  {
+   "uid": "ea689a24-ff3b-4272-8726-9fa1eb606acf",
+   "question": "What books titled BrainBanx are written by Elaine Lee and have at least 6.0 issues?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nWHERE book.issues >= 6.0 AND book.writer = 'Elaine Lee' AND book.title = 'BrainBanx'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.writer",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Elaine Lee",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "BrainBanx",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 6.0,
+    "book.writer": "Elaine Lee",
+    "book.title": "BrainBanx"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at least '6.0' and writer equal to 'Elaine Lee' and title equal to 'BrainBanx'?"
+  },
+  {
+   "uid": "13106cae-afb0-4ef1-9b28-c5febc52c725",
+   "question": "What books have the title Cyberella and exactly 12.0 issues?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.title = 'Cyberella' AND book.issues = 12.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Cyberella",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Cyberella",
+    "book.issues": 12.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Cyberella' and issues equal to '12.0', having at least one related publication record (linked on book.book_id = publication.book_id)?"
+  },
+  {
+   "uid": "e58f1499-1a8f-44d0-ac9c-5c3f7143891f",
+   "question": "Which books were published by Wiley in June 2006?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.publisher = 'Wiley' AND publication.publication_date = 'June 2006'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.publisher",
+    "publication.publication_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Wiley",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "June 2006",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.publisher": "Wiley",
+    "publication.publication_date": "June 2006"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities having at least one related publication record (linked on book.book_id = publication.book_id) with publisher equal to 'Wiley' and publication date equal to 'June 2006'?"
+  },
+  {
+   "uid": "e21c2f52-3a8e-4621-b093-f3468ceba770",
+   "question": "Which books have Howard Chaykin as the writer?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Howard Chaykin'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Howard Chaykin",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Howard Chaykin"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Howard Chaykin', having at least one related publication record (linked on book.book_id = publication.book_id)?"
+  },
+  {
+   "uid": "b4632bc6-ebf3-4654-9dbc-a82ed3e76957",
+   "question": "Which books have the title Sheva's War?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.title = 'Sheva''s War'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Sheva's War"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Sheva', having at least one related publication record (linked on book.book_id = publication.book_id)?"
+  },
+  {
+   "uid": "dbe1c21f-77bd-4b26-bace-d2028f790305",
+   "question": "Which books have exactly 6 issues and a price of at most 4100000.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price <= 4100000.0 AND book.issues = 6.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.price",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "<=",
+     "value": 4100000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 6.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "publication.price": 4100000.0,
+    "book.issues": 6.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues equal to '6.0', having at least one related publication record (linked on book.book_id = publication.book_id) with price at most '4100000.0'?"
+  },
+  {
+   "uid": "18ee436a-766e-4264-bbd7-b895738c59e2",
+   "question": "Which books have a publication price of at least 2000000.0?",
+   "answer_row_ids": [
+    1,
+    3,
+    4,
+    5,
+    7,
+    9,
+    10
+   ],
+   "answer_count": 7,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price >= 2000000.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.price"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": ">=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "publication.price": 2000000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities having at least one related publication record (linked on book.book_id = publication.book_id) with price at least '2000000.0'?"
+  },
+  {
+   "uid": "5226348f-3c69-4e27-bd24-34b0e5c5477b",
+   "question": "Which books have the title Cyberella?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.title = 'Cyberella'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Cyberella",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Cyberella"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Cyberella', having at least one related publication record (linked on book.book_id = publication.book_id)?"
+  },
+  {
+   "uid": "b03af622-59fa-487f-b681-65afe7a9d16c",
+   "question": "Which books were published by Thomson Reuters?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.publisher = 'Thomson Reuters'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Thomson Reuters",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.publisher": "Thomson Reuters"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities having at least one related publication record (linked on book.book_id = publication.book_id) with publisher equal to 'Thomson Reuters'?"
+  },
+  {
+   "uid": "d812d9fb-7661-4a19-96f2-e5c4d599deb8",
+   "question": "Which books have a price of at most 2000000.0?",
+   "answer_row_ids": [
+    9,
+    10
+   ],
+   "answer_count": 2,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price <= 2000000.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.price"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "<=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "publication.price": 2000000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities having at least one related publication record (linked on book.book_id = publication.book_id) with price at most '2000000.0'?"
+  },
+  {
+   "uid": "49f0b507-0a84-4808-b775-00a3b9346275",
+   "question": "Which books were published in October 2005?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.publication_date = 'October 2005'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.publication_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "October 2005",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.publication_date": "October 2005"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'October 2005'?"
+  },
+  {
+   "uid": "def709e5-ae8d-41b6-8087-c0e1a8a20619",
+   "question": "Which books titled Sheva's War by Christopher Moeller were published by Bertelsmann in April 2007, priced exactly 2000000.0, with at most 5.0 issues?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.issues <= 5.0 AND publication.publication_date = 'April 2007' AND publication.price = 2000000.0 AND book.writer = 'Christopher Moeller' AND book.title = 'Sheva''s War' AND publication.publisher = 'Bertelsmann'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "publication.publication_date",
+    "publication.price",
+    "book.writer",
+    "book.title",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "April 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Bertelsmann",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 5.0,
+    "publication.publication_date": "April 2007",
+    "publication.price": 2000000.0,
+    "book.writer": "Christopher Moeller",
+    "book.title": "Sheva's War",
+    "publication.publisher": "Bertelsmann"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at most '5.0' and writer equal to 'Christopher Moeller' and title equal to 'Sheva', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'April 2007' and price equal to '2000000.0' and publisher equal to 'Bertelsmann'?"
+  },
+  {
+   "uid": "e71295aa-cae0-4517-bab9-dc3bc884b06d",
+   "question": "Which books titled Sheva's War, written by Christopher Moeller with at least 5 issues, were published by Bertelsmann in April 2007 at a price of 2000000.0?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Christopher Moeller' AND book.issues >= 5.0 AND book.title = 'Sheva''s War' AND publication.publisher = 'Bertelsmann' AND publication.price = 2000000.0 AND publication.publication_date = 'April 2007'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues",
+    "book.title",
+    "publication.publisher",
+    "publication.price",
+    "publication.publication_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Bertelsmann",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "April 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Christopher Moeller",
+    "book.issues": 5.0,
+    "book.title": "Sheva's War",
+    "publication.publisher": "Bertelsmann",
+    "publication.price": 2000000.0,
+    "publication.publication_date": "April 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Christopher Moeller' and issues at least '5.0' and title equal to 'Sheva', having at least one related publication record (linked on book.book_id = publication.book_id) with publisher equal to 'Bertelsmann' and price equal to '2000000.0' and publication date equal to 'April 2007'?"
+  },
+  {
+   "uid": "166990c4-bdfe-4827-b588-16b18a785ad9",
+   "question": "Which books titled The Black Lamb, written by Timothy Truman, have exactly 6 issues and were published by Pearson in August 2008 at a price of 15000000.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.issues = 6.0 AND publication.publication_date = 'August 2008' AND book.title = 'The Black Lamb' AND publication.price = 15000000.0 AND book.writer = 'Timothy Truman' AND publication.publisher = 'Pearson'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "publication.publication_date",
+    "book.title",
+    "publication.price",
+    "book.writer",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "August 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Black Lamb",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 15000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Timothy Truman",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Pearson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 6.0,
+    "publication.publication_date": "August 2008",
+    "book.title": "The Black Lamb",
+    "publication.price": 15000000.0,
+    "book.writer": "Timothy Truman",
+    "publication.publisher": "Pearson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues equal to '6.0' and title equal to 'The Black Lamb' and writer equal to 'Timothy Truman', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'August 2008' and price equal to '15000000.0' and publisher equal to 'Pearson'?"
+  },
+  {
+   "uid": "4bc0c757-fc5e-4ad3-ae1f-6121b9e009de",
+   "question": "Which books titled Sheva's War, written by Christopher Moeller with at most 5 issues, were published by Bertelsmann in April 2007 at a price of 2000000.0?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.title = 'Sheva''s War' AND publication.publisher = 'Bertelsmann' AND publication.publication_date = 'April 2007' AND book.issues <= 5.0 AND book.writer = 'Christopher Moeller' AND publication.price = 2000000.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "publication.publisher",
+    "publication.publication_date",
+    "book.issues",
+    "book.writer",
+    "publication.price"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Bertelsmann",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "April 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Sheva's War",
+    "publication.publisher": "Bertelsmann",
+    "publication.publication_date": "April 2007",
+    "book.issues": 5.0,
+    "book.writer": "Christopher Moeller",
+    "publication.price": 2000000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Sheva' and issues at most '5.0' and writer equal to 'Christopher Moeller', having at least one related publication record (linked on book.book_id = publication.book_id) with publisher equal to 'Bertelsmann' and publication date equal to 'April 2007' and price equal to '2000000.0'?"
+  },
+  {
+   "uid": "89fbb6da-e1e4-4d3d-8eb8-a68c20d6481d",
+   "question": "Which books titled Michael Moorcock's Multiverse, written by Michael Moorcock with exactly 12 issues, were published by Pearson in March 2007 at a price of 2000000.0?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.title = 'Michael Moorcock''s Multiverse' AND book.issues = 12.0 AND publication.publication_date = 'March 2007' AND publication.price = 2000000.0 AND book.writer = 'Michael Moorcock' AND publication.publisher = 'Pearson'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.issues",
+    "publication.publication_date",
+    "publication.price",
+    "book.writer",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Michael Moorcock's Multiverse",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "March 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Michael Moorcock",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Pearson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Michael Moorcock's Multiverse",
+    "book.issues": 12.0,
+    "publication.publication_date": "March 2007",
+    "publication.price": 2000000.0,
+    "book.writer": "Michael Moorcock",
+    "publication.publisher": "Pearson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Michael Moorcock' and issues equal to '12.0' and writer equal to 'Michael Moorcock', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'March 2007' and price equal to '2000000.0' and publisher equal to 'Pearson'?"
+  },
+  {
+   "uid": "d625b612-e2ec-49c0-a525-390ff04c9830",
+   "question": "What books titled Cyberella, written by Howard Chaykin with at most 12 issues, were published by Wiley in October 2005 priced exactly 3000000.0?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Howard Chaykin' AND book.issues <= 12.0 AND publication.price = 3000000.0 AND publication.publication_date = 'October 2005' AND publication.publisher = 'Wiley' AND book.title = 'Cyberella'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues",
+    "publication.price",
+    "publication.publication_date",
+    "publication.publisher",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Howard Chaykin",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 3000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "October 2005",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Wiley",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Cyberella",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Howard Chaykin",
+    "book.issues": 12.0,
+    "publication.price": 3000000.0,
+    "publication.publication_date": "October 2005",
+    "publication.publisher": "Wiley",
+    "book.title": "Cyberella"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Howard Chaykin' and issues at most '12.0' and title equal to 'Cyberella', having at least one related publication record (linked on book.book_id = publication.book_id) with price equal to '3000000.0' and publication date equal to 'October 2005' and publisher equal to 'Wiley'?"
+  },
+  {
+   "uid": "2274f0e8-485a-44b5-93ab-47c33adeaf54",
+   "question": "Which books titled Michael Moorcock's Multiverse, written by Michael Moorcock, have exactly 12 issues and were published by Pearson in March 2007 at a price of 2000000.0?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.issues = 12.0 AND publication.price = 2000000.0 AND publication.publication_date = 'March 2007' AND book.writer = 'Michael Moorcock' AND publication.publisher = 'Pearson' AND book.title = 'Michael Moorcock''s Multiverse'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "publication.price",
+    "publication.publication_date",
+    "book.writer",
+    "publication.publisher",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "March 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Michael Moorcock",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Pearson",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Michael Moorcock's Multiverse",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 12.0,
+    "publication.price": 2000000.0,
+    "publication.publication_date": "March 2007",
+    "book.writer": "Michael Moorcock",
+    "publication.publisher": "Pearson",
+    "book.title": "Michael Moorcock's Multiverse"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues equal to '12.0' and writer equal to 'Michael Moorcock' and title equal to 'Michael Moorcock', having at least one related publication record (linked on book.book_id = publication.book_id) with price equal to '2000000.0' and publication date equal to 'March 2007' and publisher equal to 'Pearson'?"
+  },
+  {
+   "uid": "b79c3c53-fa33-4939-92f9-998b4354ad62",
+   "question": "Which books titled BrainBanx, written by Elaine Lee, have at least 6 issues and were published by Wiley in June 2006 with a price of 4100000.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Elaine Lee' AND publication.publication_date = 'June 2006' AND publication.price = 4100000.0 AND publication.publisher = 'Wiley' AND book.title = 'BrainBanx' AND book.issues >= 6.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "publication.publication_date",
+    "publication.price",
+    "publication.publisher",
+    "book.title",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Elaine Lee",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "June 2006",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 4100000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Wiley",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "BrainBanx",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Elaine Lee",
+    "publication.publication_date": "June 2006",
+    "publication.price": 4100000.0,
+    "publication.publisher": "Wiley",
+    "book.title": "BrainBanx",
+    "book.issues": 6.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Elaine Lee' and title equal to 'BrainBanx' and issues at least '6.0', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'June 2006' and price equal to '4100000.0' and publisher equal to 'Wiley'?"
+  },
+  {
+   "uid": "d139d938-4882-4643-9b6c-c3bece2a14f7",
+   "question": "Which books titled BrainBanx by Elaine Lee have at least 6 issues, were published by Wiley in June 2006, and cost exactly 4100000.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Elaine Lee' AND book.issues >= 6.0 AND publication.price = 4100000.0 AND book.title = 'BrainBanx' AND publication.publication_date = 'June 2006' AND publication.publisher = 'Wiley'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues",
+    "publication.price",
+    "book.title",
+    "publication.publication_date",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Elaine Lee",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 4100000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "BrainBanx",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "June 2006",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Wiley",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Elaine Lee",
+    "book.issues": 6.0,
+    "publication.price": 4100000.0,
+    "book.title": "BrainBanx",
+    "publication.publication_date": "June 2006",
+    "publication.publisher": "Wiley"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Elaine Lee' and issues at least '6.0' and title equal to 'BrainBanx', having at least one related publication record (linked on book.book_id = publication.book_id) with price equal to '4100000.0' and publication date equal to 'June 2006' and publisher equal to 'Wiley'?"
+  },
+  {
+   "uid": "1cf3aa9d-47ab-4858-b147-3c27917ff3b3",
+   "question": "Which books titled Bloody Mary : Lady Liberty, written by Garth Ennis with exactly 4 issues, were published by Thomson Reuters in March 2008 and priced at most 6000000.0?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price <= 6000000.0 AND book.title = 'Bloody Mary : Lady Liberty' AND publication.publication_date = 'March 2008' AND book.issues = 4.0 AND book.writer = 'Garth Ennis' AND publication.publisher = 'Thomson Reuters'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.price",
+    "book.title",
+    "publication.publication_date",
+    "book.issues",
+    "book.writer",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "<=",
+     "value": 6000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Bloody Mary : Lady Liberty",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "March 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Garth Ennis",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Thomson Reuters",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.price": 6000000.0,
+    "book.title": "Bloody Mary : Lady Liberty",
+    "publication.publication_date": "March 2008",
+    "book.issues": 4.0,
+    "book.writer": "Garth Ennis",
+    "publication.publisher": "Thomson Reuters"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Bloody Mary : Lady Liberty' and issues equal to '4.0' and writer equal to 'Garth Ennis', having at least one related publication record (linked on book.book_id = publication.book_id) with price at most '6000000.0' and publication date equal to 'March 2008' and publisher equal to 'Thomson Reuters'?"
+  },
+  {
+   "uid": "fa141bd9-5950-4d4b-8568-0a2711754085",
+   "question": "Which books titled Sheva's War, written by Christopher Moeller with exactly 5 issues, were published in April 2007 priced at most 2000000.0?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Christopher Moeller' AND book.issues = 5.0 AND publication.price <= 2000000.0 AND publication.publication_date = 'April 2007' AND book.title = 'Sheva''s War'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "book.issues",
+    "publication.price",
+    "publication.publication_date",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Christopher Moeller",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "<=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "April 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Christopher Moeller",
+    "book.issues": 5.0,
+    "publication.price": 2000000.0,
+    "publication.publication_date": "April 2007",
+    "book.title": "Sheva's War"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Christopher Moeller' and issues equal to '5.0' and title equal to 'Sheva', having at least one related publication record (linked on book.book_id = publication.book_id) with price at most '2000000.0' and publication date equal to 'April 2007'?"
+  },
+  {
+   "uid": "2cc0f979-4340-4fe9-82c8-b0b262c29140",
+   "question": "Which books titled Sheva's War have a price of exactly 2000000.0 and where the publisher is Bertelsmann?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price = 2000000.0 AND publication.publisher = 'Bertelsmann' AND book.title = 'Sheva''s War'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.price",
+    "publication.publisher",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Bertelsmann",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.price": 2000000.0,
+    "publication.publisher": "Bertelsmann",
+    "book.title": "Sheva's War"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Sheva', having at least one related publication record (linked on book.book_id = publication.book_id) with price equal to '2000000.0' and publisher equal to 'Bertelsmann'?"
+  },
+  {
+   "uid": "763d18fe-33f0-4de5-8245-f2a1d654c453",
+   "question": "Which books titled Sheva's War have at least 5 issues and were published in April 2007?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.title = 'Sheva''s War' AND book.issues >= 5.0 AND publication.publication_date = 'April 2007'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.title",
+    "book.issues",
+    "publication.publication_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Sheva's War",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "April 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.title": "Sheva's War",
+    "book.issues": 5.0,
+    "publication.publication_date": "April 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with title equal to 'Sheva' and issues at least '5.0', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'April 2007'?"
+  },
+  {
+   "uid": "c1e64f8f-be8c-4587-a163-867f025d2aa2",
+   "question": "Which books titled The Black Lamb, written by Timothy Truman, have at most 6 issues and a publication price of no more than 15000000?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.issues <= 6.0 AND book.writer = 'Timothy Truman' AND book.title = 'The Black Lamb' AND publication.price <= 15000000.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "book.writer",
+    "book.title",
+    "publication.price"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Timothy Truman",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Black Lamb",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "<=",
+     "value": 15000000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 6.0,
+    "book.writer": "Timothy Truman",
+    "book.title": "The Black Lamb",
+    "publication.price": 15000000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at most '6.0' and writer equal to 'Timothy Truman' and title equal to 'The Black Lamb', having at least one related publication record (linked on book.book_id = publication.book_id) with price at most '15000000.0'?"
+  },
+  {
+   "uid": "c788fc6f-6164-4ed8-ad14-80e4cbb934f2",
+   "question": "Which books titled Michael Moorcock's Multiverse published by Pearson in March 2007 have at most 12 issues?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.issues <= 12.0 AND publication.publisher = 'Pearson' AND book.title = 'Michael Moorcock''s Multiverse' AND publication.publication_date = 'March 2007'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.issues",
+    "publication.publisher",
+    "book.title",
+    "publication.publication_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": "<=",
+     "value": 12.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Pearson",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Michael Moorcock's Multiverse",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "March 2007",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.issues": 12.0,
+    "publication.publisher": "Pearson",
+    "book.title": "Michael Moorcock's Multiverse",
+    "publication.publication_date": "March 2007"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with issues at most '12.0' and title equal to 'Michael Moorcock', having at least one related publication record (linked on book.book_id = publication.book_id) with publisher equal to 'Pearson' and publication date equal to 'March 2007'?"
+  },
+  {
+   "uid": "41e5e6ad-f42c-4200-8ada-289127c77624",
+   "question": "Which books published by Bertelsmann in April 2007 have a price of exactly 2000000.0?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price = 2000000.0 AND publication.publication_date = 'April 2007' AND publication.publisher = 'Bertelsmann'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.price",
+    "publication.publication_date",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "=",
+     "value": 2000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "April 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Bertelsmann",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.price": 2000000.0,
+    "publication.publication_date": "April 2007",
+    "publication.publisher": "Bertelsmann"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities having at least one related publication record (linked on book.book_id = publication.book_id) with price equal to '2000000.0' and publication date equal to 'April 2007' and publisher equal to 'Bertelsmann'?"
+  },
+  {
+   "uid": "ee1e425c-9e5b-4458-916b-41656ba7a93f",
+   "question": "Which books titled The Black Lamb, written by Timothy Truman and published by Pearson in August 2008, cost at most 15000000?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.publisher = 'Pearson' AND book.writer = 'Timothy Truman' AND publication.price <= 15000000.0 AND book.title = 'The Black Lamb' AND publication.publication_date = 'August 2008'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.publisher",
+    "book.writer",
+    "publication.price",
+    "book.title",
+    "publication.publication_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Pearson",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Timothy Truman",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "price",
+     "operator": "<=",
+     "value": 15000000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "The Black Lamb",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "August 2008",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "publication.publisher": "Pearson",
+    "book.writer": "Timothy Truman",
+    "publication.price": 15000000.0,
+    "book.title": "The Black Lamb",
+    "publication.publication_date": "August 2008"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Timothy Truman' and title equal to 'The Black Lamb', having at least one related publication record (linked on book.book_id = publication.book_id) with publisher equal to 'Pearson' and price at most '15000000.0' and publication date equal to 'August 2008'?"
+  },
+  {
+   "uid": "4a505d93-3d9b-4e44-aa41-28ab986caa23",
+   "question": "What books titled BrainBanx, written by Elaine Lee, have at least 6 issues and were published by Wiley in June 2006?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Elaine Lee' AND publication.publication_date = 'June 2006' AND book.issues >= 6.0 AND publication.publisher = 'Wiley' AND book.title = 'BrainBanx'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "publication.publication_date",
+    "book.issues",
+    "publication.publisher",
+    "book.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Elaine Lee",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "June 2006",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Wiley",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "BrainBanx",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Elaine Lee",
+    "publication.publication_date": "June 2006",
+    "book.issues": 6.0,
+    "publication.publisher": "Wiley",
+    "book.title": "BrainBanx"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Elaine Lee' and issues at least '6.0' and title equal to 'BrainBanx', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'June 2006' and publisher equal to 'Wiley'?"
+  },
+  {
+   "uid": "81d8fd7a-5b0a-48d4-afab-3614fd174ddb",
+   "question": "Which books written by Garth Ennis have at least 4 issues and were published in March 2008?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.publication_date = 'March 2008' AND book.writer = 'Garth Ennis' AND book.issues >= 4.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "publication.publication_date",
+    "book.writer",
+    "book.issues"
+   ],
+   "involved_filters": [
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "March 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Garth Ennis",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 4.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "publication.publication_date": "March 2008",
+    "book.writer": "Garth Ennis",
+    "book.issues": 4.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Garth Ennis' and issues at least '4.0', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'March 2008'?"
+  },
+  {
+   "uid": "d0ac0283-bdc9-493e-b8da-42f0094b21f5",
+   "question": "Which books titled Bloody Mary : Lady Liberty, written by Garth Ennis and published by Thomson Reuters in March 2008, have at least 4 issues?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Garth Ennis' AND publication.publication_date = 'March 2008' AND book.issues >= 4.0 AND book.title = 'Bloody Mary : Lady Liberty' AND publication.publisher = 'Thomson Reuters'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "publication",
+    "book"
+   ],
+   "involved_columns": [
+    "book.writer",
+    "publication.publication_date",
+    "book.issues",
+    "book.title",
+    "publication.publisher"
+   ],
+   "involved_filters": [
+    {
+     "table": "book",
+     "column": "writer",
+     "operator": "=",
+     "value": "Garth Ennis",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publication_date",
+     "operator": "=",
+     "value": "March 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "book",
+     "column": "issues",
+     "operator": ">=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "book",
+     "column": "title",
+     "operator": "=",
+     "value": "Bloody Mary : Lady Liberty",
+     "column_type": "enum"
+    },
+    {
+     "table": "publication",
+     "column": "publisher",
+     "operator": "=",
+     "value": "Thomson Reuters",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "book.writer": "Garth Ennis",
+    "publication.publication_date": "March 2008",
+    "book.issues": 4.0,
+    "book.title": "Bloody Mary : Lady Liberty",
+    "publication.publisher": "Thomson Reuters"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "book"
+   },
+   "answer_table": "book",
+   "answer_id_column": "book_id",
+   "canonical_question": "Which book entities with writer equal to 'Garth Ennis' and issues at least '4.0' and title equal to 'Bloody Mary : Lady Liberty', having at least one related publication record (linked on book.book_id = publication.book_id) with publication date equal to 'March 2008' and publisher equal to 'Thomson Reuters'?"
+  }
+ ]
+}

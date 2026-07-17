@@ -1,0 +1,124 @@
+{
+  "db_id": "music_4",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:12:57.583122+00:00",
+  "records": [
+    {
+      "uid": "0916dabb-4cb0-4e6f-8579-dc138d52a878",
+      "question": "Which artist has the famous title Transmutation released exactly on January 21, 2008, and is named Ophiolatry?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.famous_release_date = 'January 21, 2008' AND artist.artist = 'Ophiolatry' AND artist.famous_title = 'Transmutation'",
+      "pred_sql": "SELECT Artist_ID \nFROM artist \nWHERE Famous_Release_date = 'January 21, 2008' \n  AND Artist = 'Ophiolatry' \n  AND Famous_Title = 'Transmutation'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 32.75
+    },
+    {
+      "uid": "1e4b5ab5-478f-4f84-8f0d-17cdef1915cf",
+      "question": "What artists named Gorgoroth, aged at least 34, with the famous title Bergen 1996 and famous release date November 2007, had a volume issue 46:5 released on 9 May that stayed at least 1 week on top?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:5' AND volume.issue_date = '9 May' AND artist.artist = 'Gorgoroth' AND artist.age >= 34 AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top >= 1.0 AND artist.famous_release_date = 'November 2007'",
+      "pred_sql": "SELECT artist.artist_id\nFROM artist\nINNER JOIN volume ON artist.Artist_ID = volume.Artist_ID\nWHERE artist.Artist = 'Gorgoroth'\n  AND artist.Age >= 34\n  AND artist.Famous_Title = 'Bergen 1996'\n  AND artist.Famous_Release_date = 'November 2007'\n  AND volume.Volume_Issue = '46:5'\n  AND volume.Issue_Date = '9 May'\n  AND volume.Weeks_on_Top >= 1.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 50.94
+    },
+    {
+      "uid": "3afe8f2e-38e5-4724-80f8-cb72d47ce5f1",
+      "question": "Which artists named Triumfall are at least 49 years old and have the famous title Antithesis of All Flesh?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 49 AND artist.famous_title = 'Antithesis of All Flesh' AND artist.artist = 'Triumfall'",
+      "pred_sql": "SELECT Artist_ID\nFROM artist\nWHERE Age >= 49\n  AND Famous_Title = 'Antithesis of All Flesh'\n  AND Artist = 'Triumfall'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 32.63
+    },
+    {
+      "uid": "3c9a2aad-6be3-4559-a3f8-56c04983b789",
+      "question": "Which artists with the famous title Bergen 1996 have volumes from issue 45:16 that spent at most 1.0 week on top?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '45:16' AND artist.famous_title = 'Bergen 1996' AND volume.weeks_on_top <= 1.0",
+      "pred_sql": "SELECT artist.artist_id\nFROM artist\nINNER JOIN volume ON artist.Artist_ID = volume.Artist_ID\nWHERE artist.Famous_Title = 'Bergen 1996'\n  AND volume.Volume_Issue = '45:16'\n  AND volume.Weeks_on_Top <= 1.0",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 43.99
+    },
+    {
+      "uid": "8cdc7142-ee5c-47f4-9974-601e5392832f",
+      "question": "Who are the artists aged at least 18 whose famous title is exactly Imperivm?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.age >= 18 AND artist.famous_title = 'Imperivm'",
+      "pred_sql": "SELECT Artist_ID \nFROM artist \nWHERE Age >= 18 AND Famous_Title = 'Imperivm'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 17.61
+    },
+    {
+      "uid": "94238bd5-6284-4bae-a15f-ade511e716a4",
+      "question": "Who are the artists named Black Flame who are at most 18 years old?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nWHERE artist.artist = 'Black Flame' AND artist.age <= 18",
+      "pred_sql": "SELECT Artist_ID \nFROM artist \nWHERE Artist = 'Black Flame' AND Age <= 18",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 20.84
+    },
+    {
+      "uid": "b8de33cd-0d36-4bbf-a91f-deccf27762eb",
+      "question": "Who are the artists with at least 1.0 weeks on top in volume issue 46:10?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.volume_issue = '46:10' AND volume.weeks_on_top >= 1.0",
+      "pred_sql": "SELECT DISTINCT artist.Artist_ID\nFROM artist\nINNER JOIN volume ON artist.Artist_ID = volume.Artist_ID\nWHERE volume.Volume_Issue = '46:10'\n  AND volume.Weeks_on_Top >= 1.0",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 44.54
+    },
+    {
+      "uid": "e2d050da-22ed-4059-aa2f-10a820dc323c",
+      "question": "Which artists have volumes with an issue date exactly 13 June?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE volume.issue_date = '13 June'",
+      "pred_sql": "SELECT artist.Artist_ID\nFROM artist\nINNER JOIN volume ON artist.Artist_ID = volume.Artist_ID\nWHERE volume.Issue_Date = '13 June'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 34.77
+    },
+    {
+      "uid": "ebee4165-4e22-4ca3-8bdc-7b4b5172d8d8",
+      "question": "Which artists named Black Flame, who are at most 18 years old and have the famous title Imperivm released exactly on June 23, 2008, appeared in volume 46:9 issued on 6 June with no more than 1.0 weeks on top?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.age <= 18 AND volume.weeks_on_top <= 1.0 AND artist.artist = 'Black Flame' AND artist.famous_title = 'Imperivm' AND volume.volume_issue = '46:9' AND volume.issue_date = '6 June' AND artist.famous_release_date = 'June 23, 2008'",
+      "pred_sql": "SELECT DISTINCT artist.Artist_ID\nFROM artist\nINNER JOIN volume ON artist.Artist_ID = volume.Artist_ID\nWHERE artist.Age <= 18\n  AND artist.Artist = 'Black Flame'\n  AND artist.Famous_Title = 'Imperivm'\n  AND artist.Famous_Release_date = 'June 23, 2008'\n  AND volume.Weeks_on_Top <= 1.0\n  AND volume.Volume_Issue = '46:9'\n  AND volume.Issue_Date = '6 June'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 63.52
+    },
+    {
+      "uid": "fe8c5450-0a40-4f60-9794-d03a541b5a21",
+      "question": "What artists named Gorgoroth who are at most 34 years old have the famous title Bergen 1996 and have albums that stayed on top for at least 3 weeks?",
+      "gold_sql": "SELECT artist.artist_id FROM artist\nJOIN volume ON artist.artist_id = volume.artist_id\nWHERE artist.famous_title = 'Bergen 1996' AND artist.age <= 34 AND artist.artist = 'Gorgoroth' AND volume.weeks_on_top >= 3.0",
+      "pred_sql": "SELECT \n    artist.Artist_ID\nFROM \n    artist\nINNER JOIN \n    volume\nON \n    artist.Artist_ID = volume.Artist_ID\nWHERE \n    artist.Famous_Title = 'Bergen 1996'\n    AND artist.Age <= 34\n    AND artist.Artist = 'Gorgoroth'\n    AND volume.Weeks_on_Top >= 3.0\nGROUP BY \n    artist.Artist_ID\nHAVING \n    COUNT(volume.Volume_ID) >= 1",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 67.51
+    }
+  ]
+}

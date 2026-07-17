@@ -1,0 +1,124 @@
+{
+  "db_id": "machine_repair",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:26:55.036738+00:00",
+  "records": [
+    {
+      "uid": "01e96d3c-4592-42fc-b37e-4d2ae87e85c1",
+      "question": "Which machines belong to the team Givi Racing- Honda?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nWHERE machine.team = 'Givi Racing- Honda'",
+      "pred_sql": "SELECT Machine_ID FROM machine WHERE Team = 'Givi Racing- Honda'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.4
+    },
+    {
+      "uid": "1802d0a6-51bc-4b8a-9ba6-f21cbc962e04",
+      "question": "Which machines from 1993 belong to the Marlboro Pileri - Honda team in the 125cc class with a quality rank of at least 4 and value points at most 129.0?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nWHERE machine.making_year = 1993 AND machine.team = 'Marlboro Pileri - Honda' AND machine.class = '125cc' AND machine.quality_rank >= 4 AND machine.value_points <= 129.0",
+      "pred_sql": "SELECT Machine_ID FROM machine WHERE Making_Year = 1993 AND Team = 'Marlboro Pileri - Honda' AND Class = '125cc' AND quality_rank >= 4 AND value_points <= 129.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    },
+    {
+      "uid": "33b5f8a5-830e-4049-a21a-478e0538a519",
+      "question": "Which machines from the Marlboro Pileri - Honda team belong to the RS125 series, were made in 1993, have a quality rank of 4, are class 125cc, and have exactly 129.0 value points?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nWHERE machine.team = 'Marlboro Pileri - Honda' AND machine.machine_series = 'RS125' AND machine.quality_rank = 4 AND machine.making_year = 1993 AND machine.class = '125cc' AND machine.value_points = 129.0",
+      "pred_sql": "SELECT Machine_ID FROM machine WHERE Team = 'Marlboro Pileri - Honda' AND Machine_series = 'RS125' AND Making_Year = 1993 AND quality_rank = 4 AND Class = '125cc' AND value_points = 129.0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.84
+    },
+    {
+      "uid": "41478d29-52ab-4262-9c05-24a7d4bf28fc",
+      "question": "Which machines from the Marlboro Pileri - Honda team in the 125cc class and RS125 series were made in 1993 or earlier, have quality rank at most 4, value points no more than 129.0, and had a Discoverer 3 repair that failed to achieve orbit?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nJOIN repair ON repair_assignment.repair_id = repair.repair_id\nWHERE machine.quality_rank <= 4 AND machine.making_year <= 1993 AND machine.value_points <= 129.0 AND machine.machine_series = 'RS125' AND repair.notes = 'repair failed. Failed to achieve orbit' AND machine.team = 'Marlboro Pileri - Honda' AND machine.class = '125cc' AND repair.name = 'Discoverer 3'",
+      "pred_sql": "SELECT DISTINCT T1.Machine_ID FROM machine AS T1 INNER JOIN repair_assignment AS T2 ON T1.Machine_ID = T2.Machine_ID INNER JOIN repair AS T3 ON T2.repair_ID = T3.repair_ID WHERE T1.Team = 'Marlboro Pileri - Honda' AND T1.Class = '125cc' AND T1.Machine_series = 'RS125' AND T1.Making_Year <= 1993 AND T1.quality_rank <= 4 AND T1.value_points <= 129.0 AND T3.name = 'Discoverer 3' AND T3.Notes LIKE '%failed to achieve orbit%'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.01
+    },
+    {
+      "uid": "52017f3d-9e81-4a4b-95c6-f94e2cf928a8",
+      "question": "Which machines from the Honda team, with machine series RS125, making year at most 1997, and quality rank exactly 8, have been assigned repairs?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nWHERE machine.machine_series = 'RS125' AND machine.team = 'Honda' AND machine.making_year <= 1997 AND machine.quality_rank = 8",
+      "pred_sql": "SELECT T1.Machine_ID FROM machine AS T1 INNER JOIN repair_assignment AS T2 ON T1.Machine_ID = T2.Machine_ID WHERE T1.Team = 'Honda' AND T1.Machine_series = 'RS125' AND T1.Making_Year <= 1997 AND T1.quality_rank = 8",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.02
+    },
+    {
+      "uid": "61505c8a-0bf6-4d9b-82a1-b7f58ebd071d",
+      "question": "Which machines from the Marlboro Pileri - Honda team belong to the RS125 series, have a quality rank of at least 1, and are linked to the OPS 3467 repair launched on 24 Mar 2014?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nJOIN repair ON repair_assignment.repair_id = repair.repair_id\nWHERE machine.team = 'Marlboro Pileri - Honda' AND repair.launch_date = '24 Mar 2014' AND repair.name = 'OPS 3467' AND machine.machine_series = 'RS125' AND machine.quality_rank >= 1",
+      "pred_sql": "SELECT T1.Machine_ID FROM machine AS T1 INNER JOIN repair_assignment AS T2 ON T1.Machine_ID = T2.Machine_ID INNER JOIN repair AS T3 ON T2.repair_ID = T3.repair_ID WHERE T1.Team = 'Marlboro Pileri - Honda' AND T1.Machine_series = 'RS125' AND T1.quality_rank >= 1 AND T3.name = 'OPS 3467' AND T3.Launch_Date = '24 Mar 2014'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.56
+    },
+    {
+      "uid": "9510b177-a994-4716-9a3f-e80613cb8bdb",
+      "question": "Which machines belong to the Honda team and have the RS125 series?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nWHERE machine.machine_series = 'RS125' AND machine.team = 'Honda'",
+      "pred_sql": "SELECT Machine_ID FROM machine WHERE Team = 'Honda' AND Machine_series = 'RS125'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.41
+    },
+    {
+      "uid": "a769abf3-c114-4e1d-b662-66740cf65e20",
+      "question": "Which machines with a class of 125cc have a quality rank of at least 1 and are assigned to repairs?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nWHERE machine.quality_rank >= 1 AND machine.class = '125cc'",
+      "pred_sql": "SELECT T1.Machine_ID FROM machine AS T1 INNER JOIN repair_assignment AS T2 ON T1.Machine_ID = T2.Machine_ID WHERE T1.Class = '125cc' AND T1.quality_rank >= 1",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.67
+    },
+    {
+      "uid": "ac08e7f7-0914-4694-ab64-4b125c303f1f",
+      "question": "What machines from the 1994 RS125 series with a quality rank of 5, belonging to the Givi Racing- Honda team, are in the 125cc class and have value points of at least 194.0?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nWHERE machine.machine_series = 'RS125' AND machine.making_year = 1994 AND machine.quality_rank = 5 AND machine.team = 'Givi Racing- Honda' AND machine.class = '125cc' AND machine.value_points >= 194.0",
+      "pred_sql": "SELECT Machine_ID FROM machine WHERE Making_Year = 1994 AND Machine_series = 'RS125' AND quality_rank = 5 AND Team = 'Givi Racing- Honda' AND Class = '125cc' AND value_points >= 194.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.49
+    },
+    {
+      "uid": "f5ba8237-b84b-44e9-82a3-1f7a70cdce50",
+      "question": "Which machines with class 125cc have been repaired by the technician whose name is Joe Sewell?",
+      "gold_sql": "SELECT machine.machine_id FROM machine\nJOIN repair_assignment ON machine.machine_id = repair_assignment.machine_id\nJOIN technician ON repair_assignment.technician_id = technician.technician_id\nWHERE technician.name = 'Joe Sewell' AND machine.class = '125cc'",
+      "pred_sql": "SELECT T1.Machine_ID FROM machine AS T1 INNER JOIN repair_assignment AS T2 ON T1.Machine_ID = T2.Machine_ID INNER JOIN technician AS T3 ON T2.technician_id = T3.technician_id WHERE T1.Class = '125cc' AND T3.Name = 'Joe Sewell'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.93
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "authors",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:26:57.332227+00:00",
+  "records": [
+    {
+      "uid": "1765cc37-c394-4d2b-a213-9f5a1284bd95",
+      "question": "Which conferences listed on http://www.informatik.uni-trier.de/~ley/db/conf/b/index.html have papers published in the journal Lecture Notes in Computer Science whose homepage is exactly http://www.springerlink.com/content/105633/?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nJOIN journal ON paper.journalid = journal.id\nWHERE journal.homepage = 'http://www.springerlink.com/content/105633/' AND conference.homepage = 'http://www.informatik.uni-trier.de/~ley/db/conf/b/index.html' AND journal.fullname = 'Lecture Notes in Computer Science'",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nJOIN Paper p ON c.Id = p.ConferenceId\nJOIN Journal j ON p.JournalId = j.Id\nWHERE c.HomePage = 'http://www.informatik.uni-trier.de/~ley/db/conf/b/index.html'\nAND j.HomePage = 'http://www.springerlink.com/content/105633/'\nAND j.FullName = 'Lecture Notes in Computer Science'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.68
+    },
+    {
+      "uid": "1fecfc2a-b46a-4142-9bef-60a9c1df937b",
+      "question": "Which conferences have papers published in the journal with homepage http://www.springerlink.com/content/105633/?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nJOIN journal ON paper.journalid = journal.id\nWHERE journal.homepage = 'http://www.springerlink.com/content/105633/'",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nJOIN Paper p ON c.Id = p.ConferenceId\nJOIN Journal j ON p.JournalId = j.Id\nWHERE j.HomePage = 'http://www.springerlink.com/content/105633/'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.46
+    },
+    {
+      "uid": "38259920-7bb8-46a5-9496-76e7bda8f60c",
+      "question": "What conferences feature papers published in journals with the homepage www.sciencedirect.com/science/journal/01697552?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nJOIN journal ON paper.journalid = journal.id\nWHERE journal.homepage = 'www.sciencedirect.com/science/journal/01697552'",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nJOIN Paper p ON c.Id = p.ConferenceId\nJOIN Journal j ON p.JournalId = j.Id\nWHERE j.HomePage = 'www.sciencedirect.com/science/journal/01697552'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.41
+    },
+    {
+      "uid": "5742216c-e006-4f2f-82b6-af220797ba38",
+      "question": "What conferences have the shortname exactly ECLIPSE?",
+      "gold_sql": "SELECT conference.id FROM conference\nWHERE conference.shortname = 'ECLIPSE'",
+      "pred_sql": "SELECT Id FROM Conference WHERE ShortName = 'ECLIPSE'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.45
+    },
+    {
+      "uid": "758a2813-101b-4676-821f-5c34743600f1",
+      "question": "Which conferences with shortname HAIS and homepage http://hais.pwr.wroc.pl had papers published in 2009 or later in the journal Lecture Notes in Computer Science, whose shortname is LNCS and homepage is http://www.springerlink.com/content/105633/?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nJOIN journal ON paper.journalid = journal.id\nWHERE journal.homepage = 'http://www.springerlink.com/content/105633/' AND journal.shortname = 'LNCS' AND conference.homepage = 'http://hais.pwr.wroc.pl' AND conference.shortname = 'HAIS' AND paper.year >= 2009 AND journal.fullname = 'Lecture Notes in Computer Science'",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nWHERE c.HomePage = 'http://hais.pwr.wroc.pl'\n  AND c.ShortName = 'HAIS'\n  AND EXISTS (\n    SELECT 1\n    FROM Paper p\n    WHERE p.ConferenceId = c.Id\n      AND p.Year >= 2009\n      AND EXISTS (\n        SELECT 1\n        FROM Journal j\n        WHERE j.Id = p.JournalId\n          AND j.HomePage = 'http://www.springerlink.com/content/105633/'\n          AND j.ShortName = 'LNCS'\n          AND j.FullName = 'Lecture Notes in Computer Science'\n      )\n  )",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.57
+    },
+    {
+      "uid": "8115c735-bdf8-47b8-9b3d-4731b7ffd8b6",
+      "question": "Which conferences with the shortname ICCV have papers associated with them?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nWHERE conference.shortname = 'ICCV'",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nINNER JOIN Paper p ON c.Id = p.ConferenceId\nWHERE c.ShortName = 'ICCV'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.18
+    },
+    {
+      "uid": "8559f715-ecaa-4ad9-b226-9d8d24c9c6ae",
+      "question": "What conferences have the shortname FODO and the homepage http://www.informatik.uni-trier.de/~ley/db/conf/fodo/index.html?",
+      "gold_sql": "SELECT conference.id FROM conference\nWHERE conference.shortname = 'FODO' AND conference.homepage = 'http://www.informatik.uni-trier.de/~ley/db/conf/fodo/index.html'",
+      "pred_sql": "SELECT Id FROM Conference WHERE ShortName = 'FODO' AND HomePage = 'http://www.informatik.uni-trier.de/~ley/db/conf/fodo/index.html'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.48
+    },
+    {
+      "uid": "b2e23499-d95e-4619-9d18-be0028097bef",
+      "question": "Which conferences with the shortname ICMLA and homepage http://www.icmla-conference.org/icmla11/ have papers from the year 2010 or later?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nWHERE conference.homepage = 'http://www.icmla-conference.org/icmla11/' AND conference.shortname = 'ICMLA' AND paper.year >= 2010",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nJOIN Paper p ON c.Id = p.ConferenceId\nWHERE c.HomePage = 'http://www.icmla-conference.org/icmla11/'\n  AND c.ShortName = 'ICMLA'\n  AND p.Year >= 2010",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.36
+    },
+    {
+      "uid": "e74722ac-8608-44d9-9fb2-ab1177aa0415",
+      "question": "Which conferences with the shortname AAAI had papers published in the year 1991?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nWHERE conference.shortname = 'AAAI' AND paper.year = 1991",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nJOIN Paper p ON c.Id = p.ConferenceId\nWHERE c.ShortName = 'AAAI' AND p.Year = 1991",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24
+    },
+    {
+      "uid": "edb02745-1355-4268-8633-f7d5cdd758f8",
+      "question": "Which conferences with the shortname COLING have the homepage http://www.coling-2010.org/ and include papers from the year 1994?",
+      "gold_sql": "SELECT conference.id FROM conference\nJOIN paper ON conference.id = paper.conferenceid\nWHERE conference.homepage = 'http://www.coling-2010.org/' AND paper.year = 1994 AND conference.shortname = 'COLING'",
+      "pred_sql": "SELECT DISTINCT c.Id\nFROM Conference c\nINNER JOIN Paper p ON c.Id = p.ConferenceId\nWHERE c.HomePage = 'http://www.coling-2010.org/'\n  AND c.ShortName = 'COLING'\n  AND p.Year = 1994",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.67
+    }
+  ]
+}

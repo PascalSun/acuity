@@ -1,0 +1,2293 @@
+{
+ "db_id": "toxicology",
+ "target_table": "molecule",
+ "mode": "flexbench",
+ "total_qa_pairs": 37,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1134362506,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/validation/dev_databases/toxicology/toxicology.sqlite",
+  "generated_at": "2026-07-02T18:15:06.095299+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "molecule",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 37,
+  "shortfall_total": 13,
+  "overall_fulfillment_rate": 0.74,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "2iE",
+   "2iM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "2iE",
+   "2iM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 13,
+   "1pE": 13,
+   "2iE": 12,
+   "2iM": 12
+  },
+  "realized_counts": {
+   "1pE": 13,
+   "2iE": 12,
+   "2iM": 12
+  },
+  "shortfalls": {
+   "0E": 13
+  },
+  "shortfall_reason_counts": {
+   "result_size_out_of_range": 13
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 13,
+    "accepted_count": 0,
+    "shortfall": 13,
+    "fulfillment_rate": 0.0,
+    "is_feasible": true,
+    "outer_attempts": 156,
+    "inner_attempts": 1560,
+    "failed_rounds": 156,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "result_size_out_of_range": 156
+    },
+    "shortfall_reason_counts": {
+     "result_size_out_of_range": 13
+    },
+    "primary_shortfall_reason": "result_size_out_of_range",
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   },
+   "1pE": {
+    "target_quota": 13,
+    "accepted_count": 13,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 602,
+    "inner_attempts": 5928,
+    "failed_rounds": 589,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "result_size_out_of_range": 581,
+     "duplicate_pair": 8
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   },
+   "2iE": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 392,
+    "inner_attempts": 3868,
+    "failed_rounds": 380,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "result_size_out_of_range": 379,
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   },
+   "2iM": {
+    "target_quota": 12,
+    "accepted_count": 12,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 148,
+    "inner_attempts": 1403,
+    "failed_rounds": 136,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "result_size_out_of_range": 131,
+     "qa_validation_failed": 3,
+     "duplicate_pair": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "random filter choices matched >15 rows in 10 attempts (query too broad)"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "3884abd6-dc68-4ca3-916f-3f0bbc5709b3",
+   "question": "Which molecules have a label of - and contain atoms with the element sn?",
+   "answer_row_ids": [
+    "TR139",
+    "TR183"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'sn' AND molecule.label = '-'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "sn",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "sn",
+    "molecule.label": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'sn'?"
+  },
+  {
+   "uid": "ae11e873-6177-4968-9f4f-b736f7fe0d91",
+   "question": "Which molecules have a label of + and contain bromine atoms?",
+   "answer_row_ids": [
+    "TR028",
+    "TR076",
+    "TR086",
+    "TR206",
+    "TR207",
+    "TR210",
+    "TR309",
+    "TR321",
+    "TR350",
+    "TR363",
+    "TR383",
+    "TR398",
+    "TR400",
+    "TR452"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'br'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "br",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "br"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'br'?"
+  },
+  {
+   "uid": "9679ab7a-ffbb-4741-8f13-857dd9e1c59c",
+   "question": "What molecules have a label that is + and contain atoms where the element is na?",
+   "answer_row_ids": [
+    "TR006",
+    "TR207",
+    "TR331",
+    "TR397",
+    "TR405",
+    "TR430"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'na' AND molecule.label = '+'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "na",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na'?"
+  },
+  {
+   "uid": "c8b12ab0-d94f-4316-ad51-751ec54c509c",
+   "question": "Which molecules have a label of '-' and contain atoms where the element is exactly na?",
+   "answer_row_ids": [
+    "TR011",
+    "TR101",
+    "TR172",
+    "TR208",
+    "TR211",
+    "TR220",
+    "TR335",
+    "TR389",
+    "TR412",
+    "TR464",
+    "TR495"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'na' AND molecule.label = '-'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "na",
+    "molecule.label": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na'?"
+  },
+  {
+   "uid": "0c7f4ab9-857c-43d0-a979-eb542e18f95c",
+   "question": "What molecules with a label of + contain bromine atoms?",
+   "answer_row_ids": [
+    "TR028",
+    "TR076",
+    "TR086",
+    "TR206",
+    "TR207",
+    "TR210",
+    "TR309",
+    "TR321",
+    "TR350",
+    "TR363",
+    "TR383",
+    "TR398",
+    "TR400",
+    "TR452"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'br' AND molecule.label = '+'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "br",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "br",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'br'?"
+  },
+  {
+   "uid": "a549a345-a030-4d95-a54f-c4fcbcbcdd9f",
+   "question": "Which molecules have a label of '-' and contain an atom whose element is exactly pb?",
+   "answer_row_ids": [
+    "TR151"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE molecule.label = '-' AND atom.element = 'pb'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "pb",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "-",
+    "atom.element": "pb"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'pb'?"
+  },
+  {
+   "uid": "16cadfc9-4c7a-4089-bd8e-807b91bb91f5",
+   "question": "Which molecules have a label that is '-' and contain atoms where the element is exactly 'na'?",
+   "answer_row_ids": [
+    "TR011",
+    "TR101",
+    "TR172",
+    "TR208",
+    "TR211",
+    "TR220",
+    "TR335",
+    "TR389",
+    "TR412",
+    "TR464",
+    "TR495"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE molecule.label = '-' AND atom.element = 'na'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "-",
+    "atom.element": "na"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na'?"
+  },
+  {
+   "uid": "f6cf38c2-8404-4928-8315-f26b04ac96df",
+   "question": "Which molecules have the label + and contain an atom where the element is p?",
+   "answer_row_ids": [
+    "TR058",
+    "TR076",
+    "TR081",
+    "TR287",
+    "TR298",
+    "TR323",
+    "TR342",
+    "TR391",
+    "TR499"
+   ],
+   "answer_count": 9,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'p'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "p",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "p"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'p'?"
+  },
+  {
+   "uid": "da3c350b-8db6-4407-beaf-c84b3691ae32",
+   "question": "Which molecules labeled \"-\" contain an atom where the element is exactly p?",
+   "answer_row_ids": [
+    "TR004",
+    "TR010",
+    "TR024",
+    "TR032",
+    "TR033",
+    "TR096",
+    "TR103",
+    "TR125",
+    "TR135",
+    "TR137",
+    "TR157",
+    "TR192",
+    "TR433"
+   ],
+   "answer_count": 13,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'p' AND molecule.label = '-'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "p",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "p",
+    "molecule.label": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'p'?"
+  },
+  {
+   "uid": "24ebae3e-7f93-4e82-9b98-be5eb20b3b0e",
+   "question": "Which molecules contain bonds that are exactly triple bonds?",
+   "answer_row_ids": [
+    "TR041",
+    "TR377",
+    "TR499"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '#'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "bond",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "#",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "#"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '#'?"
+  },
+  {
+   "uid": "a03aa116-7ad3-49da-aa88-39769c05136f",
+   "question": "Which molecules with a label of + contain an atom where the element is exactly p?",
+   "answer_row_ids": [
+    "TR058",
+    "TR076",
+    "TR081",
+    "TR287",
+    "TR298",
+    "TR323",
+    "TR342",
+    "TR391",
+    "TR499"
+   ],
+   "answer_count": 9,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'p' AND molecule.label = '+'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "p",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "p",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'p'?"
+  },
+  {
+   "uid": "78f762e1-79f7-4beb-966d-d2a704f3df1f",
+   "question": "What molecules have a label that is - and contain an atom with the element f?",
+   "answer_row_ids": [
+    "TR034",
+    "TR195"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nWHERE atom.element = 'f' AND molecule.label = '-'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "f",
+    "molecule.label": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f'?"
+  },
+  {
+   "uid": "64ec917b-950b-4703-bd15-75eca06813ab",
+   "question": "Which molecules have a label that is + and contain bonds where the bond type is exactly #?",
+   "answer_row_ids": [
+    "TR041",
+    "TR499"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '#' AND molecule.label = '+'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "bond",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "#",
+     "column_type": "enum"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "#",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '#'?"
+  },
+  {
+   "uid": "0d9da13c-5e33-4514-89c3-0597c66bb80e",
+   "question": "Which molecules that have at least one atom with element equal to 'na' and at least one bond also have the label equal to '-'?",
+   "answer_row_ids": [
+    "TR011",
+    "TR101",
+    "TR172",
+    "TR208",
+    "TR211",
+    "TR220",
+    "TR335",
+    "TR389",
+    "TR412",
+    "TR464",
+    "TR495"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '-' AND atom.element = 'na'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "-",
+    "atom.element": "na"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules have a label of '-' and contain an atom whose element is exactly 'na'?",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "3f302748-4506-465c-907c-233f9db4b8c0",
+   "question": "Which molecules have at least one atom with the element exactly equal to 'f' and also have at least one bond?",
+   "answer_row_ids": [
+    "TR034",
+    "TR195",
+    "TR450"
+   ],
+   "answer_count": 3,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'f'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "f"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules contain atoms where the element is exactly f?",
+   "canonical_question": "Which molecule entities having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "bb4c9bf5-2ff7-40fe-9600-4afd25f505e2",
+   "question": "Which molecules that have atoms with element = 'cu' and also have bonds have the label '+'?",
+   "answer_row_ids": [
+    "TR430"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'cu' AND molecule.label = '+'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "cu",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "cu",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules labeled + contain atoms where the element is exactly cu?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'cu', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "5b94be68-fa37-42f7-91ac-4d6d2b2afb5f",
+   "question": "Which molecules that have atoms with element = 'br' and have bonds also have the label = '+'?",
+   "answer_row_ids": [
+    "TR028",
+    "TR076",
+    "TR086",
+    "TR206",
+    "TR207",
+    "TR210",
+    "TR309",
+    "TR321",
+    "TR350",
+    "TR363",
+    "TR383",
+    "TR398",
+    "TR400",
+    "TR452"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'br' AND molecule.label = '+'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "br",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "br",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules with a label of + contain bromine atoms?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'br', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "0b490ee0-047d-494c-8074-8d475b23395a",
+   "question": "Which molecules have atoms with element equal to 'zn' and also have bonds?",
+   "answer_row_ids": [
+    "TR238"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'zn'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "zn",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "zn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules contain an atom where the element is exactly zn?",
+   "canonical_question": "Which molecule entities having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'zn', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "fc4b8d48-7a18-4b74-ab75-e6ab5b2e14fe",
+   "question": "Which molecules have the label '-' and have at least one atom with element 'f' and also have at least one bond?",
+   "answer_row_ids": [
+    "TR034",
+    "TR195"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '-' AND atom.element = 'f'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "-",
+    "atom.element": "f"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules have a label of '-' and contain an atom where the element is exactly 'f'?",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "8f409812-1709-4765-8a4f-bb2bc7e0b1ab",
+   "question": "Which molecules that have atoms with element = 'na' and have bonds also have label = '+'?",
+   "answer_row_ids": [
+    "TR006",
+    "TR207",
+    "TR331",
+    "TR397",
+    "TR405",
+    "TR430"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'na' AND molecule.label = '+'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "na",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules have a label that is + and contain an atom with the element na?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "71f5401f-716a-4df2-83da-5d2ecb550e9c",
+   "question": "Which molecules have the label '+' and have at least one atom with the element 'br' and also have at least one bond?",
+   "answer_row_ids": [
+    "TR028",
+    "TR076",
+    "TR086",
+    "TR206",
+    "TR207",
+    "TR210",
+    "TR309",
+    "TR321",
+    "TR350",
+    "TR363",
+    "TR383",
+    "TR398",
+    "TR400",
+    "TR452"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'br'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "br",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "br"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules have a label of '+' and contain an atom where the element is exactly br?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'br', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "72f72514-4847-41e6-ae57-aeef9f48448d",
+   "question": "Which molecules have at least one atom with element equal to 'sn' and also have related bond records?",
+   "answer_row_ids": [
+    "TR139",
+    "TR183"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'sn'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "sn",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "sn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "What molecules contain an atom where the element is exactly sn?",
+   "canonical_question": "Which molecule entities having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'sn', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "868a85fa-a19f-4aec-afcb-92f49b5a28d8",
+   "question": "Which molecules that have related atoms and related bonds have a bond with bond_type exactly '#' and have a label exactly '+'?",
+   "answer_row_ids": [
+    "TR041",
+    "TR499"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '#' AND molecule.label = '+'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "#",
+     "column_type": "enum"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "#",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules labeled '+' contain bonds where the bond type is exactly '#'?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id), having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '#'?"
+  },
+  {
+   "uid": "eda70dea-7888-4b62-8128-17571c26277e",
+   "question": "Which molecules have the label '+' and have at least one atom with the element 'na' and also have at least one bond?",
+   "answer_row_ids": [
+    "TR006",
+    "TR207",
+    "TR331",
+    "TR397",
+    "TR405",
+    "TR430"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'na'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "na"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules have a label of '+' and contain atoms where the element is exactly 'na'?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "d4b7f83d-aa51-4e99-afe3-077ea5edd6c0",
+   "question": "Which molecules have the label \"+\" and have at least one atom with the element \"f\" and also have at least one bond recorded?",
+   "answer_row_ids": [
+    "TR450"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'f'",
+   "strategy": "2iE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "f"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "question_pre_fix": "Which molecules have the label '+' and contain an atom where the element is exactly 'f'?",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id)?"
+  },
+  {
+   "uid": "308a8981-073f-442c-b44f-d476994212b1",
+   "question": "Which molecules have a label of + and contain both an atom with element p and a bond where the bond type is exactly -?",
+   "answer_row_ids": [
+    "TR058",
+    "TR076",
+    "TR081",
+    "TR287",
+    "TR298",
+    "TR323",
+    "TR342",
+    "TR391",
+    "TR499"
+   ],
+   "answer_count": 9,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'p' AND molecule.label = '+' AND bond.bond_type = '-'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label",
+    "bond.bond_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "p",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "p",
+    "molecule.label": "+",
+    "bond.bond_type": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'p', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "929596df-005c-4443-ab20-e2032ee74e47",
+   "question": "Which molecules have a label of + and contain bromine atoms with at least one single bond?",
+   "answer_row_ids": [
+    "TR028",
+    "TR076",
+    "TR086",
+    "TR206",
+    "TR207",
+    "TR210",
+    "TR309",
+    "TR321",
+    "TR350",
+    "TR363",
+    "TR383",
+    "TR398",
+    "TR400",
+    "TR452"
+   ],
+   "answer_count": 14,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'br' AND bond.bond_type = '-'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element",
+    "bond.bond_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "br",
+     "column_type": "label"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "br",
+    "bond.bond_type": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'br', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "6846b8ca-655a-4ed5-8a8e-c55eae3039a8",
+   "question": "What molecules have a label exactly '-' and contain bonds where the bond type is exactly '-' with atoms whose element is exactly 'f'?",
+   "answer_row_ids": [
+    "TR034",
+    "TR195"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '-' AND bond.bond_type = '-' AND atom.element = 'f'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "bond.bond_type",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "-",
+    "bond.bond_type": "-",
+    "atom.element": "f"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "4deffac1-15f7-4300-aba7-22adf4368c9f",
+   "question": "Which molecules labeled + contain atoms with element na and have bonds where bond_type is -?",
+   "answer_row_ids": [
+    "TR006",
+    "TR207",
+    "TR331",
+    "TR397",
+    "TR405",
+    "TR430"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'na' AND bond.bond_type = '-' AND molecule.label = '+'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "bond.bond_type",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "na",
+    "bond.bond_type": "-",
+    "molecule.label": "+"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "1717e641-b93e-4aaf-80d0-9cb200fca37c",
+   "question": "Which molecules have a label of '-' and contain phosphorus atoms connected by single bonds?",
+   "answer_row_ids": [
+    "TR004",
+    "TR010",
+    "TR024",
+    "TR032",
+    "TR033",
+    "TR096",
+    "TR103",
+    "TR125",
+    "TR135",
+    "TR137",
+    "TR157",
+    "TR192",
+    "TR433"
+   ],
+   "answer_count": 13,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '-' AND bond.bond_type = '-' AND atom.element = 'p'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "bond.bond_type",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "p",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "-",
+    "bond.bond_type": "-",
+    "atom.element": "p"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'p', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "6ff3af31-9acb-4e47-9d24-df0e272a4831",
+   "question": "Which molecules have a label that is '-' and contain fluorine atoms connected by single bonds?",
+   "answer_row_ids": [
+    "TR034",
+    "TR195"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '-' AND molecule.label = '-' AND atom.element = 'f'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type",
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "-",
+    "molecule.label": "-",
+    "atom.element": "f"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "5acb8ac1-c3c9-40f1-a74d-4686f50cbabe",
+   "question": "Which molecules have a label of '-' and contain fluorine atoms connected by bonds that are exactly double bonds?",
+   "answer_row_ids": [
+    "TR034",
+    "TR195"
+   ],
+   "answer_count": 2,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '=' AND molecule.label = '-' AND atom.element = 'f'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type",
+    "molecule.label",
+    "atom.element"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "=",
+     "column_type": "enum"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "f",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "=",
+    "molecule.label": "-",
+    "atom.element": "f"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'f', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '='?"
+  },
+  {
+   "uid": "e386a2b1-dec5-44ec-a65d-f8ee80d35977",
+   "question": "Which molecules labeled + contain carbon atoms and have bonds where the bond type is exactly #?",
+   "answer_row_ids": [
+    "TR041"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE atom.element = 'c' AND molecule.label = '+' AND bond.bond_type = '#'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "atom.element",
+    "molecule.label",
+    "bond.bond_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "c",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "#",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "atom.element": "c",
+    "molecule.label": "+",
+    "bond.bond_type": "#"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'c', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '#'?"
+  },
+  {
+   "uid": "bbf8980e-fac8-44c8-95b2-e4fd8960994c",
+   "question": "Which molecules have a label of '-' and contain sodium atoms connected by double bonds?",
+   "answer_row_ids": [
+    "TR011",
+    "TR101",
+    "TR172",
+    "TR208",
+    "TR211",
+    "TR220",
+    "TR335",
+    "TR389",
+    "TR412",
+    "TR464",
+    "TR495"
+   ],
+   "answer_count": 11,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '=' AND atom.element = 'na' AND molecule.label = '-'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type",
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "=",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "=",
+    "atom.element": "na",
+    "molecule.label": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '='?"
+  },
+  {
+   "uid": "f84ea906-f15f-4e21-8124-87631f2f3163",
+   "question": "Which molecules have a label of + and contain sodium atoms with single bonds?",
+   "answer_row_ids": [
+    "TR006",
+    "TR207",
+    "TR331",
+    "TR397",
+    "TR405",
+    "TR430"
+   ],
+   "answer_count": 6,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'na' AND bond.bond_type = '-'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element",
+    "bond.bond_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "na",
+     "column_type": "label"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "na",
+    "bond.bond_type": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'na', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "7237cf5a-43f3-4842-893f-43182addb590",
+   "question": "Which molecules have a label of '+' and contain a phosphorus atom as well as a single bond?",
+   "answer_row_ids": [
+    "TR058",
+    "TR076",
+    "TR081",
+    "TR287",
+    "TR298",
+    "TR323",
+    "TR342",
+    "TR391",
+    "TR499"
+   ],
+   "answer_count": 9,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE molecule.label = '+' AND atom.element = 'p' AND bond.bond_type = '-'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "molecule.label",
+    "atom.element",
+    "bond.bond_type"
+   ],
+   "involved_filters": [
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "+",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "p",
+     "column_type": "label"
+    },
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "molecule.label": "+",
+    "atom.element": "p",
+    "bond.bond_type": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '+', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'p', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '-'?"
+  },
+  {
+   "uid": "240633fa-658a-4949-8f0d-f044ffc4ffe1",
+   "question": "Which molecules have a negative label and contain carbon atoms connected by triple bonds?",
+   "answer_row_ids": [
+    "TR377"
+   ],
+   "answer_count": 1,
+   "sql": "SELECT molecule.molecule_id FROM molecule\nJOIN atom ON molecule.molecule_id = atom.molecule_id\nJOIN bond ON molecule.molecule_id = bond.molecule_id\nWHERE bond.bond_type = '#' AND atom.element = 'c' AND molecule.label = '-'",
+   "strategy": "2iM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "bond",
+    "atom",
+    "molecule"
+   ],
+   "involved_columns": [
+    "bond.bond_type",
+    "atom.element",
+    "molecule.label"
+   ],
+   "involved_filters": [
+    {
+     "table": "bond",
+     "column": "bond_type",
+     "operator": "=",
+     "value": "#",
+     "column_type": "enum"
+    },
+    {
+     "table": "atom",
+     "column": "element",
+     "operator": "=",
+     "value": "c",
+     "column_type": "label"
+    },
+    {
+     "table": "molecule",
+     "column": "label",
+     "operator": "=",
+     "value": "-",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "bond.bond_type": "#",
+    "atom.element": "c",
+    "molecule.label": "-"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "molecule"
+   },
+   "answer_table": "molecule",
+   "answer_id_column": "molecule_id",
+   "canonical_question": "Which molecule entities with label equal to '-', having at least one related atom record (linked on molecule.molecule_id = atom.molecule_id) with element equal to 'c', having at least one related bond record (linked on molecule.molecule_id = bond.molecule_id) with bond type equal to '#'?"
+  }
+ ]
+}

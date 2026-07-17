@@ -1,0 +1,3288 @@
+{
+ "db_id": "perpetrator",
+ "target_table": "people",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 120617925,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/perpetrator/perpetrator.sqlite",
+  "generated_at": "2026-07-02T10:34:25.590933+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "people",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 17,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 18,
+    "inner_attempts": 116,
+    "failed_rounds": 8,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "other": 7,
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 15,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 18,
+    "inner_attempts": 59,
+    "failed_rounds": 8,
+    "invalid_pairs_filtered": 8,
+    "failure_events": {
+     "qa_validation_failed": 8
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 22,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "9b16a736-0c51-444e-8b1b-6aa329a63b18",
+   "question": "Who in the people table has the name Ron Baxter and a height of exactly 6.4?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Ron Baxter' AND people.height = 6.4",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ron Baxter",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Ron Baxter",
+    "people.height": 6.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Ron Baxter' and height equal to '6.4'?"
+  },
+  {
+   "uid": "05363b3d-c58c-4b98-a9a1-1144fb35d45a",
+   "question": "Which people named Ovie Dotson weigh at least 200.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight >= 200.0 AND people.name = 'Ovie Dotson'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 200.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 200.0,
+    "people.name": "Ovie Dotson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at least '200.0' and name equal to 'Ovie Dotson'?"
+  },
+  {
+   "uid": "75be85d6-49e7-4061-9d4d-2229a3a9817b",
+   "question": "Who weighs exactly 185.0 pounds?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight = 185.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 185.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 185.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight equal to '185.0'?"
+  },
+  {
+   "uid": "436fe300-23cb-434e-8d88-ecae86630f6b",
+   "question": "Who in the people table has the name exactly Gary Goodner and weighs at most 220.0?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Gary Goodner' AND people.weight <= 220.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Gary Goodner",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 220.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Gary Goodner",
+    "people.weight": 220.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Gary Goodner' and weight at most '220.0'?"
+  },
+  {
+   "uid": "2ba0fbc4-6d50-442b-abd9-6e3b26859210",
+   "question": "Which people have the name exactly Tyrone Brayan?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Tyrone Brayan'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Tyrone Brayan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Tyrone Brayan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Tyrone Brayan'?"
+  },
+  {
+   "uid": "2a10fbc3-3b16-4e08-b231-0e1077462802",
+   "question": "Which people have the name Jim Krivacs?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Jim Krivacs'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Jim Krivacs",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Jim Krivacs"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Jim Krivacs'?"
+  },
+  {
+   "uid": "5deba6d9-237d-4cda-bbb6-a8c6b58ff5dd",
+   "question": "What people have the name exactly Henry Johnson?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Henry Johnson'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Henry Johnson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Henry Johnson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Henry Johnson'?"
+  },
+  {
+   "uid": "6f0f4a52-7100-44b0-8378-fc3adfa6aba8",
+   "question": "Who is exactly 6.4 feet tall and weighs at most 205.0 pounds?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height = 6.4 AND people.weight <= 205.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 205.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 6.4,
+    "people.weight": 205.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '6.4' and weight at most '205.0'?"
+  },
+  {
+   "uid": "1a6d9b8b-dd34-4df7-94a7-235e3b72d86e",
+   "question": "Which people weigh exactly 190.0?",
+   "answer_row_ids": [
+    5,
+    8
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight = 190.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 190.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 190.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight equal to '190.0'?"
+  },
+  {
+   "uid": "65e69d22-e763-4509-a763-a1e169cbebea",
+   "question": "Who in the people database has the name Gary Goodner and a height that is exactly 6.7?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Gary Goodner' AND people.height = 6.7",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Gary Goodner",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.7,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Gary Goodner",
+    "people.height": 6.7
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Gary Goodner' and height equal to '6.7'?"
+  },
+  {
+   "uid": "689947f2-b2ec-4ae1-8084-50843a79ae31",
+   "question": "Who named John Danks weighs at least 190.0 and is at most 6.6 tall?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'John Danks' AND people.weight >= 190.0 AND people.height <= 6.6",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.weight",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "John Danks",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.6,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "John Danks",
+    "people.weight": 190.0,
+    "people.height": 6.6
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'John Danks' and weight at least '190.0' and height at most '6.6'?"
+  },
+  {
+   "uid": "5ed006c9-aee5-4943-bb03-85570c7ec11e",
+   "question": "Which people named Henry Johnson weigh at least 190.0 and are at most 6.6 tall?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight >= 190.0 AND people.height <= 6.6 AND people.name = 'Henry Johnson'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight",
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Henry Johnson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 190.0,
+    "people.height": 6.6,
+    "people.name": "Henry Johnson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at least '190.0' and height at most '6.6' and name equal to 'Henry Johnson'?"
+  },
+  {
+   "uid": "d99f51de-83f5-497b-9758-51917bf210ce",
+   "question": "What people named Ovie Dotson have a weight of at most 200.0 and a height of at most 6.5?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight <= 200.0 AND people.height <= 6.5 AND people.name = 'Ovie Dotson'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight",
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 200.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 200.0,
+    "people.height": 6.5,
+    "people.name": "Ovie Dotson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at most '200.0' and height at most '6.5' and name equal to 'Ovie Dotson'?"
+  },
+  {
+   "uid": "1bfe3894-f7b9-43ec-8056-3a8a33570b45",
+   "question": "Which people named Henry Johnson weigh exactly 190.0 and are at most 6.6 feet tall?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Henry Johnson' AND people.weight = 190.0 AND people.height <= 6.6",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.weight",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Henry Johnson",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.6,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Henry Johnson",
+    "people.weight": 190.0,
+    "people.height": 6.6
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Henry Johnson' and weight equal to '190.0' and height at most '6.6'?"
+  },
+  {
+   "uid": "9443702c-7786-4f95-82c8-f1fbd30042a6",
+   "question": "Who is Rob Cunningham with a weight of exactly 215.0 and a height at most 6.8?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height <= 6.8 AND people.weight = 215.0 AND people.name = 'Rob Cunningham'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.weight",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 215.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Rob Cunningham",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 6.8,
+    "people.weight": 215.0,
+    "people.name": "Rob Cunningham"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '6.8' and weight equal to '215.0' and name equal to 'Rob Cunningham'?"
+  },
+  {
+   "uid": "92b79d21-7715-45ec-ba57-09d74f6405ec",
+   "question": "Which people named Jim Krivacs weigh at least 160.0 and are at least 6.1 tall?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight >= 160.0 AND people.height >= 6.1 AND people.name = 'Jim Krivacs'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight",
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 160.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 6.1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Jim Krivacs",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 160.0,
+    "people.height": 6.1,
+    "people.name": "Jim Krivacs"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at least '160.0' and height at least '6.1' and name equal to 'Jim Krivacs'?"
+  },
+  {
+   "uid": "9a64b1f7-a2cb-41c1-8c8b-f963c0bcd760",
+   "question": "Who named Ron Baxter weighs at most 205.0 and is no more than 6.4 feet tall?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.name = 'Ron Baxter' AND people.weight <= 205.0 AND people.height <= 6.4",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.weight",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ron Baxter",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 205.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Ron Baxter",
+    "people.weight": 205.0,
+    "people.height": 6.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Ron Baxter' and weight at most '205.0' and height at most '6.4'?"
+  },
+  {
+   "uid": "3318a3d1-21f6-4ddd-aeec-a5e9cb831eb6",
+   "question": "Which people named Mike Murphy have a height of at most 6.8 and weigh no more than 215.0?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height <= 6.8 AND people.name = 'Mike Murphy' AND people.weight <= 215.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.name",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Mike Murphy",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 215.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 6.8,
+    "people.name": "Mike Murphy",
+    "people.weight": 215.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '6.8' and name equal to 'Mike Murphy' and weight at most '215.0'?"
+  },
+  {
+   "uid": "f8a68600-e310-4e55-adea-f763dc56a5f2",
+   "question": "Who is named Ovie Dotson with a height of 6.5 and a weight of exactly 200.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.weight = 200.0 AND people.name = 'Ovie Dotson' AND people.height = 6.5",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.weight",
+    "people.name",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 200.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 200.0,
+    "people.name": "Ovie Dotson",
+    "people.height": 6.5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight equal to '200.0' and name equal to 'Ovie Dotson' and height equal to '6.5'?"
+  },
+  {
+   "uid": "177abdfb-c8dc-4d7b-9182-aed4d58afb9f",
+   "question": "Who is Ovie Dotson with a height of at least 6.5 and a weight of at most 200.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nWHERE people.height >= 6.5 AND people.weight <= 200.0 AND people.name = 'Ovie Dotson'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "people"
+   ],
+   "involved_columns": [
+    "people.height",
+    "people.weight",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 6.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 200.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.height": 6.5,
+    "people.weight": 200.0,
+    "people.name": "Ovie Dotson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '6.5' and weight at most '200.0' and name equal to 'Ovie Dotson'?"
+  },
+  {
+   "uid": "25da3f5a-9ce6-43d2-9e42-e7abd3c832fe",
+   "question": "Which people who weigh at most 190.0 are identified as perpetrators?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.weight <= 190.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 190.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 190.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at most '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id)?"
+  },
+  {
+   "uid": "fa64b517-1e76-43b3-9473-d1a580de9d11",
+   "question": "Which people named Tyrone Brayan have caused injuries to at most 16 individuals?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured <= 16 AND people.name = 'Tyrone Brayan'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Tyrone Brayan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 16,
+    "people.name": "Tyrone Brayan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Tyrone Brayan', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at most '16'?"
+  },
+  {
+   "uid": "c89ce948-04f6-4135-a269-88e91e66ac2e",
+   "question": "Which people have caused at most 80 injured and no more than 23 killed?",
+   "answer_row_ids": [
+    6,
+    8
+   ],
+   "answer_count": 2,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured <= 80 AND perpetrator.killed <= 23",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.killed"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 80,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "<=",
+     "value": 23,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 80,
+    "perpetrator.killed": 23
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at most '80' and killed at most '23'?"
+  },
+  {
+   "uid": "5e16050e-0c6d-4d5c-a35a-97347813319b",
+   "question": "Who are the people associated with a perpetrator that are at least 6.6 feet tall?",
+   "answer_row_ids": [
+    3,
+    4,
+    8
+   ],
+   "answer_count": 3,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.height >= 6.6",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 6.6,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.height": 6.6
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '6.6', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id)?"
+  },
+  {
+   "uid": "6d754a97-a285-4e10-a945-60dc7ccf046d",
+   "question": "Who weighs exactly 190.0 and is a perpetrator from India?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.weight = 190.0 AND perpetrator.country = 'India'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.weight",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "India",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 190.0,
+    "perpetrator.country": "India"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight equal to '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with country equal to 'India'?"
+  },
+  {
+   "uid": "5be398a8-2a5a-44d4-b1d9-93229ffedd20",
+   "question": "Who among the perpetrators has a weight that is exactly 200.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.weight = 200.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 200.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.weight": 200.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight equal to '200.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id)?"
+  },
+  {
+   "uid": "130d8ade-680b-4dfb-8c5a-28805b011208",
+   "question": "Who in the people database is identified as a perpetrator where the location is Nainital?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.location = 'Nainital'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Nainital",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.location": "Nainital"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with location equal to 'Nainital'?"
+  },
+  {
+   "uid": "7d5cb234-a97b-4dd5-b7dc-7a4d7f522c52",
+   "question": "Who in the people table has the name Ron Baxter and is linked to a perpetrator with the date 04.26 April 26/27?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.name = 'Ron Baxter' AND perpetrator.date = '04.26 April 26/27'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.name",
+    "perpetrator.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ron Baxter",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.26 April 26/27",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Ron Baxter",
+    "perpetrator.date": "04.26 April 26/27"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Ron Baxter', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with date equal to '04.26 April 26/27'?"
+  },
+  {
+   "uid": "2882f665-b226-4ad3-a985-63a4a4dfeaff",
+   "question": "Who are the people linked to perpetrators from China who injured at most 16 individuals?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured <= 16 AND perpetrator.country = 'China'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 16,
+    "perpetrator.country": "China"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at most '16' and country equal to 'China'?"
+  },
+  {
+   "uid": "12ecd898-7e59-4162-90bc-37f111ff2a42",
+   "question": "Who are the people involved as perpetrators in Beijing from 1994 or later?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.location = 'Beijing' AND perpetrator.year >= 1994.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.location",
+    "perpetrator.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": ">=",
+     "value": 1994.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.location": "Beijing",
+    "perpetrator.year": 1994.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with location equal to 'Beijing' and year at least '1994.0'?"
+  },
+  {
+   "uid": "19ba25a3-c560-4fb9-a7ab-7235b2d04514",
+   "question": "Who in the people table is named Ron Baxter, weighs exactly 205.0, is at least 6.4 feet tall, and is connected to a perpetrator located in Uiryeong with a date of 04.26 April 26/27, year at most 1982, and injured at most 37?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.location = 'Uiryeong' AND people.name = 'Ron Baxter' AND perpetrator.year <= 1982.0 AND perpetrator.injured <= 37 AND people.weight = 205.0 AND perpetrator.date = '04.26 April 26/27' AND people.height >= 6.4",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.location",
+    "people.name",
+    "perpetrator.year",
+    "perpetrator.injured",
+    "people.weight",
+    "perpetrator.date",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Uiryeong",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ron Baxter",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "<=",
+     "value": 1982.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 37,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 205.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.26 April 26/27",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 6.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.location": "Uiryeong",
+    "people.name": "Ron Baxter",
+    "perpetrator.year": 1982.0,
+    "perpetrator.injured": 37,
+    "people.weight": 205.0,
+    "perpetrator.date": "04.26 April 26/27",
+    "people.height": 6.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Ron Baxter' and weight equal to '205.0' and height at least '6.4', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with location equal to 'Uiryeong' and year at most '1982.0' and injured at most '37' and date equal to '04.26 April 26/27'?"
+  },
+  {
+   "uid": "96eba21f-dcc4-4d8b-b3b6-64cc9d4bc679",
+   "question": "What people named Ron Baxter who weigh at most 205.0 and are at most 6.4 tall were involved as perpetrators in South Korea in 1982, specifically in Uiryeong on 04.26 April 26/27, and killed exactly 56?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.killed = 56 AND perpetrator.country = 'South Korea' AND people.weight <= 205.0 AND people.name = 'Ron Baxter' AND perpetrator.location = 'Uiryeong' AND perpetrator.date = '04.26 April 26/27' AND perpetrator.year = 1982.0 AND people.height <= 6.4",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.killed",
+    "perpetrator.country",
+    "people.weight",
+    "people.name",
+    "perpetrator.location",
+    "perpetrator.date",
+    "perpetrator.year",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "=",
+     "value": 56,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "South Korea",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 205.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ron Baxter",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Uiryeong",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.26 April 26/27",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "=",
+     "value": 1982.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.killed": 56,
+    "perpetrator.country": "South Korea",
+    "people.weight": 205.0,
+    "people.name": "Ron Baxter",
+    "perpetrator.location": "Uiryeong",
+    "perpetrator.date": "04.26 April 26/27",
+    "perpetrator.year": 1982.0,
+    "people.height": 6.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at most '205.0' and name equal to 'Ron Baxter' and height at most '6.4', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with killed equal to '56' and country equal to 'South Korea' and location equal to 'Uiryeong' and date equal to '04.26 April 26/27' and year equal to '1982.0'?"
+  },
+  {
+   "uid": "96cf67e0-1db9-4a96-ba4a-19d3f68bfcc5",
+   "question": "Which people named Henry Johnson, exactly 6.6 tall and weighing at most 190.0, were involved as perpetrators in Nainital on 04.00 April 1950, with at least 0 injured and no more than 22 killed?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured >= 0 AND perpetrator.location = 'Nainital' AND people.height = 6.6 AND people.name = 'Henry Johnson' AND perpetrator.year = 1950.0 AND perpetrator.killed <= 22 AND people.weight <= 190.0 AND perpetrator.date = '04.00 April'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.location",
+    "people.height",
+    "people.name",
+    "perpetrator.year",
+    "perpetrator.killed",
+    "people.weight",
+    "perpetrator.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Nainital",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Henry Johnson",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "=",
+     "value": 1950.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.00 April",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 0,
+    "perpetrator.location": "Nainital",
+    "people.height": 6.6,
+    "people.name": "Henry Johnson",
+    "perpetrator.year": 1950.0,
+    "perpetrator.killed": 22,
+    "people.weight": 190.0,
+    "perpetrator.date": "04.00 April"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '6.6' and name equal to 'Henry Johnson' and weight at most '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at least '0' and location equal to 'Nainital' and year equal to '1950.0' and killed at most '22' and date equal to '04.00 April'?"
+  },
+  {
+   "uid": "47813364-d4ce-4c6a-8cd7-10e48a218cf2",
+   "question": "Which people have a height of at most 6.7 and weight of no more than 220.0, with perpetrator details showing no more than 32 killed, no more than 16 injured, occurring in China at Zhaodong on date 11.18 Nov. 18 in year 1995 or earlier?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.killed <= 32 AND perpetrator.location = 'Zhaodong' AND perpetrator.injured <= 16 AND perpetrator.year <= 1995.0 AND people.weight <= 220.0 AND perpetrator.date = '11.18 Nov. 18' AND people.height <= 6.7 AND perpetrator.country = 'China'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.killed",
+    "perpetrator.location",
+    "perpetrator.injured",
+    "perpetrator.year",
+    "people.weight",
+    "perpetrator.date",
+    "people.height",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "<=",
+     "value": 32,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Zhaodong",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "<=",
+     "value": 1995.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 220.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "11.18 Nov. 18",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.killed": 32,
+    "perpetrator.location": "Zhaodong",
+    "perpetrator.injured": 16,
+    "perpetrator.year": 1995.0,
+    "people.weight": 220.0,
+    "perpetrator.date": "11.18 Nov. 18",
+    "people.height": 6.7,
+    "perpetrator.country": "China"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at most '220.0' and height at most '6.7', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with killed at most '32' and location equal to 'Zhaodong' and injured at most '16' and year at most '1995.0' and date equal to '11.18 Nov. 18' and country equal to 'China'?"
+  },
+  {
+   "uid": "48aec3a8-b16b-48b6-a0b6-03b207de769d",
+   "question": "Which people weigh exactly 200.0 and were involved as perpetrators in China where the location is Beijing, injured exactly 80, killed at least 23, and the year is at most 1994?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured = 80 AND perpetrator.location = 'Beijing' AND perpetrator.killed >= 23 AND perpetrator.country = 'China' AND perpetrator.year <= 1994.0 AND people.weight = 200.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.location",
+    "perpetrator.killed",
+    "perpetrator.country",
+    "perpetrator.year",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "=",
+     "value": 80,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "<=",
+     "value": 1994.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 200.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 80,
+    "perpetrator.location": "Beijing",
+    "perpetrator.killed": 23,
+    "perpetrator.country": "China",
+    "perpetrator.year": 1994.0,
+    "people.weight": 200.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight equal to '200.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured equal to '80' and location equal to 'Beijing' and killed at least '23' and country equal to 'China' and year at most '1994.0'?"
+  },
+  {
+   "uid": "b2de5ffc-20b3-4ccc-9ad3-d3f511e58909",
+   "question": "Who named Ovie Dotson is at most 6.5 feet tall and 200 pounds or fewer, and was a perpetrator in Beijing, China, in 1994 or earlier who killed at least 23 people?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.year <= 1994.0 AND people.weight <= 200.0 AND perpetrator.killed >= 23 AND perpetrator.country = 'China' AND perpetrator.location = 'Beijing' AND people.height <= 6.5 AND people.name = 'Ovie Dotson'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.year",
+    "people.weight",
+    "perpetrator.killed",
+    "perpetrator.country",
+    "perpetrator.location",
+    "people.height",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "<=",
+     "value": 1994.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 200.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.year": 1994.0,
+    "people.weight": 200.0,
+    "perpetrator.killed": 23,
+    "perpetrator.country": "China",
+    "perpetrator.location": "Beijing",
+    "people.height": 6.5,
+    "people.name": "Ovie Dotson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at most '200.0' and height at most '6.5' and name equal to 'Ovie Dotson', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with year at most '1994.0' and killed at least '23' and country equal to 'China' and location equal to 'Beijing'?"
+  },
+  {
+   "uid": "8e504047-7ffd-4531-91a4-e8eaf9b099c1",
+   "question": "Which people named Ovie Dotson with a height of at least 6.5 are linked to incidents in Beijing, China where exactly 23 were killed and 80 injured no later than 1994?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.name = 'Ovie Dotson' AND perpetrator.killed = 23 AND perpetrator.year <= 1994.0 AND perpetrator.country = 'China' AND perpetrator.injured = 80 AND perpetrator.location = 'Beijing' AND people.height >= 6.5",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.name",
+    "perpetrator.killed",
+    "perpetrator.year",
+    "perpetrator.country",
+    "perpetrator.injured",
+    "perpetrator.location",
+    "people.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "<=",
+     "value": 1994.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "=",
+     "value": 80,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 6.5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Ovie Dotson",
+    "perpetrator.killed": 23,
+    "perpetrator.year": 1994.0,
+    "perpetrator.country": "China",
+    "perpetrator.injured": 80,
+    "perpetrator.location": "Beijing",
+    "people.height": 6.5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Ovie Dotson' and height at least '6.5', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with killed equal to '23' and year at most '1994.0' and country equal to 'China' and injured equal to '80' and location equal to 'Beijing'?"
+  },
+  {
+   "uid": "d264a0d8-21b3-40a9-8160-fa427c418a00",
+   "question": "Who is Henry Johnson with height at most 6.6 and weight at most 190.0, involved in incidents in India in 1950 where the date is 04.00 April, with at most 22 killed and at least 0 injured?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.killed <= 22 AND perpetrator.date = '04.00 April' AND perpetrator.injured >= 0 AND people.name = 'Henry Johnson' AND people.height <= 6.6 AND people.weight <= 190.0 AND perpetrator.year = 1950.0 AND perpetrator.country = 'India'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.killed",
+    "perpetrator.date",
+    "perpetrator.injured",
+    "people.name",
+    "people.height",
+    "people.weight",
+    "perpetrator.year",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "<=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.00 April",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Henry Johnson",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "=",
+     "value": 1950.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "India",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.killed": 22,
+    "perpetrator.date": "04.00 April",
+    "perpetrator.injured": 0,
+    "people.name": "Henry Johnson",
+    "people.height": 6.6,
+    "people.weight": 190.0,
+    "perpetrator.year": 1950.0,
+    "perpetrator.country": "India"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Henry Johnson' and height at most '6.6' and weight at most '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with killed at most '22' and date equal to '04.00 April' and injured at least '0' and year equal to '1950.0' and country equal to 'India'?"
+  },
+  {
+   "uid": "b5443968-d922-46e0-910b-a9bd9b6ecb51",
+   "question": "Who named Ovie Dotson weighs at least 200 and was involved in a Beijing incident on 09.20 Sep. 20 where at most 80 were injured, at least 23 were killed, and the year is no more than 1994?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.date = '09.20 Sep. 20' AND people.weight >= 200.0 AND perpetrator.injured <= 80 AND perpetrator.killed >= 23 AND perpetrator.location = 'Beijing' AND people.name = 'Ovie Dotson' AND perpetrator.year <= 1994.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.date",
+    "people.weight",
+    "perpetrator.injured",
+    "perpetrator.killed",
+    "perpetrator.location",
+    "people.name",
+    "perpetrator.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "09.20 Sep. 20",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 200.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 80,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "<=",
+     "value": 1994.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.date": "09.20 Sep. 20",
+    "people.weight": 200.0,
+    "perpetrator.injured": 80,
+    "perpetrator.killed": 23,
+    "perpetrator.location": "Beijing",
+    "people.name": "Ovie Dotson",
+    "perpetrator.year": 1994.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at least '200.0' and name equal to 'Ovie Dotson', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with date equal to '09.20 Sep. 20' and injured at most '80' and killed at least '23' and location equal to 'Beijing' and year at most '1994.0'?"
+  },
+  {
+   "uid": "ce8c8344-3e8b-4cc0-aece-5ce70f9ff869",
+   "question": "Which people exactly 6.7 tall and weighing 220.0 were involved as perpetrators in Zhaodong on 11.18 Nov. 18 where they injured exactly 16 and killed at least 32 others?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured = 16 AND perpetrator.killed >= 32 AND people.height = 6.7 AND perpetrator.date = '11.18 Nov. 18' AND perpetrator.location = 'Zhaodong' AND people.weight = 220.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.killed",
+    "people.height",
+    "perpetrator.date",
+    "perpetrator.location",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "=",
+     "value": 16,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": ">=",
+     "value": 32,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "11.18 Nov. 18",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Zhaodong",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 220.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 16,
+    "perpetrator.killed": 32,
+    "people.height": 6.7,
+    "perpetrator.date": "11.18 Nov. 18",
+    "perpetrator.location": "Zhaodong",
+    "people.weight": 220.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height equal to '6.7' and weight equal to '220.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured equal to '16' and killed at least '32' and date equal to '11.18 Nov. 18' and location equal to 'Zhaodong'?"
+  },
+  {
+   "uid": "c1b8a152-54dc-4f16-8dc8-b196f8779815",
+   "question": "What people weighing at least 200.0 were involved as perpetrators in Beijing on 09.20 Sep. 20, with at least 80 injured and year at least 1994?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured >= 80 AND perpetrator.date = '09.20 Sep. 20' AND perpetrator.year >= 1994.0 AND perpetrator.location = 'Beijing' AND people.weight >= 200.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.date",
+    "perpetrator.year",
+    "perpetrator.location",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 80,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "09.20 Sep. 20",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": ">=",
+     "value": 1994.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 200.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 80,
+    "perpetrator.date": "09.20 Sep. 20",
+    "perpetrator.year": 1994.0,
+    "perpetrator.location": "Beijing",
+    "people.weight": 200.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at least '200.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at least '80' and date equal to '09.20 Sep. 20' and year at least '1994.0' and location equal to 'Beijing'?"
+  },
+  {
+   "uid": "f7511913-9743-4d7d-b60f-a0619a2a5f2f",
+   "question": "Which people named Henry Johnson, who are exactly 6.6 tall and weigh at least 190.0, have killed 22 victims in India?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.name = 'Henry Johnson' AND perpetrator.killed = 22 AND people.height = 6.6 AND people.weight >= 190.0 AND perpetrator.country = 'India'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.name",
+    "perpetrator.killed",
+    "people.height",
+    "people.weight",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Henry Johnson",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": "=",
+     "value": 22,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "=",
+     "value": 6.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "India",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Henry Johnson",
+    "perpetrator.killed": 22,
+    "people.height": 6.6,
+    "people.weight": 190.0,
+    "perpetrator.country": "India"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Henry Johnson' and height equal to '6.6' and weight at least '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with killed equal to '22' and country equal to 'India'?"
+  },
+  {
+   "uid": "50055bb0-aea3-49d4-87d8-1e52fbfbcceb",
+   "question": "What people weigh at most 190.0 and were perpetrators in India where the date is 04.00 April and the location is Nainital?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.date = '04.00 April' AND perpetrator.location = 'Nainital' AND people.weight <= 190.0 AND perpetrator.country = 'India'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.date",
+    "perpetrator.location",
+    "people.weight",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.00 April",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Nainital",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "<=",
+     "value": 190.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "India",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.date": "04.00 April",
+    "perpetrator.location": "Nainital",
+    "people.weight": 190.0,
+    "perpetrator.country": "India"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with weight at most '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with date equal to '04.00 April' and location equal to 'Nainital' and country equal to 'India'?"
+  },
+  {
+   "uid": "0541ba88-78e9-4329-8bc2-f996f2e75209",
+   "question": "Who named Rob Cunningham weighs at least 215 and caused at least 3 injuries where the location is Kaio?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE people.name = 'Rob Cunningham' AND people.weight >= 215.0 AND perpetrator.injured >= 3 AND perpetrator.location = 'Kaio'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "people.name",
+    "people.weight",
+    "perpetrator.injured",
+    "perpetrator.location"
+   ],
+   "involved_filters": [
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Rob Cunningham",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": ">=",
+     "value": 215.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Kaio",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "people.name": "Rob Cunningham",
+    "people.weight": 215.0,
+    "perpetrator.injured": 3,
+    "perpetrator.location": "Kaio"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with name equal to 'Rob Cunningham' and weight at least '215.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at least '3' and location equal to 'Kaio'?"
+  },
+  {
+   "uid": "ba3df5ff-3f01-4fde-9b1e-15cb178041a0",
+   "question": "Which people weigh exactly 190.0, are at most 6.6 feet tall, and are perpetrators injured at least 0 times in Nainital, India?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured >= 0 AND people.height <= 6.6 AND perpetrator.country = 'India' AND perpetrator.location = 'Nainital' AND people.weight = 190.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "people.height",
+    "perpetrator.country",
+    "perpetrator.location",
+    "people.weight"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": "<=",
+     "value": 6.6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "India",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Nainital",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "weight",
+     "operator": "=",
+     "value": 190.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 0,
+    "people.height": 6.6,
+    "perpetrator.country": "India",
+    "perpetrator.location": "Nainital",
+    "people.weight": 190.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at most '6.6' and weight equal to '190.0', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at least '0' and country equal to 'India' and location equal to 'Nainital'?"
+  },
+  {
+   "uid": "4602d3f6-0f3a-45a4-96da-7c525ae03a76",
+   "question": "Which people are perpetrators in Zhaodong, China, who have injured at least 16 others?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.country = 'China' AND perpetrator.location = 'Zhaodong' AND perpetrator.injured >= 16",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.country",
+    "perpetrator.location",
+    "perpetrator.injured"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Zhaodong",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 16,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.country": "China",
+    "perpetrator.location": "Zhaodong",
+    "perpetrator.injured": 16
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with country equal to 'China' and location equal to 'Zhaodong' and injured at least '16'?"
+  },
+  {
+   "uid": "ac424ec3-73bf-4306-9c4c-f277a0bfd4a2",
+   "question": "Which people were perpetrators in 1982 who killed at least 56 and injured at most 37?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.year = 1982.0 AND perpetrator.injured <= 37 AND perpetrator.killed >= 56",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.year",
+    "perpetrator.injured",
+    "perpetrator.killed"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "year",
+     "operator": "=",
+     "value": 1982.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 37,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "killed",
+     "operator": ">=",
+     "value": 56,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.year": 1982.0,
+    "perpetrator.injured": 37,
+    "perpetrator.killed": 56
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with year equal to '1982.0' and injured at most '37' and killed at least '56'?"
+  },
+  {
+   "uid": "a3e7b84b-2c00-46e7-9d92-4499823aedf7",
+   "question": "Which people named Ovie Dotson are at least 6.5 tall and connected to a perpetrator from China whose location is Beijing on 09.20 Sep. 20?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.location = 'Beijing' AND perpetrator.date = '09.20 Sep. 20' AND people.height >= 6.5 AND perpetrator.country = 'China' AND people.name = 'Ovie Dotson'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.location",
+    "perpetrator.date",
+    "people.height",
+    "perpetrator.country",
+    "people.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "location",
+     "operator": "=",
+     "value": "Beijing",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "09.20 Sep. 20",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "height",
+     "operator": ">=",
+     "value": 6.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "China",
+     "column_type": "enum"
+    },
+    {
+     "table": "people",
+     "column": "name",
+     "operator": "=",
+     "value": "Ovie Dotson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.location": "Beijing",
+    "perpetrator.date": "09.20 Sep. 20",
+    "people.height": 6.5,
+    "perpetrator.country": "China",
+    "people.name": "Ovie Dotson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities with height at least '6.5' and name equal to 'Ovie Dotson', having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with location equal to 'Beijing' and date equal to '09.20 Sep. 20' and country equal to 'China'?"
+  },
+  {
+   "uid": "64442a4d-c97f-4564-975b-763de48aff34",
+   "question": "Who from South Korea is linked to incidents on 04.26 April 26/27 where at most 37 people were injured?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.date = '04.26 April 26/27' AND perpetrator.injured <= 37 AND perpetrator.country = 'South Korea'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.date",
+    "perpetrator.injured",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.26 April 26/27",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": "<=",
+     "value": 37,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "South Korea",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.date": "04.26 April 26/27",
+    "perpetrator.injured": 37,
+    "perpetrator.country": "South Korea"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with date equal to '04.26 April 26/27' and injured at most '37' and country equal to 'South Korea'?"
+  },
+  {
+   "uid": "c307cead-946c-4ba0-b0cc-5eac7ebb3c9a",
+   "question": "Who from South Korea was involved as a perpetrator on 04.26 April 26/27 with at least 37 injured?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT people.people_id FROM people\nJOIN perpetrator ON people.people_id = perpetrator.people_id\nWHERE perpetrator.injured >= 37 AND perpetrator.date = '04.26 April 26/27' AND perpetrator.country = 'South Korea'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "people",
+    "perpetrator"
+   ],
+   "involved_columns": [
+    "perpetrator.injured",
+    "perpetrator.date",
+    "perpetrator.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "perpetrator",
+     "column": "injured",
+     "operator": ">=",
+     "value": 37,
+     "column_type": "numeric"
+    },
+    {
+     "table": "perpetrator",
+     "column": "date",
+     "operator": "=",
+     "value": "04.26 April 26/27",
+     "column_type": "enum"
+    },
+    {
+     "table": "perpetrator",
+     "column": "country",
+     "operator": "=",
+     "value": "South Korea",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "perpetrator.injured": 37,
+    "perpetrator.date": "04.26 April 26/27",
+    "perpetrator.country": "South Korea"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "people"
+   },
+   "answer_table": "people",
+   "answer_id_column": "people_id",
+   "canonical_question": "Which people entities having at least one related perpetrator record (linked on people.people_id = perpetrator.people_id) with injured at least '37' and date equal to '04.26 April 26/27' and country equal to 'South Korea'?"
+  }
+ ]
+}

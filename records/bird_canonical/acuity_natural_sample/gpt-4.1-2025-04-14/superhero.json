@@ -1,0 +1,124 @@
+{
+  "db_id": "superhero",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:19:45.834329+00:00",
+  "records": [
+    {
+      "uid": "171225cf-bc72-4706-a2d2-d95520ae6840",
+      "question": "Which superheroes have the superhero name exactly equal to 'Venom' and the full name exactly equal to 'Edward Charles Allan Brock', and that have related alignment records and related hero_power records?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN hero_power ON superhero.id = hero_power.hero_id\nWHERE superhero.superhero_name = 'Venom' AND superhero.full_name = 'Edward Charles Allan Brock'",
+      "pred_sql": "SELECT superhero.id\nFROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN hero_power ON superhero.id = hero_power.hero_id\nWHERE superhero.superhero_name = 'Venom'\n  AND superhero.full_name = 'Edward Charles Allan Brock'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.08
+    },
+    {
+      "uid": "208e1cfa-78a5-4a9e-8262-88cfd7749bd3",
+      "question": "Who is the Good-aligned superhero named Samuel Thomas Wilson with a height of at least 188.0 cm?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN gender ON superhero.gender_id = gender.id\nJOIN publisher ON superhero.publisher_id = publisher.id\nWHERE alignment.alignment = 'Good' AND superhero.full_name = 'Samuel Thomas Wilson' AND superhero.height_cm >= 188.0",
+      "pred_sql": "SELECT superhero.id\nFROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nWHERE alignment.alignment = 'good'\n  AND superhero.full_name = 'Samuel Thomas Wilson'\n  AND superhero.height_cm >= 188.0",
+      "strategy": "3iM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.93
+    },
+    {
+      "uid": "3d588683-f5da-44e6-b3ad-35f0c10eb908",
+      "question": "Which male superheroes named Ammo weigh exactly 101.0 kg, are at most 188.0 cm tall, and have a Bad alignment?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN gender ON superhero.gender_id = gender.id\nWHERE superhero.superhero_name = 'Ammo' AND gender.gender = 'Male' AND superhero.weight_kg = 101.0 AND superhero.height_cm <= 188.0 AND alignment.alignment = 'Bad'",
+      "pred_sql": "SELECT superhero.id\nFROM superhero\nJOIN gender ON superhero.gender_id = gender.id\nJOIN alignment ON superhero.alignment_id = alignment.id\nWHERE superhero.superhero_name = 'Ammo'\n  AND gender.gender = 'Male'\n  AND superhero.weight_kg = 101\n  AND superhero.height_cm <= 188\n  AND alignment.alignment = 'Bad'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "43c50c72-a9df-47a7-973e-bca8a159967a",
+      "question": "Which superheroes named Big Barda weigh at most 135.0 kilograms?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nWHERE superhero.weight_kg <= 135.0 AND superhero.superhero_name = 'Big Barda'",
+      "pred_sql": "SELECT id FROM superhero WHERE superhero_name = 'Big Barda' AND weight_kg <= 135.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.76
+    },
+    {
+      "uid": "6537886f-6f63-4abc-ad2b-59da8a7ceece",
+      "question": "Which superheroes named Shadow Lass with the full name '-' are at least 173.0 cm tall and weigh at most 54.0 kg?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nWHERE superhero.weight_kg <= 54.0 AND superhero.full_name = '-' AND superhero.superhero_name = 'Shadow Lass' AND superhero.height_cm >= 173.0",
+      "pred_sql": "SELECT id\nFROM superhero\nWHERE superhero_name = 'Shadow Lass'\n  AND full_name = '-'\n  AND height_cm >= 173\n  AND weight_kg <= 54",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.95
+    },
+    {
+      "uid": "67fd6c8f-8586-47f5-bf79-766fe5aaadd3",
+      "question": "Which superheroes named exactly 'Batgirl IV' have recorded alignment, publisher, and hero attribute information?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN publisher ON superhero.publisher_id = publisher.id\nJOIN hero_attribute ON superhero.id = hero_attribute.hero_id\nWHERE superhero.superhero_name = 'Batgirl IV'",
+      "pred_sql": "SELECT s.id\nFROM superhero s\nJOIN alignment a ON s.alignment_id = a.id\nJOIN publisher p ON s.publisher_id = p.id\nJOIN hero_attribute ha ON s.id = ha.hero_id\nWHERE s.superhero_name = 'Batgirl IV'",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.11
+    },
+    {
+      "uid": "85b3ae59-2df8-4c41-99d7-d697e63c25e4",
+      "question": "What male superheroes named Beast, exactly Henry Philip McCoy, are at least 180.0 cm tall, have blue eyes, hair, and skin, and whose alignment is Good?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN colour ON superhero.eye_colour_id = colour.id AND superhero.hair_colour_id = colour.id AND superhero.skin_colour_id = colour.id\nJOIN gender ON superhero.gender_id = gender.id\nWHERE superhero.full_name = 'Henry Philip McCoy' AND gender.gender = 'Male' AND superhero.height_cm >= 180.0 AND superhero.superhero_name = 'Beast' AND alignment.alignment = 'Good' AND colour.colour = 'Blue'",
+      "pred_sql": "SELECT superhero.id\nFROM superhero\nJOIN gender ON superhero.gender_id = gender.id\nJOIN colour eye_colour ON superhero.eye_colour_id = eye_colour.id\nJOIN colour hair_colour ON superhero.hair_colour_id = hair_colour.id\nJOIN colour skin_colour ON superhero.skin_colour_id = skin_colour.id\nJOIN alignment ON superhero.alignment_id = alignment.id\nWHERE gender.gender = 'Male'\n  AND superhero.superhero_name = 'Beast'\n  AND superhero.full_name = 'Henry Philip McCoy'\n  AND superhero.height_cm >= 180\n  AND eye_colour.colour = 'Blue'\n  AND hair_colour.colour = 'Blue'\n  AND skin_colour.colour = 'Blue'\n  AND alignment.alignment = 'Good'",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.23
+    },
+    {
+      "uid": "a3a488de-c153-4d2e-bea4-cd416b15ae65",
+      "question": "Which superheroes named Fritz von Meyer are at most 196.0 cm tall?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nWHERE superhero.height_cm <= 196.0 AND superhero.full_name = 'Fritz von Meyer'",
+      "pred_sql": "SELECT id FROM superhero WHERE full_name = 'Fritz von Meyer' AND (height_cm <= 196 OR height_cm IS NULL)",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.18
+    },
+    {
+      "uid": "ba55cd29-570e-4b79-b6d3-107038d39df9",
+      "question": "What Good superheroes who are Human have the full name Stephen Vincent Strange, go by Doctor Strange, stand at least 188.0 cm tall, and weigh at most 81.0 kg?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN race ON superhero.race_id = race.id\nWHERE alignment.alignment = 'Good' AND race.race = 'Human' AND superhero.full_name = 'Stephen Vincent Strange' AND superhero.superhero_name = 'Doctor Strange' AND superhero.height_cm >= 188.0 AND superhero.weight_kg <= 81.0",
+      "pred_sql": "SELECT superhero.id\nFROM superhero\nJOIN alignment ON superhero.alignment_id = alignment.id\nJOIN race ON superhero.race_id = race.id\nWHERE alignment.alignment = 'Good'\n  AND race.race = 'Human'\n  AND superhero.full_name = 'Stephen Vincent Strange'\n  AND superhero.superhero_name = 'Doctor Strange'\n  AND superhero.height_cm >= 188\n  AND superhero.weight_kg <= 81",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.33
+    },
+    {
+      "uid": "fed33671-b157-4198-b8fe-b5f842bb17c2",
+      "question": "Which male superheroes named Sandman have the full name '-' and weigh exactly 203.0 kilograms?",
+      "gold_sql": "SELECT superhero.id FROM superhero\nJOIN gender ON superhero.gender_id = gender.id\nWHERE gender.gender = 'Male' AND superhero.superhero_name = 'Sandman' AND superhero.full_name = '-' AND superhero.weight_kg = 203.0",
+      "pred_sql": "SELECT superhero.id\nFROM superhero\nJOIN gender ON superhero.gender_id = gender.id\nWHERE gender.gender = 'Male'\n  AND superhero.superhero_name = 'Sandman'\n  AND superhero.full_name = '-'\n  AND superhero.weight_kg = 203",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    }
+  ]
+}

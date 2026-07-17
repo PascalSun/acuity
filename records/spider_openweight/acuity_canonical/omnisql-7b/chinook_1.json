@@ -1,0 +1,124 @@
+{
+  "db_id": "chinook_1",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:05:49.270741+00:00",
+  "records": [
+    {
+      "uid": "1696dd6a-d385-4155-abde-90150412166e",
+      "question": "Which tracks have a file size that is exactly 6735408 bytes?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN mediatype ON track.mediatypeid = mediatype.mediatypeid\nWHERE track.bytes = 6735408",
+      "pred_sql": "SELECT Track.TrackId\nFROM Track\nINNER JOIN MediaType ON Track.MediaTypeId = MediaType.MediaTypeId\nWHERE Track.Bytes = 6735408",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 38.83
+    },
+    {
+      "uid": "3faa15f1-1bd1-43b4-9d2e-52e0f614b58a",
+      "question": "Which tracks named Corazon Espinado have the composer F. Olivera and a unit price of 0.99?",
+      "gold_sql": "SELECT track.trackid FROM track\nWHERE track.composer = 'F. Olivera' AND track.name = 'Corazon Espinado' AND track.unitprice = 0.99",
+      "pred_sql": "SELECT TrackId \nFROM Track \nWHERE Composer = 'F. Olivera' \n  AND Name = 'Corazon Espinado' \n  AND UnitPrice = 0.99",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 31.1
+    },
+    {
+      "uid": "41cc0cf3-8e25-4936-8a6a-4961ebd53c1c",
+      "question": "Which tracks named Revolta Olodum are at least 230191 milliseconds long, have at least 7557065 bytes, cost at least 0.99, are MPEG audio files, and have invoiceline unit prices of at least 0.99 with quantities of at most 1?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN invoiceline ON track.trackid = invoiceline.trackid\nJOIN mediatype ON track.mediatypeid = mediatype.mediatypeid\nWHERE track.milliseconds >= 230191 AND track.name = 'Revolta Olodum' AND invoiceline.unitprice >= 0.99 AND track.bytes >= 7557065 AND mediatype.name = 'MPEG audio file' AND track.unitprice >= 0.99 AND invoiceline.quantity <= 1",
+      "pred_sql": "SELECT DISTINCT T.TrackId\nFROM Track AS T\nINNER JOIN InvoiceLine AS IL ON T.TrackId = IL.TrackId\nINNER JOIN MediaType AS MT ON T.MediaTypeId = MT.MediaTypeId\nWHERE T.Milliseconds >= 230191\n  AND T.Name = 'Revolta Olodum'\n  AND T.Bytes >= 7557065\n  AND T.UnitPrice >= 0.99\n  AND IL.UnitPrice >= 0.99\n  AND IL.Quantity <= 1\n  AND MT.Name = 'MPEG audio file'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 75.41
+    },
+    {
+      "uid": "4451f92d-0d21-47a7-b2ed-0f628c03e18e",
+      "question": "Which tracks named Alive, composed by Stone Gossard, have a unit price of at most 0.99, a file size of no more than 11176623 bytes, last at least 341080 milliseconds, and are in the MPEG audio file format?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN mediatype ON track.mediatypeid = mediatype.mediatypeid\nWHERE track.unitprice <= 0.99 AND track.bytes <= 11176623 AND track.name = 'Alive' AND track.milliseconds >= 341080 AND mediatype.name = 'MPEG audio file' AND track.composer = 'Stone Gossard'",
+      "pred_sql": "SELECT DISTINCT T.TrackId\nFROM Track AS T\nINNER JOIN MediaType AS M ON T.MediaTypeId = M.MediaTypeId\nWHERE T.UnitPrice <= 0.99\n  AND T.Bytes <= 11176623\n  AND T.Name = 'Alive'\n  AND T.Milliseconds >= 341080\n  AND T.Composer = 'Stone Gossard'\n  AND M.Name = 'MPEG audio file'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 65.1
+    },
+    {
+      "uid": "497dcc5c-a456-42d2-81a2-86ac112ff42f",
+      "question": "Which tracks named Gates Of Tomorrow on the album Dance Of Death cost at most $0.99 and have a file size of at most 12482688 bytes?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN invoiceline ON track.trackid = invoiceline.trackid\nJOIN album ON track.albumid = album.albumid\nWHERE track.unitprice <= 0.99 AND track.name = 'Gates Of Tomorrow' AND album.title = 'Dance Of Death' AND track.bytes <= 12482688",
+      "pred_sql": "SELECT DISTINCT T.trackid\nFROM Track AS T\nINNER JOIN InvoiceLine AS IL ON T.trackid = IL.trackid\nINNER JOIN Album AS A ON T.albumid = A.albumid\nWHERE T.unitprice <= 0.99\n  AND T.name = 'Gates Of Tomorrow'\n  AND T.bytes <= 12482688\n  AND A.title = 'Dance Of Death'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 63.47
+    },
+    {
+      "uid": "50dba9d9-bea4-4bf1-a0f3-1f91a8b8e73e",
+      "question": "Which tracks were composed exactly by Apocalyptica?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN album ON track.albumid = album.albumid\nJOIN artist ON album.artistid = artist.artistid\nWHERE track.composer = 'Apocalyptica'",
+      "pred_sql": "SELECT T.TrackId\nFROM Track AS T\nINNER JOIN Album AS A ON T.AlbumId = A.AlbumId\nWHERE T.Composer = 'Apocalyptica'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 49.06
+    },
+    {
+      "uid": "988cc924-1a2b-4a65-b053-2e2af6fbd385",
+      "question": "Which tracks composed by Lenny Kravitz are MPEG audio files priced at least $0.99 and have a duration of at most 228989 milliseconds?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN mediatype ON track.mediatypeid = mediatype.mediatypeid\nWHERE track.milliseconds <= 228989 AND track.unitprice >= 0.99 AND mediatype.name = 'MPEG audio file' AND track.composer = 'Lenny Kravitz'",
+      "pred_sql": "SELECT DISTINCT T.TrackId\nFROM Track AS T\nINNER JOIN MediaType AS M ON T.MediaTypeId = M.MediaTypeId\nWHERE T.Milliseconds <= 228989\n  AND T.UnitPrice >= 0.99\n  AND T.Composer = 'Lenny Kravitz'\n  AND M.Name = 'MPEG audio file'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 59.86
+    },
+    {
+      "uid": "ae02353c-657d-4be0-9f2a-345d3e0f1284",
+      "question": "What track named Everything's Ruined from the album Angel Dust by Faith No More has a length of exactly 273658 milliseconds, a size of exactly 9010917 bytes, and a unit price of exactly 0.99?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN album ON track.albumid = album.albumid\nJOIN artist ON album.artistid = artist.artistid\nWHERE track.milliseconds = 273658 AND track.bytes = 9010917 AND artist.name = 'Faith No More' AND track.unitprice = 0.99 AND track.name = 'Everything''s Ruined' AND album.title = 'Angel Dust'",
+      "pred_sql": "SELECT \n    Track.TrackId\nFROM \n    Track\nINNER JOIN \n    Album ON Track.AlbumId = Album.AlbumId\nINNER JOIN \n    Artist ON Album.ArtistId = Artist.ArtistId\nWHERE \n    Track.Milliseconds = 273658\n    AND Track.Bytes = 9010917\n    AND Track.UnitPrice = 0.99\n    AND Track.Name = 'Everything'\n    AND Album.Title = 'Angel Dust'\n    AND Artist.Name = 'Faith No More'",
+      "strategy": "2pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 56.65
+    },
+    {
+      "uid": "d3cf45a0-1733-4ce4-b13a-38dd31fdd8c0",
+      "question": "What tracks are exactly 358948 milliseconds long and belong to the Rock genre?",
+      "gold_sql": "SELECT track.trackid FROM track\nJOIN invoiceline ON track.trackid = invoiceline.trackid\nJOIN genre ON track.genreid = genre.genreid\nWHERE track.milliseconds = 358948 AND genre.name = 'Rock'",
+      "pred_sql": "SELECT DISTINCT Track.TrackId\nFROM Track\nINNER JOIN InvoiceLine ON Track.TrackId = InvoiceLine.TrackId\nINNER JOIN Genre ON Track.GenreId = Genre.GenreId\nWHERE Track.Milliseconds = 358948\n  AND Genre.Name = 'Rock'",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 54.72
+    },
+    {
+      "uid": "dcde581e-6063-4da2-bb2c-756750c75af8",
+      "question": "Which tracks have a size of exactly 8351543 bytes and a unit price of at most 0.99?",
+      "gold_sql": "SELECT track.trackid FROM track\nWHERE track.bytes = 8351543 AND track.unitprice <= 0.99",
+      "pred_sql": "SELECT TrackId \nFROM Track \nWHERE Bytes = 8351543 AND UnitPrice <= 0.99",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 28.91
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "db_id": "address",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T09:58:12.745662+00:00",
+  "records": [
+    {
+      "uid": "08f23296-28b6-42e0-ba1e-026f0076650b",
+      "question": "Where are the areas with exactly 1752.0 multi-family delivery units, exactly 4240.0 residents over 65, a male median age of 35.9, and a Black population of at most 1966.0?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN state ON zip_data.state = state.abbreviation\nJOIN alias ON zip_data.zip_code = alias.zip_code\nWHERE zip_data.multi_family_delivery_units = 1752.0 AND zip_data.over_65 = 4240.0 AND zip_data.male_median_age = 35.9 AND zip_data.black_population <= 1966.0",
+      "pred_sql": "SELECT T1.zip_code FROM zip_data AS T1 INNER JOIN state AS T2 ON T1.state = T2.abbreviation INNER JOIN alias AS T3 ON T1.zip_code = T3.zip_code WHERE T1.multi_family_delivery_units = 1752.0 AND T1.over_65 = 4240.0 AND T1.male_median_age = 35.9 AND T1.black_population <= 1966.0",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.42
+    },
+    {
+      "uid": "1296a652-21e7-4d9e-a4f3-a78c564eeae6",
+      "question": "What areas have a male median age of 51.8, a water area of 0.019, daylight savings observed, 2.4 persons per household, a 2010 population of at most 96, county FIPS of at least 101, and a longitude of -80.280235?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN state ON zip_data.state = state.abbreviation\nJOIN country ON zip_data.zip_code = country.zip_code\nWHERE zip_data.male_median_age = 51.8 AND zip_data.water_area = 0.019 AND zip_data.daylight_savings = 'Yes' AND zip_data.persons_per_household = 2.4 AND zip_data.population_2010 <= 96.0 AND zip_data.county_fips >= 101.0 AND zip_data.longitude = -80.280235",
+      "pred_sql": "SELECT T1.zip_code FROM zip_data AS T1 WHERE T1.male_median_age = 51.8 AND T1.water_area = 0.019 AND T1.daylight_savings = 'Yes' AND T1.persons_per_household = 2.4 AND T1.population_2010 <= 96.0 AND T1.county_fips >= 101.0 AND T1.longitude = -80.280235 AND EXISTS ( SELECT 1 FROM state AS T2 WHERE T1.state = T2.abbreviation ) AND EXISTS ( SELECT 1 FROM country AS T3 WHERE T1.zip_code = T3.zip_code )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.5
+    },
+    {
+      "uid": "18ca405e-67d2-4a58-9dcb-26d3c4fbacde",
+      "question": "What zip data have a female median age of 43.6, total beneficiaries exactly 0.0, county FIPS of 25.0, and land area exactly 36.69?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN cbsa ON zip_data.cbsa = cbsa.cbsa\nWHERE zip_data.female_median_age = 43.6 AND zip_data.total_beneficiaries = 0.0 AND zip_data.county_fips = 25.0 AND zip_data.land_area = 36.69",
+      "pred_sql": "SELECT T1.zip_code FROM zip_data AS T1 INNER JOIN CBSA AS T2 ON T1.CBSA = T2.CBSA WHERE T1.female_median_age = 43.6 AND T1.total_beneficiaries = 0 AND T1.county_fips = 25 AND T1.land_area = 36.69",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.39
+    },
+    {
+      "uid": "421c8d98-e80d-4f1e-8efe-ff72077ff563",
+      "question": "Which zip_data entities have exactly 275.0 spouses, exactly 63000.0 average house value, and also have related cbsa and area_code records?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN cbsa ON zip_data.cbsa = cbsa.cbsa\nJOIN area_code ON zip_data.zip_code = area_code.zip_code\nWHERE zip_data.spouses = 275.0 AND zip_data.avg_house_value = 63000.0",
+      "pred_sql": "SELECT T1.zip_code FROM zip_data AS T1 INNER JOIN CBSA AS T2 ON T1.CBSA = T2.CBSA INNER JOIN area_code AS T3 ON T1.zip_code = T3.zip_code WHERE T1.spouses = 275.0 AND T1.avg_house_value = 63000.0",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.76
+    },
+    {
+      "uid": "470564ac-fa5d-4bd7-b4b1-8ca0050939c3",
+      "question": "What zip data have a population of at least 4745, female population of at most 2344, no more than 0 multi-family delivery units, annual payroll of at least 161619000, average income per household at most 75573, and elevation exactly 901?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN state ON zip_data.state = state.abbreviation\nWHERE zip_data.population_2010 >= 4745.0 AND zip_data.female_population <= 2344.0 AND zip_data.multi_family_delivery_units <= 0.0 AND zip_data.annual_payroll >= 161619000.0 AND zip_data.avg_income_per_household <= 75573.0 AND zip_data.elevation = 901.0",
+      "pred_sql": "SELECT T1.zip_code FROM zip_data AS T1 INNER JOIN state AS T2 ON T1.state = T2.abbreviation WHERE T1.population_2010 >= 4745.0 AND T1.female_population <= 2344.0 AND T1.multi_family_delivery_units <= 0.0 AND T1.annual_payroll >= 161619000.0 AND T1.avg_income_per_household <= 75573.0 AND T1.elevation = 901.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.75
+    },
+    {
+      "uid": "6f7bba45-092e-4765-aea5-a433d7916444",
+      "question": "Where in Beaverton are there at most 0.0 spouses?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN state ON zip_data.state = state.abbreviation\nWHERE zip_data.spouses <= 0.0 AND zip_data.city = 'Beaverton'",
+      "pred_sql": "SELECT T1.zip_code FROM zip_data AS T1 INNER JOIN state AS T2 ON T1.state = T2.abbreviation WHERE T1.spouses <= 0.0 AND T1.city = 'Beaverton'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.37
+    },
+    {
+      "uid": "70f89390-75e4-406b-acb4-d1052989cd30",
+      "question": "Which areas have exactly a Hawaiian population of 1.0, longitude of -69.18863, 39.0 businesses, water area of 1.918, a 2010 population of at least 1536, and parents and widowed at most 0.0?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nWHERE zip_data.hawaiian_population = 1.0 AND zip_data.longitude = -69.18863 AND zip_data.businesses = 39.0 AND zip_data.population_2010 >= 1536.0 AND zip_data.water_area = 1.918 AND zip_data.parents_and_widowed <= 0.0",
+      "pred_sql": "SELECT zip_code FROM zip_data WHERE hawaiian_population = 1 AND longitude = -69.18863 AND businesses = 39 AND population_2010 >= 1536 AND water_area = 1.918 AND parents_and_widowed <= 0",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.45
+    },
+    {
+      "uid": "7f6d20f1-fb50-4354-bc87-d0069438f363",
+      "question": "What areas in the Central time zone have exactly a black population of 5.0, a male population of 313.0, and persons per household of 2.47?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nWHERE zip_data.black_population = 5.0 AND zip_data.male_population = 313.0 AND zip_data.time_zone = 'Central' AND zip_data.persons_per_household = 2.47",
+      "pred_sql": "SELECT zip_code FROM zip_data WHERE black_population = 5 AND male_population = 313 AND time_zone = 'Central' AND persons_per_household = 2.47",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.15
+    },
+    {
+      "uid": "881332bd-05d7-4184-b7d4-2e8ee0d18955",
+      "question": "Which zip data entries are from the city that is exactly Chino?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nJOIN state ON zip_data.state = state.abbreviation\nJOIN congress ON state.abbreviation = congress.abbreviation\nWHERE zip_data.city = 'Chino'",
+      "pred_sql": "SELECT DISTINCT T1.zip_code FROM zip_data AS T1 INNER JOIN state AS T2 ON T1.state = T2.abbreviation INNER JOIN congress AS T3 ON T2.abbreviation = T3.abbreviation WHERE T1.city = 'Chino'",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.52
+    },
+    {
+      "uid": "be14ee2b-8922-4c35-ad35-4d571f415686",
+      "question": "Which zip data entries have a longitude exactly equal to -81.870967?",
+      "gold_sql": "SELECT zip_data.zip_code FROM zip_data\nWHERE zip_data.longitude = -81.870967",
+      "pred_sql": "SELECT zip_code FROM zip_data WHERE longitude = -81.870967",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.68
+    }
+  ]
+}

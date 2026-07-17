@@ -1,0 +1,124 @@
+{
+  "db_id": "video_games",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:03:47.582346+00:00",
+  "records": [
+    {
+      "uid": "363c04a6-7734-4599-9c59-7f8e083e01fc",
+      "question": "Which genres are exactly Role-Playing?",
+      "gold_sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Role-Playing'",
+      "pred_sql": "SELECT id FROM genre WHERE genre_name = 'Role-Playing'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.86
+    },
+    {
+      "uid": "42432673-3379-4c0a-a824-fa79a195f47a",
+      "question": "Which genres include the game That's So Raven?",
+      "gold_sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'That''s So Raven'",
+      "pred_sql": "SELECT DISTINCT T1.id FROM genre AS T1 INNER JOIN game AS T2 ON T1.id = T2.genre_id WHERE T2.game_name = 'That'",
+      "strategy": "1pE",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.85
+    },
+    {
+      "uid": "42af27d4-195a-46c1-bc5d-540cade0bb7d",
+      "question": "What genres named Misc are associated with the game We Sing Deutsche Hits?",
+      "gold_sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE genre.genre_name = 'Misc' AND game.game_name = 'We Sing Deutsche Hits'",
+      "pred_sql": "SELECT T1.id FROM genre AS T1 INNER JOIN game AS T2 ON T1.id = T2.genre_id WHERE T1.genre_name = 'Misc' AND T2.game_name = 'We Sing Deutsche Hits'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.09
+    },
+    {
+      "uid": "44a37164-308d-4f57-90b4-8ef2737c3201",
+      "question": "Which genres labeled as Action include the game named Space Camp?",
+      "gold_sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Space Camp' AND genre.genre_name = 'Action'",
+      "pred_sql": "SELECT T1.id FROM genre AS T1 INNER JOIN game AS T2 ON T1.id = T2.genre_id WHERE T1.genre_name = 'Action' AND T2.game_name = 'Space Camp'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.63
+    },
+    {
+      "uid": "4919f640-8252-4c97-8f88-4e2b5ebde9bb",
+      "question": "Which genres have the genre_name exactly as Action?",
+      "gold_sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Action'",
+      "pred_sql": "SELECT id FROM genre WHERE genre_name = 'Action'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.46
+    },
+    {
+      "uid": "5e66abcb-f853-4a53-9dff-6060c8b63a72",
+      "question": "Which genres include the game named exactly Sonic the Hedgehog 2 (8-bit)?",
+      "gold_sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Sonic the Hedgehog 2 (8-bit)'",
+      "pred_sql": "SELECT DISTINCT T1.id FROM genre AS T1 INNER JOIN game AS T2 ON T1.id = T2.genre_id WHERE T2.game_name = 'Sonic the Hedgehog 2 (8-bit)'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.95
+    },
+    {
+      "uid": "63696df7-d62f-4f2b-8be8-8987ce1134e8",
+      "question": "Which genres are exactly classified as Platform?",
+      "gold_sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Platform'",
+      "pred_sql": "SELECT id FROM genre WHERE genre_name = 'Platform'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    },
+    {
+      "uid": "8b7bca42-b75b-47e7-98bd-2934a4c0b72f",
+      "question": "Which genres include the game Buzz! The Schools Quiz?",
+      "gold_sql": "SELECT genre.id FROM genre\nJOIN game ON genre.id = game.genre_id\nWHERE game.game_name = 'Buzz! The Schools Quiz'",
+      "pred_sql": "SELECT DISTINCT T1.id FROM genre AS T1 INNER JOIN game AS T2 ON T1.id = T2.genre_id WHERE T2.game_name = 'Buzz! The Schools Quiz'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.32
+    },
+    {
+      "uid": "afe9e86d-7ecf-4863-a8ed-2cafcd3e3e00",
+      "question": "Which genres have the exact name Adventure?",
+      "gold_sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Adventure'",
+      "pred_sql": "SELECT id FROM genre WHERE genre_name = 'Adventure'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.27
+    },
+    {
+      "uid": "e2db37d7-42b8-4613-b7b9-ea043d63d750",
+      "question": "Which genres are exactly Shooter?",
+      "gold_sql": "SELECT genre.id FROM genre\nWHERE genre.genre_name = 'Shooter'",
+      "pred_sql": "SELECT id FROM genre WHERE genre_name = 'Shooter'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    }
+  ]
+}

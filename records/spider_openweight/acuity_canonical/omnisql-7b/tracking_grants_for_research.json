@@ -1,0 +1,124 @@
+{
+  "db_id": "tracking_grants_for_research",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T17:53:52.800960+00:00",
+  "records": [
+    {
+      "uid": "035f43a3-49a1-45dc-baba-5712909a7849",
+      "question": "What organisations have organisation_details exactly equal to eveniet?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN organisation_types ON organisations.organisation_type = organisation_types.organisation_type\nWHERE organisations.organisation_details = 'eveniet'",
+      "pred_sql": "SELECT o.organisation_id\nFROM Organisations o\nINNER JOIN Organisation_Types ot ON o.organisation_type = ot.organisation_type\nWHERE o.organisation_details = 'eveniet'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 28.35
+    },
+    {
+      "uid": "2bb0236c-7673-44d2-900a-43dcfa9d02f8",
+      "question": "Which organisations have organisation_details exactly impedit, grants with other_details exactly occaecati starting on or before 1985-10-09 20:08:49 and ending on or after 1985-06-08 00:22:07 with grant_amount exactly 281.2446, projects where project_details is non, and research_staff where staff_details is dolor?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN projects ON organisations.organisation_id = projects.organisation_id\nJOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE grants.grant_start_date <= '1985-10-09 20:08:49' AND grants.other_details = 'occaecati' AND projects.project_details = 'non' AND grants.grant_end_date >= '1985-06-08 00:22:07' AND organisations.organisation_details = 'impedit' AND grants.grant_amount = 281.2446 AND research_staff.staff_details = 'dolor'",
+      "pred_sql": "SELECT organisations.organisation_id\nFROM organisations\nINNER JOIN grants ON organisations.organisation_id = grants.organisation_id\nINNER JOIN projects ON organisations.organisation_id = projects.organisation_id\nINNER JOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE organisations.organisation_details = 'impedit'\nAND grants.grant_start_date <= '1985-10-09 20:08:49'\nAND grants.other_details = 'occaecati'\nAND grants.grant_end_date >= '1985-06-08 00:22:07'\nAND grants.grant_amount = 281.2446\nAND projects.project_details = 'non'\nAND research_staff.staff_details = 'dolor'",
+      "strategy": "3iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.02
+    },
+    {
+      "uid": "3e4fa0c4-4980-4914-a6e9-d4a19013adb2",
+      "question": "Which organisations have grants and projects where the project details are exactly et?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN organisation_types ON organisations.organisation_type = organisation_types.organisation_type\nJOIN projects ON organisations.organisation_id = projects.organisation_id\nWHERE projects.project_details = 'et'",
+      "pred_sql": "SELECT \n    o.organisation_id\nFROM \n    Organisations o\nINNER JOIN \n    Grants g ON o.organisation_id = g.organisation_id\nINNER JOIN \n    Organisation_Types ot ON o.organisation_type = ot.organisation_type\nINNER JOIN \n    Projects p ON o.organisation_id = p.organisation_id\nWHERE \n    p.project_details = 'et'\nGROUP BY \n    o.organisation_id\nHAVING \n    COUNT(DISTINCT g.grant_id) > 0 AND\n    COUNT(DISTINCT ot.organisation_type) > 0 AND\n    COUNT(DISTINCT p.project_id) > 0",
+      "strategy": "3iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 41.94
+    },
+    {
+      "uid": "4c5a2ff7-f5cf-429e-bd4c-a5974426e72c",
+      "question": "Which organisations have grants with a grant end date exactly '1996-08-16 20:45:05' and a grant amount at least 608413.3291, have organisation details exactly 'eius', and also have related organisation types and research staff records?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN organisation_types ON organisations.organisation_type = organisation_types.organisation_type\nJOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE grants.grant_end_date = '1996-08-16 20:45:05' AND grants.grant_amount >= 608413.3291 AND organisations.organisation_details = 'eius'",
+      "pred_sql": "SELECT o.organisation_id\nFROM Organisations o\nJOIN Grants g ON o.organisation_id = g.organisation_id\nJOIN Organisation_Types ot ON o.organisation_type = ot.organisation_type\nJOIN Research_Staff rs ON o.organisation_id = rs.employer_organisation_id\nWHERE o.organisation_details = 'eius'\nAND g.grant_end_date = '1996-08-16 20:45:05'\nAND g.grant_amount >= 608413.3291",
+      "strategy": "3iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 39.47
+    },
+    {
+      "uid": "5b7d80d3-33f0-4c9b-b548-2dad977fc2ad",
+      "question": "Which organisations have organisation details exactly tenetur, have projects where the project details are exactly dolorem, employ research staff with staff details exactly consequatur, and received grants that started on 1986-10-31 17:11:29, ended on or after 2001-05-22 21:02:43, and amount to at most 610.7004?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN organisation_types ON organisations.organisation_type = organisation_types.organisation_type\nJOIN projects ON organisations.organisation_id = projects.organisation_id\nJOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE projects.project_details = 'dolorem' AND organisations.organisation_details = 'tenetur' AND grants.grant_start_date = '1986-10-31 17:11:29' AND grants.grant_end_date >= '2001-05-22 21:02:43' AND research_staff.staff_details = 'consequatur' AND grants.grant_amount <= 610.7004",
+      "pred_sql": "SELECT \n    o.organisation_id\nFROM \n    Organisations o\nINNER JOIN \n    Grants g ON o.organisation_id = g.organisation_id\nINNER JOIN \n    Organisation_Types ot ON o.organisation_type = ot.organisation_type\nINNER JOIN \n    Projects p ON o.organisation_id = p.organisation_id\nINNER JOIN \n    Research_Staff rs ON o.organisation_id = rs.employer_organisation_id\nWHERE \n    o.organisation_details = 'tenetur'\n    AND g.grant_start_date = '1986-10-31 17:11:29'\n    AND g.grant_end_date >= '2001-05-22 21:02:43'\n    AND g.grant_amount <= 610.7004\n    AND p.project_details = 'dolorem'\n    AND rs.staff_details = 'consequatur'",
+      "strategy": "4iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 45.83
+    },
+    {
+      "uid": "6917690a-d7c5-41f1-ae2b-1d9a13e9d185",
+      "question": "Which organisations have grants where other_details is aliquam and also have associated projects, research staff, and organisation types?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN organisation_types ON organisations.organisation_type = organisation_types.organisation_type\nJOIN projects ON organisations.organisation_id = projects.organisation_id\nJOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE grants.other_details = 'aliquam'",
+      "pred_sql": "SELECT DISTINCT o.organisation_id\nFROM Organisations o\nINNER JOIN Grants g ON o.organisation_id = g.organisation_id AND g.other_details = 'aliquam'\nINNER JOIN Organisation_Types ot ON o.organisation_type = ot.organisation_type\nINNER JOIN Projects p ON o.organisation_id = p.organisation_id\nINNER JOIN Research_Staff rs ON o.organisation_id = rs.employer_organisation_id",
+      "strategy": "4iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 40.16
+    },
+    {
+      "uid": "74fa7868-c137-4576-b803-6cb33e6987d1",
+      "question": "Which organisations have organisation details exactly impedit, are involved in projects where project details is deleniti, and received grants with other details exactly occaecati, grant start date on 1985-10-09 20:08:49, grant end date on 1985-06-08 00:22:07, and grant amount at least 281.2446?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN projects ON organisations.organisation_id = projects.organisation_id\nWHERE organisations.organisation_details = 'impedit' AND grants.grant_end_date = '1985-06-08 00:22:07' AND projects.project_details = 'deleniti' AND grants.grant_start_date = '1985-10-09 20:08:49' AND grants.grant_amount >= 281.2446 AND grants.other_details = 'occaecati'",
+      "pred_sql": "SELECT \n    o.organisation_id\nFROM \n    Organisations o\nINNER JOIN \n    Grants g ON o.organisation_id = g.organisation_id\nINNER JOIN \n    Projects p ON o.organisation_id = p.organisation_id\nWHERE \n    o.organisation_details = 'impedit'\n    AND g.grant_end_date = '1985-06-08 00:22:07'\n    AND g.grant_start_date = '1985-10-09 20:08:49'\n    AND g.grant_amount >= 281.2446\n    AND g.other_details = 'occaecati'\n    AND p.project_details = 'deleniti'",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 42.45
+    },
+    {
+      "uid": "8038a152-40c7-4fb2-9944-5ffb06a91d0c",
+      "question": "What organisations have organisation details exactly equal to eius and have both grants and research staff associated with them?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN grants ON organisations.organisation_id = grants.organisation_id\nJOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE organisations.organisation_details = 'eius'",
+      "pred_sql": "SELECT o.organisation_id\nFROM Organisations o\nWHERE o.organisation_details = 'eius'\nAND EXISTS (\n    SELECT 1\n    FROM Grants g\n    WHERE g.organisation_id = o.organisation_id\n)\nAND EXISTS (\n    SELECT 1\n    FROM Research_Staff rs\n    WHERE rs.employer_organisation_id = o.organisation_id\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 42.85
+    },
+    {
+      "uid": "839faffb-bb8a-40fc-8cbb-9eb21a337385",
+      "question": "Which organisations have organisation_details exactly equal to consequuntur?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nWHERE organisations.organisation_details = 'consequuntur'",
+      "pred_sql": "SELECT organisation_id\nFROM Organisations\nWHERE organisation_details = 'consequuntur'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 26.58
+    },
+    {
+      "uid": "d8db10db-d4fa-4bf5-ae0b-068164701a08",
+      "question": "What organisations have organisation_details exactly equal to et, with staff whose staff_details is quo and projects where project_details is beatae?",
+      "gold_sql": "SELECT organisations.organisation_id FROM organisations\nJOIN projects ON organisations.organisation_id = projects.organisation_id\nJOIN research_staff ON organisations.organisation_id = research_staff.employer_organisation_id\nWHERE research_staff.staff_details = 'quo' AND projects.project_details = 'beatae' AND organisations.organisation_details = 'et'",
+      "pred_sql": "SELECT DISTINCT o.organisation_id\nFROM Organisations o\nJOIN Projects p ON o.organisation_id = p.organisation_id\nJOIN Research_Staff rs ON o.organisation_id = rs.employer_organisation_id\nWHERE o.organisation_details = 'et'\n  AND p.project_details = 'beatae'\n  AND rs.staff_details = 'quo'",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 40.73
+    }
+  ]
+}

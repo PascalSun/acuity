@@ -1,0 +1,124 @@
+{
+  "db_id": "college_completion",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 7,
+  "accuracy": 0.7,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:34:47.145946+00:00",
+  "records": [
+    {
+      "uid": "00ca662d-a083-49eb-a458-4339a9eab770",
+      "question": "What institutions have an endow percentile exactly 37 within state sector count 4?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.endow_percentile = '37' AND institution_details.state_sector_ct = 4",
+      "pred_sql": "SELECT unitid\nFROM institution_details\nWHERE endow_percentile = '37' AND state_sector_ct = 4",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.83
+    },
+    {
+      "uid": "1587c5dd-0f4e-47b2-944b-93bebb8be16b",
+      "question": "Which institutions in Westminster have a student count of 218, a full-time percentage of 78.0, no graduates after four years, aid values of at least 3885.0, no graduates with 100% aid, a full-time equivalent value of at most 238, and latitude exactly 39.85278?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.vsa_grad_after4_first = 'NULL' AND institution_details.aid_value >= 3885.0 AND institution_details.fte_value <= 238 AND institution_details.city = 'Westminster' AND institution_details.grad_100_value = 0.0 AND institution_details.ft_pct = 78.0 AND institution_details.student_count = 218 AND institution_details.lat_y = 39.85278",
+      "pred_sql": "SELECT institution_details.unitid\nFROM institution_details\nWHERE city = 'Westminster'\n  AND student_count = 218\n  AND ft_pct = 78.0\n  AND (grad_100_value IS NULL OR grad_100_value = 0)\n  AND aid_value >= 3885.0\n  AND (grad_100_percentile IS NULL OR grad_100_percentile != 100)\n  AND fte_value <= 238\n  AND lat_y = 39.85278",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.82
+    },
+    {
+      "uid": "3cb5f1ce-c2fb-42af-9509-a7fcbbd36f42",
+      "question": "What 2-year institutions have a counted_pct exactly equal to 21.3|10 and an FTE value of at most 8005?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.counted_pct = '21.3|10' AND institution_details.fte_value <= 8005 AND institution_details.level = '2-year'",
+      "pred_sql": "SELECT unitid\nFROM institution_details\nWHERE level = '2-year'\n  AND counted_pct = '21.3|10'\n  AND fte_value <= 8005",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.14
+    },
+    {
+      "uid": "559f1a55-90cb-48c8-8083-4f03a1a82c62",
+      "question": "Which institutions are located exactly in the city of Independence?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.city = 'Independence'",
+      "pred_sql": "SELECT unitid\nFROM institution_details\nWHERE city = 'Independence'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.46
+    },
+    {
+      "uid": "59defd3f-2f61-4bda-8918-83f9bfa7d35f",
+      "question": "Which institutions in Pittsburgh belong exactly to state sector 41?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.state_sector_ct = 41 AND institution_details.city = 'Pittsburgh'",
+      "pred_sql": "SELECT DISTINCT institution_details.unitid\nFROM institution_details\nJOIN state_sector_details ON institution_details.state = state_sector_details.state\nWHERE institution_details.city = 'Pittsburgh'\nAND state_sector_details.stateid = 41",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.17
+    },
+    {
+      "uid": "7623ce28-6216-41e8-82a4-433591201cc9",
+      "question": "What institutions have a longitude value exactly equal to -97.699883?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.long_x = -97.699883",
+      "pred_sql": "SELECT unitid\nFROM institution_details\nWHERE long_x = -97.699883",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.96
+    },
+    {
+      "uid": "7ee7a219-240c-4413-a86d-e42a97a4e96f",
+      "question": "Which institutions with the site exactly www.sc4.edu have no data for vsa_grad_after4_first and vsa_enroll_elsewhere_after6_transfer, and a grad_100_percentile at most 22.0?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.vsa_grad_after4_first = 'NULL' AND institution_details.vsa_enroll_elsewhere_after6_transfer = 'NULL' AND institution_details.grad_100_percentile <= 22.0 AND institution_details.site = 'www.sc4.edu'",
+      "pred_sql": "SELECT unitid\nFROM institution_details\nWHERE site = 'www.sc4.edu'\n  AND vsa_grad_after4_first IS NULL\n  AND vsa_enroll_elsewhere_after6_transfer IS NULL\n  AND grad_100_percentile <= 22.0",
+      "strategy": "0M",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.43
+    },
+    {
+      "uid": "a55b3e0f-0dee-497f-a822-336291053e11",
+      "question": "Which institutions have a latitude exactly 35.138826, a student count of at least 597, and a website that is exactly www.pamlicocc.edu?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.lat_y = 35.138826 AND institution_details.student_count >= 597 AND institution_details.site = 'www.pamlicocc.edu'",
+      "pred_sql": "SELECT unitid\nFROM institution_details\nWHERE lat_y = 35.138826\n  AND student_count >= 597\n  AND site = 'www.pamlicocc.edu'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "uid": "b29325b6-ac6c-41b5-9ecc-a17809ab3b58",
+      "question": "Which institutions have a flagship value of NULL, no enrollment elsewhere after 4 years, a graduation rate of exactly 40.8, no graduates after 4 years elsewhere, exp_award_state_value at most 58286, and exp_award_natl_value at least 38763?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.flagship = 'NULL' AND institution_details.vsa_enroll_elsewhere_after4_first = 'NULL' AND institution_details.exp_award_state_value <= 58286 AND institution_details.exp_award_natl_value >= 38763 AND institution_details.grad_150_value = 40.8 AND institution_details.vsa_grad_after4_first = 'NULL'",
+      "pred_sql": "SELECT institution_details.unitid\nFROM institution_details\nWHERE flagship IS NULL\nAND vsa_enroll_elsewhere_after4_first = '0'\nAND grad_150_value = 40.8\nAND vsa_grad_elsewhere_after4_first = '0'\nAND exp_award_state_value <= 58286\nAND exp_award_natl_value >= 38763",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.62
+    },
+    {
+      "uid": "e9954e13-2c0b-4dc9-8f2e-bbc1a6211592",
+      "question": "What institutions in 2010 have an aid value exactly 5764.0, a student count of at least 12138, full-time percentage exactly 77.7, graduation after 6 years for transfers exactly 46.5, retention percentile at most 35.0, graduation after 6 years for first-time students exactly 36.6, and expected award value of at least 66941?",
+      "gold_sql": "SELECT institution_details.unitid FROM institution_details\nWHERE institution_details.aid_value = 5764.0 AND institution_details.student_count >= 12138 AND institution_details.ft_pct = 77.7 AND institution_details.vsa_grad_after6_transfer = '46.5' AND institution_details.retain_percentile <= 35.0 AND institution_details.vsa_grad_after6_first = '36.6' AND institution_details.exp_award_value >= 66941 AND institution_details.vsa_year = '2010'",
+      "pred_sql": "SELECT DISTINCT institution_details.unitid\nFROM institution_details\nWHERE aid_value = 5764.0\n  AND student_count >= 12138\n  AND ft_pct = 77.7\n  AND vsa_grad_after6_transfer = '46.5'\n  AND retain_percentile <= 35.0\n  AND vsa_grad_after6_first = '36.6'\n  AND exp_award_value >= 66941",
+      "strategy": "0H",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.73
+    }
+  ]
+}

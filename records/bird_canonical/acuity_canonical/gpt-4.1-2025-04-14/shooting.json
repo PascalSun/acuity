@@ -1,0 +1,124 @@
+{
+  "db_id": "shooting",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:11:10.742281+00:00",
+  "records": [
+    {
+      "uid": "1c648cd3-4fd0-4349-ad7e-c076f339a915",
+      "question": "Which incidents occurred exactly on 2008/7/9?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nJOIN subjects ON incidents.case_number = subjects.case_number\nWHERE incidents.date = '2008/7/9'",
+      "pred_sql": "SELECT incidents.case_number\nFROM incidents\nWHERE date = '2008/7/9'\nAND EXISTS (\n    SELECT 1 FROM subjects WHERE subjects.case_number = incidents.case_number\n)",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.96
+    },
+    {
+      "uid": "43d56b2e-4ada-48ac-8d53-e6deafd1ec6d",
+      "question": "Which incidents occurred exactly at 2400 Walnut Hill Lane involving at least 1 subject?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nWHERE incidents.location = '2400 Walnut Hill Lane' AND incidents.subject_count >= 1",
+      "pred_sql": "SELECT case_number FROM incidents WHERE location = '2400 Walnut Hill Lane' AND subject_count >= 1",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.75
+    },
+    {
+      "uid": "4f6e4fd7-e921-4b45-a77a-99ce569593eb",
+      "question": "Which incidents involving officer Vanderslice have at most 1 subject and where the subject\u2019s weapon is exactly a Handgun?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nWHERE officers.last_name = 'Vanderslice' AND incidents.subject_count <= 1 AND incidents.subject_weapon = 'Handgun'",
+      "pred_sql": "SELECT DISTINCT incidents.case_number\nFROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nWHERE incidents.subject_count <= 1\n  AND incidents.subject_weapon = 'Handgun'\n  AND officers.last_name = 'Vanderslice'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.0
+    },
+    {
+      "uid": "61100808-a8f3-4ba0-a4f1-27af448a34b4",
+      "question": "Which incidents involve at most 1 subject where the subject\u2019s last name is Gonzales and gender is M, the subject weapon is exactly Shotgun, and the officer involved is a white male?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nJOIN subjects ON incidents.case_number = subjects.case_number\nWHERE incidents.subject_count <= 1 AND officers.gender = 'M' AND incidents.subject_weapon = 'Shotgun' AND subjects.gender = 'M' AND officers.race = 'W' AND subjects.last_name = 'Gonzales'",
+      "pred_sql": "SELECT incidents.case_number\nFROM incidents\nWHERE subject_count <= 1\n  AND subject_weapon = 'Shotgun'\n  AND EXISTS (\n      SELECT 1 FROM officers\n      WHERE officers.case_number = incidents.case_number\n        AND officers.gender = 'M'\n        AND officers.race = 'W'\n  )\n  AND EXISTS (\n      SELECT 1 FROM subjects\n      WHERE subjects.case_number = incidents.case_number\n        AND subjects.gender = 'M'\n        AND subjects.last_name = 'Gonzales'\n  )",
+      "strategy": "2iH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "uid": "6f58e6e1-6747-43ca-a7a0-ce2e6a22ddc5",
+      "question": "Which incidents involved a subject named James and an officer with the last name King?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nJOIN subjects ON incidents.case_number = subjects.case_number\nWHERE subjects.first_name = 'James' AND officers.last_name = 'King'",
+      "pred_sql": "SELECT incidents.case_number\nFROM incidents\nWHERE EXISTS (\n    SELECT 1 FROM officers\n    WHERE officers.case_number = incidents.case_number\n      AND officers.last_name = 'King'\n)\nAND EXISTS (\n    SELECT 1 FROM subjects\n    WHERE subjects.case_number = incidents.case_number\n      AND subjects.first_name = 'James'\n)",
+      "strategy": "2iE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "9d87457a-6343-4613-84cc-9ec7ef304f64",
+      "question": "Which incidents involved exactly one subject on 2014/10/22 at 9770 Forest Lane?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nWHERE incidents.subject_count = 1 AND incidents.date = '2014/10/22' AND incidents.location = '9770 Forest Lane'",
+      "pred_sql": "SELECT incidents.case_number\nFROM incidents\nWHERE subject_count = 1\n  AND date = '2014/10/22'\n  AND location = '9770 Forest Lane'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.91
+    },
+    {
+      "uid": "a23e3612-7d56-4471-b1c2-66e42517aaad",
+      "question": "Which incidents at 1521 N. Cockrell Hill Road involve at most one subject named Dale W/M who is deceased and where a Latino officer named David Yzaguirre was involved?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nWHERE incidents.subject_statuses = 'Deceased' AND officers.full_name LIKE '%Yzaguirre%' AND incidents.subject_count <= 1 AND incidents.location = '1521 N. Cockrell Hill Road' AND incidents.subjects LIKE '%Dale W/M%' AND officers.first_name = 'David' AND officers.race = 'L'",
+      "pred_sql": "SELECT DISTINCT incidents.case_number\nFROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nWHERE incidents.subject_statuses = 'Deceased'\n  AND incidents.subject_count <= 1\n  AND incidents.location = '1521 N. Cockrell Hill Road'\n  AND incidents.subjects LIKE '%Dale W/M%'\n  AND officers.full_name LIKE '%Yzaguirre%'\n  AND officers.first_name = 'David'\n  AND officers.race = 'L'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "uid": "a5f026cf-0a56-4d2d-9099-b303b98806f9",
+      "question": "What incidents happened exactly at 1524 E. Missouri Avenue?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nWHERE incidents.location = '1524 E. Missouri Avenue'",
+      "pred_sql": "SELECT incidents.case_number FROM incidents WHERE location = '1524 E. Missouri Avenue'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.83
+    },
+    {
+      "uid": "b8a849df-f453-4f6c-a7e2-abe3430e39d0",
+      "question": "Which incidents on 2012/12/14 at 4542 W. Kiest Boulevard involved at least one subject containing Ellis who was deceased and armed with a handgun, with officers containing Daniel W/M?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nWHERE incidents.subjects LIKE '%Ellis%' AND incidents.subject_count >= 1 AND incidents.date = '2012/12/14' AND incidents.officers LIKE '%Daniel W/M%' AND incidents.location = '4542 W. Kiest Boulevard' AND incidents.subject_statuses = 'Deceased' AND incidents.subject_weapon = 'Handgun'",
+      "pred_sql": "SELECT incidents.case_number\nFROM incidents\nJOIN subjects ON incidents.case_number = subjects.case_number\nJOIN officers ON incidents.case_number = officers.case_number\nWHERE subjects.full_name LIKE '%Ellis%'\n  AND incidents.subject_count >= 1\n  AND incidents.date = '2012/12/14'\n  AND (officers.full_name || ' ' || officers.gender) LIKE '%Daniel W/M%'\n  AND incidents.location = '4542 W. Kiest Boulevard'\n  AND incidents.subject_statuses = 'Deceased'\n  AND incidents.subject_weapon = 'Handgun'",
+      "strategy": "0H",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "ba113b2f-33ae-4f10-8d00-259d204f19ac",
+      "question": "Which incidents on 2015/8/27 involved male officers and Black subjects, and include Bertrand B/M among the subjects?",
+      "gold_sql": "SELECT incidents.case_number FROM incidents\nJOIN officers ON incidents.case_number = officers.case_number\nJOIN subjects ON incidents.case_number = subjects.case_number\nWHERE incidents.date = '2015/8/27' AND officers.gender = 'M' AND subjects.race = 'B' AND incidents.subjects LIKE '%Bertrand B/M%'",
+      "pred_sql": "SELECT i.case_number\nFROM incidents i\nWHERE i.date = '2015/8/27'\n  AND i.subjects LIKE '%Bertrand B/M%'\n  AND EXISTS (\n      SELECT 1 FROM officers o\n      WHERE o.case_number = i.case_number AND o.gender = 'M'\n  )\n  AND EXISTS (\n      SELECT 1 FROM subjects s\n      WHERE s.case_number = i.case_number AND s.race = 'B'\n  )",
+      "strategy": "2iM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.13
+    }
+  ]
+}

@@ -1,0 +1,3326 @@
+{
+ "db_id": "election_representative",
+ "target_table": "representative",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 198767092,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/election_representative/election_representative.sqlite",
+  "generated_at": "2026-07-02T16:48:06.513678+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "representative",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "near-identical question already generated in this run"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 13,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "509e01c2-bdc8-4bfc-94c2-fa4ff13b19e1",
+   "question": "Which representatives are based in New York?",
+   "answer_row_ids": [
+    2,
+    6
+   ],
+   "answer_count": 2,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'New York'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "New York"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'New York'?"
+  },
+  {
+   "uid": "abdc9c8e-49b2-44fc-9528-a0f9d05c3227",
+   "question": "Which representatives named Jimmy Quillen are from Tennessee?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.name = 'Jimmy Quillen' AND representative.state = 'Tennessee'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jimmy Quillen",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Tennessee",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Jimmy Quillen",
+    "representative.state": "Tennessee"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Jimmy Quillen' and state equal to 'Tennessee'?"
+  },
+  {
+   "uid": "6ab95131-51f3-4042-afb0-000d7d5474c1",
+   "question": "Who are the representatives from Minnesota whose party is Republican?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'Minnesota' AND representative.party = 'Republican'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Minnesota",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Minnesota",
+    "representative.party": "Republican"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Minnesota' and party equal to 'Republican'?"
+  },
+  {
+   "uid": "1e795bd9-ae82-4b9b-8e9c-586606ad4b48",
+   "question": "Which representatives named John Quayle are from New York?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'New York' AND representative.name = 'John Quayle'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "John Quayle",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "New York",
+    "representative.name": "John Quayle"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'New York' and name equal to 'John Quayle'?"
+  },
+  {
+   "uid": "6cee8b7c-dd00-4d8d-b25a-7ec2474709b2",
+   "question": "Which representatives are from New York with a lifespan of 1868\u20131930?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'New York' AND representative.lifespan = '1868\u20131930'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1868\u20131930",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "New York",
+    "representative.lifespan": "1868\u20131930"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'New York' and lifespan equal to '1868\u20131930'?"
+  },
+  {
+   "uid": "2ab3e7df-7537-4f0d-87c9-e278e2df6df0",
+   "question": "Who are the representatives from Pennsylvania whose lifespan is exactly 1875\u20131960?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'Pennsylvania' AND representative.lifespan = '1875\u20131960'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Pennsylvania",
+    "representative.lifespan": "1875\u20131960"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Pennsylvania' and lifespan equal to '1875\u20131960'?"
+  },
+  {
+   "uid": "aa5219fa-7585-43ef-be4c-d582b7a9e8b0",
+   "question": "Which representatives are from the state of Tennessee?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'Tennessee'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Tennessee",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Tennessee"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Tennessee'?"
+  },
+  {
+   "uid": "4ee5e9b9-f9f3-4b89-9921-15a3211908e9",
+   "question": "Which representatives named John Quayle are based in New York?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.name = 'John Quayle' AND representative.state = 'New York'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "John Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "John Quayle",
+    "representative.state": "New York"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'John Quayle' and state equal to 'New York'?"
+  },
+  {
+   "uid": "e8d67777-2a46-4e87-ae5b-efb025b31303",
+   "question": "Who are the representatives where the party is Democratic?",
+   "answer_row_ids": [
+    2,
+    4,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.party = 'Democratic'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Democratic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Democratic'?"
+  },
+  {
+   "uid": "e2024bb1-1381-404b-a181-9a9e5dcfafef",
+   "question": "Which representatives are Republicans from Indiana?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.party = 'Republican' AND representative.state = 'Indiana'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.party",
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Indiana",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Republican",
+    "representative.state": "Indiana"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Republican' and state equal to 'Indiana'?"
+  },
+  {
+   "uid": "e81dd4f0-c576-4ea3-b88a-df2b5e59e9b3",
+   "question": "Which Democratic representatives from Pennsylvania have a lifespan of 1875\u20131960?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'Pennsylvania' AND representative.lifespan = '1875\u20131960' AND representative.party = 'Democratic'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.lifespan",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Pennsylvania",
+    "representative.lifespan": "1875\u20131960",
+    "representative.party": "Democratic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Pennsylvania' and lifespan equal to '1875\u20131960' and party equal to 'Democratic'?"
+  },
+  {
+   "uid": "6e5ff2be-d849-4584-9b9c-57be59404252",
+   "question": "Who is the representative named James L. Quinn from Pennsylvania with a lifespan of 1875\u20131960?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.state = 'Pennsylvania' AND representative.name = 'James L. Quinn' AND representative.lifespan = '1875\u20131960'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.name",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Pennsylvania",
+    "representative.name": "James L. Quinn",
+    "representative.lifespan": "1875\u20131960"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Pennsylvania' and name equal to 'James L. Quinn' and lifespan equal to '1875\u20131960'?"
+  },
+  {
+   "uid": "5af85d5f-2fc9-451b-a0ff-578e99fba944",
+   "question": "Which representatives named Jimmy Quillen are Republicans from Tennessee?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.name = 'Jimmy Quillen' AND representative.state = 'Tennessee' AND representative.party = 'Republican'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.state",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jimmy Quillen",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Tennessee",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Jimmy Quillen",
+    "representative.state": "Tennessee",
+    "representative.party": "Republican"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Jimmy Quillen' and state equal to 'Tennessee' and party equal to 'Republican'?"
+  },
+  {
+   "uid": "50739984-dd09-49b9-a2d3-312fcde1f975",
+   "question": "Which representatives named Al Quie from Minnesota belong exactly to the Republican party and have a lifespan starting in 1923\u2013?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.party = 'Republican' AND representative.state = 'Minnesota' AND representative.lifespan = '1923\u2013' AND representative.name = 'Al Quie'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.party",
+    "representative.state",
+    "representative.lifespan",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Minnesota",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1923\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Al Quie",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Republican",
+    "representative.state": "Minnesota",
+    "representative.lifespan": "1923\u2013",
+    "representative.name": "Al Quie"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Republican' and state equal to 'Minnesota' and lifespan equal to '1923\u2013' and name equal to 'Al Quie'?"
+  },
+  {
+   "uid": "7a03a819-8896-4414-8f15-066a6f344c4e",
+   "question": "Which representatives named Dan Quayle are Republicans from Indiana with a lifespan of 1947\u2013?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.name = 'Dan Quayle' AND representative.state = 'Indiana' AND representative.party = 'Republican' AND representative.lifespan = '1947\u2013'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.state",
+    "representative.party",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Dan Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Indiana",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1947\u2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Dan Quayle",
+    "representative.state": "Indiana",
+    "representative.party": "Republican",
+    "representative.lifespan": "1947\u2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Dan Quayle' and state equal to 'Indiana' and party equal to 'Republican' and lifespan equal to '1947\u2013'?"
+  },
+  {
+   "uid": "bc1efc3b-d0ba-47f3-bac5-fafa857e2253",
+   "question": "Who is the Republican representative from New York named Jack Quinn with a lifespan starting in 1951\u2013?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.party = 'Republican' AND representative.state = 'New York' AND representative.lifespan = '1951\u2013' AND representative.name = 'Jack Quinn'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.party",
+    "representative.state",
+    "representative.lifespan",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1951\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jack Quinn",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Republican",
+    "representative.state": "New York",
+    "representative.lifespan": "1951\u2013",
+    "representative.name": "Jack Quinn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Republican' and state equal to 'New York' and lifespan equal to '1951\u2013' and name equal to 'Jack Quinn'?"
+  },
+  {
+   "uid": "38d22ee5-eed7-4b51-8925-9a5899eca3ca",
+   "question": "Which representatives named Al Quie are Republicans from Minnesota with a lifespan starting in 1923\u2013?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.lifespan = '1923\u2013' AND representative.name = 'Al Quie' AND representative.state = 'Minnesota' AND representative.party = 'Republican'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.lifespan",
+    "representative.name",
+    "representative.state",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1923\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Al Quie",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Minnesota",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.lifespan": "1923\u2013",
+    "representative.name": "Al Quie",
+    "representative.state": "Minnesota",
+    "representative.party": "Republican"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1923\u2013' and name equal to 'Al Quie' and state equal to 'Minnesota' and party equal to 'Republican'?"
+  },
+  {
+   "uid": "12c4b40f-7a1e-4ff7-8f60-56dc0974e947",
+   "question": "Which representatives named John Quayle lived from 1868\u20131930 and were from New York?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.name = 'John Quayle' AND representative.lifespan = '1868\u20131930' AND representative.state = 'New York'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.lifespan",
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "John Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1868\u20131930",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "John Quayle",
+    "representative.lifespan": "1868\u20131930",
+    "representative.state": "New York"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'John Quayle' and lifespan equal to '1868\u20131930' and state equal to 'New York'?"
+  },
+  {
+   "uid": "d319ec72-a255-4eda-a216-63198366674e",
+   "question": "Who is the Republican representative from Indiana named Dan Quayle with a lifespan starting in 1947?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.name = 'Dan Quayle' AND representative.lifespan = '1947\u2013' AND representative.state = 'Indiana' AND representative.party = 'Republican'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.lifespan",
+    "representative.state",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Dan Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1947\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Indiana",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Dan Quayle",
+    "representative.lifespan": "1947\u2013",
+    "representative.state": "Indiana",
+    "representative.party": "Republican"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Dan Quayle' and lifespan equal to '1947\u2013' and state equal to 'Indiana' and party equal to 'Republican'?"
+  },
+  {
+   "uid": "6c1d9f28-fa62-4e46-acda-bcefe99a2ee1",
+   "question": "Who is the Republican representative named Jack Quinn from New York with a lifespan of 1951\u2013?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nWHERE representative.lifespan = '1951\u2013' AND representative.name = 'Jack Quinn' AND representative.state = 'New York' AND representative.party = 'Republican'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "representative"
+   ],
+   "involved_columns": [
+    "representative.lifespan",
+    "representative.name",
+    "representative.state",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1951\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jack Quinn",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.lifespan": "1951\u2013",
+    "representative.name": "Jack Quinn",
+    "representative.state": "New York",
+    "representative.party": "Republican"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1951\u2013' and name equal to 'Jack Quinn' and state equal to 'New York' and party equal to 'Republican'?"
+  },
+  {
+   "uid": "1144e785-7368-4a4f-8b68-310d897f7dcd",
+   "question": "Which representatives named Dan Quayle are from Indiana?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.name = 'Dan Quayle' AND representative.state = 'Indiana'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Dan Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Indiana",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Dan Quayle",
+    "representative.state": "Indiana"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Dan Quayle' and state equal to 'Indiana', having at least one related election record (linked on representative.representative_id = election.representative_id)?"
+  },
+  {
+   "uid": "9643c61b-34d2-4f93-a150-8ce33d5d4706",
+   "question": "Which representatives are from Pennsylvania and received exactly 19.5 percent of the vote in their election?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.state = 'Pennsylvania' AND election.vote_percent = 19.5",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "election.vote_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "=",
+     "value": 19.5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Pennsylvania",
+    "election.vote_percent": 19.5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Pennsylvania', having at least one related election record (linked on representative.representative_id = election.representative_id) with vote percent equal to '19.5'?"
+  },
+  {
+   "uid": "b7707815-3366-4e77-b6b9-39e2c4441929",
+   "question": "What representatives from Indiana have a lifespan that is exactly 1947\u2013?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.state = 'Indiana' AND representative.lifespan = '1947\u2013'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Indiana",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1947\u2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Indiana",
+    "representative.lifespan": "1947\u2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Indiana' and lifespan equal to '1947\u2013', having at least one related election record (linked on representative.representative_id = election.representative_id)?"
+  },
+  {
+   "uid": "f2ee1b33-fa32-40ae-aa93-487253a1a3f5",
+   "question": "Which representatives with a lifespan of 1868\u20131930 belong to the Democratic party?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.lifespan = '1868\u20131930' AND representative.party = 'Democratic'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.lifespan",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1868\u20131930",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.lifespan": "1868\u20131930",
+    "representative.party": "Democratic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1868\u20131930' and party equal to 'Democratic', having at least one related election record (linked on representative.representative_id = election.representative_id)?"
+  },
+  {
+   "uid": "ac4eb2b2-3b82-4c29-b2d4-d6eb9c29db7a",
+   "question": "Which representatives with a lifespan of 1947\u2013 received exactly 9423.0 votes in an election?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.votes = 9423.0 AND representative.lifespan = '1947\u2013'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.votes",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 9423.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1947\u2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "election.votes": 9423.0,
+    "representative.lifespan": "1947\u2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1947\u2013', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes equal to '9423.0'?"
+  },
+  {
+   "uid": "3e49c69e-dfe3-4155-b384-7a41dc796bfd",
+   "question": "Who are the representatives associated with elections where the number of votes is exactly 9423?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.votes = 9423.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.votes"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 9423.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.votes": 9423.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities having at least one related election record (linked on representative.representative_id = election.representative_id) with votes equal to '9423.0'?"
+  },
+  {
+   "uid": "77f20ec2-1685-4ed3-b9ba-79f72e886e8e",
+   "question": "Which representatives won first place with at least 18.5% of the vote?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.vote_percent >= 18.5 AND election.place <= 1.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.vote_percent",
+    "election.place"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": ">=",
+     "value": 18.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.vote_percent": 18.5,
+    "election.place": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities having at least one related election record (linked on representative.representative_id = election.representative_id) with vote percent at least '18.5' and place at most '1.0'?"
+  },
+  {
+   "uid": "4c57a99e-cdcc-4eae-8a24-f9895dca7533",
+   "question": "Who are the representatives involved in elections with at least 10 seats?",
+   "answer_row_ids": [
+    2,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.seats >= 10.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.seats"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.seats": 10.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities having at least one related election record (linked on representative.representative_id = election.representative_id) with seats at least '10.0'?"
+  },
+  {
+   "uid": "f306c63e-b1e7-4b2b-ad4e-e01e3c30903c",
+   "question": "Who are the representatives where the party is Republican?",
+   "answer_row_ids": [
+    1,
+    5
+   ],
+   "answer_count": 2,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.party = 'Republican'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Republican"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Republican', having at least one related election record (linked on representative.representative_id = election.representative_id)?"
+  },
+  {
+   "uid": "e2160917-43e7-4017-bc80-17019f996184",
+   "question": "Which representatives belong to the Democratic party and have participated in an election?",
+   "answer_row_ids": [
+    2,
+    4,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.party = 'Democratic'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Democratic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Democratic', having at least one related election record (linked on representative.representative_id = election.representative_id)?"
+  },
+  {
+   "uid": "01a42bfd-bb36-44e7-93e4-caa830e7374e",
+   "question": "Who is the representative named James L. Quinn from Pennsylvania with a lifespan of 1875\u20131960, who participated in the 1953 election that had at most 12422 votes and at least 7 seats?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.state = 'Pennsylvania' AND election.votes <= 12422.0 AND election.date = '1953' AND representative.lifespan = '1875\u20131960' AND election.seats >= 7.0 AND representative.name = 'James L. Quinn'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "election.votes",
+    "election.date",
+    "representative.lifespan",
+    "election.seats",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "<=",
+     "value": 12422.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 7.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Pennsylvania",
+    "election.votes": 12422.0,
+    "election.date": "1953",
+    "representative.lifespan": "1875\u20131960",
+    "election.seats": 7.0,
+    "representative.name": "James L. Quinn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Pennsylvania' and lifespan equal to '1875\u20131960' and name equal to 'James L. Quinn', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes at most '12422.0' and date equal to '1953' and seats at least '7.0'?"
+  },
+  {
+   "uid": "9bb691a7-e7fe-440a-98b9-019452e04f05",
+   "question": "Which Democratic representatives from New York with a lifespan of 1868\u20131930 won exactly 11059 votes and placed at most 1st with at least 18.5% of the vote in the October 1942 election?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.place <= 1.0 AND election.vote_percent >= 18.5 AND representative.lifespan = '1868\u20131930' AND representative.state = 'New York' AND election.votes = 11059.0 AND election.date = 'October 1942' AND representative.party = 'Democratic'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.place",
+    "election.vote_percent",
+    "representative.lifespan",
+    "representative.state",
+    "election.votes",
+    "election.date",
+    "representative.party"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": ">=",
+     "value": 18.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1868\u20131930",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "New York",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 11059.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "October 1942",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "election.place": 1.0,
+    "election.vote_percent": 18.5,
+    "representative.lifespan": "1868\u20131930",
+    "representative.state": "New York",
+    "election.votes": 11059.0,
+    "election.date": "October 1942",
+    "representative.party": "Democratic"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1868\u20131930' and state equal to 'New York' and party equal to 'Democratic', having at least one related election record (linked on representative.representative_id = election.representative_id) with place at most '1.0' and vote percent at least '18.5' and votes equal to '11059.0' and date equal to 'October 1942'?"
+  },
+  {
+   "uid": "58415a26-ff97-43a2-aa69-f7652d99d01f",
+   "question": "Which representatives named James L. Quinn from Pennsylvania, with a lifespan of 1875\u20131960 and Democratic party affiliation, participated in the 1953 election where they received exactly 16.0% of the vote, placed at most 3rd, and competed for at least 7 seats?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.lifespan = '1875\u20131960' AND election.seats >= 7.0 AND election.place <= 3.0 AND election.vote_percent = 16.0 AND representative.state = 'Pennsylvania' AND election.date = '1953' AND representative.party = 'Democratic' AND representative.name = 'James L. Quinn'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.lifespan",
+    "election.seats",
+    "election.place",
+    "election.vote_percent",
+    "representative.state",
+    "election.date",
+    "representative.party",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 7.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "<=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.lifespan": "1875\u20131960",
+    "election.seats": 7.0,
+    "election.place": 3.0,
+    "election.vote_percent": 16.0,
+    "representative.state": "Pennsylvania",
+    "election.date": "1953",
+    "representative.party": "Democratic",
+    "representative.name": "James L. Quinn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1875\u20131960' and state equal to 'Pennsylvania' and party equal to 'Democratic' and name equal to 'James L. Quinn', having at least one related election record (linked on representative.representative_id = election.representative_id) with seats at least '7.0' and place at most '3.0' and vote percent equal to '16.0' and date equal to '1953'?"
+  },
+  {
+   "uid": "25364ce6-3b0c-4a63-9016-4e5182fe4b19",
+   "question": "Which representatives named Jimmy Quillen, with a lifespan of 1916\u20132003 and party Republican, ran in the 1949 election where they received exactly 14,077 votes, placed at least 2nd, had vote percent at most 19.5, and competed for no more than 9 seats?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.vote_percent <= 19.5 AND election.date = '1949' AND election.place >= 2.0 AND representative.name = 'Jimmy Quillen' AND representative.party = 'Republican' AND election.votes = 14077.0 AND representative.lifespan = '1916\u20132003' AND election.seats <= 9.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.vote_percent",
+    "election.date",
+    "election.place",
+    "representative.name",
+    "representative.party",
+    "election.votes",
+    "representative.lifespan",
+    "election.seats"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 19.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1949",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jimmy Quillen",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Republican",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 14077.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1916\u20132003",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": "<=",
+     "value": 9.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.vote_percent": 19.5,
+    "election.date": "1949",
+    "election.place": 2.0,
+    "representative.name": "Jimmy Quillen",
+    "representative.party": "Republican",
+    "election.votes": 14077.0,
+    "representative.lifespan": "1916\u20132003",
+    "election.seats": 9.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Jimmy Quillen' and party equal to 'Republican' and lifespan equal to '1916\u20132003', having at least one related election record (linked on representative.representative_id = election.representative_id) with vote percent at most '19.5' and date equal to '1949' and place at least '2.0' and votes equal to '14077.0' and seats at most '9.0'?"
+  },
+  {
+   "uid": "c6a7d92d-ac80-4855-9d26-cf716dfc56c2",
+   "question": "Which Democratic representatives with a lifespan of 1875\u20131960 ran in the 1953 election where they placed at least 3rd, received at most 12422 votes, and had no more than 16.0 percent of the vote?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.party = 'Democratic' AND election.votes <= 12422.0 AND election.place >= 3.0 AND election.date = '1953' AND representative.lifespan = '1875\u20131960' AND election.vote_percent <= 16.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.party",
+    "election.votes",
+    "election.place",
+    "election.date",
+    "representative.lifespan",
+    "election.vote_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "<=",
+     "value": 12422.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": ">=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 16.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "representative.party": "Democratic",
+    "election.votes": 12422.0,
+    "election.place": 3.0,
+    "election.date": "1953",
+    "representative.lifespan": "1875\u20131960",
+    "election.vote_percent": 16.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Democratic' and lifespan equal to '1875\u20131960', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes at most '12422.0' and place at least '3.0' and date equal to '1953' and vote percent at most '16.0'?"
+  },
+  {
+   "uid": "b6778018-51fa-40b3-9cc9-d2d2dcbbda96",
+   "question": "Which representatives named Jimmy Quillen, with a lifespan of 1916\u20132003 and from Tennessee, participated in the 1949 election where they won at least 9 seats, received at least 14077 votes, and had at most 19.5% of the vote?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.name = 'Jimmy Quillen' AND representative.lifespan = '1916\u20132003' AND election.seats >= 9.0 AND election.votes >= 14077.0 AND election.vote_percent <= 19.5 AND representative.state = 'Tennessee' AND election.date = '1949'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "representative.lifespan",
+    "election.seats",
+    "election.votes",
+    "election.vote_percent",
+    "representative.state",
+    "election.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jimmy Quillen",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1916\u20132003",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 9.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": ">=",
+     "value": 14077.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 19.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Tennessee",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1949",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Jimmy Quillen",
+    "representative.lifespan": "1916\u20132003",
+    "election.seats": 9.0,
+    "election.votes": 14077.0,
+    "election.vote_percent": 19.5,
+    "representative.state": "Tennessee",
+    "election.date": "1949"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Jimmy Quillen' and lifespan equal to '1916\u20132003' and state equal to 'Tennessee', having at least one related election record (linked on representative.representative_id = election.representative_id) with seats at least '9.0' and votes at least '14077.0' and vote percent at most '19.5' and date equal to '1949'?"
+  },
+  {
+   "uid": "b6638aa2-8cab-4db3-b705-229b367bf725",
+   "question": "Who was the Democratic representative from Pennsylvania named James L. Quinn in 1953 whose vote percent was at most 16.0 and whose election had at least 7 seats?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.date = '1953' AND representative.party = 'Democratic' AND representative.state = 'Pennsylvania' AND representative.name = 'James L. Quinn' AND election.vote_percent <= 16.0 AND election.seats >= 7.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.date",
+    "representative.party",
+    "representative.state",
+    "representative.name",
+    "election.vote_percent",
+    "election.seats"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 16.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 7.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.date": "1953",
+    "representative.party": "Democratic",
+    "representative.state": "Pennsylvania",
+    "representative.name": "James L. Quinn",
+    "election.vote_percent": 16.0,
+    "election.seats": 7.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Democratic' and state equal to 'Pennsylvania' and name equal to 'James L. Quinn', having at least one related election record (linked on representative.representative_id = election.representative_id) with date equal to '1953' and vote percent at most '16.0' and seats at least '7.0'?"
+  },
+  {
+   "uid": "fca00172-35b7-478d-b70d-6324aca15adf",
+   "question": "Which Democratic representatives with a lifespan of 1918\u2013 received exactly 13049 votes and 19.5% vote share in elections where they placed exactly 2nd and the number of seats was at least 10?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.seats >= 10.0 AND election.place = 2.0 AND representative.lifespan = '1918\u2013' AND election.votes = 13049.0 AND representative.party = 'Democratic' AND election.vote_percent = 19.5",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.seats",
+    "election.place",
+    "representative.lifespan",
+    "election.votes",
+    "representative.party",
+    "election.vote_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1918\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 13049.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "=",
+     "value": 19.5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.seats": 10.0,
+    "election.place": 2.0,
+    "representative.lifespan": "1918\u2013",
+    "election.votes": 13049.0,
+    "representative.party": "Democratic",
+    "election.vote_percent": 19.5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1918\u2013' and party equal to 'Democratic', having at least one related election record (linked on representative.representative_id = election.representative_id) with seats at least '10.0' and place equal to '2.0' and votes equal to '13049.0' and vote percent equal to '19.5'?"
+  },
+  {
+   "uid": "143fe8f5-f6ee-4070-965b-fb0a3a58ae00",
+   "question": "Which representatives named Dan Quayle from Indiana ran in the July 1942 election, received at least 9423 votes, placed at most third, and got no more than 16.2 percent of the vote?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.name = 'Dan Quayle' AND election.votes >= 9423.0 AND representative.state = 'Indiana' AND election.place <= 3.0 AND election.date = 'July 1942' AND election.vote_percent <= 16.2",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "election.votes",
+    "representative.state",
+    "election.place",
+    "election.date",
+    "election.vote_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Dan Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": ">=",
+     "value": 9423.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Indiana",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "<=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "July 1942",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 16.2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Dan Quayle",
+    "election.votes": 9423.0,
+    "representative.state": "Indiana",
+    "election.place": 3.0,
+    "election.date": "July 1942",
+    "election.vote_percent": 16.2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Dan Quayle' and state equal to 'Indiana', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes at least '9423.0' and place at most '3.0' and date equal to 'July 1942' and vote percent at most '16.2'?"
+  },
+  {
+   "uid": "adc83d6b-43f3-462c-84a4-75e579e7d0a3",
+   "question": "Which representatives named James L. Quinn from Pennsylvania with a lifespan of 1875\u20131960 had at least 12422 votes in the 1953 election where their vote percent was at most 16.0?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.vote_percent <= 16.0 AND representative.name = 'James L. Quinn' AND election.date = '1953' AND representative.state = 'Pennsylvania' AND representative.lifespan = '1875\u20131960' AND election.votes >= 12422.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.vote_percent",
+    "representative.name",
+    "election.date",
+    "representative.state",
+    "representative.lifespan",
+    "election.votes"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 16.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": ">=",
+     "value": 12422.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.vote_percent": 16.0,
+    "representative.name": "James L. Quinn",
+    "election.date": "1953",
+    "representative.state": "Pennsylvania",
+    "representative.lifespan": "1875\u20131960",
+    "election.votes": 12422.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'James L. Quinn' and state equal to 'Pennsylvania' and lifespan equal to '1875\u20131960', having at least one related election record (linked on representative.representative_id = election.representative_id) with vote percent at most '16.0' and date equal to '1953' and votes at least '12422.0'?"
+  },
+  {
+   "uid": "ec288323-0c61-4b4c-b712-478019701a83",
+   "question": "Which representatives named James L. Quinn with a lifespan of 1875\u20131960 participated in elections held in 1953?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.lifespan = '1875\u20131960' AND representative.name = 'James L. Quinn' AND election.date = '1953'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.lifespan",
+    "representative.name",
+    "election.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1875\u20131960",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.lifespan": "1875\u20131960",
+    "representative.name": "James L. Quinn",
+    "election.date": "1953"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1875\u20131960' and name equal to 'James L. Quinn', having at least one related election record (linked on representative.representative_id = election.representative_id) with date equal to '1953'?"
+  },
+  {
+   "uid": "86ac4315-768b-4a24-a10f-312e5043c2a3",
+   "question": "Which Democratic representative named James M. Quigley with lifespan 1918\u2013 received at most 13049 votes and no more than 19.5 percent of the vote in an election?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.votes <= 13049.0 AND election.vote_percent <= 19.5 AND representative.party = 'Democratic' AND representative.lifespan = '1918\u2013' AND representative.name = 'James M. Quigley'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.votes",
+    "election.vote_percent",
+    "representative.party",
+    "representative.lifespan",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "<=",
+     "value": 13049.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 19.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1918\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James M. Quigley",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "election.votes": 13049.0,
+    "election.vote_percent": 19.5,
+    "representative.party": "Democratic",
+    "representative.lifespan": "1918\u2013",
+    "representative.name": "James M. Quigley"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with party equal to 'Democratic' and lifespan equal to '1918\u2013' and name equal to 'James M. Quigley', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes at most '13049.0' and vote percent at most '19.5'?"
+  },
+  {
+   "uid": "a21a8e79-b8a5-4234-9fef-4102a24a663e",
+   "question": "Which representatives named Jimmy Quillen, whose lifespan is 1916\u20132003, ran in elections with exactly 9.0 seats and received at least 19.5% of the vote?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.seats = 9.0 AND election.vote_percent >= 19.5 AND representative.lifespan = '1916\u20132003' AND representative.name = 'Jimmy Quillen'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.seats",
+    "election.vote_percent",
+    "representative.lifespan",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": "=",
+     "value": 9.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": ">=",
+     "value": 19.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1916\u20132003",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Jimmy Quillen",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "election.seats": 9.0,
+    "election.vote_percent": 19.5,
+    "representative.lifespan": "1916\u20132003",
+    "representative.name": "Jimmy Quillen"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1916\u20132003' and name equal to 'Jimmy Quillen', having at least one related election record (linked on representative.representative_id = election.representative_id) with seats equal to '9.0' and vote percent at least '19.5'?"
+  },
+  {
+   "uid": "b659b28f-f36c-481e-a95b-2a009b0c7b3f",
+   "question": "Which Democratic representatives with a lifespan of 1868\u20131930 competed in elections where they placed at most 1 and there were at least 10 seats available?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.lifespan = '1868\u20131930' AND representative.party = 'Democratic' AND election.place <= 1.0 AND election.seats >= 10.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.lifespan",
+    "representative.party",
+    "election.place",
+    "election.seats"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1868\u20131930",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "party",
+     "operator": "=",
+     "value": "Democratic",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 10.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "representative.lifespan": "1868\u20131930",
+    "representative.party": "Democratic",
+    "election.place": 1.0,
+    "election.seats": 10.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1868\u20131930' and party equal to 'Democratic', having at least one related election record (linked on representative.representative_id = election.representative_id) with place at most '1.0' and seats at least '10.0'?"
+  },
+  {
+   "uid": "258b63f9-137a-4a6e-8d8a-d09528930f16",
+   "question": "Which representatives named James L. Quinn have elections with exactly 16.0% vote percent, at least 7 seats won, and a place of at least 3?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.vote_percent = 16.0 AND election.seats >= 7.0 AND representative.name = 'James L. Quinn' AND election.place >= 3.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.vote_percent",
+    "election.seats",
+    "representative.name",
+    "election.place"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "=",
+     "value": 16.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": ">=",
+     "value": 7.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": ">=",
+     "value": 3.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.vote_percent": 16.0,
+    "election.seats": 7.0,
+    "representative.name": "James L. Quinn",
+    "election.place": 3.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'James L. Quinn', having at least one related election record (linked on representative.representative_id = election.representative_id) with vote percent equal to '16.0' and seats at least '7.0' and place at least '3.0'?"
+  },
+  {
+   "uid": "855abc3d-bd09-421a-9ebe-2f3be1c0fb1d",
+   "question": "Who is the representative named James L. Quinn from Pennsylvania with exactly 12,422 votes in the 1953 election?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.state = 'Pennsylvania' AND election.votes = 12422.0 AND election.date = '1953' AND representative.name = 'James L. Quinn'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.state",
+    "election.votes",
+    "election.date",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 12422.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1953",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James L. Quinn",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.state": "Pennsylvania",
+    "election.votes": 12422.0,
+    "election.date": "1953",
+    "representative.name": "James L. Quinn"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with state equal to 'Pennsylvania' and name equal to 'James L. Quinn', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes equal to '12422.0' and date equal to '1953'?"
+  },
+  {
+   "uid": "6d7c8596-e942-4939-91f5-e1de9e37b90b",
+   "question": "Which representatives with a lifespan of 1918\u2013 ran in the 1946 election for exactly 10 seats, received no more than 13049 votes, and had exactly 19.5 percent of the vote?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.votes <= 13049.0 AND election.date = '1946' AND election.seats = 10.0 AND representative.lifespan = '1918\u2013' AND election.vote_percent = 19.5",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.votes",
+    "election.date",
+    "election.seats",
+    "representative.lifespan",
+    "election.vote_percent"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "<=",
+     "value": 13049.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1946",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": "=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1918\u2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "=",
+     "value": 19.5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "election.votes": 13049.0,
+    "election.date": "1946",
+    "election.seats": 10.0,
+    "representative.lifespan": "1918\u2013",
+    "election.vote_percent": 19.5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with lifespan equal to '1918\u2013', having at least one related election record (linked on representative.representative_id = election.representative_id) with votes at most '13049.0' and date equal to '1946' and seats equal to '10.0' and vote percent equal to '19.5'?"
+  },
+  {
+   "uid": "ca812271-fbf3-4033-8a65-15fdbbd45fc4",
+   "question": "Which representatives named Dan Quayle with a lifespan of 1947\u2013 received exactly 9423 votes and placed exactly 3.0 in an election?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE representative.name = 'Dan Quayle' AND election.place = 3.0 AND election.votes = 9423.0 AND representative.lifespan = '1947\u2013'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "representative.name",
+    "election.place",
+    "election.votes",
+    "representative.lifespan"
+   ],
+   "involved_filters": [
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "Dan Quayle",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 9423.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "lifespan",
+     "operator": "=",
+     "value": "1947\u2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "representative.name": "Dan Quayle",
+    "election.place": 3.0,
+    "election.votes": 9423.0,
+    "representative.lifespan": "1947\u2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'Dan Quayle' and lifespan equal to '1947\u2013', having at least one related election record (linked on representative.representative_id = election.representative_id) with place equal to '3.0' and votes equal to '9423.0'?"
+  },
+  {
+   "uid": "27b726d3-fc1a-401f-b1bd-1b8bc775d6d8",
+   "question": "Who was the representative named James M. Quigley in the 1946 election where he received exactly 13049 votes and no more than 19.5 percent of the vote?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.date = '1946' AND election.votes = 13049.0 AND election.vote_percent <= 19.5 AND representative.name = 'James M. Quigley'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.date",
+    "election.votes",
+    "election.vote_percent",
+    "representative.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1946",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "votes",
+     "operator": "=",
+     "value": 13049.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "vote_percent",
+     "operator": "<=",
+     "value": 19.5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James M. Quigley",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "election.date": "1946",
+    "election.votes": 13049.0,
+    "election.vote_percent": 19.5,
+    "representative.name": "James M. Quigley"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'James M. Quigley', having at least one related election record (linked on representative.representative_id = election.representative_id) with date equal to '1946' and votes equal to '13049.0' and vote percent at most '19.5'?"
+  },
+  {
+   "uid": "22bba338-97a5-4d31-a7de-42c11af5e87e",
+   "question": "Which representatives named James M. Quigley from Pennsylvania ran in the 1946 election where there were at most 10 seats and they placed no more than 2nd?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT representative.representative_id FROM representative\nJOIN election ON representative.representative_id = election.representative_id\nWHERE election.date = '1946' AND election.seats <= 10.0 AND election.place <= 2.0 AND representative.name = 'James M. Quigley' AND representative.state = 'Pennsylvania'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "representative",
+    "election"
+   ],
+   "involved_columns": [
+    "election.date",
+    "election.seats",
+    "election.place",
+    "representative.name",
+    "representative.state"
+   ],
+   "involved_filters": [
+    {
+     "table": "election",
+     "column": "date",
+     "operator": "=",
+     "value": "1946",
+     "column_type": "enum"
+    },
+    {
+     "table": "election",
+     "column": "seats",
+     "operator": "<=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "election",
+     "column": "place",
+     "operator": "<=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "representative",
+     "column": "name",
+     "operator": "=",
+     "value": "James M. Quigley",
+     "column_type": "enum"
+    },
+    {
+     "table": "representative",
+     "column": "state",
+     "operator": "=",
+     "value": "Pennsylvania",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "election.date": "1946",
+    "election.seats": 10.0,
+    "election.place": 2.0,
+    "representative.name": "James M. Quigley",
+    "representative.state": "Pennsylvania"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "representative"
+   },
+   "answer_table": "representative",
+   "answer_id_column": "representative_id",
+   "canonical_question": "Which representative entities with name equal to 'James M. Quigley' and state equal to 'Pennsylvania', having at least one related election record (linked on representative.representative_id = election.representative_id) with date equal to '1946' and seats at most '10.0' and place at most '2.0'?"
+  }
+ ]
+}

@@ -1,0 +1,2973 @@
+{
+ "db_id": "movie_1",
+ "target_table": "Reviewer",
+ "mode": "flexbench",
+ "total_qa_pairs": 49,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 398891251,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/movie_1/movie_1.sqlite",
+  "generated_at": "2026-07-02T15:05:40.124240+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "reviewer",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 49,
+  "shortfall_total": 1,
+  "overall_fulfillment_rate": 0.98,
+  "feasible_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE",
+   "1pM",
+   "2pE",
+   "2pH",
+   "2pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "1pE": 9,
+   "1pM": 8,
+   "2pE": 8,
+   "2pM": 8,
+   "2pH": 8
+  },
+  "realized_counts": {
+   "0E": 8,
+   "1pE": 9,
+   "1pM": 8,
+   "2pE": 8,
+   "2pH": 8,
+   "2pM": 8
+  },
+  "shortfalls": {
+   "0E": 1
+  },
+  "shortfall_reason_counts": {
+   "duplicate_pair": 1
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 8,
+    "shortfall": 1,
+    "fulfillment_rate": 0.8888888888888888,
+    "is_feasible": true,
+    "outer_attempts": 720,
+    "inner_attempts": 720,
+    "failed_rounds": 712,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {
+     "duplicate_pair": 712
+    },
+    "shortfall_reason_counts": {
+     "duplicate_pair": 1
+    },
+    "primary_shortfall_reason": "duplicate_pair",
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 9,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "2pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "5d427847-83bd-4225-a47f-ee730bebe460",
+   "question": "Which reviewers have the name Chris Jackson?",
+   "answer_row_ids": [
+    205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Chris Jackson'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Chris Jackson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Chris Jackson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Chris Jackson'?"
+  },
+  {
+   "uid": "844a802a-119c-406c-8bf8-6ce1f13b7fc8",
+   "question": "Which reviewers have the name Brittany Harris?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Brittany Harris'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Brittany Harris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris'?"
+  },
+  {
+   "uid": "60bb9c91-e8b1-4774-b3a7-8ac6c95cabf9",
+   "question": "Which reviewers have the name Sarah Martinez?",
+   "answer_row_ids": [
+    201
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Sarah Martinez'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Sarah Martinez",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Sarah Martinez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Sarah Martinez'?"
+  },
+  {
+   "uid": "1bec0428-0596-48bc-9829-6f88f94fd06b",
+   "question": "Which reviewers have the name James Cameron?",
+   "answer_row_ids": [
+    207
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'James Cameron'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "James Cameron"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'James Cameron'?"
+  },
+  {
+   "uid": "d10fd806-d467-489b-92c0-7492971ffe39",
+   "question": "Which reviewers have the name Daniel Lewis?",
+   "answer_row_ids": [
+    202
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Daniel Lewis'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Daniel Lewis",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Daniel Lewis"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Daniel Lewis'?"
+  },
+  {
+   "uid": "b50a50ac-08b4-4588-8b75-fb15e9e5df26",
+   "question": "Which reviewers have the name exactly Mike Anderson?",
+   "answer_row_ids": [
+    204
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Mike Anderson'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Mike Anderson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Mike Anderson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Mike Anderson'?"
+  },
+  {
+   "uid": "f1aa094e-0b1b-47c5-acce-447c58341d3e",
+   "question": "Which reviewers have the name Ashley White?",
+   "answer_row_ids": [
+    208
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Ashley White'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Ashley White",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Ashley White"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Ashley White'?"
+  },
+  {
+   "uid": "5e7cf2a1-e52d-4cef-bdb3-10ed54acd9ae",
+   "question": "Who is the reviewer named Elizabeth Thomas?",
+   "answer_row_ids": [
+    206
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nWHERE reviewer.name = 'Elizabeth Thomas'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Thomas",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Elizabeth Thomas"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Elizabeth Thomas'?"
+  },
+  {
+   "uid": "fd78d9d4-4adf-4327-bdbd-ff0e882ef282",
+   "question": "Which reviewers have ratings dated on or before 2011-01-12?",
+   "answer_row_ids": [
+    203,
+    204,
+    208
+   ],
+   "answer_count": 3,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.ratingdate <= '2011-01-12'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-12",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-12"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at most '2011-01-12'?"
+  },
+  {
+   "uid": "802a653c-fb99-4b91-929b-0832ff8bd865",
+   "question": "Which reviewers have given ratings of at least 4 stars?",
+   "answer_row_ids": [
+    201,
+    202,
+    203,
+    205,
+    206,
+    207
+   ],
+   "answer_count": 6,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 4",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '4'?"
+  },
+  {
+   "uid": "f8beb438-d606-4818-89e4-14dcb67ec8be",
+   "question": "Which reviewers have given ratings of at least 2 stars on or before 2011-01-22?",
+   "answer_row_ids": [
+    201,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208
+   ],
+   "answer_count": 7,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 2 AND rating.ratingdate <= '2011-01-22'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars",
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-22",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 2,
+    "rating.ratingdate": "2011-01-22"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '2' and ratingdate at most '2011-01-22'?"
+  },
+  {
+   "uid": "93956ebc-5499-40df-bb21-c35b3ff027d2",
+   "question": "Who are the reviewers with ratings of at least 5 stars given on or before 2011-01-19?",
+   "answer_row_ids": [
+    206
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 5 AND rating.ratingdate <= '2011-01-19'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars",
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-19",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 5,
+    "rating.ratingdate": "2011-01-19"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '5' and ratingdate at most '2011-01-19'?"
+  },
+  {
+   "uid": "32a8b19a-8ead-4a6d-aa0c-2da3612a123e",
+   "question": "Which reviewers have the name Daniel Lewis and have given ratings?",
+   "answer_row_ids": [
+    202
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE reviewer.name = 'Daniel Lewis'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Daniel Lewis",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Daniel Lewis"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Daniel Lewis', having at least one related rating record (linked on reviewer.rid = rating.rid)?"
+  },
+  {
+   "uid": "b09c7588-3400-4399-a0d4-e0c2b84a06d2",
+   "question": "Which reviewers have given ratings on or after 2011-01-20?",
+   "answer_row_ids": [
+    201,
+    203,
+    205,
+    207
+   ],
+   "answer_count": 4,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.ratingdate >= '2011-01-20'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-20",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-20"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-20'?"
+  },
+  {
+   "uid": "5c0b18d9-376f-491a-9ac2-32c4f429e613",
+   "question": "Which reviewers gave ratings of at most 3 stars?",
+   "answer_row_ids": [
+    201,
+    203,
+    204,
+    205,
+    206,
+    208
+   ],
+   "answer_count": 6,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars <= 3",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at most '3'?"
+  },
+  {
+   "uid": "e0e3a2c7-4a90-4cfc-b4a0-5514b3a736bf",
+   "question": "Which reviewers named Elizabeth Thomas have given ratings with at least 5 stars?",
+   "answer_row_ids": [
+    206
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE reviewer.name = 'Elizabeth Thomas' AND rating.stars >= 5",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Thomas",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Elizabeth Thomas",
+    "rating.stars": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Elizabeth Thomas', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '5'?"
+  },
+  {
+   "uid": "d8704982-200e-4269-9315-cc2c18194932",
+   "question": "Which reviewers have given ratings of at most 4 stars?",
+   "answer_row_ids": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    208
+   ],
+   "answer_count": 7,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars <= 4",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at most '4'?"
+  },
+  {
+   "uid": "859fed5a-352a-40a3-a192-393b4d53b3ca",
+   "question": "Which reviewers named Brittany Harris have given ratings of at least 2 stars on or before 2011-01-20?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 2 AND rating.ratingdate <= '2011-01-20' AND reviewer.name = 'Brittany Harris'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars",
+    "rating.ratingdate",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-20",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 2,
+    "rating.ratingdate": "2011-01-20",
+    "reviewer.name": "Brittany Harris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '2' and ratingdate at most '2011-01-20'?"
+  },
+  {
+   "uid": "b94a753b-99e8-46e2-919e-bb382a6bb013",
+   "question": "Which reviewers named Brittany Harris gave exactly 2-star ratings on or after 2011-01-30?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars = 2 AND rating.ratingdate >= '2011-01-30' AND reviewer.name = 'Brittany Harris'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars",
+    "rating.ratingdate",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-30",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 2,
+    "rating.ratingdate": "2011-01-30",
+    "reviewer.name": "Brittany Harris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars equal to '2' and ratingdate at least '2011-01-30'?"
+  },
+  {
+   "uid": "2c2aa290-2716-42c4-8faa-28a37fe1f762",
+   "question": "Who are the reviewers named Mike Anderson with ratings of at least 3 stars given on or before 2011-01-09?",
+   "answer_row_ids": [
+    204
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.ratingdate <= '2011-01-09' AND reviewer.name = 'Mike Anderson' AND rating.stars >= 3",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "reviewer.name",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-09",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Mike Anderson",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-09",
+    "reviewer.name": "Mike Anderson",
+    "rating.stars": 3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Mike Anderson', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at most '2011-01-09' and stars at least '3'?"
+  },
+  {
+   "uid": "a9fdf8d8-ba65-4df2-9ea8-3ffe6845d586",
+   "question": "Who is Brittany Harris among reviewers that gave a 2-star rating on or after 2011-01-20?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE reviewer.name = 'Brittany Harris' AND rating.ratingdate >= '2011-01-20' AND rating.stars = 2",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name",
+    "rating.ratingdate",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-20",
+     "column_type": "date"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Brittany Harris",
+    "rating.ratingdate": "2011-01-20",
+    "rating.stars": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-20' and stars equal to '2'?"
+  },
+  {
+   "uid": "88cc7962-a52f-44da-a55d-7de1346bc057",
+   "question": "Which reviewers named Chris Jackson gave ratings of at least 2 stars on or before 2011-01-22?",
+   "answer_row_ids": [
+    205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.stars >= 2 AND rating.ratingdate <= '2011-01-22' AND reviewer.name = 'Chris Jackson'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.stars",
+    "rating.ratingdate",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-22",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Chris Jackson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 2,
+    "rating.ratingdate": "2011-01-22",
+    "reviewer.name": "Chris Jackson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Chris Jackson', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '2' and ratingdate at most '2011-01-22'?"
+  },
+  {
+   "uid": "dc7e2d64-0b3d-4dfd-8cf6-7ce275f30280",
+   "question": "Who are the reviewers named James Cameron who have given ratings of at least 5 stars since January 20, 2011?",
+   "answer_row_ids": [
+    207
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.ratingdate >= '2011-01-20' AND reviewer.name = 'James Cameron' AND rating.stars >= 5",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "reviewer.name",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-20",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-20",
+    "reviewer.name": "James Cameron",
+    "rating.stars": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'James Cameron', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-20' and stars at least '5'?"
+  },
+  {
+   "uid": "eac5888c-46c6-4a91-8290-bcb41dc6d96b",
+   "question": "Which reviewers named Chris Jackson gave ratings of at most 3 stars on or before 2011-01-27?",
+   "answer_row_ids": [
+    205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE reviewer.name = 'Chris Jackson' AND rating.stars <= 3 AND rating.ratingdate <= '2011-01-27'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "reviewer.name",
+    "rating.stars",
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Chris Jackson",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-27",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Chris Jackson",
+    "rating.stars": 3,
+    "rating.ratingdate": "2011-01-27"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Chris Jackson', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at most '3' and ratingdate at most '2011-01-27'?"
+  },
+  {
+   "uid": "bc0c6a04-4238-44fa-a422-ff3190796d74",
+   "question": "Who are the reviewers named Chris Jackson with ratings of at least 2 stars given on or before 2011-01-22?",
+   "answer_row_ids": [
+    205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nWHERE rating.ratingdate <= '2011-01-22' AND reviewer.name = 'Chris Jackson' AND rating.stars >= 2",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "rating",
+    "reviewer"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "reviewer.name",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-22",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Chris Jackson",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-22",
+    "reviewer.name": "Chris Jackson",
+    "rating.stars": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Chris Jackson', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at most '2011-01-22' and stars at least '2'?"
+  },
+  {
+   "uid": "d19d3158-9040-4d85-9c94-6efc79de5278",
+   "question": "Which reviewers have rated movies released in 1937 or later?",
+   "answer_row_ids": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208
+   ],
+   "answer_count": 8,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year >= 1937",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.year"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": ">=",
+     "value": 1937,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "movie.year": 1937
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at least '1937'?"
+  },
+  {
+   "uid": "db0d0969-5694-46ef-985a-66c01dea7213",
+   "question": "Which reviewers have rated movies directed by Steven Spielberg?",
+   "answer_row_ids": [
+    203,
+    205,
+    208
+   ],
+   "answer_count": 3,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.director = 'Steven Spielberg'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.director": "Steven Spielberg"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with director equal to 'Steven Spielberg'?"
+  },
+  {
+   "uid": "7131b64c-9047-4370-9eba-3154d9a268f6",
+   "question": "Who is the reviewer named Brittany Harris that has rated movies?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE reviewer.name = 'Brittany Harris'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Brittany Harris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid)?"
+  },
+  {
+   "uid": "0dbb21a6-29ea-48f8-a660-293175460eb6",
+   "question": "Who are the reviewers that gave movies exactly 3 stars?",
+   "answer_row_ids": [
+    204,
+    205,
+    206,
+    208
+   ],
+   "answer_count": 4,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.stars = 3",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars equal to '3', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid)?"
+  },
+  {
+   "uid": "639d32b1-ce92-463a-b4d5-0053ec1508de",
+   "question": "Which reviewers have rated the Steven Spielberg movie titled Raiders of the Lost Ark?",
+   "answer_row_ids": [
+    203,
+    205
+   ],
+   "answer_count": 2,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.director = 'Steven Spielberg' AND movie.title = 'Raiders of the Lost Ark'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.director",
+    "movie.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Raiders of the Lost Ark",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.director": "Steven Spielberg",
+    "movie.title": "Raiders of the Lost Ark"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with director equal to 'Steven Spielberg' and title equal to 'Raiders of the Lost Ark'?"
+  },
+  {
+   "uid": "0cfc2177-a6d5-4637-b0ac-df77def883a2",
+   "question": "Which reviewers have given a rating of at least 5 stars to any movie?",
+   "answer_row_ids": [
+    206,
+    207
+   ],
+   "answer_count": 2,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.stars >= 5",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at least '5', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid)?"
+  },
+  {
+   "uid": "56bbba86-c111-4378-996f-5b60e9b30c05",
+   "question": "Which reviewers have rated movies directed by James Cameron released in 2009 or later?",
+   "answer_row_ids": [
+    206,
+    207
+   ],
+   "answer_count": 2,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year >= 2009 AND movie.director = 'James Cameron'",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.year",
+    "movie.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.year": 2009,
+    "movie.director": "James Cameron"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at least '2009' and director equal to 'James Cameron'?"
+  },
+  {
+   "uid": "f1094be6-0323-44d0-a4f8-70287751f6bd",
+   "question": "Which reviewers have given a rating of exactly 4 stars to any movie?",
+   "answer_row_ids": [
+    201,
+    202,
+    203,
+    205
+   ],
+   "answer_count": 4,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.stars = 4",
+   "strategy": "2pE",
+   "difficulty_score": 2.0,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with stars equal to '4', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid)?"
+  },
+  {
+   "uid": "bef9f225-cab7-4f86-882c-8d8255a8c594",
+   "question": "Which reviewers named Brittany Harris gave at least 4 stars since 2011-01-12 to the 1981 Steven Spielberg movie Raiders of the Lost Ark?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year = 1981 AND movie.director = 'Steven Spielberg' AND rating.ratingdate >= '2011-01-12' AND movie.title = 'Raiders of the Lost Ark' AND reviewer.name = 'Brittany Harris' AND rating.stars >= 4",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.year",
+    "movie.director",
+    "rating.ratingdate",
+    "movie.title",
+    "reviewer.name",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "=",
+     "value": 1981,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-12",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Raiders of the Lost Ark",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "movie.year": 1981,
+    "movie.director": "Steven Spielberg",
+    "rating.ratingdate": "2011-01-12",
+    "movie.title": "Raiders of the Lost Ark",
+    "reviewer.name": "Brittany Harris",
+    "rating.stars": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-12' and stars at least '4', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year equal to '1981' and director equal to 'Steven Spielberg' and title equal to 'Raiders of the Lost Ark'?"
+  },
+  {
+   "uid": "fcf5682a-b0eb-4e7d-a750-2f6b9e30e472",
+   "question": "Which reviewers named Ashley White gave at least 3 stars on or before 2011-01-02 to the movie E.T., directed by Steven Spielberg, released in 1982 or earlier?",
+   "answer_row_ids": [
+    208
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate <= '2011-01-02' AND rating.stars >= 3 AND movie.year <= 1982 AND movie.director = 'Steven Spielberg' AND movie.title = 'E.T.' AND reviewer.name = 'Ashley White'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "rating.stars",
+    "movie.year",
+    "movie.director",
+    "movie.title",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-02",
+     "column_type": "date"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": ">=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "<=",
+     "value": 1982,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "E.T.",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Ashley White",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-02",
+    "rating.stars": 3,
+    "movie.year": 1982,
+    "movie.director": "Steven Spielberg",
+    "movie.title": "E.T.",
+    "reviewer.name": "Ashley White"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Ashley White', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at most '2011-01-02' and stars at least '3', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at most '1982' and director equal to 'Steven Spielberg' and title equal to 'E.T.'?"
+  },
+  {
+   "uid": "f42b076c-f3c1-43f5-99db-054d10387128",
+   "question": "Which reviewers named Chris Jackson gave at most 3 stars on or before 2011-01-27 to The Sound of Music directed by Robert Wise, where the movie year is at most 1965?",
+   "answer_row_ids": [
+    205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate <= '2011-01-27' AND movie.year <= 1965 AND movie.title = 'The Sound of Music' AND rating.stars <= 3 AND movie.director = 'Robert Wise' AND reviewer.name = 'Chris Jackson'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "movie.year",
+    "movie.title",
+    "rating.stars",
+    "movie.director",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-27",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "<=",
+     "value": 1965,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "The Sound of Music",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Robert Wise",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Chris Jackson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-27",
+    "movie.year": 1965,
+    "movie.title": "The Sound of Music",
+    "rating.stars": 3,
+    "movie.director": "Robert Wise",
+    "reviewer.name": "Chris Jackson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Chris Jackson', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at most '2011-01-27' and stars at most '3', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at most '1965' and title equal to 'The Sound of Music' and director equal to 'Robert Wise'?"
+  },
+  {
+   "uid": "db72db45-d322-422f-bf0c-272743bf369f",
+   "question": "Which reviewers named James Cameron gave no more than 5 stars since 2011-01-20 to the movie Avatar directed by James Cameron that was released in 2009 or earlier?",
+   "answer_row_ids": [
+    207
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate >= '2011-01-20' AND movie.year <= 2009 AND reviewer.name = 'James Cameron' AND movie.title = 'Avatar' AND rating.stars <= 5 AND movie.director = 'James Cameron'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "movie.year",
+    "reviewer.name",
+    "movie.title",
+    "rating.stars",
+    "movie.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-20",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "<=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Avatar",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-20",
+    "movie.year": 2009,
+    "reviewer.name": "James Cameron",
+    "movie.title": "Avatar",
+    "rating.stars": 5,
+    "movie.director": "James Cameron"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'James Cameron', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-20' and stars at most '5', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at most '2009' and title equal to 'Avatar' and director equal to 'James Cameron'?"
+  },
+  {
+   "uid": "42eda451-24ba-488c-b214-541e237c2895",
+   "question": "Who reviewed the movie Avatar directed by James Cameron, released in 2009 or later, gave it at most 5 stars, and whose name is also James Cameron with a rating date on 2011-01-20?",
+   "answer_row_ids": [
+    207
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.director = 'James Cameron' AND reviewer.name = 'James Cameron' AND rating.stars <= 5 AND movie.title = 'Avatar' AND movie.year >= 2009 AND rating.ratingdate = '2011-01-20'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.director",
+    "reviewer.name",
+    "rating.stars",
+    "movie.title",
+    "movie.year",
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 5,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Avatar",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "=",
+     "value": "2011-01-20",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "movie.director": "James Cameron",
+    "reviewer.name": "James Cameron",
+    "rating.stars": 5,
+    "movie.title": "Avatar",
+    "movie.year": 2009,
+    "rating.ratingdate": "2011-01-20"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'James Cameron', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at most '5' and ratingdate equal to '2011-01-20', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with director equal to 'James Cameron' and title equal to 'Avatar' and year at least '2009'?"
+  },
+  {
+   "uid": "b93801a0-2ffc-4a12-9fd3-9c076376c474",
+   "question": "Which reviewers named Brittany Harris rated Steven Spielberg\u2019s Raiders of the Lost Ark from 1981 or later with at most 2 stars on or before 2011-01-30?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year >= 1981 AND rating.stars <= 2 AND rating.ratingdate <= '2011-01-30' AND movie.title = 'Raiders of the Lost Ark' AND movie.director = 'Steven Spielberg' AND reviewer.name = 'Brittany Harris'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.year",
+    "rating.stars",
+    "rating.ratingdate",
+    "movie.title",
+    "movie.director",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": ">=",
+     "value": 1981,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-30",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Raiders of the Lost Ark",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.year": 1981,
+    "rating.stars": 2,
+    "rating.ratingdate": "2011-01-30",
+    "movie.title": "Raiders of the Lost Ark",
+    "movie.director": "Steven Spielberg",
+    "reviewer.name": "Brittany Harris"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at most '2' and ratingdate at most '2011-01-30', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at least '1981' and title equal to 'Raiders of the Lost Ark' and director equal to 'Steven Spielberg'?"
+  },
+  {
+   "uid": "7863c9c7-9a08-43d8-9de5-17accc5ba4f7",
+   "question": "Which reviewers named Sarah Martinez gave at most 2 stars on January 2011-01-22 to the movie Gone with the Wind directed by Victor Fleming that was released in 1939 or earlier?",
+   "answer_row_ids": [
+    201
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE reviewer.name = 'Sarah Martinez' AND movie.year <= 1939 AND movie.title = 'Gone with the Wind' AND movie.director = 'Victor Fleming' AND rating.stars <= 2 AND rating.ratingdate = '2011-01-22'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "reviewer.name",
+    "movie.year",
+    "movie.title",
+    "movie.director",
+    "rating.stars",
+    "rating.ratingdate"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Sarah Martinez",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "<=",
+     "value": 1939,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Gone with the Wind",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Victor Fleming",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "=",
+     "value": "2011-01-22",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Sarah Martinez",
+    "movie.year": 1939,
+    "movie.title": "Gone with the Wind",
+    "movie.director": "Victor Fleming",
+    "rating.stars": 2,
+    "rating.ratingdate": "2011-01-22"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Sarah Martinez', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars at most '2' and ratingdate equal to '2011-01-22', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at most '1939' and title equal to 'Gone with the Wind' and director equal to 'Victor Fleming'?"
+  },
+  {
+   "uid": "678c3080-29c6-4137-b210-acbb6fbcd3d0",
+   "question": "Which reviewers named Ashley White gave exactly 3 stars on 2011-01-02 to the movie E.T., directed by Steven Spielberg and released in 1982 or earlier?",
+   "answer_row_ids": [
+    208
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year <= 1982 AND movie.title = 'E.T.' AND reviewer.name = 'Ashley White' AND rating.stars = 3 AND rating.ratingdate = '2011-01-02' AND movie.director = 'Steven Spielberg'",
+   "strategy": "2pH",
+   "difficulty_score": 2.6,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.year",
+    "movie.title",
+    "reviewer.name",
+    "rating.stars",
+    "rating.ratingdate",
+    "movie.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "<=",
+     "value": 1982,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "E.T.",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Ashley White",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "=",
+     "value": "2011-01-02",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.year": 1982,
+    "movie.title": "E.T.",
+    "reviewer.name": "Ashley White",
+    "rating.stars": 3,
+    "rating.ratingdate": "2011-01-02",
+    "movie.director": "Steven Spielberg"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Ashley White', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars equal to '3' and ratingdate equal to '2011-01-02', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at most '1982' and title equal to 'E.T.' and director equal to 'Steven Spielberg'?"
+  },
+  {
+   "uid": "51564ccf-78ef-4828-b8a7-6982535e7121",
+   "question": "Who is the reviewer named Sarah Martinez that rated the movie Gone with the Wind directed by Victor Fleming?",
+   "answer_row_ids": [
+    201
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE reviewer.name = 'Sarah Martinez' AND movie.director = 'Victor Fleming' AND movie.title = 'Gone with the Wind'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "reviewer.name",
+    "movie.director",
+    "movie.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Sarah Martinez",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Victor Fleming",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Gone with the Wind",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Sarah Martinez",
+    "movie.director": "Victor Fleming",
+    "movie.title": "Gone with the Wind"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Sarah Martinez', having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with director equal to 'Victor Fleming' and title equal to 'Gone with the Wind'?"
+  },
+  {
+   "uid": "5e695c3b-d2b1-4553-8deb-964e2b1694c6",
+   "question": "Which reviewers named Elizabeth Thomas gave exactly 5 stars to the 1937 movie Snow White on or before 2011-01-19?",
+   "answer_row_ids": [
+    206
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate <= '2011-01-19' AND reviewer.name = 'Elizabeth Thomas' AND movie.year = 1937 AND movie.title = 'Snow White' AND rating.stars = 5",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "reviewer.name",
+    "movie.year",
+    "movie.title",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "<=",
+     "value": "2011-01-19",
+     "column_type": "date"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Thomas",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "=",
+     "value": 1937,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Snow White",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 5,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-19",
+    "reviewer.name": "Elizabeth Thomas",
+    "movie.year": 1937,
+    "movie.title": "Snow White",
+    "rating.stars": 5
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Elizabeth Thomas', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at most '2011-01-19' and stars equal to '5', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year equal to '1937' and title equal to 'Snow White'?"
+  },
+  {
+   "uid": "49a20276-fe91-4330-94e8-2ba3aaf1e00e",
+   "question": "Which reviewers rated Victor Fleming\u2019s movies with at most 2 stars since January 22, 2011?",
+   "answer_row_ids": [
+    201
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate >= '2011-01-22' AND movie.director = 'Victor Fleming' AND rating.stars <= 2",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "movie.director",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-22",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Victor Fleming",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "<=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-22",
+    "movie.director": "Victor Fleming",
+    "rating.stars": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-22' and stars at most '2', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with director equal to 'Victor Fleming'?"
+  },
+  {
+   "uid": "57add435-d19f-4970-b172-0f3deb73c5af",
+   "question": "Which reviewers named Elizabeth Thomas rated the movie Avatar directed by James Cameron on 2011-01-15?",
+   "answer_row_ids": [
+    206
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.title = 'Avatar' AND reviewer.name = 'Elizabeth Thomas' AND rating.ratingdate = '2011-01-15' AND movie.director = 'James Cameron'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.title",
+    "reviewer.name",
+    "rating.ratingdate",
+    "movie.director"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Avatar",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Elizabeth Thomas",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": "=",
+     "value": "2011-01-15",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "James Cameron",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.title": "Avatar",
+    "reviewer.name": "Elizabeth Thomas",
+    "rating.ratingdate": "2011-01-15",
+    "movie.director": "James Cameron"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Elizabeth Thomas', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate equal to '2011-01-15', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with title equal to 'Avatar' and director equal to 'James Cameron'?"
+  },
+  {
+   "uid": "caf31316-4034-4e71-a6d3-6b3a655e5fec",
+   "question": "Which reviewers named Brittany Harris gave exactly 2-star ratings to the movie Raiders of the Lost Ark?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE reviewer.name = 'Brittany Harris' AND rating.stars = 2 AND movie.title = 'Raiders of the Lost Ark'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "reviewer.name",
+    "rating.stars",
+    "movie.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Raiders of the Lost Ark",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "reviewer.name": "Brittany Harris",
+    "rating.stars": 2,
+    "movie.title": "Raiders of the Lost Ark"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars equal to '2', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with title equal to 'Raiders of the Lost Ark'?"
+  },
+  {
+   "uid": "df4cf89c-ef72-4adb-8404-b46d343d731a",
+   "question": "Which reviewers named Brittany Harris gave exactly 2-star ratings on or after 2011-01-30 to the Steven Spielberg movie Raiders of the Lost Ark?",
+   "answer_row_ids": [
+    203
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.ratingdate >= '2011-01-30' AND movie.director = 'Steven Spielberg' AND reviewer.name = 'Brittany Harris' AND movie.title = 'Raiders of the Lost Ark' AND rating.stars = 2",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.ratingdate",
+    "movie.director",
+    "reviewer.name",
+    "movie.title",
+    "rating.stars"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "ratingdate",
+     "operator": ">=",
+     "value": "2011-01-30",
+     "column_type": "date"
+    },
+    {
+     "table": "movie",
+     "column": "director",
+     "operator": "=",
+     "value": "Steven Spielberg",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Brittany Harris",
+     "column_type": "enum"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Raiders of the Lost Ark",
+     "column_type": "enum"
+    },
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 2,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "rating.ratingdate": "2011-01-30",
+    "movie.director": "Steven Spielberg",
+    "reviewer.name": "Brittany Harris",
+    "movie.title": "Raiders of the Lost Ark",
+    "rating.stars": 2
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Brittany Harris', having at least one related rating record (linked on reviewer.rid = rating.rid) with ratingdate at least '2011-01-30' and stars equal to '2', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with director equal to 'Steven Spielberg' and title equal to 'Raiders of the Lost Ark'?"
+  },
+  {
+   "uid": "e203017d-d690-47b2-993a-e863ad219003",
+   "question": "Who rated Raiders of the Lost Ark with exactly 4 stars and has the name Chris Jackson?",
+   "answer_row_ids": [
+    205
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE rating.stars = 4 AND movie.title = 'Raiders of the Lost Ark' AND reviewer.name = 'Chris Jackson'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "rating.stars",
+    "movie.title",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "rating",
+     "column": "stars",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Raiders of the Lost Ark",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Chris Jackson",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "rating.stars": 4,
+    "movie.title": "Raiders of the Lost Ark",
+    "reviewer.name": "Chris Jackson"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Chris Jackson', having at least one related rating record (linked on reviewer.rid = rating.rid) with stars equal to '4', whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with title equal to 'Raiders of the Lost Ark'?"
+  },
+  {
+   "uid": "d584a046-edbb-43e6-a92b-b994d119033b",
+   "question": "Which reviewers named Sarah Martinez have rated the movie Gone with the Wind from 1939 or earlier?",
+   "answer_row_ids": [
+    201
+   ],
+   "answer_count": 1,
+   "sql": "SELECT reviewer.rid FROM reviewer\nJOIN rating ON reviewer.rid = rating.rid\nJOIN movie ON rating.mid = movie.mid\nWHERE movie.year <= 1939 AND movie.title = 'Gone with the Wind' AND reviewer.name = 'Sarah Martinez'",
+   "strategy": "2pM",
+   "difficulty_score": 2.3,
+   "tier": "hard",
+   "involved_tables": [
+    "rating",
+    "reviewer",
+    "movie"
+   ],
+   "involved_columns": [
+    "movie.year",
+    "movie.title",
+    "reviewer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "movie",
+     "column": "year",
+     "operator": "<=",
+     "value": 1939,
+     "column_type": "numeric"
+    },
+    {
+     "table": "movie",
+     "column": "title",
+     "operator": "=",
+     "value": "Gone with the Wind",
+     "column_type": "enum"
+    },
+    {
+     "table": "reviewer",
+     "column": "name",
+     "operator": "=",
+     "value": "Sarah Martinez",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "movie.year": 1939,
+    "movie.title": "Gone with the Wind",
+    "reviewer.name": "Sarah Martinez"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "reviewer"
+   },
+   "answer_table": "reviewer",
+   "answer_id_column": "rid",
+   "canonical_question": "Which reviewer entities with name equal to 'Sarah Martinez', having at least one related rating record (linked on reviewer.rid = rating.rid), whose rating record itself has at least one related movie record (linked on rating.mid = movie.mid) with year at most '1939' and title equal to 'Gone with the Wind'?"
+  }
+ ]
+}

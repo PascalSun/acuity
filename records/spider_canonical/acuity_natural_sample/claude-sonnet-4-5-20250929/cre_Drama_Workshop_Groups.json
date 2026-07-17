@@ -1,0 +1,86 @@
+{
+  "db_id": "cre_Drama_Workshop_Groups",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 6,
+  "n_correct": 6,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T05:37:30.727881+00:00",
+  "records": [
+    {
+      "uid": "45654511-1d92-4050-8c25-6e4d4e58eb34",
+      "question": "What addresses have line_1 exactly equal to 9799 Andres Shoal?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.line_1 = '9799 Andres Shoal'",
+      "pred_sql": "SELECT Address_ID FROM Addresses WHERE Line_1 = '9799 Andres Shoal'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.82,
+      "correct_multiset": true
+    },
+    {
+      "uid": "8131a9bd-42e5-41c0-9ce3-06ff2411deb6",
+      "question": "Which addresses are located at 4753 Dach Highway in Feliciaberg, Florida, with a line 2 value of Suite 846?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.line_2 = 'Suite 846' AND addresses.state_county = 'Florida' AND addresses.city_town = 'Feliciaberg' AND addresses.line_1 = '4753 Dach Highway'",
+      "pred_sql": "SELECT Address_ID\nFROM Addresses\nWHERE Line_1 = '4753 Dach Highway'\nAND City_Town = 'Feliciaberg'\nAND State_County = 'Florida'\nAND Line_2 = 'Suite 846'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.24,
+      "correct_multiset": true
+    },
+    {
+      "uid": "9ac119d4-ddcc-4111-82b3-46a7119e043e",
+      "question": "Which addresses are located in the city or town of Lindberg?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.city_town = 'Lindberg'",
+      "pred_sql": "SELECT Address_ID FROM Addresses WHERE City_Town = 'Lindberg'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.81,
+      "correct_multiset": true
+    },
+    {
+      "uid": "9b538a4e-e077-4c24-a955-27d1b9c14366",
+      "question": "Where are the addresses located in Port Maximeview, Arizona, that have Suite 184 as their second address line?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.city_town = 'Port Maximeview' AND addresses.state_county = 'Arizona' AND addresses.line_2 = 'Suite 184'",
+      "pred_sql": "SELECT Address_ID FROM Addresses WHERE City_Town = 'Port Maximeview' AND State_County = 'Arizona' AND Line_2 = 'Suite 184'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.25,
+      "correct_multiset": true
+    },
+    {
+      "uid": "bdf4242e-5370-4342-b10e-a7a83c45b57e",
+      "question": "Where are the addresses located in Macejkovicchester, Alaska, that have a line 2 exactly as Apt. 460?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.state_county = 'Alaska' AND addresses.line_2 = 'Apt. 460' AND addresses.city_town = 'Macejkovicchester'",
+      "pred_sql": "SELECT Address_ID FROM Addresses WHERE City_Town = 'Macejkovicchester' AND State_County = 'Alaska' AND Line_2 = 'Apt. 460'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.12,
+      "correct_multiset": true
+    },
+    {
+      "uid": "e0892fb6-2677-4c86-b7fc-173878145b0f",
+      "question": "Which addresses have a line_1 exactly equal to 87789 Reilly Canyon Suite 872?",
+      "gold_sql": "SELECT addresses.address_id FROM addresses\nWHERE addresses.line_1 = '87789 Reilly Canyon Suite 872'",
+      "pred_sql": "SELECT Address_ID FROM Addresses WHERE Line_1 = '87789 Reilly Canyon Suite 872'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.81,
+      "correct_multiset": true
+    }
+  ]
+}

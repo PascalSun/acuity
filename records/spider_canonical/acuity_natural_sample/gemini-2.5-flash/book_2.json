@@ -1,0 +1,124 @@
+{
+  "db_id": "book_2",
+  "model": "gemini-2.5-flash",
+  "provider": "gemini",
+  "tag": "gemini-2.5-flash",
+  "n": 10,
+  "n_correct": 8,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T07:20:03.912052+00:00",
+  "records": [
+    {
+      "uid": "02e21b08-f4c5-4f8e-885d-4f0162d80168",
+      "question": "Which books titled Michael Moorcock's Multiverse are written by Michael Moorcock and have at least 12 issues?",
+      "gold_sql": "SELECT book.book_id FROM book\nWHERE book.title = 'Michael Moorcock''s Multiverse' AND book.issues >= 12.0 AND book.writer = 'Michael Moorcock'",
+      "pred_sql": "SELECT Book_ID FROM book WHERE Title = 'Michael Moorcock''s Multiverse' AND Writer = 'Michael Moorcock' AND Issues >= 12",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "uid": "1cf3aa9d-47ab-4858-b147-3c27917ff3b3",
+      "question": "Which books titled Bloody Mary : Lady Liberty, written by Garth Ennis with exactly 4 issues, were published by Thomson Reuters in March 2008 and priced at most 6000000.0?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price <= 6000000.0 AND book.title = 'Bloody Mary : Lady Liberty' AND publication.publication_date = 'March 2008' AND book.issues = 4.0 AND book.writer = 'Garth Ennis' AND publication.publisher = 'Thomson Reuters'",
+      "pred_sql": "SELECT T1.Book_ID FROM book AS T1 INNER JOIN publication AS T2 ON T1.Book_ID = T2.Book_ID WHERE T1.Title = 'Bloody Mary : Lady Liberty' AND T1.Writer = 'Garth Ennis' AND T1.Issues = 4 AND T2.Publisher = 'Thomson Reuters' AND T2.Publication_Date LIKE '2008-03-%' AND T2.Price <= 6000000.0",
+      "strategy": "1pH",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.17
+    },
+    {
+      "uid": "41e5e6ad-f42c-4200-8ada-289127c77624",
+      "question": "Which books published by Bertelsmann in April 2007 have a price of exactly 2000000.0?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.price = 2000000.0 AND publication.publication_date = 'April 2007' AND publication.publisher = 'Bertelsmann'",
+      "pred_sql": "SELECT T1.Book_ID FROM book AS T1 INNER JOIN publication AS T2 ON T1.Book_ID = T2.Book_ID WHERE T2.Publisher = 'Bertelsmann' AND T2.Publication_Date LIKE '2007-04-%' AND T2.Price = 2000000.0",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.29
+    },
+    {
+      "uid": "a32208f3-cd8c-4c7a-96cf-7ef6360296a1",
+      "question": "Which books titled BrainBanx have no more than 6.0 issues?",
+      "gold_sql": "SELECT book.book_id FROM book\nWHERE book.issues <= 6.0 AND book.title = 'BrainBanx'",
+      "pred_sql": "SELECT Book_ID FROM book WHERE Title = 'BrainBanx' AND Issues <= 6.0",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.44
+    },
+    {
+      "uid": "b03af622-59fa-487f-b681-65afe7a9d16c",
+      "question": "Which books were published by Thomson Reuters?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE publication.publisher = 'Thomson Reuters'",
+      "pred_sql": "SELECT T1.Book_ID FROM book AS T1 INNER JOIN publication AS T2 ON T1.Book_ID = T2.Book_ID WHERE T2.Publisher = 'Thomson Reuters'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.37
+    },
+    {
+      "uid": "b975fe48-0ac8-4fcd-8286-e9322bf86038",
+      "question": "Which books titled Dead Corps were written by Christopher Hinz and have at most 4.0 issues?",
+      "gold_sql": "SELECT book.book_id FROM book\nWHERE book.issues <= 4.0 AND book.writer = 'Christopher Hinz' AND book.title = 'Dead Corps'",
+      "pred_sql": "SELECT Book_ID FROM book WHERE Title = 'Dead Corps' AND Writer = 'Christopher Hinz' AND Issues <= 4.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "c788fc6f-6164-4ed8-ad14-80e4cbb934f2",
+      "question": "Which books titled Michael Moorcock's Multiverse published by Pearson in March 2007 have at most 12 issues?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.issues <= 12.0 AND publication.publisher = 'Pearson' AND book.title = 'Michael Moorcock''s Multiverse' AND publication.publication_date = 'March 2007'",
+      "pred_sql": "SELECT T1.Book_ID FROM book AS T1 INNER JOIN publication AS T2 ON T1.Book_ID = T2.Book_ID WHERE T1.Title = 'Michael Moorcock''s Multiverse' AND T2.Publisher = 'Pearson' AND T2.Publication_Date = 'March 2007' AND T1.Issues <= 12",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.42
+    },
+    {
+      "uid": "cb3dcb2c-58f9-4c2b-94f0-170d9cba8d92",
+      "question": "What books titled The Black Lamb have at least 6 issues?",
+      "gold_sql": "SELECT book.book_id FROM book\nWHERE book.title = 'The Black Lamb' AND book.issues >= 6.0",
+      "pred_sql": "SELECT Book_ID FROM book WHERE Title = 'The Black Lamb' AND Issues >= 6",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.34
+    },
+    {
+      "uid": "d625b612-e2ec-49c0-a525-390ff04c9830",
+      "question": "What books titled Cyberella, written by Howard Chaykin with at most 12 issues, were published by Wiley in October 2005 priced exactly 3000000.0?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Howard Chaykin' AND book.issues <= 12.0 AND publication.price = 3000000.0 AND publication.publication_date = 'October 2005' AND publication.publisher = 'Wiley' AND book.title = 'Cyberella'",
+      "pred_sql": "SELECT T1.Book_ID FROM book AS T1 INNER JOIN publication AS T2 ON T1.Book_ID = T2.Book_ID WHERE T1.Title = 'Cyberella' AND T1.Writer = 'Howard Chaykin' AND T1.Issues <= 12 AND T2.Publisher = 'Wiley' AND T2.Publication_Date = 'October 2005' AND T2.Price = 3000000.0",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.01
+    },
+    {
+      "uid": "e21c2f52-3a8e-4621-b093-f3468ceba770",
+      "question": "Which books have Howard Chaykin as the writer?",
+      "gold_sql": "SELECT book.book_id FROM book\nJOIN publication ON book.book_id = publication.book_id\nWHERE book.writer = 'Howard Chaykin'",
+      "pred_sql": "SELECT Book_ID FROM book WHERE Writer = 'Howard Chaykin'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.04
+    }
+  ]
+}

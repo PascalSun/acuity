@@ -1,0 +1,124 @@
+{
+  "db_id": "trains",
+  "model": "claude-sonnet-4-5-20250929",
+  "provider": "anthropic",
+  "tag": "claude-sonnet-4-5-20250929",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-05T10:32:51.600393+00:00",
+  "records": [
+    {
+      "uid": "02e694c5-02a2-4195-a548-7de31a9ba25b",
+      "question": "What trains have cars with a load shape that is exactly rectangle?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'rectangle'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nINNER JOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'rectangle'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.77
+    },
+    {
+      "uid": "0e1cd541-3e7c-4406-8ccd-525e5af9325d",
+      "question": "Which trains heading west have cars positioned at 2 or higher that feature a flat roof, exactly 3 loads with rectangular shapes, rectangle-shaped bodies with not_double sides, and no more than 2 wheels?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.shape = 'rectangle' AND cars.sides = 'not_double' AND cars.wheels <= 2 AND cars.load_shape = 'rectangle' AND cars.roof = 'flat' AND cars.load_num = 3 AND cars.position >= 2 AND trains.direction = 'west'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'west'\n  AND cars.shape = 'rectangle'\n  AND cars.sides = 'not_double'\n  AND cars.wheels <= 2\n  AND cars.load_shape = 'rectangle'\n  AND cars.roof = 'flat'\n  AND cars.load_num = 3\n  AND cars.position >= 2",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.27
+    },
+    {
+      "uid": "15f3634c-fcac-4735-b2ab-6338b276f03c",
+      "question": "Which trains are heading exactly east?",
+      "gold_sql": "SELECT trains.id FROM trains\nWHERE trains.direction = 'east'",
+      "pred_sql": "SELECT id FROM trains WHERE direction = 'east'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.6
+    },
+    {
+      "uid": "2a3c78f4-5ef0-4ec4-9311-c84dfeba986b",
+      "question": "Which trains are traveling west?",
+      "gold_sql": "SELECT trains.id FROM trains\nWHERE trains.direction = 'west'",
+      "pred_sql": "SELECT id FROM trains WHERE direction = 'west'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.21
+    },
+    {
+      "uid": "459a1305-1624-4274-bb84-7f5ad6b81b16",
+      "question": "Which trains heading west have cars positioned at 2 or higher that have exactly not_double sides, a rectangle shape with a flat roof, at least 2 wheels, and carry at least 3 circular loads?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.sides = 'not_double' AND cars.shape = 'rectangle' AND cars.load_shape = 'circle' AND trains.direction = 'west' AND cars.position >= 2 AND cars.load_num >= 3 AND cars.roof = 'flat' AND cars.wheels >= 2",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'west'\n  AND cars.sides = 'not_double'\n  AND cars.shape = 'rectangle'\n  AND cars.load_shape = 'circle'\n  AND cars.position >= 2\n  AND cars.load_num >= 3\n  AND cars.roof = 'flat'\n  AND cars.wheels >= 2",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 2.5
+    },
+    {
+      "uid": "7e11b467-5968-4672-bb04-58b96af687fe",
+      "question": "Which trains have cars with a load shape that is circle and sides that are not_double?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'circle' AND cars.sides = 'not_double'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nINNER JOIN cars ON trains.id = cars.train_id\nWHERE cars.load_shape = 'circle' AND cars.sides = 'not_double'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.63
+    },
+    {
+      "uid": "86f998a3-65b5-46af-80ef-dd2c0d3e7477",
+      "question": "Which trains heading east have cars positioned at 3 or higher with a peaked roof, load shape exactly triangle, sides not double, and carrying at least 1 load?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'peaked' AND cars.load_shape = 'triangle' AND cars.sides = 'not_double' AND cars.load_num >= 1 AND cars.position >= 3 AND trains.direction = 'east'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'east'\n  AND cars.roof = 'peaked'\n  AND cars.load_shape = 'triangle'\n  AND cars.sides = 'not_double'\n  AND cars.load_num >= 1\n  AND cars.position >= 3",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.8
+    },
+    {
+      "uid": "8dccf485-7322-4588-a8a4-b727b6ef42e0",
+      "question": "Which trains are headed exactly east and have cars attached to them?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'east'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nINNER JOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'east'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.36
+    },
+    {
+      "uid": "acdb2676-dc1e-4d6c-979f-d62be5fe8087",
+      "question": "What trains heading east have cars with no roof, exactly 2 wheels, and sides that are not double?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.roof = 'none' AND trains.direction = 'east' AND cars.wheels = 2 AND cars.sides = 'not_double'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nINNER JOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'east'\n  AND cars.roof = 'none'\n  AND cars.wheels = 2\n  AND cars.sides = 'not_double'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.79
+    },
+    {
+      "uid": "e41d71a3-1e8e-4455-a54b-a74196a8475e",
+      "question": "What trains heading west have a car with exactly a rectangle shape, at least 2 wheels, and positioned at most 3?",
+      "gold_sql": "SELECT trains.id FROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE cars.wheels >= 2 AND cars.position <= 3 AND cars.shape = 'rectangle' AND trains.direction = 'west'",
+      "pred_sql": "SELECT DISTINCT trains.id\nFROM trains\nJOIN cars ON trains.id = cars.train_id\nWHERE trains.direction = 'west'\n  AND cars.wheels >= 2\n  AND cars.position <= 3\n  AND cars.shape = 'rectangle'",
+      "strategy": "1pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.04
+    }
+  ]
+}

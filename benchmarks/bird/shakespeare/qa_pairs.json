@@ -1,0 +1,2374 @@
+{
+ "db_id": "shakespeare",
+ "target_table": "paragraphs",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1363523954,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/bird/hf_download/train/train_databases/shakespeare/shakespeare.sqlite",
+  "generated_at": "2026-07-02T11:17:37.516579+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "paragraphs",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E"
+  ],
+  "requested_strategies": [
+   "0E"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 50
+  },
+  "realized_counts": {
+   "0E": 50
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 50,
+    "accepted_count": 50,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 87,
+    "inner_attempts": 130,
+    "failed_rounds": 37,
+    "invalid_pairs_filtered": 37,
+    "failure_events": {
+     "qa_validation_failed": 37
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "f5df719b-f0f5-4e14-962e-d8ceecbe60b4",
+   "question": "Which paragraphs numbered 854 or fewer include the phrase \"I fear it\"?",
+   "answer_row_ids": [
+    653057
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum <= 854 AND paragraphs.plaintext LIKE '%I fear it%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 854,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "I fear it",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 854,
+    "paragraphs.plaintext": "I fear it"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at most '854' and plaintext matching '%I fear it%'?"
+  },
+  {
+   "uid": "ac20d4a8-3c93-4f2d-ada0-5d9225a325ae",
+   "question": "Which paragraphs include the phrase \"Advance your standards\"?",
+   "answer_row_ids": [
+    648753,
+    658717
+   ],
+   "answer_count": 2,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Advance your standards%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Advance your standards",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Advance your standards"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Advance your standards%'?"
+  },
+  {
+   "uid": "b37e8ab3-4711-43f8-9464-f314a6c5d4f2",
+   "question": "Which paragraphs numbered exactly 1585 include the text containing 'To signify that rebels there are up  \nAnd put the Englishmen unto the sword:  \nSend succors'?",
+   "answer_row_ids": [
+    643192
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%To signify that rebels there are up\nAnd put the Englishmen unto the sword:\nSend succors%' AND paragraphs.paragraphnum = 1585",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "To signify that rebels there are up\nAnd put the Englishmen unto the sword:\nSend succors",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1585,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "To signify that rebels there are up\nAnd put the Englishmen unto the sword:\nSend succors",
+    "paragraphs.paragraphnum": 1585
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%To signify that rebels there are up And put the Englishmen unto the sword: Send succors%' and paragraphnum equal to '1585'?"
+  },
+  {
+   "uid": "6dc7f61a-cfa7-4fd6-ae92-b3952b228c01",
+   "question": "Which paragraphs numbered at least 1591 include the phrase \"What! will you fly\"?",
+   "answer_row_ids": [
+    642429
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%What! will you fly%' AND paragraphs.paragraphnum >= 1591",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "What! will you fly",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 1591,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "What! will you fly",
+    "paragraphs.paragraphnum": 1591
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%What! will you fly%' and paragraphnum at least '1591'?"
+  },
+  {
+   "uid": "3940bda9-774b-4f8b-a9cf-b55d798e1a55",
+   "question": "What paragraphs numbered 2930 or higher contain the lines \"His statutes cancell'd and his treasure spent; And yonder is the wolf that makes this spoil. You fight in justice: then\"?",
+   "answer_row_ids": [
+    644542
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum >= 2930 AND paragraphs.plaintext LIKE '%His statutes cancell''d and his treasure spent;\nAnd yonder is the wolf that makes this spoil.\nYou fight in justice: then%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 2930,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "His statutes cancell'd and his treasure spent;\nAnd yonder is the wolf that makes this spoil.\nYou fight in justice: then",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 2930,
+    "paragraphs.plaintext": "His statutes cancell'd and his treasure spent;\nAnd yonder is the wolf that makes this spoil.\nYou fight in justice: then"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at least '2930' and plaintext matching '%His statutes cancell'?"
+  },
+  {
+   "uid": "b7347e5d-04ed-4cc8-8b4d-b375bce88fe3",
+   "question": "Which paragraphs numbered 1826 or higher include the phrase 'Fair thoughts and happy hours attend on you!'?",
+   "answer_row_ids": [
+    651410
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum >= 1826 AND paragraphs.plaintext LIKE '%Fair thoughts and happy hours attend on you!%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 1826,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Fair thoughts and happy hours attend on you!",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1826,
+    "paragraphs.plaintext": "Fair thoughts and happy hours attend on you!"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at least '1826' and plaintext matching '%Fair thoughts and happy hours attend on you!%'?"
+  },
+  {
+   "uid": "fee7f830-4632-491b-b4df-dd54879e8891",
+   "question": "Which paragraphs include the phrase \"You had my prayers to lead them on; and to keep them on\"?",
+   "answer_row_ids": [
+    632277
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%You had my prayers to lead them on; and to keep them\non%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "You had my prayers to lead them on; and to keep them\non",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "You had my prayers to lead them on; and to keep them\non"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%You had my prayers to lead them on; and to keep them on%'?"
+  },
+  {
+   "uid": "f54bd441-dd02-42ad-9ca3-a8fc93a354ef",
+   "question": "Which paragraphs have the paragraph number exactly 2679?",
+   "answer_row_ids": [
+    633872,
+    640860,
+    644482,
+    646239,
+    649200,
+    655358
+   ],
+   "answer_count": 6,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 2679",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 2679,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 2679
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '2679'?"
+  },
+  {
+   "uid": "d827f864-5c4b-4e32-b3eb-1a6111e5b91a",
+   "question": "What paragraphs have the paragraph number exactly 885 and include the phrase \"my lord.\"?",
+   "answer_row_ids": [
+    638238
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 885 AND paragraphs.plaintext LIKE '%my lord.%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 885,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "my lord.",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 885,
+    "paragraphs.plaintext": "my lord."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '885' and plaintext matching '%my lord.%'?"
+  },
+  {
+   "uid": "7ccb5ed6-b438-4e20-9fb0-050374d1882d",
+   "question": "Which paragraphs numbered 422 or higher contain the text \"I think  \nHis father never was so true begot:  \nIt cannot be\"?",
+   "answer_row_ids": [
+    646374
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%I think\nHis father never was so true begot:\nIt cannot be%' AND paragraphs.paragraphnum >= 422",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "I think\nHis father never was so true begot:\nIt cannot be",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 422,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "I think\nHis father never was so true begot:\nIt cannot be",
+    "paragraphs.paragraphnum": 422
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%I think His father never was so true begot: It cannot be%' and paragraphnum at least '422'?"
+  },
+  {
+   "uid": "ed36c707-4b3c-428b-bf4e-80e7c272080b",
+   "question": "What paragraphs include the phrase \"impudent and shameless Warwick\"?",
+   "answer_row_ids": [
+    644221
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%impudent and shameless Warwick%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "impudent and shameless Warwick",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "impudent and shameless Warwick"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%impudent and shameless Warwick%'?"
+  },
+  {
+   "uid": "55d88d74-5eab-47d3-8432-6cdd32f8bc63",
+   "question": "Which paragraphs have a paragraph number exactly 493?",
+   "answer_row_ids": [
+    631073,
+    633095,
+    634461,
+    635267,
+    637182,
+    639370,
+    642136,
+    644708,
+    647043,
+    652977,
+    653659,
+    660027,
+    664602,
+    665395
+   ],
+   "answer_count": 14,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 493",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 493,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 493
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '493'?"
+  },
+  {
+   "uid": "158efe08-ce88-47b4-8e85-89efb7348c9a",
+   "question": "Which paragraphs include the text containing \"On whose bright crest Fame with her loud'st Oyes Cries 'This is he\"?",
+   "answer_row_ids": [
+    663989
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%On whose bright crest Fame with her loud''st Oyes\nCries ''This is he%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "On whose bright crest Fame with her loud'st Oyes\nCries 'This is he",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "On whose bright crest Fame with her loud'st Oyes\nCries 'This is he"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%On whose bright crest Fame with her loud'?"
+  },
+  {
+   "uid": "d2c90495-39e4-4fea-a73d-2c6e7c7bb1ff",
+   "question": "Which paragraphs at most number 2527 include the phrase \"I give it you\"?",
+   "answer_row_ids": [
+    640809
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%I give it you%' AND paragraphs.paragraphnum <= 2527",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "I give it you",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 2527,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "I give it you",
+    "paragraphs.paragraphnum": 2527
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%I give it you%' and paragraphnum at most '2527'?"
+  },
+  {
+   "uid": "848f023f-5ad9-4411-b181-cd4868e1d997",
+   "question": "Which paragraphs have the paragraph number exactly 1372?",
+   "answer_row_ids": [
+    634695,
+    637412,
+    639670,
+    641428,
+    644947,
+    657192,
+    663488,
+    665820
+   ],
+   "answer_count": 8,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1372",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1372,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1372
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '1372'?"
+  },
+  {
+   "uid": "5c1e4462-8429-4403-a384-e7b3ba850202",
+   "question": "What paragraphs numbered exactly 298 include the phrase \"though I be youngest\"?",
+   "answer_row_ids": [
+    643816
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%though I be youngest%' AND paragraphs.paragraphnum = 298",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "though I be youngest",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 298,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "though I be youngest",
+    "paragraphs.paragraphnum": 298
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%though I be youngest%' and paragraphnum equal to '298'?"
+  },
+  {
+   "uid": "2b98ffc3-3080-46e4-9139-5f649df02c0d",
+   "question": "Which paragraphs include the phrase \"Go to; say no more.\"?",
+   "answer_row_ids": [
+    655316
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Go to; say no more.%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Go to; say no more.",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Go to; say no more."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Go to; say no more.%'?"
+  },
+  {
+   "uid": "8eab5732-e846-45ac-b98c-339920fe01d9",
+   "question": "Which paragraphs have the paragraph number exactly 1439?",
+   "answer_row_ids": [
+    636206,
+    639691,
+    648687,
+    649651,
+    650493,
+    652303,
+    654907,
+    661297,
+    662762
+   ],
+   "answer_count": 9,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1439",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1439,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1439
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '1439'?"
+  },
+  {
+   "uid": "1b90fed7-1b60-4d3e-8738-80bc9e95de5c",
+   "question": "Which paragraphs include the phrase \"Make way\"?",
+   "answer_row_ids": [
+    634154,
+    636168,
+    643546,
+    645384,
+    657436,
+    660032,
+    662434,
+    662435
+   ],
+   "answer_count": 8,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Make way%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Make way",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Make way"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Make way%'?"
+  },
+  {
+   "uid": "290b00f2-e003-4392-a13d-937f7785e47d",
+   "question": "What paragraphs include the phrase \"what made your master in this place?\"?",
+   "answer_row_ids": [
+    659733
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%what made your master in this place?%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "what made your master in this place?",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "what made your master in this place?"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%what made your master in this place?%'?"
+  },
+  {
+   "uid": "d88e1ca0-6320-49c2-858a-b2fdad5602d5",
+   "question": "Which paragraphs at most number 302 include the text containing \"or I will  \nnot open my lips so wide as a bristle may enter in  \nway of thy excuse: my lady will hang thee for thy absence\"?",
+   "answer_row_ids": [
+    630983
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%or I will\nnot open my lips so wide as a bristle may enter in\nway of thy excuse: my lady will hang thee for thy absence.%' AND paragraphs.paragraphnum <= 302",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "or I will\nnot open my lips so wide as a bristle may enter in\nway of thy excuse: my lady will hang thee for thy absence.",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 302,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "or I will\nnot open my lips so wide as a bristle may enter in\nway of thy excuse: my lady will hang thee for thy absence.",
+    "paragraphs.paragraphnum": 302
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%or I will not open my lips so wide as a bristle may enter in way of thy excuse: my lady will hang thee for thy absence.%' and paragraphnum at most '302'?"
+  },
+  {
+   "uid": "1b9d2fd7-5bc0-4c7e-94fb-04313ab09af0",
+   "question": "What paragraphs numbered 2227 or fewer include the phrase \"King Henry's blood\"?",
+   "answer_row_ids": [
+    643329
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum <= 2227 AND paragraphs.plaintext LIKE '%King Henry''s blood%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 2227,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "King Henry's blood",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 2227,
+    "paragraphs.plaintext": "King Henry's blood"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at most '2227' and plaintext matching '%King Henry'?"
+  },
+  {
+   "uid": "662142f4-f472-483a-b8ef-5a0affa968fe",
+   "question": "Which paragraphs containing \"Most sincerely.\" have a paragraph number of at most 2292?",
+   "answer_row_ids": [
+    654369
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Most sincerely.%' AND paragraphs.paragraphnum <= 2292",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Most sincerely.",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 2292,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Most sincerely.",
+    "paragraphs.paragraphnum": 2292
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Most sincerely.%' and paragraphnum at most '2292'?"
+  },
+  {
+   "uid": "92b47af0-1d52-4e0b-9235-91f4bf6c21d4",
+   "question": "Which paragraphs containing the phrase \"and all things\" have a paragraph number no more than 243?",
+   "answer_row_ids": [
+    638059
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%and all things%' AND paragraphs.paragraphnum <= 243",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "and all things",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 243,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "and all things",
+    "paragraphs.paragraphnum": 243
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%and all things%' and paragraphnum at most '243'?"
+  },
+  {
+   "uid": "72415c33-3d76-4c0c-9dfb-ce70ed37f7a4",
+   "question": "Which paragraphs have the paragraph number exactly 1923?",
+   "answer_row_ids": [
+    634894,
+    637493,
+    638562,
+    641611,
+    647493,
+    648834,
+    650634,
+    651437,
+    658173
+   ],
+   "answer_count": 9,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1923",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1923,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1923
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '1923'?"
+  },
+  {
+   "uid": "fd80c7fc-34fa-4e45-8e2a-40a8b1658c07",
+   "question": "Which paragraphs include the phrase \"my royal father\"?",
+   "answer_row_ids": [
+    640895,
+    640943,
+    643951,
+    656041,
+    656047
+   ],
+   "answer_count": 5,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%my royal father%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "my royal father",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "my royal father"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%my royal father%'?"
+  },
+  {
+   "uid": "210c900d-c1a7-4c4a-a323-a119ed6a1e88",
+   "question": "Which paragraphs include the phrase \"give-a this letter to Sir Hugh; by gar\"?",
+   "answer_row_ids": [
+    651947
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%give-a this letter to Sir Hugh; by\ngar%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "give-a this letter to Sir Hugh; by\ngar",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "give-a this letter to Sir Hugh; by\ngar"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%give-a this letter to Sir Hugh; by gar%'?"
+  },
+  {
+   "uid": "6563e5f7-a5b4-4781-81c2-c8503cb93d2b",
+   "question": "Which paragraphs include the phrase \"Men daily find it. Get thee away\"?",
+   "answer_row_ids": [
+    662193
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Men daily find it. Get thee away%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Men daily find it. Get thee away",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Men daily find it. Get thee away"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Men daily find it. Get thee away%'?"
+  },
+  {
+   "uid": "15acc193-f651-477b-a8f5-620282aa3cec",
+   "question": "Which paragraphs have paragraph number 1885 and include the phrase \"To drive away the heavy thought of care?",
+   "answer_row_ids": [
+    657268
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1885 AND paragraphs.plaintext LIKE '%To drive away the heavy thought of care?%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1885,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "To drive away the heavy thought of care?",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1885,
+    "paragraphs.plaintext": "To drive away the heavy thought of care?"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '1885' and plaintext matching '%To drive away the heavy thought of care?%'?"
+  },
+  {
+   "uid": "03a80bbc-adde-4f97-a52d-573bb5076876",
+   "question": "Which paragraphs numbered exactly 1048 contain the phrase \"Remembering how I love thy company.\"?",
+   "answer_row_ids": [
+    659090
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Remembering how I love thy company.%' AND paragraphs.paragraphnum = 1048",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Remembering how I love thy company.",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1048,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Remembering how I love thy company.",
+    "paragraphs.paragraphnum": 1048
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Remembering how I love thy company.%' and paragraphnum equal to '1048'?"
+  },
+  {
+   "uid": "a3dc087c-fcec-4d36-b4c0-49480e11ca37",
+   "question": "What paragraphs contain the phrase \"I'll watch you for that; and that's one of the chiefest of them too: if I cannot ward what I would not have hit\"?",
+   "answer_row_ids": [
+    663260
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%I''ll watch you for that; and that''s one of the\nchiefest of them too: if I cannot ward what I would\nnot have hit%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "I'll watch you for that; and that's one of the\nchiefest of them too: if I cannot ward what I would\nnot have hit",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "I'll watch you for that; and that's one of the\nchiefest of them too: if I cannot ward what I would\nnot have hit"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%I'?"
+  },
+  {
+   "uid": "2ae842d6-4802-41e0-b9cb-51794d2ef843",
+   "question": "Which paragraphs numbered 2468 or fewer contain the text \"To the latter end of a fray and the beginning of a feast\nFits a dull fighter and a keen guest.\"?",
+   "answer_row_ids": [
+    639962
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum <= 2468 AND paragraphs.plaintext LIKE '%To the latter end of a fray and the beginning of a feast\nFits a dull fighter and a keen guest.%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 2468,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "To the latter end of a fray and the beginning of a feast\nFits a dull fighter and a keen guest.",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 2468,
+    "paragraphs.plaintext": "To the latter end of a fray and the beginning of a feast\nFits a dull fighter and a keen guest."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at most '2468' and plaintext matching '%To the latter end of a fray and the beginning of a feast Fits a dull fighter and a keen guest.%'?"
+  },
+  {
+   "uid": "aeb24d00-4205-4b31-befd-5380c01121e5",
+   "question": "Which paragraphs numbered exactly 681 include the phrase \"Now put it\"?",
+   "answer_row_ids": [
+    657032
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Now put it%' AND paragraphs.paragraphnum = 681",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Now put it",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 681,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Now put it",
+    "paragraphs.paragraphnum": 681
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Now put it%' and paragraphnum equal to '681'?"
+  },
+  {
+   "uid": "116dda28-b52b-4222-bf85-3ae07b9b50f6",
+   "question": "Which paragraphs containing \"Consuming it with speaking!\" have a paragraph number at most 2428?",
+   "answer_row_ids": [
+    662363
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Consuming it with speaking!%' AND paragraphs.paragraphnum <= 2428",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Consuming it with speaking!",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 2428,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Consuming it with speaking!",
+    "paragraphs.paragraphnum": 2428
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Consuming it with speaking!%' and paragraphnum at most '2428'?"
+  },
+  {
+   "uid": "65ccb5a3-943e-4edc-8db4-2eb6e4a1666f",
+   "question": "Which paragraphs include the phrase \"that I will not.\"?",
+   "answer_row_ids": [
+    664840
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%that I will not.%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "that I will not.",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "that I will not."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%that I will not.%'?"
+  },
+  {
+   "uid": "961a1427-dcce-451a-bc03-1f4ee4450cb5",
+   "question": "Which paragraphs include the phrase \"bringing forward the Clerk of Chatham]\"?",
+   "answer_row_ids": [
+    643397
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%bringing forward the Clerk of Chatham]%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "bringing forward the Clerk of Chatham]",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "bringing forward the Clerk of Chatham]"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%bringing forward the Clerk of Chatham]%'?"
+  },
+  {
+   "uid": "01ca9de7-afd0-4b79-ac74-c4a4d2770ce3",
+   "question": "What paragraphs have a paragraph number exactly 1071 and include the phrase containing \"with a basket]\"?",
+   "answer_row_ids": [
+    659098
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1071 AND paragraphs.plaintext LIKE '%with a basket]%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1071,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "with a basket]",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1071,
+    "paragraphs.plaintext": "with a basket]"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '1071' and plaintext matching '%with a basket]%'?"
+  },
+  {
+   "uid": "8601513b-7439-487e-934d-ecc12de78f68",
+   "question": "Which paragraphs include the phrase \"Your ships already are in readiness\"?",
+   "answer_row_ids": [
+    642384
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Your ships already are in readiness.%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Your ships already are in readiness.",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "Your ships already are in readiness."
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%Your ships already are in readiness.%'?"
+  },
+  {
+   "uid": "5318c101-4dcd-439e-8853-397bdd347d94",
+   "question": "Which paragraphs numbered exactly 888 include the phrase \"There's no offence\"?",
+   "answer_row_ids": [
+    638240
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 888 AND paragraphs.plaintext LIKE '%There''s no offence%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 888,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "There's no offence",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 888,
+    "paragraphs.plaintext": "There's no offence"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '888' and plaintext matching '%There'?"
+  },
+  {
+   "uid": "b258123c-acdb-4d56-84da-2617b2f429cf",
+   "question": "What paragraphs numbered 1972 or higher include the phrase \"Will you make me believe that I am not sent for you?\"?",
+   "answer_row_ids": [
+    631658
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum >= 1972 AND paragraphs.plaintext LIKE '%Will you make me believe that I am not sent for you?%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 1972,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Will you make me believe that I am not sent for you?",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1972,
+    "paragraphs.plaintext": "Will you make me believe that I am not sent for you?"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at least '1972' and plaintext matching '%Will you make me believe that I am not sent for you?%'?"
+  },
+  {
+   "uid": "653c8065-4088-44c9-b38b-95d54ff065c6",
+   "question": "Which paragraphs numbered exactly 1752 include the phrase \"We'll take your offer kindly\"?",
+   "answer_row_ids": [
+    632457
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%We''ll take your offer kindly.%' AND paragraphs.paragraphnum = 1752",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "We'll take your offer kindly.",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1752,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "We'll take your offer kindly.",
+    "paragraphs.paragraphnum": 1752
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%We' and paragraphnum equal to '1752'?"
+  },
+  {
+   "uid": "e868b948-4dc0-4ab3-97da-bc80824f708f",
+   "question": "Which paragraphs have the paragraph number exactly 3219?",
+   "answer_row_ids": [
+    655588,
+    659725,
+    664188
+   ],
+   "answer_count": 3,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 3219",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 3219,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 3219
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '3219'?"
+  },
+  {
+   "uid": "bd2d252e-e54d-471b-88f8-4cb20a1be5e4",
+   "question": "Which paragraphs numbered exactly 1951 include the phrase 'What! a knave too?'?",
+   "answer_row_ids": [
+    662211
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%What! a knave too?%' AND paragraphs.paragraphnum = 1951",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "What! a knave too?",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1951,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "What! a knave too?",
+    "paragraphs.paragraphnum": 1951
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%What! a knave too?%' and paragraphnum equal to '1951'?"
+  },
+  {
+   "uid": "cdc3d344-bb29-42e0-960b-07a15b77a827",
+   "question": "Which paragraphs numbered 2056 or higher include the phrase \"were I human.\"?",
+   "answer_row_ids": [
+    661478
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%were I human.%' AND paragraphs.paragraphnum >= 2056",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext",
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "were I human.",
+     "column_type": "comma_separated"
+    },
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 2056,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "were I human.",
+    "paragraphs.paragraphnum": 2056
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%were I human.%' and paragraphnum at least '2056'?"
+  },
+  {
+   "uid": "2cca0c9e-e8cd-401c-a01e-744b15de216d",
+   "question": "Which paragraphs include the phrase \"what villany soe'er I bid thee do\"?",
+   "answer_row_ids": [
+    637546
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%what villany soe''er I bid thee do%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "what villany soe'er I bid thee do",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "what villany soe'er I bid thee do"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%what villany soe'?"
+  },
+  {
+   "uid": "e0f7f0e5-d51a-43f8-b3b2-2feca45090bf",
+   "question": "Which paragraphs include the phrase \"The duke retain'd him his. But on; what hence?\"?",
+   "answer_row_ids": [
+    644720
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%The duke retain''d him his. But on; what hence?%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "The duke retain'd him his. But on; what hence?",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.plaintext": "The duke retain'd him his. But on; what hence?"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with plaintext matching '%The duke retain'?"
+  },
+  {
+   "uid": "eb9775ad-da72-4b16-9bf7-6d58dd6d8b73",
+   "question": "Which paragraphs have a paragraph number exactly equal to 954?",
+   "answer_row_ids": [
+    631248,
+    635431,
+    636081,
+    640364,
+    645644,
+    652106,
+    654779,
+    657813,
+    661924,
+    663380
+   ],
+   "answer_count": 10,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 954",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 954,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 954
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '954'?"
+  },
+  {
+   "uid": "441679ca-59f4-4e0d-9776-d7850973cfe2",
+   "question": "Which paragraphs numbered 793 or higher contain the phrase \"Do it then\"?",
+   "answer_row_ids": [
+    661882
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum >= 793 AND paragraphs.plaintext LIKE '%Do it then%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": ">=",
+     "value": 793,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "Do it then",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 793,
+    "paragraphs.plaintext": "Do it then"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at least '793' and plaintext matching '%Do it then%'?"
+  },
+  {
+   "uid": "29a6c017-680b-4e4e-b947-5e18b7e3be19",
+   "question": "Which paragraphs numbered at most 1762 include the text \"What's he approacheth boldly to our presence?\"?",
+   "answer_row_ids": [
+    644187
+   ],
+   "answer_count": 1,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum <= 1762 AND paragraphs.plaintext LIKE '%What''s he approacheth boldly to our presence?%'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum",
+    "paragraphs.plaintext"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "<=",
+     "value": 1762,
+     "column_type": "numeric"
+    },
+    {
+     "table": "paragraphs",
+     "column": "plaintext",
+     "operator": "LIKE",
+     "value": "What's he approacheth boldly to our presence?",
+     "column_type": "comma_separated"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1762,
+    "paragraphs.plaintext": "What's he approacheth boldly to our presence?"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum at most '1762' and plaintext matching '%What'?"
+  },
+  {
+   "uid": "ca90561e-a600-42db-9d79-4fb8b6346ac8",
+   "question": "What paragraphs have the paragraph number exactly 1012?",
+   "answer_row_ids": [
+    634592,
+    635448,
+    636092,
+    638284,
+    641350,
+    645665,
+    650372,
+    651256,
+    652127,
+    653115,
+    656123,
+    660184,
+    662667
+   ],
+   "answer_count": 13,
+   "sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1012",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "paragraphs"
+   ],
+   "involved_columns": [
+    "paragraphs.paragraphnum"
+   ],
+   "involved_filters": [
+    {
+     "table": "paragraphs",
+     "column": "paragraphnum",
+     "operator": "=",
+     "value": 1012,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "paragraphs.paragraphnum": 1012
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "paragraphs"
+   },
+   "answer_table": "paragraphs",
+   "answer_id_column": "id",
+   "canonical_question": "Which paragraphs entities with paragraphnum equal to '1012'?"
+  }
+ ]
+}

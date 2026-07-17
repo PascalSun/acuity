@@ -1,0 +1,3380 @@
+{
+ "db_id": "game_injury",
+ "target_table": "stadium",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1711436128,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/game_injury/game_injury.sqlite",
+  "generated_at": "2026-07-02T15:54:47.501545+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "stadium",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 16,
+    "inner_attempts": 16,
+    "failed_rounds": 6,
+    "invalid_pairs_filtered": 6,
+    "failure_events": {
+     "qa_validation_failed": 6
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "4a4e5c18-d8a0-4648-9e85-ec0e82196f4f",
+   "question": "What stadiums have a capacity percentage of at least 100.0 and total attendance of at least 568643.0?",
+   "answer_row_ids": [
+    1,
+    7,
+    8
+   ],
+   "answer_count": 3,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage >= 100.0 AND stadium.total_attendance >= 568643.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.total_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": ">=",
+     "value": 100.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 568643.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 100.0,
+    "stadium.total_attendance": 568643.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at least '100.0' and total attendance at least '568643.0'?"
+  },
+  {
+   "uid": "85728c7c-7893-4ba5-b388-684df222d56f",
+   "question": "Which stadiums host at least 8 home games and have an average attendance of at least 70038?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "answer_count": 10,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.home_games >= 8 AND stadium.average_attendance >= 70038.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.home_games",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 70038.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8,
+    "stadium.average_attendance": 70038.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at least '8' and average attendance at least '70038.0'?"
+  },
+  {
+   "uid": "a07dfacb-4eb2-4b41-8baa-9b6b2263b7dd",
+   "question": "Which stadiums have total attendance exactly 560304.0 and a capacity percentage of at most 96.0?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage <= 96.0 AND stadium.total_attendance = 560304.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.total_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "<=",
+     "value": 96.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 560304.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 96.0,
+    "stadium.total_attendance": 560304.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at most '96.0' and total attendance equal to '560304.0'?"
+  },
+  {
+   "uid": "465503a1-552f-4b7b-9050-51d8f522d433",
+   "question": "Which stadium has the name New Meadowlands Stadium?",
+   "answer_row_ids": [
+    3,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.name = 'New Meadowlands Stadium'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "New Meadowlands Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "New Meadowlands Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'New Meadowlands Stadium'?"
+  },
+  {
+   "uid": "8fdcc21a-24b6-4417-8342-ab2fa6763361",
+   "question": "Which stadium named M&T Bank Stadium has a total attendance of at most 569817.0?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.total_attendance <= 569817.0 AND stadium.name = 'M&T Bank Stadium'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.total_attendance",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 569817.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "M&T Bank Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.total_attendance": 569817.0,
+    "stadium.name": "M&T Bank Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with total attendance at most '569817.0' and name equal to 'M&T Bank Stadium'?"
+  },
+  {
+   "uid": "93f62a72-a9b2-4088-a02b-822be4344425",
+   "question": "Which stadium has a total attendance of exactly 569817.0?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.total_attendance = 569817.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.total_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 569817.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.total_attendance": 569817.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with total attendance equal to '569817.0'?"
+  },
+  {
+   "uid": "6a3ff7d3-ff3f-4792-8d3a-de11cebaade6",
+   "question": "Which stadiums have at most 8 home games?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "answer_count": 13,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.home_games <= 8",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.home_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at most '8'?"
+  },
+  {
+   "uid": "346e98f7-1874-4ae1-9e92-8700558a9ccc",
+   "question": "What stadium has exactly 8 home games and is named LP Field?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.home_games = 8 AND stadium.name = 'LP Field'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.home_games",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "LP Field",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8,
+    "stadium.name": "LP Field"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games equal to '8' and name equal to 'LP Field'?"
+  },
+  {
+   "uid": "f477c1df-770a-4431-a647-5d74f6d728c1",
+   "question": "Which stadium named M&T Bank Stadium has a capacity percentage of at least 100.3?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.name = 'M&T Bank Stadium' AND stadium.capacity_percentage >= 100.3",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.capacity_percentage"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "M&T Bank Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": ">=",
+     "value": 100.3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "M&T Bank Stadium",
+    "stadium.capacity_percentage": 100.3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'M&T Bank Stadium' and capacity percentage at least '100.3'?"
+  },
+  {
+   "uid": "7d6749d8-91bd-41f5-818c-9f2ec5c35256",
+   "question": "Which stadium named New Meadowlands Stadium hosts at least 8 home games?",
+   "answer_row_ids": [
+    3,
+    4
+   ],
+   "answer_count": 2,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.home_games >= 8 AND stadium.name = 'New Meadowlands Stadium'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.home_games",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "New Meadowlands Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8,
+    "stadium.name": "New Meadowlands Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at least '8' and name equal to 'New Meadowlands Stadium'?"
+  },
+  {
+   "uid": "11ddf9de-f59f-40c5-aa6b-618d08304dd8",
+   "question": "What stadium named Invesco Field at Mile High has at least 8 home games, an average attendance of at least 74908, a capacity percentage exactly 98.4, and a total attendance of at most 599264?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.average_attendance >= 74908.0 AND stadium.capacity_percentage = 98.4 AND stadium.name = 'Invesco Field at Mile High' AND stadium.total_attendance <= 599264.0 AND stadium.home_games >= 8",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average_attendance",
+    "stadium.capacity_percentage",
+    "stadium.name",
+    "stadium.total_attendance",
+    "stadium.home_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 74908.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 98.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Invesco Field at Mile High",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 599264.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.average_attendance": 74908.0,
+    "stadium.capacity_percentage": 98.4,
+    "stadium.name": "Invesco Field at Mile High",
+    "stadium.total_attendance": 599264.0,
+    "stadium.home_games": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at least '74908.0' and capacity percentage equal to '98.4' and name equal to 'Invesco Field at Mile High' and total attendance at most '599264.0' and home games at least '8'?"
+  },
+  {
+   "uid": "52a49885-93d0-4b49-aba5-43af24c02fd3",
+   "question": "What stadium named Cowboys Stadium has a capacity percentage exactly 108.8, total attendance exactly 696377.0, at least 8 home games, and an average attendance of at least 87047.0?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage = 108.8 AND stadium.total_attendance = 696377.0 AND stadium.home_games >= 8 AND stadium.name = 'Cowboys Stadium' AND stadium.average_attendance >= 87047.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.total_attendance",
+    "stadium.home_games",
+    "stadium.name",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 108.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 696377.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Cowboys Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 108.8,
+    "stadium.total_attendance": 696377.0,
+    "stadium.home_games": 8,
+    "stadium.name": "Cowboys Stadium",
+    "stadium.average_attendance": 87047.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '108.8' and total attendance equal to '696377.0' and home games at least '8' and name equal to 'Cowboys Stadium' and average attendance at least '87047.0'?"
+  },
+  {
+   "uid": "2786a9eb-0a73-42dc-b4f1-d0db274916bb",
+   "question": "Which stadium named Cowboys Stadium has a total attendance of exactly 696377, an average attendance of at least 87047, no more than 8 home games, and a capacity percentage exactly equal to 108.8?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.average_attendance >= 87047.0 AND stadium.home_games <= 8 AND stadium.total_attendance = 696377.0 AND stadium.capacity_percentage = 108.8 AND stadium.name = 'Cowboys Stadium'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.average_attendance",
+    "stadium.home_games",
+    "stadium.total_attendance",
+    "stadium.capacity_percentage",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 696377.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 108.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Cowboys Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.average_attendance": 87047.0,
+    "stadium.home_games": 8,
+    "stadium.total_attendance": 696377.0,
+    "stadium.capacity_percentage": 108.8,
+    "stadium.name": "Cowboys Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at least '87047.0' and home games at most '8' and total attendance equal to '696377.0' and capacity percentage equal to '108.8' and name equal to 'Cowboys Stadium'?"
+  },
+  {
+   "uid": "05064a96-054b-4706-8141-d37f6eb30187",
+   "question": "Which stadium named New Meadowlands Stadium has at most 8 home games and a capacity percentage of at least 95.8?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.home_games <= 8 AND stadium.name = 'New Meadowlands Stadium' AND stadium.capacity_percentage >= 95.8",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.home_games",
+    "stadium.name",
+    "stadium.capacity_percentage"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "New Meadowlands Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": ">=",
+     "value": 95.8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8,
+    "stadium.name": "New Meadowlands Stadium",
+    "stadium.capacity_percentage": 95.8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at most '8' and name equal to 'New Meadowlands Stadium' and capacity percentage at least '95.8'?"
+  },
+  {
+   "uid": "160be138-df60-4d9c-9a46-7b5cb03d1cbb",
+   "question": "Which stadium named M&T Bank Stadium has a total attendance of at least 569817 and an average attendance of at most 71227?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.total_attendance >= 569817.0 AND stadium.name = 'M&T Bank Stadium' AND stadium.average_attendance <= 71227.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.total_attendance",
+    "stadium.name",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 569817.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "M&T Bank Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 71227.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.total_attendance": 569817.0,
+    "stadium.name": "M&T Bank Stadium",
+    "stadium.average_attendance": 71227.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with total attendance at least '569817.0' and name equal to 'M&T Bank Stadium' and average attendance at most '71227.0'?"
+  },
+  {
+   "uid": "d3e80d73-b8d4-46d7-af98-6a2200974a61",
+   "question": "Which stadiums have a capacity percentage exactly 102.3, total attendance of at least 553152.0, and no more than 8 home games?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage = 102.3 AND stadium.total_attendance >= 553152.0 AND stadium.home_games <= 8",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.total_attendance",
+    "stadium.home_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 102.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 553152.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 102.3,
+    "stadium.total_attendance": 553152.0,
+    "stadium.home_games": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '102.3' and total attendance at least '553152.0' and home games at most '8'?"
+  },
+  {
+   "uid": "728c90c5-5f9d-4a4f-9413-963b1aad7d1e",
+   "question": "Which stadium named Gillette Stadium has exactly 100.0 capacity percentage, at least 8 home games, and an average attendance of exactly 68756?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage = 100.0 AND stadium.home_games >= 8 AND stadium.average_attendance = 68756.0 AND stadium.name = 'Gillette Stadium'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.home_games",
+    "stadium.average_attendance",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 100.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 68756.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Gillette Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 100.0,
+    "stadium.home_games": 8,
+    "stadium.average_attendance": 68756.0,
+    "stadium.name": "Gillette Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '100.0' and home games at least '8' and average attendance equal to '68756.0' and name equal to 'Gillette Stadium'?"
+  },
+  {
+   "uid": "c03489f6-3410-413a-bb4b-9ca6e4ccfa20",
+   "question": "Which stadium named Gillette Stadium has exactly 8 home games, an average attendance of 68756, a capacity percentage of at least 100.0, and a total attendance of at most 550048?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.capacity_percentage >= 100.0 AND stadium.home_games = 8 AND stadium.average_attendance = 68756.0 AND stadium.total_attendance <= 550048.0 AND stadium.name = 'Gillette Stadium'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.home_games",
+    "stadium.average_attendance",
+    "stadium.total_attendance",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": ">=",
+     "value": 100.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 68756.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 550048.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Gillette Stadium",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 100.0,
+    "stadium.home_games": 8,
+    "stadium.average_attendance": 68756.0,
+    "stadium.total_attendance": 550048.0,
+    "stadium.name": "Gillette Stadium"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at least '100.0' and home games equal to '8' and average attendance equal to '68756.0' and total attendance at most '550048.0' and name equal to 'Gillette Stadium'?"
+  },
+  {
+   "uid": "755c27c5-f3a5-4e4e-84e6-ddacbcde6436",
+   "question": "Which stadium named Lambeau Field has at most 8 home games and a total attendance that is exactly 566362.0?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.name = 'Lambeau Field' AND stadium.home_games <= 8 AND stadium.total_attendance = 566362.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.home_games",
+    "stadium.total_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Lambeau Field",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 566362.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Lambeau Field",
+    "stadium.home_games": 8,
+    "stadium.total_attendance": 566362.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'Lambeau Field' and home games at most '8' and total attendance equal to '566362.0'?"
+  },
+  {
+   "uid": "42da1727-150c-40ab-9948-e72c4ce4d24b",
+   "question": "Which stadium named Lambeau Field has a capacity percentage exactly 97.1 and total attendance of at least 566362.0?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nWHERE stadium.name = 'Lambeau Field' AND stadium.capacity_percentage = 97.1 AND stadium.total_attendance >= 566362.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "stadium"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.capacity_percentage",
+    "stadium.total_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Lambeau Field",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 97.1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 566362.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Lambeau Field",
+    "stadium.capacity_percentage": 97.1,
+    "stadium.total_attendance": 566362.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'Lambeau Field' and capacity percentage equal to '97.1' and total attendance at least '566362.0'?"
+  },
+  {
+   "uid": "d472737c-312e-41ca-b1d0-b89354ab1647",
+   "question": "Which stadiums have at least 8 home games?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "answer_count": 12,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.home_games >= 8",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.home_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at least '8', having at least one related game record (linked on stadium.id = game.stadium_id)?"
+  },
+  {
+   "uid": "4bda122e-3d2c-43a3-94d7-19750c0d285f",
+   "question": "Which stadiums hosted games in seasons at most 2007?",
+   "answer_row_ids": [
+    1,
+    2,
+    3
+   ],
+   "answer_count": 3,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.season <= 2007",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.season"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "<=",
+     "value": 2007,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.season": 2007
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities having at least one related game record (linked on stadium.id = game.stadium_id) with season at most '2007'?"
+  },
+  {
+   "uid": "6bcafe50-c4db-4eb6-974e-f64a03e931c9",
+   "question": "Which stadiums have total attendance at most 580965 and have hosted games where competition is Cup?",
+   "answer_row_ids": [
+    6,
+    9,
+    11
+   ],
+   "answer_count": 3,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.total_attendance <= 580965.0 AND game.competition = 'Cup'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.total_attendance",
+    "game.competition"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 580965.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "Cup",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.total_attendance": 580965.0,
+    "game.competition": "Cup"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with total attendance at most '580965.0', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'Cup'?"
+  },
+  {
+   "uid": "64071f7a-b409-42e8-9f9e-656a82869584",
+   "question": "What stadiums have hosted games where the score is 3\u20131 and the capacity percentage is exactly 98.4?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.score = '3\u20131' AND stadium.capacity_percentage = 98.4",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.score",
+    "stadium.capacity_percentage"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "3\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 98.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.score": "3\u20131",
+    "stadium.capacity_percentage": 98.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '98.4', having at least one related game record (linked on stadium.id = game.stadium_id) with score equal to '3\u20131'?"
+  },
+  {
+   "uid": "f13afe81-dd0c-41d1-ba44-7af2348dde1e",
+   "question": "Which stadiums have a capacity percentage of at most 97.1 and host games where the competition is Cup?",
+   "answer_row_ids": [
+    3,
+    9
+   ],
+   "answer_count": 2,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.capacity_percentage <= 97.1 AND game.competition = 'Cup'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "game.competition"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "<=",
+     "value": 97.1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "Cup",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 97.1,
+    "game.competition": "Cup"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at most '97.1', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'Cup'?"
+  },
+  {
+   "uid": "35e2c695-df43-4736-ab47-e8b6d01dc199",
+   "question": "Which stadiums have a total attendance of exactly 553152.0 and hosted games in seasons at most 2012?",
+   "answer_row_ids": [
+    11
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.season <= 2012 AND stadium.total_attendance = 553152.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.season",
+    "stadium.total_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "<=",
+     "value": 2012,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 553152.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.season": 2012,
+    "stadium.total_attendance": 553152.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with total attendance equal to '553152.0', having at least one related game record (linked on stadium.id = game.stadium_id) with season at most '2012'?"
+  },
+  {
+   "uid": "f64d0c1f-456f-4fe0-a8da-e92da974b071",
+   "question": "Which stadiums have hosted League games and have an average attendance of at most 78596?",
+   "answer_row_ids": [
+    4,
+    5,
+    7,
+    8,
+    10,
+    12
+   ],
+   "answer_count": 6,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.competition = 'League' AND stadium.average_attendance <= 78596.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.competition",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 78596.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.competition": "League",
+    "stadium.average_attendance": 78596.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at most '78596.0', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'League'?"
+  },
+  {
+   "uid": "62890fd7-38b3-480f-a05f-02e0d551e7cc",
+   "question": "Which stadiums hosting games have a capacity percentage of at most 98.4?",
+   "answer_row_ids": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    9,
+    10
+   ],
+   "answer_count": 7,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.capacity_percentage <= 98.4",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "<=",
+     "value": 98.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 98.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at most '98.4', having at least one related game record (linked on stadium.id = game.stadium_id)?"
+  },
+  {
+   "uid": "cd470484-c689-428a-9ab5-2e2cfa5c64fb",
+   "question": "Which stadium named Lambeau Field has a capacity percentage of at most 97.1?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.capacity_percentage <= 97.1 AND stadium.name = 'Lambeau Field'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "<=",
+     "value": 97.1,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Lambeau Field",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 97.1,
+    "stadium.name": "Lambeau Field"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at most '97.1' and name equal to 'Lambeau Field', having at least one related game record (linked on stadium.id = game.stadium_id)?"
+  },
+  {
+   "uid": "098a18db-b0bc-4db8-97cb-d169f343d31c",
+   "question": "Where are the stadiums with an average attendance of at least 70038 that have hosted games where the away team is Pakhtakor?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    10
+   ],
+   "answer_count": 7,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.away_team = 'Pakhtakor' AND stadium.average_attendance >= 70038.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.away_team",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 70038.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.away_team": "Pakhtakor",
+    "stadium.average_attendance": 70038.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at least '70038.0', having at least one related game record (linked on stadium.id = game.stadium_id) with away team equal to 'Pakhtakor'?"
+  },
+  {
+   "uid": "6e165407-0af6-4b2e-bddb-2aac07eee5df",
+   "question": "Which stadium named Invesco Field at Mile High has an average attendance of exactly 74908, a capacity percentage of at least 98.4, total attendance of at most 599264, and hosts Cup games where the away team is Pakhtakor?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.average_attendance = 74908.0 AND game.competition = 'Cup' AND stadium.total_attendance <= 599264.0 AND stadium.capacity_percentage >= 98.4 AND game.away_team = 'Pakhtakor' AND stadium.name = 'Invesco Field at Mile High'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.average_attendance",
+    "game.competition",
+    "stadium.total_attendance",
+    "stadium.capacity_percentage",
+    "game.away_team",
+    "stadium.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 74908.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "Cup",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 599264.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": ">=",
+     "value": 98.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Invesco Field at Mile High",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.average_attendance": 74908.0,
+    "game.competition": "Cup",
+    "stadium.total_attendance": 599264.0,
+    "stadium.capacity_percentage": 98.4,
+    "game.away_team": "Pakhtakor",
+    "stadium.name": "Invesco Field at Mile High"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance equal to '74908.0' and total attendance at most '599264.0' and capacity percentage at least '98.4' and name equal to 'Invesco Field at Mile High', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'Cup' and away team equal to 'Pakhtakor'?"
+  },
+  {
+   "uid": "3990bfa8-6a76-4fe2-9a42-a73c8855ea40",
+   "question": "Which stadiums have a total attendance of exactly 569817.0, host no more than 8 home games with capacity at most 100.3%, and held League games since 2009 where the score is exactly 2\u20131?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.capacity_percentage <= 100.3 AND stadium.home_games <= 8 AND game.competition = 'League' AND stadium.total_attendance = 569817.0 AND game.season >= 2009 AND game.score = '2\u20131'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.home_games",
+    "game.competition",
+    "stadium.total_attendance",
+    "game.season",
+    "game.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "<=",
+     "value": 100.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 569817.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": ">=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "2\u20131",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 100.3,
+    "stadium.home_games": 8,
+    "game.competition": "League",
+    "stadium.total_attendance": 569817.0,
+    "game.season": 2009,
+    "game.score": "2\u20131"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at most '100.3' and home games at most '8' and total attendance equal to '569817.0', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'League' and season at least '2009' and score equal to '2\u20131'?"
+  },
+  {
+   "uid": "b3065a66-0dd4-459b-bf1a-14b8f9403b4e",
+   "question": "What stadium named M&T Bank Stadium has an average attendance of at least 71227, hosts at least 8 home games, and held a game on 12 July 2009 where Bunyodkor was the home team and Pakhtakor the away team in season 2009 or earlier?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.away_team = 'Pakhtakor' AND stadium.name = 'M&T Bank Stadium' AND stadium.home_games >= 8 AND game.home_team = 'Bunyodkor' AND game.date = '12 July 2009' AND game.season <= 2009 AND stadium.average_attendance >= 71227.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.away_team",
+    "stadium.name",
+    "stadium.home_games",
+    "game.home_team",
+    "game.date",
+    "game.season",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "M&T Bank Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Bunyodkor",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "12 July 2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "<=",
+     "value": 2009,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 71227.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.away_team": "Pakhtakor",
+    "stadium.name": "M&T Bank Stadium",
+    "stadium.home_games": 8,
+    "game.home_team": "Bunyodkor",
+    "game.date": "12 July 2009",
+    "game.season": 2009,
+    "stadium.average_attendance": 71227.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'M&T Bank Stadium' and home games at least '8' and average attendance at least '71227.0', having at least one related game record (linked on stadium.id = game.stadium_id) with away team equal to 'Pakhtakor' and home team equal to 'Bunyodkor' and date equal to '12 July 2009' and season at most '2009'?"
+  },
+  {
+   "uid": "1c50fc69-e5d8-42fa-a638-943a6ded4894",
+   "question": "Which stadiums had an average attendance of at least 70038, a capacity percentage exactly 96.0, and total attendance at most 560304 where a game on 7 July 2011 in season 2011 or earlier ended with a score of 0\u20130?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.average_attendance >= 70038.0 AND stadium.capacity_percentage = 96.0 AND stadium.total_attendance <= 560304.0 AND game.date = '7 July 2011' AND game.season <= 2011 AND game.score = '0\u20130'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.average_attendance",
+    "stadium.capacity_percentage",
+    "stadium.total_attendance",
+    "game.date",
+    "game.season",
+    "game.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 70038.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 96.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 560304.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "7 July 2011",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "<=",
+     "value": 2011,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "0\u20130",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.average_attendance": 70038.0,
+    "stadium.capacity_percentage": 96.0,
+    "stadium.total_attendance": 560304.0,
+    "game.date": "7 July 2011",
+    "game.season": 2011,
+    "game.score": "0\u20130"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at least '70038.0' and capacity percentage equal to '96.0' and total attendance at most '560304.0', having at least one related game record (linked on stadium.id = game.stadium_id) with date equal to '7 July 2011' and season at most '2011' and score equal to '0\u20130'?"
+  },
+  {
+   "uid": "ae65372c-c3e6-4b24-bec0-54f2b597235d",
+   "question": "Which stadium named Cowboys Stadium, with an average attendance of 87047.0 and at most 8 home games, hosted the home team Quruvchi on 18 May 2007 during a season no later than 2007?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.season <= 2007 AND game.date = '18 May 2007' AND stadium.home_games <= 8 AND game.home_team = 'Quruvchi' AND stadium.name = 'Cowboys Stadium' AND stadium.average_attendance = 87047.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.season",
+    "game.date",
+    "stadium.home_games",
+    "game.home_team",
+    "stadium.name",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "<=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "18 May 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Quruvchi",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Cowboys Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.season": 2007,
+    "game.date": "18 May 2007",
+    "stadium.home_games": 8,
+    "game.home_team": "Quruvchi",
+    "stadium.name": "Cowboys Stadium",
+    "stadium.average_attendance": 87047.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at most '8' and name equal to 'Cowboys Stadium' and average attendance equal to '87047.0', having at least one related game record (linked on stadium.id = game.stadium_id) with season at most '2007' and date equal to '18 May 2007' and home team equal to 'Quruvchi'?"
+  },
+  {
+   "uid": "c7c37bd2-a92c-4701-9dd8-0fba2ffc1b7d",
+   "question": "Which stadium named Cowboys Stadium, with an average attendance of exactly 87047, hosted a League game on 21 August 2011 where Bunyodkor was the home team, Pakhtakor the away team, and the score was 2\u20131 in the 2011 season or later?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.competition = 'League' AND game.away_team = 'Pakhtakor' AND game.score = '2\u20131' AND stadium.name = 'Cowboys Stadium' AND stadium.average_attendance = 87047.0 AND game.season >= 2011 AND game.date = '21 August 2011' AND game.home_team = 'Bunyodkor'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.competition",
+    "game.away_team",
+    "game.score",
+    "stadium.name",
+    "stadium.average_attendance",
+    "game.season",
+    "game.date",
+    "game.home_team"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "2\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Cowboys Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": ">=",
+     "value": 2011,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "21 August 2011",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Bunyodkor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.competition": "League",
+    "game.away_team": "Pakhtakor",
+    "game.score": "2\u20131",
+    "stadium.name": "Cowboys Stadium",
+    "stadium.average_attendance": 87047.0,
+    "game.season": 2011,
+    "game.date": "21 August 2011",
+    "game.home_team": "Bunyodkor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'Cowboys Stadium' and average attendance equal to '87047.0', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'League' and away team equal to 'Pakhtakor' and score equal to '2\u20131' and season at least '2011' and date equal to '21 August 2011' and home team equal to 'Bunyodkor'?"
+  },
+  {
+   "uid": "4e5457a3-5d07-4b0b-9b85-ed2df531e4d9",
+   "question": "Which stadium named Cowboys Stadium has a total attendance of 696377.0, an average attendance of at least 87047.0, and hosted a League game on 21 August 2011 where Bunyodkor was home, Pakhtakor was away, and the score was 2\u20131?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'Cowboys Stadium' AND game.away_team = 'Pakhtakor' AND stadium.average_attendance >= 87047.0 AND game.home_team = 'Bunyodkor' AND game.date = '21 August 2011' AND game.score = '2\u20131' AND stadium.total_attendance = 696377.0 AND game.competition = 'League'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "game.away_team",
+    "stadium.average_attendance",
+    "game.home_team",
+    "game.date",
+    "game.score",
+    "stadium.total_attendance",
+    "game.competition"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Cowboys Stadium",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Bunyodkor",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "21 August 2011",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "2\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "=",
+     "value": 696377.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Cowboys Stadium",
+    "game.away_team": "Pakhtakor",
+    "stadium.average_attendance": 87047.0,
+    "game.home_team": "Bunyodkor",
+    "game.date": "21 August 2011",
+    "game.score": "2\u20131",
+    "stadium.total_attendance": 696377.0,
+    "game.competition": "League"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'Cowboys Stadium' and average attendance at least '87047.0' and total attendance equal to '696377.0', having at least one related game record (linked on stadium.id = game.stadium_id) with away team equal to 'Pakhtakor' and home team equal to 'Bunyodkor' and date equal to '21 August 2011' and score equal to '2\u20131' and competition equal to 'League'?"
+  },
+  {
+   "uid": "0342be9d-75b0-4419-b5e5-861a35f3dddd",
+   "question": "Which stadiums have a capacity percentage exactly 108.8, an average attendance of at least 87047, and at least 8 home games, where total attendance is at least 696377 and home team Quruvchi played League matches from season 2007 onward that ended with a 1\u20131 score?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.capacity_percentage = 108.8 AND stadium.average_attendance >= 87047.0 AND stadium.home_games >= 8 AND game.competition = 'League' AND stadium.total_attendance >= 696377.0 AND game.home_team = 'Quruvchi' AND game.season >= 2007 AND game.score = '1\u20131'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.average_attendance",
+    "stadium.home_games",
+    "game.competition",
+    "stadium.total_attendance",
+    "game.home_team",
+    "game.season",
+    "game.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 108.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": ">=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 696377.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Quruvchi",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": ">=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "1\u20131",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 108.8,
+    "stadium.average_attendance": 87047.0,
+    "stadium.home_games": 8,
+    "game.competition": "League",
+    "stadium.total_attendance": 696377.0,
+    "game.home_team": "Quruvchi",
+    "game.season": 2007,
+    "game.score": "1\u20131"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '108.8' and average attendance at least '87047.0' and home games at least '8' and total attendance at least '696377.0', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'League' and home team equal to 'Quruvchi' and season at least '2007' and score equal to '1\u20131'?"
+  },
+  {
+   "uid": "d5660a0d-6a38-4020-ae2b-c94457de1b40",
+   "question": "Which stadiums hosted a game where the home team was Pakhtakor, the score was 0\u20130 on 22 September 2007 in the 2007 season, with exactly 8 home games, an average attendance of at most 83172.0, and a capacity percentage of 90.7?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.score = '0\u20130' AND game.date = '22 September 2007' AND game.home_team = 'Pakhtakor' AND stadium.average_attendance <= 83172.0 AND stadium.capacity_percentage = 90.7 AND game.season = 2007 AND stadium.home_games = 8",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.score",
+    "game.date",
+    "game.home_team",
+    "stadium.average_attendance",
+    "stadium.capacity_percentage",
+    "game.season",
+    "stadium.home_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "0\u20130",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "22 September 2007",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 83172.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 90.7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "=",
+     "value": 2007,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.score": "0\u20130",
+    "game.date": "22 September 2007",
+    "game.home_team": "Pakhtakor",
+    "stadium.average_attendance": 83172.0,
+    "stadium.capacity_percentage": 90.7,
+    "game.season": 2007,
+    "stadium.home_games": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at most '83172.0' and capacity percentage equal to '90.7' and home games equal to '8', having at least one related game record (linked on stadium.id = game.stadium_id) with score equal to '0\u20130' and date equal to '22 September 2007' and home team equal to 'Pakhtakor' and season equal to '2007'?"
+  },
+  {
+   "uid": "b39e872e-8618-42ab-b352-cf0dc2876832",
+   "question": "Which stadiums have an average attendance of exactly 70795.0, hosted no more than 8 home games with total attendance of at least 566362.0, and had a 1\u20130 game against Bunyodkor on 8 August 2009 in the 2009 season?",
+   "answer_row_ids": [
+    9
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.average_attendance = 70795.0 AND game.date = '8 August 2009' AND game.away_team = 'Bunyodkor' AND stadium.home_games <= 8 AND stadium.total_attendance >= 566362.0 AND game.score = '1\u20130' AND game.season = 2009",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.average_attendance",
+    "game.date",
+    "game.away_team",
+    "stadium.home_games",
+    "stadium.total_attendance",
+    "game.score",
+    "game.season"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 70795.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "8 August 2009",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Bunyodkor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 566362.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "1\u20130",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "season",
+     "operator": "=",
+     "value": 2009,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.average_attendance": 70795.0,
+    "game.date": "8 August 2009",
+    "game.away_team": "Bunyodkor",
+    "stadium.home_games": 8,
+    "stadium.total_attendance": 566362.0,
+    "game.score": "1\u20130",
+    "game.season": 2009
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance equal to '70795.0' and home games at most '8' and total attendance at least '566362.0', having at least one related game record (linked on stadium.id = game.stadium_id) with date equal to '8 August 2009' and away team equal to 'Bunyodkor' and score equal to '1\u20130' and season equal to '2009'?"
+  },
+  {
+   "uid": "0135e3ab-db3e-43f7-892d-1264646f807e",
+   "question": "Which stadiums had games where Pakhtakor was the home team with a score of 1\u20131 and the capacity percentage was exactly 95.3?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.score = '1\u20131' AND game.home_team = 'Pakhtakor' AND stadium.capacity_percentage = 95.3",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.score",
+    "game.home_team",
+    "stadium.capacity_percentage"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "1\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 95.3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.score": "1\u20131",
+    "game.home_team": "Pakhtakor",
+    "stadium.capacity_percentage": 95.3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '95.3', having at least one related game record (linked on stadium.id = game.stadium_id) with score equal to '1\u20131' and home team equal to 'Pakhtakor'?"
+  },
+  {
+   "uid": "53ae470c-5789-4dcf-8fbd-2895a677c653",
+   "question": "Which stadiums hosted League games where Pakhtakor was the home team on 10 July 2008, the score was 1\u20131, and the capacity percentage was at most 95.3?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.score = '1\u20131' AND stadium.capacity_percentage <= 95.3 AND game.date = '10 July 2008' AND game.competition = 'League' AND game.home_team = 'Pakhtakor'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.score",
+    "stadium.capacity_percentage",
+    "game.date",
+    "game.competition",
+    "game.home_team"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "1\u20131",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "<=",
+     "value": 95.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "10 July 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.score": "1\u20131",
+    "stadium.capacity_percentage": 95.3,
+    "game.date": "10 July 2008",
+    "game.competition": "League",
+    "game.home_team": "Pakhtakor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage at most '95.3', having at least one related game record (linked on stadium.id = game.stadium_id) with score equal to '1\u20131' and date equal to '10 July 2008' and competition equal to 'League' and home team equal to 'Pakhtakor'?"
+  },
+  {
+   "uid": "ff66e4cd-3eea-45c6-9cd1-11659ef5e958",
+   "question": "Which stadiums have an average attendance of exactly 72620.0, a capacity percentage of exactly 98.4, total attendance of at least 580965.0, and hosted a game where the date is 31 October 2008?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.capacity_percentage = 98.4 AND stadium.total_attendance >= 580965.0 AND game.date = '31 October 2008' AND stadium.average_attendance = 72620.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.capacity_percentage",
+    "stadium.total_attendance",
+    "game.date",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 98.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": ">=",
+     "value": 580965.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "31 October 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 72620.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.capacity_percentage": 98.4,
+    "stadium.total_attendance": 580965.0,
+    "game.date": "31 October 2008",
+    "stadium.average_attendance": 72620.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with capacity percentage equal to '98.4' and total attendance at least '580965.0' and average attendance equal to '72620.0', having at least one related game record (linked on stadium.id = game.stadium_id) with date equal to '31 October 2008'?"
+  },
+  {
+   "uid": "a4b19984-5968-451e-a7ff-5edcb1a02748",
+   "question": "Which stadiums hosted games on 10 July 2008 that ended with a 1\u20131 score and have an average attendance of at most 78596?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.date = '10 July 2008' AND stadium.average_attendance <= 78596.0 AND game.score = '1\u20131'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.date",
+    "stadium.average_attendance",
+    "game.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "10 July 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 78596.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "1\u20131",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.date": "10 July 2008",
+    "stadium.average_attendance": 78596.0,
+    "game.score": "1\u20131"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at most '78596.0', having at least one related game record (linked on stadium.id = game.stadium_id) with date equal to '10 July 2008' and score equal to '1\u20131'?"
+  },
+  {
+   "uid": "386752f0-7576-4356-9ac8-cbbf44da58eb",
+   "question": "Which stadium named Invesco Field at Mile High had an average attendance of at most 74908 on 22 August 2012 during a Cup competition?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.competition = 'Cup' AND stadium.average_attendance <= 74908.0 AND stadium.name = 'Invesco Field at Mile High' AND game.date = '22 August 2012'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.competition",
+    "stadium.average_attendance",
+    "stadium.name",
+    "game.date"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "Cup",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 74908.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Invesco Field at Mile High",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "22 August 2012",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "game.competition": "Cup",
+    "stadium.average_attendance": 74908.0,
+    "stadium.name": "Invesco Field at Mile High",
+    "game.date": "22 August 2012"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at most '74908.0' and name equal to 'Invesco Field at Mile High', having at least one related game record (linked on stadium.id = game.stadium_id) with competition equal to 'Cup' and date equal to '22 August 2012'?"
+  },
+  {
+   "uid": "3e13392e-330b-4960-8fa8-85a95d514080",
+   "question": "What stadiums have a total attendance of at most 569817 and an average attendance of no more than 71227, where a game with an away team of Pakhtakor ended with a score of 1\u20132?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.total_attendance <= 569817.0 AND game.score = '1\u20132' AND game.away_team = 'Pakhtakor' AND stadium.average_attendance <= 71227.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.total_attendance",
+    "game.score",
+    "game.away_team",
+    "stadium.average_attendance"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "total_attendance",
+     "operator": "<=",
+     "value": 569817.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "1\u20132",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 71227.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.total_attendance": 569817.0,
+    "game.score": "1\u20132",
+    "game.away_team": "Pakhtakor",
+    "stadium.average_attendance": 71227.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with total attendance at most '569817.0' and average attendance at most '71227.0', having at least one related game record (linked on stadium.id = game.stadium_id) with score equal to '1\u20132' and away team equal to 'Pakhtakor'?"
+  },
+  {
+   "uid": "54eda508-8419-4ade-91c4-6f69c0fe7818",
+   "question": "What stadiums have an average attendance of at most 87047, a capacity percentage exactly 108.8, and host League games where the home team is Bunyodkor?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.average_attendance <= 87047.0 AND game.home_team = 'Bunyodkor' AND game.competition = 'League' AND stadium.capacity_percentage = 108.8",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.average_attendance",
+    "game.home_team",
+    "game.competition",
+    "stadium.capacity_percentage"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "<=",
+     "value": 87047.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "home_team",
+     "operator": "=",
+     "value": "Bunyodkor",
+     "column_type": "enum"
+    },
+    {
+     "table": "game",
+     "column": "competition",
+     "operator": "=",
+     "value": "League",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 108.8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "stadium.average_attendance": 87047.0,
+    "game.home_team": "Bunyodkor",
+    "game.competition": "League",
+    "stadium.capacity_percentage": 108.8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance at most '87047.0' and capacity percentage equal to '108.8', having at least one related game record (linked on stadium.id = game.stadium_id) with home team equal to 'Bunyodkor' and competition equal to 'League'?"
+  },
+  {
+   "uid": "fa4abcce-24a0-4007-84c6-d9ed00420da0",
+   "question": "Which stadium named Invesco Field at Mile High with exactly 8 home games has hosted a game where the away team is Pakhtakor?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.name = 'Invesco Field at Mile High' AND stadium.home_games = 8 AND game.away_team = 'Pakhtakor'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.name",
+    "stadium.home_games",
+    "game.away_team"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "name",
+     "operator": "=",
+     "value": "Invesco Field at Mile High",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "away_team",
+     "operator": "=",
+     "value": "Pakhtakor",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.name": "Invesco Field at Mile High",
+    "stadium.home_games": 8,
+    "game.away_team": "Pakhtakor"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with name equal to 'Invesco Field at Mile High' and home games equal to '8', having at least one related game record (linked on stadium.id = game.stadium_id) with away team equal to 'Pakhtakor'?"
+  },
+  {
+   "uid": "980d9976-c911-40b5-bbe9-ec239e2f1e00",
+   "question": "Which stadiums have at most 8 home games, a capacity percentage exactly 96.0, and have hosted games where the score is 0\u20130?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE stadium.home_games <= 8 AND stadium.capacity_percentage = 96.0 AND game.score = '0\u20130'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "stadium.home_games",
+    "stadium.capacity_percentage",
+    "game.score"
+   ],
+   "involved_filters": [
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "capacity_percentage",
+     "operator": "=",
+     "value": 96.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "game",
+     "column": "score",
+     "operator": "=",
+     "value": "0\u20130",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "stadium.home_games": 8,
+    "stadium.capacity_percentage": 96.0,
+    "game.score": "0\u20130"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with home games at most '8' and capacity percentage equal to '96.0', having at least one related game record (linked on stadium.id = game.stadium_id) with score equal to '0\u20130'?"
+  },
+  {
+   "uid": "e18b7d9a-dd8a-473e-8831-fa3010560a5b",
+   "question": "Which stadiums had a game on 16 August 2008, an average attendance of exactly 74908.0, and at most 8 home games?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT stadium.id FROM stadium\nJOIN game ON stadium.id = game.stadium_id\nWHERE game.date = '16 August 2008' AND stadium.average_attendance = 74908.0 AND stadium.home_games <= 8",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "stadium",
+    "game"
+   ],
+   "involved_columns": [
+    "game.date",
+    "stadium.average_attendance",
+    "stadium.home_games"
+   ],
+   "involved_filters": [
+    {
+     "table": "game",
+     "column": "date",
+     "operator": "=",
+     "value": "16 August 2008",
+     "column_type": "enum"
+    },
+    {
+     "table": "stadium",
+     "column": "average_attendance",
+     "operator": "=",
+     "value": 74908.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "stadium",
+     "column": "home_games",
+     "operator": "<=",
+     "value": 8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "game.date": "16 August 2008",
+    "stadium.average_attendance": 74908.0,
+    "stadium.home_games": 8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "stadium"
+   },
+   "answer_table": "stadium",
+   "answer_id_column": "id",
+   "canonical_question": "Which stadium entities with average attendance equal to '74908.0' and home games at most '8', having at least one related game record (linked on stadium.id = game.stadium_id) with date equal to '16 August 2008'?"
+  }
+ ]
+}

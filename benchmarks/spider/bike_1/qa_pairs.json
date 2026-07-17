@@ -1,0 +1,3580 @@
+{
+ "db_id": "bike_1",
+ "target_table": "station",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 1106749545,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/bike_1/bike_1.sqlite",
+  "generated_at": "2026-07-02T16:22:36.684392+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "station",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0H",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 9,
+   "0M": 9,
+   "0H": 8,
+   "1pE": 8,
+   "1pM": 8,
+   "1pH": 8
+  },
+  "realized_counts": {
+   "0E": 9,
+   "0H": 8,
+   "0M": 9,
+   "1pE": 8,
+   "1pH": 8,
+   "1pM": 8
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 15,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0H": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "0M": {
+    "target_quota": 9,
+    "accepted_count": 9,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 9,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pE": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 16,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 8,
+    "inner_attempts": 8,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pM": {
+    "target_quota": 8,
+    "accepted_count": 8,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 9,
+    "inner_attempts": 10,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "a11aef0c-5f04-4d75-8adf-0e1c94027e5c",
+   "question": "Which stations have a longitude that is exactly -121.89561699999999?",
+   "answer_row_ids": [
+    84
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.long = -121.89561699999999",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -121.89561699999999,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -121.89561699999999
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long equal to '-121.89561699999999'?"
+  },
+  {
+   "uid": "7a320bfb-0da8-4b76-9ebb-b6b25c83fa97",
+   "question": "Which stations were installed exactly on 12/31/2013?",
+   "answer_row_ids": [
+    31,
+    32,
+    80
+   ],
+   "answer_count": 3,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '12/31/2013'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "12/31/2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "12/31/2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '12/31/2013'?"
+  },
+  {
+   "uid": "153581df-49e8-4180-9dd5-0f5fcad629af",
+   "question": "Which stations were installed exactly on 8/6/2013?",
+   "answer_row_ids": [
+    2,
+    4,
+    10,
+    11,
+    13
+   ],
+   "answer_count": 5,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '8/6/2013'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/6/2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "8/6/2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/6/2013'?"
+  },
+  {
+   "uid": "4b185b77-e428-43c0-8907-9fb5ebfa2573",
+   "question": "What stations were installed exactly on 8/5/2013 and have a longitude of at most -121.900084?",
+   "answer_row_ids": [
+    14
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '8/5/2013' AND station.long <= -121.900084",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/5/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -121.900084,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "8/5/2013",
+    "station.long": -121.900084
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/5/2013' and long at most '-121.900084'?"
+  },
+  {
+   "uid": "a2b2f603-7dd1-41a2-8c95-faa49c49eeb2",
+   "question": "Which stations were installed exactly on 8/23/2013 and have a longitude of at most -122.418954?",
+   "answer_row_ids": [
+    66
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '8/23/2013' AND station.long <= -122.418954",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/23/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -122.418954,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "8/23/2013",
+    "station.long": -122.418954
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/23/2013' and long at most '-122.418954'?"
+  },
+  {
+   "uid": "5cd69d31-4dab-4e8a-acf3-8b5225e92fc5",
+   "question": "Which stations named Market at Sansome were installed exactly on 8/25/2013?",
+   "answer_row_ids": [
+    77
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '8/25/2013' AND station.name = 'Market at Sansome'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/25/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Market at Sansome",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "8/25/2013",
+    "station.name": "Market at Sansome"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/25/2013' and name equal to 'Market at Sansome'?"
+  },
+  {
+   "uid": "46036b94-b27b-422d-9d98-660704491264",
+   "question": "Which stations have a longitude of at least -121.894074?",
+   "answer_row_ids": [
+    3,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    16
+   ],
+   "answer_count": 10,
+   "sql": "SELECT station.id FROM station\nWHERE station.long >= -121.894074",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -121.894074,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -121.894074
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at least '-121.894074'?"
+  },
+  {
+   "uid": "44ff9f4e-9a2e-49d6-b0b1-29919894dbcd",
+   "question": "Which stations have a latitude of at most 37.774814 and at least 19 docks?",
+   "answer_row_ids": [
+    2,
+    5,
+    11,
+    12,
+    14,
+    22,
+    28,
+    29,
+    34,
+    66
+   ],
+   "answer_count": 10,
+   "sql": "SELECT station.id FROM station\nWHERE station.lat <= 37.774814 AND station.dock_count >= 19",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.lat",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.774814,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.lat": 37.774814,
+    "station.dock_count": 19
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat at most '37.774814' and dock count at least '19'?"
+  },
+  {
+   "uid": "7cf4141b-94aa-4094-94f9-64f216fed550",
+   "question": "Which stations named Redwood City Medical Center were installed exactly on 8/12/2013?",
+   "answer_row_ids": [
+    26
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '8/12/2013' AND station.name = 'Redwood City Medical Center'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/12/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Redwood City Medical Center",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "8/12/2013",
+    "station.name": "Redwood City Medical Center"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/12/2013' and name equal to 'Redwood City Medical Center'?"
+  },
+  {
+   "uid": "e494b2ba-b687-4bfe-9a92-0364dc6e765b",
+   "question": "Where is the Ryland Park station in San Jose that was installed on 4/9/2014, has at most 15 docks, longitude at least -121.89561699999999, and latitude at most 37.342725?",
+   "answer_row_ids": [
+    84
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.name = 'Ryland Park' AND station.dock_count <= 15 AND station.city = 'San Jose' AND station.installation_date = '4/9/2014' AND station.long >= -121.89561699999999 AND station.lat <= 37.342725",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.name",
+    "station.dock_count",
+    "station.city",
+    "station.installation_date",
+    "station.long",
+    "station.lat"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Ryland Park",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Jose",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "4/9/2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -121.89561699999999,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.342725,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.name": "Ryland Park",
+    "station.dock_count": 15,
+    "station.city": "San Jose",
+    "station.installation_date": "4/9/2014",
+    "station.long": -121.89561699999999,
+    "station.lat": 37.342725
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'Ryland Park' and dock count at most '15' and city equal to 'San Jose' and installation date equal to '4/9/2014' and long at least '-121.89561699999999' and lat at most '37.342725'?"
+  },
+  {
+   "uid": "c6f47b15-0560-421f-a862-efbabed931f8",
+   "question": "Which stations named San Salvador at 1st in San Jose were installed on 8/5/2013, have exactly 15 docks, a longitude at most -121.88583100000001, and a latitude at least 37.330165?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.installation_date = '8/5/2013' AND station.city = 'San Jose' AND station.name = 'San Salvador at 1st' AND station.long <= -121.88583100000001 AND station.lat >= 37.330165 AND station.dock_count = 15",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "station.city",
+    "station.name",
+    "station.long",
+    "station.lat",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/5/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Jose",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Salvador at 1st",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -121.88583100000001,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": ">=",
+     "value": 37.330165,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "8/5/2013",
+    "station.city": "San Jose",
+    "station.name": "San Salvador at 1st",
+    "station.long": -121.88583100000001,
+    "station.lat": 37.330165,
+    "station.dock_count": 15
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/5/2013' and city equal to 'San Jose' and name equal to 'San Salvador at 1st' and long at most '-121.88583100000001' and lat at least '37.330165' and dock count equal to '15'?"
+  },
+  {
+   "uid": "84eb4c4e-90c9-4301-9825-c1514546037b",
+   "question": "Which stations in San Francisco named Steuart at Market have exactly 23 docks, were installed on 8/25/2013, and are located at longitude no more than -122.394434 and latitude no more than 37.794139?",
+   "answer_row_ids": [
+    74
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count = 23 AND station.name = 'Steuart at Market' AND station.installation_date = '8/25/2013' AND station.long <= -122.394434 AND station.lat <= 37.794139 AND station.city = 'San Francisco'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.name",
+    "station.installation_date",
+    "station.long",
+    "station.lat",
+    "station.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Steuart at Market",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/25/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -122.394434,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.794139,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 23,
+    "station.name": "Steuart at Market",
+    "station.installation_date": "8/25/2013",
+    "station.long": -122.394434,
+    "station.lat": 37.794139,
+    "station.city": "San Francisco"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count equal to '23' and name equal to 'Steuart at Market' and installation date equal to '8/25/2013' and long at most '-122.394434' and lat at most '37.794139' and city equal to 'San Francisco'?"
+  },
+  {
+   "uid": "24f9aebb-e173-4242-bdf4-b69f0aa40356",
+   "question": "What stations named Mechanics Plaza (Market at Battery) in San Francisco, installed on 8/25/2013, have at least 19 docks and are located at longitude no less than -122.399051 and latitude no more than 37.7913?",
+   "answer_row_ids": [
+    75
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.city = 'San Francisco' AND station.long >= -122.399051 AND station.lat <= 37.7913 AND station.name = 'Mechanics Plaza (Market at Battery)' AND station.installation_date = '8/25/2013' AND station.dock_count >= 19",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.city",
+    "station.long",
+    "station.lat",
+    "station.name",
+    "station.installation_date",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.399051,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.7913,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Mechanics Plaza (Market at Battery)",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/25/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.city": "San Francisco",
+    "station.long": -122.399051,
+    "station.lat": 37.7913,
+    "station.name": "Mechanics Plaza (Market at Battery)",
+    "station.installation_date": "8/25/2013",
+    "station.dock_count": 19
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with city equal to 'San Francisco' and long at least '-122.399051' and lat at most '37.7913' and name equal to 'Mechanics Plaza (Market at Battery)' and installation date equal to '8/25/2013' and dock count at least '19'?"
+  },
+  {
+   "uid": "1a588eb7-8cf7-4637-a512-c1ef57ce339d",
+   "question": "Which stations named Market at 4th in San Francisco were installed on 8/25/2013, have at least 19 docks, are located no more than -122.40496599999999 longitude, and have a latitude of at least 37.786305?",
+   "answer_row_ids": [
+    76
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.long <= -122.40496599999999 AND station.installation_date = '8/25/2013' AND station.lat >= 37.786305 AND station.dock_count >= 19 AND station.city = 'San Francisco' AND station.name = 'Market at 4th'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.installation_date",
+    "station.lat",
+    "station.dock_count",
+    "station.city",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -122.40496599999999,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/25/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": ">=",
+     "value": 37.786305,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Market at 4th",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.40496599999999,
+    "station.installation_date": "8/25/2013",
+    "station.lat": 37.786305,
+    "station.dock_count": 19,
+    "station.city": "San Francisco",
+    "station.name": "Market at 4th"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at most '-122.40496599999999' and installation date equal to '8/25/2013' and lat at least '37.786305' and dock count at least '19' and city equal to 'San Francisco' and name equal to 'Market at 4th'?"
+  },
+  {
+   "uid": "166908e0-aacc-4589-95d0-03b8bc12a967",
+   "question": "Which stations named San Francisco City Hall were installed on 8/21/2013 in San Francisco with at least 19 docks and located at most at latitude 37.77865 and longitude -122.41823500000001?",
+   "answer_row_ids": [
+    58
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count >= 19 AND station.city = 'San Francisco' AND station.long <= -122.41823500000001 AND station.installation_date = '8/21/2013' AND station.lat <= 37.77865 AND station.name = 'San Francisco City Hall'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.city",
+    "station.long",
+    "station.installation_date",
+    "station.lat",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -122.41823500000001,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/21/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.77865,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Francisco City Hall",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 19,
+    "station.city": "San Francisco",
+    "station.long": -122.41823500000001,
+    "station.installation_date": "8/21/2013",
+    "station.lat": 37.77865,
+    "station.name": "San Francisco City Hall"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count at least '19' and city equal to 'San Francisco' and long at most '-122.41823500000001' and installation date equal to '8/21/2013' and lat at most '37.77865' and name equal to 'San Francisco City Hall'?"
+  },
+  {
+   "uid": "79bcae63-ecc2-4e16-a99b-31d8f2f6839b",
+   "question": "Which stations named Adobe on Almaden in San Jose have at most 19 docks, latitude exactly 37.331415, longitude exactly -121.8932, and were installed on 8/5/2013?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count <= 19 AND station.lat = 37.331415 AND station.installation_date = '8/5/2013' AND station.city = 'San Jose' AND station.long = -121.8932 AND station.name = 'Adobe on Almaden'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.lat",
+    "station.installation_date",
+    "station.city",
+    "station.long",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.331415,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/5/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Jose",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -121.8932,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Adobe on Almaden",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 19,
+    "station.lat": 37.331415,
+    "station.installation_date": "8/5/2013",
+    "station.city": "San Jose",
+    "station.long": -121.8932,
+    "station.name": "Adobe on Almaden"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count at most '19' and lat equal to '37.331415' and installation date equal to '8/5/2013' and city equal to 'San Jose' and long equal to '-121.8932' and name equal to 'Adobe on Almaden'?"
+  },
+  {
+   "uid": "233f8f23-d453-47ef-aa0b-247ca1744e4b",
+   "question": "Which stations named San Jose City Hall in San Jose have exactly 15 docks, a latitude of 37.337391, an installation date of 8/6/2013, and a longitude of at most -121.886995?",
+   "answer_row_ids": [
+    10
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.long <= -121.886995 AND station.city = 'San Jose' AND station.lat = 37.337391 AND station.dock_count = 15 AND station.installation_date = '8/6/2013' AND station.name = 'San Jose City Hall'",
+   "strategy": "0H",
+   "difficulty_score": 0.6,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.city",
+    "station.lat",
+    "station.dock_count",
+    "station.installation_date",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -121.886995,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Jose",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.337391,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/6/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Jose City Hall",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.long": -121.886995,
+    "station.city": "San Jose",
+    "station.lat": 37.337391,
+    "station.dock_count": 15,
+    "station.installation_date": "8/6/2013",
+    "station.name": "San Jose City Hall"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at most '-121.886995' and city equal to 'San Jose' and lat equal to '37.337391' and dock count equal to '15' and installation date equal to '8/6/2013' and name equal to 'San Jose City Hall'?"
+  },
+  {
+   "uid": "db85d9d5-dfe3-4da5-936b-e1c718b9f776",
+   "question": "Which stations named San Francisco Caltrain (Townsend at 4th) were installed exactly on 8/23/2013 and have at least 19 docks?",
+   "answer_row_ids": [
+    70
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count >= 19 AND station.installation_date = '8/23/2013' AND station.name = 'San Francisco Caltrain (Townsend at 4th)'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.installation_date",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/23/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Francisco Caltrain (Townsend at 4th)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 19,
+    "station.installation_date": "8/23/2013",
+    "station.name": "San Francisco Caltrain (Townsend at 4th)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count at least '19' and installation date equal to '8/23/2013' and name equal to 'San Francisco Caltrain (Townsend at 4th)'?"
+  },
+  {
+   "uid": "7d81f5d5-1994-4ae8-bee3-775975842bdd",
+   "question": "Which stations named San Francisco City Hall are located in San Francisco with a longitude of at least -122.41823500000001 and have at most 19 docks?",
+   "answer_row_ids": [
+    58
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.long >= -122.41823500000001 AND station.name = 'San Francisco City Hall' AND station.city = 'San Francisco' AND station.dock_count <= 19",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.name",
+    "station.city",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.41823500000001,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Francisco City Hall",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 19,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.41823500000001,
+    "station.name": "San Francisco City Hall",
+    "station.city": "San Francisco",
+    "station.dock_count": 19
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at least '-122.41823500000001' and name equal to 'San Francisco City Hall' and city equal to 'San Francisco' and dock count at most '19'?"
+  },
+  {
+   "uid": "650e2cb5-b548-4183-a975-26e912596587",
+   "question": "What stations named Stanford in Redwood City have a longitude exactly -122.20328799999999 and a latitude at most 37.48537?",
+   "answer_row_ids": [
+    25
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.name = 'Stanford in Redwood City' AND station.long = -122.20328799999999 AND station.lat <= 37.48537",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.name",
+    "station.long",
+    "station.lat"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Stanford in Redwood City",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.20328799999999,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.48537,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.name": "Stanford in Redwood City",
+    "station.long": -122.20328799999999,
+    "station.lat": 37.48537
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'Stanford in Redwood City' and long equal to '-122.20328799999999' and lat at most '37.48537'?"
+  },
+  {
+   "uid": "e4b26508-fd3f-4075-83c7-aa4629096d35",
+   "question": "Which stations named Beale at Market have a longitude of -122.39708600000002, latitude of 37.792251, and an installation date exactly on 8/20/2013?",
+   "answer_row_ids": [
+    56
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.long = -122.39708600000002 AND station.name = 'Beale at Market' AND station.installation_date = '8/20/2013' AND station.lat = 37.792251",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.name",
+    "station.installation_date",
+    "station.lat"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.39708600000002,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Beale at Market",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/20/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.792251,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.39708600000002,
+    "station.name": "Beale at Market",
+    "station.installation_date": "8/20/2013",
+    "station.lat": 37.792251
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long equal to '-122.39708600000002' and name equal to 'Beale at Market' and installation date equal to '8/20/2013' and lat equal to '37.792251'?"
+  },
+  {
+   "uid": "579eedb7-ffb0-4b63-bb4c-5e1e8a723c3f",
+   "question": "Which stations named Park at Olive have exactly 15 docks and a longitude of at most -122.13777749999998 with a latitude exactly at 37.425683899999996?",
+   "answer_row_ids": [
+    38
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.long <= -122.13777749999998 AND station.lat = 37.425683899999996 AND station.name = 'Park at Olive' AND station.dock_count = 15",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.lat",
+    "station.name",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -122.13777749999998,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.425683899999996,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Park at Olive",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.13777749999998,
+    "station.lat": 37.425683899999996,
+    "station.name": "Park at Olive",
+    "station.dock_count": 15
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at most '-122.13777749999998' and lat equal to '37.425683899999996' and name equal to 'Park at Olive' and dock count equal to '15'?"
+  },
+  {
+   "uid": "54865e30-b92e-4b8a-891b-91733e6928a5",
+   "question": "Which stations in San Francisco have a latitude of 37.788975 and at least 19 docks?",
+   "answer_row_ids": [
+    47
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count >= 19 AND station.lat = 37.788975 AND station.city = 'San Francisco'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.lat",
+    "station.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.788975,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 19,
+    "station.lat": 37.788975,
+    "station.city": "San Francisco"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count at least '19' and lat equal to '37.788975' and city equal to 'San Francisco'?"
+  },
+  {
+   "uid": "9c85a38a-7be7-4857-99c4-9ddf19ce0447",
+   "question": "Which stations named Mezes Park in Redwood City were installed exactly on 2/20/2014 and have at least 15 docks with a longitude of -122.23623400000001?",
+   "answer_row_ids": [
+    83
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count >= 15 AND station.installation_date = '2/20/2014' AND station.city = 'Redwood City' AND station.long = -122.23623400000001 AND station.name = 'Mezes Park'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.installation_date",
+    "station.city",
+    "station.long",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "2/20/2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Redwood City",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.23623400000001,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Mezes Park",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 15,
+    "station.installation_date": "2/20/2014",
+    "station.city": "Redwood City",
+    "station.long": -122.23623400000001,
+    "station.name": "Mezes Park"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count at least '15' and installation date equal to '2/20/2014' and city equal to 'Redwood City' and long equal to '-122.23623400000001' and name equal to 'Mezes Park'?"
+  },
+  {
+   "uid": "69985175-3aed-456d-90a4-a6208b7666a0",
+   "question": "What stations named Mezes Park were installed exactly on 2/20/2014 and are located at most at latitude 37.491269 and longitude -122.23623400000001?",
+   "answer_row_ids": [
+    83
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.lat <= 37.491269 AND station.installation_date = '2/20/2014' AND station.name = 'Mezes Park' AND station.long <= -122.23623400000001",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.lat",
+    "station.installation_date",
+    "station.name",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.491269,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "2/20/2014",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Mezes Park",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "<=",
+     "value": -122.23623400000001,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.lat": 37.491269,
+    "station.installation_date": "2/20/2014",
+    "station.name": "Mezes Park",
+    "station.long": -122.23623400000001
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat at most '37.491269' and installation date equal to '2/20/2014' and name equal to 'Mezes Park' and long at most '-122.23623400000001'?"
+  },
+  {
+   "uid": "03b10126-6984-4863-8bb4-9700c0b83a8e",
+   "question": "Which stations in Palo Alto have at least 23 docks, a latitude of at most 37.443988, a longitude exactly at -122.164759, and were installed on 8/14/2013?",
+   "answer_row_ids": [
+    34
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nWHERE station.dock_count >= 23 AND station.city = 'Palo Alto' AND station.lat <= 37.443988 AND station.long = -122.164759 AND station.installation_date = '8/14/2013'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "station"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "station.city",
+    "station.lat",
+    "station.long",
+    "station.installation_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Palo Alto",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.443988,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.164759,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/14/2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 23,
+    "station.city": "Palo Alto",
+    "station.lat": 37.443988,
+    "station.long": -122.164759,
+    "station.installation_date": "8/14/2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count at least '23' and city equal to 'Palo Alto' and lat at most '37.443988' and long equal to '-122.164759' and installation date equal to '8/14/2013'?"
+  },
+  {
+   "uid": "294e5a87-f4f5-431a-8f19-02c5450d9eaf",
+   "question": "Which stations named Clay at Battery currently have at least 9 docks available?",
+   "answer_row_ids": [
+    41
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE status.docks_available >= 9 AND station.name = 'Clay at Battery'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "status.docks_available",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": ">=",
+     "value": 9,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Clay at Battery",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "status.docks_available": 9,
+    "station.name": "Clay at Battery"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'Clay at Battery', having at least one related status record (linked on station.id = status.station_id) with docks available at least '9'?"
+  },
+  {
+   "uid": "f015bbed-6665-49fb-a563-bb79b508a516",
+   "question": "Which stations named 2nd at South Park have exactly 4 docks available?",
+   "answer_row_ids": [
+    64
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.name = '2nd at South Park' AND status.docks_available = 4",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.name",
+    "status.docks_available"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "2nd at South Park",
+     "column_type": "label"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.name": "2nd at South Park",
+    "status.docks_available": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to '2nd at South Park', having at least one related status record (linked on station.id = status.station_id) with docks available equal to '4'?"
+  },
+  {
+   "uid": "5c24a7b3-c81d-44cc-b411-768193084e67",
+   "question": "Which stations have the exact name Civic Center BART (7th at Market)?",
+   "answer_row_ids": [
+    72
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.name = 'Civic Center BART (7th at Market)'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Civic Center BART (7th at Market)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.name": "Civic Center BART (7th at Market)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'Civic Center BART (7th at Market)', having at least one related status record (linked on station.id = status.station_id)?"
+  },
+  {
+   "uid": "28f1b0c2-041e-4f4b-926f-33d634e14269",
+   "question": "Which stations named exactly Embarcadero at Vallejo have at most 15 docks?",
+   "answer_row_ids": [
+    48
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.name = 'Embarcadero at Vallejo' AND station.dock_count <= 15",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.name",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Embarcadero at Vallejo",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.name": "Embarcadero at Vallejo",
+    "station.dock_count": 15
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'Embarcadero at Vallejo' and dock count at most '15', having at least one related status record (linked on station.id = status.station_id)?"
+  },
+  {
+   "uid": "e731ed3f-1909-44e4-ba07-b01fd458d61d",
+   "question": "Which stations named exactly Embarcadero at Vallejo have at least 15 docks?",
+   "answer_row_ids": [
+    48
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.name = 'Embarcadero at Vallejo' AND station.dock_count >= 15",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.name",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Embarcadero at Vallejo",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 15,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.name": "Embarcadero at Vallejo",
+    "station.dock_count": 15
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'Embarcadero at Vallejo' and dock count at least '15', having at least one related status record (linked on station.id = status.station_id)?"
+  },
+  {
+   "uid": "75571593-eee7-4919-8b1d-682ad9c1116e",
+   "question": "What stations named exactly SJSU 4th at San Carlos currently have at least 11 bikes available?",
+   "answer_row_ids": [
+    12
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE status.bikes_available >= 11 AND station.name = 'SJSU 4th at San Carlos'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "status.bikes_available",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": ">=",
+     "value": 11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "SJSU 4th at San Carlos",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "status.bikes_available": 11,
+    "station.name": "SJSU 4th at San Carlos"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'SJSU 4th at San Carlos', having at least one related status record (linked on station.id = status.station_id) with bikes available at least '11'?"
+  },
+  {
+   "uid": "a1bcdcfe-2dc9-4279-bc50-aa27bdcb5ea1",
+   "question": "Which station has the exact name San Francisco Caltrain (Townsend at 4th)?",
+   "answer_row_ids": [
+    70
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.name = 'San Francisco Caltrain (Townsend at 4th)'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Francisco Caltrain (Townsend at 4th)",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.name": "San Francisco Caltrain (Townsend at 4th)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'San Francisco Caltrain (Townsend at 4th)', having at least one related status record (linked on station.id = status.station_id)?"
+  },
+  {
+   "uid": "15be41d5-5028-469e-96f9-fdab7b6ccc66",
+   "question": "Which stations installed on 8/15/2013 currently have exactly 8 bikes available?",
+   "answer_row_ids": [
+    28,
+    35
+   ],
+   "answer_count": 2,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE status.bikes_available = 8 AND station.installation_date = '8/15/2013'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "status.bikes_available",
+    "station.installation_date"
+   ],
+   "involved_filters": [
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": "=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/15/2013",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "status.bikes_available": 8,
+    "station.installation_date": "8/15/2013"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '8/15/2013', having at least one related status record (linked on station.id = status.station_id) with bikes available equal to '8'?"
+  },
+  {
+   "uid": "579458fa-a115-494e-b1cd-611f3bb60342",
+   "question": "What stations named Grant Avenue at Columbus Avenue, installed on 8/21/2013 with no more than 15 docks, longitude exactly -122.40724499999999, latitude at most 37.798522, have exactly 4 docks available and at most 11 bikes available on or before 2015-06-02 13:15:02?",
+   "answer_row_ids": [
+    73
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE status.bikes_available <= 11 AND station.long = -122.40724499999999 AND station.lat <= 37.798522 AND station.installation_date = '8/21/2013' AND status.docks_available = 4 AND station.name = 'Grant Avenue at Columbus Avenue' AND status.time <= '2015-06-02 13:15:02' AND station.dock_count <= 15",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "status.bikes_available",
+    "station.long",
+    "station.lat",
+    "station.installation_date",
+    "status.docks_available",
+    "station.name",
+    "status.time",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": "<=",
+     "value": 11,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.40724499999999,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.798522,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/21/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": "=",
+     "value": 4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Grant Avenue at Columbus Avenue",
+     "column_type": "label"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "<=",
+     "value": "2015-06-02 13:15:02",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "status.bikes_available": 11,
+    "station.long": -122.40724499999999,
+    "station.lat": 37.798522,
+    "station.installation_date": "8/21/2013",
+    "status.docks_available": 4,
+    "station.name": "Grant Avenue at Columbus Avenue",
+    "status.time": "2015-06-02 13:15:02",
+    "station.dock_count": 15
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long equal to '-122.40724499999999' and lat at most '37.798522' and installation date equal to '8/21/2013' and name equal to 'Grant Avenue at Columbus Avenue' and dock count at most '15', having at least one related status record (linked on station.id = status.station_id) with bikes available at most '11' and docks available equal to '4' and time at most '2015-06-02 13:15:02'?"
+  },
+  {
+   "uid": "39f4a2c3-a62c-4bd7-b5e8-30df36ff1332",
+   "question": "Which stations named San Francisco City Hall in San Francisco, installed on 8/21/2013, have at least 19 docks, latitude at most 37.77865, longitude at least -122.41823500000001, exactly 7 bikes available, and at most 12 docks available?",
+   "answer_row_ids": [
+    58
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE status.bikes_available = 7 AND station.lat <= 37.77865 AND station.installation_date = '8/21/2013' AND station.name = 'San Francisco City Hall' AND station.dock_count >= 19 AND station.city = 'San Francisco' AND status.docks_available <= 12 AND station.long >= -122.41823500000001",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "status.bikes_available",
+    "station.lat",
+    "station.installation_date",
+    "station.name",
+    "station.dock_count",
+    "station.city",
+    "status.docks_available",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": "=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.77865,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/21/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Francisco City Hall",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 19,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": "<=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.41823500000001,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "status.bikes_available": 7,
+    "station.lat": 37.77865,
+    "station.installation_date": "8/21/2013",
+    "station.name": "San Francisco City Hall",
+    "station.dock_count": 19,
+    "station.city": "San Francisco",
+    "status.docks_available": 12,
+    "station.long": -122.41823500000001
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat at most '37.77865' and installation date equal to '8/21/2013' and name equal to 'San Francisco City Hall' and dock count at least '19' and city equal to 'San Francisco' and long at least '-122.41823500000001', having at least one related status record (linked on station.id = status.station_id) with bikes available equal to '7' and docks available at most '12'?"
+  },
+  {
+   "uid": "db648d39-db4a-44d6-a566-778caeaf6a4c",
+   "question": "Which stations in San Jose installed on 8/6/2013 have exactly 15 docks, longitude at least -121.88993700000002, and currently have at least 8 docks and 7 bikes available?",
+   "answer_row_ids": [
+    13
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.dock_count = 15 AND status.docks_available >= 8 AND station.long >= -121.88993700000002 AND status.bikes_available >= 7 AND station.installation_date = '8/6/2013' AND station.city = 'San Jose'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.dock_count",
+    "status.docks_available",
+    "station.long",
+    "status.bikes_available",
+    "station.installation_date",
+    "station.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -121.88993700000002,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": ">=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/6/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Jose",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.dock_count": 15,
+    "status.docks_available": 8,
+    "station.long": -121.88993700000002,
+    "status.bikes_available": 7,
+    "station.installation_date": "8/6/2013",
+    "station.city": "San Jose"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with dock count equal to '15' and long at least '-121.88993700000002' and installation date equal to '8/6/2013' and city equal to 'San Jose', having at least one related status record (linked on station.id = status.station_id) with docks available at least '8' and bikes available at least '7'?"
+  },
+  {
+   "uid": "88c9a7d2-d775-4c8b-9775-9866521e3959",
+   "question": "Where is the station named Redwood City Medical Center in Redwood City with exactly 15 docks, latitude 37.487682, longitude at least -122.223492, and no more than 3 bikes available on or before 2015-06-02 13:16:02?",
+   "answer_row_ids": [
+    26
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.long >= -122.223492 AND status.bikes_available <= 3 AND station.name = 'Redwood City Medical Center' AND station.lat = 37.487682 AND status.time <= '2015-06-02 13:16:02' AND station.city = 'Redwood City' AND station.dock_count = 15",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.long",
+    "status.bikes_available",
+    "station.name",
+    "station.lat",
+    "status.time",
+    "station.city",
+    "station.dock_count"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.223492,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": "<=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Redwood City Medical Center",
+     "column_type": "label"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.487682,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "<=",
+     "value": "2015-06-02 13:16:02",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Redwood City",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.223492,
+    "status.bikes_available": 3,
+    "station.name": "Redwood City Medical Center",
+    "station.lat": 37.487682,
+    "status.time": "2015-06-02 13:16:02",
+    "station.city": "Redwood City",
+    "station.dock_count": 15
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at least '-122.223492' and name equal to 'Redwood City Medical Center' and lat equal to '37.487682' and city equal to 'Redwood City' and dock count equal to '15', having at least one related status record (linked on station.id = status.station_id) with bikes available at most '3' and time at most '2015-06-02 13:16:02'?"
+  },
+  {
+   "uid": "e9500546-918c-4a90-bbbc-e016e9aff151",
+   "question": "Which stations named Santa Clara County Civic Center, installed exactly on 12/31/2013, have latitude at least 37.352601 and longitude at least -121.90573300000001, with docks available at least 15 since 2015-06-02 12:57:02?",
+   "answer_row_ids": [
+    80
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.installation_date = '12/31/2013' AND station.lat >= 37.352601 AND status.time >= '2015-06-02 12:57:02' AND station.long >= -121.90573300000001 AND status.docks_available >= 15 AND station.name = 'Santa Clara County Civic Center'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "station.lat",
+    "status.time",
+    "station.long",
+    "status.docks_available",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "12/31/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": ">=",
+     "value": 37.352601,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": ">=",
+     "value": "2015-06-02 12:57:02",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -121.90573300000001,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": ">=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Santa Clara County Civic Center",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "12/31/2013",
+    "station.lat": 37.352601,
+    "status.time": "2015-06-02 12:57:02",
+    "station.long": -121.90573300000001,
+    "status.docks_available": 15,
+    "station.name": "Santa Clara County Civic Center"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '12/31/2013' and lat at least '37.352601' and long at least '-121.90573300000001' and name equal to 'Santa Clara County Civic Center', having at least one related status record (linked on station.id = status.station_id) with time at least '2015-06-02 12:57:02' and docks available at least '15'?"
+  },
+  {
+   "uid": "2bd8bbb9-cfa4-40c9-bb3e-435a1a4fe609",
+   "question": "Which stations named Post at Kearney, installed on 8/19/2013 at latitude 37.788975 and longitude -122.403452, had at least 10 docks and at least 9 bikes available on or before 2015-06-02 13:55:03?",
+   "answer_row_ids": [
+    47
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.lat = 37.788975 AND status.time <= '2015-06-02 13:55:03' AND station.long = -122.403452 AND status.docks_available >= 10 AND station.installation_date = '8/19/2013' AND station.name = 'Post at Kearney' AND status.bikes_available >= 9",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.lat",
+    "status.time",
+    "station.long",
+    "status.docks_available",
+    "station.installation_date",
+    "station.name",
+    "status.bikes_available"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.788975,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "<=",
+     "value": "2015-06-02 13:55:03",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.403452,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": ">=",
+     "value": 10,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/19/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Post at Kearney",
+     "column_type": "label"
+    },
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": ">=",
+     "value": 9,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.lat": 37.788975,
+    "status.time": "2015-06-02 13:55:03",
+    "station.long": -122.403452,
+    "status.docks_available": 10,
+    "station.installation_date": "8/19/2013",
+    "station.name": "Post at Kearney",
+    "status.bikes_available": 9
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat equal to '37.788975' and long equal to '-122.403452' and installation date equal to '8/19/2013' and name equal to 'Post at Kearney', having at least one related status record (linked on station.id = status.station_id) with time at most '2015-06-02 13:55:03' and docks available at least '10' and bikes available at least '9'?"
+  },
+  {
+   "uid": "2f0bb942-afda-43ae-a608-c6343608baae",
+   "question": "Which stations in Redwood City installed on 8/12/2013 have latitude 37.481758, longitude at least -122.226904, at least 15 docks, and had no more than 12 docks available on or before 2015-06-02 13:26:02?",
+   "answer_row_ids": [
+    21
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.long >= -122.226904 AND station.city = 'Redwood City' AND station.dock_count >= 15 AND station.lat = 37.481758 AND station.installation_date = '8/12/2013' AND status.docks_available <= 12 AND status.time <= '2015-06-02 13:26:02'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.city",
+    "station.dock_count",
+    "station.lat",
+    "station.installation_date",
+    "status.docks_available",
+    "status.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.226904,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Redwood City",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "=",
+     "value": 37.481758,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/12/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": "<=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "<=",
+     "value": "2015-06-02 13:26:02",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.226904,
+    "station.city": "Redwood City",
+    "station.dock_count": 15,
+    "station.lat": 37.481758,
+    "station.installation_date": "8/12/2013",
+    "status.docks_available": 12,
+    "status.time": "2015-06-02 13:26:02"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at least '-122.226904' and city equal to 'Redwood City' and dock count at least '15' and lat equal to '37.481758' and installation date equal to '8/12/2013', having at least one related status record (linked on station.id = status.station_id) with docks available at most '12' and time at most '2015-06-02 13:26:02'?"
+  },
+  {
+   "uid": "448b2ef9-f1cd-4072-bb45-e5528042daa2",
+   "question": "What stations in Redwood City installed on 8/12/2013 have latitude at most 37.481758, longitude at least -122.226904, dock count at most 15, and on or before 2015-06-02 13:00:01 had exactly 3 bikes available and no more than 12 docks available?",
+   "answer_row_ids": [
+    21
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.lat <= 37.481758 AND status.bikes_available = 3 AND station.city = 'Redwood City' AND station.dock_count <= 15 AND status.docks_available <= 12 AND status.time <= '2015-06-02 13:00:01' AND station.installation_date = '8/12/2013' AND station.long >= -122.226904",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.lat",
+    "status.bikes_available",
+    "station.city",
+    "station.dock_count",
+    "status.docks_available",
+    "status.time",
+    "station.installation_date",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.481758,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": "=",
+     "value": 3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Redwood City",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": "<=",
+     "value": 12,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "<=",
+     "value": "2015-06-02 13:00:01",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/12/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.226904,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.lat": 37.481758,
+    "status.bikes_available": 3,
+    "station.city": "Redwood City",
+    "station.dock_count": 15,
+    "status.docks_available": 12,
+    "status.time": "2015-06-02 13:00:01",
+    "station.installation_date": "8/12/2013",
+    "station.long": -122.226904
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat at most '37.481758' and city equal to 'Redwood City' and dock count at most '15' and installation date equal to '8/12/2013' and long at least '-122.226904', having at least one related status record (linked on station.id = status.station_id) with bikes available equal to '3' and docks available at most '12' and time at most '2015-06-02 13:00:01'?"
+  },
+  {
+   "uid": "9fb438c9-bbe4-4747-a63e-da2fdc0520e2",
+   "question": "Which stations named Steuart at Market have longitude at least -122.394434 and latitude at most 37.794139 on 2015-06-02 exactly at 13:47:02?",
+   "answer_row_ids": [
+    74
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE status.time = '2015-06-02 13:47:02' AND station.long >= -122.394434 AND station.lat <= 37.794139 AND station.name = 'Steuart at Market'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "status.time",
+    "station.long",
+    "station.lat",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "=",
+     "value": "2015-06-02 13:47:02",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.394434,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.794139,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Steuart at Market",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "status.time": "2015-06-02 13:47:02",
+    "station.long": -122.394434,
+    "station.lat": 37.794139,
+    "station.name": "Steuart at Market"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at least '-122.394434' and lat at most '37.794139' and name equal to 'Steuart at Market', having at least one related status record (linked on station.id = status.station_id) with time equal to '2015-06-02 13:47:02'?"
+  },
+  {
+   "uid": "05e0c87b-8d25-4487-8c86-68b62e3dc480",
+   "question": "Which stations in Mountain View were installed exactly on 12/31/2013 and have at least 7 docks available?",
+   "answer_row_ids": [
+    31
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.installation_date = '12/31/2013' AND status.docks_available >= 7 AND station.city = 'Mountain View'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.installation_date",
+    "status.docks_available",
+    "station.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "12/31/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": ">=",
+     "value": 7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Mountain View",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.installation_date": "12/31/2013",
+    "status.docks_available": 7,
+    "station.city": "Mountain View"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with installation date equal to '12/31/2013' and city equal to 'Mountain View', having at least one related status record (linked on station.id = status.station_id) with docks available at least '7'?"
+  },
+  {
+   "uid": "e4ada50f-7e9c-4d2c-b41d-de239e32427d",
+   "question": "Which stations named Castro Street and El Camino Real in Mountain View were installed on 12/31/2013 and have a longitude of at least -122.083678?",
+   "answer_row_ids": [
+    32
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.long >= -122.083678 AND station.city = 'Mountain View' AND station.installation_date = '12/31/2013' AND station.name = 'Castro Street and El Camino Real'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.city",
+    "station.installation_date",
+    "station.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.083678,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Mountain View",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "12/31/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "Castro Street and El Camino Real",
+     "column_type": "label"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.083678,
+    "station.city": "Mountain View",
+    "station.installation_date": "12/31/2013",
+    "station.name": "Castro Street and El Camino Real"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long at least '-122.083678' and city equal to 'Mountain View' and installation date equal to '12/31/2013' and name equal to 'Castro Street and El Camino Real', having at least one related status record (linked on station.id = status.station_id)?"
+  },
+  {
+   "uid": "0a782a73-0218-4384-a63b-f3eff4850282",
+   "question": "Which stations in San Francisco installed exactly on 8/20/2013 have a latitude of at most 37.787152 and had at least 8 bikes available since 2015-06-02 13:10:02?",
+   "answer_row_ids": [
+    54
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.lat <= 37.787152 AND status.bikes_available >= 8 AND station.installation_date = '8/20/2013' AND status.time >= '2015-06-02 13:10:02' AND station.city = 'San Francisco'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.lat",
+    "status.bikes_available",
+    "station.installation_date",
+    "status.time",
+    "station.city"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.787152,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": ">=",
+     "value": 8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "installation_date",
+     "operator": "=",
+     "value": "8/20/2013",
+     "column_type": "enum"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": ">=",
+     "value": "2015-06-02 13:10:02",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "station.lat": 37.787152,
+    "status.bikes_available": 8,
+    "station.installation_date": "8/20/2013",
+    "status.time": "2015-06-02 13:10:02",
+    "station.city": "San Francisco"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat at most '37.787152' and installation date equal to '8/20/2013' and city equal to 'San Francisco', having at least one related status record (linked on station.id = status.station_id) with bikes available at least '8' and time at least '2015-06-02 13:10:02'?"
+  },
+  {
+   "uid": "143f164b-d0a9-4696-a8a5-80ae4bd47731",
+   "question": "Which stations named San Antonio Caltrain Station in Mountain View have at least 23 docks, a longitude of -122.10675800000001, and status updates on or after 2015-06-02 13:50:03?",
+   "answer_row_ids": [
+    29
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.name = 'San Antonio Caltrain Station' AND status.time >= '2015-06-02 13:50:03' AND station.city = 'Mountain View' AND station.dock_count >= 23 AND station.long = -122.10675800000001",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.name",
+    "status.time",
+    "station.city",
+    "station.dock_count",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "name",
+     "operator": "=",
+     "value": "San Antonio Caltrain Station",
+     "column_type": "label"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": ">=",
+     "value": "2015-06-02 13:50:03",
+     "column_type": "date"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Mountain View",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": ">=",
+     "value": 23,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.10675800000001,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.name": "San Antonio Caltrain Station",
+    "status.time": "2015-06-02 13:50:03",
+    "station.city": "Mountain View",
+    "station.dock_count": 23,
+    "station.long": -122.10675800000001
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with name equal to 'San Antonio Caltrain Station' and city equal to 'Mountain View' and dock count at least '23' and long equal to '-122.10675800000001', having at least one related status record (linked on station.id = status.station_id) with time at least '2015-06-02 13:50:03'?"
+  },
+  {
+   "uid": "38584a5e-f00f-4fec-af7b-83ad521c1071",
+   "question": "Which stations located exactly at longitude -122.40724499999999 have at most 15 docks, latitude at most 37.798522, and since 2015-06-02 13:16:02 have had no more than 4 docks available?",
+   "answer_row_ids": [
+    73
+   ],
+   "answer_count": 1,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.long = -122.40724499999999 AND station.dock_count <= 15 AND station.lat <= 37.798522 AND status.time >= '2015-06-02 13:16:02' AND status.docks_available <= 4",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.long",
+    "station.dock_count",
+    "station.lat",
+    "status.time",
+    "status.docks_available"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "long",
+     "operator": "=",
+     "value": -122.40724499999999,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "<=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.798522,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": ">=",
+     "value": "2015-06-02 13:16:02",
+     "column_type": "date"
+    },
+    {
+     "table": "status",
+     "column": "docks_available",
+     "operator": "<=",
+     "value": 4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.long": -122.40724499999999,
+    "station.dock_count": 15,
+    "station.lat": 37.798522,
+    "status.time": "2015-06-02 13:16:02",
+    "status.docks_available": 4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with long equal to '-122.40724499999999' and dock count at most '15' and lat at most '37.798522', having at least one related status record (linked on station.id = status.station_id) with time at least '2015-06-02 13:16:02' and docks available at most '4'?"
+  },
+  {
+   "uid": "e32e522f-f24a-42d4-bb99-d7fc9c630c7d",
+   "question": "What stations in Redwood City at latitude at most 37.487615999999996 had no more than 6 bikes available exactly on 2015-06-02 14:47:02?",
+   "answer_row_ids": [
+    21,
+    22,
+    23,
+    24
+   ],
+   "answer_count": 4,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.lat <= 37.487615999999996 AND status.bikes_available <= 6 AND station.city = 'Redwood City' AND status.time = '2015-06-02 14:47:02'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.lat",
+    "status.bikes_available",
+    "station.city",
+    "status.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "lat",
+     "operator": "<=",
+     "value": 37.487615999999996,
+     "column_type": "numeric"
+    },
+    {
+     "table": "status",
+     "column": "bikes_available",
+     "operator": "<=",
+     "value": 6,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "Redwood City",
+     "column_type": "enum"
+    },
+    {
+     "table": "status",
+     "column": "time",
+     "operator": "=",
+     "value": "2015-06-02 14:47:02",
+     "column_type": "date"
+    }
+   ],
+   "involved_values": {
+    "station.lat": 37.487615999999996,
+    "status.bikes_available": 6,
+    "station.city": "Redwood City",
+    "status.time": "2015-06-02 14:47:02"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with lat at most '37.487615999999996' and city equal to 'Redwood City', having at least one related status record (linked on station.id = status.station_id) with bikes available at most '6' and time equal to '2015-06-02 14:47:02'?"
+  },
+  {
+   "uid": "1e1ade5d-7e11-4652-be30-3ebb7929397e",
+   "question": "Which stations in San Francisco have exactly 15 docks and a longitude of at least -122.40512700000001?",
+   "answer_row_ids": [
+    41,
+    42,
+    45,
+    46,
+    48,
+    54,
+    57,
+    60,
+    64,
+    65,
+    82
+   ],
+   "answer_count": 11,
+   "sql": "SELECT station.id FROM station\nJOIN status ON station.id = status.station_id\nWHERE station.city = 'San Francisco' AND station.dock_count = 15 AND station.long >= -122.40512700000001",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "station",
+    "status"
+   ],
+   "involved_columns": [
+    "station.city",
+    "station.dock_count",
+    "station.long"
+   ],
+   "involved_filters": [
+    {
+     "table": "station",
+     "column": "city",
+     "operator": "=",
+     "value": "San Francisco",
+     "column_type": "enum"
+    },
+    {
+     "table": "station",
+     "column": "dock_count",
+     "operator": "=",
+     "value": 15,
+     "column_type": "numeric"
+    },
+    {
+     "table": "station",
+     "column": "long",
+     "operator": ">=",
+     "value": -122.40512700000001,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "station.city": "San Francisco",
+    "station.dock_count": 15,
+    "station.long": -122.40512700000001
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "station"
+   },
+   "answer_table": "station",
+   "answer_id_column": "id",
+   "canonical_question": "Which station entities with city equal to 'San Francisco' and dock count equal to '15' and long at least '-122.40512700000001', having at least one related status record (linked on station.id = status.station_id)?"
+  }
+ ]
+}

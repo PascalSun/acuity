@@ -1,0 +1,3343 @@
+{
+ "db_id": "climbing",
+ "target_table": "mountain",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 109543529,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/climbing/climbing.sqlite",
+  "generated_at": "2026-07-02T18:49:38.566778+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "mountain",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 13,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2,
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3,
+     "duplicate_pair": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "c5de823b-f2c2-4e47-8364-6244da60701b",
+   "question": "What mountains are located in Uganda?",
+   "answer_row_ids": [
+    6,
+    7
+   ],
+   "answer_count": 2,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.country = 'Uganda'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Uganda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Uganda'?"
+  },
+  {
+   "uid": "af825b86-1d09-4d47-ac2c-c9f29ac53d39",
+   "question": "Which mountains named Ngaliema / Mt Stanley (Margherita Pk) are located in the Rwenzori range?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.name = 'Ngaliema / Mt Stanley (Margherita Pk)' AND mountain.range = 'Rwenzori'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Ngaliema / Mt Stanley (Margherita Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Ngaliema / Mt Stanley (Margherita Pk)",
+    "mountain.range": "Rwenzori"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Ngaliema / Mt Stanley (Margherita Pk)' and range equal to 'Rwenzori'?"
+  },
+  {
+   "uid": "9d88485a-8bdf-4706-9f0d-8d44c3213c3a",
+   "question": "Which mountains are located in the Rwenzori range?",
+   "answer_row_ids": [
+    4,
+    6,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.range = 'Rwenzori'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.range": "Rwenzori"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with range equal to 'Rwenzori'?"
+  },
+  {
+   "uid": "1666a7f5-42b6-4bbe-9901-01ba90a36e06",
+   "question": "Which mountains have a height of at most 5109.0?",
+   "answer_row_ids": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "answer_count": 4,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height <= 5109.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 5109.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5109.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at most '5109.0'?"
+  },
+  {
+   "uid": "1c939397-57eb-4243-836d-89c1d8d77b6e",
+   "question": "Which mountains have a height of at least 4985.0?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "answer_count": 5,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height >= 4985.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 4985.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 4985.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at least '4985.0'?"
+  },
+  {
+   "uid": "0e640564-8af1-4c42-9fec-01aa68cc912c",
+   "question": "Which mountains have a height of at most 4985.0 meters?",
+   "answer_row_ids": [
+    5,
+    6,
+    7
+   ],
+   "answer_count": 3,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height <= 4985.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 4985.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 4985.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at most '4985.0'?"
+  },
+  {
+   "uid": "27a74d2d-f557-440a-a9d0-cd835c94e09e",
+   "question": "Which mountains are located in Tanzania?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.country = 'Tanzania'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Tanzania"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Tanzania'?"
+  },
+  {
+   "uid": "61bcaf6f-25ce-4093-a711-991fa6f108f8",
+   "question": "Which mountains in the Kilimanjaro range have a height of exactly 5895.0 meters?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height = 5895.0 AND mountain.range = 'Kilimanjaro'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5895.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5895.0,
+    "mountain.range": "Kilimanjaro"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height equal to '5895.0' and range equal to 'Kilimanjaro'?"
+  },
+  {
+   "uid": "84f04797-f293-43a3-a6c1-4c93e75d9e96",
+   "question": "Which mountains have a height of at least 5199.0 meters?",
+   "answer_row_ids": [
+    1,
+    2
+   ],
+   "answer_count": 2,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height >= 5199.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5199.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at least '5199.0'?"
+  },
+  {
+   "uid": "4585bf56-8333-46b6-89ff-e9bdcdaa10a7",
+   "question": "Which mountains in the Rwenzori range have a height of exactly 5109.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.range = 'Rwenzori' AND mountain.height = 5109.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.range",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5109.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.range": "Rwenzori",
+    "mountain.height": 5109.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with range equal to 'Rwenzori' and height equal to '5109.0'?"
+  },
+  {
+   "uid": "6e38fff9-4f11-430d-b369-0b6ef39c15b1",
+   "question": "Which mountains in Kenya\u2019s Mount Kenya range have a height of at least 5199.0 and a prominence exactly 3825.0, specifically named Mount Kenya (Batian)?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.country = 'Kenya' AND mountain.height >= 5199.0 AND mountain.range = 'Mount Kenya' AND mountain.prominence = 3825.0 AND mountain.name = 'Mount Kenya (Batian)'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country",
+    "mountain.height",
+    "mountain.range",
+    "mountain.prominence",
+    "mountain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Mount Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 3825.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Batian)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Kenya",
+    "mountain.height": 5199.0,
+    "mountain.range": "Mount Kenya",
+    "mountain.prominence": 3825.0,
+    "mountain.name": "Mount Kenya (Batian)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Kenya' and height at least '5199.0' and range equal to 'Mount Kenya' and prominence equal to '3825.0' and name equal to 'Mount Kenya (Batian)'?"
+  },
+  {
+   "uid": "1529e2c8-15a9-4880-9057-7485a98413ca",
+   "question": "Which mountains named Ngaliema / Mt Stanley (Savoia Pk) in the Rwenzori range of Uganda have a height of exactly 4977.0 and a prominence of at most 110.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.country = 'Uganda' AND mountain.range = 'Rwenzori' AND mountain.prominence <= 110.0 AND mountain.name = 'Ngaliema / Mt Stanley (Savoia Pk)' AND mountain.height = 4977.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country",
+    "mountain.range",
+    "mountain.prominence",
+    "mountain.name",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 110.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Ngaliema / Mt Stanley (Savoia Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 4977.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Uganda",
+    "mountain.range": "Rwenzori",
+    "mountain.prominence": 110.0,
+    "mountain.name": "Ngaliema / Mt Stanley (Savoia Pk)",
+    "mountain.height": 4977.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Uganda' and range equal to 'Rwenzori' and prominence at most '110.0' and name equal to 'Ngaliema / Mt Stanley (Savoia Pk)' and height equal to '4977.0'?"
+  },
+  {
+   "uid": "980f9932-9c73-4095-9d62-d2b60568b7cd",
+   "question": "Which mountains in the Rwenzori range have a height of at most 4977.0 meters and a prominence of no more than 110.0 meters?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.range = 'Rwenzori' AND mountain.height <= 4977.0 AND mountain.prominence <= 110.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.range",
+    "mountain.height",
+    "mountain.prominence"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 4977.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 110.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.range": "Rwenzori",
+    "mountain.height": 4977.0,
+    "mountain.prominence": 110.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with range equal to 'Rwenzori' and height at most '4977.0' and prominence at most '110.0'?"
+  },
+  {
+   "uid": "6832a434-97d5-48e3-aa66-cc6f6eb20131",
+   "question": "Which mountains in Kenya have a height exactly 5199.0 and a prominence of at least 3825.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height = 5199.0 AND mountain.country = 'Kenya' AND mountain.prominence >= 3825.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height",
+    "mountain.country",
+    "mountain.prominence"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": ">=",
+     "value": 3825.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5199.0,
+    "mountain.country": "Kenya",
+    "mountain.prominence": 3825.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height equal to '5199.0' and country equal to 'Kenya' and prominence at least '3825.0'?"
+  },
+  {
+   "uid": "27cfbab2-3096-497a-99e3-d8a9ed207571",
+   "question": "Which mountains named Ngaliema / Mt Stanley (Savoia Pk) are located in Uganda and have a prominence of at most 110.0?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.name = 'Ngaliema / Mt Stanley (Savoia Pk)' AND mountain.prominence <= 110.0 AND mountain.country = 'Uganda'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "mountain.prominence",
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Ngaliema / Mt Stanley (Savoia Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 110.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Ngaliema / Mt Stanley (Savoia Pk)",
+    "mountain.prominence": 110.0,
+    "mountain.country": "Uganda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Ngaliema / Mt Stanley (Savoia Pk)' and prominence at most '110.0' and country equal to 'Uganda'?"
+  },
+  {
+   "uid": "32708275-ca8f-4f0b-ac5c-7dae885f6372",
+   "question": "What mountains named Mount Kenya (Lenana) in the Mount Kenya range and Kenya have a prominence of exactly 130.0 and a height at most 4985.0?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.prominence = 130.0 AND mountain.name = 'Mount Kenya (Lenana)' AND mountain.range = 'Mount Kenya' AND mountain.country = 'Kenya' AND mountain.height <= 4985.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.prominence",
+    "mountain.name",
+    "mountain.range",
+    "mountain.country",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 130.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Lenana)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Mount Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 4985.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.prominence": 130.0,
+    "mountain.name": "Mount Kenya (Lenana)",
+    "mountain.range": "Mount Kenya",
+    "mountain.country": "Kenya",
+    "mountain.height": 4985.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence equal to '130.0' and name equal to 'Mount Kenya (Lenana)' and range equal to 'Mount Kenya' and country equal to 'Kenya' and height at most '4985.0'?"
+  },
+  {
+   "uid": "cc81ca7f-a997-4737-951f-5a4501803eb3",
+   "question": "Which mountain named Ngaliema / Mt Stanley (Savoia Pk) in Uganda\u2019s Rwenzori range has a prominence of exactly 110.0 and a height of at most 4977.0 meters?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.name = 'Ngaliema / Mt Stanley (Savoia Pk)' AND mountain.height <= 4977.0 AND mountain.range = 'Rwenzori' AND mountain.prominence = 110.0 AND mountain.country = 'Uganda'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "mountain.height",
+    "mountain.range",
+    "mountain.prominence",
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Ngaliema / Mt Stanley (Savoia Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 4977.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 110.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Ngaliema / Mt Stanley (Savoia Pk)",
+    "mountain.height": 4977.0,
+    "mountain.range": "Rwenzori",
+    "mountain.prominence": 110.0,
+    "mountain.country": "Uganda"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Ngaliema / Mt Stanley (Savoia Pk)' and height at most '4977.0' and range equal to 'Rwenzori' and prominence equal to '110.0' and country equal to 'Uganda'?"
+  },
+  {
+   "uid": "07c1323c-4ffe-47c1-acb8-102050e4b478",
+   "question": "Which mountains named Mawenzi (Hans Meyer Pk) in the Kilimanjaro range are in Tanzania, have a height of exactly 5148.0 meters, and a prominence of at least 850.0 meters?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.country = 'Tanzania' AND mountain.name = 'Mawenzi (Hans Meyer Pk)' AND mountain.height = 5148.0 AND mountain.prominence >= 850.0 AND mountain.range = 'Kilimanjaro'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country",
+    "mountain.name",
+    "mountain.height",
+    "mountain.prominence",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mawenzi (Hans Meyer Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5148.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": ">=",
+     "value": 850.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Tanzania",
+    "mountain.name": "Mawenzi (Hans Meyer Pk)",
+    "mountain.height": 5148.0,
+    "mountain.prominence": 850.0,
+    "mountain.range": "Kilimanjaro"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Tanzania' and name equal to 'Mawenzi (Hans Meyer Pk)' and height equal to '5148.0' and prominence at least '850.0' and range equal to 'Kilimanjaro'?"
+  },
+  {
+   "uid": "3fcf62cd-c29c-4e29-af05-417d965a1b81",
+   "question": "Which mountains named Mawenzi (Hans Meyer Pk) in Tanzania have a prominence of at least 850.0?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.name = 'Mawenzi (Hans Meyer Pk)' AND mountain.prominence >= 850.0 AND mountain.country = 'Tanzania'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "mountain.prominence",
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mawenzi (Hans Meyer Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": ">=",
+     "value": 850.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Mawenzi (Hans Meyer Pk)",
+    "mountain.prominence": 850.0,
+    "mountain.country": "Tanzania"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mawenzi (Hans Meyer Pk)' and prominence at least '850.0' and country equal to 'Tanzania'?"
+  },
+  {
+   "uid": "bfef26fc-01d7-4941-8ea9-3deb9af1c238",
+   "question": "Which mountains in the Kilimanjaro range of Tanzania have a height of at least 5895.0 meters?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nWHERE mountain.height >= 5895.0 AND mountain.country = 'Tanzania' AND mountain.range = 'Kilimanjaro'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height",
+    "mountain.country",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 5895.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5895.0,
+    "mountain.country": "Tanzania",
+    "mountain.range": "Kilimanjaro"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at least '5895.0' and country equal to 'Tanzania' and range equal to 'Kilimanjaro'?"
+  },
+  {
+   "uid": "aa7926ea-477b-47af-86c5-2332669df40e",
+   "question": "Which mountains named Mount Kenya (Batian) were climbed by climbers from West Germany?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mount Kenya (Batian)' AND climber.country = 'West Germany'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "climber.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Batian)",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Mount Kenya (Batian)",
+    "climber.country": "West Germany"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mount Kenya (Batian)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'West Germany'?"
+  },
+  {
+   "uid": "4d86e6e8-a3a3-45c2-b39e-5c86410a54d3",
+   "question": "Which mountains located in Tanzania have been climbed by climbers?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.country = 'Tanzania'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Tanzania"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Tanzania', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id)?"
+  },
+  {
+   "uid": "cc2799d7-f5bf-4081-baad-01001ac2bced",
+   "question": "What mountains that climbers have ascended are at least 5895.0 meters tall?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.height >= 5895.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 5895.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5895.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at least '5895.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id)?"
+  },
+  {
+   "uid": "d9e03244-109e-4891-a4e3-71255d77531c",
+   "question": "Which mountains named Mount Kenya (Lenana) have climbers with exactly 4.0 points?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.points = 4.0 AND mountain.name = 'Mount Kenya (Lenana)'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.points",
+    "mountain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Lenana)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "climber.points": 4.0,
+    "mountain.name": "Mount Kenya (Lenana)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mount Kenya (Lenana)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points equal to '4.0'?"
+  },
+  {
+   "uid": "1dec625b-7741-4c06-aca2-5c460e2caf9c",
+   "question": "Which mountains with a prominence of exactly 850.0 have been climbed?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.prominence = 850.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.prominence"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 850.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.prominence": 850.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence equal to '850.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id)?"
+  },
+  {
+   "uid": "06130e94-6a3f-4c66-bf8c-66b5949f64bc",
+   "question": "Which mountains named Mount Kenya (Lenana) have climbers with exactly 3.0 points?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mount Kenya (Lenana)' AND climber.points = 3.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "climber.points"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Lenana)",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 3.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Mount Kenya (Lenana)",
+    "climber.points": 3.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mount Kenya (Lenana)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points equal to '3.0'?"
+  },
+  {
+   "uid": "6fae5016-9e16-4c05-b4c4-4938283407aa",
+   "question": "Which mountains with a prominence of at most 5885.0 have been climbed?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    5,
+    7
+   ],
+   "answer_count": 5,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.prominence <= 5885.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.prominence"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 5885.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.prominence": 5885.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence at most '5885.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id)?"
+  },
+  {
+   "uid": "e645a711-10dc-4e45-bd0f-84dc51ca5d3b",
+   "question": "Which mountains that are exactly 5895.0 meters high have climbers with at least 15.0 points?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.points >= 15.0 AND mountain.height = 5895.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.points",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": ">=",
+     "value": 15.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5895.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "climber.points": 15.0,
+    "mountain.height": 5895.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height equal to '5895.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points at least '15.0'?"
+  },
+  {
+   "uid": "8bd2b67b-1087-4e39-b80c-1cb7377f4583",
+   "question": "Which mountains named Mount Kenya (Lenana) have climbers with a time exactly 1:21.35.6?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mount Kenya (Lenana)' AND climber.time = '1:21.35.6'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "climber.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Lenana)",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:21.35.6",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Mount Kenya (Lenana)",
+    "climber.time": "1:21.35.6"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mount Kenya (Lenana)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with time equal to '1:21.35.6'?"
+  },
+  {
+   "uid": "9b016c6c-9f60-4d27-9c55-1903ef36de59",
+   "question": "Which mountains have been climbed with a time exactly equal to 1:25.40.6?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.time = '1:25.40.6'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:25.40.6",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "climber.time": "1:25.40.6"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with time equal to '1:25.40.6'?"
+  },
+  {
+   "uid": "33beb7f2-8f56-4d12-b43b-fcce068103e4",
+   "question": "Which mountains named Duwoni / Mt Speke (Vittorio Emanuele Pk) in Uganda, exactly 4890.0 meters tall with a prominence of at least 720.0, were climbed by L Currie from the United Kingdom who scored exactly 2.0 points and took exactly 1:25.40.6?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Duwoni / Mt Speke (Vittorio Emanuele Pk)' AND mountain.height = 4890.0 AND mountain.country = 'Uganda' AND climber.points = 2.0 AND mountain.prominence >= 720.0 AND climber.name = 'L Currie' AND climber.country = 'United Kingdom' AND climber.time = '1:25.40.6'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "mountain.height",
+    "mountain.country",
+    "climber.points",
+    "mountain.prominence",
+    "climber.name",
+    "climber.country",
+    "climber.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 4890.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": ">=",
+     "value": 720.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "L Currie",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:25.40.6",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+    "mountain.height": 4890.0,
+    "mountain.country": "Uganda",
+    "climber.points": 2.0,
+    "mountain.prominence": 720.0,
+    "climber.name": "L Currie",
+    "climber.country": "United Kingdom",
+    "climber.time": "1:25.40.6"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Duwoni / Mt Speke (Vittorio Emanuele Pk)' and height equal to '4890.0' and country equal to 'Uganda' and prominence at least '720.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points equal to '2.0' and name equal to 'L Currie' and country equal to 'United Kingdom' and time equal to '1:25.40.6'?"
+  },
+  {
+   "uid": "e6564304-a812-4bba-a820-3aa7fe337f14",
+   "question": "Which mountains in Tanzania\u2019s Kilimanjaro range have a prominence of 850.0 and were climbed by Georg Auerbacher from West Germany with exactly 5.0 points and a time of 1:18.14.6?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.country = 'Tanzania' AND climber.time = '1:18.14.6' AND climber.name = 'Georg Auerbacher' AND climber.country = 'West Germany' AND climber.points = 5.0 AND mountain.prominence = 850.0 AND mountain.range = 'Kilimanjaro'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country",
+    "climber.time",
+    "climber.name",
+    "climber.country",
+    "climber.points",
+    "mountain.prominence",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:18.14.6",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Georg Auerbacher",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 850.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Tanzania",
+    "climber.time": "1:18.14.6",
+    "climber.name": "Georg Auerbacher",
+    "climber.country": "West Germany",
+    "climber.points": 5.0,
+    "mountain.prominence": 850.0,
+    "mountain.range": "Kilimanjaro"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Tanzania' and prominence equal to '850.0' and range equal to 'Kilimanjaro', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with time equal to '1:18.14.6' and name equal to 'Georg Auerbacher' and country equal to 'West Germany' and points equal to '5.0'?"
+  },
+  {
+   "uid": "7f4a3971-84f3-4738-a3cb-4d293d28a97b",
+   "question": "Which mountains in Kenya\u2019s Mount Kenya range have a height of 5199.0 and prominence at most 3825.0, climbed by Jean Claude Castella from Switzerland in 1:17.16.0 with climber points at most 8.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.points <= 8.0 AND mountain.country = 'Kenya' AND mountain.range = 'Mount Kenya' AND mountain.prominence <= 3825.0 AND climber.name = 'Jean Claude Castella' AND climber.time = '1:17.16.0' AND mountain.height = 5199.0 AND climber.country = 'Switzerland'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.points",
+    "mountain.country",
+    "mountain.range",
+    "mountain.prominence",
+    "climber.name",
+    "climber.time",
+    "mountain.height",
+    "climber.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "<=",
+     "value": 8.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Mount Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 3825.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Jean Claude Castella",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:17.16.0",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "Switzerland",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "climber.points": 8.0,
+    "mountain.country": "Kenya",
+    "mountain.range": "Mount Kenya",
+    "mountain.prominence": 3825.0,
+    "climber.name": "Jean Claude Castella",
+    "climber.time": "1:17.16.0",
+    "mountain.height": 5199.0,
+    "climber.country": "Switzerland"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Kenya' and range equal to 'Mount Kenya' and prominence at most '3825.0' and height equal to '5199.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points at most '8.0' and name equal to 'Jean Claude Castella' and time equal to '1:17.16.0' and country equal to 'Switzerland'?"
+  },
+  {
+   "uid": "5b97ce85-b974-40f5-a346-7dda2c570c67",
+   "question": "Which mountains named Duwoni / Mt Speke (Vittorio Emanuele Pk) with a height of 4890.0 have been climbed by L Currie from the United Kingdom who took exactly 1:25.40.6 and scored at most 2.0 points?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.points <= 2.0 AND climber.time = '1:25.40.6' AND climber.name = 'L Currie' AND mountain.name = 'Duwoni / Mt Speke (Vittorio Emanuele Pk)' AND mountain.height = 4890.0 AND climber.country = 'United Kingdom'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.points",
+    "climber.time",
+    "climber.name",
+    "mountain.name",
+    "mountain.height",
+    "climber.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "<=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:25.40.6",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "L Currie",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 4890.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "climber.points": 2.0,
+    "climber.time": "1:25.40.6",
+    "climber.name": "L Currie",
+    "mountain.name": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+    "mountain.height": 4890.0,
+    "climber.country": "United Kingdom"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Duwoni / Mt Speke (Vittorio Emanuele Pk)' and height equal to '4890.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points at most '2.0' and time equal to '1:25.40.6' and name equal to 'L Currie' and country equal to 'United Kingdom'?"
+  },
+  {
+   "uid": "3f2ddc72-adf6-464d-b544-dfca352b69b7",
+   "question": "What mountains in the Rwenzori range named Duwoni / Mt Speke (Vittorio Emanuele Pk) have a height of at least 4890.0, prominence at most 720.0, and were climbed by L Currie from the United Kingdom with a time of 1:25.40.6 and no more than 2.0 points?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.name = 'L Currie' AND climber.time = '1:25.40.6' AND climber.points <= 2.0 AND mountain.range = 'Rwenzori' AND mountain.name = 'Duwoni / Mt Speke (Vittorio Emanuele Pk)' AND mountain.prominence <= 720.0 AND climber.country = 'United Kingdom' AND mountain.height >= 4890.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.name",
+    "climber.time",
+    "climber.points",
+    "mountain.range",
+    "mountain.name",
+    "mountain.prominence",
+    "climber.country",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "L Currie",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:25.40.6",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "<=",
+     "value": 2.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 720.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 4890.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "climber.name": "L Currie",
+    "climber.time": "1:25.40.6",
+    "climber.points": 2.0,
+    "mountain.range": "Rwenzori",
+    "mountain.name": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+    "mountain.prominence": 720.0,
+    "climber.country": "United Kingdom",
+    "mountain.height": 4890.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with range equal to 'Rwenzori' and name equal to 'Duwoni / Mt Speke (Vittorio Emanuele Pk)' and prominence at most '720.0' and height at least '4890.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with name equal to 'L Currie' and time equal to '1:25.40.6' and points at most '2.0' and country equal to 'United Kingdom'?"
+  },
+  {
+   "uid": "75f12bfa-c026-4028-b1c4-0f5cf96b9c63",
+   "question": "Which mountains named Mount Kenya (Lenana) in Kenya were climbed by Arseneus Butscher from West Germany with at least 4.0 points and a time exactly 1:21.35.6?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.name = 'Arseneus Butscher' AND climber.points >= 4.0 AND climber.country = 'West Germany' AND mountain.country = 'Kenya' AND mountain.name = 'Mount Kenya (Lenana)' AND climber.time = '1:21.35.6'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.name",
+    "climber.points",
+    "climber.country",
+    "mountain.country",
+    "mountain.name",
+    "climber.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Arseneus Butscher",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": ">=",
+     "value": 4.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Lenana)",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:21.35.6",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "climber.name": "Arseneus Butscher",
+    "climber.points": 4.0,
+    "climber.country": "West Germany",
+    "mountain.country": "Kenya",
+    "mountain.name": "Mount Kenya (Lenana)",
+    "climber.time": "1:21.35.6"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Kenya' and name equal to 'Mount Kenya (Lenana)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with name equal to 'Arseneus Butscher' and points at least '4.0' and country equal to 'West Germany' and time equal to '1:21.35.6'?"
+  },
+  {
+   "uid": "13729b4c-3dee-459f-bd4b-c4cfd1a613ed",
+   "question": "Which mountains in the Kilimanjaro range of Tanzania have a height of at most 5148.0 and prominence no more than 850.0, where climbers from West Germany scored at most 5.0 points with a time exactly 1:18.14.6?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.prominence <= 850.0 AND climber.country = 'West Germany' AND mountain.country = 'Tanzania' AND climber.points <= 5.0 AND mountain.range = 'Kilimanjaro' AND mountain.height <= 5148.0 AND climber.time = '1:18.14.6'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.prominence",
+    "climber.country",
+    "mountain.country",
+    "climber.points",
+    "mountain.range",
+    "mountain.height",
+    "climber.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 850.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "<=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 5148.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:18.14.6",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.prominence": 850.0,
+    "climber.country": "West Germany",
+    "mountain.country": "Tanzania",
+    "climber.points": 5.0,
+    "mountain.range": "Kilimanjaro",
+    "mountain.height": 5148.0,
+    "climber.time": "1:18.14.6"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence at most '850.0' and country equal to 'Tanzania' and range equal to 'Kilimanjaro' and height at most '5148.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'West Germany' and points at most '5.0' and time equal to '1:18.14.6'?"
+  },
+  {
+   "uid": "3f11552c-c404-44aa-817e-d79c2400f634",
+   "question": "Which mountains named Mount Kenya (Batian) in the Mount Kenya range have a height of 5199.0 and prominence of 3825.0, where Hans Luthringhauser from West Germany climbed with a time of 1:16.58.0 and earned 10.0 points?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.country = 'West Germany' AND mountain.prominence = 3825.0 AND climber.name = 'Hans Luthringhauser' AND climber.time = '1:16.58.0' AND climber.points = 10.0 AND mountain.range = 'Mount Kenya' AND mountain.name = 'Mount Kenya (Batian)' AND mountain.height = 5199.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.country",
+    "mountain.prominence",
+    "climber.name",
+    "climber.time",
+    "climber.points",
+    "mountain.range",
+    "mountain.name",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 3825.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Hans Luthringhauser",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:16.58.0",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 10.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Mount Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Batian)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "climber.country": "West Germany",
+    "mountain.prominence": 3825.0,
+    "climber.name": "Hans Luthringhauser",
+    "climber.time": "1:16.58.0",
+    "climber.points": 10.0,
+    "mountain.range": "Mount Kenya",
+    "mountain.name": "Mount Kenya (Batian)",
+    "mountain.height": 5199.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence equal to '3825.0' and range equal to 'Mount Kenya' and name equal to 'Mount Kenya (Batian)' and height equal to '5199.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'West Germany' and name equal to 'Hans Luthringhauser' and time equal to '1:16.58.0' and points equal to '10.0'?"
+  },
+  {
+   "uid": "24b6f71f-fbc7-4fdf-8d86-bd2d1cf2e023",
+   "question": "Which mountains in Kenya have a height of exactly 5199.0 and a prominence of at least 3825.0, where Horst Owesle climbed with at least 6.0 points and a time of exactly 1:17.22.0?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.prominence >= 3825.0 AND climber.time = '1:17.22.0' AND mountain.height = 5199.0 AND climber.name = 'Horst Owesle' AND climber.points >= 6.0 AND mountain.country = 'Kenya'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.prominence",
+    "climber.time",
+    "mountain.height",
+    "climber.name",
+    "climber.points",
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": ">=",
+     "value": 3825.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:17.22.0",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Horst Owesle",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.prominence": 3825.0,
+    "climber.time": "1:17.22.0",
+    "mountain.height": 5199.0,
+    "climber.name": "Horst Owesle",
+    "climber.points": 6.0,
+    "mountain.country": "Kenya"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence at least '3825.0' and height equal to '5199.0' and country equal to 'Kenya', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with time equal to '1:17.22.0' and name equal to 'Horst Owesle' and points at least '6.0'?"
+  },
+  {
+   "uid": "9526b81d-f250-4e32-9057-14ddb748a610",
+   "question": "Which mountains named Mawenzi (Hans Meyer Pk) exactly 5148.0 meters high with a prominence of 850.0 are located in Tanzania and were climbed by Georg Auerbacher who scored exactly 5.0 points?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mawenzi (Hans Meyer Pk)' AND mountain.height = 5148.0 AND mountain.prominence = 850.0 AND climber.name = 'Georg Auerbacher' AND mountain.country = 'Tanzania' AND climber.points = 5.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "mountain.height",
+    "mountain.prominence",
+    "climber.name",
+    "mountain.country",
+    "climber.points"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mawenzi (Hans Meyer Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 5148.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 850.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Georg Auerbacher",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 5.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Mawenzi (Hans Meyer Pk)",
+    "mountain.height": 5148.0,
+    "mountain.prominence": 850.0,
+    "climber.name": "Georg Auerbacher",
+    "mountain.country": "Tanzania",
+    "climber.points": 5.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mawenzi (Hans Meyer Pk)' and height equal to '5148.0' and prominence equal to '850.0' and country equal to 'Tanzania', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with name equal to 'Georg Auerbacher' and points equal to '5.0'?"
+  },
+  {
+   "uid": "973d4b42-43c9-4fb6-8729-3b6e2e66be6d",
+   "question": "Which mountains in the Kilimanjaro range have a prominence of at most 850.0 and were climbed in exactly 1:18.14.6 by climbers from West Germany with exactly 5.0 points?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.points = 5.0 AND climber.country = 'West Germany' AND mountain.prominence <= 850.0 AND mountain.range = 'Kilimanjaro' AND climber.time = '1:18.14.6'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.points",
+    "climber.country",
+    "mountain.prominence",
+    "mountain.range",
+    "climber.time"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": "=",
+     "value": 5.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "<=",
+     "value": 850.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:18.14.6",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "climber.points": 5.0,
+    "climber.country": "West Germany",
+    "mountain.prominence": 850.0,
+    "mountain.range": "Kilimanjaro",
+    "climber.time": "1:18.14.6"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence at most '850.0' and range equal to 'Kilimanjaro', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points equal to '5.0' and country equal to 'West Germany' and time equal to '1:18.14.6'?"
+  },
+  {
+   "uid": "9b1cefc9-480c-4bbe-901a-c7c815268749",
+   "question": "Which mountains in Uganda\u2019s Rwenzori range, no taller than 4890 meters, were climbed by L Currie from the United Kingdom?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.country = 'United Kingdom' AND mountain.range = 'Rwenzori' AND mountain.country = 'Uganda' AND climber.name = 'L Currie' AND mountain.height <= 4890.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.country",
+    "mountain.range",
+    "mountain.country",
+    "climber.name",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Rwenzori",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "L Currie",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "<=",
+     "value": 4890.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "climber.country": "United Kingdom",
+    "mountain.range": "Rwenzori",
+    "mountain.country": "Uganda",
+    "climber.name": "L Currie",
+    "mountain.height": 4890.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with range equal to 'Rwenzori' and country equal to 'Uganda' and height at most '4890.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'United Kingdom' and name equal to 'L Currie'?"
+  },
+  {
+   "uid": "948da90d-f5ce-4cc5-a767-73a87c547c07",
+   "question": "Which mountains in Tanzania have been climbed by climbers from West Germany with at least 5.0 points?",
+   "answer_row_ids": [
+    1,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.country = 'Tanzania' AND climber.country = 'West Germany' AND climber.points >= 5.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country",
+    "climber.country",
+    "climber.points"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Tanzania",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": ">=",
+     "value": 5.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Tanzania",
+    "climber.country": "West Germany",
+    "climber.points": 5.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Tanzania', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'West Germany' and points at least '5.0'?"
+  },
+  {
+   "uid": "f68e7c5f-c93c-43c4-bedf-d484bd7c1651",
+   "question": "Which mountains named Kibo (Uhuru Pk) have a height of at least 5895.0 and prominence exactly 5885.0, climbed by someone from West Germany with a time of 1:14.56.4?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.height >= 5895.0 AND mountain.prominence = 5885.0 AND climber.country = 'West Germany' AND climber.time = '1:14.56.4' AND mountain.name = 'Kibo (Uhuru Pk)'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.height",
+    "mountain.prominence",
+    "climber.country",
+    "climber.time",
+    "mountain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 5895.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": "=",
+     "value": 5885.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:14.56.4",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Kibo (Uhuru Pk)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.height": 5895.0,
+    "mountain.prominence": 5885.0,
+    "climber.country": "West Germany",
+    "climber.time": "1:14.56.4",
+    "mountain.name": "Kibo (Uhuru Pk)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with height at least '5895.0' and prominence equal to '5885.0' and name equal to 'Kibo (Uhuru Pk)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'West Germany' and time equal to '1:14.56.4'?"
+  },
+  {
+   "uid": "7612ee73-38dd-4c9d-a23e-5da6c71b0ecf",
+   "question": "Which mountains named Duwoni / Mt Speke (Vittorio Emanuele Pk) in Uganda were climbed by climbers from the United Kingdom with a time exactly 1:25.40.6?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.country = 'Uganda' AND climber.time = '1:25.40.6' AND climber.country = 'United Kingdom' AND mountain.name = 'Duwoni / Mt Speke (Vittorio Emanuele Pk)'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.country",
+    "climber.time",
+    "climber.country",
+    "mountain.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Uganda",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:25.40.6",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "United Kingdom",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Duwoni / Mt Speke (Vittorio Emanuele Pk)",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.country": "Uganda",
+    "climber.time": "1:25.40.6",
+    "climber.country": "United Kingdom",
+    "mountain.name": "Duwoni / Mt Speke (Vittorio Emanuele Pk)"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Uganda' and name equal to 'Duwoni / Mt Speke (Vittorio Emanuele Pk)', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with time equal to '1:25.40.6' and country equal to 'United Kingdom'?"
+  },
+  {
+   "uid": "f5271c44-c97c-4aaf-a1ec-dedacd772dd8",
+   "question": "Which mountains named Kibo (Uhuru Pk) in the Kilimanjaro range were climbed by Klaus Enders?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Kibo (Uhuru Pk)' AND climber.name = 'Klaus Enders' AND mountain.range = 'Kilimanjaro'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "climber.name",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Kibo (Uhuru Pk)",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Klaus Enders",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Kilimanjaro",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Kibo (Uhuru Pk)",
+    "climber.name": "Klaus Enders",
+    "mountain.range": "Kilimanjaro"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Kibo (Uhuru Pk)' and range equal to 'Kilimanjaro', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with name equal to 'Klaus Enders'?"
+  },
+  {
+   "uid": "5c342096-4e22-4a1b-9be9-3ff0663342b2",
+   "question": "What mountains in Kenya\u2019s Mount Kenya range are at least 5199.0 meters high and have been climbed by climbers with at least 6.0 points?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.range = 'Mount Kenya' AND climber.points >= 6.0 AND mountain.height >= 5199.0 AND mountain.country = 'Kenya'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.range",
+    "climber.points",
+    "mountain.height",
+    "mountain.country"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Mount Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": ">=",
+     "value": 6.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": ">=",
+     "value": 5199.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.range": "Mount Kenya",
+    "climber.points": 6.0,
+    "mountain.height": 5199.0,
+    "mountain.country": "Kenya"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with range equal to 'Mount Kenya' and height at least '5199.0' and country equal to 'Kenya', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with points at least '6.0'?"
+  },
+  {
+   "uid": "f99a91a4-2ac2-42cc-9b7f-8222c4626c04",
+   "question": "Which mountains in Kenya that are exactly 4985.0 meters high have been climbed by someone from West Germany?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.country = 'West Germany' AND mountain.country = 'Kenya' AND mountain.height = 4985.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.country",
+    "mountain.country",
+    "mountain.height"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "country",
+     "operator": "=",
+     "value": "West Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "country",
+     "operator": "=",
+     "value": "Kenya",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "height",
+     "operator": "=",
+     "value": 4985.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "climber.country": "West Germany",
+    "mountain.country": "Kenya",
+    "mountain.height": 4985.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with country equal to 'Kenya' and height equal to '4985.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with country equal to 'West Germany'?"
+  },
+  {
+   "uid": "af3d8cf1-8e00-4d7c-abcb-eb1b5f62e966",
+   "question": "Which mountains with a prominence of at least 720.0 were climbed by L Currie in exactly 1:25.40.6 with at least 2.0 points?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE climber.name = 'L Currie' AND mountain.prominence >= 720.0 AND climber.time = '1:25.40.6' AND climber.points >= 2.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "climber.name",
+    "mountain.prominence",
+    "climber.time",
+    "climber.points"
+   ],
+   "involved_filters": [
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "L Currie",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "prominence",
+     "operator": ">=",
+     "value": 720.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "climber",
+     "column": "time",
+     "operator": "=",
+     "value": "1:25.40.6",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "points",
+     "operator": ">=",
+     "value": 2.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "climber.name": "L Currie",
+    "mountain.prominence": 720.0,
+    "climber.time": "1:25.40.6",
+    "climber.points": 2.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with prominence at least '720.0', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with name equal to 'L Currie' and time equal to '1:25.40.6' and points at least '2.0'?"
+  },
+  {
+   "uid": "2a82cc98-eecb-4f50-994f-6a1b476bc0b0",
+   "question": "Which mountains named Mount Kenya (Batian) in the Mount Kenya range were climbed by Jean Claude Castella?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT mountain.mountain_id FROM mountain\nJOIN climber ON mountain.mountain_id = climber.mountain_id\nWHERE mountain.name = 'Mount Kenya (Batian)' AND climber.name = 'Jean Claude Castella' AND mountain.range = 'Mount Kenya'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "climber",
+    "mountain"
+   ],
+   "involved_columns": [
+    "mountain.name",
+    "climber.name",
+    "mountain.range"
+   ],
+   "involved_filters": [
+    {
+     "table": "mountain",
+     "column": "name",
+     "operator": "=",
+     "value": "Mount Kenya (Batian)",
+     "column_type": "enum"
+    },
+    {
+     "table": "climber",
+     "column": "name",
+     "operator": "=",
+     "value": "Jean Claude Castella",
+     "column_type": "enum"
+    },
+    {
+     "table": "mountain",
+     "column": "range",
+     "operator": "=",
+     "value": "Mount Kenya",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "mountain.name": "Mount Kenya (Batian)",
+    "climber.name": "Jean Claude Castella",
+    "mountain.range": "Mount Kenya"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "mountain"
+   },
+   "answer_table": "mountain",
+   "answer_id_column": "mountain_id",
+   "canonical_question": "Which mountain entities with name equal to 'Mount Kenya (Batian)' and range equal to 'Mount Kenya', having at least one related climber record (linked on mountain.mountain_id = climber.mountain_id) with name equal to 'Jean Claude Castella'?"
+  }
+ ]
+}

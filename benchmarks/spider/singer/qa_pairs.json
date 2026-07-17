@@ -1,0 +1,3310 @@
+{
+ "db_id": "singer",
+ "target_table": "singer",
+ "mode": "flexbench",
+ "total_qa_pairs": 50,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 2002490200,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/singer/singer.sqlite",
+  "generated_at": "2026-07-02T14:49:48.759869+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "singer",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 50,
+  "shortfall_total": 0,
+  "overall_fulfillment_rate": 1.0,
+  "feasible_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "requested_strategies": [
+   "0E",
+   "0M",
+   "1pE",
+   "1pH",
+   "1pM"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pM": 10,
+   "1pH": 10
+  },
+  "realized_counts": {
+   "0E": 10,
+   "0M": 10,
+   "1pE": 10,
+   "1pH": 10,
+   "1pM": 10
+  },
+  "shortfalls": {},
+  "shortfall_reason_counts": {},
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 11,
+    "inner_attempts": 11,
+    "failed_rounds": 1,
+    "invalid_pairs_filtered": 1,
+    "failure_events": {
+     "qa_validation_failed": 1
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "0M": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 12,
+    "inner_attempts": 12,
+    "failed_rounds": 2,
+    "invalid_pairs_filtered": 2,
+    "failure_events": {
+     "qa_validation_failed": 2
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pE": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 10,
+    "inner_attempts": 10,
+    "failed_rounds": 0,
+    "invalid_pairs_filtered": 0,
+    "failure_events": {},
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": null
+   },
+   "1pH": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 13,
+    "inner_attempts": 13,
+    "failed_rounds": 3,
+    "invalid_pairs_filtered": 3,
+    "failure_events": {
+     "qa_validation_failed": 3
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   },
+   "1pM": {
+    "target_quota": 10,
+    "accepted_count": 10,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 14,
+    "inner_attempts": 14,
+    "failed_rounds": 4,
+    "invalid_pairs_filtered": 4,
+    "failure_events": {
+     "qa_validation_failed": 4
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "d46ebbe9-7a0b-478c-82c9-50bca404ccae",
+   "question": "Which singers have a net worth of at most 26.3 million?",
+   "answer_row_ids": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 6,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.net_worth_millions <= 26.3",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 26.3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.net_worth_millions": 26.3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at most '26.3'?"
+  },
+  {
+   "uid": "f2facc25-cbdf-46d9-a86f-cdf2f9e77c52",
+   "question": "Which singers born in 1942 or later have a net worth of at least 17.4 million?",
+   "answer_row_ids": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "answer_count": 4,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.net_worth_millions >= 17.4 AND singer.birth_year >= 1942.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.net_worth_millions",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 17.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1942.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.net_worth_millions": 17.4,
+    "singer.birth_year": 1942.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at least '17.4' and birth year at least '1942.0'?"
+  },
+  {
+   "uid": "98ef16d4-bf13-41bd-b274-4702a93998fa",
+   "question": "What singers born in 1961 or later have a net worth of exactly 12.7 million?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.net_worth_millions = 12.7 AND singer.birth_year >= 1961.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.net_worth_millions",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 12.7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1961.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.net_worth_millions": 12.7,
+    "singer.birth_year": 1961.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions equal to '12.7' and birth year at least '1961.0'?"
+  },
+  {
+   "uid": "f7f279e5-f14c-423d-b186-bdb666b06a2e",
+   "question": "Which singers named Christy Walton have citizenship in United States?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.citizenship = 'United States' AND singer.name = 'Christy Walton'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "singer.name": "Christy Walton"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and name equal to 'Christy Walton'?"
+  },
+  {
+   "uid": "bc126aab-50e5-4c0b-9143-cd599a7129de",
+   "question": "Which singers were born in 1942 exactly?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year = 1942.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "=",
+     "value": 1942.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1942.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year equal to '1942.0'?"
+  },
+  {
+   "uid": "26c4c157-cbef-4439-814d-f280d36e3ae9",
+   "question": "Which singers were born in 1949 or later?",
+   "answer_row_ids": [
+    3,
+    6,
+    7,
+    8
+   ],
+   "answer_count": 4,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year >= 1949.0",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1949.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1949.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year at least '1949.0'?"
+  },
+  {
+   "uid": "2596c89a-38e1-4461-b1e9-89018aafb9f9",
+   "question": "Which singers have citizenship in United States and a net worth of at least 26.3 million?",
+   "answer_row_ids": [
+    2,
+    3
+   ],
+   "answer_count": 2,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.citizenship = 'United States' AND singer.net_worth_millions >= 26.3",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 26.3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "singer.net_worth_millions": 26.3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and net worth millions at least '26.3'?"
+  },
+  {
+   "uid": "6d771e87-2b49-4f91-a046-fb2522c91b1c",
+   "question": "Which singers named Gina Rinehart have citizenship in Australia?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.citizenship = 'Australia' AND singer.name = 'Gina Rinehart'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Australia",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Gina Rinehart",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "Australia",
+    "singer.name": "Gina Rinehart"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'Australia' and name equal to 'Gina Rinehart'?"
+  },
+  {
+   "uid": "572212af-ab4e-47e9-9a3c-ea09a1afb795",
+   "question": "Who are the singers born in 1942 or later with a net worth exactly 17.4 million?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year >= 1942.0 AND singer.net_worth_millions = 17.4",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1942.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 17.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1942.0,
+    "singer.net_worth_millions": 17.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year at least '1942.0' and net worth millions equal to '17.4'?"
+  },
+  {
+   "uid": "f2836154-8325-477e-be64-ed9bf6b0c1c8",
+   "question": "Which singers have a net worth of exactly 12.7 million and citizenship in the United States?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.net_worth_millions = 12.7 AND singer.citizenship = 'United States'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.net_worth_millions",
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 12.7,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.net_worth_millions": 12.7,
+    "singer.citizenship": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions equal to '12.7' and citizenship equal to 'United States'?"
+  },
+  {
+   "uid": "407afbe4-3532-4429-b575-8be5396ff450",
+   "question": "What singers named Jacqueline Mars, born in 1940, have a net worth of exactly 17.8 million and are citizens of the United States?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year = 1940.0 AND singer.net_worth_millions = 17.8 AND singer.name = 'Jacqueline Mars' AND singer.citizenship = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year",
+    "singer.net_worth_millions",
+    "singer.name",
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "=",
+     "value": 1940.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 17.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Jacqueline Mars",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1940.0,
+    "singer.net_worth_millions": 17.8,
+    "singer.name": "Jacqueline Mars",
+    "singer.citizenship": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year equal to '1940.0' and net worth millions equal to '17.8' and name equal to 'Jacqueline Mars' and citizenship equal to 'United States'?"
+  },
+  {
+   "uid": "70a128bf-8c9e-44c3-b120-5236de405dd6",
+   "question": "Which singers named Abigail Johnson have a net worth of exactly 12.7 million and were born in 1961 or later with citizenship in the United States?",
+   "answer_row_ids": [
+    8
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year >= 1961.0 AND singer.citizenship = 'United States' AND singer.name = 'Abigail Johnson' AND singer.net_worth_millions = 12.7",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year",
+    "singer.citizenship",
+    "singer.name",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1961.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Abigail Johnson",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 12.7,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1961.0,
+    "singer.citizenship": "United States",
+    "singer.name": "Abigail Johnson",
+    "singer.net_worth_millions": 12.7
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year at least '1961.0' and citizenship equal to 'United States' and name equal to 'Abigail Johnson' and net worth millions equal to '12.7'?"
+  },
+  {
+   "uid": "0630ae52-501c-4315-a834-6c1f8c9edbdb",
+   "question": "Which singers named Iris Fontbona have Chilean citizenship, were born in 1942 or later, and have a net worth of at least 17.4 million?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year >= 1942.0 AND singer.net_worth_millions >= 17.4 AND singer.name = 'Iris Fontbona' AND singer.citizenship = 'Chile'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year",
+    "singer.net_worth_millions",
+    "singer.name",
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1942.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 17.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1942.0,
+    "singer.net_worth_millions": 17.4,
+    "singer.name": "Iris Fontbona",
+    "singer.citizenship": "Chile"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year at least '1942.0' and net worth millions at least '17.4' and name equal to 'Iris Fontbona' and citizenship equal to 'Chile'?"
+  },
+  {
+   "uid": "a179756a-48d6-49f2-9095-02b003a84d4e",
+   "question": "What singers named Susanne Klatten have German citizenship, a net worth of exactly 14.3 million, and were born in 1962 or earlier?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.birth_year <= 1962.0 AND singer.citizenship = 'Germany' AND singer.net_worth_millions = 14.3 AND singer.name = 'Susanne Klatten'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.birth_year",
+    "singer.citizenship",
+    "singer.net_worth_millions",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "<=",
+     "value": 1962.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 14.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Susanne Klatten",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.birth_year": 1962.0,
+    "singer.citizenship": "Germany",
+    "singer.net_worth_millions": 14.3,
+    "singer.name": "Susanne Klatten"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with birth year at most '1962.0' and citizenship equal to 'Germany' and net worth millions equal to '14.3' and name equal to 'Susanne Klatten'?"
+  },
+  {
+   "uid": "d3a14445-f304-4e26-9049-97bd962a2f62",
+   "question": "Which singers named Iris Fontbona have citizenship in Chile and a net worth of exactly 17.4 million?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.citizenship = 'Chile' AND singer.net_worth_millions = 17.4 AND singer.name = 'Iris Fontbona'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.net_worth_millions",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 17.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "Chile",
+    "singer.net_worth_millions": 17.4,
+    "singer.name": "Iris Fontbona"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'Chile' and net worth millions equal to '17.4' and name equal to 'Iris Fontbona'?"
+  },
+  {
+   "uid": "835dd608-f80e-470a-b1b4-195442034c78",
+   "question": "Which singers named Christy Walton are United States citizens with a net worth of at most 28.8 million?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.name = 'Christy Walton' AND singer.net_worth_millions <= 28.8 AND singer.citizenship = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "singer.net_worth_millions",
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 28.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Christy Walton",
+    "singer.net_worth_millions": 28.8,
+    "singer.citizenship": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Christy Walton' and net worth millions at most '28.8' and citizenship equal to 'United States'?"
+  },
+  {
+   "uid": "a281d5fc-9bc4-44af-ba6f-e0cb322c177d",
+   "question": "Which singers named Jacqueline Mars have a net worth of at least 17.8 million and citizenship in the United States?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.name = 'Jacqueline Mars' AND singer.net_worth_millions >= 17.8 AND singer.citizenship = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "singer.net_worth_millions",
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Jacqueline Mars",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 17.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Jacqueline Mars",
+    "singer.net_worth_millions": 17.8,
+    "singer.citizenship": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Jacqueline Mars' and net worth millions at least '17.8' and citizenship equal to 'United States'?"
+  },
+  {
+   "uid": "bf4ea11e-f99d-4798-850b-7a5c22663519",
+   "question": "Which singers named Christy Walton are United States citizens born in 1948 or later with a net worth of exactly 28.8 million?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.name = 'Christy Walton' AND singer.net_worth_millions = 28.8 AND singer.birth_year >= 1948.0 AND singer.citizenship = 'United States'",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "singer.net_worth_millions",
+    "singer.birth_year",
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 28.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1948.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Christy Walton",
+    "singer.net_worth_millions": 28.8,
+    "singer.birth_year": 1948.0,
+    "singer.citizenship": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Christy Walton' and net worth millions equal to '28.8' and birth year at least '1948.0' and citizenship equal to 'United States'?"
+  },
+  {
+   "uid": "faed066b-539a-415a-85ab-7f94af88a326",
+   "question": "Which singers born in 1962 or later have German citizenship and a net worth of at most 14.3 million?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.net_worth_millions <= 14.3 AND singer.citizenship = 'Germany' AND singer.birth_year >= 1962.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.net_worth_millions",
+    "singer.citizenship",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 14.3,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1962.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.net_worth_millions": 14.3,
+    "singer.citizenship": "Germany",
+    "singer.birth_year": 1962.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at most '14.3' and citizenship equal to 'Germany' and birth year at least '1962.0'?"
+  },
+  {
+   "uid": "26e1619d-102c-4043-b8a1-e6a95696bdd7",
+   "question": "Which singers named Gina Rinehart have Australian citizenship, were born in 1953 or later, and have a net worth of at least 17.0 million?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nWHERE singer.citizenship = 'Australia' AND singer.name = 'Gina Rinehart' AND singer.net_worth_millions >= 17.0 AND singer.birth_year >= 1953.0",
+   "strategy": "0M",
+   "difficulty_score": 0.3,
+   "tier": "easy",
+   "involved_tables": [
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.name",
+    "singer.net_worth_millions",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Australia",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Gina Rinehart",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 17.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1953.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "Australia",
+    "singer.name": "Gina Rinehart",
+    "singer.net_worth_millions": 17.0,
+    "singer.birth_year": 1953.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'Australia' and name equal to 'Gina Rinehart' and net worth millions at least '17.0' and birth year at least '1953.0'?"
+  },
+  {
+   "uid": "52f852cb-4fbb-46a7-9de8-63dd3a97a443",
+   "question": "Who is Liliane Bettencourt among the singers with songs that have sales of at least 552407?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.name = 'Liliane Bettencourt' AND song.sales >= 552407.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "song.sales"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Liliane Bettencourt",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": ">=",
+     "value": 552407.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Liliane Bettencourt",
+    "song.sales": 552407.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Liliane Bettencourt', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales at least '552407.0'?"
+  },
+  {
+   "uid": "6ce2da07-ac3f-4b7f-8fb8-b19eba0a0767",
+   "question": "Which singers with a net worth of at least 14.3 million have a song titled Mysterious Girl?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Mysterious Girl' AND singer.net_worth_millions >= 14.3",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Mysterious Girl",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 14.3,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Mysterious Girl",
+    "singer.net_worth_millions": 14.3
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at least '14.3', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Mysterious Girl'?"
+  },
+  {
+   "uid": "bf86d038-68c5-40c8-8545-07ce7c0e0a2f",
+   "question": "Who are the singers of the song where the title is Left Outside Alone?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Left Outside Alone'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Left Outside Alone",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Left Outside Alone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Left Outside Alone'?"
+  },
+  {
+   "uid": "5cf97088-27ca-44e2-9e0f-31fb79114ace",
+   "question": "Which singers have songs that reached a highest position of at least 1.0?",
+   "answer_row_ids": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+   ],
+   "answer_count": 6,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.highest_position >= 1.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.highest_position"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.highest_position": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities having at least one related song record (linked on singer.singer_id = song.singer_id) with highest position at least '1.0'?"
+  },
+  {
+   "uid": "52b0c67c-4885-465e-8ddb-14d8511911d2",
+   "question": "Which singers named Christy Walton have citizenship in the United States?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'United States' AND singer.name = 'Christy Walton'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "singer.name": "Christy Walton"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and name equal to 'Christy Walton', having at least one related song record (linked on singer.singer_id = song.singer_id)?"
+  },
+  {
+   "uid": "1a2f22b6-685e-4908-8101-b65b45cf7316",
+   "question": "Which singers named Christy Walton have songs with sales of at least 300000?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.name = 'Christy Walton' AND song.sales >= 300000.0",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "song.sales"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": ">=",
+     "value": 300000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Christy Walton",
+    "song.sales": 300000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Christy Walton', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales at least '300000.0'?"
+  },
+  {
+   "uid": "b961cbc8-c13a-4863-8310-ae3d58aaabc6",
+   "question": "Who are the singers that performed the song where the title is Do They Know It's Christmas?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Do They Know It''s Christmas'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Do They Know It's Christmas",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Do They Know It's Christmas"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Do They Know It'?"
+  },
+  {
+   "uid": "97897ff6-7fea-4ae4-a1bc-69283843751b",
+   "question": "Who are the singers with a song titled Call on Me that has exactly 335000.0 in sales?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.sales = 335000.0 AND song.title = 'Call on Me'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.sales",
+    "song.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 335000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Call on Me",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "song.sales": 335000.0,
+    "song.title": "Call on Me"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities having at least one related song record (linked on singer.singer_id = song.singer_id) with sales equal to '335000.0' and title equal to 'Call on Me'?"
+  },
+  {
+   "uid": "378d9c60-b880-40e1-b51b-27e5917a75a1",
+   "question": "Which singers who have songs are citizens of the United States?",
+   "answer_row_ids": [
+    2,
+    5
+   ],
+   "answer_count": 2,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'United States'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States', having at least one related song record (linked on singer.singer_id = song.singer_id)?"
+  },
+  {
+   "uid": "a8237a7e-0236-4b94-af68-8a2179a19db4",
+   "question": "Which singers with citizenship in Germany have songs?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'Germany'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Germany",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "Germany"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'Germany', having at least one related song record (linked on singer.singer_id = song.singer_id)?"
+  },
+  {
+   "uid": "3a139a3d-611e-4c07-8a17-6542a93625ae",
+   "question": "Which singers born in 1940 or later with United States citizenship and a net worth of at most 17.8 million have a song titled Left Outside Alone that sold exactly 275000 copies and reached position 3?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'United States' AND singer.net_worth_millions <= 17.8 AND song.sales = 275000.0 AND song.title = 'Left Outside Alone' AND singer.birth_year >= 1940.0 AND song.highest_position = 3.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.net_worth_millions",
+    "song.sales",
+    "song.title",
+    "singer.birth_year",
+    "song.highest_position"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 17.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 275000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Left Outside Alone",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1940.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "=",
+     "value": 3.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "singer.net_worth_millions": 17.8,
+    "song.sales": 275000.0,
+    "song.title": "Left Outside Alone",
+    "singer.birth_year": 1940.0,
+    "song.highest_position": 3.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and net worth millions at most '17.8' and birth year at least '1940.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales equal to '275000.0' and title equal to 'Left Outside Alone' and highest position equal to '3.0'?"
+  },
+  {
+   "uid": "4e208776-9c94-4549-a3b3-3bc4eba634e0",
+   "question": "Which singers named Liliane Bettencourt, born in 1944 or earlier with a net worth of at most 30 million, hold French citizenship and have a song titled Do They Know It's Christmas that reached exactly number 1 with sales of 1094000?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'France' AND song.title = 'Do They Know It''s Christmas' AND singer.net_worth_millions <= 30.0 AND singer.birth_year <= 1944.0 AND song.highest_position = 1.0 AND song.sales = 1094000.0 AND singer.name = 'Liliane Bettencourt'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "song.title",
+    "singer.net_worth_millions",
+    "singer.birth_year",
+    "song.highest_position",
+    "song.sales",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "France",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Do They Know It's Christmas",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "<=",
+     "value": 1944.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 1094000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Liliane Bettencourt",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "France",
+    "song.title": "Do They Know It's Christmas",
+    "singer.net_worth_millions": 30.0,
+    "singer.birth_year": 1944.0,
+    "song.highest_position": 1.0,
+    "song.sales": 1094000.0,
+    "singer.name": "Liliane Bettencourt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'France' and net worth millions at most '30.0' and birth year at most '1944.0' and name equal to 'Liliane Bettencourt', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Do They Know It' and highest position equal to '1.0' and sales equal to '1094000.0'?"
+  },
+  {
+   "uid": "52a5a821-7dbb-4967-989e-2554ff624660",
+   "question": "Which singers named Jacqueline Mars, born in 1940 or earlier, are U.S. citizens with a net worth of at most 17.8 million and have a song titled Left Outside Alone that sold no more than 275000 copies and reached exactly position 3?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'United States' AND singer.net_worth_millions <= 17.8 AND song.sales <= 275000.0 AND song.highest_position = 3.0 AND song.title = 'Left Outside Alone' AND singer.birth_year <= 1940.0 AND singer.name = 'Jacqueline Mars'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.net_worth_millions",
+    "song.sales",
+    "song.highest_position",
+    "song.title",
+    "singer.birth_year",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 17.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "<=",
+     "value": 275000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Left Outside Alone",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "<=",
+     "value": 1940.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Jacqueline Mars",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "singer.net_worth_millions": 17.8,
+    "song.sales": 275000.0,
+    "song.highest_position": 3.0,
+    "song.title": "Left Outside Alone",
+    "singer.birth_year": 1940.0,
+    "singer.name": "Jacqueline Mars"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and net worth millions at most '17.8' and birth year at most '1940.0' and name equal to 'Jacqueline Mars', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales at most '275000.0' and highest position equal to '3.0' and title equal to 'Left Outside Alone'?"
+  },
+  {
+   "uid": "f560059f-4af7-428e-9c8f-5ce79b170839",
+   "question": "Which singers named Christy Walton born in 1948 or later have a net worth of at least 28.8 million and have a song titled Yeah that sold at most 300000 copies and reached a highest position of at least 1?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.net_worth_millions >= 28.8 AND singer.birth_year >= 1948.0 AND song.sales <= 300000.0 AND song.title = 'Yeah' AND song.highest_position >= 1.0 AND singer.name = 'Christy Walton'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.net_worth_millions",
+    "singer.birth_year",
+    "song.sales",
+    "song.title",
+    "song.highest_position",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 28.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1948.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "<=",
+     "value": 300000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Yeah",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.net_worth_millions": 28.8,
+    "singer.birth_year": 1948.0,
+    "song.sales": 300000.0,
+    "song.title": "Yeah",
+    "song.highest_position": 1.0,
+    "singer.name": "Christy Walton"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at least '28.8' and birth year at least '1948.0' and name equal to 'Christy Walton', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales at most '300000.0' and title equal to 'Yeah' and highest position at least '1.0'?"
+  },
+  {
+   "uid": "66481ae0-7821-445a-9688-34cbebdb3997",
+   "question": "Which singers named Iris Fontbona, born in 1942 or later, with Chilean citizenship, have a song titled Call on Me that sold at least 335000 copies and reached a highest position of at most 1?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.name = 'Iris Fontbona' AND song.title = 'Call on Me' AND singer.citizenship = 'Chile' AND song.highest_position <= 1.0 AND singer.birth_year >= 1942.0 AND song.sales >= 335000.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "song.title",
+    "singer.citizenship",
+    "song.highest_position",
+    "singer.birth_year",
+    "song.sales"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Call on Me",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1942.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": ">=",
+     "value": 335000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Iris Fontbona",
+    "song.title": "Call on Me",
+    "singer.citizenship": "Chile",
+    "song.highest_position": 1.0,
+    "singer.birth_year": 1942.0,
+    "song.sales": 335000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Iris Fontbona' and citizenship equal to 'Chile' and birth year at least '1942.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Call on Me' and highest position at most '1.0' and sales at least '335000.0'?"
+  },
+  {
+   "uid": "e9a2a9c1-68e1-4c12-8c7d-68b05869338d",
+   "question": "Which singers named Liliane Bettencourt, born in 1944 with French citizenship and a net worth of at least 30 million, have a song titled Do They Know It's Christmas that reached exactly number 1 and sold at most 1094000 copies?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.sales <= 1094000.0 AND singer.citizenship = 'France' AND singer.net_worth_millions >= 30.0 AND song.highest_position = 1.0 AND song.title = 'Do They Know It''s Christmas' AND singer.name = 'Liliane Bettencourt' AND singer.birth_year = 1944.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.sales",
+    "singer.citizenship",
+    "singer.net_worth_millions",
+    "song.highest_position",
+    "song.title",
+    "singer.name",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "<=",
+     "value": 1094000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "France",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Do They Know It's Christmas",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Liliane Bettencourt",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "=",
+     "value": 1944.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.sales": 1094000.0,
+    "singer.citizenship": "France",
+    "singer.net_worth_millions": 30.0,
+    "song.highest_position": 1.0,
+    "song.title": "Do They Know It's Christmas",
+    "singer.name": "Liliane Bettencourt",
+    "singer.birth_year": 1944.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'France' and net worth millions at least '30.0' and name equal to 'Liliane Bettencourt' and birth year equal to '1944.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales at most '1094000.0' and highest position equal to '1.0' and title equal to 'Do They Know It'?"
+  },
+  {
+   "uid": "2957383d-c33a-4912-8c59-f23b4cc70c04",
+   "question": "Which singers named Iris Fontbona, born in 1942 or later with Chilean citizenship and a net worth of at most 17.4 million, have a song titled Call on Me that sold at least 335000 copies and reached a highest position of at most 1?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Call on Me' AND singer.net_worth_millions <= 17.4 AND song.sales >= 335000.0 AND singer.birth_year >= 1942.0 AND singer.citizenship = 'Chile' AND song.highest_position <= 1.0 AND singer.name = 'Iris Fontbona'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title",
+    "singer.net_worth_millions",
+    "song.sales",
+    "singer.birth_year",
+    "singer.citizenship",
+    "song.highest_position",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Call on Me",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 17.4,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": ">=",
+     "value": 335000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1942.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Call on Me",
+    "singer.net_worth_millions": 17.4,
+    "song.sales": 335000.0,
+    "singer.birth_year": 1942.0,
+    "singer.citizenship": "Chile",
+    "song.highest_position": 1.0,
+    "singer.name": "Iris Fontbona"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at most '17.4' and birth year at least '1942.0' and citizenship equal to 'Chile' and name equal to 'Iris Fontbona', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Call on Me' and sales at least '335000.0' and highest position at most '1.0'?"
+  },
+  {
+   "uid": "292127d7-68f1-4d64-8ef1-6a687b142d6b",
+   "question": "Which singers named Jacqueline Mars, born in 1940 or earlier with a net worth of exactly 17.8 million and citizenship in the United States, have a song titled Left Outside Alone that sold exactly 275000 copies and reached at least position 3?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.highest_position >= 3.0 AND singer.citizenship = 'United States' AND song.sales = 275000.0 AND singer.net_worth_millions = 17.8 AND singer.birth_year <= 1940.0 AND singer.name = 'Jacqueline Mars' AND song.title = 'Left Outside Alone'",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.highest_position",
+    "singer.citizenship",
+    "song.sales",
+    "singer.net_worth_millions",
+    "singer.birth_year",
+    "singer.name",
+    "song.title"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": ">=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 275000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 17.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "<=",
+     "value": 1940.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Jacqueline Mars",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Left Outside Alone",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "song.highest_position": 3.0,
+    "singer.citizenship": "United States",
+    "song.sales": 275000.0,
+    "singer.net_worth_millions": 17.8,
+    "singer.birth_year": 1940.0,
+    "singer.name": "Jacqueline Mars",
+    "song.title": "Left Outside Alone"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and net worth millions equal to '17.8' and birth year at most '1940.0' and name equal to 'Jacqueline Mars', having at least one related song record (linked on singer.singer_id = song.singer_id) with highest position at least '3.0' and sales equal to '275000.0' and title equal to 'Left Outside Alone'?"
+  },
+  {
+   "uid": "df3333b1-6517-4944-a6d8-ea1d267e3a26",
+   "question": "Who is the singer named Christy Walton from the United States, born in 1948 or later, with a net worth of exactly 28.8 million, who has a song titled Yeah that sold no more than 300000 copies and reached at least position 1?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Yeah' AND singer.name = 'Christy Walton' AND singer.citizenship = 'United States' AND singer.net_worth_millions = 28.8 AND song.sales <= 300000.0 AND singer.birth_year >= 1948.0 AND song.highest_position >= 1.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title",
+    "singer.name",
+    "singer.citizenship",
+    "singer.net_worth_millions",
+    "song.sales",
+    "singer.birth_year",
+    "song.highest_position"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Yeah",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Christy Walton",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 28.8,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "<=",
+     "value": 300000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1948.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Yeah",
+    "singer.name": "Christy Walton",
+    "singer.citizenship": "United States",
+    "singer.net_worth_millions": 28.8,
+    "song.sales": 300000.0,
+    "singer.birth_year": 1948.0,
+    "song.highest_position": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Christy Walton' and citizenship equal to 'United States' and net worth millions equal to '28.8' and birth year at least '1948.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Yeah' and sales at most '300000.0' and highest position at least '1.0'?"
+  },
+  {
+   "uid": "5f33450e-67b7-4451-936c-0ef689b3a658",
+   "question": "Which singers born in 1944 or later, with exactly 30 million net worth and French citizenship, have a song titled \"Do They Know It's Christmas\" that sold at least 1094000 copies and reached at least number 1?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'France' AND song.highest_position >= 1.0 AND song.title = 'Do They Know It''s Christmas' AND singer.net_worth_millions = 30.0 AND song.sales >= 1094000.0 AND singer.birth_year >= 1944.0",
+   "strategy": "1pH",
+   "difficulty_score": 1.6,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "song.highest_position",
+    "song.title",
+    "singer.net_worth_millions",
+    "song.sales",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "France",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Do They Know It's Christmas",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 30.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": ">=",
+     "value": 1094000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": ">=",
+     "value": 1944.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "France",
+    "song.highest_position": 1.0,
+    "song.title": "Do They Know It's Christmas",
+    "singer.net_worth_millions": 30.0,
+    "song.sales": 1094000.0,
+    "singer.birth_year": 1944.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'France' and net worth millions equal to '30.0' and birth year at least '1944.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with highest position at least '1.0' and title equal to 'Do They Know It' and sales at least '1094000.0'?"
+  },
+  {
+   "uid": "d085eda3-269a-4136-bdcc-01cb7ee2ad90",
+   "question": "Who are the singers born in 1940 or earlier with United States citizenship that have songs reaching exactly position 3 and selling at most 275000 copies?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'United States' AND song.highest_position = 3.0 AND song.sales <= 275000.0 AND singer.birth_year <= 1940.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "song.highest_position",
+    "song.sales",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "<=",
+     "value": 275000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "<=",
+     "value": 1940.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "song.highest_position": 3.0,
+    "song.sales": 275000.0,
+    "singer.birth_year": 1940.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and birth year at most '1940.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with highest position equal to '3.0' and sales at most '275000.0'?"
+  },
+  {
+   "uid": "cfe6bf9f-0c3f-4278-922b-c28bff5c7c39",
+   "question": "Which singers from Chile with a net worth of 17.4 million have the song titled Call on Me?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Call on Me' AND singer.citizenship = 'Chile' AND singer.net_worth_millions = 17.4",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title",
+    "singer.citizenship",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Call on Me",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "=",
+     "value": 17.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Call on Me",
+    "singer.citizenship": "Chile",
+    "singer.net_worth_millions": 17.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'Chile' and net worth millions equal to '17.4', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Call on Me'?"
+  },
+  {
+   "uid": "01f33649-470a-4fd4-8df8-a173f97f73c9",
+   "question": "Which singers named Jacqueline Mars have a net worth of at least 17.8 million and have a song titled Left Outside Alone that sold exactly 275000 copies and reached a highest position of at most 3?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.name = 'Jacqueline Mars' AND song.title = 'Left Outside Alone' AND song.sales = 275000.0 AND song.highest_position <= 3.0 AND singer.net_worth_millions >= 17.8",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "song.title",
+    "song.sales",
+    "song.highest_position",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Jacqueline Mars",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Left Outside Alone",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 275000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "<=",
+     "value": 3.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 17.8,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Jacqueline Mars",
+    "song.title": "Left Outside Alone",
+    "song.sales": 275000.0,
+    "song.highest_position": 3.0,
+    "singer.net_worth_millions": 17.8
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Jacqueline Mars' and net worth millions at least '17.8', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Left Outside Alone' and sales equal to '275000.0' and highest position at most '3.0'?"
+  },
+  {
+   "uid": "75146928-31ff-4d31-9905-0ae2b0d23e7f",
+   "question": "Which singers named Iris Fontbona have a song titled Call on Me that reached a highest position of at least 1.0?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.name = 'Iris Fontbona' AND song.title = 'Call on Me' AND song.highest_position >= 1.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "song.title",
+    "song.highest_position"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Call on Me",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": ">=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Iris Fontbona",
+    "song.title": "Call on Me",
+    "song.highest_position": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Iris Fontbona', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Call on Me' and highest position at least '1.0'?"
+  },
+  {
+   "uid": "980b1347-583d-4e20-a4ef-c7ebc84ec9e7",
+   "question": "Which singers born in 1953 with Australian citizenship have a net worth of at most 17.0 million and songs that sold at most 292000 copies?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.sales <= 292000.0 AND singer.net_worth_millions <= 17.0 AND singer.citizenship = 'Australia' AND singer.birth_year = 1953.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.sales",
+    "singer.net_worth_millions",
+    "singer.citizenship",
+    "singer.birth_year"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "<=",
+     "value": 292000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": "<=",
+     "value": 17.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Australia",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "=",
+     "value": 1953.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.sales": 292000.0,
+    "singer.net_worth_millions": 17.0,
+    "singer.citizenship": "Australia",
+    "singer.birth_year": 1953.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with net worth millions at most '17.0' and citizenship equal to 'Australia' and birth year equal to '1953.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales at most '292000.0'?"
+  },
+  {
+   "uid": "0e3c24c1-b1b1-43cf-a0ed-1dfe1a67881f",
+   "question": "Which singers named Iris Fontbona, with Chilean citizenship and a net worth of at least 17.4 million, have songs that sold exactly 335000.0 copies and reached a highest position of at most 1?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.sales = 335000.0 AND singer.name = 'Iris Fontbona' AND song.highest_position <= 1.0 AND singer.citizenship = 'Chile' AND singer.net_worth_millions >= 17.4",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.sales",
+    "singer.name",
+    "song.highest_position",
+    "singer.citizenship",
+    "singer.net_worth_millions"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 335000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "net_worth_millions",
+     "operator": ">=",
+     "value": 17.4,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.sales": 335000.0,
+    "singer.name": "Iris Fontbona",
+    "song.highest_position": 1.0,
+    "singer.citizenship": "Chile",
+    "singer.net_worth_millions": 17.4
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Iris Fontbona' and citizenship equal to 'Chile' and net worth millions at least '17.4', having at least one related song record (linked on singer.singer_id = song.singer_id) with sales equal to '335000.0' and highest position at most '1.0'?"
+  },
+  {
+   "uid": "1904ef3f-3246-476f-90df-cea7d29b9087",
+   "question": "Which singers named Iris Fontbona from Chile have a song titled Call on Me?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Call on Me' AND singer.citizenship = 'Chile' AND singer.name = 'Iris Fontbona'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title",
+    "singer.citizenship",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Call on Me",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Chile",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Iris Fontbona",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Call on Me",
+    "singer.citizenship": "Chile",
+    "singer.name": "Iris Fontbona"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'Chile' and name equal to 'Iris Fontbona', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Call on Me'?"
+  },
+  {
+   "uid": "e44a7361-9b02-4bad-b9fa-179737f95919",
+   "question": "What singers named Jacqueline Mars were born in 1940 and have citizenship in the United States?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.citizenship = 'United States' AND singer.birth_year = 1940.0 AND singer.name = 'Jacqueline Mars'",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.citizenship",
+    "singer.birth_year",
+    "singer.name"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "United States",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "=",
+     "value": 1940.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Jacqueline Mars",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "singer.citizenship": "United States",
+    "singer.birth_year": 1940.0,
+    "singer.name": "Jacqueline Mars"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with citizenship equal to 'United States' and birth year equal to '1940.0' and name equal to 'Jacqueline Mars', having at least one related song record (linked on singer.singer_id = song.singer_id)?"
+  },
+  {
+   "uid": "c58a2efe-d10d-43c3-8c8b-09db05aa5356",
+   "question": "Which singers named Susanne Klatten with German citizenship have a song titled Mysterious Girl that sold at least 261000 copies and reached a highest position of at most 1?",
+   "answer_row_ids": [
+    7
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE song.title = 'Mysterious Girl' AND singer.name = 'Susanne Klatten' AND singer.citizenship = 'Germany' AND song.highest_position <= 1.0 AND song.sales >= 261000.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "song.title",
+    "singer.name",
+    "singer.citizenship",
+    "song.highest_position",
+    "song.sales"
+   ],
+   "involved_filters": [
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "Mysterious Girl",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Susanne Klatten",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "citizenship",
+     "operator": "=",
+     "value": "Germany",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": ">=",
+     "value": 261000.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "song.title": "Mysterious Girl",
+    "singer.name": "Susanne Klatten",
+    "singer.citizenship": "Germany",
+    "song.highest_position": 1.0,
+    "song.sales": 261000.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Susanne Klatten' and citizenship equal to 'Germany', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'Mysterious Girl' and highest position at most '1.0' and sales at least '261000.0'?"
+  },
+  {
+   "uid": "da1c0ec9-baac-4400-aabf-70092944b38f",
+   "question": "Which singers named Gina Rinehart, born in 1953 or earlier, have the song titled All This Time that sold exactly 292000 copies and reached a highest position of at most 1?",
+   "answer_row_ids": [
+    6
+   ],
+   "answer_count": 1,
+   "sql": "SELECT singer.singer_id FROM singer\nJOIN song ON singer.singer_id = song.singer_id\nWHERE singer.name = 'Gina Rinehart' AND song.title = 'All This Time' AND singer.birth_year <= 1953.0 AND song.sales = 292000.0 AND song.highest_position <= 1.0",
+   "strategy": "1pM",
+   "difficulty_score": 1.3,
+   "tier": "medium",
+   "involved_tables": [
+    "song",
+    "singer"
+   ],
+   "involved_columns": [
+    "singer.name",
+    "song.title",
+    "singer.birth_year",
+    "song.sales",
+    "song.highest_position"
+   ],
+   "involved_filters": [
+    {
+     "table": "singer",
+     "column": "name",
+     "operator": "=",
+     "value": "Gina Rinehart",
+     "column_type": "enum"
+    },
+    {
+     "table": "song",
+     "column": "title",
+     "operator": "=",
+     "value": "All This Time",
+     "column_type": "enum"
+    },
+    {
+     "table": "singer",
+     "column": "birth_year",
+     "operator": "<=",
+     "value": 1953.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "sales",
+     "operator": "=",
+     "value": 292000.0,
+     "column_type": "numeric"
+    },
+    {
+     "table": "song",
+     "column": "highest_position",
+     "operator": "<=",
+     "value": 1.0,
+     "column_type": "numeric"
+    }
+   ],
+   "involved_values": {
+    "singer.name": "Gina Rinehart",
+    "song.title": "All This Time",
+    "singer.birth_year": 1953.0,
+    "song.sales": 292000.0,
+    "song.highest_position": 1.0
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "singer"
+   },
+   "answer_table": "singer",
+   "answer_id_column": "singer_id",
+   "canonical_question": "Which singer entities with name equal to 'Gina Rinehart' and birth year at most '1953.0', having at least one related song record (linked on singer.singer_id = song.singer_id) with title equal to 'All This Time' and sales equal to '292000.0' and highest position at most '1.0'?"
+  }
+ ]
+}

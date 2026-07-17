@@ -1,0 +1,1346 @@
+{
+ "db_id": "car_1",
+ "target_table": "continents",
+ "mode": "flexbench",
+ "total_qa_pairs": 28,
+ "provenance": {
+  "generator": "flexbench",
+  "talk2metadata_version": "0.1.0",
+  "mode": "flexbench",
+  "base_seed": 42,
+  "db_seed": 406352442,
+  "pairs_per_db": 50,
+  "max_answer_records": 15,
+  "sqlite_path": "data/spider/data/spider/hf_download/database/car_1/car_1.sqlite",
+  "generated_at": "2026-07-02T16:58:31.833375+00:00",
+  "provider": "openai",
+  "model": "gpt-4.1-mini"
+ },
+ "generation_report": {
+  "generation_mode": "quota_guided",
+  "target_table": "continents",
+  "pairs_per_strategy": null,
+  "target_total": 50,
+  "realized_total": 28,
+  "shortfall_total": 22,
+  "overall_fulfillment_rate": 0.56,
+  "feasible_strategies": [
+   "0E",
+   "1pE"
+  ],
+  "requested_strategies": [
+   "0E",
+   "1pE"
+  ],
+  "infeasible_requested_strategies": [],
+  "target_quotas": {
+   "0E": 25,
+   "1pE": 25
+  },
+  "realized_counts": {
+   "0E": 3,
+   "1pE": 25
+  },
+  "shortfalls": {
+   "0E": 22
+  },
+  "shortfall_reason_counts": {
+   "duplicate_pair": 22
+  },
+  "strategy_reports": {
+   "0E": {
+    "target_quota": 25,
+    "accepted_count": 3,
+    "shortfall": 22,
+    "fulfillment_rate": 0.12,
+    "is_feasible": true,
+    "outer_attempts": 2000,
+    "inner_attempts": 2000,
+    "failed_rounds": 1997,
+    "invalid_pairs_filtered": 966,
+    "failure_events": {
+     "qa_validation_failed": 966,
+     "duplicate_pair": 1031
+    },
+    "shortfall_reason_counts": {
+     "duplicate_pair": 22
+    },
+    "primary_shortfall_reason": "duplicate_pair",
+    "last_failure_summary": "identical SQL already generated in this run"
+   },
+   "1pE": {
+    "target_quota": 25,
+    "accepted_count": 25,
+    "shortfall": 0,
+    "fulfillment_rate": 1.0,
+    "is_feasible": true,
+    "outer_attempts": 80,
+    "inner_attempts": 80,
+    "failed_rounds": 55,
+    "invalid_pairs_filtered": 39,
+    "failure_events": {
+     "qa_validation_failed": 39,
+     "duplicate_pair": 16
+    },
+    "shortfall_reason_counts": {},
+    "primary_shortfall_reason": null,
+    "last_failure_summary": "QA pair failed verifier and was filtered out"
+   }
+  }
+ },
+ "qa_pairs": [
+  {
+   "uid": "5415e436-69b8-4d62-8674-ce59e9597749",
+   "question": "Which continents are exactly classified as america?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nWHERE continents.continent = 'america'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "continents"
+   ],
+   "involved_columns": [
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "america",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "america"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'america'?"
+  },
+  {
+   "uid": "d606400c-b7ee-4b55-ae04-fb2ead5167e3",
+   "question": "What continents are exactly in Europe?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nWHERE continents.continent = 'europe'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "continents"
+   ],
+   "involved_columns": [
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "europe",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "europe"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'europe'?"
+  },
+  {
+   "uid": "42327632-eeb2-46dd-bbc8-3d3f513ec361",
+   "question": "What continents are exactly in Australia?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nWHERE continents.continent = 'australia'",
+   "strategy": "0E",
+   "difficulty_score": 0.0,
+   "tier": "easy",
+   "involved_tables": [
+    "continents"
+   ],
+   "involved_columns": [
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "australia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "australia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'australia'?"
+  },
+  {
+   "uid": "8cfad97c-5aba-4bb7-ba4e-8d92a5de4469",
+   "question": "Which continents include the country where the countryname is germany?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'germany'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "germany",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "germany"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'germany'?"
+  },
+  {
+   "uid": "42ec8ab0-8705-4e7a-92e3-901c50268b46",
+   "question": "Which continents include the country where the countryname is usa and the continent is america?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'america' AND countries.countryname = 'usa'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "america",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "usa",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "america",
+    "countries.countryname": "usa"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'america', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'usa'?"
+  },
+  {
+   "uid": "6f0ecc5b-8a52-4d4e-8dfb-9475829b232f",
+   "question": "Which continents are exactly named australia and have countries within them?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'australia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "australia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "australia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'australia', having at least one related countries record (linked on continents.contid = countries.continent)?"
+  },
+  {
+   "uid": "f3c7b8f7-7e42-459e-b5b0-37d28b151239",
+   "question": "Which continents in Europe include the country named Italy?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'italy' AND continents.continent = 'europe'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname",
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "italy",
+     "column_type": "enum"
+    },
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "europe",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "italy",
+    "continents.continent": "europe"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'europe', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'italy'?"
+  },
+  {
+   "uid": "4e0d8c29-e980-42a4-a030-e9e961745274",
+   "question": "Which continents include the country where the countryname is egypt and the continent is africa?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'africa' AND countries.countryname = 'egypt'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "africa",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "egypt",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "africa",
+    "countries.countryname": "egypt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'africa', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'egypt'?"
+  },
+  {
+   "uid": "5fd1a9d6-1e00-4c21-a971-ac612b99bf8d",
+   "question": "Which continents include the country where the countryname is usa?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'usa'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "usa",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "usa"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'usa'?"
+  },
+  {
+   "uid": "08160a18-08b4-45d2-aadc-8adefb760349",
+   "question": "Which continents are in America and include the country Brazil?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'brazil' AND continents.continent = 'america'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname",
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "brazil",
+     "column_type": "enum"
+    },
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "america",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "brazil",
+    "continents.continent": "america"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'america', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'brazil'?"
+  },
+  {
+   "uid": "bd1348dc-5950-4a41-a17f-567eb4f6823d",
+   "question": "Where is the continent located that is europe and includes the country italy?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'europe' AND countries.countryname = 'italy'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "europe",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "italy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "europe",
+    "countries.countryname": "italy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'europe', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'italy'?"
+  },
+  {
+   "uid": "934f49fd-ebe0-4824-a52c-cfda57eb56a5",
+   "question": "Which continents include the country where the name is new zealand?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'new zealand'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "new zealand",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "new zealand"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'new zealand'?"
+  },
+  {
+   "uid": "5c6ceca2-a6f8-4fd0-b5c6-71380ee11472",
+   "question": "Which continents are named Australia and include the country Australia?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'australia' AND continents.continent = 'australia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname",
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "australia",
+     "column_type": "enum"
+    },
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "australia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "australia",
+    "continents.continent": "australia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'australia', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'australia'?"
+  },
+  {
+   "uid": "3370784a-979e-432b-9071-b6ea3d92344a",
+   "question": "Which continents are in Europe and include the country Russia?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'europe' AND countries.countryname = 'russia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "europe",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "europe",
+    "countries.countryname": "russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'europe', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'russia'?"
+  },
+  {
+   "uid": "4d7b0894-a0ac-4d2f-8bca-ad53ca13db68",
+   "question": "Which continents include the country where countryname is japan?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'japan'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "japan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "japan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'japan'?"
+  },
+  {
+   "uid": "a32a7730-2be5-466d-8876-a3c5c7fd5e41",
+   "question": "Which continents have countries where the continent is africa?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'africa'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "africa",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "africa"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'africa', having at least one related countries record (linked on continents.contid = countries.continent)?"
+  },
+  {
+   "uid": "51eeb9de-6c36-437f-85c7-15b8c0c99797",
+   "question": "Which continents in Europe include the country named Sweden?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'europe' AND countries.countryname = 'sweden'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "europe",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "sweden",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "europe",
+    "countries.countryname": "sweden"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'europe', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'sweden'?"
+  },
+  {
+   "uid": "697246a4-efe9-4233-b082-e06718512287",
+   "question": "Which continents in Asia include the country Japan?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'japan' AND continents.continent = 'asia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname",
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "japan",
+     "column_type": "enum"
+    },
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "asia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "japan",
+    "continents.continent": "asia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'asia', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'japan'?"
+  },
+  {
+   "uid": "6d116131-a6f9-4600-9e24-42ad988191cf",
+   "question": "What continents include the country where the countryname is egypt?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'egypt'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "egypt",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "egypt"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'egypt'?"
+  },
+  {
+   "uid": "70e27c6d-f885-4e68-ba3f-56132a1b7390",
+   "question": "Which continents are named Australia and include the country New Zealand?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'new zealand' AND continents.continent = 'australia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname",
+    "continents.continent"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "new zealand",
+     "column_type": "enum"
+    },
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "australia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "new zealand",
+    "continents.continent": "australia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'australia', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'new zealand'?"
+  },
+  {
+   "uid": "2f7c18a9-ea9c-4723-81a4-58ae48cebda5",
+   "question": "Which continents include the country where the countryname is italy?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'italy'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "italy",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "italy"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'italy'?"
+  },
+  {
+   "uid": "3d3cb19c-1a94-4ae8-b51c-6991cbd23fe3",
+   "question": "Which continents include the country where the countryname is nigeria?",
+   "answer_row_ids": [
+    4
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'nigeria'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "nigeria",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "nigeria"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'nigeria'?"
+  },
+  {
+   "uid": "cfc02547-87c7-4251-9f3d-8e1ac9eb174d",
+   "question": "Where is the continent that is Europe and includes the country named France?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'europe' AND countries.countryname = 'france'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "europe",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "france",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "europe",
+    "countries.countryname": "france"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'europe', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'france'?"
+  },
+  {
+   "uid": "6bbcbb76-4eca-4c1d-a92e-86097fe4cec1",
+   "question": "Which continents include the country where the name is exactly australia?",
+   "answer_row_ids": [
+    5
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'australia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "australia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "australia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'australia'?"
+  },
+  {
+   "uid": "74cb1667-2716-4c75-b9e9-73629c2117af",
+   "question": "Which continents include the country where the countryname is mexico?",
+   "answer_row_ids": [
+    1
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'mexico'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "mexico",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "mexico"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'mexico'?"
+  },
+  {
+   "uid": "de78b430-f128-490f-b07e-d98d7eaddbce",
+   "question": "Which continents include the country where the countryname is exactly russia?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'russia'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "russia",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "russia"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'russia'?"
+  },
+  {
+   "uid": "9bf0917c-68d9-41be-ac50-007bc1416c76",
+   "question": "Which continents include the country where the countryname is japan and the continent is asia?",
+   "answer_row_ids": [
+    3
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE continents.continent = 'asia' AND countries.countryname = 'japan'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "continents.continent",
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "continents",
+     "column": "continent",
+     "operator": "=",
+     "value": "asia",
+     "column_type": "enum"
+    },
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "japan",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "continents.continent": "asia",
+    "countries.countryname": "japan"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities with continent equal to 'asia', having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'japan'?"
+  },
+  {
+   "uid": "d53e3d26-e7c3-448a-b3c6-56f3c91d1778",
+   "question": "Which continents include the country where the countryname is uk?",
+   "answer_row_ids": [
+    2
+   ],
+   "answer_count": 1,
+   "sql": "SELECT continents.contid FROM continents\nJOIN countries ON continents.contid = countries.continent\nWHERE countries.countryname = 'uk'",
+   "strategy": "1pE",
+   "difficulty_score": 1.0,
+   "tier": "medium",
+   "involved_tables": [
+    "continents",
+    "countries"
+   ],
+   "involved_columns": [
+    "countries.countryname"
+   ],
+   "involved_filters": [
+    {
+     "table": "countries",
+     "column": "countryname",
+     "operator": "=",
+     "value": "uk",
+     "column_type": "enum"
+    }
+   ],
+   "involved_values": {
+    "countries.countryname": "uk"
+   },
+   "is_valid": true,
+   "validation_errors": [],
+   "sql_valid": true,
+   "sql_validation_error": null,
+   "metadata": {
+    "target_table": "continents"
+   },
+   "answer_table": "continents",
+   "answer_id_column": "contid",
+   "canonical_question": "Which continents entities having at least one related countries record (linked on continents.contid = countries.continent) with countryname equal to 'uk'?"
+  }
+ ]
+}

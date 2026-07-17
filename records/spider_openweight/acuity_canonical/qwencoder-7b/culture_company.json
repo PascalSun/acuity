@@ -1,0 +1,124 @@
+{
+  "db_id": "culture_company",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "qwencoder-7b",
+  "n": 10,
+  "n_correct": 10,
+  "accuracy": 1.0,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T12:42:13.909457+00:00",
+  "records": [
+    {
+      "uid": "234231fd-c7de-4fe7-8733-805be84d8a1c",
+      "question": "What movies have the exact title The Art of War?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.title = 'The Art of War'",
+      "pred_sql": "SELECT movie.movie_id FROM movie WHERE movie.Title = 'The Art of War'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.0
+    },
+    {
+      "uid": "253622dc-4974-43a2-9d3d-b98277283040",
+      "question": "Which movies were directed by Troy Duffy?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.director = 'Troy Duffy'",
+      "pred_sql": "SELECT movie.movie_id FROM movie WHERE movie.Director = 'Troy Duffy'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.61
+    },
+    {
+      "uid": "33b98322-2273-4d34-acce-fd21d91fea08",
+      "question": "What movies titled The Art of War directed by Christian Duguay were released in 2000 with a budget of at least 60 million?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.budget_million >= 60.0 AND movie.year = 2000 AND movie.title = 'The Art of War' AND movie.director = 'Christian Duguay'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.budget_million >= 60.0\n  AND movie.year = 2000\n  AND movie.title = 'The Art of War'\n  AND movie.director = 'Christian Duguay'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.84
+    },
+    {
+      "uid": "4d8d1fd8-9c5f-43a5-998d-90a1bce8623c",
+      "question": "Which movies titled Battlefield Earth, directed by Roger Christian, have exactly 29725663 in worldwide gross?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.gross_worldwide = 29725663 AND movie.director = 'Roger Christian' AND movie.title = 'Battlefield Earth'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.gross_worldwide = 29725663 AND movie.director = 'Roger Christian' AND movie.title = 'Battlefield Earth'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.61
+    },
+    {
+      "uid": "716b603d-c0bb-454c-9621-a0ecd5963739",
+      "question": "Which movies titled The Boondock Saints have grossed at least 30471 worldwide?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.gross_worldwide >= 30471 AND movie.title = 'The Boondock Saints'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.gross_worldwide >= 30471 AND movie.title = 'The Boondock Saints'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.0
+    },
+    {
+      "uid": "72471edf-0976-4ee0-9d4d-643b89a7534a",
+      "question": "Which movies were released in 1999 or earlier?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.year <= 1999",
+      "pred_sql": "SELECT movie.movie_id FROM movie WHERE movie.Year <= 1999",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.0
+    },
+    {
+      "uid": "792a17c7-cb28-4878-a46f-289b84958ed1",
+      "question": "Which movies were directed by Christian Duguay?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.director = 'Christian Duguay'",
+      "pred_sql": "SELECT movie.movie_id FROM movie WHERE movie.Director = 'Christian Duguay'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 3.0
+    },
+    {
+      "uid": "96cb15d1-0baa-4db4-9706-92debae83ad3",
+      "question": "Which movies titled Battlefield Earth directed by Roger Christian have grossed at least 29725663 worldwide?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.title = 'Battlefield Earth' AND movie.director = 'Roger Christian' AND movie.gross_worldwide >= 29725663",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.Title = 'Battlefield Earth'\nAND movie.Director = 'Roger Christian'\nAND movie.Gross_worldwide >= 29725663",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.6
+    },
+    {
+      "uid": "9c65dcbe-30db-444e-88df-7a522ea34a46",
+      "question": "Which movies directed by Demian Lichtenstein had a budget of exactly 62.0 million and a worldwide gross of at most 18720175?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.gross_worldwide <= 18720175 AND movie.director = 'Demian Lichtenstein' AND movie.budget_million = 62.0",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE gross_worldwide <= 18720175 AND director = 'Demian Lichtenstein' AND budget_million = 62.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 4.67
+    },
+    {
+      "uid": "e1466533-54fd-46fb-ae8b-a8fbc67eafd7",
+      "question": "Which movies titled The Whole Nine Yards directed by Jonathan Lynn had a budget of at most 41.3 million and were released in the year 2000 or earlier?",
+      "gold_sql": "SELECT movie.movie_id FROM movie\nWHERE movie.year <= 2000 AND movie.budget_million <= 41.3 AND movie.director = 'Jonathan Lynn' AND movie.title = 'The Whole Nine Yards'",
+      "pred_sql": "SELECT movie.movie_id\nFROM movie\nWHERE movie.Year <= 2000\n  AND movie.Budget_million <= 41.3\n  AND movie.Director = 'Jonathan Lynn'\n  AND movie.Title = 'The Whole Nine Yards'",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 5.32
+    }
+  ]
+}

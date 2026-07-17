@@ -1,0 +1,124 @@
+{
+  "db_id": "flight_company",
+  "model": "tgi",
+  "provider": "openai",
+  "tag": "omnisql-7b",
+  "n": 10,
+  "n_correct": 9,
+  "accuracy": 0.9,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-16T16:49:56.922236+00:00",
+  "records": [
+    {
+      "uid": "03d2b650-a1d6-49c6-9150-d272228f434a",
+      "question": "What operate companies have flights piloted by Peterson with vehicle flight number M2-F1 #39 at Amsterdam airport where the iata is AMS and icao is EHAM and the altitude is at most 3650.0?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nJOIN airport ON flight.airport_id = airport.id\nWHERE airport.iata = 'AMS' AND flight.altitude <= 3650.0 AND flight.vehicle_flight_number = 'M2-F1 #39' AND airport.icao = 'EHAM' AND flight.pilot = 'Peterson'",
+      "pred_sql": "SELECT DISTINCT oc.id\nFROM operate_company AS oc\nINNER JOIN flight AS f ON oc.id = f.company_id\nINNER JOIN airport AS a ON f.airport_id = a.id\nWHERE f.altitude <= 3650.0\n  AND f.Vehicle_Flight_number = 'M2-F1 #39'\n  AND f.Pilot = 'Peterson'\n  AND a.IATA = 'AMS'\n  AND a.ICAO = 'EHAM'",
+      "strategy": "2pM",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 59.89
+    },
+    {
+      "uid": "1e2c49b2-fe59-4726-ac1c-9154ea169ae9",
+      "question": "Which operate companies are joint ventures with a 40.0 group equity shareholding, focus on Catering services, and have flights at exactly 3650.0 altitude and at least 240.0 velocity connected to airports in Amsterdam, Netherlands?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nJOIN airport ON flight.airport_id = airport.id\nWHERE operate_company.type = 'Joint Venture' AND operate_company.group_equity_shareholding = 40.0 AND airport.city = 'Amsterdam' AND flight.velocity >= 240.0 AND operate_company.principal_activities = 'Catering services' AND airport.country = 'Netherlands' AND flight.altitude = 3650.0",
+      "pred_sql": "SELECT DISTINCT oc.id\nFROM operate_company AS oc\nINNER JOIN flight AS f ON oc.id = f.company_id\nINNER JOIN airport AS a ON f.airport_id = a.id\nWHERE oc.Type = 'Joint Venture'\n  AND oc.Group_Equity_Shareholding = 40.0\n  AND oc.Principal_activities = 'Catering services'\n  AND f.Velocity >= 240.0\n  AND f.Altitude = 3650.0\n  AND a.City = 'Amsterdam'\n  AND a.Country = 'Netherlands'",
+      "strategy": "2pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 61.12
+    },
+    {
+      "uid": "2b6a84f9-a009-4363-ae8a-7246bffab435",
+      "question": "Which operate companies that have flights are exactly focused on Airline activities?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nWHERE operate_company.principal_activities = 'Airline'",
+      "pred_sql": "SELECT operate_company.id\nFROM operate_company\nINNER JOIN flight ON operate_company.id = flight.company_id\nWHERE operate_company.Principal_activities = 'Airline'",
+      "strategy": "1pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 31.22
+    },
+    {
+      "uid": "2c881058-0980-4afb-b03b-65dee0afe4c0",
+      "question": "Which operate companies have a group equity shareholding that is exactly 100.0 and are connected to flights at any airport?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nJOIN airport ON flight.airport_id = airport.id\nWHERE operate_company.group_equity_shareholding = 100.0",
+      "pred_sql": "SELECT DISTINCT oc.id\nFROM operate_company AS oc\nINNER JOIN flight AS f ON oc.id = f.company_id\nINNER JOIN airport AS a ON f.airport_id = a.id\nWHERE oc.Group_Equity_Shareholding = 100.0",
+      "strategy": "2pE",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 50.66
+    },
+    {
+      "uid": "37e92b57-0101-4842-9455-27895e0af302",
+      "question": "Which operate companies named VN/CX Catering Services Limited are incorporated in Vietnam, focus on Catering services, are Joint Ventures, and have a group equity shareholding of at least 40.0?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nWHERE operate_company.name = 'VN/CX Catering Services Limited' AND operate_company.incorporated_in = 'Vietnam' AND operate_company.principal_activities = 'Catering services' AND operate_company.type = 'Joint Venture' AND operate_company.group_equity_shareholding >= 40.0",
+      "pred_sql": "SELECT id \nFROM operate_company \nWHERE name = 'VN/CX Catering Services Limited' \n  AND Incorporated_in = 'Vietnam' \n  AND Principal_activities = 'Catering services' \n  AND Type = 'Joint Venture' \n  AND Group_Equity_Shareholding >= 40.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 28.21
+    },
+    {
+      "uid": "58fcfcaf-1ce5-49ae-be95-4d424433c20c",
+      "question": "What operate companies named Dragonair, incorporated in Hong Kong as subsidiaries, have flights with the vehicle flight number M2-F1 #13 flying at an altitude of at least 3650.0?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nWHERE flight.vehicle_flight_number = 'M2-F1 #13' AND flight.altitude >= 3650.0 AND operate_company.name = 'Dragonair' AND operate_company.type = 'Subsidiary' AND operate_company.incorporated_in = 'Hong Kong'",
+      "pred_sql": "operate_company.id = flight.company_id",
+      "strategy": "1pM",
+      "correct": false,
+      "status": "pred_error",
+      "error": null,
+      "latency_s": 49.62
+    },
+    {
+      "uid": "7f057709-9eda-4d17-9115-5d2caaab8ba3",
+      "question": "Which subsidiaries incorporated in Hong Kong operate as Cargo airlines that had flights in 1963 with vehicle flight number M2-F1 #14 traveling exactly at velocity 240.0?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nJOIN flight ON operate_company.id = flight.company_id\nWHERE operate_company.incorporated_in = 'Hong Kong' AND flight.vehicle_flight_number = 'M2-F1 #14' AND flight.velocity = 240.0 AND operate_company.principal_activities = 'Cargo airline' AND operate_company.type = 'Subsidiary' AND flight.date LIKE '%1963%'",
+      "pred_sql": "SELECT DISTINCT oc.id\nFROM operate_company AS oc\nINNER JOIN flight AS f\nON oc.id = f.company_id\nWHERE oc.Incorporated_in = 'Hong Kong'\n  AND oc.Principal_activities = 'Cargo airline'\n  AND oc.Type = 'Subsidiary'\n  AND f.Vehicle_Flight_number = 'M2-F1 #14'\n  AND f.Velocity = 240.0\n  AND f.Date LIKE '%1963%'",
+      "strategy": "1pH",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 58.63
+    },
+    {
+      "uid": "8c49e067-ec86-4368-a734-3e5db954513c",
+      "question": "Which operate companies have group equity shareholding of at most 30.0 and whose principal activities is Catering services?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nWHERE operate_company.group_equity_shareholding <= 30.0 AND operate_company.principal_activities = 'Catering services'",
+      "pred_sql": "SELECT id \nFROM operate_company \nWHERE Group_Equity_Shareholding <= 30.0 \n  AND Principal_activities = 'Catering services'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 29.39
+    },
+    {
+      "uid": "c4a7da6d-f770-4fe9-bed8-0c06115ed190",
+      "question": "What operate companies named Cathay Pacific Services Limited have principal activities exactly in Cargo?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nWHERE operate_company.principal_activities = 'Cargo' AND operate_company.name = 'Cathay Pacific Services Limited'",
+      "pred_sql": "SELECT id \nFROM operate_company \nWHERE Principal_activities = 'Cargo' \n  AND name = 'Cathay Pacific Services Limited'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 16.61
+    },
+    {
+      "uid": "dcc6aac8-2190-4351-85ef-28ccbab68628",
+      "question": "What companies named VN/CX Catering Services Limited are joint ventures incorporated in Vietnam, focused on catering services, with a group equity shareholding of at most 40.0?",
+      "gold_sql": "SELECT operate_company.id FROM operate_company\nWHERE operate_company.name = 'VN/CX Catering Services Limited' AND operate_company.type = 'Joint Venture' AND operate_company.principal_activities = 'Catering services' AND operate_company.incorporated_in = 'Vietnam' AND operate_company.group_equity_shareholding <= 40.0",
+      "pred_sql": "SELECT id\nFROM operate_company\nWHERE name = 'VN/CX Catering Services Limited'\n  AND Type = 'Joint Venture'\n  AND Principal_activities = 'Catering services'\n  AND Incorporated_in = 'Vietnam'\n  AND Group_Equity_Shareholding <= 40.0",
+      "strategy": "0M",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 34.59
+    }
+  ]
+}

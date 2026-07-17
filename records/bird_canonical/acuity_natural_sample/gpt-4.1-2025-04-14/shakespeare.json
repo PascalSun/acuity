@@ -1,0 +1,124 @@
+{
+  "db_id": "shakespeare",
+  "model": "gpt-4.1-2025-04-14",
+  "provider": "openai",
+  "tag": "gpt-4.1-2025-04-14",
+  "n": 10,
+  "n_correct": 8,
+  "accuracy": 0.8,
+  "n_gold_error": 0,
+  "n_api_error": 0,
+  "evaluated_at": "2026-07-06T02:19:17.334239+00:00",
+  "records": [
+    {
+      "uid": "65ccb5a3-943e-4edc-8db4-2eb6e4a1666f",
+      "question": "Which paragraphs include the phrase \"that I will not.\"?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%that I will not.%'",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE paragraphs.PlainText LIKE '%that I will not.%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "662142f4-f472-483a-b8ef-5a0affa968fe",
+      "question": "Which paragraphs containing \"Most sincerely.\" have a paragraph number of at most 2292?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Most sincerely.%' AND paragraphs.paragraphnum <= 2292",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE ParagraphNum <= 2292\n  AND PlainText LIKE '%Most sincerely.%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "8601513b-7439-487e-934d-ecc12de78f68",
+      "question": "Which paragraphs include the phrase \"Your ships already are in readiness\"?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%Your ships already are in readiness.%'",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE PlainText LIKE '%Your ships already are in readiness%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "uid": "961a1427-dcce-451a-bc03-1f4ee4450cb5",
+      "question": "Which paragraphs include the phrase \"bringing forward the Clerk of Chatham]\"?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%bringing forward the Clerk of Chatham]%'",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE PlainText LIKE '%bringing forward the Clerk of Chatham]%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.05
+    },
+    {
+      "uid": "b37e8ab3-4711-43f8-9464-f314a6c5d4f2",
+      "question": "Which paragraphs numbered exactly 1585 include the text containing 'To signify that rebels there are up  \nAnd put the Englishmen unto the sword:  \nSend succors'?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%To signify that rebels there are up\nAnd put the Englishmen unto the sword:\nSend succors%' AND paragraphs.paragraphnum = 1585",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE ParagraphNum = 1585\n  AND PlainText LIKE '%To signify that rebels there are up  \nAnd put the Englishmen unto the sword:  \nSend succors%'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.22
+    },
+    {
+      "uid": "bd2d252e-e54d-471b-88f8-4cb20a1be5e4",
+      "question": "Which paragraphs numbered exactly 1951 include the phrase 'What! a knave too?'?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%What! a knave too?%' AND paragraphs.paragraphnum = 1951",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE ParagraphNum = 1951\n  AND PlainText LIKE '%What! a knave too?%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "uid": "ca90561e-a600-42db-9d79-4fb8b6346ac8",
+      "question": "What paragraphs have the paragraph number exactly 1012?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.paragraphnum = 1012",
+      "pred_sql": "SELECT paragraphs.id FROM paragraphs WHERE ParagraphNum = 1012",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 0.94
+    },
+    {
+      "uid": "cdc3d344-bb29-42e0-960b-07a15b77a827",
+      "question": "Which paragraphs numbered 2056 or higher include the phrase \"were I human.\"?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%were I human.%' AND paragraphs.paragraphnum >= 2056",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE ParagraphNum >= 2056\n  AND PlainText LIKE '%were I human.%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    },
+    {
+      "uid": "d88e1ca0-6320-49c2-858a-b2fdad5602d5",
+      "question": "Which paragraphs at most number 302 include the text containing \"or I will  \nnot open my lips so wide as a bristle may enter in  \nway of thy excuse: my lady will hang thee for thy absence\"?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%or I will\nnot open my lips so wide as a bristle may enter in\nway of thy excuse: my lady will hang thee for thy absence.%' AND paragraphs.paragraphnum <= 302",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE ParagraphNum <= 302\n  AND PlainText LIKE '%or I will  \nnot open my lips so wide as a bristle may enter in  \nway of thy excuse: my lady will hang thee for thy absence%'",
+      "strategy": "0E",
+      "correct": false,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.23
+    },
+    {
+      "uid": "ed36c707-4b3c-428b-bf4e-80e7c272080b",
+      "question": "What paragraphs include the phrase \"impudent and shameless Warwick\"?",
+      "gold_sql": "SELECT paragraphs.id FROM paragraphs\nWHERE paragraphs.plaintext LIKE '%impudent and shameless Warwick%'",
+      "pred_sql": "SELECT paragraphs.id\nFROM paragraphs\nWHERE PlainText LIKE '%impudent and shameless Warwick%'",
+      "strategy": "0E",
+      "correct": true,
+      "status": "ok",
+      "error": null,
+      "latency_s": 1.07
+    }
+  ]
+}
